@@ -1,4 +1,4 @@
-# Software creation of technical graphics (in slovak language)
+# # <font color='navy'>  Software creation of technical graphics </font> 
 
 Create professional technical graphics for your publications with Circuit Macros.
 
