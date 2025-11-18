@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0170_cm_premenne';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -357,9 +359,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="premenne">
+  <section class="tex2jax_ignore mathjax_ignore" id="premenne">
 <h1><font color='navy'> Premenné  </font><a class="headerlink" href="#premenne" title="Link to this heading">#</a></h1>
-<p>Všetky premenné v jazyku <code class="docutils literal notranslate"><span class="pre">dpic</span></code> sú <strong>numerické</strong> a sú nad nimi definované aritmetické a logické operácie. Súradnice bodu na ploche majú definovanú polohu usporiadanou dvojicou numerických hodnôt $(x,y)$, ktoré sú dostupné ako preddefinované atribúty <em>.x,.y</em>. Súradnice bodu nie je možné použiť ako hodnotu premennej, prístup k nej je možný cez referenciu ako k objektu na ploche. Špeciálny význam má preddefinovaná premenná <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu.</p>
+<p>Všetky premenné v jazyku <code class="docutils literal notranslate"><span class="pre">dpic</span></code> sú <strong>numerické</strong> a sú nad nimi definované aritmetické a logické operácie. Súradnice bodu na ploche majú definovanú polohu usporiadanou dvojicou numerických hodnôt <span class="math notranslate nohighlight">\((x,y)\)</span>, ktoré sú dostupné ako preddefinované atribúty <em>.x,.y</em>. Súradnice bodu nie je možné použiť ako hodnotu premennej, prístup k nej je možný cez referenciu ako k objektu na ploche. Špeciálny význam má preddefinovaná premenná <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x = 1; y = 3;        # numerické premenné
 P1: (x,y)            # referencia na bod
 p1 = (x,y)           # chyba

@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0200_ex_jednoduche';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -359,7 +361,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="jednoduche-obvody">
+  <section class="tex2jax_ignore mathjax_ignore" id="jednoduche-obvody">
 <h1><font color='navy'> Jednoduché obvody  </font><a class="headerlink" href="#jednoduche-obvody" title="Link to this heading">#</a></h1>
 <section id="odporovy-delic">
 <h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
@@ -402,7 +404,7 @@ line from DC.s to (DC.s.x, R2.end.y) to R2.end;
 <ul>
 <li><p>použitie (dočasnej) mriežky <em>Grid()</em> z uživateľskej knižnice <em><a class="reference download internal" download="" href="_downloads/fd1d90733b1df8d27b6b9ad6d1d2ba42/base.ckt"><span class="xref download myst">base.ckt</span></a></em> pre zjednodušenie polohovania prvkov zapojenia pri kreslení</p></li>
 <li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em></p></li>
-<li><p>použitie premennej <em>Here</em> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{$A$}” at Here above}</em></p>
+<li><p>použitie premennej <em>Here</em> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)
 Grid(9,4.5)
 d = 2;

@@ -14,7 +14,17 @@ release = '1.00'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["myst_nb", "sphinx_copybutton" ]
+extensions = ["myst_nb", "sphinx_copybutton"]
+
+myst_enable_extensions = [
+    "amsmath",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "html_image",
+]
+
+myst_url_schemes = ("http", "https", "mailto")
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']

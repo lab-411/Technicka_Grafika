@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0160_cm_syntax';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -370,7 +372,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="jazyk-dpic">
+  <section class="tex2jax_ignore mathjax_ignore" id="jazyk-dpic">
 <h1><font color='navy'> Jazyk <em>dpic</em>  </font><a class="headerlink" href="#jazyk-dpic" title="Link to this heading">#</a></h1>
 <p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v <code class="docutils literal notranslate"><span class="pre">dpic</span></code> kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je rozšírením <code class="docutils literal notranslate"><span class="pre">dpic</span></code> o knižnice makier pre kreslenie elektronických obvodov a zapojení.</p>
 <div class="admonition-programovaci-jazyk-dpic admonition">
@@ -504,7 +506,7 @@ resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for variable = expr to expr [by [*] incr ] do { anything }.
 </pre></div>
 </div>
-<p>Jednoduchý cyklus s premennou $x$ má tvar</p>
+<p>Jednoduchý cyklus s premennou <span class="math notranslate nohighlight">\(x\)</span> má tvar</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for x = 1 to 10 by 2 do { line from (0,0) to (5,x); }
 </pre></div>
 </div>

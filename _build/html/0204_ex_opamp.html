@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0204_ex_opamp';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -347,7 +349,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="operacne-zosilovace">
+  <section class="tex2jax_ignore mathjax_ignore" id="operacne-zosilovace">
 <h1><font color='navy'> Operačné zosilovače  </font><a class="headerlink" href="#operacne-zosilovace" title="Link to this heading">#</a></h1>
 <p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi mnohopóly a podobne pri ako iných mnohopóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE ..,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra makra <em>P</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>opamp(linespec, label+, label-, size, TPR);
@@ -406,7 +408,7 @@ DO: dot;
 <p><span class="caption-number">Obr. 56 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d185d5031bca4b33bdd355b179ed3894/0250_opamp_inv.ckt"><span class="xref download myst">Zapojenie</span></a> invertujúceho a neinvertujúceho zosilovača.</span><a class="headerlink" href="#cm-095" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Použitie parametra <em>P</em> pre zobrazenie napájacích vývodov zosilovača a použitie makra <em>reversed</em> pre zobrazenie kondenzátora $C_2$ s obrátenou polaritou ukazuje nasledujúci príklad.</p>
+<p>Použitie parametra <em>P</em> pre zobrazenie napájacích vývodov zosilovača a použitie makra <em>reversed</em> pre zobrazenie kondenzátora <span class="math notranslate nohighlight">\(C_2\)</span> s obrátenou polaritou ukazuje nasledujúci príklad.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OA: opamp(,,,,P);                # zobrazenie napajacich privodov
     line from OA.V1 up_ .75;
     dot;

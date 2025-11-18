@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0202_ex_tranzistor';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -361,7 +363,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="tranzistory">
+  <section class="tex2jax_ignore mathjax_ignore" id="tranzistory">
 <h1><font color='navy'> Tranzistory </font><a class="headerlink" href="#tranzistory" title="Link to this heading">#</a></h1>
 <section id="bipolarny-tranzistor">
 <h2><font color='teal'>  Bipolárny tranzistor </font><a class="headerlink" href="#bipolarny-tranzistor" title="Link to this heading">#</a></h2>
@@ -391,7 +393,7 @@ atribúty:
 .C                     - poloha kolektora
 </pre></div>
 </div>
-<p>Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora $R_{b1}$ je určená polohou značky zeme pri rezistore $R_e$. Pre popis spojovacieho bodu $V_b$ bolo použité makro <em>dlabel()</em>.</p>
+<p>Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora <span class="math notranslate nohighlight">\(R_{b1}\)</span> je určená polohou značky zeme pri rezistore <span class="math notranslate nohighlight">\(R_e\)</span>. Pre popis spojovacieho bodu <span class="math notranslate nohighlight">\(V_b\)</span> bolo použité makro <em>dlabel()</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ...
 T1: bi_tr(2, L, N,E); 
     resistor(from T1.E down_ 1.5,,E); rlabel(,R_e,);

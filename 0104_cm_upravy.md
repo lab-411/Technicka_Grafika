@@ -73,7 +73,7 @@ Použitie pomenovaných farieb
 
 ## <font color='teal'>  Zvýraznenie prvku </font>
 
-Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom   *linethick_(n)* . Hodnota argumentu $1$ zodpovedá štandardnej šírke čiary. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.
+Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom   *linethick_(n)* . Hodnota argumentu $n=1$ zodpovedá štandardnej šírke čiary. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.
 
 
 ```{code-cell} ipython3 

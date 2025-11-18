@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0014_zaklady';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -360,7 +362,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="zaklady-kreslenia">
+  <section class="tex2jax_ignore mathjax_ignore" id="zaklady-kreslenia">
 <h1><font color='navy'> Základy kreslenia</font><a class="headerlink" href="#zaklady-kreslenia" title="Link to this heading">#</a></h1>
 <p>Princíp vytvárania zapojení v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> spočíva v zapise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  <em>.PS</em> a končí <em>.PE</em>, príkazy a texty mimo tohoto označenia sú ignorované.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.PS               - zaciatok postupnosti prikazov
@@ -454,7 +456,7 @@ chars       - typ zobrazenia rezistoru (napr. E - europske zobrazenie)
 cycle wid   - velkosť cyklov v USA norme
 </pre></div>
 </div>
-<p>Súčasťou zapojenia elektronickéjho obvodu je textový popis prvkov, ktorý zvyčajne pozostáva z označenie prvku, napríklad $R_1$ a jeho hodnoty, napríklad $100 \Omega$. Ukladanie popisov prvkov v komplikovanejších obvodoch pomocou jednoduchých textov by bolo značne náročné, naviac s rizikom nesprávneho označenia alebo pomiešania označenia napríklad pri zmene alebo úprave polohy prvkov. Pre zjednodušenie popisu (označenie, hodnota) posledného zobrazovaného prvku typu dvojpól môžeme preto použiť makrá, ktoré zväzujú texty s označením a s príslušným prvkom.</p>
+<p>Súčasťou zapojenia elektronickéjho obvodu je textový popis prvkov, ktorý zvyčajne pozostáva z označenie prvku, napríklad <span class="math notranslate nohighlight">\(R_1\)</span> a jeho hodnoty, napríklad <span class="math notranslate nohighlight">\(100 \Omega\)</span>. Ukladanie popisov prvkov v komplikovanejších obvodoch pomocou jednoduchých textov by bolo značne náročné, naviac s rizikom nesprávneho označenia alebo pomiešania označenia napríklad pri zmene alebo úprave polohy prvkov. Pre zjednodušenie popisu (označenie, hodnota) posledného zobrazovaného prvku typu dvojpól môžeme preto použiť makrá, ktoré zväzujú texty s označením a s príslušným prvkom.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>llabel( slabel, xlabel, elabel )  - označenie po lavej strane v smere ukladania
 rlabel( slabel, xlabel, elabel )  - označenie po pravej strane v smere ukladanie 
 
@@ -465,7 +467,7 @@ parametre:
     elabel       - označenie v bode konca prvku
 </pre></div>
 </div>
-<p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = $R_1$ (vyžaduje inštaláciu LaTeX-u).</p>
+<p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = <span class="math notranslate nohighlight">\(R_1\)</span> (vyžaduje inštaláciu LaTeX-u).</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (1,2);
 R1: resistor(2,,E); llabel(a,R_1,b); rlabel(,10k,);
 D1: dot;

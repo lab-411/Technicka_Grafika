@@ -44,6 +44,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0104_cm_upravy';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -359,7 +361,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="upravy-zobrazenia">
+  <section class="tex2jax_ignore mathjax_ignore" id="upravy-zobrazenia">
 <h1><font color='navy'> Úpravy zobrazenia </font><a class="headerlink" href="#upravy-zobrazenia" title="Link to this heading">#</a></h1>
 <p>Súčasťou <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Môžeme hrubšími čiarami zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis obvodov, popis prvkov alebo upozorniť na konštrukčné detaily.</p>
 <section id="zmena-farby">
@@ -392,7 +394,7 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 </section>
 <section id="zvyraznenie-prvku">
 <h2><font color='teal'>  Zvýraznenie prvku </font><a class="headerlink" href="#zvyraznenie-prvku" title="Link to this heading">#</a></h2>
-<p>Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom   <em>linethick_(n)</em> . Hodnota argumentu $1$ zodpovedá štandardnej šírke čiary. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.</p>
+<p>Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom   <em>linethick_(n)</em> . Hodnota argumentu <span class="math notranslate nohighlight">\(n=1\)</span> zodpovedá štandardnej šírke čiary. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.</p>
 <figure class="align-default" id="cm-032">
 <a class="reference internal image-reference" href="_images/cm_032.png"><img alt="_images/cm_032.png" src="_images/cm_032.png" style="width: 400px;" />
 </a>
