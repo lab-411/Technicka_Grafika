@@ -1,7 +1,7 @@
 # <center> <font color='navy'>  <b> Programová tvorba technickej grafiky </b> </font> </center> 
 
 <center> 
-<h3> <font color='brown'>  <b> Autor1, Autor2, Autor3 </b> </font> </h3>
+<h3> <font color='brown'>  <b> Lenka Bartošová, Peter Fabo, Michal Kuba </b> </font> </h3>
 </center> 
 
 
@@ -11,8 +11,8 @@
 ```
 
 <center> 
-<h3> <font color='brown'>  <b> LAB411 Production </b> </font>      </h3>
-<h3> <font color='brown'>  <b> 2025 </b> </font>                   </h3>
+<h3> <font color='brown'>  <b> LAB-411 Production </b> </font>      </h3>
+<h3> <font color='brown'>  <b> Verzia 0.1 / 2025 </b> </font>                   </h3>
 </center> 
 
 ----------------
@@ -80,7 +80,7 @@
 
 Publikácia **Programová tvorba technickej grafiky** je vydaná pod licenciou MIT
 
-    Copyright © 2025 LAB411 Team
+    Copyright © 2025 LAB-411 Team
 
     Permission is hereby granted, free of charge, to any person obtaining a copy 
     of this software and associated documentation files (the “Software”), to deal 
@@ -100,13 +100,13 @@ Publikácia **Programová tvorba technickej grafiky** je vydaná pod licenciou M
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     
-Vydalo vydavateľstvo *LAB411 Production, Na konci chodby vpravo, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2025.
-**ISBN: 123-45-456789-0**
+Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2025.
 
-Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown* 
+**ISBN: xxx-xx-xxxxxx-x**
+
+Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programvacieho jazyka *Python*. 
 
 Titulný obrázok je vygenerovaný na základe podkladov uvedených ako príklad použitia v distribúcii programu *Circuit Macros*
-
 
 
 ### <font color='brown'> Použité programové vybavenie </font> 

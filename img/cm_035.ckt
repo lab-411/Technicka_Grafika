@@ -11,7 +11,7 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-include(`/home/pf/ownCloud/Share-Projekty/0006_Circuit_Macro/sphinx_book/cm/base.ckt')
+include(`/home/pf/ownCloud/Share-Projekty/1010_GitHub_lab-411/Technicka_Grafika/cm/base.ckt')
 
 Origin: Here 
 
