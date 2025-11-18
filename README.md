@@ -1,4 +1,4 @@
-# # <font color='navy'>  Software creation of technical graphics </font> 
+# <font color='navy'>  Software creation of technical graphics </font> 
 
 Create professional technical graphics for your publications with Circuit Macros.
 
