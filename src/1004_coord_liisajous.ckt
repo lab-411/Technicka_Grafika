@@ -1,0 +1,19 @@
+.PS
+scale=2.54
+cct_init
+
+l=elen_
+# Enter your drawing code here
+x=0; r=2;
+px = r*cos(5*x)
+py = r*sin(7*x)
+
+PP: (px,py)
+move to PP;
+for x=0 to 3.14*4 by (3.14/100) do{
+   px = r*cos(5*x)
+   py = r*sin(7*x)
+
+   line  to (px,py) 
+}
+.PE

@@ -1,0 +1,19 @@
+.PS
+scale=2.54
+cct_init
+
+l=elen_
+# Enter your drawing code here
+PP:(0,0)
+for x=0 to 3.14*2 by (3.14/100) do{
+   r = 2;
+   px = r*cos(x)
+   py = r*sin(2*x)
+
+   r2 = 4;
+   dx = r2*cos(1*x)/2 + 2
+   dy = r2*sin(3*x)/3 + 1
+
+   line from PP + (dx,dy) to PP + (px,py) 
+}
+.PE

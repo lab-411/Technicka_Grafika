@@ -1,0 +1,28 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+
+Origin: Here 
+
+Grid(6,1.5)
+
+define(`text', `klukata ciara');
+define(`zigzac', `[line up_ $1 right_ $1 then down_ $1 right_ $1 then up_ $1 right_ $1]' )
+
+move to (0.5,0.5);
+dot;
+ZG: zigzac(0.5); zigzac(1);
+"text" at ZG.n above;
+
+.PE

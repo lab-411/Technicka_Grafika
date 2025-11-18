@@ -1,0 +1,32 @@
+.PS
+scale=2.54
+cct_init
+
+include(base.ckt)
+
+    line 0.5 dotted;
+LL: line right_ 2;
+    dot;
+     {"\textit{LL}" at last line.c above;}
+    line <- from LL.end + (.1,.1) up_ .5 right_ .5 dotted;
+    "\textit{Here}" at last line.end ljust above;
+    
+    move to LL.end+(0.8,-1.5);
+    dot;
+R4: resistor(right_ 2 ,,E);
+    llabel(,R4,);
+    line 0.5 dotted;
+    line <- from R4.start - (.1,.1)   down_ .5 left_ .5 dotted;
+    "\textit{R\\4.start}" at last line.end rjust below;
+
+move to LL.end;
+linethick = 1.5;
+color_red;
+line from Here down_ (Here.y - R4.start.y) \
+     then to R4.start;
+
+"\textit{line from Here down\_ (Here.y - R4.start.y)}" at (LL+R4)/2 + (-0.5,0.1) rjust;
+"\textit{then to R4.start;}" at (LL+R4)/2 + (-0.5,-0.1) rjust below;
+
+
+.PE

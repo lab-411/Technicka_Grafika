@@ -1,0 +1,62 @@
+.PS
+
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+                        # ! nesmu sa použivat nazvy makier
+                        # v textoch pre LaTex (napr. switch)
+                        
+include(base.ckt)
+
+
+#=======================================================================
+Origin: Here 
+d = 2;
+
+#-----------------------------------------------------------------------
+# mriezka
+Grid(9,4.5)
+#-----------------------------------------------------------------------
+# Trojuholnik
+move to (1.0, 1.5);
+D1: dot; {"\textit{$B$}" at Here below}
+
+move to D1 + (d*cos(pi/3), d*sin(pi/3));
+D2: dot;  {"\textit{$A$}" at Here above}
+
+move to D1 + (d, 0)
+D3: dot;   {"\textit{$C$}" at Here below}
+
+R1: resistor(from D1 to D2, E ); {"\textit{$R_1$}" at R1.c + (-.4, 0.1) } 
+R2: resistor(from D1 to D3, E ); {"\textit{$R_2$}" at R2.c + (0, -0.4) }  
+R3: resistor(from D2 to D3, E ); {"\textit{$R_3$}" at R3.c + (.4, 0.1) } 
+
+#--------------------------------------
+# Hviezda
+move to (7,2);
+Y1: dot;
+q = 3*d/4
+
+move to Y1 + (q *cos(pi/2), q *sin(pi/2));
+Y2: dot;  {"\textit{$A$}" at Here above}
+
+move to Y1 + (q *cos(pi/6), -q *sin(pi/6));
+Y3: dot;  {"\textit{$C$}" at Here below}
+
+move to Y1 + (-q *cos(pi/6), -q *sin(pi/6));
+Y4: dot;  {"\textit{$B$}" at Here below}
+
+R11: resistor(from Y1 to Y2, E ); {"\textit{$R_{11}$}" at R11.c + (-.5, 0.1) } 
+R23: resistor(from Y1 to Y3, E ); {"\textit{$R_{23}$}" at R23.c + ( .55, 0.2) } 
+R13: resistor(from Y1 to Y4, E ); {"\textit{$R_{13}$}" at R13.c + ( -.55, 0.2) }
+
+line <-> from (3.5, 2) to (5,2)
+
+.PE 

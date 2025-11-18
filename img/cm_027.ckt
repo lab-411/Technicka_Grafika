@@ -1,0 +1,72 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+
+Origin: Here 
+
+shadebox(B1: box wid 2 ht 1 with .w at (1,3), 2) 
+"Program" at B1.c above; 
+"*.ckt" at B1.c below; 
+line -> from B1.e right_ 1 then down_ 0.5 then right_ 1;
+
+shadebox(B2: box wid 2 ht 1 with .w at (1,1.5), 2) 
+"Knižnice" at B2.c above; 
+"*.m4" at B2.c below; 
+line -> from B2.e right_ 1 then up_ 0.5 then right_ 1;
+
+color_red;
+boxrad=.1;
+B3: box wid 2 ht 1.5 with .nw at (5,3)
+"Makro" at B3.c above; 
+"procesor" at B3.c below; 
+color_black;
+
+line -> from B3.e right_ 1;
+
+color_blue;
+boxrad=.1;
+B4: box wid 2 ht 1.5 
+"dpic" at B4.c above; 
+"Interpreter" at B4.c below; 
+color_black;
+
+line from B4.e right_ 1;
+D1: dot;
+line -> up_ 2.25 then right_ 1; 
+shadebox(B5: box wid 2 ht 1, 2); 
+"Image" at B5.c above; 
+"*.png" at B5.c below;
+
+line -> from D1 up_ 0.75 then right_ 1; 
+shadebox(B6: box wid 2 ht 1, 2); 
+"Image" at B6.c above; 
+"*.jpeg" at B6.c below;
+
+line -> from D1 down_ 0.75 then right_ 1; 
+shadebox(B7: box wid 2 ht 1, 2); 
+"Image" at B7.c above; 
+"*.svg" at B7.c below;
+
+line -> from D1 down_ 2.25 then right_ 1; 
+shadebox(B7: box wid 2 ht 1, 2); 
+"Makro" at B7.c above; 
+"*.tikz" at B7.c below;
+
+color_dark_orange;
+line <- from B1.n up_ 0.5;
+B8: box wid 2  ht 1
+"Editor" at B8.c above; 
+"pycirkuit" at B8.c below;
+
+.PE

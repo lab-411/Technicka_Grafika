@@ -1,0 +1,76 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+
+OA1: opamp(,,,,); "$A_1$" at OA1.SE below ljust;
+    line from OA1.In1 left_ 0.5;
+    {line from OA1.In2 left 0.5 then down 0.5; gnd; }
+    dot;
+    { 
+	resistor(2,,E); rlabel(,\dfrac{1}{\beta} R_1,);
+    T1: circle rad .1;
+    }
+    line up_ 1.5; dot;
+R1: resistor(right_ (OA1.Out.x - OA1.In1.x +0.5),,E); rlabel(,R_1,); dot;
+
+    {line down_ (Here.y-OA1.Out.y) then to OA1.Out;}
+
+    line right_ 1; dot;
+    { C1: capacitor(down_ 2.25); rlabel(,C,);}
+    line right_ 0.75; dot;
+    { 
+      R2: resistor(down_ 2.25,,E); llabel(,R_2,); 
+          dot; 
+          {
+              line right_ 2;
+              OA2: opamp() with .In2 at Here;
+              "$A_2$" at OA2.SE below ljust;
+          }
+          {
+             C2:  capacitor(down_ 1); rlabel(,C,);
+             R22: resistor(down_ 1,,E); llabel(,R_2,);
+                  gnd;
+          }
+          line to C1.end; 
+     }
+     line right_ 1;
+     resistor(down_ (Here.y - OA2.In1.y),,E); llabel(,R_3,); dot;
+     { line to OA2.In1; } 
+     line down_ 1;
+     resistor(down_ 1.5,,E); llabel(,2R_3,);
+     line right_ (OA2.Out.x - Here.x) then to OA2.Out; dot;
+     {    line 0.75;
+          T2: circle rad .1;
+     }
+     line up_ 2.75 then left_ (Here.x - R1.end.x)
+     resistor((OA1.Out.x - OA1.In1.x +0.5),,E); rlabel(,\dfrac{1}{\alpha} R_1,);
+     line to R1.start;
+
+    line -> from T1.s + (0, -0.1) down_ 1 "$V_{in}$" rjust;
+    move to Here + (0, - 0.1);
+    circle rad 0.1; line 0.25;
+    gnd;
+
+    line -> from T2.s + (0, -0.1) down_ 1 "$V_{out}$" ljust;
+    move to Here + (0, - 0.1);
+    circle rad 0.1; line 0.25;
+    gnd;
+
+    line -> from OA1.Out + (0, -0.1) down_ 1 "$V_1$" ljust;
+    move to Here + (0, - 0.1);
+    circle rad 0.1; line 0.25;
+    gnd;
+
+
+.PE

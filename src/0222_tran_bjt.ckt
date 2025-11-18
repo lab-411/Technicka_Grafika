@@ -1,0 +1,29 @@
+.PS
+scale=2.54
+cct_init
+include(base.ckt)
+Grid(12,2);
+
+
+move to (.5,1);
+hlf=0.5;
+
+Q1:bi_tr(up_ );   
+move right_ hlf
+Q2:bi_tr(up_ ,R); 
+move right_ hlf
+Q3:bi_tr(up_,,,E)
+move right_ hlf
+Q4:bi_tr(up_,R,,E); 
+
+move right_ hlf
+Q5:bi_tr(up_,,P)
+move right_ hlf
+Q6:bi_tr(up_,R,P)
+move right_ hlf
+Q7:bi_tr(up_,,P,E)
+move right_ hlf
+Q8:bi_tr(up_,R,P,E)
+ 
+
+.PE

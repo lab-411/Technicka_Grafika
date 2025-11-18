@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jednoduché obvody &#8212; cm 1.00 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=2a0ef813"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0200_ex_jednoduche';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tranzistory" href="0202_ex_tranzistor.html" />
+    <link rel="prev" title="Prostredie" href="0180_cm_prostredie.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_411.png" class="logo__image only-light" alt="cm 1.00 documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_411.png" class="logo__image only-dark" alt="cm 1.00 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Úvod</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0010_uvod.html"><font color="navy">  Technická grafika  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0012_instalacia.html"><font color="navy"> Inštalácia  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0160_cm_syntax.html"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0165_cm_makra.html"><font color="navy"> Makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0170_cm_premenne.html"><font color="navy"> Premenné  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Príklady</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Jednoduché obvody  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Kompilácia skriptov </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0010_sphinx_myst.html"><font color="navy"> <b> Elektronická publikácia </b></font></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/0200_ex_jednoduche.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><font color='navy'> Jednoduché obvody  </font></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odporovy-delic"><font color="teal">  Odporový delič </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfiguracia-hviezda-trojuholnik"><font color="teal"> Konfigurácia hviezda - trojuholník </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stvorpol"><font color="teal"> Štvorpól </font></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="jednoduche-obvody">
+<h1><font color='navy'> Jednoduché obvody  </font><a class="headerlink" href="#jednoduche-obvody" title="Link to this heading">#</a></h1>
+<section id="odporovy-delic">
+<h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
+<p>V <a class="reference download internal" download="" href="_downloads/bf803caa359bff206e548bd0e5fb1d66/0200_r_serial.ckt"><span class="xref download myst">príklade</span></a> sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:</p>
+<ul>
+<li><p>zaradenie pomocnej knižnice <a class="reference download internal" download="" href="_downloads/fd1d90733b1df8d27b6b9ad6d1d2ba42/base.ckt"><span class="xref download myst">case.ckt</span></a> do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov, kódy farieb, vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code></p></li>
+<li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. Prvky zapojenia <strong>nie sú</strong> v tomto príklade ukladané na absolútne súradnice pracovnej plochy</p></li>
+<li><p>použitie atribútov komponentov na výpočty <em>(x,y)</em> súradníc, napr. <em>(DC.s.x, R2.end.y)</em></p></li>
+<li><p>použitie príkazov <em>larrow</em> pre zobrazenie napätí na rezistoroch</p></li>
+<li><p>použitie šípky *line -&gt; * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu TODO</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)
+d = 1.5;
+
+R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, -&gt;, 0.2)
+R2: resistor(d,,E); rlabel(,R_2,);       larrow(u_{2}, -&gt;, 0.2)
+
+move to (R1.end -(d, -d/2 ) )  # poloha stredu zdroja vzhladom k spoju rezistorov
+
+DC: dc_source(d, 1); rarrow(u, -&gt;, 0.2);
+line from DC.n to (DC.n.x, R1.start.y); 
+line -&gt; right d/2; {&quot;\textit{i}&quot; at last line.e above}
+line to R1.start;
+
+line from DC.s to (DC.s.x, R2.end.y) to R2.end;
+</pre></div>
+</div>
+</li>
+</ul>
+<figure class="align-default" id="ex-001">
+<a class="reference internal image-reference" href="_images/ex_001.png"><img alt="_images/ex_001.png" src="_images/ex_001.png" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Sériové zapojenie rezistorov.</span><a class="headerlink" href="#ex-001" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="konfiguracia-hviezda-trojuholnik">
+<h2><font color='teal'> Konfigurácia hviezda - trojuholník </font><a class="headerlink" href="#konfiguracia-hviezda-trojuholnik" title="Link to this heading">#</a></h2>
+<p>V <a class="reference download internal" download="" href="_downloads/52617addde893e26f811436dcbe93cd3/0201_r_trojuh.ckt"><span class="xref download myst">príklade</span></a> zapojenie rezistorov pre príklad konverzie hviezdy na trojuholník sú použité nasledujúce konštrukcie:</p>
+<ul>
+<li><p>použitie (dočasnej) mriežky <em>Grid()</em> z uživateľskej knižnice <em><a class="reference download internal" download="" href="_downloads/fd1d90733b1df8d27b6b9ad6d1d2ba42/base.ckt"><span class="xref download myst">base.ckt</span></a></em> pre zjednodušenie polohovania prvkov zapojenia pri kreslení</p></li>
+<li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em></p></li>
+<li><p>použitie premennej <em>Here</em> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{$A$}” at Here above}</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)
+Grid(9,4.5)
+d = 2;
+move to (1.0, 1.5);                             #---------- Trojuholnik
+D1: dot; {&quot;\textit{$B$}&quot; at Here below}
+
+move to D1 + (d*cos(pi/3), d*sin(pi/3));
+D2: dot;  {&quot;\textit{$A$}&quot; at Here above}
+
+move to D1 + (d, 0)
+D3: dot;   {&quot;\textit{$C$}&quot; at Here below}
+
+R1: resistor(from D1 to D2,,E); {&quot;\textit{$R_1$}&quot; at R1.c + (-.4, 0.1) } 
+R2: resistor(from D1 to D3,,E); {&quot;\textit{$R_2$}&quot; at R2.c + (0, -0.4) }  
+R3: resistor(from D2 to D3,,E); {&quot;\textit{$R_3$}&quot; at R3.c + (.4, 0.1) } 
+
+
+move to (7,2);                                  #---------- Hviezda
+Y1: dot;
+q = 3*d/4
+
+move to Y1 + (q *cos(pi/2), q *sin(pi/2));
+Y2: dot;  {&quot;\textit{$A$}&quot; at Here above}
+
+move to Y1 + (q *cos(pi/6), -q *sin(pi/6));
+Y3: dot;  {&quot;\textit{$C$}&quot; at Here below}
+
+move to Y1 + (-q *cos(pi/6), -q *sin(pi/6));
+Y4: dot;  {&quot;\textit{$B$}&quot; at Here below}
+
+R11: resistor(from Y1 to Y2,,E); {&quot;\textit{$R_{11}$}&quot; at R11.c + (-.5, 0.1) } 
+R23: resistor(from Y1 to Y3,,E); {&quot;\textit{$R_{23}$}&quot; at R23.c + ( .55, 0.2) } 
+R13: resistor(from Y1 to Y4,,E); {&quot;\textit{$R_{13}$}&quot; at R13.c + ( -.55, 0.2) }
+
+line &lt;-&gt; from (3.5, 2) to (5,2)
+</pre></div>
+</div>
+</li>
+</ul>
+<figure class="align-default" id="ex-002">
+<a class="reference internal image-reference" href="_images/ex_002.png"><img alt="_images/ex_002.png" src="_images/ex_002.png" style="width: 550px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 45 </span><span class="caption-text">Konfigurácia hviezda-trojuholník.</span><a class="headerlink" href="#ex-002" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="stvorpol">
+<h2><font color='teal'> Štvorpól </font><a class="headerlink" href="#stvorpol" title="Link to this heading">#</a></h2>
+<p>V <a class="reference download internal" download="" href="_downloads/ac478fffe56f7e74ff733334b9122739/0202_stvorpol.ckt"><span class="xref download myst">príklade</span></a> zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)                                
+up_;
+I1: source(2,I); llabel(,i_1,);  
+    line right_ 1; 
+DA: dot; llabel(,a,); line 1;
+
+    move to I1.start; line  right_ 1 ; 
+D0: dot; ; 
+    line right_ 1; 
+
+    color_red;
+    {move to D0; line down_ 0.5; gnd;}
+    color_black;
+
+    move to (DA + D0)/2 + (1,0); 
+BX: box ht 3 wid 2.5;
+    move to (BX.e.x, DA.y); line right_ 1; 
+DB: dot; llabel(,b,);
+
+    line -&gt; from DB right_ 1; {&quot;$i_2$&quot; above at last line.c}
+    resistor(down_ 2,,E); llabel(,Z,); 
+    line left_ 1; 
+DG: dot; line to D0;
+
+# popis - sipky
+    line -&gt; from DA + (0, -0.25) to D0+(0,0.25); &quot;$u_1$&quot; ljust at last line.c;
+    line -&gt; from DB + (0, -0.25) to DG+(0,0.25); &quot;$u_2$&quot; ljust at last line.c;
+</pre></div>
+</div>
+<figure class="align-default" id="ex-003">
+<a class="reference internal image-reference" href="_images/ex_003.png"><img alt="_images/ex_003.png" src="_images/ex_003.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text">Štvorpól.</span><a class="headerlink" href="#ex-003" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0180_cm_prostredie.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><font color='navy'>  Prostredie   </font></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0202_ex_tranzistor.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font color='navy'> Tranzistory </font></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odporovy-delic"><font color="teal">  Odporový delič </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfiguracia-hviezda-trojuholnik"><font color="teal"> Konfigurácia hviezda - trojuholník </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stvorpol"><font color="teal"> Štvorpól </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pf
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, pf.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

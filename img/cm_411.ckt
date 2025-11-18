@@ -1,0 +1,27 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+
+Origin: Here 
+line -> 1;
+box wid 2 ht 1; 
+{
+    "top of box" at last box.n above; 
+    "bottom of box" at last box.s below;
+    line from last box.nw to last box.se; 
+    line from last box.sw to last box.ne; 
+}
+line -> 1;
+
+.PE
