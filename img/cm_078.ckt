@@ -1,0 +1,38 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+Grid(10, 2.5);
+
+move to (0.5, 2);
+bjt_NPN(1,1,L);
+bjt_NPN(1,1,L,N);
+
+bjt_PNP(1,1,L);
+bjt_PNP(1,1,L,N);
+
+move to (0.5, 0.5);
+bjt_NPN(1,1,R);
+bjt_NPN(1,1,R,N);
+
+bjt_PNP(1,1,R);
+bjt_PNP(1,1,R,N);
+
+move to (7.5, 1.25);
+Q1: bjt_NPN(1.5, 1, R);
+"\textit{Q1}" at Q1.e;
+"\textit{Q1.B}" at Q1.B rjust;
+"\textit{Q1.E}" at Q1.E below; 
+"\textit{Q1.C}" at Q1.C above; 
+
+.PE

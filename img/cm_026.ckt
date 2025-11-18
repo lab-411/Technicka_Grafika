@@ -1,0 +1,96 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+
+define(`res_05w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.18*linewid;
+       line from R.c+(-dx,0) to R.c+(dx,0);
+]')
+
+
+define(`res_025w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.065*linewid;
+       line from R.c+(dx,-dx) to R.c+(-dx,dx);
+]')
+
+define(`res_0125w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.065*linewid;
+       ds = 0.06
+       line from R.c+(dx + ds,-dx) to R.c+(-dx + ds,dx);
+       line from R.c+(dx - ds,-dx) to R.c+(-dx - ds,dx);
+]')
+
+define(`res_005w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.065*linewid;
+       ds = 0.1
+       line from R.c+(dx + ds,-dx) to R.c+(-dx + ds,dx);
+       line from R.c+(dx,-dx) to R.c+(-dx,dx);
+       line from R.c+(dx - ds,-dx) to R.c+(-dx - ds,dx);
+]')
+
+define(`res_1w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.065*linewid;
+       line from R.c+(0, dx) to R.c+(0,-dx);
+]')
+
+define(`res_2w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.065*linewid;
+       ds = 0.05
+       line from R.c+( ds,-dx) to R.c+(  ds,dx);
+       line from R.c+(-ds,-dx) to R.c+( -ds,dx);
+]')
+
+define(`res_5w', `[
+    R: resistor($1,$2,$3);
+       dx = 0.065*linewid;
+       ds = 0.05
+       line from R.c+( 0,-dx) to R.c+(  ds,dx);
+       line from R.c+(-ds, dx) to R.c+( 0, -dx);
+]')
+
+include(base.ckt)
+#Grid(10,5);
+move to (3,1); "\textit{resi\\stor(2,,E)}" rjust;
+resistor(2,,E); llabel(,R_1,); "$P_s$ nedefinovaý" ljust;
+
+
+move to (3,2); "\textit{re\\s\_05w(2,,E)}" rjust;
+res_05w(2,,E); llabel(,R_2,); "$P_s = 0.5W$" ljust;
+
+move to (3,3); "\textit{re\\s\_025w(2,,E)}" rjust;
+res_025w(2,,E); llabel(,R_3,); "$P_s = 0.25W$" ljust;
+
+move to (3,4); "\textit{re\\s\_0125w(2,,E)}" rjust;
+res_0125w(2,,E); llabel(,R_4,); "$P_s = 0.125W$" ljust;
+
+move to (3,5); "\textit{re\\s\_005w(2,,E)}" rjust;
+res_005w(2,,E); llabel(,R_5,);  "$P_s = 0.05W$" ljust;
+
+move to (3,6); "\textit{re\\s\_1w(2,,E)}" rjust;
+res_1w(2,,E); llabel(,R_6,);  "$P_s = 1W$" ljust;
+
+move to (3,7); "\textit{re\\s\_2w(2,,E)}" rjust;
+res_2w(2,,E); llabel(,R_7,);  "$P_s = 2W$" ljust;
+
+move to (3,8); "\textit{re\\s\_5w(2,,E)}" rjust;
+res_5w(2,,E); llabel(,R_8,);  "$P_s = 5W$" ljust;
+
+
+.PE

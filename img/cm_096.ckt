@@ -1,0 +1,32 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+    include(base.ckt)
+
+OA: opamp(,,,,P);
+line from OA.V1 up_ .75;
+dot;
+{line right_ 0.25; capacitor(right_ 1,C+); llabel(,C_1,); rlabel(,10 \mu F,); line .5 then down_ 0.25; gnd;}
+line 0.75;
+circle rad 0.1; "$V+$" at last circle.n above;
+
+line from OA.V2 down_ .75;
+dot;
+{line right_ 0.25; reversed(`capacitor', right_, C+); llabel(,C_2,); rlabel(,10 \mu F,); line .5 then down_ 0.25; gnd;}
+line 0.75;
+circle rad 0.1; "$V-$" at last circle.s below;
+
+line from OA.In1 left 0.5;
+line from OA.In2 left 0.5;
+
+.PE

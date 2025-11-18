@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Texty &#8212; cm 1.00 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=2a0ef813"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0130_cm_text';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Jazyk dpic" href="0160_cm_syntax.html" />
+    <link rel="prev" title="Vetvy" href="0120_cm_vetvy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_411.png" class="logo__image only-light" alt="cm 1.00 documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_411.png" class="logo__image only-dark" alt="cm 1.00 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Úvod</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0010_uvod.html"><font color="navy">  Technická grafika  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0012_instalacia.html"><font color="navy"> Inštalácia  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Texty </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0160_cm_syntax.html"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0165_cm_makra.html"><font color="navy"> Makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0170_cm_premenne.html"><font color="navy"> Premenné  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Príklady</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> Jednoduché obvody  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Kompilácia skriptov </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0010_sphinx_myst.html"><font color="navy"> <b> Elektronická publikácia </b></font></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/0130_cm_text.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><font color='navy'> Texty </font></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-textu"><font color="teal"> Zadanie textu   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LateX-u  </font></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="texty">
+<h1><font color='navy'> Texty </font><a class="headerlink" href="#texty" title="Link to this heading">#</a></h1>
+<p>Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> pomocou makier <em>rlabel …</em>, rozšírené formátovanie textov je možné s využitím príkazov jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovania textu pomocou LaTeX-u. Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u.</p>
+<section id="zadanie-textu">
+<h2><font color='teal'> Zadanie textu   </font><a class="headerlink" href="#zadanie-textu" title="Link to this heading">#</a></h2>
+<p>Pre kreslenie textu do obrázku je určený príkaz v tvare</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;text&quot;  at location [position];
+
+    locatiom - poloha stredu renderovaného textu
+
+    position - relatívna poloha voči location
+        ljust      horizontálne zarovnanie vlavo
+        rjust      horizontálne zarovnanie vpravo
+        above      vertikálne zarovnanie nahor
+        belov      vertikálne zarovnanie nadol
+</pre></div>
+</div>
+<p>Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odoslaný na renderovanie do LateX-u a umiestnený (ako obrázok) do polohy <em>location</em>. Poloha textu môže byť zadaná absolútnou pozíciou, referenciou na objekt alebo odkazom na posledný použitý komponent (<em>last line</em>, <em>last box</em>, <em>last text</em> …). Vlastná veľkosť textu (ohraničenia) <strong>nie je</strong> známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra <em>position</em>, jeho použitie ukazuje nasledujúci obrázok</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BX: box wid 4.5 ht 1.5 at (0,0);
+LL: line from (-1,0) to (1,0);
+    &quot;rjust&quot; at LL.start  rjust;
+    &quot;ljust&quot; at LL.end ljust;
+    &quot;above&quot; at LL.center above;
+    &quot;below&quot; at LL.center below;
+
+    &quot;rjust&quot; at BX.w rjust;
+    &quot;ljust&quot; at BX.e ljust;
+    &quot;above&quot; at BX.n above;
+    &quot;below&quot; at BX.s below;
+
+    &quot;ljust above&quot; at last box.ne ljust above;
+    &quot;ljust below&quot; at last box.se ljust below;
+    &quot;rjust below&quot; at last box.sw rjust below;
+    &quot;rjust above&quot; at last box.nw rjust above;
+</pre></div>
+</div>
+<figure class="align-default" id="tx-112">
+<a class="reference internal image-reference" href="_images/tx_112.png"><img alt="_images/tx_112.png" src="_images/tx_112.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 31 </span><span class="caption-text">Relatívne umiestnenie textu voči zadanej polohe.</span><a class="headerlink" href="#tx-112" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Text modifikuje globálnu premennú <code class="docutils literal notranslate"><span class="pre">Here</span></code>, po vykreslení textu je nová hodnota poloha <code class="docutils literal notranslate"><span class="pre">Here</span></code> v geometrickom strede textu.</p>
+</section>
+<section id="farba-textu">
+<h2><font color='teal'>  Farba textu  </font><a class="headerlink" href="#farba-textu" title="Link to this heading">#</a></h2>
+<p>Pre nastavenie farby je možné použiť</p>
+<ul>
+<li><p>pre globálne nastavenie farby vrátane textov sú makrá <em>rgb()</em> resp. preddefinované pomenované farby zadefinované v súbore <a class="reference download internal" download="" href="_downloads/b74b951228bdf99fa70dcd64d50de6cd/base.ckt"><span class="xref download myst">base.ckt</span></a> v tvare <em>color_<menofarby></em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ...
+  color_red;
+  color_green;
+  ...
+</pre></div>
+</div>
+</li>
+<li><p>pre lokálne nastavenie farby textu je možné použiť v zadaní textu prostredie <em>color</em> z LaTexu v tvare <em>\color{<farba>}</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  &quot;\color{red} červený text&quot; at (1, 1); 
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Vyššiu prioritu má nastavenie lokálnej farbu textu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    BOX: box wid 3 ht 2 at (5,4);
+        &quot;stred boxu&quot; at BOX.c;                     dot;
+        &quot;\color{red} červený text&quot; at BOX.n above; dot;
+        
+        color_dark_orange;                               # globalne
+        &quot;\color{blue} text vpravo&quot; at BOX.e ljust; dot;  # lokalne
+        &quot;text vlavo dole&quot; at BOX.sw rjust below;   dot;
+
+        color_blue;
+    LL: line from (2, 1.5) right_ 6;
+        &quot;stred čiary&quot; at last line.c above;        dot;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-315">
+<a class="reference internal image-reference" href="_images/cm_315.png"><img alt="_images/cm_315.png" src="_images/cm_315.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 32 </span><span class="caption-text">Pozícia a farby textu</span><a class="headerlink" href="#cm-315" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="matematicke-vyrazy">
+<h2><font color='teal'>  Matematické výrazy  </font><a class="headerlink" href="#matematicke-vyrazy" title="Link to this heading">#</a></h2>
+<p>Pre zobrazenie matematických výrazov sa používa štandardné formátovanie LaTeX-u. Matematický vzťah alebo matematický text sa korektne zobrazí len pri renderovaní pomocou nainštalovaného LaTeX-u.</p>
+<p>Funkcia <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> pre konverziu čísla na formátovaný reťazec akceptuje formatovacie znaky <em>%e, %f, %g</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>T: &quot;$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$&quot; at (5, 0.5);    
+
+   &quot;$f(a)+\frac {f&#39;(a)}{1!} (x-a) + 
+   \frac{f&#39;&#39;(a)}{2!} (x-a)^2 + 
+   \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$&quot; at (5,3);   
+    
+   color_red;
+   sprintf(&quot;Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $&quot;, T.x, T.y) at (5, 1.5);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-316">
+<a class="reference internal image-reference" href="_images/cm_316.png"><img alt="_images/cm_316.png" src="_images/cm_316.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 33 </span><span class="caption-text">Matematické výrazy</span><a class="headerlink" href="#cm-316" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="formatovanie-textu-pomocou-latex-u">
+<h2><font color='teal'>  Formátovanie textu pomocou LateX-u  </font><a class="headerlink" href="#formatovanie-textu-pomocou-latex-u" title="Link to this heading">#</a></h2>
+<p>Jaxyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\textit{text}    \textbf{text}   \underline{text} 
+</pre></div>
+</div>
+<p>Pre rotáciu textu je potrebné použiť príkaz</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\rotatebox{angle}{text}
+</pre></div>
+</div>
+<p>Poloha otočeného textu je vždy v jeho strede, pridávanie medzier na začiatok alebo koniec textu neposunie stred textu.</p>
+<p>Velkosti písma je určená príkazmi</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\tiny     \scriptsize    \footnotesize   \small   \normalsize 
+\large    \Large         \LARGE          \huge    \Huge 
+</pre></div>
+</div>
+<p>Príklad formátovania textu s použitím príkazov LaTex-u:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;\textit{Italic}&quot; at (7, 0.5);
+    &quot;\textbf{Bold}&quot; at (7, 1);
+    &quot;\underline{Underline}&quot; at (7, 1.5);
+
+    for i=0 to 300 by 60 do {
+        move to ( 2 + 1*cos(i/180*pi), 2 + 1*sin(i/180*pi) );
+        sprintf(&quot;\rotatebox{%g}{Text %g}&quot;, i,i );
+    }
+
+    &quot;\large large \Large Large \LARGE LARGE&quot; at (7,3);
+    &quot;\huge huge \Huge Huge&quot; at (7,4);
+
+    &quot;\texttt{Font TT}&quot; at (7,5);
+    &quot;\textsf{Font SF}&quot; at (7,5.5);
+
+    color_red;
+    move to (4, 5.5);
+    &quot;\fbox{Text in Box}&quot; at Here;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-317">
+<a class="reference internal image-reference" href="_images/cm_317.png"><img alt="_images/cm_317.png" src="_images/cm_317.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 34 </span><span class="caption-text">Formátovanie textu pomocou LaTeX-u</span><a class="headerlink" href="#cm-317" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0120_cm_vetvy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><font color='navy'> Vetvy </font></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0160_cm_syntax.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font color='navy'> Jazyk <em>dpic</em>  </font></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-textu"><font color="teal"> Zadanie textu   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LateX-u  </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pf
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, pf.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

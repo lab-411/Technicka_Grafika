@@ -1,0 +1,32 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(`/home/pf/ownCloud/Share-Projekty/0006_Circuit_Macro/sphinx_book/cm/base.ckt')
+
+Origin: Here 
+
+move to (0,1); 
+ampl = 1;  freq = 2;  t_min = 0;  t_max = 10;  phase = -pi_/2;
+sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max);
+
+move to (0,1); 
+color_blue;
+ampl = 1;  freq = 6;  t_min = 0;  t_max = 10;  phase = pi_/2;
+sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max, dashed);
+
+move to (0,1); 
+color_red;
+ampl = 1;  freq = 3;  t_min = 0;  t_max = 10;  phase = 0;
+sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max, dotted);
+
+.PE

@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dvojpóly &#8212; cm 1.00 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=2a0ef813"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0100_cm_dvojpoly';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mnohopóly" href="0102_cm_mnohopoly.html" />
+    <link rel="prev" title="Základy kreslenia" href="0014_zaklady.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_411.png" class="logo__image only-light" alt="cm 1.00 documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_411.png" class="logo__image only-dark" alt="cm 1.00 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Úvod</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0010_uvod.html"><font color="navy">  Technická grafika  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0012_instalacia.html"><font color="navy"> Inštalácia  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Dvojpóly</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0160_cm_syntax.html"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0165_cm_makra.html"><font color="navy"> Makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0170_cm_premenne.html"><font color="navy"> Premenné  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Príklady</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> Jednoduché obvody  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Kompilácia skriptov </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0010_sphinx_myst.html"><font color="navy"> <b> Elektronická publikácia </b></font></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/0100_cm_dvojpoly.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><font color='navy'> Dvojpóly</font></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rezistor"><font color="teal"> Rezistor </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kondenzator"><font color="teal"> Kondenzátor </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cievka"><font color="teal"> Cievka </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dioda"><font color="teal"> Dióda </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zdroje"><font color="teal"> Zdroje </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis-dvojpolov"><font color="teal"> Popis dvojpólov   </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne-prvky"><font color="brown"> Premenné prvky  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prud-dvojpolom"><font color="brown"> Prúd dvojpólom  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napatie-na-dvojpole"><font color="brown"> Napätie na dvojpóle </font></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dvojpoly">
+<h1><font color='navy'> Dvojpóly</font><a class="headerlink" href="#dvojpoly" title="Link to this heading">#</a></h1>
+<p>Základné elektronické komponenty (R,L,C, dióda, zdroje …) sú reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné zadať jeho meno, hodnotu a označenie vývodov, zobrazenie prvku a jeho popis je možné ďalej modifikovať doplnkovými makrami.</p>
+<figure class="align-default" id="cm-016">
+<a class="reference internal image-reference" href="_images/cm_016.png"><img alt="_images/cm_016.png" src="_images/cm_016.png" style="width: 480px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 10 </span><span class="caption-text">Príklady dvojpólov.</span><a class="headerlink" href="#cm-016" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Pre všetky dvojpóly sú definované atribúty</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    .start  - bod začiatku vykreslovania prvku
+    .center - stred prvku
+    .end    - bod ukončenia vykreslovania prvku
+</pre></div>
+</div>
+<p>Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, cievka, dióda a zdroj sú uvedené v nasledujúcich kapitolách. Kompletný zoznam makier pre kreslenie dvojpólov a ich parametrov je v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
+<section id="rezistor">
+<h2><font color='teal'> Rezistor </font><a class="headerlink" href="#rezistor" title="Link to this heading">#</a></h2>
+<p>Makro pre zobrazenie rezistora v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je možné parametrami upraviť pre zobrazenie rôznych typov príbuzných prvkov. Definícia makra pre vykreslenie rezistora:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rezistor(linespec, n, param, cwidth);
+
+parametre:
+
+    linespec - dĺžka a umiestnenie rezistora
+
+    n        - pocet cyklov rezistora v anglos. zobrazeni (default 3) 
+
+    param    - typ rezistora
+                E   - box, európske označenie
+                ES  - box prečiarknutý
+                Q   - posunute anglos. zobrazenie 
+                H   - štvorcove zobrazenie - výkonovy rezistor
+                V   - varistor
+
+    cwidth   - rozmer cyklov rezistora v anglos. zobrazení 
+</pre></div>
+</div>
+<p>Makro bez parametrov sa vykreslí rezistor s prednastavenými hodnotami ako značku rezistoru v anglosaskej notácii.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor;       R2: resistor(3,6,);   R3: resistor(,,Q);   R4: resistor(,,H);      
+R5: resistor(,,E);  R6: resistor(,,ES);   R7: resistor(,,V);   R8: resistor(3,,E,1.5);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-111">
+<a class="reference internal image-reference" href="_images/cm_111.png"><img alt="_images/cm_111.png" src="_images/cm_111.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 11 </span><span class="caption-text">Typy rezistorov.</span><a class="headerlink" href="#cm-111" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Niektoré verzie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> nekorektne spracovávajú parametre makier a medzery pokladajú za súčasť parametra. Je preto potrebné zadávať parametre makier bez medzier.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>resistor(,, E );       # chyba, ignorovanie parametra E
+resistor(,,E);         # správne vykreslenie rezistora 
+</pre></div>
+</div>
+</div>
+</section>
+<section id="kondenzator">
+<h2><font color='teal'> Kondenzátor </font><a class="headerlink" href="#kondenzator" title="Link to this heading">#</a></h2>
+<p>Kondenzátoroch je orientovaný dvojpól, preto okrem typu kondenzátora môžeme parametrom <em>Rev</em> zvoliť aj jeho orientáciu. Pomocou parametrov <em>height</em> a <em>width</em> môžeme upraviť veľkosť a vzdialenosť elektród.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>capacitor(linespec, chars, [Rev], height, width)
+
+parametre:
+
+    linespec - dĺžka a umiestnenie kondenzátora
+    
+    chars    - typ kondenzátoea
+                F or blank: flat plate
+                dF flat plate with hatched fill
+                C curved-plate
+                dC curved-plate with variability arrowhead
+                CP constant phase element
+                E polarized boxed plates
+                K filled boxed plates
+                M unfilled boxes
+                N one rectangular plate
+                P alternate polarized
+                + adds a polarity sign
+                +L polarity sign to the left of drawing direction
+                
+    Rev     - reversed polarity
+    
+    height  - defaults F: dimen_/3, C,P: dimen_/4, E,K: dimen_/5
+    
+    wid     - defaults F: height*0.3, C,P: height*0.4, CP:height*0.8, E,K: height 
+</pre></div>
+</div>
+<p>Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C1: capacitor;      C2: capacitor(,C,);  C3: capacitor(,E);    C4: capacitor(,K);     
+C5: capacitor(,M,,0.75, 0.25);  
+                    C6: capacitor(,P);   C7: capacitor(, CP);  C8: capacitor(,+LC);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-114">
+<a class="reference internal image-reference" href="_images/cm_114.png"><img alt="_images/cm_114.png" src="_images/cm_114.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 12 </span><span class="caption-text">Typy kondenzátorov.</span><a class="headerlink" href="#cm-114" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="cievka">
+<h2><font color='teal'> Cievka </font><a class="headerlink" href="#cievka" title="Link to this heading">#</a></h2>
+<p>Pri cievke môžeme meniť tvar vinutia, počet závitov, ich veľkosť a môžeme k cievke pridať jadro.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>inductor(linespec, W|L, cycles, M|P|K, loop wid)
+
+    parametre:
+
+    linespec  - dĺžka a umiestnenie cievky
+    
+    W|L       - (default narrow), W: wide, L: looped;
+
+    cycles    - number of arcs or cycles (default 4);
+    
+    M|P|Kn    - M magnetic core
+                P powder (dashed) core, 
+                K long-dashed core, 
+                n=integer (default 2) number of corelines named M4Core1, M4Core2
+                
+   loop width - default L, W: dimen_/5; other:dimen_/8
+</pre></div>
+</div>
+<figure class="align-default" id="cm-115">
+<a class="reference internal image-reference" href="_images/cm_115.png"><img alt="_images/cm_115.png" src="_images/cm_115.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 13 </span><span class="caption-text">Modifikácie cievky.</span><a class="headerlink" href="#cm-115" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dioda">
+<h2><font color='teal'> Dióda </font><a class="headerlink" href="#dioda" title="Link to this heading">#</a></h2>
+<p>Dióda je orientovaný dvojpól, parametrom <em>Rev</em> môžeme otočiť smer diódy. Doplnenie typu diódy písmenom <em>K</em> vykreslí nevyplnenú značku diódy.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>diode(linespec, chars, [Rev][E])
+
+    parametre:
+
+    linespec - dĺžka a umiestnenie diódy
+    
+    chars   - typ diódy
+                B    bi-directional
+                b    bi-directional with outlined zener crossbar
+                CR   current regulator
+                D    diac
+                G    Gunn
+                L    open form with centre line
+                LE[R]: LED [right]
+                P[R] photodiode [right]
+                S    Schottky
+                Sh   Shockley
+                T    tunnel
+                U    limiting
+                V    varicap
+                v    varicap (curved plate)
+                w    varicap (reversed polarity)
+                Z    zener
+                appending K to arg 2 draws open arrowheads; 
+                
+    Rev|E   -   Rev - reversed polarity, E - zobrazenie púzdra 
+</pre></div>
+</div>
+<p>Makro bez paramerov vykreslí diódu s prednastavenými rozmermi.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D1: diode;      D2: diode(,S,);    D3: diode(,V);   D4: diode(,v);    
+D5: diode(,U);  D6: diode(,ZK);    D7: diode(,T);   D8: diode(,,R);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-120">
+<a class="reference internal image-reference" href="_images/cm_120.png"><img alt="_images/cm_120.png" src="_images/cm_120.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 14 </span><span class="caption-text">Typy diód.</span><a class="headerlink" href="#cm-120" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="zdroje">
+<h2><font color='teal'> Zdroje </font><a class="headerlink" href="#zdroje" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source(linespec, chars, diameter, R, body attributes, body name)
+
+parametre:
+
+    linespec - dĺžka a umiestnenie diódy
+    
+    chars    - typ zobrazenia
+                AC  AC source;
+                B   bulb;
+                F   fluorescent;
+                G   generator;
+                H   step function;
+                I   current source;
+                i   alternate current source;
+                ii  double arrow current source;
+                ti  truncated-bar alternate current source;
+                L   lamp;
+                N   neon;
+                NA  neon 2;
+                NB  neon 3;
+                P   pulse;
+                Q   charge;
+                R:  ramp; S: sinusoid;
+                SC  quarter arc, SCr right orientation;
+                SE  arc, SEr right orientation;
+                T   triangle;
+                U   square-wave;
+                V   voltage source;
+                X   interior X;
+                v   alternate voltage source;
+                tv  truncated-bar alternate voltage source;
+                other: custom interior label or waveform;
+
+    diameter     - priemer kruhu zdroja
+
+    R       - reversed polarity;
+
+    body attributes  modifies the circle (body) with e.g., color or fill;
+
+    body names
+</pre></div>
+</div>
+</section>
+<section id="popis-dvojpolov">
+<h2><font color='teal'> Popis dvojpólov   </font><a class="headerlink" href="#popis-dvojpolov" title="Link to this heading">#</a></h2>
+<p>Pre popis dvojpólov sú definované podporné makrá <em>llabel()</em>, <em>clabel()</em>, <em>rlabel()</em> a <em>dlabel()</em> pre popis posledného uloženého prvku. Pre označenie je možné použiť syntax pre zápis matematických vzťahov LaTeX-u, text popisu nemusí byť uzatvorená medzi znakmi $ … $.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>llabel( slabel, xlabel, elabel )       - označenie po lavej strane v smere ukladania
+clabel( slabel, xlabel, elabel )       - označenie po pravej strane v smere ukladanie 
+rlabel( slabel, xlabel, elabel )       - označenie cez stred v smere ukladania
+dlabel( long, lat, slabel, xlabel, elabel, [X][A|B][L|R])
+                                       - označenie s offsetom voči stredu 
+
+slabel       - označenie v bode začiatku prvku
+xlabel       - označenie v strede prvku
+elabel       - označenie v bode konca prvku
+long         - pozdĺžna vzdialenosť od od určenej pozície
+lat          - kolmá vdialenosť od určenej pozície
+
+X            - stred prvku
+A            - above, text nad zadanou pozíciou
+B            - below, text pod zadanou pozíciou
+L            - ljust, zarovnanie textu doľava
+R            - rjust, zarovnanie textu doprava
+</pre></div>
+</div>
+<p>Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu, <em>rlabel()</em> ukladá text po pravej strane v smere ukladania. V pr9pade potreby môžeme modifikovať aj font a veľkosť textu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor(,,);   llabel(a,R_1,b); 
+C2: capacitor,,C);  llabel( ,C_2, );   rlabel(, 10 \mu F, ); 
+R3: resistor(,,E);  llabel( ,R_3, ); clabel(, $\scriptsize{123}$, ); 
+
+R4: resistor(,,E);  dlabel(0.75, 0.35, aa ,R_4, bb ,X); 
+R5: resistor(,,E);  dlabel(0.5, 0.3, aa ,R_5, bb ,L);
+D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-112">
+<a class="reference internal image-reference" href="_images/cm_112.png"><img alt="_images/cm_112.png" src="_images/cm_112.png" style="width: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 15 </span><span class="caption-text">Makrá pre popis dvojpólov.</span><a class="headerlink" href="#cm-112" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="premenne-prvky">
+<h3><font color='brown'> Premenné prvky  </font><a class="headerlink" href="#premenne-prvky" title="Link to this heading">#</a></h3>
+<p>Pre zobrazenie premenných komponentov môžeme využiť makro <em>variable</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>variable(‘element’,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
+variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
+
+    parametre:
+
+    element   - meno makra prvku, na ktorom bude vykreslený typ zmeny
+    
+    [A|P|L|[u]N]|[u]NN]][C|S]
+              - označenie typu zmeny
+                  A - šipka
+                  P - potenciometer
+                  L - čiara
+                  N - parametrická zmena
+                 uN
+                uNN
+                C|S - značka parametra
+                
+    [+|-] angle - uhol a smer označenia zmeny, 
+    
+    length      - dĺžka označenia 
+</pre></div>
+</div>
+<p>Makro môžeme použiť dvoma spôsobmi</p>
+<ul>
+<li><p>s prvým argumentom v ktorom zadáme makro s parametrami prvku, ktorý chceme označiť ako premenný</p></li>
+<li><p>makro použijeme podobne ako makrá na popis prvkov <em>llabel ..</em>, v tomto prípade ponecháme prvý argument prázdny.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>      move to (0,0)
+      variable(`R1: resistor(right_ 2,,)&#39;,A); llabel(,R_1,); rlabel(a,10,b)
+
+  R2: resistor(right_ 2,,E); variable(,P);   llabel(,R_2,); rlabel(,100,); 
+
+      move to (1,1)
+  V1: source(up_ 2, AC); variable(,A,,1.5);  llabel(,V_1,);
+
+      move to (3,1)
+  C1: capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);
+</pre></div>
+</div>
+</li>
+</ul>
+<figure class="align-default" id="cm-125">
+<a class="reference internal image-reference" href="_images/cm_125.png"><img alt="_images/cm_125.png" src="_images/cm_125.png" style="width: 220px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 16 </span><span class="caption-text">Zobrazenie premenných prvkov.</span><a class="headerlink" href="#cm-125" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="prud-dvojpolom">
+<h3><font color='brown'> Prúd dvojpólom  </font><a class="headerlink" href="#prud-dvojpolom" title="Link to this heading">#</a></h3>
+<p>Pre zobrazenie šípky reprezentujúcu prúd v prívode prvku môžeme použiť makro</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b_current(label, above_|below_, In|O[ut], Start|E[nd], frac);
+
+    parametre:
+    
+        label  - označenie veličiny (prúd ...)
+        
+        above_ - poloha označenia 
+        below_
+
+        In     - smer šípky
+        Out
+
+        Start  - súradnica dvojpólu, voči ktorej bude vykreslená šípka a jej smer 
+        End
+        
+        frac  - posun šípky voči zadanej súradnici
+</pre></div>
+</div>
+<p>Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj na vyznačenie prúdu vetvou obvodu v príkaze <em>line</em>. Hodnota parametra <em>frac</em> závisí od aktuálneho nastavenia vykreslenia šípky a parametrov prostredia, približne zodpovedá aktuálnej dĺžkovej jednotke.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor(right_ 3,,E); 
+    llabel(,R_2,); rlabel(,100,); 
+    b_current(i_{12} ); 
+
+R1: resistor(right_ 3 at (2.5, 2.5),,E) ; 
+    llabel(,R_2,); rlabel(,100,); 
+    b_current(i_{34}, below_, Out, End, 0.45 ); 
+
+L1: line from (5,1) to (8,1) &quot;L1&quot; above;
+    b_current(i_{56}, above_, In, Start, 0.6 ); 
+
+L2: line from (5,2.5) to (8,2.5) &quot;L2&quot; below;
+    b_current(i_{78}, above_, In, End, 0.6 );
+</pre></div>
+</div>
+<figure class="align-default" id="cm-126">
+<a class="reference internal image-reference" href="_images/cm_126.png"><img alt="_images/cm_126.png" src="_images/cm_126.png" style="width: 550px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 17 </span><span class="caption-text">Zobrazenie prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-126" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="napatie-na-dvojpole">
+<h3><font color='brown'> Napätie na dvojpóle </font><a class="headerlink" href="#napatie-na-dvojpole" title="Link to this heading">#</a></h3>
+<p>Úbytok napätia na prvku znázorňujeme šipkou umiestnenou paralelne s prvkom. Pre zpbrazenie môžeme využiť štandarný príkaz <em>line -&gt; …</em> alebo makrá</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>larrow(label, direction);
+rarrow(label, direction);
+
+    parametre:
+    
+        label  - označenie veličiny (napätie ...)
+        
+        direction - smer šipky zadaný ako &lt;- alebo -&gt;
+</pre></div>
+</div>
+<p>Použitie makier ukazuje nasledujúci príklad.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>S1: source(up_ 2.5, AC); larrow(V_{0}, &lt;-); b_current(i_0, ,Out, End, 0.45 );
+R1: resistor(right_ 2.5,, E); larrow(V_{1}, -&gt;); rlabel(,R_1,);
+    dot; {tconn(1.5,O); &quot;1&quot; ljust;}
+R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
+    dot; tconn(right_ 1.5,O); &quot;2&quot; ljust;
+    line to S1.start;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-128">
+<a class="reference internal image-reference" href="_images/cm_128.png"><img alt="_images/cm_128.png" src="_images/cm_128.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Zobrazenie úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-128" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0014_zaklady.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><font color='navy'> Základy kreslenia</font></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0102_cm_mnohopoly.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span style="color:navy"> Mnohopóly </span></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rezistor"><font color="teal"> Rezistor </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kondenzator"><font color="teal"> Kondenzátor </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cievka"><font color="teal"> Cievka </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dioda"><font color="teal"> Dióda </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zdroje"><font color="teal"> Zdroje </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis-dvojpolov"><font color="teal"> Popis dvojpólov   </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne-prvky"><font color="brown"> Premenné prvky  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prud-dvojpolom"><font color="brown"> Prúd dvojpólom  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napatie-na-dvojpole"><font color="brown"> Napätie na dvojpóle </font></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pf
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, pf.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

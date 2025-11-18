@@ -1,0 +1,23 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(`/home/pf/ownCloud/Share-Projekty/0006_Circuit_Macro/sphinx_book/cm/base.ckt')
+
+Origin: Here 
+Grid(5, 3);
+
+move to (1,1.5);
+linethick_(0.8);
+hatchbox(wid 3 ht 2, ,dashed,angle=125 ); 
+
+.PE

@@ -1,0 +1,40 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(base.ckt)
+
+Origin: Here 
+d = 2;
+move to (0.5, 3);
+resistor(right_ d,E);        llabel(,R1,);
+dot;
+
+color_blue;
+{ 
+    resistor(down_ d, E);    llabel(,R2,);
+    gnd;
+}
+
+color_red;
+{
+    resistor(up_ d,E);       rlabel(,R3,);
+    P: power();    {"Power" at P.n above};  # vnoreny blok
+
+}
+color_black
+resistor(right_ d,E);        llabel(,R4,);
+dot;
+capacitor(); llabel(,C_1,)
+
+
+.PE
