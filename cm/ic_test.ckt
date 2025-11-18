@@ -1,0 +1,83 @@
+.PS
+scale=2.54
+
+cct_init
+log_init
+
+include(base.ckt)
+#maxpswid = 10
+
+#define(`dimen_',0.5)
+#define(`elen_',dimen_)
+#define(`Groundtype',`')
+
+define(`DIP_chip_outline',
+ `[ define(`m4pinct',`ifelse(`$1',,16,`$1')')dnl
+    define(`m4chgw',`ifelse(`$2',,(18*L_unit),`$2')')dnl
+    Chip: box  wid m4chgw ht lg_pinsep*eval((m4pinct)/2+1)
+    arcd(Chip.n, lg_pinsep/2, 180, 360)
+    { line to Chip.ne chop -linewid bp__/2 }
+    { line from last arc.start to Chip.nw chop -linewid bp__/2 }
+    line from Chip.nw to Chip.sw then to Chip.se then to Chip.ne
+   `$3']')
+
+command "\small\sf"
+
+define(`lg_pinseq',`for_($1,$2,1,
+   `lg_pin( Chip.s`$3'+(0,($4+m4x)*lg_pinsep),
+      $6`'m4x,Pin`'eval($5`'m4x),`$3'`$7',eval($5`'m4x))') ')
+
+define(`ic_tiny',`iflatex(`\hbox{\tiny `$1'}',ifsvg(`svg_small(`$1')',`$1'))')
+define(`ic_tilde',`iflatex(`{\raisebox{-0.5ex}{\char126}}',~)')
+
+define(`ic6502',`[ Chip: box wid_ lg_chipwd ht_ 24*lg_pinsep
+   lg_pin(Chip.sw_+(0,lg_pinsep),V`'ic_tiny(SS),Pin21,w,21)
+   lg_pin(Chip.sw_+(0,2*lg_pinsep),V`'ic_tiny(SS),Pin1,w,1)
+   lg_pin(Chip.sw_+(0,4*lg_pinsep),R/lg_bartxt(W),Pin34,w,34)
+   lg_pinseq(0,7,w,6,33-,D)
+   #lg_pin(Chip.sw_+(0,15*lg_pinsep),lg_bartxt(RESET),Pin40,wN,40)
+   #lg_pin(Chip.sw_+(0,17*lg_pinsep),SYNC,Pin7,w,7)
+   #lg_pin(Chip.sw_+(0,19*lg_pinsep),lg_bartxt(NMI),Pin6,wN,6)
+   #lg_pin(Chip.sw_+(0,21*lg_pinsep),RDY,Pin2,w,2)
+   #lg_pin(Chip.sw_+(0,22*lg_pinsep),SO,Pin38,w,38)
+   #lg_pin(Chip.sw_+(0,23*lg_pinsep),V`'ic_tiny(CC),Pin8,w,8)
+   #lg_pin(Chip.se_+(0,lg_pinsep),CK`'ic_tiny(1)(in),Pin39,e,39)
+   #lg_pin(Chip.se_+(0,4*lg_pinsep),
+   #  CK`'ic_tiny(2)(out),Pin37,e,37)
+   lg_pinseq(0,11,e,6,9+,A)
+   lg_pinseq(12,15,e,6,10+,A)
+   lg_pin(Chip.se+(0,23*lg_pinsep),lg_bartxt(IRQ),Pin4,eN,4)
+    `$1']')
+
+#del = lg_pinsep
+#jog = del*2/3
+
+define(`ic555',`[ Chip: DIP_chip_outline(10)
+  foreach_(`x',
+   `lg_pin(Chip.nw-(0,lg_pinsep*m4Lx),x,Pin`'m4Lx,w,m4Lx)',
+    GND, TR, OUT, RESET)
+  foreach_(`x',
+   `lg_pin(Chip.se+(0,lg_pinsep*m4Lx),x,Pin`'eval(m4Lx+4),e,eval(m4Lx+4))',
+    CTRL, THR, DIS, Vcc)
+   `$1']')
+
+#   right_
+#IC1: ic555("555" at Chip.n above)
+#line from IC1.Pin8 right_ 2
+Grid(5,5);
+move to (2,3);
+define(`SPI_Slave', `[
+	BX: box wid 1 ht 1;
+	lg_pin(BX.sw +(0,  lg_pinsep),V`'ic_tiny(SS),Pin1, w,1);
+	lg_pin(BX.sw +(0,2*lg_pinsep),V1            ,Pin2, w,2);
+        lg_pin(BX.sw +(0,3*lg_pinsep),V2            ,Pin3, w,3);
+
+]')
+
+SP: SPI_Slave()
+move to SP.Pin1;
+dot;
+line from SP.Pin1 left 0.5; resistor(left_ 1.5,,E); rlabel(,R_1,) 
+
+move to (1,1); resistor(right_ 2,,E)
+.PE
