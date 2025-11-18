@@ -104,7 +104,7 @@ Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenč�
 
 **ISBN: xxx-xx-xxxxxx-x**
 
-Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programvacieho jazyka *Python*. 
+Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programovacieho jazyka *Python*. 
 
 Titulný obrázok je vygenerovaný na základe podkladov uvedených ako príklad použitia v distribúcii programu *Circuit Macros*
 
