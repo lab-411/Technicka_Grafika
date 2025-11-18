@@ -3,6 +3,8 @@ scale=2.54
 cct_init
 log_init
 
+include(base.ckt)
+Grid(10,5)
 command "\sf"
 
 define(`IC555', `[
@@ -20,9 +22,10 @@ define(`IC555', `[
 linethick_();
         arc ccw from BX.n-(.2,0) to BX.n+(0.2,0) with .c at BX.n
 ]')
-
+move to 3,3
 IC: IC555;
 "NE555" at IC.BX.n above;
+line from IC.Pin1 left 1
 
 #line from IC.Pin1 left_ 2;
 
