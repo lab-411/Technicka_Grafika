@@ -350,14 +350,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="integrovane-obvody">
 <h1><font color='navy'> Integrované obvody </font><a class="headerlink" href="#integrovane-obvody" title="Link to this heading">#</a></h1>
-<p>Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závidí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich terminálov, čo je dôležité pri návrhu plošných spojov, pri kreslení zapojení je zase zvykom orintovať vývody obvodov podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo.</p>
+<p>Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závidí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich terminálov, čo je dôležité pri návrhu plošných spojov. Pri kreslení zapojení je obvyklé používať blokovú značku obvodu a orientovať vývody obvodov podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo. V niektorých prípadoch môže byť bloková značka v dokumentácii doplnená o vnútorné zapojenie integrovaného obvodu.</p>
 <figure class="align-default" id="ic-001">
 <a class="reference internal image-reference" href="_images/ic_001.png"><img alt="_images/ic_001.png" src="_images/ic_001.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 60 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/5f5d9bc7cd5314b48fd54b978ec33d00/ic_001.ckt"><span class="xref download myst">Symbol</span></a> integrovaného obvodu.</span><a class="headerlink" href="#ic-001" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 60 </span><span class="caption-text">Rôzne spôsoby <a class="reference download internal" download="" href="_downloads/5f5d9bc7cd5314b48fd54b978ec33d00/ic_001.ckt"><span class="xref download myst">zobrazenia</span></a> integrovaného obvodu.</span><a class="headerlink" href="#ic-001" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Pri vytváraní značiek integrovaných obvodov môžeme využívať makrá</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lg_pin(location, label, Picname, n|e|s|w[L|M|I|O][N][E], pinno, optlen)
+lg_bartxt()
+
+lg_plen
+lg_pinsep
+</pre></div>
+</div>
 </section>
 
 

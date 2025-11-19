@@ -15,7 +15,8 @@ kernelspec:
 
 # <font color='navy'> Integrované obvody </font> 
 
-Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závidí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich terminálov, čo je dôležité pri návrhu plošných spojov, pri kreslení zapojení je zase zvykom orientovať vývody obvodov podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo.
+Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závidí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich terminálov, čo je dôležité pri návrhu plošných spojov. Pri kreslení zapojení je obvyklé používať blokovú značku obvodu a orientovať vývody obvodov podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo. V niektorých prípadoch môže byť bloková značka v dokumentácii doplnená o vnútorné zapojenie integrovaného obvodu. 
+
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -23,9 +24,9 @@ Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v tec
 from cm.utils import *
 
 data = r'''
-    cct_init
+cct_init
 log_init
-
+include(base.ckt)
 command "\sf"
 
 define(`IC555_1', `[
@@ -60,9 +61,65 @@ define(`IC555_2', `[
 
 ]')
 
+define(`IC555_3', `[
+   # RS klopny obvod
+   H1: NAND_gate(3);
+   H2: NAND_gate(2) at H1.c + (0,-2) ;
+       line from H1.Out right 0.5;
+   DT1: dot;
+       line down_ 0.75 then to Here+(-2,-1.25) then to (Here.x-2, H2.In1.y) then to H2.In1;
+       line from H2.Out right 0.5;
+   DT2: dot;
+       line up_ 0.75 then to Here+(-2, 1.25) then to (Here.x-2, H1.In3.y) then to H1.In3;
+   # Koncovy stupen
+   #    move to DT1; resistor(right_ 1.5,,E);
+   #T1: bjt_NPN(0.6,,,N);
+   #    line from T1.C right_ 1;
+   #    circle rad .075; "DIS" at last circle.e ljust; "7" at last circle.n above;
+       line from DT2 right_ 1.5; 
+       circle rad .075; "OUT" at last circle.e ljust; "3" at last circle.n above;
+   # Vstupne komparatory
+       line from H1.In2 left 1;
+   CM1: opamp(right_ 1,,,,R) with .Out at Here;
+       line from H2.In2 left 1;
+   CM2: opamp(right_ 1,,,,R) with .Out at Here;
+       line from CM1.In1 left_ 0.5;
+   DT3: dot;
+       line from CM2.In2 left_ 0.5;
+   DT4: dot;
+   R1:  resistor(from DT3 to DT4,,E); "5k" at R1.c + (-0.1,0)rjust;
+        
+   R2:  resistor(down_ 1.5 from DT4,,E); {"5k" at R2.c + (-0.1,0) rjust;}
+        line down_ 0.25;
+   DT5: dot;
+        line 0.25;
+        circle rad .075; "1" at last circle.w rjust; "GND" at last circle.e ljust; 
+   # vybijaci tranzistor
+        line from DT1 right_ 0.5 then down_ (DT1.y - R2.end.y -0.25) then left_ 2; 
+        resistor(2,,E);
+        line left_ 1;
+    T1: bjt_NPN(0.6,,L,N);
+        line from T1.E down_ (T1.E.y- DT5.y) then to DT5;
+        line from T1.C left_ 0.5;
+    C1: circle rad .075; "DIS" at last circle.w rjust; "7" at last circle.n above; 
 
-IC1: IC555_1 at (2,2); "555" at IC1.BX.n above;
-IC2: IC555_2 at (6,2);
+        line from CM2.In1 left_ (CM2.In1.x - C1.e.x);
+        circle rad .075; "TRIG" at last circle.w rjust; "2" at last circle.n above;
+        line from CM1.In2 left_ (CM1.In1.x - C1.e.x);
+        circle rad .075; "THR" at last circle.w rjust; "6" at last circle.s below;
+    R3:  resistor(up_ 1.5 from DT3,,E); {"5k" at R3.c + (-0.1,0) rjust;}
+    C2:  circle rad .075; "Vcc" at last circle.w rjust; "8" at last circle.e ljust;
+         line from H1.In1 left_ 0.5; line up_ to (Here.x, C2.s.y);
+         circle rad .075; "lg_bartxt(RESET)" at last circle.w rjust; "4" at last circle.e ljust;
+        
+         line from DT3 left_ (DT3.x - C1.e.x);
+        circle rad .075; "CTRL" at last circle.w rjust; "5" at last circle.n above; 
+
+]')
+
+IC1: IC555_1 at (2,6.5); "555" at IC1.BX.n above;
+IC2: IC555_2 at (7,6.5);
+IC3: IC555_3 at (5,1);
 '''
 
 _ = cm_compile('./img/ic_001', data, dpi=600 )   
@@ -72,7 +129,14 @@ _ = cm_compile('./img/ic_001', data, dpi=600 )
 :width: 400px
 :name: ic_001
 
-[Symbol](./img/ic_001.ckt) integrovaného obvodu. 
+Rôzne spôsoby [zobrazenia](./img/ic_001.ckt) integrovaného obvodu. 
 ```
 
+Pri vytváraní značiek integrovaných obvodov môžeme využívať makrá
+
+    lg_pin(location, label, Picname, n|e|s|w[L|M|I|O][N][E], pinno, optlen)
+    lg_bartxt()
+    
+    lg_plen
+    lg_pinsep
 
