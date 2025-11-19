@@ -1,0 +1,38 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+    cct_init
+log_init
+
+command "\sf"
+
+define(`IC555', `[
+    BX: box wid 2 ht 5*lg_pinsep;
+    linethick_(3);
+        lg_pin(BX.nw - (0, lg_pinsep),   GND, Pin1, w, 1)
+        lg_pin(BX.nw - (0, 2*lg_pinsep), TRIG, Pin2, w, 2)
+        lg_pin(BX.nw - (0, 3*lg_pinsep), OUT, Pin3, w, 3)
+        lg_pin(BX.nw - (0, 4*lg_pinsep), lg_bartxt(RESET), Pin4, w, 4)
+
+        lg_pin(BX.ne - (0, lg_pinsep), Vcc, Pin8, e, 8)
+        lg_pin(BX.ne - (0, 2*lg_pinsep), DIS, Pin7, e, 7)
+        lg_pin(BX.ne - (0, 3*lg_pinsep), THR, Pin6, e, 6)
+        lg_pin(BX.ne - (0, 4*lg_pinsep), CTRL, Pin5, e, 5)
+linethick_();
+        arc ccw from BX.n-(.2,0) to BX.n+(0.2,0) with .c at BX.n
+]')
+
+IC: IC555;
+"555" at IC.BX.n above;
+
+.PE

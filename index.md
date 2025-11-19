@@ -60,6 +60,7 @@
 0202_ex_tranzistor.md
 0204_ex_opamp.md
 0206_ex_logicke_obvody.md
+0207_ex_integrovane_obvody.md
 0208_ex_vyvojove_diagramy.md
 0210_ex_makra.md
 0240_cm_param.md
