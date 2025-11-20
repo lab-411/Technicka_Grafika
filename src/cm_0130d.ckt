@@ -1,0 +1,38 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+Origin: Here 
+Grid(10, 6);
+"\textit{Italic}" at (7, 0.5);
+"\textbf{Bold}" at (7, 1);
+"\underline{Underline}" at (7, 1.5);
+
+for i=0 to 300 by 60 do {
+    move to ( 2 + 1*cos(i/180*pi), 2 + 1*sin(i/180*pi) );
+    sprintf("\rotatebox{%g}{Text %g}", i,i );
+}
+
+"\large large \Large Large \LARGE LARGE" at (7,3);
+"\huge huge \Huge Huge" at (7,4);
+
+"\texttt{Font TT}" at (7,5);
+"\textsf{Font SF}" at (7,5.5);
+
+color_red;
+move to (4, 5.5);
+"\fbox{Text in Box}" at Here;
+
+.PE

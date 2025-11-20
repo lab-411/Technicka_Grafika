@@ -13,7 +13,7 @@ kernelspec:
 ---
 # <font color='navy'> Makrá  </font>
 
-Prostredie `CircuitMacros` je rozšírením programovacieho jazyka `dpic` určeného pre kreslenie diagramov a grafov (staršia verzia je označovaná ako `gpic`) pomocou súboru **makier** pre makroprocesor `m4`. Makrá môžeme považovať za malé programy alebo skripty, ktorými sú nahradzované ich mená pri ich použití v hlavnom programe. Pomocou rozšírenia jazyka `dpic` makrami je možné vytvárať elektrické zapojenia a schémy, zároveň je možné v nich používať aj grafické prvky jazyka `dpic`.
+Prostredie `CircuitMacros` je rozšírením programovacieho jazyka `dpic` určeného pre kreslenie diagramov a grafov (staršia verzia je označovaná ako `gpic`) pomocou súboru **makier** pre makroprocesor **m4**. Makrá môžeme považovať za malé programy alebo skripty, ktorými sú nahradzované ich mená pri ich použití v hlavnom programe. Pomocou rozšírenia jazyka `dpic` makrami je možné vytvárať elektrické zapojenia a schémy, zároveň je možné v nich používať aj grafické prvky jazyka `dpic`.
 
 ```{admonition} Makroprocesor m4
 
@@ -26,7 +26,7 @@ Makroprocesor je univerzálny program pre spracovanie makier široko využívan�
 * vyhodnocuje podmienky
 * vyhodnocuje aritmetické výrazy
 
-Refenčnou implementáciou makroprocesora `m4` je [GNU M4](https://www.gnu.org/software/m4/manual/m4.html). 
+Referenčnou implementáciou makroprocesora **m4** je [GNU M4](https://www.gnu.org/software/m4/manual/m4.html). 
 ```
 
 Makrá definované v knižniciach `CircuitMacros` expandujú značky elektronických prvkov do množiny príkazov jazyka `dpic`, z vytvoreného programu je pomocou interpreteru príkazov vygenerovaný výsledný obrázok vo zvolenom rastrovom alebo vektorovom formáte. 
@@ -37,7 +37,9 @@ Makrá definované v knižniciach `CircuitMacros` expandujú značky elektronick
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+command "\sf"
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 
@@ -96,14 +98,14 @@ B8: box wid 2  ht 1
 "pycirkuit" at B8.c below;
 '''
 
-_ = cm_compile('./img/cm_027', data, dpi=600)   
+_ = cm_compile('./src/cm_0165a', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_027.png
+```{figure} ./src/cm_0165a.png
 :width: 650px
-:name: cm_027
+:name: cm_0165a
 
-Postup generovania obrázkov.
+[Postup](./src/cm_0165a.ckt) generovania obrázkov.
 ```
 
 
@@ -123,7 +125,7 @@ Pre odstránenie tejto chyby je potrebné vhodným spôsobom pozmeniť text tak,
 
 ## <font color='teal'> Použitie makier  </font>
 
-Makrá sa definujú podľa syntaxe makroprocesora `m4`. Všeobecný tvar makra je
+Makrá sa definujú podľa syntaxe makroprocesora **m4**. Všeobecný tvar makra je
 
     define (name, [expansion])
     
@@ -173,7 +175,7 @@ Makro **text** je jednoducha nahrada reťazca. Makro **zigzac** má jeden parame
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 
@@ -188,14 +190,14 @@ ZG: zigzac(0.5); zigzac(1);
 "text" at ZG.n above;
 '''
 
-_ = cm_compile('./img/cm_028', data, dpi=600)   
+_ = cm_compile('./src/cm_0165b', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_028.png
+```{figure} ./src/cm_0165b.png
 :width: 400px
-:name: cm_028
+:name: cm_0165b
 
-Príklad použitia makier
+[Príklad](./src/cm_0165b.ckt) použitia makier
 ```
     
 ## <font color='teal'> Vytvorenie makra  </font>
@@ -288,7 +290,7 @@ Vytvorené makro požívame ako akýkoľvek iný príkaz pre kreslenie prvkov za
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 # horizontal switch
 # usage:
@@ -328,14 +330,14 @@ dot;
 { line down_ 1; right_; S2: swh(2, OFF); "$S_2$" at S2.n; }
 '''
 
-_ = cm_compile('./img/cm_025', data, dpi=600)   
+_ = cm_compile('./src/cm_0165c', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_025.png
+```{figure} ./src/cm_0165c.png
 :width: 450px
-:name: cm_025
+:name: cm_0165c
 
-Makro a jeho použitie
+[Implementácia](./src/cm_0165c.ckt) makra pre zobrazenie spínača a jeho použitie
 ```
 
 ## <font color='teal'> Modifikácia makra </font>
@@ -355,7 +357,7 @@ V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíri
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 define(`res_05w', `[
     R: resistor($1,$2,$3);
@@ -409,7 +411,7 @@ define(`res_5w', `[
        line from R.c+(-ds, dx) to R.c+( 0, -dx);
 ]')
 
-include(base.ckt)
+include(lib_base.ckt)
 #Grid(10,5);
 move to (3,1); "\textit{resi\\stor(2,,E)}" rjust;
 resistor(2,,E); llabel(,R_1,); "$P_s$ nedefinovaý" ljust;
@@ -438,14 +440,14 @@ res_5w(2,,E); llabel(,R_8,);  "$P_s = 5W$" ljust;
 
 '''
 
-_ = cm_compile('./img/cm_026', data, dpi=600)   
+_ = cm_compile('./src/cm_0165d', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_026.png
+```{figure} ./src/cm_0165d.png
 :width: 400px
-:name: cm_026
+:name: cm_0165d
 
-[Príklad](./src/1005_res_macro.ckt) použitia modifikovaných makier.
+[Príklad](./src/cm_0165d.ckt) použitia modifikovaných makier.
 ```
     
 

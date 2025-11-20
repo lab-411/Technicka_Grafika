@@ -1,0 +1,30 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_user.ckt)
+d = 1.5;
+
+R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, ->, 0.2)
+R2: resistor(d,,E); rlabel(,R_2,);       larrow(u_{2}, ->, 0.2)
+
+move to (R1.end -(d, -d/2 ) )
+
+DC: dc_source(d, 1); rarrow(u, ->, 0.2);
+line from DC.n to (DC.n.x, R1.start.y); 
+line -> right d/2; {"\textit{i}" at last line.e above}
+line to R1.start;
+
+line from DC.s to (DC.s.x, R2.end.y) to R2.end;
+
+.PE

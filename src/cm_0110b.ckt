@@ -1,0 +1,36 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+Origin: Here 
+Grid(10, 6);
+                                             # J. spline krivka, suradnice 
+                                             #    rovnake ako pri ciare
+spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
+                               {"J" rjust};
+color_coral;
+arrow from (1,4) right_ 2;     {"K" ljust};  # K. sipka menom      
+line -> from (1,4.5) right_ 2; {"L" ljust};  # L. sipka smerom doprava
+line <- from (1, 5) right_ 2;  {"M" ljust};  # M. sipka smerom dolava
+
+                                             # N. obojstranna sipka, oznacenie 
+color_blue                                   #     v strede
+S1: spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); {"N" at S1.c}; 
+
+color_red;
+spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
+spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
+spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
+
+.PE

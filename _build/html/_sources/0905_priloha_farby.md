@@ -15,7 +15,7 @@ kernelspec:
 
 # <font color='navy'> Farby </font> 
 
-Pre farebné zobrazenie objektov je možné využiť makro *setrgb()* a *rgbfill()* v ktorých sa farba definuje pomocou zložiek *r, g, b*. Pretože používanie takto definovaných farieb je nepohodlné, v súbore [*./cm/base.ckt*](./cm/base.ckt) sú definované makrá vybraných pomenovaných farieb podľa [zoznamu](https://en.wikipedia.org/wiki/Web_colors).
+Pre farebné zobrazenie objektov je možné využiť makro *setrgb()* a *rgbfill()* v ktorých sa farba definuje pomocou zložiek *r, g, b*. Pretože používanie takto definovaných farieb je nepohodlné, v súbore [lib_color.ckt](./src/lib_color.ckt) sú definované makrá vybraných pomenovaných farieb podľa [zoznamu](https://en.wikipedia.org/wiki/Web_colors).
 
 ## <font color='teal'> Farby čiar </font> 
 
@@ -34,7 +34,7 @@ Makro pre definíciu farby pre čiary, krivky, texty a obrys plošných objektov
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_color.ckt)
 move to (3.5,0);
 
 color_black; box wid 1 ht 0.5; "co\\lor\_black" at last box .w rjust;
@@ -79,12 +79,12 @@ color_slategrey;  box wid 1 ht 0.5 with .ne at last box.se + (0, -0.1); "co\\lor
 color_firebrick;  box wid 1 ht 0.5 with .ne at last box.se + (0, -0.1); "co\\lor\_firebrick" at last box .e ljust;
 '''
 
-_ = cm_compile('./img/col_001', data, dpi=600)   
+_ = cm_compile('./src/cm_0905a', data, dpi=600)   
 ```
 
-```{figure} ./img/col_001.png
+```{figure} ./src/cm_0905a.png
 :width: 450px
-:name: col_001
+:name: cm_0905a
 
 Mená vybraných farieb 
 ```
@@ -119,7 +119,7 @@ Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definovan�
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_color.ckt)
 
 color_reset;
 move to (3.5,0);
@@ -141,12 +141,12 @@ rgbfill(fill_green,       BE:box wid 1 ht 0.5 at BD.s + (0, -.35)); "fi\\ll\_gre
 rgbfill(fill_dark_violet, BF:box wid 1 ht 0.5 at BE.s + (0, -.35)); "fi\\ll\_dark\_violet"     at last box .e ljust;
 '''
 
-_ = cm_compile('./img/col_002', data, dpi=600)   
+_ = cm_compile('./src/cm_0905b', data, dpi=600)   
 ```
 
-```{figure} ./img/col_002.png
+```{figure} ./src/cm_0905b.png
 :width: 320px
-:name: col_002
+:name: cm_0905b
 
 Mená farieb pre výplň plošných objektov.
 ```
@@ -174,7 +174,8 @@ Príklad použitia farebnej výplne plošného objektu pomocou makra *rgbfill()*
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 Grid(4,4)
 
 define(`triangle', `
@@ -188,12 +189,12 @@ color_red;
 rgbfill(fill_yellow, {triangle} );
 '''
 
-_ = cm_compile('./img/col_003', data,  dpi=600)   
+_ = cm_compile('./src/cm_0905c', data,  dpi=600)   
 ```
 
-```{figure} ./img/col_003.png
+```{figure} ./src/cm_0905c.png
 :width: 300px
-:name: col_003
+:name: cm_0905c
 
-Objekt a farebnou výplňou.
+[Príklad](./src/cm_0905c.ckt) objektu s farebnou výplňou.
 ```

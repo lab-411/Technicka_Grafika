@@ -1,0 +1,32 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+Origin: Here 
+BX: box wid 4.5 ht 1.5 at (0,0);
+LL: line from (-1,0) to (1,0);
+"rjust" at LL.start  rjust;
+"ljust" at LL.end ljust;
+"above" at LL.center above;
+"below" at LL.center below;
+
+"rjust" at BX.w rjust;
+"ljust" at BX.e ljust;
+"above" at BX.n above;
+"below" at BX.s below;
+
+"ljust above" at last box.ne ljust above;
+"ljust below" at last box.se ljust below;
+"rjust below" at last box.sw rjust below;
+"rjust above" at last box.nw rjust above;
+
+.PE

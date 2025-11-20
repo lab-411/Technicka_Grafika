@@ -25,7 +25,9 @@ Bipolárny tranzistor patrí medzi mnohopóly a okrem štandardných atribútov 
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
+
 Grid(12,2);
 move to (.5,1);
 hlf=0.5;
@@ -48,14 +50,14 @@ move right_ hlf
 Q8:bi_tr(up_,R,P,E)
 '''
 
-_ = cm_compile('./img/cm_106', data, dpi=600 )   
+_ = cm_compile('./src/cm_202a', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_106.png
+```{figure} ./src/cm_202a.png
 :width: 620px
-:name: cm_106
+:name: cm_202a
 
-Značka bipolárneho tranzistora *bi_tr()*.
+[Značka](./src/cm_202a.ckt) bipolárneho tranzistora *bi_tr()*.
 ```
 
 
@@ -99,7 +101,8 @@ Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi 
 from cm.utils import *
 
 data = r'''
-    include(base.ckt)
+    include(lib_base.ckt)
+    include(lib_color.ckt)
     Grid(7,7);
     move to (4,2)
     up_;
@@ -136,20 +139,20 @@ D3: dot; dlabel(0,0,,V_e,,R);
     gnd;
 '''
 
-_ = cm_compile('./img/cm_008', data, dpi=600 )   
+_ = cm_compile('./src/cm_202b', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_008.png
+```{figure} ./src/cm_202b.png
 :width: 350px
-:name: cm_008
+:name: cm_202b
 
-[Obvod](./src/0210_tran.ckt) vykreslený s použitím relatívnych súradníc.
+[Obvod](./src/cm_202b.ckt) vykreslený s použitím relatívnych súradníc.
 ```
 
 
 ### <font color='brown'> Modifikácie značiek </font> 
 
-Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici [base.ckt](./src/base.ckt) sú definované ekvivalenty bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia.
+Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici [lib_user.ckt](./src/lib_user.ckt) sú definované ekvivalenty bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia.
 
 
 ```{code-cell} ipython3  
@@ -158,7 +161,8 @@ Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v m
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
 Grid(10, 2.5);
 
 move to (0.5, 2);
@@ -183,12 +187,12 @@ Q1: bjt_NPN(1.5, 1, R);
 "\textit{Q1.C}" at Q1.C above; 
 '''
 
-_ = cm_compile('./img/cm_078', data, dpi=600 )   
+_ = cm_compile('./src/cm_202c', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_078.png
+```{figure} ./src/cm_202c.png
 :width: 550px
-:name: cm_078
+:name: cm_202c
 
 Značky bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*
 ```
@@ -220,7 +224,8 @@ Nasledujúci príklad ukazuje použitie modifikovaných značiek bipolárnych tr
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
 
 Grid(6.5,7);
 linethick = 1;
@@ -258,14 +263,14 @@ R4: resistor(from DT5 up_ 2,,E); llabel(,R,);
     line from DT4 left_ 1; tconn(0.5,O); "$V_{in}$" rjust;
 '''
 
-_ = cm_compile('./img/cm_088', data, dpi=600 )   
+_ = cm_compile('./src/cm_202h', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_088.png
+```{figure} ./src/cm_202h.png
 :width: 350px
-:name: cm_088
+:name: cm_202h
 
-Jednoduchý [obvod](./src/0212_ampl_tran.ckt)  s bipolárnymi tranzistormi v súradnicovej mriežke.
+Jednoduchý [obvod](./src/cm_202d.ckt)  s bipolárnymi tranzistormi v súradnicovej mriežke.
 ```
 Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky pre tvorbu vlastného štýlu článkov, knižných publikácií alebo ak potrebujeme prekresliť nejaké staršie zapojenie a chceme dodržať pôvodný grafický štýl.   
 
@@ -298,10 +303,11 @@ from cm.utils import *
 
 data = r'''
 
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
+include(lib_color.ckt)
 define(`itsf', `"\textit{\textsf{$1}}"')
 
-#Grid(10,4.5);
 
 linethick = 1;
 move to (3,2);
@@ -361,14 +367,14 @@ move to T2.C;
 
 '''
 
-_ = cm_compile('./img/cm_089', data, dpi=600 )   
+_ = cm_compile('./src/cm_202d', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_089.png
+```{figure} ./src/cm_202d.png
 :width: 400px
-:name: cm_089
+:name: cm_202d
 
-Prekreslený [obvod](./src/0214_tran_schmitt.ckt) z predchádzajúceho obrázku.
+Prekreslený [obvod](./src/cm_202d.ckt) z predchádzajúceho obrázku.
 ```
 
  
@@ -397,7 +403,10 @@ from cm.utils import *
 
 data = r'''
 
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
+include(lib_color.ckt)
+
      move to (3,1);
 T2:  bjt_PNP(0.6,1,R,N); {"$T2$" at T2.c + (-0.4, 0.5);}
 
@@ -439,14 +448,14 @@ DC:  dc_source( (T1.B.y - C1.c.y), 0.8, P); { line <- from DC.C.c+(-0.5,-0.5) to
      line -> from C2.c + (0, -0.2) down_ 1 "$V_{in}$" ljust; circle rad 0.1 at Here + (0, -0.2); line down_ 0.25; gnd;
 '''
 
-_ = cm_compile('./img/cm_103', data, dpi=600 )   
+_ = cm_compile('./src/cm_202e', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_103.png
+```{figure} ./src/cm_202e.png
 :width: 380px
-:name: cm_103
+:name: cm_202e
 
-[Použitie](./src/0216_tran_darlington.ckt) zjednodušených značiek tranzistorov.
+[Použitie](./src/cm_202e.ckt) zjednodušených značiek tranzistorov.
 ```
 
 
@@ -460,7 +469,9 @@ from cm.utils import *
 
 data = r'''
 
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
+
 #Grid(10,10);
 move to (2,2);
 
@@ -526,14 +537,14 @@ move to DD;
 
 '''
 
-_ = cm_compile('./img/cm_104', data, dpi=600 )   
+_ = cm_compile('./src/cm_202f', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_104.png
+```{figure} ./src/cm_202f.png
 :width: 600px
-:name: cm_104
+:name: cm_202f
 
-[Príklad](./src/0218_tran_741.ckt) zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.
+[Príklad]./src/cm_202f.ckt) zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.
 ```
 
 ## <font color='teal'>  FET tranzistor </font> 
@@ -546,7 +557,7 @@ Pre zobrazenie štandardných MOSFET tranzistorov sú definované makrá *e_fet(
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 Grid(11.5,4);
 
 # Usual defs...
@@ -588,12 +599,12 @@ move right_ hlf
 d_fet(up_,R,P,S)
 '''
 
-_ = cm_compile('./img/cm_105', data, dpi=600 )   
+_ = cm_compile('./src/cm_202g', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_105.png
+```{figure} ./src/cm_202g.png
 :width: 600px
-:name: cm_105
+:name: cm_202g
 
 Značky MOSFET tranzistorov *e_fet()* a *d_fet()*
 ```

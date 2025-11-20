@@ -366,14 +366,15 @@ document.write(`
 <h1><font color='navy'> Jednoduché obvody  </font><a class="headerlink" href="#jednoduche-obvody" title="Link to this heading">#</a></h1>
 <section id="odporovy-delic">
 <h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
-<p>V <a class="reference download internal" download="" href="_downloads/bf803caa359bff206e548bd0e5fb1d66/0200_r_serial.ckt"><span class="xref download myst">príklade</span></a> sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:</p>
+<p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:</p>
 <ul>
-<li><p>zaradenie pomocnej knižnice <a class="reference download internal" download="" href="_downloads/fd1d90733b1df8d27b6b9ad6d1d2ba42/base.ckt"><span class="xref download myst">case.ckt</span></a> do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov, kódy farieb, vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code></p></li>
+<li><p>zaradenie pomocnej knižnice <a class="reference download internal" download="" href="_downloads/616026fd2a08c0086f0a934c6095b0cc/lib_base.ckt"><span class="xref download myst">lib_base.ckt</span></a> a <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov,  vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code></p></li>
 <li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. Prvky zapojenia <strong>nie sú</strong> v tomto príklade ukladané na absolútne súradnice pracovnej plochy</p></li>
 <li><p>použitie atribútov komponentov na výpočty <em>(x,y)</em> súradníc, napr. <em>(DC.s.x, R2.end.y)</em></p></li>
 <li><p>použitie príkazov <em>larrow</em> pre zobrazenie napätí na rezistoroch</p></li>
 <li><p>použitie šípky *line -&gt; * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu TODO</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_base.ckt)
+include(lib_user.ckt)
 d = 1.5;
 
 R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, -&gt;, 0.2)
@@ -391,22 +392,21 @@ line from DC.s to (DC.s.x, R2.end.y) to R2.end;
 </div>
 </li>
 </ul>
-<figure class="align-default" id="ex-001">
-<a class="reference internal image-reference" href="_images/ex_001.png"><img alt="_images/ex_001.png" src="_images/ex_001.png" style="width: 200px;" />
+<figure class="align-default" id="cm-200a">
+<a class="reference internal image-reference" href="_images/cm_200a.png"><img alt="_images/cm_200a.png" src="_images/cm_200a.png" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Sériové zapojenie rezistorov.</span><a class="headerlink" href="#ex-001" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/5d46890f221a5f00cdfc4f4d75cc6487/cm_200a.ckt"><span class="xref download myst">Príklad</span></a> sériového zapojenia rezistorov.</span><a class="headerlink" href="#cm-200a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="konfiguracia-hviezda-trojuholnik">
 <h2><font color='teal'> Konfigurácia hviezda - trojuholník </font><a class="headerlink" href="#konfiguracia-hviezda-trojuholnik" title="Link to this heading">#</a></h2>
-<p>V <a class="reference download internal" download="" href="_downloads/52617addde893e26f811436dcbe93cd3/0201_r_trojuh.ckt"><span class="xref download myst">príklade</span></a> zapojenie rezistorov pre príklad konverzie hviezdy na trojuholník sú použité nasledujúce konštrukcie:</p>
+<p>V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie:</p>
 <ul>
-<li><p>použitie (dočasnej) mriežky <em>Grid()</em> z uživateľskej knižnice <em><a class="reference download internal" download="" href="_downloads/fd1d90733b1df8d27b6b9ad6d1d2ba42/base.ckt"><span class="xref download myst">base.ckt</span></a></em> pre zjednodušenie polohovania prvkov zapojenia pri kreslení</p></li>
 <li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em></p></li>
-<li><p>použitie premennej <em>Here</em> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)
+<li><p>použitie premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_base.ckt)
 Grid(9,4.5)
 d = 2;
 move to (1.0, 1.5);                             #---------- Trojuholnik
@@ -445,18 +445,19 @@ line &lt;-&gt; from (3.5, 2) to (5,2)
 </div>
 </li>
 </ul>
-<figure class="align-default" id="ex-002">
-<a class="reference internal image-reference" href="_images/ex_002.png"><img alt="_images/ex_002.png" src="_images/ex_002.png" style="width: 550px;" />
+<figure class="align-default" id="cm-200b">
+<a class="reference internal image-reference" href="_images/cm_200b.png"><img alt="_images/cm_200b.png" src="_images/cm_200b.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 45 </span><span class="caption-text">Konfigurácia hviezda-trojuholník.</span><a class="headerlink" href="#ex-002" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 45 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/954042c4179924d6c5f3018aa5e08765/cm_200b.ckt"><span class="xref download myst">Zapojenie</span></a> konfigurácie hviezda-trojuholník.</span><a class="headerlink" href="#cm-200b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="stvorpol">
 <h2><font color='teal'> Štvorpól </font><a class="headerlink" href="#stvorpol" title="Link to this heading">#</a></h2>
-<p>V <a class="reference download internal" download="" href="_downloads/ac478fffe56f7e74ff733334b9122739/0202_stvorpol.ckt"><span class="xref download myst">príklade</span></a> zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)                                
+<p>V nasledujúcom príklade zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_base.ckt)
+include(lib_color.ckt)                               
 up_;
 I1: source(2,I); llabel(,i_1,);  
     line right_ 1; 
@@ -485,11 +486,11 @@ DG: dot; line to D0;
     line -&gt; from DB + (0, -0.25) to DG+(0,0.25); &quot;$u_2$&quot; ljust at last line.c;
 </pre></div>
 </div>
-<figure class="align-default" id="ex-003">
-<a class="reference internal image-reference" href="_images/ex_003.png"><img alt="_images/ex_003.png" src="_images/ex_003.png" style="width: 500px;" />
+<figure class="align-default" id="cm-200c">
+<a class="reference internal image-reference" href="_images/cm_200c.png"><img alt="_images/cm_200c.png" src="_images/cm_200c.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 46 </span><span class="caption-text">Štvorpól.</span><a class="headerlink" href="#ex-003" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c13954f24addc0a8acf127c8d85e0837/cm_200c.ckt"><span class="xref download myst">Zapojenie</span></a> štvorpólu.</span><a class="headerlink" href="#cm-200c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

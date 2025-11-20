@@ -54,7 +54,8 @@ Nasledujúce príklady ukazujú použitie funkcií pri vykreslovaní jednoduchej
 :tags: ["remove-cell"]
 from cm.utils import *
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 Grid(3,3);
@@ -68,14 +69,14 @@ C1: circle diam 2*r;
 D1: dot;
 '''
 
-_ = cm_compile('./img/cm_030', data, dpi=600)   
+_ = cm_compile('./src/cm_0175a', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_030.png
+```{figure} ./src/cm_0175a.png
 :width: 200px
-:name: cm_030
+:name: cm_0175a
 
-Zobrazenie sprievodiča a bodu na kružnici.
+[Zobrazenie](./src/cm_0175a.ckt) sprievodiča a bodu na kružnici.
 ```
 
     PP:(0,0)
@@ -96,7 +97,8 @@ Zobrazenie sprievodiča a bodu na kružnici.
 :tags: ["remove-cell"]
 from cm.utils import *
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 PP:(0,0)
@@ -113,13 +115,13 @@ for x=0 to 3.14*2 by (3.14/100) do{
 }
 '''
 
-_ = cm_compile('./img/cm_031', data, dpi=600)   
+_ = cm_compile('./src/cm_0175b', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_031.png
+```{figure} ./src/cm_0175b.png
 :width: 300px
-:name: cm_031
+:name: cm_0175b
 
-Jednoduchá grafika
+[Vykreslenie](./src/cm_0175b.ckt) jednoduchej grafiky
 ```
 

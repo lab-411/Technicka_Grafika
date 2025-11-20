@@ -1,0 +1,52 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_user.ckt)
+
+Grid(6.5,7);
+linethick = 1;
+move to (3.5,1.5);
+up_;
+T2:  bjt_NPN(1,1.5, R);  {"$Q_2$" at T2.e; }
+     move to Here+(0, 2)
+T1:  bjt_PNP(1, 1.5, R); {"$Q_1$" at T1.e; }
+
+R1:  resistor(from T2.E down_ 1.5,,E); llabel(,R_e,);
+
+     line from T1.C down_ 0.25; line down_ 0.75; b_current(i_1,above_, );
+DT1: dot;
+     line down_ 0.25; line to T2.C; b_current(i_2,above_,);
+     line from DT1 right_ 1; tconn(0.5,O); "$V_{out}$" ljust;
+
+R2: resistor(from T1.E up_ 1.5,,E); rlabel(,R_e,);
+
+     move to T2.B; 
+DT2: dot;  # stred, vstup
+
+     resistor(from DT2 up_ 1.5,,E); llabel(,3R,);
+DT4: dot;
+     resistor(from DT4 to T1.B,,E); llabel(,3R,);
+DT5: dot;  # baza T1
+R3:  resistor(from DT2 down_ 2,,E); rlabel(,R,);
+
+     line from R3.end to R1.end;  
+     dot; right_; line -> 1; "$V-$" ljust;
+
+R4: resistor(from DT5 up_ 2,,E); llabel(,R,);
+    line from R4.end to R2.end;
+    dot;  right_; line -> 1; "$V+$" ljust;
+
+    line from DT4 left_ 1; tconn(0.5,O); "$V_{in}$" rjust;
+
+.PE

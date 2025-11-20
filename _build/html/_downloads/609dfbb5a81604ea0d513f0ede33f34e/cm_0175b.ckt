@@ -1,0 +1,31 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+Origin: Here 
+PP:(0,0)
+for x=0 to 3.14*2 by (3.14/100) do{
+   r1 = 2;
+   px = cos(x)
+   py = sin(2*x)
+
+   r2 = 4;
+   dx = cos(1*x)
+   dy = sin(3*x)
+
+   line from PP + ((dx,dy)*r2 + (1,2))  to PP + (px,py)*r1 
+}
+
+.PE

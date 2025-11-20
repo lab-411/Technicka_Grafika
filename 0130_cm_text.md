@@ -55,8 +55,6 @@ Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odosl
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
-
 Origin: Here 
 BX: box wid 4.5 ht 1.5 at (0,0);
 LL: line from (-1,0) to (1,0);
@@ -75,14 +73,14 @@ LL: line from (-1,0) to (1,0);
 "rjust below" at last box.sw rjust below;
 "rjust above" at last box.nw rjust above;
 '''
-_ = cm_compile('./img/tx_112', data, dpi=600)   
+_ = cm_compile('./src/cm_0130a', data, dpi=600)   
 ```
 
-```{figure} ./img/tx_112.png
+```{figure} ./src/cm_0130a.png
 :width: 400px
-:name: tx_112
+:name: cm_0130a
 
-Relatívne umiestnenie textu voči zadanej polohe.
+[Relatívne](./src/cm_0130a.ckt) umiestnenie textu voči zadanej polohe.
 ```
     
 Text modifikuje globálnu premennú `Here`, po vykreslení textu je nová hodnota poloha `Here` v geometrickom strede textu.
@@ -91,7 +89,7 @@ Text modifikuje globálnu premennú `Here`, po vykreslení textu je nová hodnot
 
 Pre nastavenie farby je možné použiť 
 
-* pre globálne nastavenie farby vrátane textov sú makrá *rgb()* resp. preddefinované pomenované farby zadefinované v súbore [base.ckt](./cm/base.ckt) v tvare *color_<menofarby>*. 
+* pre globálne nastavenie farby vrátane textov sú makrá *rgb()* resp. preddefinované pomenované farby zadefinované v súbore [lib_color.ckt](./src/lib_color.ckt) v tvare *color_<meno_farby>*. 
 
         ...
         color_red;
@@ -122,7 +120,8 @@ Vyššiu prioritu má nastavenie lokálnej farbu textu.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 Grid(10,5);
@@ -141,14 +140,14 @@ LL: line from (2, 0.5) right_ 6;
     "stred čiary" at last line.c above;        dot;
 '''
 
-_ = cm_compile('./img/cm_315', data, dpi=600 )   
+_ = cm_compile('./src/cm_0130b', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_315.png
+```{figure} ./src/cm_0130b.png
 :width: 500px
-:name: cm_315
+:name: cm_0130b
 
-Pozícia a farby textu
+[Pozícia](./src/cm_0130b.ckt) a farby textu
 ```
 
 ## <font color='teal'>  Matematické výrazy  </font>
@@ -173,7 +172,8 @@ Funkcia `sprintf` pre konverziu čísla na formátovaný reťazec akceptuje form
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 Grid(10, 4);
@@ -188,14 +188,14 @@ color_red;
 sprintf("Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
 '''
 
-_ = cm_compile('./img/cm_316', data, dpi=600)   
+_ = cm_compile('./src/cm_0130c', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_316.png
+```{figure} ./src/cm_0130c.png
 :width: 600px
-:name: cm_316
+:name: cm_0130c
 
-Matematické výrazy
+[Použitie](./src/cm_0130c.ckt) matematických výrazov
 ```
 
 ## <font color='teal'>  Formátovanie textu pomocou LateX-u  </font>
@@ -245,7 +245,8 @@ Príklad formátovania textu s použitím príkazov LaTex-u:
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 Grid(10, 6);
@@ -269,14 +270,14 @@ move to (4, 5.5);
 "\fbox{Text in Box}" at Here;
 '''
 
-_ = cm_compile('./img/cm_317', data, dpi=600)   
+_ = cm_compile('./src/cm_0130d', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_317.png
+```{figure} ./src/cm_0130d.png
 :width: 500px
-:name: cm_317
+:name: cm_0130d
 
-Formátovanie textu pomocou LaTeX-u
+[Formátovanie](./src/cm_0130d.ckt) textu pomocou LaTeX-u
 ```
 
 

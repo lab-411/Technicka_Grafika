@@ -1,0 +1,42 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+Origin: Here 
+d = 2;
+
+log_init;         # inicializacia makier pre logicke obvody
+
+move to (3,1);
+up_; 
+H1: Header(2, 6,,,fill_(0.9)); 
+"Konektor" at H1.w rjust;
+"1" at H1.P1 rjust;
+"2" at H1.P2 rjust;
+"11" at H1.P11 ljust;
+"12" at H1.P12 ljust;
+
+line from H1.P1 down_ d/4 then right_ 2*d;
+line from H1.P2 up_ d/4 then right_ 2*d;
+
+move to (3, 4);
+right_; G1: NAND_gate(4); 
+
+line from G1.In1 left_ d/2;
+line from G1.In2 left_ d/2;
+line from G1.In3 left_ d/2;
+line from G1.In4 left_ d/2;
+line from G1.Out right_ d/2;
+
+.PE

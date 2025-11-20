@@ -17,15 +17,16 @@ kernelspec:
 
 ## <font color='teal'>  Odporový delič </font> 
 
-V [príklade](./src/0200_r_serial.ckt) sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:
+V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:
 
-* zaradenie pomocnej knižnice [case.ckt](./src/base.ckt) do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov, kódy farieb, vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie `CircuitMacros`
+* zaradenie pomocnej knižnice [lib_base.ckt](./src/lib_base.ckt) a [lib_user.ckt](./src/lib_user.ckt) do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov,  vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie `CircuitMacros`
 * používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. Prvky zapojenia **nie sú** v tomto príklade ukladané na absolútne súradnice pracovnej plochy
 * použitie atribútov komponentov na výpočty *(x,y)* súradníc, napr. *(DC.s.x, R2.end.y)*
 * použitie príkazov *larrow* pre zobrazenie napätí na rezistoroch
 * použitie šípky *line -> * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu TODO
 
-      include(base.ckt)
+      include(lib_base.ckt)
+      include(lib_user.ckt)
       d = 1.5;
 
       R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, ->, 0.2)
@@ -46,7 +47,8 @@ V [príklade](./src/0200_r_serial.ckt) sériového zapojenie rezistorov sú pou�
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_user.ckt)
 d = 1.5;
 
 R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, ->, 0.2)
@@ -62,25 +64,24 @@ line to R1.start;
 line from DC.s to (DC.s.x, R2.end.y) to R2.end;
 '''
 
-_ = cm_compile('./img/ex_001', data,  dpi=600)   
+_ = cm_compile('./src/cm_200a', data,  dpi=600)   
 ```
 
-```{figure} ./img/ex_001.png
+```{figure} ./src/cm_200a.png
 :width: 200px
-:name: ex_001
+:name: cm_200a
 
-Sériové zapojenie rezistorov.
+[Príklad](./src/cm_200a.ckt) sériového zapojenia rezistorov.
 ```
 
 ## <font color='teal'> Konfigurácia hviezda - trojuholník </font> 
 
-V [príklade](./src/0201_r_trojuh.ckt) zapojenie rezistorov pre príklad konverzie hviezdy na trojuholník sú použité nasledujúce konštrukcie:
+V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie:
 
-* použitie (dočasnej) mriežky *Grid()* z uživateľskej knižnice *[base.ckt](./src/base.ckt)* pre zjednodušenie polohovania prvkov zapojenia pri kreslení
 * šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov *resistor(from D1 to D2,,E)*
-* použitie premennej *Here* pre lokalizáciu textu nad spojovacím bodom *dot; {"\textit{$A$}" at Here above}*
+* použitie premennej `Here` pre lokalizáciu textu nad spojovacím bodom *dot; {"\textit{$A$}" at Here above}*
 
-      include(base.ckt)
+      include(lib_base.ckt)
       Grid(9,4.5)
       d = 2;
       move to (1.0, 1.5);                             #---------- Trojuholnik
@@ -122,7 +123,7 @@ V [príklade](./src/0201_r_trojuh.ckt) zapojenie rezistorov pre príklad konverz
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 d = 2;
 
@@ -166,23 +167,24 @@ R13: resistor(from Y1 to Y4,,E); {"\textit{$R_{13}$}" at R13.c + ( -.55, 0.2) }
 line <-> from (3.5, 2) to (5,2)
 '''
 
-_ = cm_compile('./img/ex_002', data,  dpi=600)   
+_ = cm_compile('./src/cm_200b', data,  dpi=600)   
 ```
 
-```{figure} ./img/ex_002.png
+```{figure} ./src/cm_200b.png
 :width: 550px
-:name: ex_002
+:name: cm_200b
 
-Konfigurácia hviezda-trojuholník.
+[Zapojenie](./src/cm_200b.ckt) konfigurácie hviezda-trojuholník.
 ```
 
 
 ## <font color='teal'> Štvorpól </font> 
 
-V [príklade](./src/0202_stvorpol.ckt) zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej `Here`, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi `{ ... }`. Po vykonaní kódu bloku je platná pôvodná hodnota `Here`. 
+V nasledujúcom príklade zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej `Here`, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi `{ ... }`. Po vykonaní kódu bloku je platná pôvodná hodnota `Here`. 
 
 
-    include(base.ckt)                                
+    include(lib_base.ckt)
+    include(lib_color.ckt)                               
     up_;
     I1: source(2,I); llabel(,i_1,);  
         line right_ 1; 
@@ -216,7 +218,8 @@ V [príklade](./src/0202_stvorpol.ckt) zapojenia štvorpólu je použitý blok p
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 up_;
 I1: source(2,I); llabel(,i_1,);  
@@ -246,14 +249,14 @@ line -> from DA + (0, -0.25) to D0+(0,0.25); "$u_1$" ljust at last line.c;
 line -> from DB + (0, -0.25) to DG+(0,0.25); "$u_2$" ljust at last line.c;
 '''
 
-_ = cm_compile('./img/ex_003', data,  dpi=600)   
+_ = cm_compile('./src/cm_200c', data,  dpi=600)   
 ```
 
-```{figure} ./img/ex_003.png
+```{figure} ./src/cm_200c.png
 :width: 500px
-:name: ex_003
+:name: cm_200c
 
-Štvorpól.
+[Zapojenie](./src/cm_200c.ckt) štvorpólu.
 ```
         
         

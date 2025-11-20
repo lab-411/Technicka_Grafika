@@ -1,0 +1,78 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+
+include(lib_base.ckt)
+include(lib_user.ckt)
+include(lib_color.ckt)
+define(`itsf', `"\textit{\textsf{$1}}"')
+
+
+linethick = 1;
+move to (3,2);
+T1: bjt_NPN(1.2); 
+    move to Here+(1.5,0);
+T2: bjt_NPN(1.2); 
+
+color_red;
+R4: resistor(from T1.E down_ 1.2,,E); 
+    { itsf(R4)  at R4.c + (-0.14, 0.15) rjust;  
+      itsf(100) at R4.c + (-0.14,-0.15) rjust; 
+    }
+color_black;
+DT1: dot;
+move to T1.E;
+     dot;
+     line from T1.E to T2.E;
+
+move to T1.C;
+     dot;
+ R2: resistor(from T1.C up_ 1.2,,E);
+     { itsf(1k) at R2.c + (-0.15,0) rjust; 
+       itsf(R2) at R2.c + ( 0.15,0) ljust; 
+    }
+    dot;
+ R3: resistor(from T1.C right_ 1.9,,E);
+     { itsf(R3) at R3.c  + (0, 0.15) above; 
+       itsf(2k2) at R3.c + (0,-0.15) below;
+     } 
+     line down_ (Here.y - T2.B.y) then to T2.B;
+
+move to T2.C;
+     dot;
+ R5: resistor(from T2.C up_ 1.2,,E);
+     { itsf(R5) at R5.c + (-0.15, 0.15) rjust ; 
+       itsf(1k) at R5.c +  (-0.15,-0.15) rjust ; 
+    }
+    dot;
+
+ R1: resistor(from T1.B left_ 1,,E);
+     { itsf(R1) at R1.c  + (0, 0.15) above; 
+       itsf(10k) at R1.c + (0,-0.15) below;
+     }
+
+    line from R2.end to R5.end;
+    line from R2.end left_ 2.5; C1: circle rad 0.08;  itsf(1) at last circle.w rjust;
+    line from R4.end left_ 2.5;     circle rad 0.08;  itsf(6) at last circle.w rjust;
+    line from T2.C right_ 1.5;  C33:circle rad 0.08;  itsf(3) at last circle.e ljust;
+    line from R5.end right_ 1.5;C11:circle rad 0.08;  itsf(1) at last circle.e ljust;
+    line from R4.end right_ 4.5;    circle rad 0.08;  itsf(6) at last circle.e ljust;
+    line from R1.end left_ 0.5; C3: circle rad 0.08;  itsf(3) at last circle.w rjust;
+    itsf(VST)     at (C1+C3)/2 + (0,-0.5);
+    itsf(VÝST)    at (C11+C33)/2;
+    itsf(2xKC238) at R2.end above ljust;
+    itsf(T1) at T1.e + (-0.1,0);
+    itsf(T2) at T2.e + (-0.1,0);
+
+
+.PE

@@ -47,7 +47,8 @@ from cm.utils import *
 
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 d = 2;
@@ -74,14 +75,14 @@ capacitor(); llabel(,C_1,)
 
 '''
 
-_ = cm_compile('./img/cm_410', data, dpi=600)   
+_ = cm_compile('./src/cm_0120a', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_410.png
+```{figure} ./src/cm_0120a.png
 :width: 300px
-:name: cm_410
+:name: cm_0120a
 
-Vetvy v zapojení
+[Použitie](./src/cm_0120a.ckt) vetviev v zapojení
 ```
 
 Bloky s výhodou využijeme pri popise prvkov zapojenie. Zadanie textu mení rovnako ako každý nový element zapojenia hodnotu `Here`, ak chceme v kreslení pokračovať v pôvodnom smere, uzatvoríme text do bloku. Príkazy pre popis dvojpólov (*llabel ...*) hodnotu `Here` nemenia.
@@ -104,8 +105,6 @@ from cm.utils import *
 
 
 data = r'''
-include(base.ckt)
-
 Origin: Here 
 line -> 1;
 box wid 2 ht 1; 
@@ -118,14 +117,14 @@ box wid 2 ht 1;
 line -> 1;
 '''
 
-_ = cm_compile('./img/cm_411', data, dpi=600)   
+_ = cm_compile('./src/cm_0120b', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_411.png
+```{figure} ./src/cm_0120b.png
 :width: 300px
-:name: cm_411
+:name: cm_0120b
 
-Lokálne súradnice v bloku
+[Lokálne](./src/cm_0120b.ckt) súradnice v bloku
 ```
 
 
@@ -164,8 +163,6 @@ Referencie a premenné vytvorené vo vnútri bloku sú globálne a je možno sa 
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
-
 Origin: Here 
 d = 2;
 move to (2, 3);
@@ -191,12 +188,12 @@ L4: line from DT1 left_ d/2 then down_ 7*d/8;
     line to (L3.e.x, Here.y); tconn(right_ d/4,O);
 '''
 
-_ = cm_compile('./img/cm_071', data,  dpi=600)   
+_ = cm_compile('./src/cm_0120d', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_071.png
+```{figure} ./src/cm_0120d.png
 :width: 300px
-:name: cm_071
+:name: cm_0120d
 
-Refencie v bloku
+[Použitie](./src/cm_0120d.ckt) refencií v bloku
 ```

@@ -76,7 +76,7 @@ Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý 
 from cm.utils import *
 
 data = r'''
-    include(base.ckt)
+    include(lib_base.ckt)
     Grid(15,5);
     move to (3,3);
 OP: opamp()
@@ -115,14 +115,14 @@ PP: opamp(,,,,R)
     "$K =1 + \dfrac{R_2}{R_1}$" at PP.c + (0.5, -2.25);
 '''
 
-_ = cm_compile('./img/cm_095', data, dpi=600 )   
+_ = cm_compile('./src/cm_0204a', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_095.png
+```{figure} ./src/cm_0204a.png
 :width: 650px
-:name: cm_095
+:name: cm_0204a
 
-[Zapojenie](./src/0250_opamp_inv.ckt) invertujúceho a neinvertujúceho zosilovača. 
+[Zapojenie](./src/cm_0204a.ckt) invertujúceho a neinvertujúceho zosilovača. 
 ```
 
 Použitie parametra *P* pre zobrazenie napájacích vývodov zosilovača a použitie makra *reversed* pre zobrazenie kondenzátora $C_2$ s obrátenou polaritou ukazuje nasledujúci príklad.
@@ -156,7 +156,7 @@ Použitie parametra *P* pre zobrazenie napájacích vývodov zosilovača a použ
 from cm.utils import *
 
 data = r'''
-    include(base.ckt)
+    include(lib_base.ckt)
 
 OA: opamp(,,,,P);
 line from OA.V1 up_ .75;
@@ -175,14 +175,14 @@ line from OA.In1 left 0.5;
 line from OA.In2 left 0.5;
 '''
 
-_ = cm_compile('./img/cm_096', data, dpi=600 )   
+_ = cm_compile('./src/cm_0204b', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_096.png
+```{figure} ./src/cm_0204b.png
 :width: 170px
-:name: cm_096
+:name: cm_0204b
 
-[Obvod](./src/0252_opamp_power.ckt) napájania operačného zosilovača. 
+[Obvod](./src/cm_0204b.ckt) napájania operačného zosilovača. 
 ```
 
 V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra (vo výpise sú vynechané nepodstatné časti) sú použité vnorené bloky pri kreslení vetiev obvodu a použitá konštrukcia *with* pri ukladaní zosilovača *OA2* na aktuálnu polohu vývodom *In2*.
@@ -224,7 +224,7 @@ V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra (vo výpise sú
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 OA1: opamp(,,,,); "$A_1$" at OA1.SE below ljust;
     line from OA1.In1 left_ 0.5;
@@ -287,14 +287,14 @@ R1: resistor(right_ (OA1.Out.x - OA1.In1.x +0.5),,E); rlabel(,R_1,); dot;
 
 '''
 
-_ = cm_compile('./img/cm_097', data, dpi=600 )   
+_ = cm_compile('./src/cm_0204c', data, dpi=600 )   
 ```
 
-```{figure} ./img/cm_097.png
+```{figure} ./src/cm_0204c.png
 :width: 600px
-:name: cm_097
+:name: cm_0204c
 
-[Zapojenie](./src/0254_opamp_filter.ckt) aktívneho filtra. 
+[Zapojenie](./src/cm_0204c.ckt) aktívneho filtra. 
 ```
 
 

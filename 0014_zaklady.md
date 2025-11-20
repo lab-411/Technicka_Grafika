@@ -57,7 +57,7 @@ Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 
@@ -71,14 +71,14 @@ right_
 diode;
 '''
 
-_ = cm_compile('./img/beg_010', data, dpi=600)   
+_ = cm_compile('./src/cm_0014a', data, dpi=600)   
 ```
 
-```{figure} ./img/beg_010.png
+```{figure} ./src/cm_0014a.png
 :width: 300px
-:name: beg_010
+:name: cm_0014a
 
-Ukladanie prvkov zapojenia
+[Ukladanie](./src/cm_0014a.ckt) prvkov zapojenia
 ```
 
 Po vykreslení nejakého prvku zapojenie sa hodnota `Here` posúva tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na pozíciu (x,y) pomocou príkazu 
@@ -109,7 +109,7 @@ K prvkom zapojenia a polohe ich častí pristupovať pomocou referencie a pomeno
 Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.
 
     move to (1,1);
-    R1: resistor;                 # referncia, R1.start = (1,1)
+    R1: resistor;                 # referencia, R1.start = (1,1)
     move to (1,2)
     C1: capacitor;                # referencia C1.start = (1,2)
     line from R1.start to C1.end; # vykreslenie ciary medzi bodmi
@@ -121,7 +121,7 @@ Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príkl
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Grid(4,3);
 Origin: Here 
@@ -134,14 +134,14 @@ C1: capacitor;
 line from R1.start to C1.end;
 '''
 
-_ = cm_compile('./img/beg_011', data, dpi=600)   
+_ = cm_compile('./src/cm_0014b', data, dpi=600)   
 ```
 
-```{figure} ./img/beg_011.png
+```{figure} ./src/cm_0014b.png
 :width: 250px
-:name: beg_011
+:name: cm_0014b
 
-Použitie referencií v prvkoch zapojenia.
+[Použitie](./src/cm_0014b.ckt) referencií v prvkoch zapojenia.
 ```
 
 ## <font color='teal'> Vlastnosti prvkov </font> 
@@ -181,7 +181,7 @@ Použitie makier na označovanie prvkov garantuje presné a definované umiestne
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Grid(5,3.5);
 Origin: Here 
@@ -194,14 +194,14 @@ R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
 
 '''
 
-_ = cm_compile('./img/beg_012', data, dpi=600)   
+_ = cm_compile('./src/cm_0014c', data, dpi=600)   
 ```
 
-```{figure} ./img/beg_012.png
+```{figure} ./src/cm_0014c.png
 :width: 300px
-:name: beg_012
+:name: cm_0014c
 
-Označenie prvkov zapojenia.
+[Označenie](./src/cm_0014c.ckt) prvkov zapojenia.
 ```
 
 ## <font color='teal'> Kreslenie diagramov </font> 
@@ -221,7 +221,7 @@ V `CircuitMacros` môžeme využívať  príkazy jazyka `dpic` pre kreslenie dia
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 #Grid(5,3.5);
 Origin: Here 
@@ -234,14 +234,14 @@ ellipse wid 2 ht 1 "Ellipse";
 
 '''
 
-_ = cm_compile('./img/beg_013', data, dpi=600)   
+_ = cm_compile('./src/cm_0014d', data, dpi=600)   
 ```
 
-```{figure} ./img/beg_013.png
+```{figure} ./src/cm_0014d.png
 :width: 400px
-:name: beg_013
+:name: cm_0014d
 
-Jednoduchý diagram vykreslený pomocou príkazov *dpic*
+Jednoduchý [diagram](./src/cm_0014d.ckt) vykreslený pomocou príkazov *dpic*
 ```
 
 

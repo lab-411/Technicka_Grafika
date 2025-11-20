@@ -13,7 +13,7 @@ kernelspec:
 ---
 # <font color='navy'> Premenné  </font>
 
-Všetky premenné v jazyku `dpic` sú **numerické** a sú nad nimi definované aritmetické a logické operácie. Súradnice bodu na ploche majú definovanú polohu usporiadanou dvojicou numerických hodnôt $(x,y)$, ktoré sú dostupné ako preddefinované atribúty *.x,.y*. Súradnice bodu nie je možné použiť ako hodnotu premennej, prístup k nej je možný cez referenciu ako k objektu na ploche. Špeciálny význam má preddefinovaná premenná `Here`, ktorá obsahuje súradnice posledného vykresleného bodu.
+Všetky premenné v jazyku `dpic` sú **numerické** a sú nad nimi definované aritmetické a logické operácie. Súradnice bodu na ploche majú definovanú polohu usporiadanou dvojicou numerických hodnôt $(x,y)$, ktoré sú dostupné ako preddefinované atribúty *.x*, *.y*. Súradnice bodu nie je možné použiť ako hodnotu premennej, prístup k nej je možný cez *referenciu* ako k objektu na ploche. Špeciálny význam má preddefinovaná premenná `Here`, ktorá obsahuje súradnice posledného vykresleného bodu.
 
     x = 1; y = 3;        # numerické premenné
     P1: (x,y)            # referencia na bod
@@ -89,7 +89,9 @@ Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
+
     line 0.5 dotted;
 LL: line right_ 2;
     dot;
@@ -115,14 +117,14 @@ line from Here down_ (Here.y - R4.start.y) \
 "\textit{then to R4.start;}" at (LL+R4)/2 + (-0.5,-0.1) rjust below;
 '''
 
-_ = cm_compile('./img/op_001', data,  dpi=600)   
+_ = cm_compile('./src/cm_0170a', data,  dpi=600)   
 ```
 
-```{figure} ./img/op_001.png
+```{figure} ./src/cm_0170a.png
 :width: 600px
-:name: op_001
+:name: cm_0170a
 
-Použitie numerických operácii pre výpočtu koncového bodu čiary.
+[Použitie](./src/cm_0170a.ckt) numerických operácii pre výpočtu koncového bodu čiary.
 ```
 
 Podobne môžeme využiť výpočet geometrického stredu pre presné umiestnenie textu medzi svorky obvodu.
@@ -132,7 +134,10 @@ Podobne môžeme využiť výpočet geometrického stredu pre presné umiestneni
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
 B1: box wid 2 ht 2;
 line from B1.ne -(0,0.25) right_ 1 ;
 P1: circle rad .1; "\textit{P1}" at P1.e ljust;
@@ -148,12 +153,12 @@ line from B1.e + (.2, 0) right 2 dotted;
 line from P1.s + (0, -0.1) to P2.n + (0,0.1) dotted;
 '''
 
-_ = cm_compile('./img/op_002', data,  dpi=600)   
+_ = cm_compile('./src/cm_0170b', data,  dpi=600)   
 ```
 
-```{figure} ./img/op_002.png
+```{figure} ./src/cm_0170b.png
 :width: 300px
-:name: op_002
+:name: cm_0170b
 
-Text v strede medzi výstupnými svorkami.
+[Text](./src/cm_0170b.ckt) v strede medzi výstupnými svorkami.
 ```

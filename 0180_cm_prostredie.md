@@ -45,19 +45,19 @@ d = 1;                  # premenna 1cm
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 d = 1;
 Grid(5,3);
 '''
 
-_ = cm_compile('./img/env_001', data,  dpi=600)   
+_ = cm_compile('./src/cm_0180a', data,  dpi=600)   
 ```
 
-```{figure} ./img/env_001.png
+```{figure} ./src/cm_0180a.png
 :width: 350px
-:name: env_001
+:name: cm_0180a
 
-Súradnicová mriežka 5x3 cm
+[Vykreslenie](./src/cm_0180a.ckt) súradnicovej mriežky s rozmermi 5x3 cm
 ```
 
 Hodnota aktuálnej (poslednej) pozície je hodnotou premennej `Here` v základných jednotkách.  

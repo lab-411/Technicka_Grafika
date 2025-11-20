@@ -75,6 +75,25 @@
 0010_sphinx_myst.ipynb
 ```
 
+## <font color='teal'> Anotácia </font>   
+
+
+## <font color='teal'> Vydavateľstvo </font> 
+
+Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2025.
+
+**ISBN: xxx-xx-xxxxxx-x**
+
+Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programovacieho jazyka *Python*. Zdrojové kódy sú dostupné na 
+
+    https://github.com/lab-411/Technicka_Grafika
+
+
+Titulný obrázok je vygenerovaný na základe podkladov uvedených ako príklad použitia v distribúcii programu *Circuit Macros*
+
+## <font color='teal'> Citovanie </font>
+
+
 ## <font color='teal'>  Licencie </font>  
 
 ### <font color='brown'> Publikácia </font>  
@@ -99,15 +118,6 @@ Publikácia **Programová tvorba technickej grafiky** je vydaná pod licenciou M
     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
     CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-    
-Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2025.
-
-**ISBN: xxx-xx-xxxxxx-x**
-
-Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programovacieho jazyka *Python*. 
-
-Titulný obrázok je vygenerovaný na základe podkladov uvedených ako príklad použitia v distribúcii programu *Circuit Macros*
 
 
 ### <font color='brown'> Použité programové vybavenie </font> 

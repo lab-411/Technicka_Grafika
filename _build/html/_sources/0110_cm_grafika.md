@@ -68,7 +68,7 @@ Nasledujúci príklad ukazuje niekoľko možností definície čiary.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 Origin: Here 
 
 Grid(10,5.5);
@@ -87,14 +87,14 @@ line from (6,1) to (7,2) to (8,1) to (9,2); {"G" above};
 line -> from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1; {"H" above};
 '''
 
-_ = cm_compile('./img/cm_003', data,  dpi=600)   
+_ = cm_compile('./src/cm_0110a', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_003.png
+```{figure} ./src/cm_0110a.png
 :width: 500px
-:name: cm_03
+:name: cm_0110a
 
-Spôsoby vykreslenia čiary na pracovnej ploche.
+[Spôsoby](./src/cm_0110a.ckt) vykreslenia čiary na pracovnej ploche.
 ```
 
 ```{admonition} Poznámka
@@ -139,7 +139,8 @@ Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline m
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 Origin: Here 
 Grid(10, 6);
                                              # J. spline krivka, suradnice 
@@ -161,15 +162,15 @@ spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
 spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
 '''
 
-_ = cm_compile('./img/cm_004', data, dpi=600)   
+_ = cm_compile('./src/cm_0110b', data, dpi=600)   
 ```
 
 
-```{figure} ./img/cm_004.png
+```{figure} ./src/cm_0110b.png
 :width: 500px
-:name: cm_04
+:name: cm_0110b
 
-Použitie splajnových kriviek.
+[Použitie](./src/cm_0110b.ckt) splajnových kriviek.
 ```
 
 
@@ -222,12 +223,10 @@ Pre plošné objektu sú definované atribúty podľa svetových strán.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 Origin: Here 
-#Grid(10, 6);
 
 move to (2, 3);
-
 B: box wid 4 ht 2 
 
 move to B.west;   "B.w"  rjust;    # rovnako ako B.w
@@ -243,14 +242,14 @@ move to B.se;     "B.se"  below ljust;
 move to B.sw;     "B.sw"  below rjust; 
 '''
 
-_ = cm_compile('./img/cm_007', data, dpi=600)   
+_ = cm_compile('./src/cm_0110c', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_007.png
+```{figure} ./src/cm_0110c.png
 :width: 300px
-:name: cm_07
+:name: cm_0110c
 
-Atribúty pre box, orientácia podľa svetových strán
+[Atribúty](./src/cm_0110c.ckt) pre box, orientácia podľa svetových strán
 ```
 
 ## <font color='teal'> Kruhový oblúk </font>
@@ -289,7 +288,8 @@ Bez zadaného centra je oblúk vykreslený ako polkružnica so stredom medzi kon
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
 Origin: Here 
 
 Grid(5, 5);
@@ -314,13 +314,13 @@ line from P2 to P3 dashed;
 "A2" at A2.nw above rjust;
 '''
 
-_ = cm_compile('./img/cm_009', data, dpi=600)   
+_ = cm_compile('./src/cm_0110d', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_009.png
+```{figure} ./src/cm_0110d.png
 :width: 300px
-:name: cm_009
+:name: cm_0110d
 
-Kruhový oblúk
+[Vykreslenie](./src/cm_0110d.ckt) kruhového oblúku
 ```
 

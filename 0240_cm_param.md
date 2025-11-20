@@ -21,7 +21,7 @@ V Circuit-Macros je možné vlastnosti niektorých komponentov definovať pomoco
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 d = 2;
@@ -50,10 +50,10 @@ line from G1.In4 left_ d/2;
 line from G1.Out right_ d/2;
 '''
 
-_ = cm_compile('./img/cm_020', data, dpi=600)   
+_ = cm_compile('./src/cm_0240a', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_020.png
+```{figure} ./src/cm_0240a.png
 :width: 300px
 :name: cm_020
 
@@ -67,7 +67,7 @@ Pri parametrických komponentoch môžeme použiť dynamické vytváranie mien a
 
 from cm.utils import *
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 d = 2;
@@ -83,10 +83,10 @@ for i=1 to 8 do {
 line from G2.Out right_ d/2;
 '''
 
-_ = cm_compile('./img/cm_021', data, dpi=600)   
+_ = cm_compile('./src/cm_0240b', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_021.png
+```{figure} ./src/cm_0240b.png
 :width: 180px
 :name: cm_021
 

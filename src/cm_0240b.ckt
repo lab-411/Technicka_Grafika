@@ -1,0 +1,29 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+Origin: Here 
+d = 2;
+log_init;         
+move to (5,1);
+right_; 
+G2: NAND_gate(8);
+
+for i=1 to 8 do { 
+    exec sprintf("line from G2.In%g left_ d",i); 
+}
+
+line from G2.Out right_ d/2;
+
+.PE

@@ -1,0 +1,29 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+Origin: Here 
+Grid(10, 4);
+
+T: "$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$" at (5, 0.5);    
+
+"$f(a)+\frac {f'(a)}{1!} (x-a) + 
+       \frac{f''(a)}{2!} (x-a)^2 + 
+       \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$" at (5,3);   
+
+color_red;
+sprintf("Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
+
+.PE

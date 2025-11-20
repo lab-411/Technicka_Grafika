@@ -20,9 +20,9 @@ Súčasťou `CircuitMacros` sú makrá a premenné, pomocou ktorých môžeme up
 
 ## <font color='teal'>  Zmena farby  </font>
 
-Pre zmenu farby kreslenie je definované makro *setrgb(r, g, b)*, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby *color_<meno farby>* zo súboru [base.ckt](./cm/base.ckt), popis fabieb je uvedený v prílohe **Farby**. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra *color_reset*.  
+Pre zmenu farby kreslenie je definované makro *setrgb(r, g, b)*, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby *color_<meno farby>* zo súboru [lib_color.ckt](./src/lib_color.ckt), popis fabieb je uvedený v prílohe **Farby**. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra *color_reset*.  
 
-    include(base.ckt)
+    include(lib_color.ckt)
 
     resistor(2,,E); 
     color_blue; llabel(,R_1,); 
@@ -45,7 +45,7 @@ Pre zmenu farby kreslenie je definované makro *setrgb(r, g, b)*, ktorého argum
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_color.ckt)
 
 resistor(2,,E); 
 color_blue; llabel(,R_1,); color_reset;
@@ -60,14 +60,14 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 
 '''
 
-_ = cm_compile('./img/cm_055', data,  dpi=600)   
+_ = cm_compile('./src/cm_0104a', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_055.png
+```{figure} ./src/cm_0104a.png
 :width: 300px
-:name: cm_055
+:name: cm_0104a
 
-Použitie pomenovaných farieb 
+[Použitie](./src/cm_0104a.ckt) pomenovaných farieb 
 ```
 
 
@@ -82,7 +82,7 @@ Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určen�
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 Origin: Here 
 
 move to (0,1)
@@ -94,14 +94,14 @@ linethick_(1.5);
 R2:resistor(,,E); llabel(, R_2,); "\textit{lin\\ethick\_(1.5); res\\istor(,,E)};" ljust; 
 '''
 
-_ = cm_compile('./img/cm_032', data,  dpi=600)   
+_ = cm_compile('./src/cm_0104b', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_032.png
+```{figure} ./src/cm_0104b.png
 :width: 400px
-:name: cm_032
+:name: cm_0104b
 
-Zvýraznenie komponentu.
+[Zvýraznenie](./src/cm_0104b.ckt) komponentu.
 ```
     
 
@@ -125,7 +125,7 @@ Zvýraznenie komponentu.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 Origin: Here 
 
 d = 2; 
@@ -142,14 +142,14 @@ resistor(d,,E);llabel(,R_3,);      # štandardny rozmer
 
 '''
 
-_ = cm_compile('./img/cm_012', data,  dpi=600)   
+_ = cm_compile('./src/cm_0104c', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_012.png
+```{figure} ./src/cm_0104c.png
 :width: 400px
-:name: cm_022
+:name: cm_0104c
 
-Zmena veľkosti komponentov
+[Zmena](./src/cm_0104c.ckt) veľkosti komponentov
 ```
 
 

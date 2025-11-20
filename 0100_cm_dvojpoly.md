@@ -22,7 +22,7 @@ Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú reprezentova
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here;             R1: resistor(2,,E);  llabel(,R_1,); "re\\sistor(2,,E)" at R1.start rjust;
 move to Origin + (0,1);   C1: capacitor(2);    llabel(,C_1,); "ca\\pacitor(2)" at C1.start rjust;
@@ -35,14 +35,14 @@ move to Origin + (3,1);   S1: source(2);       "sour\\ce(2)" at S1.end ljust;
 move to Origin + (3,0);   B1: battery(2);      "ba\\ttery(2)" at B1.end ljust;
 '''
 
-_ = cm_compile('./img/cm_016', data,  dpi=600)   
+_ = cm_compile('./src/cm_0100a', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_016.png
+```{figure} ./src/cm_0100a.png
 :width: 480px
-:name: cm_016
+:name: cm_0100a
 
-Príklady dvojpólov. 
+[Príklady](./src/cm_0100a.ckt) dvojpólov. 
 ```
 
 Pre všetky dvojpóly sú definované atribúty
@@ -88,7 +88,7 @@ Makro bez parametrov sa vykreslí rezistor s prednastavenými hodnotami ako zna�
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 move to (0.5, 1.5);   
@@ -106,14 +106,14 @@ resistor(,,V);      llabel(,R_7,);
 resistor(3,,E,1.5); llabel(,R_8,); rlabel(,linespec=3,);
 '''
 
-_ = cm_compile('./img/cm_111', data, dpi=600)   
+_ = cm_compile('./src/cm_0100b', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_111.png
+```{figure} ./src/cm_0100b.png
 :width: 450px
-:name: cm_111
+:name: cm_0100b
 
-Typy rezistorov.
+[Typy](./src/cm_0100b.ckt) rezistorov.
 ```
 
 ```{warning} 
@@ -168,7 +168,7 @@ Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 move to (0.5, 1.5);   
@@ -186,14 +186,14 @@ capacitor(, CP);    llabel(,C_7,);
 capacitor(,+LC);     llabel(,C_8,); 
 '''
 
-_ = cm_compile('./img/cm_114', data, dpi=600)   
+_ = cm_compile('./src/cm_0100c', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_114.png
+```{figure} ./src/cm_0100c.png
 :width: 450px
-:name: cm_114
+:name: cm_0100c
 
-Typy kondenzátorov.
+[Typy](./src/cm_0100c.ckt) kondenzátorov.
 ```
     
 ## <font color='teal'> Cievka </font>
@@ -224,7 +224,7 @@ Pri cievke môžeme meniť tvar vinutia, počet závitov, ich veľkosť a môže
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 move to (0.5, 1.5);   
@@ -235,14 +235,14 @@ inductor(,L);      llabel(,L_3,); rlabel(,L,);  dot;
 L4: inductor(,L,6);     llabel(,L_4,); "L,6" at L4.center + (0,-.05) below;  
 '''
 
-_ = cm_compile('./img/cm_115', data, dpi=600)   
+_ = cm_compile('./src/cm_0100d', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_115.png
+```{figure} ./src/cm_0100d.png
 :width: 450px
-:name: cm_115
+:name: cm_0100d
 
-Modifikácie cievky.
+[Typy](./src/cm_0100d.ckt) cievok.
 ```
     
 ## <font color='teal'> Dióda </font>
@@ -287,7 +287,7 @@ Makro bez paramerov vykreslí diódu s prednastavenými rozmermi.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 move to (0.5, 1.5);   
@@ -305,14 +305,14 @@ diode(,T);     llabel(,D_7,); rlabel(,T,);
 diode(,,R);    llabel(,D_8,); rlabel(,Rev,);
 '''
 
-_ = cm_compile('./img/cm_120', data, dpi=600)   
+_ = cm_compile('./src/cm_0100e', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_120.png
+```{figure} ./src/cm_0100e.png
 :width: 450px
-:name: cm_120
+:name: cm_0100e
 
-Typy diód.
+[Typy](./src/cm_0100e.ckt) diód.
 ```
     
 
@@ -383,7 +383,7 @@ Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *r
     L            - ljust, zarovnanie textu doľava
     R            - rjust, zarovnanie textu doprava
     
-Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu, *rlabel()* ukladá text po pravej strane v smere ukladania. V pr9pade potreby môžeme modifikovať aj font a veľkosť textu.
+Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu, *rlabel()* ukladá text po pravej strane v smere ukladania. V prípade potreby môžeme modifikovať aj font a veľkosť textu.
 
     R1: resistor(,,);   llabel(a,R_1,b); 
     C2: capacitor,,C);  llabel( ,C_2, );   rlabel(, 10 \mu F, ); 
@@ -400,7 +400,7 @@ Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu, *rlabel()*
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 
@@ -413,14 +413,14 @@ R5: resistor(right_ 2 ,,E);   dlabel(0.5, 0.3, aa ,R_5, bb ,L);
 D6: diode(2);   llabel( ,\sf D_6, );   rlabel(,  $ \sf \footnotesize{ 1N4007 }$, ); 
 '''
 
-_ = cm_compile('./img/cm_112', data, dpi=600)   
+_ = cm_compile('./src/cm_0100f', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_112.png
+```{figure} ./src/cm_0100f.png
 :width: 350px
-:name: cm_112
+:name: cm_0100f
 
-Makrá pre popis dvojpólov.
+[Makrá](./src/cm_0100f.ckt) pre popis dvojpólov.
 ```
 
 ### <font color='brown'> Premenné prvky  </font>
@@ -471,7 +471,7 @@ Makro môžeme použiť dvoma spôsobmi
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 
@@ -487,14 +487,14 @@ move to (3,1)
 capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);  
 '''
 
-_ = cm_compile('./img/cm_125', data, dpi=600)   
+_ = cm_compile('./src/cm_0100g', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_125.png
+```{figure} ./src/cm_0100g.png
 :width: 220px
-:name: cm_125
+:name: cm_0100g
 
-Zobrazenie premenných prvkov.
+[Zobrazenie](./src/cm_0100g.ckt) premenných prvkov.
 ```
     
 
@@ -542,7 +542,7 @@ Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj 
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 
@@ -564,14 +564,14 @@ L2: line from (5,2) to (8,2) "L2" below;
     b_current(i_{78}, above_, In, End, 0.6 );  
 '''
 
-_ = cm_compile('./img/cm_126', data, dpi=600)   
+_ = cm_compile('./src/cm_0100h', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_126.png
+```{figure} ./src/cm_0100h.png
 :width: 550px
-:name: cm_126
+:name: cm_0100h
 
-Zobrazenie prúdu rezistorom a vetvou obvodu.
+[Zobrazenie](./src/cm_0100h.ckt) prúdu rezistorom a vetvou obvodu.
 ```
             
 ### <font color='brown'> Napätie na dvojpóle </font>
@@ -603,7 +603,7 @@ Použitie makier ukazuje nasledujúci príklad.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 Origin: Here 
 move to (1,0.5)
@@ -616,14 +616,14 @@ dot; {tconn(right_ 1.5,O); "2" ljust;}
 line to S1.start; 
 '''
 
-_ = cm_compile('./img/cm_128', data, dpi=600)   
+_ = cm_compile('./src/cm_0100i', data, dpi=600)   
 ```
 
-```{figure} ./img/cm_128.png
+```{figure} ./src/cm_0100i.png
 :width: 300px
-:name: cm_128
+:name: cm_0100i
 
-Zobrazenie úbytku napätia na rezistoroch.
+[Zobrazenie](./src/cm_0100i.ckt) úbytku napätia na rezistoroch.
 ```
 
     

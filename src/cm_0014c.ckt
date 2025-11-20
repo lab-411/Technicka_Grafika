@@ -1,0 +1,26 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+Grid(5,3.5);
+Origin: Here 
+
+move to (0.5,2.5);
+R1: resistor(2,,E); llabel(a,R_1,b); rlabel(,10k,);
+D1: dot;
+C1: capacitor(down_ 2,); rlabel(,C_1,); llabel(,10 \mu F,);
+R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
+
+
+.PE

@@ -22,7 +22,7 @@ Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto 
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 log_init;
 Origin: Here
@@ -52,17 +52,15 @@ move to Here+(0,0.8);
 G1: NAND_gate(4);                      {"NAND\\\_gate"  at (Here.x +2.5, G1.c.y); }
 '''
 
-_ = cm_compile('./img/cm_051', data,  dpi=600)   
+_ = cm_compile('./src/cm_0102a', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_051.png
+```{figure} ./src/cm_0102a.png
 :width: 500px
-:name: cm_051
+:name: cm_0102a
 
-Príklady mnohopólov definovaných v CircuitMacros.
+[Príklady](./src/cm_0102a.ckt) mnohopólov definovaných v CircuitMacros.
 ```
-
-
 
 
 Typickým mnohopólom je transformátor, makro pre jeho zobrazenie má tvar
@@ -120,7 +118,7 @@ Použitie atribútov mnohopólu demonštruje nasledujúci príklad.
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 
 TR: transformer(down_ 2,L,7,W,4);
 "1" at TR.P1 rjust below;
@@ -144,12 +142,12 @@ DT2: dot;
 {tconn(right_ 1, O); }
 '''
 
-_ = cm_compile('./img/cm_050', data,  dpi=600)   
+_ = cm_compile('./src/cm_0102b', data,  dpi=600)   
 ```
 
-```{figure} ./img/cm_050.png
+```{figure} ./src/cm_0102b.png
 :width: 250px
-:name: cm_050
+:name: cm_0102b
 
-Použitie atribútov mnohopólu.
+[Použitie](./src/cm_0102b.ckt) atribútov mnohopólu.
 ```

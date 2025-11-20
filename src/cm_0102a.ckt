@@ -1,0 +1,43 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+log_init;
+Origin: Here
+up_;
+move to Here;
+TR: transformer(down_ 2,L,7,W,4); {"tra\\nsformer" at (Here.x-2.5,  TR.c.y); }
+
+move to Here+(0,0.5);
+GG: gyrator;                          {"gy\\rator" at (Here.x-2.5, GG.c.y);  }
+
+move to Here+(0,0.5);
+TT: bi_tr(up_,,,E) ;                   {"bi\_t\\r" at (Here.x-2.5, TT.c.y);  }
+
+move to Here+(0,0.5);
+HH: Header(2, 6,,,fill_(0.9));         {"Heade\\r" at (Here.x-2.5,  HH.c.y); }
+
+move to Origin + (4,0);
+NN: nport;                             {"npo\\rt"  at (Here.x +2.5, NN.c.y); }
+
+move to Here+(0,1.2);
+OP: opamp(right_);                     {"opa\\mp"  at (Here.x +2.5, OP.c.y); }
+
+move to Here+(0,0.8);
+CC: contact;                           {"cont\\act"  at (Here.x +2.5, CC.c.y); }
+
+move to Here+(0,0.8);
+G1: NAND_gate(4);                      {"NAND\\\_gate"  at (Here.x +2.5, G1.c.y); }
+
+.PE

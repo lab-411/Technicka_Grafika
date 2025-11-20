@@ -83,7 +83,7 @@ Zapojenie jednoduchého multiplexera
 from cm.utils import *
 
 data = r'''
-include(base.ckt)
+include(lib_base.ckt)
 cct_init
 log_init
 
@@ -109,13 +109,13 @@ line from G2.In1 to (DT.x, G2.In1.y) then to DT;
 line from G3.Out right_ 1;  "\sf Y" at last line.end ljust; 
 '''
 
-_ = cm_compile('./img/log_001', data,  dpi=600)   
+_ = cm_compile('./src/cm_0206a', data,  dpi=600)   
 ```
 
-```{figure} ./img/log_001.png
+```{figure} ./src/cm_0206a.png
 :width: 500px
-:name: log_001
+:name: cm_0206a
 
-Multiplexer
+[Zapojenie](./src/cm_0206a.ckt) multiplexera
 ```
 ## <font color='teal'> Sekvenčné obvody </font> 
