@@ -14,8 +14,18 @@ kernelspec:
 
 # <font color='navy'> Dvojpóly</font>
 
-Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné zadať jeho meno, hodnotu a označenie vývodov, zobrazenie prvku a jeho popis je možné ďalej modifikovať doplnkovými makrami. 
+Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú v `CircuitMacros` reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar:
 
+    [referencia:] objekt([linespec], [parameters ...]);
+    
+    referencia - označenie objektu pre prístup k jeho parametrom
+    objekt     - typ dvojpólu (resistor, capacitor ...)
+    linespec   - dĺžka prívodov a umiestnenie objektu
+    parameters - parametre určujúce tvar objektu
+    
+Pri použití makra bez parametrov sa vykreslí dvojpól v prednastavenom tvare.
+    
+    
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
@@ -42,14 +52,68 @@ _ = cm_compile('./src/cm_0100a', data,  dpi=600)
 :width: 480px
 :name: cm_0100a
 
-[Príklady](./src/cm_0100a.ckt) dvojpólov. 
+Príklady dvojpólov. 
 ```
 
-Pre všetky dvojpóly sú definované atribúty
+Základné rozmery a zobrazenie dvojpólov v knižniciach `CircuitMacros` sú zobrazené na nasledujúcom obrázku. Rozmery objektu závisia od aktuálneho nastavenie parametrov prostredia, ktoré sú popísané v kapitole **Prostredie**.
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from cm.utils import *
+
+data = r'''
+include(lib_color.ckt)
+linewid = 2.0*2.54;
+command "\tt"
+
+linethick_(1.5);
+L1: inductor(elen_,L);
+
+# ohranicenie prvku
+color_dark_green;
+thinlines_;
+box dotted wid last [].wid ht last [].ht at last [];
+move to .85 between last [].sw and last [].se;
+
+# popis atributov
+#spline <- down arrowht*2.9 right arrowht/2 then right 0.15; " last []" ljust;
+
+color_blue;
+arrow <- down 0.8 from L1.start chop 0.05; "L1.start" below;
+arrow <- down 0.8 from L1.end chop 0.05;   "L1.end"   below;
+arrow <- down last [].c.y-last arrow.end.y from L1.c; "L1.centre" below;
+
+# popis rozmerov
+color_red;
+dimension_(from L1.start to L1.end,1.5,elen\_,1);
+dimension_(right_ dimen_ from L1.c-(dimen_/2,0),1,dimen\_,1.2);
+'''
+
+_ = cm_compile('./src/cm_0100j', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0100j.png
+:width: 450px
+:name: cm_0100j
+
+Rozmery dvojpólu a jeho atribúty,.
+```
+
+
+Vlastnosti dvojpólov potom popisuje nasledujúce parametre 
     
-        .start  - bod začiatku vykreslovania prvku
-        .center - stred prvku
-        .end    - bod ukončenia vykreslovania prvku
+    premenné
+    
+      dimen_    - veľkosť prvku určená na základe parametrov kresliacej plochy 
+      elen_     - dĺžka vývodov prvku, štandardne 1.5*dimen_
+    
+    atribúty
+    
+      .start   - bod začiatku vykreslovania prvku
+      .centre  - stred prvku
+      .end     - bod ukončenia vykreslovania prvku
+        
         
 Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, cievka, dióda a zdroj sú uvedené v nasledujúcich kapitolách. Kompletný zoznam makier pre kreslenie dvojpólov a ich parametrov je v [dokumentácii](./data/Circuit_macros_10_6.pdf). 
 

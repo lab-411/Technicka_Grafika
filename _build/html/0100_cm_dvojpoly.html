@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -370,18 +370,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dvojpoly">
 <h1><font color='navy'> Dvojpóly</font><a class="headerlink" href="#dvojpoly" title="Link to this heading">#</a></h1>
-<p>Základné elektronické komponenty (R,L,C, dióda, zdroje …) sú reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné zadať jeho meno, hodnotu a označenie vývodov, zobrazenie prvku a jeho popis je možné ďalej modifikovať doplnkovými makrami.</p>
+<p>Základné elektronické komponenty (R,L,C, dióda, zdroje …) sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[referencia:] objekt([linespec], [parameters ...]);
+
+referencia - označenie objektu pre prístup k jeho parametrom
+objekt     - typ dvojpólu (resistor, capacitor ...)
+linespec   - dĺžka prívodov a umiestnenie objektu
+parameters - parametre určujúce tvar objektu
+</pre></div>
+</div>
+<p>Pri použití makra bez parametrov sa vykreslí dvojpól v prednastavenom tvare.</p>
 <figure class="align-default" id="cm-0100a">
 <a class="reference internal image-reference" href="_images/cm_0100a.png"><img alt="_images/cm_0100a.png" src="_images/cm_0100a.png" style="width: 480px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 10 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/7a5736bf73de13ddd6f8acff23b459d6/cm_0100a.ckt"><span class="xref download myst">Príklady</span></a> dvojpólov.</span><a class="headerlink" href="#cm-0100a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 10 </span><span class="caption-text">Príklady dvojpólov.</span><a class="headerlink" href="#cm-0100a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pre všetky dvojpóly sú definované atribúty</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    .start  - bod začiatku vykreslovania prvku
-    .center - stred prvku
-    .end    - bod ukončenia vykreslovania prvku
+<p>Základné rozmery a zobrazenie dvojpólov v knižniciach <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú zobrazené na nasledujúcom obrázku. Rozmery objektu závisia od aktuálneho nastavenie parametrov prostredia, ktoré sú popísané v kapitole <strong>Prostredie</strong>.</p>
+<figure class="align-default" id="cm-0100j">
+<a class="reference internal image-reference" href="_images/cm_0100j.png"><img alt="_images/cm_0100j.png" src="_images/cm_0100j.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 11 </span><span class="caption-text">Rozmery dvojpólu a jeho atribúty,.</span><a class="headerlink" href="#cm-0100j" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Vlastnosti dvojpólov potom popisuje nasledujúce parametre</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>premenné
+
+  dimen_    - veľkosť prvku určená na základe parametrov kresliacej plochy 
+  elen_     - dĺžka vývodov prvku, štandardne 1.5*dimen_
+
+atribúty
+
+  .start   - bod začiatku vykreslovania prvku
+  .centre  - stred prvku
+  .end     - bod ukončenia vykreslovania prvku
 </pre></div>
 </div>
 <p>Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, cievka, dióda a zdroj sú uvedené v nasledujúcich kapitolách. Kompletný zoznam makier pre kreslenie dvojpólov a ich parametrov je v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
@@ -415,7 +439,7 @@ R5: resistor(,,E);  R6: resistor(,,ES);   R7: resistor(,,V);   R8: resistor(3,,E
 <a class="reference internal image-reference" href="_images/cm_0100b.png"><img alt="_images/cm_0100b.png" src="_images/cm_0100b.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 11 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/4489b08e69a9e1b845afce1ca3194cb1/cm_0100b.ckt"><span class="xref download myst">Typy</span></a> rezistorov.</span><a class="headerlink" href="#cm-0100b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 12 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/4489b08e69a9e1b845afce1ca3194cb1/cm_0100b.ckt"><span class="xref download myst">Typy</span></a> rezistorov.</span><a class="headerlink" href="#cm-0100b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -467,7 +491,7 @@ C5: capacitor(,M,,0.75, 0.25);
 <a class="reference internal image-reference" href="_images/cm_0100c.png"><img alt="_images/cm_0100c.png" src="_images/cm_0100c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 12 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/25665b8b56d228105cea267fb991f73a/cm_0100c.ckt"><span class="xref download myst">Typy</span></a> kondenzátorov.</span><a class="headerlink" href="#cm-0100c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 13 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/25665b8b56d228105cea267fb991f73a/cm_0100c.ckt"><span class="xref download myst">Typy</span></a> kondenzátorov.</span><a class="headerlink" href="#cm-0100c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -496,7 +520,7 @@ C5: capacitor(,M,,0.75, 0.25);
 <a class="reference internal image-reference" href="_images/cm_0100d.png"><img alt="_images/cm_0100d.png" src="_images/cm_0100d.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 13 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2dbdebab9768d1615d99e0c7c9989193/cm_0100d.ckt"><span class="xref download myst">Typy</span></a> cievok.</span><a class="headerlink" href="#cm-0100d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 14 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2dbdebab9768d1615d99e0c7c9989193/cm_0100d.ckt"><span class="xref download myst">Typy</span></a> cievok.</span><a class="headerlink" href="#cm-0100d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -540,7 +564,7 @@ D5: diode(,U);  D6: diode(,ZK);    D7: diode(,T);   D8: diode(,,R);
 <a class="reference internal image-reference" href="_images/cm_0100e.png"><img alt="_images/cm_0100e.png" src="_images/cm_0100e.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 14 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/83c5c2422b5a676103998d144554d982/cm_0100e.ckt"><span class="xref download myst">Typy</span></a> diód.</span><a class="headerlink" href="#cm-0100e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 15 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/83c5c2422b5a676103998d144554d982/cm_0100e.ckt"><span class="xref download myst">Typy</span></a> diód.</span><a class="headerlink" href="#cm-0100e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -625,7 +649,7 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 <a class="reference internal image-reference" href="_images/cm_0100f.png"><img alt="_images/cm_0100f.png" src="_images/cm_0100f.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 15 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d851c15eb70d3d1ed6a66d18cb3db06d/cm_0100f.ckt"><span class="xref download myst">Makrá</span></a> pre popis dvojpólov.</span><a class="headerlink" href="#cm-0100f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 16 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d851c15eb70d3d1ed6a66d18cb3db06d/cm_0100f.ckt"><span class="xref download myst">Makrá</span></a> pre popis dvojpólov.</span><a class="headerlink" href="#cm-0100f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="premenne-prvky">
@@ -675,7 +699,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100g.png"><img alt="_images/cm_0100g.png" src="_images/cm_0100g.png" style="width: 220px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 16 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 17 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -720,7 +744,7 @@ L2: line from (5,2.5) to (8,2.5) &quot;L2&quot; below;
 <a class="reference internal image-reference" href="_images/cm_0100h.png"><img alt="_images/cm_0100h.png" src="_images/cm_0100h.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 17 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -750,7 +774,7 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <a class="reference internal image-reference" href="_images/cm_0100i.png"><img alt="_images/cm_0100i.png" src="_images/cm_0100i.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 18 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 19 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

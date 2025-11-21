@@ -56,3 +56,39 @@ Pri vytváraní značiek integrovaných obvodov môžeme využívať makrá
     lg_plen
     lg_pinsep
 
+
+    
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from cm.utils import *
+
+data = r'''
+cct_init
+log_init
+include(lib_base.ckt)
+include(lib_color.ckt)
+include(lib_ic555.ckt)
+command "\sf"
+
+IC: IC555_2;
+    line from IC.Pin7 left 1;
+    dot;
+    {R1: resistor(up_ 1.5,,E); llabel(,\sf R_1,); DT1: dot; }
+     R2: resistor(down_ 1.5,,E); rlabel(,\sf R_2,); DT2: dot;
+     C1: capacitor(1,); rlabel(,\sf C,); gnd();
+
+     
+     move to IC.Pin5; C2: capacitor(0.75,); llabel(,\sf 10nF,); gnd();
+     move to IC.Pin1; gnd(0.5);
+'''
+
+_ = cm_compile('./src/cm_0207b', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_0207b.png
+:width: 400px
+:name: cm_0207b
+
+Rôzne spôsoby [zobrazenia](./src/cm_0207a.ckt) integrovaného obvodu. 
+```

@@ -1,0 +1,43 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+scale=1
+
+linewid = 2.0;
+command "\tt"
+
+linethick_(1.5);
+L1: inductor(elen_,L);
+
+# ohranicenie prvku
+color_dark_green;
+thinlines_;
+box dotted wid last [].wid ht last [].ht at last [];
+move to .85 between last [].sw and last [].se;
+
+# popis atributov
+spline <- down arrowht*2.9 right arrowht/2 then right 0.15; " last []" ljust;
+
+color_blue;
+arrow <- down 0.3 from L1.start chop 0.05; "L1.start" below;
+arrow <- down 0.3 from L1.end chop 0.05;   "L1.end"   below;
+arrow <- down last [].c.y-last arrow.end.y from L1.c; "L1.centre" below;
+
+# popis rozmerov
+color_red;
+dimension_(from L1.start to L1.end,0.55,elen\_,0.4);
+dimension_(right_ dimen_ from L1.c-(dimen_/2,0),0.4,dimen\_,0.5);
+
+.PE

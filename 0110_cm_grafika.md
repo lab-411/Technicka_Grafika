@@ -22,7 +22,13 @@ Základné grafické objekty (*line*, *spline*, *arc*, *box*, *circle*, *ellipse
 
 Všeobecný formát pre definíciu grafických objektov v *dpic* má tvar
 
-    [ Reference :] object [ attributes ] [ placement ] [ strings ]
+    [reference:] object [atribútes] [placement] [string]
+    
+    reference  - označenie objektu pre prístup k jeho parametrom
+    object     - grafický objekt (line, box ...)
+    atribútes  - forma zobrazenie objektu
+    placement  - umiestnenie objektu
+    string     - text ktorý sa zobrazí v geometrickom strede objektu
     
 Príklad
 
