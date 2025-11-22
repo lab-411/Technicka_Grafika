@@ -1,0 +1,30 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+cct_init
+log_init
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+include(lib_user.ckt)
+include(lib_ic485.ckt)
+
+command "\sf"
+
+IC1: IC485_LEFT;{"MAX485" at last[] .s below;}
+TERM_485;
+LINE_485
+TERM_485;
+IC2: IC485_RIGHT; {"MAX485" at last[] .s below;}
+
+.PE

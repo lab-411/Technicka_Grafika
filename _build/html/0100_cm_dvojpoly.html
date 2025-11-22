@@ -403,9 +403,9 @@ parameters - parametre určujúce tvar objektu
 
 atribúty
 
-  .start   - bod začiatku vykreslovania prvku
-  .centre  - stred prvku
-  .end     - bod ukončenia vykreslovania prvku
+  .start   - súradnice začiatku vykreslovania prvku
+  .centre  - súradnice stredu prvku
+  .end     - súradnice ukončenia vykreslovania prvku
 </pre></div>
 </div>
 <p>Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, cievka, dióda a zdroj sú uvedené v nasledujúcich kapitolách. Kompletný zoznam makier pre kreslenie dvojpólov a ich parametrov je v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
@@ -763,8 +763,10 @@ rarrow(label, direction);
 </div>
 <p>Použitie makier ukazuje nasledujúci príklad.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>S1: source(up_ 2.5, AC); larrow(V_{0}, &lt;-); b_current(i_0, ,Out, End, 0.45 );
+
 R1: resistor(right_ 2.5,, E); larrow(V_{1}, -&gt;); rlabel(,R_1,);
     dot; {tconn(1.5,O); &quot;1&quot; ljust;}
+
 R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
     dot; tconn(right_ 1.5,O); &quot;2&quot; ljust;
     line to S1.start;

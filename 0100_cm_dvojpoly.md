@@ -110,9 +110,9 @@ Vlastnosti dvojpólov potom popisuje nasledujúce parametre
     
     atribúty
     
-      .start   - bod začiatku vykreslovania prvku
-      .centre  - stred prvku
-      .end     - bod ukončenia vykreslovania prvku
+      .start   - súradnice začiatku vykreslovania prvku
+      .centre  - súradnice stredu prvku
+      .end     - súradnice ukončenia vykreslovania prvku
         
         
 Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, cievka, dióda a zdroj sú uvedené v nasledujúcich kapitolách. Kompletný zoznam makier pre kreslenie dvojpólov a ich parametrov je v [dokumentácii](./data/Circuit_macros_10_6.pdf). 
@@ -654,8 +654,10 @@ _ = cm_compile('./src/cm_0100h', data, dpi=600)
 Použitie makier ukazuje nasledujúci príklad.
 
     S1: source(up_ 2.5, AC); larrow(V_{0}, <-); b_current(i_0, ,Out, End, 0.45 );
+    
     R1: resistor(right_ 2.5,, E); larrow(V_{1}, ->); rlabel(,R_1,);
         dot; {tconn(1.5,O); "1" ljust;}
+    
     R2: resistor(down_ 2.5,, E); larrow(V_{2}, ->); rlabel(,R_2,)
         dot; tconn(right_ 1.5,O); "2" ljust;
         line to S1.start;

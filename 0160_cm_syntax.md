@@ -147,6 +147,10 @@ Stred.y  # má hodnotu 6
 Referencie sú globálne, referencia definovaná v bloku je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.
 
 
+### <font color='brown'> Zložené objekty </font>
+
+Uzatvorené v zátvorkách *[  .. ]*
+
 
 ### <font color='brown'>  Bloky  </font>
 

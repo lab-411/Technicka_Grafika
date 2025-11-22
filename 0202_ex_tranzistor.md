@@ -544,7 +544,7 @@ _ = cm_compile('./src/cm_202f', data, dpi=600 )
 :width: 600px
 :name: cm_202f
 
-[Príklad]./src/cm_202f.ckt) zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.
+[Príklad](./src/cm_202f.ckt) zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.
 ```
 
 ## <font color='teal'>  FET tranzistor </font> 

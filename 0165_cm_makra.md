@@ -105,7 +105,7 @@ _ = cm_compile('./src/cm_0165a', data, dpi=600)
 :width: 650px
 :name: cm_0165a
 
-[Postup](./src/cm_0165a.ckt) generovania obrázkov.
+Postup generovania obrázkov.
 ```
 
 

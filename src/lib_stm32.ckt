@@ -1,33 +1,8 @@
 #=======================================================================
-# Kniznica yymmdd-stm32.ckt
+# Kniznica lib_stm32.ckt
 #=======================================================================
 # Bloky pre kreslenie strukturnych vztahov v STM32
 #
-#
-# Obmedzenia a chyby
-# ----------------------------------------------------------------------
-# - nesmu sa použivat nazvy makier v textoch pre LaTex (napr. switch),
-#   v pripade konfliktu mien treba použit \\ v texte (sw\\itch)
-#
-# - podtrzitko v obycajnom (nie math) texte je treba pisat ako \_
-#
-# - makro setrgb pouziva premenne r_  g_  b_
-#   po jeho pouziti v skripte sa tieto inicializuju,
-#   pri pouziti vyrazu napr.  r_{ab} je tento treba pisat ako r _{ab}
-#
-# - resetrgb() nefunguje ...
-#
-#-----------------------------------------------------------------------
-# Historia / verzia
-#
-# 210717 - vytvorenie kniznice odclenenim z user.ckt
-#
-#=======================================================================
-# Definicia konstant
-#-----------------------------------------------------------------------
-
-                        
-#=======================================================================
 # Definicia makier
 #-----------------------------------------------------------------------
 # vonkajsi terminal
