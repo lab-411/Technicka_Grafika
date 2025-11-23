@@ -13,17 +13,17 @@ kernelspec:
 ---
 
 
-# <font color='navy'> Jednoduché obvody  </font> 
+# <font color='navy'> Pasívne obvody  </font> 
 
 ## <font color='teal'>  Odporový delič </font> 
 
 V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:
 
-* zaradenie pomocnej knižnice [lib_base.ckt](./src/lib_base.ckt) a [lib_user.ckt](./src/lib_user.ckt) do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov,  vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie `CircuitMacros`
+* zaradenie pomocnej knižnice [lib_base.ckt](./src/lib_base.ckt) a [lib_user.ckt](./src/lib_user.ckt) do zdrojového kódu, tieto obsahujú makrá pre vykreslovanie mriežky a prvky, ktoré nie sú súčasťou distribúcie `CircuitMacros`
 * používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. Prvky zapojenia **nie sú** v tomto príklade ukladané na absolútne súradnice pracovnej plochy
 * použitie atribútov komponentov na výpočty *(x,y)* súradníc, napr. *(DC.s.x, R2.end.y)*
 * použitie príkazov *larrow* pre zobrazenie napätí na rezistoroch
-* použitie šípky *line -> * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu TODO
+* použitie šípky *line -> * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu **TODO**
 
       include(lib_base.ckt)
       include(lib_user.ckt)

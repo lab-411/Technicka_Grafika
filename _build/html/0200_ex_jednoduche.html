@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Jednoduché obvody &#8212; cm 1.00 documentation</title>
+    <title>Pasívne obvody &#8212; cm 1.00 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -185,7 +185,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Príklady</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Jednoduché obvody  </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Pasívne obvody  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
@@ -338,7 +338,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><font color='navy'> Jednoduché obvody  </font></h1>
+    <h1><font color='navy'> Pasívne obvody  </font></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,17 +362,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="jednoduche-obvody">
-<h1><font color='navy'> Jednoduché obvody  </font><a class="headerlink" href="#jednoduche-obvody" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pasivne-obvody">
+<h1><font color='navy'> Pasívne obvody  </font><a class="headerlink" href="#pasivne-obvody" title="Link to this heading">#</a></h1>
 <section id="odporovy-delic">
 <h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
 <p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:</p>
 <ul>
-<li><p>zaradenie pomocnej knižnice <a class="reference download internal" download="" href="_downloads/616026fd2a08c0086f0a934c6095b0cc/lib_base.ckt"><span class="xref download myst">lib_base.ckt</span></a> a <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> do zdrojového kódu, táto obsahuje makrá pre modifikované značky zdrojov,  vykreslovanie mriežky a ďaľšie, ktoré nie sú súčasťou distribúcie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code></p></li>
+<li><p>zaradenie pomocnej knižnice <a class="reference download internal" download="" href="_downloads/616026fd2a08c0086f0a934c6095b0cc/lib_base.ckt"><span class="xref download myst">lib_base.ckt</span></a> a <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> do zdrojového kódu, tieto obsahujú makrá pre vykreslovanie mriežky a prvky, ktoré nie sú súčasťou distribúcie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code></p></li>
 <li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. Prvky zapojenia <strong>nie sú</strong> v tomto príklade ukladané na absolútne súradnice pracovnej plochy</p></li>
 <li><p>použitie atribútov komponentov na výpočty <em>(x,y)</em> súradníc, napr. <em>(DC.s.x, R2.end.y)</em></p></li>
 <li><p>použitie príkazov <em>larrow</em> pre zobrazenie napätí na rezistoroch</p></li>
-<li><p>použitie šípky *line -&gt; * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu TODO</p>
+<li><p>použitie šípky *line -&gt; * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu <strong>TODO</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_base.ckt)
 include(lib_user.ckt)
 d = 1.5;
