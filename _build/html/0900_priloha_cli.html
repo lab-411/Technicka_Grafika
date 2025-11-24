@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Kompilácia skriptov &#8212; cm 1.00 documentation</title>
+    <title>Export obrázkov &#8212; cm 1.00 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -194,7 +194,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Kompilácia skriptov </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Export obrázkov </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0010_sphinx_myst.html"><font color="navy"> <b> Elektronická publikácia </b></font></a></li>
@@ -336,7 +336,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><font color='navy'> Kompilácia skriptov </font></h1>
+    <h1><font color='navy'> Export obrázkov </font></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -346,8 +346,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preklad-a-kompilacia-s-vyuzitim-latex-u"><font color="teal"> Preklad a kompilácia s využitím LaTex-u </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preklad-a-kompilacia-bez-vyuzitia-latex-u"><font color="teal"> Preklad a kompilácia bez využitia LaTex-u </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-pycirkuit"><font color="teal"> CLI PyCirkuit </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a></li>
 </ul>
             </nav>
         </div>
@@ -359,54 +360,136 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="kompilacia-skriptov">
-<h1><font color='navy'> Kompilácia skriptov </font><a class="headerlink" href="#kompilacia-skriptov" title="Link to this heading">#</a></h1>
-<p>Proces vytvárania zapojenia, jeho kompilácie a konverzie do výsledného grafického formátu môžeme urobiť aj ručne priamo z konzoly systému. V nasledujúcom texte sú použité označenia</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PATH_TO_CM_MACROS - cesta k inštalácii circuit-macros
-SOURCE_FILE       - zdrojový textový súbor s vytvoreným zapojením
-PIC_FILE          - vystupny subor predpropcesora m4 s prikazmi gpic       
-PSTRICK_FILE      - kompilovanu subor s prikazmi pre pstricks
-LATEX_FILE        - finalny LaTeX súbor
+  <section class="tex2jax_ignore mathjax_ignore" id="export-obrazkov">
+<h1><font color='navy'> Export obrázkov </font><a class="headerlink" href="#export-obrazkov" title="Link to this heading">#</a></h1>
+<p>Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov z programu <strong>PyCirkuit</strong> tak ako je to uvedené v úvode tejto publikácie. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.</p>
+<section id="cli-pycirkuit">
+<h2><font color='teal'> CLI PyCirkuit </font><a class="headerlink" href="#cli-pycirkuit" title="Link to this heading">#</a></h2>
+<p>Program <strong>PyCirkuit</strong> umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit --help
 </pre></div>
 </div>
-<section id="preklad-a-kompilacia-s-vyuzitim-latex-u">
-<h2><font color='teal'> Preklad a kompilácia s využitím LaTex-u </font><a class="headerlink" href="#preklad-a-kompilacia-s-vyuzitim-latex-u" title="Link to this heading">#</a></h2>
-<p>Najprv uvedieme komplikovanejší postup s využitím renderovania textov v LaTex-e a s využitím makier PSTricks, predpokladáme, že LaTex s príslušnými modulmi máte už nainštalovaný. V prvom kroku preložíme naše zapojenie pomocou makroprocesora do príkazov jazyka PIC</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m4 -I PATH_TO_CM_MACROS pstricks.m4 SOURCE_FILE &gt; PIC_FILE
+<p>Nastavenie parametrov pre generovanie obrázkov vo formáte PNG v rozlíšení 600 dpi</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit --links --overwrite --dpi 600 -p &lt;file_name&gt;.ckt
 </pre></div>
 </div>
-<p>v príkaze zadefinujeme cestu k adresáru, kde sme rozbalili makrá z archívu, náš zdrojový súbor so zapojením a zvolíme meno súboru, do ktorého sa uložia príkazy v PIC. <em>pstricks.m4</em> obsahuje sadu pomocných makier pre finálny výstup.</p>
-<p>V druhom kroku súbor v jazyku PIC do sady makier <em>pstricks</em> preložíme pomocou</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dpic -p PIC_FILE &gt; PSTRICK_FILE
-</pre></div>
-</div>
-<p>Výsledkom prekladu je zdrojový text pre LaTexu-u s príkazmi pre <em>pstricks</em>, ktorý má štandardný tvar</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{pspicture}  ...  \end{pspicture}
-</pre></div>
-</div>
-<p>Skompilovaný súbor už môžeme vložiť do dokumentu v LaTex-u a ďalej s ním pracovať. Pretože pri kreslení schém potrebuje priebžne sledovať výsledok práce, pre renderovanie obrázku zapojenia do postscriptu môžeme použiť krátky dokument (LATEX_FILE)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\documentclass{article}
-\usepackage{times,pstricks,pst-eps,pst-grad}
-\usepackage{graphicx}
-\begin{document}
-\begin{TeXtoEPS}
-...
-\input PSTRICK_FILE        &lt;- menu skompilovaneho suboru bez pripony
-...
-\end{TeXtoEPS}\end{document}
-</pre></div>
-</div>
-<p>ktorý preložíme</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>latex LATEX_FILE      &lt;- bez pripony .tex
-dvips -E LATEX_FILE   &lt;- bez pripony .aux
-</pre></div>
-</div>
-<p>Výsledkom prekladu je obrázok vo formáte postscript. Aj keď uvedený postup vyzerá komplikovane, jednoduché skripty v pythone alebo shell-e problém vyriešia.</p>
 </section>
-<section id="preklad-a-kompilacia-bez-vyuzitia-latex-u">
-<h2><font color='teal'> Preklad a kompilácia bez využitia LaTex-u </font><a class="headerlink" href="#preklad-a-kompilacia-bez-vyuzitia-latex-u" title="Link to this heading">#</a></h2>
-<p>Pri jednoduchšom spôsobe grafický súbor vygeneruje priamo kompilátor <em>dpic</em>, samozrejme ale bez renderovania textov LaTex-om.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m4 -I PATH_TO_CM_MACROS postscript.m4 SOURCE_FILE | dpic -r &gt; PS_FILE
+<section id="shell-skript">
+<h2><font color='teal'> Shell skript </font><a class="headerlink" href="#shell-skript" title="Link to this heading">#</a></h2>
+<p>Skript pre OS Linux využíva programy</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m4     - štandardná súčasť operačného systému
+dpic   - kompilátor   
+latex  - systém na sadzbu textu 
+dvips  - konvertor DVI-&gt;PS, sučasť distribúcie LaTeX
+gs     - konvertor PS-&gt;PNG, súčasť distribúcie ghostscript
+</pre></div>
+</div>
+<p>Inštalácia programov</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install dpic
+sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
+             texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
+sudo apt-get install ghostscript
+</pre></div>
+</div>
+<p>Pre konverziu generovaných sriptov v LateXe potrebujeme pomocný súbor <em>template.tex</em> s obsahom</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\documentclass{article}
+\usepackage{pst-plot, pst-eps, tikz}
+\pagestyle{empty}
+
+\begin{document}
+    \begin{TeXtoEPS}
+        \input{temp_data.tex}
+    \end{TeXtoEPS}
+\end{document}
+</pre></div>
+</div>
+<p>Shell skript <em>cmc.sh</em>, ktorý generuje obrázky vo formáte PNG má potom tvar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+# cesta ku M4 knizniciam CircuitMacros (libcct,m4 ... )
+CIRCUIT_MACROS=&#39;./cm/&#39;
+
+# expadovanie makier do formatu TIKZ
+m4 -I $CIRCUIT_MACROS pgf.m4  $1 | dpic -g &gt; temp_data.tex
+
+# kompilacia latex suboru
+latex template.tex &gt; latex.log
+dvips -q* -E template.dvi -G0 -o $(basename $1 .ckt).eps &gt; dvips.log
+
+# konverzia *.eps -&gt; *.png, parameter r-rozzlisenie v dpi
+gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o $(basename $1 .ckt).png $(basename $1 .ckt).eps
+
+# zmazanie docasnych suborov
+rm temp_data.tex
+rm dvips.log
+rm latex.log
+rm $(basename $1 .ckt).eps
+rm template.dvi
+rm template.aux
+rm template.log
+</pre></div>
+</div>
+<p>V skripte upravte premennú podľa aktuálnej konfigurácie adresárov. Nastavte skript ako spustiteľný</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chmod +x cmc.sh
+</pre></div>
+</div>
+<p>Skript spustíte z konzoly príkazom</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>,/cmc.sh &lt;meno_suboru&gt;.ckt
+</pre></div>
+</div>
+</section>
+<section id="python-skript">
+<h2><font color='teal'> Python skript </font><a class="headerlink" href="#python-skript" title="Link to this heading">#</a></h2>
+<p>Pre generovanie obrázkov v prostredí Pythonu je možné využiť funkciu s volaniami externých programov</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
+import sys
+
+def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
+
+    CIRCUIT_MACROS_PATH = &#39;./cm&#39;
+
+    os.system( &#39;m4 -I %s pgf.m4  %s &gt; data.dpc&#39;%(CIRCUIT_MACROS_PATH, file_name+&#39;.ckt&#39;) )
+    os.system( &#39;dpic -g data.dpc &gt; data.tex&#39;) 
+    
+    temp = r&#39;&#39;&#39;
+    \documentclass{article}
+    \usepackage{pstricks,pst-plot, pst-eps, tikz}
+    \pagestyle{empty}
+    \begin{document}
+    \begin{TeXtoEPS}
+    \input{temp_data.tex}
+    \end{TeXtoEPS}
+    \end{document}
+    &#39;&#39;&#39;
+
+    f = open(&#39;template.tex&#39;, &#39;w&#39; ) 
+    f.write(temp)
+    f.flush()
+    f.close()
+    
+    os.system( &#39;latex template.tex &gt; latex.log&#39;)   
+    os.system( &#39;dvips -q* -E template.dvi -G0 -o %s &gt; dvips.log &#39;%(file_name+&#39;.eps&#39;) )
+    os.system(&#39;gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s &gt;null&#39;%(file_name+&#39;.png&#39;, file_name+&#39;.eps&#39;))
+    
+    os.system( &#39;rm *.dvi&#39; ) 
+    os.system( &#39;rm *.aux&#39; ) 
+    os.system( &#39;rm *.log&#39; ) 
+    os.system( &#39;rm *.tex&#39; ) 
+    os.system( &#39;rm *.eps&#39; ) 
+    os.system( &#39;rm *.dpc&#39; ) 
+    return file_name + &#39;.ckt&#39;
+</pre></div>
+</div>
+<p>Použitie skriptu</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data = r&#39;&#39;&#39;
+.PS
+scale=2.54
+cct_init
+
+resistor(,,E); rlabel(,R_1,);
+.PE
+&#39;&#39;&#39;
+
+cm_compile(&#39;obr_01&#39;, data, dpi=600)
 </pre></div>
 </div>
 </section>
@@ -457,8 +540,9 @@ dvips -E LATEX_FILE   &lt;- bez pripony .aux
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preklad-a-kompilacia-s-vyuzitim-latex-u"><font color="teal"> Preklad a kompilácia s využitím LaTex-u </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preklad-a-kompilacia-bez-vyuzitia-latex-u"><font color="teal"> Preklad a kompilácia bez využitia LaTex-u </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-pycirkuit"><font color="teal"> CLI PyCirkuit </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a></li>
 </ul>
   </nav></div>
 

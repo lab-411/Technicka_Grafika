@@ -41,7 +41,7 @@ Pre inštalácia PyCirkuit pod OS Windows potrebuje nainštalovať prostredie **
 
 * Stiahneme a nainštalujeme interpreter programovacieho jazyka Python3 pre Windows. Odporúčame použitie distribúcie [WinPython](https://winpython.github.io/), ktorá umožňuje spustiť Python na akomkoľvek počítači so systémom Windows bez nutnosti inštalácie. Zo [stránky](https://sourceforge.net/projects/winpython/files/WinPython_3.13/3.13.7.0/) stiahneme súbor [WinPython64-3.13.7.0slim.exe](https://sourceforge.net/projects/winpython/files/WinPython_3.13/3.13.7.0/WinPython64-3.13.7.0slim.exe/download).
 
-* Súbor uložíme na miesto v nejakom adresári v počítači. Po jeho spustení sa rozbalení v danom adresári, čím vznikne v tomto adresári podadresár s názvom **WPy64-31700** so spustiteľným súborom s názvom **WinPython Command Prompt.exe**.
+* Súbor uložíme do zvoleného adresáru, po jeho spustení sa rozbalí v danom adresári, čím vznikne v tomto adresári podadresár s názvom **WPy64-31700** so spustiteľným súborom s názvom **WinPython Command Prompt.exe**.
 Po jeho spustení sa objaví okno s príkazovým riadkom systému Windows, v ktorom je možné spustiť interpreter jazyka Python3.
 
 

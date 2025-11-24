@@ -13,62 +13,140 @@ kernelspec:
 ---
 
 
-# <font color='navy'> Kompilácia skriptov </font> 
+# <font color='navy'> Export obrázkov </font>
 
-Proces vytvárania zapojenia, jeho kompilácie a konverzie do výsledného grafického formátu môžeme urobiť aj ručne priamo z konzoly systému. V nasledujúcom texte sú použité označenia
+Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov z programu **PyCirkuit** tak ako je to uvedené v úvode tejto publikácie. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.
 
-    PATH_TO_CM_MACROS - cesta k inštalácii circuit-macros
-    SOURCE_FILE       - zdrojový textový súbor s vytvoreným zapojením
-    PIC_FILE          - vystupny subor predpropcesora m4 s prikazmi gpic       
-    PSTRICK_FILE      - kompilovanu subor s prikazmi pre pstricks
-    LATEX_FILE        - finalny LaTeX súbor
+## <font color='teal'> CLI PyCirkuit </font>
 
-## <font color='teal'> Preklad a kompilácia s využitím LaTex-u </font> 
+Program **PyCirkuit** umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom
+
+    pycirkuit --help
+
+Nastavenie parametrov pre generovanie obrázkov vo formáte PNG v rozlíšení 600 dpi
+    
+    pycirkuit --links --overwrite --dpi 600 -p <file_name>.ckt
 
 
-Najprv uvedieme komplikovanejší postup s využitím renderovania textov v LaTex-e a s využitím makier PSTricks, predpokladáme, že LaTex s príslušnými modulmi máte už nainštalovaný. V prvom kroku preložíme naše zapojenie pomocou makroprocesora do príkazov jazyka PIC
+## <font color='teal'> Shell skript </font>
 
-    m4 -I PATH_TO_CM_MACROS pstricks.m4 SOURCE_FILE > PIC_FILE
+Skript pre OS Linux využíva programy
 
-v príkaze zadefinujeme cestu k adresáru, kde sme rozbalili makrá z archívu, náš zdrojový súbor so zapojením a zvolíme meno súboru, do ktorého sa uložia príkazy v PIC. *pstricks.m4* obsahuje sadu pomocných makier pre finálny výstup. 
+    m4     - štandardná súčasť operačného systému
+    dpic   - kompilátor   
+    latex  - systém na sadzbu textu 
+    dvips  - konvertor DVI->PS, sučasť distribúcie LaTeX
+    gs     - konvertor PS->PNG, súčasť distribúcie ghostscript
+    
+    
+Inštalácia programov
 
-V druhom kroku súbor v jazyku PIC do sady makier *pstricks* preložíme pomocou
+    sudo apt-get install dpic
+    sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
+                 texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
+    sudo apt-get install ghostscript
 
-    dpic -p PIC_FILE > PSTRICK_FILE
-
-Výsledkom prekladu je zdrojový text pre LaTexu-u s príkazmi pre *pstricks*, ktorý má štandardný tvar
-
-    \begin{pspicture}  ...  \end{pspicture}
-
-Skompilovaný súbor už môžeme vložiť do dokumentu v LaTex-u a ďalej s ním pracovať. Pretože pri kreslení schém potrebuje priebžne sledovať výsledok práce, pre renderovanie obrázku zapojenia do postscriptu môžeme použiť krátky dokument (LATEX_FILE)
+Pre konverziu generovaných sriptov v LateXe potrebujeme pomocný súbor *template.tex* s obsahom
 
     \documentclass{article}
-    \usepackage{times,pstricks,pst-eps,pst-grad}
-    \usepackage{graphicx}
+    \usepackage{pst-plot, pst-eps, tikz}
+    \pagestyle{empty}
+
     \begin{document}
-    \begin{TeXtoEPS}
-    ...
-    \input PSTRICK_FILE        <- menu skompilovaneho suboru bez pripony
-    ...
-    \end{TeXtoEPS}\end{document}
-
-
-
-ktorý preložíme 
-
-    latex LATEX_FILE      <- bez pripony .tex
-    dvips -E LATEX_FILE   <- bez pripony .aux
+        \begin{TeXtoEPS}
+            \input{temp_data.tex}
+        \end{TeXtoEPS}
+    \end{document}
     
-Výsledkom prekladu je obrázok vo formáte postscript. Aj keď uvedený postup vyzerá komplikovane, jednoduché skripty v pythone alebo shell-e problém vyriešia. 
+    
+Shell skript *cmc.sh*, ktorý generuje obrázky vo formáte PNG má potom tvar 
+
+    #!/bin/bash
+    # cesta ku M4 knizniciam CircuitMacros (libcct,m4 ... )
+    CIRCUIT_MACROS='./cm/'
+
+    # expadovanie makier do formatu TIKZ
+    m4 -I $CIRCUIT_MACROS pgf.m4  $1 | dpic -g > temp_data.tex
+
+    # kompilacia latex suboru
+    latex template.tex > latex.log
+    dvips -q* -E template.dvi -G0 -o $(basename $1 .ckt).eps > dvips.log
+
+    # konverzia *.eps -> *.png, parameter r-rozzlisenie v dpi
+    gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o $(basename $1 .ckt).png $(basename $1 .ckt).eps
+
+    # zmazanie docasnych suborov
+    rm temp_data.tex
+    rm dvips.log
+    rm latex.log
+    rm $(basename $1 .ckt).eps
+    rm template.dvi
+    rm template.aux
+    rm template.log
+
+V skripte upravte premennú podľa aktuálnej konfigurácie adresárov. Nastavte skript ako spustiteľný
+
+    chmod +x cmc.sh
 
 
-## <font color='teal'> Preklad a kompilácia bez využitia LaTex-u </font> 
+Skript spustíte z konzoly príkazom 
 
+    ,/cmc.sh <meno_suboru>.ckt
+    
+    
+## <font color='teal'> Python skript </font>
 
-Pri jednoduchšom spôsobe grafický súbor vygeneruje priamo kompilátor *dpic*, samozrejme ale bez renderovania textov LaTex-om.
+Pre generovanie obrázkov v prostredí Pythonu je možné využiť funkciu s volaniami externých programov
 
-    m4 -I PATH_TO_CM_MACROS postscript.m4 SOURCE_FILE | dpic -r > PS_FILE
+    import os
+    import sys
+    
+    def cm_compile(file_name, cm_data='', dpi=300):
+    
+        CIRCUIT_MACROS_PATH = './cm'
+    
+        os.system( 'm4 -I %s pgf.m4  %s > data.dpc'%(CIRCUIT_MACROS_PATH, file_name+'.ckt') )
+        os.system( 'dpic -g data.dpc > data.tex') 
+        
+        temp = r'''
+        \documentclass{article}
+        \usepackage{pstricks,pst-plot, pst-eps, tikz}
+        \pagestyle{empty}
+        \begin{document}
+        \begin{TeXtoEPS}
+        \input{temp_data.tex}
+        \end{TeXtoEPS}
+        \end{document}
+        '''
+    
+        f = open('template.tex', 'w' ) 
+        f.write(temp)
+        f.flush()
+        f.close()
+        
+        os.system( 'latex template.tex > latex.log')   
+        os.system( 'dvips -q* -E template.dvi -G0 -o %s > dvips.log '%(file_name+'.eps') )
+        os.system('gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s >null'%(file_name+'.png', file_name+'.eps'))
+        
+        os.system( 'rm *.dvi' ) 
+        os.system( 'rm *.aux' ) 
+        os.system( 'rm *.log' ) 
+        os.system( 'rm *.tex' ) 
+        os.system( 'rm *.eps' ) 
+        os.system( 'rm *.dpc' ) 
+        return file_name + '.ckt'
 
+Použitie skriptu
 
+    data = r'''
+    .PS
+    scale=2.54
+    cct_init
+
+    resistor(,,E); rlabel(,R_1,);
+    .PE
+    '''
+
+    cm_compile('obr_01', data, dpi=600) 
 
 

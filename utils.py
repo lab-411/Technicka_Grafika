@@ -66,8 +66,10 @@ def cm_compile(file_name, cm_data='', dpi=300):
     #os.system( 'm4 -I %s pstricks.m4 %s | dpic -p > data.tex'%(CIRCUIT_MACROS_PATH, file_name+'.ckt') )
     # TIKZ 
     os.system( 'm4 -I %s pgf.m4  %s > data.dpc'%(CIRCUIT_MACROS_PATH, file_name+'.ckt') )
+    
     # DPIC
     os.system( 'dpic -g data.dpc > data.tex') 
+    
     
     temp = r'''
     \documentclass{article}
@@ -87,7 +89,6 @@ def cm_compile(file_name, cm_data='', dpi=300):
     
     # LATEX
     os.system( 'latex template.tex > latex.log')   
-    
     # DVIPS
     os.system( 'dvips -q* -E template.dvi -G0 -o %s > dvips.log '%(file_name+'.eps') )
     #print('DVIPS')
@@ -133,6 +134,6 @@ line from P2 to P3 dashed;
 
 '''
 
-#_ = cm_compile('9999_cm_0110d', data, dpi=600)  
+_ = cm_compile('qqqq', data, dpi=600)  
 
 

@@ -196,7 +196,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Kompilácia skriptov </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Export obrázkov </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0010_sphinx_myst.html"><font color="navy"> <b> Elektronická publikácia </b></font></a></li>
@@ -375,15 +375,22 @@ resistor;         - príkaz pre vykreslenie rezistoru
 .PE               - koniec postupnosti prikazov
 </pre></div>
 </div>
-<p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <em>pycirkuit</em>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<em>.PS</em>, <em>.PE</em> …)</p>
+<p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <em>PyCirkuit</em>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch v tejto publikácii budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<em>.PS</em>, <em>.PE</em> …)</p>
 <figure class="align-default" id="pck01">
 <a class="reference internal image-reference" href="_images/pck_01.png"><img alt="_images/pck_01.png" src="_images/pck_01.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 5 </span><span class="caption-text">Editácia a preklad zapojenia v programe <em>pycirkuit</em></span><a class="headerlink" href="#pck01" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 5 </span><span class="caption-text">Editácia a preklad zapojenia v programe <em>PyCirkuit</em></span><a class="headerlink" href="#pck01" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo ukončenim riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov.</p>
+<p>Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo ukončenim riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom <em>Export</em> vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.</p>
+<figure class="align-default" id="pck02">
+<a class="reference internal image-reference" href="_images/pck_02.png"><img alt="_images/pck_02.png" src="_images/pck_02.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 6 </span><span class="caption-text">Konfigurácia formátu exportovaných obrázkov v programe <em>PyCirkuit</em></span><a class="headerlink" href="#pck02" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="ukladanie-prvkov">
 <h2><font color='teal'> Ukladanie prvkov </font><a class="headerlink" href="#ukladanie-prvkov" title="Link to this heading">#</a></h2>
 <p>Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii, ktorá je uchovávaná v virtuálnom kurzore označenom ako <code class="docutils literal notranslate"><span class="pre">Here</span></code>. Prvky v zapojení (<em>resistor</em>, <em>capacitor</em>) ukladáme za sebou v zadaných smeroch príkazmi <strong>up_</strong>, <strong>down_</strong>, <strong>right_</strong> a <strong>left_</strong> . Pri zmene smeru sa automaticku mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro <em>dot</em></p>
@@ -401,14 +408,14 @@ diode;
 <a class="reference internal image-reference" href="_images/cm_0014a.png"><img alt="_images/cm_0014a.png" src="_images/cm_0014a.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 6 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c491e1027f5926f57ca3c33818b823b8/cm_0014a.ckt"><span class="xref download myst">Ukladanie</span></a> prvkov zapojenia</span><a class="headerlink" href="#cm-0014a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 7 </span><span class="caption-text">Ukladanie prvkov zapojenia na základe ich poradia v programe.</span><a class="headerlink" href="#cm-0014a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Po vykreslení nejakého prvku zapojenie sa hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code> posúva tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na pozíciu (x,y) pomocou príkazu</p>
+<p>Po vykreslení nejakého prvku zapojenie sa hodnota kurzora <code class="docutils literal notranslate"><span class="pre">Here</span></code> posúva v smere ukladanie tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (x,y);
 </pre></div>
 </div>
-<p>alebo vykreslením prepojovacieho vodiča alebo čiary príkazom <em>line</em>, <code class="docutils literal notranslate"><span class="pre">Here</span></code> sa po vykreslení presunie na koniec čiary</p>
+<p>alebo vykreslením prepojovacieho vodiča alebo čiary príkazom <em>line</em>, kurzor <code class="docutils literal notranslate"><span class="pre">Here</span></code> sa po vykreslení presunie na koniec čiary</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line to (x,y);                 - vykrelenie čiary z Here do (x,y) 
 line right_ d;                 - čiara z Here zadaným smerom a dĺžkou
 line from (x1,y1) to (x2,y2);  - čiara medzi dvoma bodmi
@@ -424,9 +431,9 @@ r1: resistor;       - chyba
 </pre></div>
 </div>
 <p>K prvkom zapojenia a polohe ich častí pristupovať pomocou referencie a pomenovaných atribútov oddelených od seba bodkou <code class="docutils literal notranslate"><span class="pre">.</span></code> Skupiny prvkov, napríklad dvojpóly (<em>resistor</em> …), majú spoločné atribúty a každý typ prvku môže mať naviac aj vlastné, špecifické atribúty. Napríklad, spoločné atribúty pre dvojpóly sú:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.start    .s          - bod v ktorom bol začiatok kreslenia prvku
-.end      .e          - bod v ktorom skončilo kreslenie prvku
-.center   .c          - geometrický stred prvku
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.start    .s         - bod v ktorom bol začiatok kreslenia prvku
+.end      .e         - bod v ktorom skončilo kreslenie prvku
+.center   .c         - geometrický stred prvku
 </pre></div>
 </div>
 <p>Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.</p>
@@ -442,7 +449,7 @@ line from R1.start to C1.end; # vykreslenie ciary medzi bodmi
 <a class="reference internal image-reference" href="_images/cm_0014b.png"><img alt="_images/cm_0014b.png" src="_images/cm_0014b.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 7 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/71ad4bc6b43a13276ba0e39f35386d10/cm_0014b.ckt"><span class="xref download myst">Použitie</span></a> referencií v prvkoch zapojenia.</span><a class="headerlink" href="#cm-0014b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 8 </span><span class="caption-text">Použitie referencií pri ukladaní prvkov zapojenia.</span><a class="headerlink" href="#cm-0014b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -480,7 +487,7 @@ R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
 <a class="reference internal image-reference" href="_images/cm_0014c.png"><img alt="_images/cm_0014c.png" src="_images/cm_0014c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 8 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/0529dc15a28fc6e58025579533b48497/cm_0014c.ckt"><span class="xref download myst">Označenie</span></a> prvkov zapojenia.</span><a class="headerlink" href="#cm-0014c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 9 </span><span class="caption-text">Označenie prvkov zapojenia.</span><a class="headerlink" href="#cm-0014c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -498,7 +505,7 @@ ellipse wid 2 ht 1 &quot;Ellipse&quot;;
 <a class="reference internal image-reference" href="_images/cm_0014d.png"><img alt="_images/cm_0014d.png" src="_images/cm_0014d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 9 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/5fddb05a8dcd442d04a3455a3f341527/cm_0014d.ckt"><span class="xref download myst">diagram</span></a> vykreslený pomocou príkazov <em>dpic</em></span><a class="headerlink" href="#cm-0014d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 10 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/5fddb05a8dcd442d04a3455a3f341527/cm_0014d.ckt"><span class="xref download myst">diagram</span></a> vykreslený pomocou príkazov <em>dpic</em></span><a class="headerlink" href="#cm-0014d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

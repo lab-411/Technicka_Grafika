@@ -26,16 +26,24 @@ Princíp vytvárania zapojení v `CircuitMacros` spočíva v zapise príkazov do
     .PE               - koniec postupnosti prikazov
 
 
-Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu *pycirkuit*, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (*.PS*, *.PE* ...) 
+Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu *PyCirkuit*, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch v tejto publikácii budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (*.PS*, *.PE* ...) 
 
 ```{figure} ./img/pck_01.png
 :width: 500px
 :name: pck01
 
-Editácia a preklad zapojenia v programe *pycirkuit*
+Editácia a preklad zapojenia v programe *PyCirkuit*
 ```
 
-Príkaz na riadku je ukončený bodkočiarkou `;` alebo ukončenim riadku (neviditeľný znak `\n`). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov.
+Príkaz na riadku je ukončený bodkočiarkou `;` alebo ukončenim riadku (neviditeľný znak `\n`). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom *Export* vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.
+
+```{figure} ./img/pck_02.png
+:width: 600px
+:name: pck02
+
+Konfigurácia formátu exportovaných obrázkov v programe *PyCirkuit*
+```
+
 
 ## <font color='teal'> Ukladanie prvkov </font> 
 
@@ -78,14 +86,14 @@ _ = cm_compile('./src/cm_0014a', data, dpi=600)
 :width: 300px
 :name: cm_0014a
 
-[Ukladanie](./src/cm_0014a.ckt) prvkov zapojenia
+Ukladanie prvkov zapojenia na základe ich poradia v programe.
 ```
 
-Po vykreslení nejakého prvku zapojenie sa hodnota `Here` posúva tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na pozíciu (x,y) pomocou príkazu 
+Po vykreslení nejakého prvku zapojenie sa hodnota kurzora `Here` posúva v smere ukladanie tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu 
 
     move to (x,y);
     
-alebo vykreslením prepojovacieho vodiča alebo čiary príkazom *line*, `Here` sa po vykreslení presunie na koniec čiary
+alebo vykreslením prepojovacieho vodiča alebo čiary príkazom *line*, kurzor `Here` sa po vykreslení presunie na koniec čiary
 
     line to (x,y);                 - vykrelenie čiary z Here do (x,y) 
     line right_ d;                 - čiara z Here zadaným smerom a dĺžkou
@@ -102,9 +110,9 @@ Každý prvok v zapojení môžeme označiť pomocou textovej referencie ukonče
 
 K prvkom zapojenia a polohe ich častí pristupovať pomocou referencie a pomenovaných atribútov oddelených od seba bodkou `.` Skupiny prvkov, napríklad dvojpóly (*resistor* ...), majú spoločné atribúty a každý typ prvku môže mať naviac aj vlastné, špecifické atribúty. Napríklad, spoločné atribúty pre dvojpóly sú:
 
-    .start    .s          - bod v ktorom bol začiatok kreslenia prvku
-    .end      .e          - bod v ktorom skončilo kreslenie prvku
-    .center   .c          - geometrický stred prvku
+    .start    .s         - bod v ktorom bol začiatok kreslenia prvku
+    .end      .e         - bod v ktorom skončilo kreslenie prvku
+    .center   .c         - geometrický stred prvku
     
 Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.
 
@@ -141,7 +149,7 @@ _ = cm_compile('./src/cm_0014b', data, dpi=600)
 :width: 250px
 :name: cm_0014b
 
-[Použitie](./src/cm_0014b.ckt) referencií v prvkoch zapojenia.
+Použitie referencií pri ukladaní prvkov zapojenia.
 ```
 
 ## <font color='teal'> Vlastnosti prvkov </font> 
@@ -201,7 +209,7 @@ _ = cm_compile('./src/cm_0014c', data, dpi=600)
 :width: 300px
 :name: cm_0014c
 
-[Označenie](./src/cm_0014c.ckt) prvkov zapojenia.
+Označenie prvkov zapojenia.
 ```
 
 ## <font color='teal'> Kreslenie diagramov </font> 
