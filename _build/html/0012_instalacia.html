@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -347,8 +347,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux"><font color="teal">  Linux </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows"><font color="teal">  Windows</font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-os"><font color="teal"> MAC-OS </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows"><font color="teal">  Windows</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacia-latex-a-python"><font color="brown"> Inštalácia LaTeX a Python</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacia-pycirkuit"><font color="brown"> Inštalácia PyCirkuit</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie-pycirkuit"><font color="brown"> Použitie PyCirkuit</font></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -364,21 +368,74 @@ document.write(`
 <h1><font color='navy'> Inštalácia  </font><a class="headerlink" href="#instalacia" title="Link to this heading">#</a></h1>
 <section id="linux">
 <h2><font color='teal'>  Linux </font><a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
-<p>Pre systém založený na derivátoch Ubuntu je vhodné použiť inštaláciu <em>CircuitMacros</em> spolu s editorom <em>pycirkuit</em>. Pre renderovanie textov, ktoré obsahujú matematické výrazy je potrebné nainštalovať aj podporu pre <em>LaTeX</em> a <em>dpic</em></p>
+<p>Pre systém založený na derivátoch Ubuntu je vhodné použiť inštaláciu jednoducého prostredia <strong>PyCirkuit</strong>, ktoré obsahuje v distribúcii aj knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>. Pre spracovanie skriptov je potrebné nainštalovať kompilátor <strong>dpic</strong> a pre renderovanie textov, ktoré obsahujú matematické výrazy aj podporu pre <strong>LaTeX</strong>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
 sudo apt install python3-pip 
 sudo apt-get -y install dpic
 sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
                  texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
-pip install pycirkuit --break-system-packages
+pip install pycirkuit 
+</pre></div>
+</div>
+<p>Po inštalácii spustíme prostredie <strong>PyCirkuit</strong>  v konzole príkazom</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit
 </pre></div>
 </div>
 </section>
 <section id="windows">
 <h2><font color='teal'>  Windows</font><a class="headerlink" href="#windows" title="Link to this heading">#</a></h2>
+<p>Pre inštalácia PyCirkuit pod OS Windows potrebuje nainštalovať prostredie <strong>LaTeX</strong>, interpreter <strong>Python</strong> a pomocné programy <strong>dpic</strong> a <strong>m4</strong> pre kompiláciu skriptov <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>.</p>
+<section id="instalacia-latex-a-python">
+<h3><font color='brown'> Inštalácia LaTeX a Python</font><a class="headerlink" href="#instalacia-latex-a-python" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Vyberieme a nainštalujeme distribúciu LaTeX-u pre Windows napr. MikTeX. Túto distribúciu LaTeX-u stiahneme zo stránky <a class="reference external" href="https://miktex.org/">miktex.org</a>. Pre inštaláciu postupujeme podľa tam uvedených <a class="reference external" href="https://miktex.org/howto/install-miktex">pokynov</a>.</p></li>
+<li><p>Stiahneme a nainštalujeme interpreter programovacieho jazyka Python3 pre Windows. Odporúčame použitie distribúcie <a class="reference external" href="https://winpython.github.io/">WinPython</a>, ktorá umožňuje spustiť Python na akomkoľvek počítači so systémom Windows bez nutnosti inštalácie. Zo <a class="reference external" href="https://sourceforge.net/projects/winpython/files/WinPython_3.13/3.13.7.0/">stránky</a> stiahneme súbor <a class="reference external" href="https://sourceforge.net/projects/winpython/files/WinPython_3.13/3.13.7.0/WinPython64-3.13.7.0slim.exe/download">WinPython64-3.13.7.0slim.exe</a>.</p></li>
+<li><p>Súbor uložíme na miesto v nejakom adresári v počítači. Po jeho spustení sa rozbalení v danom adresári, čím vznikne v tomto adresári podadresár s názvom <strong>WPy64-31700</strong> so spustiteľným súborom s názvom <strong>WinPython Command Prompt.exe</strong>.
+Po jeho spustení sa objaví okno s príkazovým riadkom systému Windows, v ktorom je možné spustiť interpreter jazyka Python3.</p></li>
+</ul>
 </section>
-<section id="mac-os">
-<h2><font color='teal'> MAC-OS </font><a class="headerlink" href="#mac-os" title="Link to this heading">#</a></h2>
+<section id="instalacia-pycirkuit">
+<h3><font color='brown'> Inštalácia PyCirkuit</font><a class="headerlink" href="#instalacia-pycirkuit" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Je vhodné program nainštalovať do virtuálneho prostredia Python-u, aby sme ho oddelili od ostatných inštalácií a knižníc Python-u, ktoré sa môžu nachádzať v operačnom systéme. Vytvoríme adresár, kam chceme PyCirkuit nainštalovať a spustíme program</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WinPython Command Prompt.exe
+</pre></div>
+</div>
+</li>
+<li><p>Vytvoríme virtuálne prostredie Python-u pomocou príkazu a aktivujeme virtuálne prostredie</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m venv PyCirkuit
+cd PyCirkuit\Scripts
+activate
+</pre></div>
+</div>
+</li>
+<li><p>Inštaláciu PyCirkuit spustíme príkazom:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install pycirkuit
+</pre></div>
+</div>
+</li>
+<li><p>Do adresára <strong>PyCirkuit\Lib\site-packages\pycirkuit\lib</strong> vložíme dva spustiteľné súbory <strong>dpic.exe</strong> a <strong>m4.exe</strong>, ktoré stiahneme zo stránky projektu <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/dpic/Windows/index.html">CircuitMacros</a>. Grafické rozhranie programu PyCirkuit spustíme príkazom:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PyCirkuit
+</pre></div>
+</div>
+</li>
+<li><p>Príklady obsiahnuté v distribúcii programu sa nachádzajú v adresári <strong>PyCirkuit\Lib\site-packages\pycirkuit\examples</strong>. Po skončení práce môžeme deaktivovať virtuálne prostredie príkazom:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deactivate
+</pre></div>
+</div>
+</li>
+</ul>
+<p>alebo jednoducho zatvoríme okno s príkazovým riadkom OS Windows, z ktorého sme spustili PyCirkuit.</p>
+</section>
+<section id="pouzitie-pycirkuit">
+<h3><font color='brown'> Použitie PyCirkuit</font><a class="headerlink" href="#pouzitie-pycirkuit" title="Link to this heading">#</a></h3>
+<p>V adresári s nainštalovaným programom <strong>PyCirkuit</strong> aktivujeme virtuálne prostredie a spustíme program</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd &lt;cesta k virtuálnemu prostrediu&gt;
+PyCirkuit\Scripts\activate
+PyCirkuit
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -428,8 +485,12 @@ pip install pycirkuit --break-system-packages
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux"><font color="teal">  Linux </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows"><font color="teal">  Windows</font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-os"><font color="teal"> MAC-OS </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows"><font color="teal">  Windows</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacia-latex-a-python"><font color="brown"> Inštalácia LaTeX a Python</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacia-pycirkuit"><font color="brown"> Inštalácia PyCirkuit</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie-pycirkuit"><font color="brown"> Použitie PyCirkuit</font></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

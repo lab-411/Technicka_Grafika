@@ -116,7 +116,7 @@ Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definovan�
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_color.ckt)
@@ -141,7 +141,7 @@ rgbfill(fill_green,       BE:box wid 1 ht 0.5 at BD.s + (0, -.35)); "fi\\ll\_gre
 rgbfill(fill_dark_violet, BF:box wid 1 ht 0.5 at BE.s + (0, -.35)); "fi\\ll\_dark\_violet"     at last box .e ljust;
 '''
 
-_ = cm_compile('./src/cm_0905b', data, dpi=600)   
+_ = cm_compile('cm_0905b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0905b.png
@@ -150,8 +150,6 @@ _ = cm_compile('./src/cm_0905b', data, dpi=600)
 
 Mená farieb pre výplň plošných objektov.
 ```
-
-
 
     include(base.ckt)
     Grid(4,4)
@@ -171,7 +169,8 @@ Príklad použitia farebnej výplne plošného objektu pomocou makra *rgbfill()*
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -189,7 +188,7 @@ color_red;
 rgbfill(fill_yellow, {triangle} );
 '''
 
-_ = cm_compile('./src/cm_0905c', data,  dpi=600)   
+_ = cm_compile('cm_0905c', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0905c.png
@@ -198,3 +197,5 @@ _ = cm_compile('./src/cm_0905c', data,  dpi=600)
 
 [Príklad](./src/cm_0905c.ckt) objektu s farebnou výplňou.
 ```
+
+

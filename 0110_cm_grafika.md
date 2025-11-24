@@ -291,7 +291,7 @@ Bez zadaného centra je oblúk vykreslený ako polkružnica so stredom medzi kon
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -318,9 +318,10 @@ A2: arc -> cw from P1 to P2 with .c at P3
 line from P1 to P3 dashed;
 line from P2 to P3 dashed;
 "A2" at A2.nw above rjust;
+
 '''
 
-_ = cm_compile('./src/cm_0110d', data, dpi=600)   
+_ = cm_compile('cm_0110d', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0110d.png
@@ -329,4 +330,5 @@ _ = cm_compile('./src/cm_0110d', data, dpi=600)
 
 [Vykreslenie](./src/cm_0110d.ckt) kruhového oblúku
 ```
+
 

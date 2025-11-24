@@ -21,7 +21,7 @@ Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v tec
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 cct_init
@@ -38,8 +38,9 @@ IC2: IC555_2 at (7,6.5);
 IC3: IC555_3 at (5,1);
 '''
 
-_ = cm_compile('./src/cm_0207a', data, dpi=600 )   
+_ = cm_compile('cm_0207a', data, dpi=600 )   
 ```
+
 
 ```{figure} ./src/cm_0207a.png
 :width: 400px
@@ -92,7 +93,7 @@ Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 cct_init
@@ -108,7 +109,7 @@ command "\sf"
 IC485; "MAX485" at last[] .s below;
 '''
 
-_ = cm_compile('./src/cm_0207c', data, dpi=600 )   
+_ = cm_compile('cm_0207c', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0207c.png
@@ -132,7 +133,7 @@ V niektorých prípadoch nemôžeme využiť preddefinované rozostupy pinov, na
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 cct_init
@@ -152,7 +153,7 @@ TERM_485;
 IC2: IC485_RIGHT; {"MAX485" at last[] .s below;}
 '''
 
-_ = cm_compile('./src/cm_0207d', data, dpi=600 )   
+_ = cm_compile('cm_0207d', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0207d.png
@@ -161,13 +162,14 @@ _ = cm_compile('./src/cm_0207d', data, dpi=600 )
 
 Použitie značiek integrovaných obvodov s vnútorným zapojením.
 ```
+
     
 Pri kreslení zapojení s integrovanými obvodmi kombinovanými s diskrétnymi analogovými prvkami je  treba inicializovať knižnice *cct_init*, *log_init* a v prípade potreby uživateľské knižnice. Je vhodné v celom zapojení používať jeden spoločný font. 
     
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 cct_init
@@ -207,8 +209,9 @@ IC: IC555_2 at (3,3);
         line up_ to (Here, IC.Pin6) then to IC.Pin6;
 '''
 
-_ = cm_compile('./src/cm_0207b', data, dpi=600 )   
+_ = cm_compile('cm_0207b', data, dpi=600 )   
 ```
+
 
 ```{figure} ./src/cm_0207b.png
 :width: 300px

@@ -45,7 +45,6 @@ V `CircuitMacros` máme možnosť uzatvoriť kód vetvy obvodu do bloku kódu uz
 
 from cm.utils import *
 
-
 data = r'''
 include(lib_base.ckt)
 include(lib_color.ckt)
@@ -72,7 +71,6 @@ color_black
 resistor(right_ d,E);        llabel(,R4,);
 dot;
 capacitor(); llabel(,C_1,)
-
 '''
 
 _ = cm_compile('./src/cm_0120a', data, dpi=600)   
@@ -102,7 +100,6 @@ Bloky s výhodou využijeme pri popise prvkov zapojenie. Zadanie textu mení rov
 :tags: ["remove-cell"]
 
 from cm.utils import *
-
 
 data = r'''
 Origin: Here 

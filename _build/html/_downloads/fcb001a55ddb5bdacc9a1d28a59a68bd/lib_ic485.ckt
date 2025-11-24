@@ -13,6 +13,7 @@ define(`IC485', `[
       
       arc ccw from BX.n-(.2,0) to BX.n+(0.2,0) with .c at BX.n;
       rgbfill(fill_black, {circle at BX.nw + (0.15, -0.15) rad 0.055} )
+      #circle at BX.nw + (0.15, -0.15) rad 0.055;
 ]')
 
 define(`IC485_LEFT', `[
@@ -24,6 +25,7 @@ define(`IC485_LEFT', `[
   P6: ( 0.5, -0.33);
   
     rgbfill(fill_light_yellow, { BX: box wid 2 ht 3.25 at (-0.5,0);})
+    #BX: box wid 2 ht 3.25 at (-0.5,0);
     lg_pin( P1,,Pin1,w,RO);
     lg_pin( P2,,Pin2,w,lg_bartxt(RE));
     lg_pin( P3,,Pin3,w,DE);
@@ -59,6 +61,7 @@ define(`IC485_RIGHT', `[
   P6: (-0.5,  -0.33);
   
     rgbfill(fill_light_yellow, { BX: box wid 2 ht 3.25 at (0.5,0);})
+    #BX: box wid 2 ht 3.25 at (0.5,0);
     lg_pin( P1,,Pin1,e,RO);
     lg_pin( P2,,Pin2,e,lg_bartxt(RE));
     lg_pin( P3,,Pin3,e,DE);

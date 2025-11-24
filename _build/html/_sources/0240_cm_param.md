@@ -66,8 +66,10 @@ Pri parametrických komponentoch môžeme použiť dynamické vytváranie mien a
 :tags: ["remove-cell"]
 
 from cm.utils import *
+
 data = r'''
 include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 d = 2;
@@ -92,3 +94,5 @@ _ = cm_compile('./src/cm_0240b', data, dpi=600)
 
 Logický parametrický komponent
 ```
+
+

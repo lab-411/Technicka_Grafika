@@ -37,5 +37,4 @@ resistor(right_ d,E);        llabel(,R4,);
 dot;
 capacitor(); llabel(,C_1,)
 
-
 .PE

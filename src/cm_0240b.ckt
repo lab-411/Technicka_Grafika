@@ -12,6 +12,7 @@ arrowht = 0.254         # dlzka
 
 
 include(lib_base.ckt)
+include(lib_color.ckt)
 
 Origin: Here 
 d = 2;
