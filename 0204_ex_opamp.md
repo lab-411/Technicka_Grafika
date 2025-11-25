@@ -40,7 +40,6 @@ Operačné zosilovače patria v `CicuitMacros` medzi mnohopóly a podobne pri ak
     .Out                   - poloha výstupu
     .V1 .V2                - poloha napájacích prívodov, parameter P
     
-    
 
 Pri kreslení zapojení s operačnýmí zosilovačmi musíme používať ako referenciu stred zosilovača a pripojené komponenty ukladať relatívne voči jeho vývodom.
 

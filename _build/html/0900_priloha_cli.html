@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -348,7 +348,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-pycirkuit"><font color="teal"> CLI PyCirkuit </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="brown"> Použitie  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><font color="brown"> Použitie </font></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -376,7 +380,7 @@ document.write(`
 </section>
 <section id="shell-skript">
 <h2><font color='teal'> Shell skript </font><a class="headerlink" href="#shell-skript" title="Link to this heading">#</a></h2>
-<p>Skript pre OS Linux využíva programy</p>
+<p>Zdrojové súbory obrázkov môžeme konvertovať do publikácií v rôznych formátoch. Nižšie poppísaná skript pre OS Linux využíva programy</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m4     - štandardná súčasť operačného systému
 dpic   - kompilátor   
 latex  - systém na sadzbu textu 
@@ -384,80 +388,100 @@ dvips  - konvertor DVI-&gt;PS, sučasť distribúcie LaTeX
 gs     - konvertor PS-&gt;PNG, súčasť distribúcie ghostscript
 </pre></div>
 </div>
-<p>Inštalácia programov</p>
+<p>Tieto nainštalujeme do systému (Debian, Ubuntu) pomocou príkazov</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install dpic
 sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
              texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
 sudo apt-get install ghostscript
 </pre></div>
 </div>
-<p>Pre konverziu generovaných sriptov v LateXe potrebujeme pomocný súbor <em>template.tex</em> s obsahom</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\documentclass{article}
+<p>Postup generovania obrázkov z <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je nasledovný</p>
+<ul class="simple">
+<li><p>V textovom editore vytvoríme zdrojový text obrázku</p></li>
+<li><p>Pomocou makroprocesora <strong>m4</strong> a knižníc makier expandujeme makrá do jazyka <em>dpic</em></p></li>
+<li><p>Kompilátorom <strong>dpic</strong> preložíme makrá do skriptov <em>tikz</em> pre sadzací systém LaTex</p></li>
+<li><p>Vložíme skript <em>tikz</em> do pomocného konfiguračného súboru a pomocou  <strong>Latex</strong> ho preložíme do súboru <em>.dvi</em>. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií.</p></li>
+<li><p>Pomocou programu <strong>dvips</strong> konvertujeme obrázok do vektorového formátu <em>.eps</em></p></li>
+<li><p>Pomocou konvertoru <strong>gs</strong> prevedieme vektorový obrázok do rastrového formátu <em>.png</em>. V konfigurácii konvertoru môžeme nastaviť rozlíšenie obrázku.</p></li>
+</ul>
+<p>Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte <a class="reference download internal" download="" href="_downloads/043fc0c8e4396601a41477bd2b6f1db7/cmc.sh"><span class="xref download myst">cmc.sh</span></a> pre príkazový interpreter <em>bash</em>. Konfiguračný súbor pre LateX <em>template.tex</em> generuje skript, v prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v LaTex-e doplniť ďaľšie prostredie a pod.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+echo &#39;% LaTeX template file
+\documentclass{article}
+\usepackage{amsmath}
 \usepackage{pst-plot, pst-eps, tikz}
 \pagestyle{empty}
 
 \begin{document}
-    \begin{TeXtoEPS}
-        \input{temp_data.tex}
-    \end{TeXtoEPS}
-\end{document}
-</pre></div>
-</div>
-<p>Shell skript <em>cmc.sh</em>, ktorý generuje obrázky vo formáte PNG má potom tvar</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
-# cesta ku M4 knizniciam CircuitMacros (libcct,m4 ... )
+\begin{TeXtoEPS}
+    \input{data.tex}
+\end{TeXtoEPS}
+
+\end{document}&#39; &gt; template.tex
+
+# cesta ku M4 knizniciam CircuitMacros (libcct.m4 ... )
 CIRCUIT_MACROS=&#39;./cm/&#39;
 
 # expadovanie makier do formatu TIKZ
-m4 -I $CIRCUIT_MACROS pgf.m4  $1 | dpic -g &gt; temp_data.tex
+m4 -I $CIRCUIT_MACROS pgf.m4  $1 | dpic -g &gt; data.tex
 
 # kompilacia latex suboru
 latex template.tex &gt; latex.log
 dvips -q* -E template.dvi -G0 -o $(basename $1 .ckt).eps &gt; dvips.log
 
-# konverzia *.eps -&gt; *.png, parameter r-rozzlisenie v dpi
-gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o $(basename $1 .ckt).png $(basename $1 .ckt).eps
+# konverzia *.eps -&gt; *.png, parameter r-rozlisenie v dpi
+gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o $(basename $1 .ckt).png $(basename $1 .ckt).eps &gt; gs.log
 
 # zmazanie docasnych suborov
-rm temp_data.tex
 rm dvips.log
 rm latex.log
 rm $(basename $1 .ckt).eps
+rm data.tex
+rm template.tex
 rm template.dvi
 rm template.aux
 rm template.log
 </pre></div>
 </div>
-<p>V skripte upravte premennú podľa aktuálnej konfigurácie adresárov. Nastavte skript ako spustiteľný</p>
+</section>
+<section id="pouzitie">
+<h2><font color='brown'> Použitie  </font><a class="headerlink" href="#pouzitie" title="Link to this heading">#</a></h2>
+<p>Skript uložte do adresáru so zdrojovými kódmi obrázkov. V skripte upravte premennú <em>CIRCUIT_MACROS</em> aktuálnej konfigurácie adresárov s knižnicami <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>. Nasledujjúcim príkazom v konzole nastavte skript ako spustiteľný program</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chmod +x cmc.sh
 </pre></div>
 </div>
-<p>Skript spustíte z konzoly príkazom</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>,/cmc.sh &lt;meno_suboru&gt;.ckt
+<p>Konverziu zdrojového kódu <em>&lt;meno_suboru&gt;.ckt</em> na obrázok <em>.png</em> spustíme z konzoly príkazom</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./cmc.sh &lt;meno_suboru&gt;.ckt
 </pre></div>
 </div>
 </section>
 <section id="python-skript">
 <h2><font color='teal'> Python skript </font><a class="headerlink" href="#python-skript" title="Link to this heading">#</a></h2>
-<p>Pre generovanie obrázkov v prostredí Pythonu je možné využiť funkciu s volaniami externých programov</p>
+<p>Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-import sys
+
+CIRCUIT_MACROS_PATH = &#39;./cm&#39;
 
 def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
 
-    CIRCUIT_MACROS_PATH = &#39;./cm&#39;
-
+    fp = open( file_name + &#39;.ckt&#39;, &#39;w&#39;); 
+    fp.write(cm_data);
+    fp.close()
+        
     os.system( &#39;m4 -I %s pgf.m4  %s &gt; data.dpc&#39;%(CIRCUIT_MACROS_PATH, file_name+&#39;.ckt&#39;) )
     os.system( &#39;dpic -g data.dpc &gt; data.tex&#39;) 
     
     temp = r&#39;&#39;&#39;
     \documentclass{article}
-    \usepackage{pstricks,pst-plot, pst-eps, tikz}
+    \usepackage{amsmath}
+    \usepackage{pst-plot, pst-eps, tikz}
     \pagestyle{empty}
+
     \begin{document}
-    \begin{TeXtoEPS}
-    \input{temp_data.tex}
-    \end{TeXtoEPS}
+      \begin{TeXtoEPS}
+        \input{data.tex}
+      \end{TeXtoEPS}
     \end{document}
     &#39;&#39;&#39;
 
@@ -467,31 +491,29 @@ def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
     f.close()
     
     os.system( &#39;latex template.tex &gt; latex.log&#39;)   
-    os.system( &#39;dvips -q* -E template.dvi -G0 -o %s &gt; dvips.log &#39;%(file_name+&#39;.eps&#39;) )
-    os.system(&#39;gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s &gt;null&#39;%(file_name+&#39;.png&#39;, file_name+&#39;.eps&#39;))
+    os.system( &#39;dvips -q* -E template.dvi -G0 -o %s &gt; dvips.log &#39;%(file_name+&#39;.eps&#39;) )        
+    os.system(&#39;gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s &gt; gs.log&#39;%(file_name+&#39;.png&#39;, file_name+&#39;.eps&#39;))
     
-    os.system( &#39;rm *.dvi&#39; ) 
-    os.system( &#39;rm *.aux&#39; ) 
-    os.system( &#39;rm *.log&#39; ) 
-    os.system( &#39;rm *.tex&#39; ) 
-    os.system( &#39;rm *.eps&#39; ) 
-    os.system( &#39;rm *.dpc&#39; ) 
+    os.system( &#39;rm *.dvi&#39; )
+    os.system( &#39;rm *.aux&#39; )
+    os.system( &#39;rm *.log&#39; )
+    os.system( &#39;rm *.tex&#39; )
+    os.system( &#39;rm *.eps&#39; )
+    os.system( &#39;rm *.dpc&#39; )
     return file_name + &#39;.ckt&#39;
 </pre></div>
 </div>
-<p>Použitie skriptu</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data = r&#39;&#39;&#39;
-.PS
-scale=2.54
-cct_init
-
-resistor(,,E); rlabel(,R_1,);
-.PE
-&#39;&#39;&#39;
-
-cm_compile(&#39;obr_01&#39;, data, dpi=600)
-</pre></div>
-</div>
+<section id="id1">
+<h3><font color='brown'> Použitie </font><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Skript môžeme používať na generovanie obrázkov pomocou Pythonu, napríklad v prostredí Jupyter Lab.</p>
+<figure class="align-default" id="cm-0900a">
+<a class="reference internal image-reference" href="_images/jupyter.png"><img alt="_images/jupyter.png" src="_images/jupyter.png" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 72 </span><span class="caption-text">CircuitMacros v prostredí Jupyter Lab</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 </section>
 
@@ -542,7 +564,11 @@ cm_compile(&#39;obr_01&#39;, data, dpi=600)
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-pycirkuit"><font color="teal"> CLI PyCirkuit </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="brown"> Použitie  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><font color="brown"> Použitie </font></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
