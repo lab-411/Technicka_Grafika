@@ -52,7 +52,7 @@ Nasledujúce príklady ukazujú použitie funkcií pri vykreslovaní jednoduchej
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 data = r'''
 include(lib_base.ckt)
 include(lib_color.ckt)
@@ -69,7 +69,7 @@ C1: circle diam 2*r;
 D1: dot;
 '''
 
-_ = cm_compile('./src/cm_0175a', data, dpi=600)   
+_ = cm_compile('cm_0175a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0175a.png
@@ -95,7 +95,7 @@ _ = cm_compile('./src/cm_0175a', data, dpi=600)
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 data = r'''
 include(lib_base.ckt)
 include(lib_color.ckt)
@@ -115,7 +115,7 @@ for x=0 to 3.14*2 by (3.14/100) do{
 }
 '''
 
-_ = cm_compile('./src/cm_0175b', data, dpi=600)   
+_ = cm_compile('cm_0175b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0175b.png

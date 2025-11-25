@@ -15,7 +15,6 @@ arrowht = 0.254         # dlzka
 include(lib_base.ckt)
 include(lib_user.ckt)
 
-#Grid(10,10);
 move to (2,2);
 
 T3: bjt_NPN(0.6, 1, L, N); {"$T_3$" at T3.w ljust};  dot;

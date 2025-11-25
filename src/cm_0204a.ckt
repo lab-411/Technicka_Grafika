@@ -12,6 +12,8 @@ arrowht = 0.254         # dlzka
 
 
     include(lib_base.ckt)
+    include(lib_user.ckt)
+
     Grid(15,5);
     move to (3,3);
 OP: opamp()
@@ -30,6 +32,7 @@ DO: dot;
 
     line from OP.In2 left_ 0.5 then down_ 0.5; gnd; 
     "\textit{Invertujúci zosilovač}" at OP.c + (0, -1.5);
+
     "$K = -\dfrac{R_2}{R_1}$" at OP.c + (0, -2.25);
 
 move to OP.c + (6,0.5);
@@ -47,6 +50,7 @@ PP: opamp(,,,,R)
     line right_ 1;
     circle rad 0.1; "\textit{Out}" at last circle.n above;
     "\textit{Neinvertujúci zosilovač}" at PP.c + (0, 1);
+
     "$K =1 + \dfrac{R_2}{R_1}$" at PP.c + (0.5, -2.25);
 
 .PE

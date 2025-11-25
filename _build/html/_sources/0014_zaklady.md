@@ -62,7 +62,7 @@ Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -79,7 +79,7 @@ right_
 diode;
 '''
 
-_ = cm_compile('./src/cm_0014a', data, dpi=600)   
+_ = cm_compile('cm_0014a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0014a.png
@@ -126,7 +126,7 @@ Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príkl
     
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -142,7 +142,7 @@ C1: capacitor;
 line from R1.start to C1.end;
 '''
 
-_ = cm_compile('./src/cm_0014b', data, dpi=600)   
+_ = cm_compile('cm_0014b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0014b.png
@@ -186,7 +186,7 @@ Použitie makier na označovanie prvkov garantuje presné a definované umiestne
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -202,7 +202,7 @@ R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
 
 '''
 
-_ = cm_compile('./src/cm_0014c', data, dpi=600)   
+_ = cm_compile('cm_0014c', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0014c.png
@@ -226,7 +226,7 @@ V `CircuitMacros` môžeme využívať  príkazy jazyka `dpic` pre kreslenie dia
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -242,7 +242,7 @@ ellipse wid 2 ht 1 "Ellipse";
 
 '''
 
-_ = cm_compile('./src/cm_0014d', data, dpi=600)   
+_ = cm_compile('cm_0014d', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0014d.png

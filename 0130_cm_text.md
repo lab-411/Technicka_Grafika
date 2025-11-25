@@ -52,7 +52,7 @@ Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odosl
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 Origin: Here 
@@ -73,7 +73,7 @@ LL: line from (-1,0) to (1,0);
 "rjust below" at last box.sw rjust below;
 "rjust above" at last box.nw rjust above;
 '''
-_ = cm_compile('./src/cm_0130a', data, dpi=600)   
+_ = cm_compile('cm_0130a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0130a.png
@@ -117,7 +117,7 @@ Vyššiu prioritu má nastavenie lokálnej farbu textu.
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -140,7 +140,7 @@ LL: line from (2, 0.5) right_ 6;
     "stred čiary" at last line.c above;        dot;
 '''
 
-_ = cm_compile('./src/cm_0130b', data, dpi=600 )   
+_ = cm_compile('cm_0130b', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0130b.png
@@ -169,7 +169,7 @@ Funkcia `sprintf` pre konverziu čísla na formátovaný reťazec akceptuje form
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -188,7 +188,7 @@ color_red;
 sprintf("Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
 '''
 
-_ = cm_compile('./src/cm_0130c', data, dpi=600)   
+_ = cm_compile('cm_0130c', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0130c.png
@@ -242,7 +242,7 @@ Príklad formátovania textu s použitím príkazov LaTex-u:
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -270,7 +270,7 @@ move to (4, 5.5);
 "\fbox{Text in Box}" at Here;
 '''
 
-_ = cm_compile('./src/cm_0130d', data, dpi=600)   
+_ = cm_compile('cm_0130d', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0130d.png

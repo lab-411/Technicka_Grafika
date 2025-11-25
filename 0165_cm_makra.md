@@ -34,7 +34,7 @@ Makrá definované v knižniciach `CircuitMacros` expandujú značky elektronick
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 command "\sf"
@@ -98,7 +98,7 @@ B8: box wid 2  ht 1
 "pycirkuit" at B8.c below;
 '''
 
-_ = cm_compile('./src/cm_0165a', data, dpi=600)   
+_ = cm_compile('cm_0165a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0165a.png
@@ -172,7 +172,7 @@ Makro **text** je jednoducha nahrada reťazca. Makro **zigzac** má jeden parame
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -190,7 +190,7 @@ ZG: zigzac(0.5); zigzac(1);
 "text" at ZG.n above;
 '''
 
-_ = cm_compile('./src/cm_0165b', data, dpi=600)   
+_ = cm_compile('cm_0165b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0165b.png
@@ -287,7 +287,7 @@ Vytvorené makro požívame ako akýkoľvek iný príkaz pre kreslenie prvkov za
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -330,7 +330,7 @@ dot;
 { line down_ 1; right_; S2: swh(2, OFF); "$S_2$" at S2.n; }
 '''
 
-_ = cm_compile('./src/cm_0165c', data, dpi=600)   
+_ = cm_compile('cm_0165c', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0165c.png
@@ -354,7 +354,7 @@ V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíri
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -440,7 +440,7 @@ res_5w(2,,E); llabel(,R_8,);  "$P_s = 5W$" ljust;
 
 '''
 
-_ = cm_compile('./src/cm_0165d', data, dpi=600)   
+_ = cm_compile('cm_0165d', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0165d.png

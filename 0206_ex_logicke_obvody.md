@@ -80,7 +80,7 @@ Zapojenie jednoduchého multiplexera
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -109,7 +109,7 @@ line from G2.In1 to (DT.x, G2.In1.y) then to DT;
 line from G3.Out right_ 1;  "\sf Y" at last line.end ljust; 
 '''
 
-_ = cm_compile('./src/cm_0206a', data,  dpi=600)   
+_ = cm_compile('cm_0206a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0206a.png

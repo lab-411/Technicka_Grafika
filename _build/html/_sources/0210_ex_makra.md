@@ -20,7 +20,7 @@ kernelspec:
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -43,7 +43,7 @@ ampl = 1;  freq = 3;  t_min = 0;  t_max = 10;  phase = 0;
 sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max, dotted);
 '''
 
-_ = cm_compile('./src/cm_0210a', data,  dpi=600 )   
+_ = cm_compile('cm_0210a', data,  dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0210a.png
@@ -58,7 +58,7 @@ Makro sinusoid()
     
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -71,7 +71,7 @@ move to (0,0.5);
 for x = 0 to 10  by 0.05 do { line to (x, rand()*0.2 + 0.4); } 
 '''
 
-_ = cm_compile('./src/cm_0210b', data,  dpi=600)   
+_ = cm_compile('cm_0210b', data,  dpi=600)   
 ```
 
 
@@ -87,7 +87,7 @@ Makro rand()
     
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 
@@ -102,7 +102,7 @@ shadebox(B:box wid 3 ht 1 with .sw at (1,1), 2)
 "text" at B.c;
 '''
 
-_ = cm_compile('./src/cm_0210c', data, dpi=600)   
+_ = cm_compile('cm_0210c', data, dpi=600)   
 ```
 
 
@@ -120,7 +120,7 @@ Makro shadebox()
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -133,7 +133,7 @@ linethick_(0.8);
 hatchbox(wid 3 ht 2, ,dashed,angle=125 ); 
 '''
 
-_ = cm_compile('./src/cm_0210d', data,  dpi=600)   
+_ = cm_compile('cm_0210d', data,  dpi=600)   
 ```
 
 

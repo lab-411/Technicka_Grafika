@@ -19,7 +19,7 @@ Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -52,7 +52,7 @@ move to Here+(0,0.8);
 G1: NAND_gate(4);                      {"NAND\\\_gate"  at (Here.x +2.5, G1.c.y); }
 '''
 
-_ = cm_compile('./src/cm_0102a', data,  dpi=600)   
+_ = cm_compile('cm_0102a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0102a.png
@@ -115,7 +115,7 @@ Použitie atribútov mnohopólu demonštruje nasledujúci príklad.
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -142,7 +142,7 @@ DT2: dot;
 {tconn(right_ 1, O); }
 '''
 
-_ = cm_compile('./src/cm_0102b', data,  dpi=600)   
+_ = cm_compile('cm_0102b', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0102b.png

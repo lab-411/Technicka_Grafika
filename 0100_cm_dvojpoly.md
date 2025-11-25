@@ -29,7 +29,7 @@ Pri použití makra bez parametrov sa vykreslí dvojpól v prednastavenom tvare.
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -45,7 +45,7 @@ move to Origin + (3,1);   S1: source(2);       "sour\\ce(2)" at S1.end ljust;
 move to Origin + (3,0);   B1: battery(2);      "ba\\ttery(2)" at B1.end ljust;
 '''
 
-_ = cm_compile('./src/cm_0100a', data,  dpi=600)   
+_ = cm_compile('cm_0100a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100a.png
@@ -60,7 +60,7 @@ Základné rozmery a zobrazenie dvojpólov v knižniciach `CircuitMacros` sú zo
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_color.ckt)
@@ -90,7 +90,7 @@ dimension_(from L1.start to L1.end,1.5,elen\_,1);
 dimension_(right_ dimen_ from L1.c-(dimen_/2,0),1,dimen\_,1.2);
 '''
 
-_ = cm_compile('./src/cm_0100j', data, dpi=600)   
+_ = cm_compile('cm_0100j', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100j.png
@@ -149,7 +149,7 @@ Makro bez parametrov sa vykreslí rezistor s prednastavenými hodnotami ako zna�
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -170,7 +170,7 @@ resistor(,,V);      llabel(,R_7,);
 resistor(3,,E,1.5); llabel(,R_8,); rlabel(,linespec=3,);
 '''
 
-_ = cm_compile('./src/cm_0100b', data, dpi=600)   
+_ = cm_compile('cm_0100b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100b.png
@@ -229,7 +229,7 @@ Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi.
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -250,7 +250,7 @@ capacitor(, CP);    llabel(,C_7,);
 capacitor(,+LC);     llabel(,C_8,); 
 '''
 
-_ = cm_compile('./src/cm_0100c', data, dpi=600)   
+_ = cm_compile('cm_0100c', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100c.png
@@ -285,7 +285,7 @@ Pri cievke môžeme meniť tvar vinutia, počet závitov, ich veľkosť a môže
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -299,7 +299,7 @@ inductor(,L);      llabel(,L_3,); rlabel(,L,);  dot;
 L4: inductor(,L,6);     llabel(,L_4,); "L,6" at L4.center + (0,-.05) below;  
 '''
 
-_ = cm_compile('./src/cm_0100d', data, dpi=600)   
+_ = cm_compile('cm_0100d', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100d.png
@@ -348,7 +348,7 @@ Makro bez paramerov vykreslí diódu s prednastavenými rozmermi.
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -369,7 +369,7 @@ diode(,T);     llabel(,D_7,); rlabel(,T,);
 diode(,,R);    llabel(,D_8,); rlabel(,Rev,);
 '''
 
-_ = cm_compile('./src/cm_0100e', data, dpi=600)   
+_ = cm_compile('cm_0100e', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100e.png
@@ -461,7 +461,7 @@ Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu, *rlabel()*
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -477,7 +477,7 @@ R5: resistor(right_ 2 ,,E);   dlabel(0.5, 0.3, aa ,R_5, bb ,L);
 D6: diode(2);   llabel( ,\sf D_6, );   rlabel(,  $ \sf \footnotesize{ 1N4007 }$, ); 
 '''
 
-_ = cm_compile('./src/cm_0100f', data, dpi=600)   
+_ = cm_compile('cm_0100f', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100f.png
@@ -532,7 +532,7 @@ Makro môžeme použiť dvoma spôsobmi
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -551,7 +551,7 @@ move to (3,1)
 capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);  
 '''
 
-_ = cm_compile('./src/cm_0100g', data, dpi=600)   
+_ = cm_compile('cm_0100g', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100g.png
@@ -603,7 +603,7 @@ Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -628,7 +628,7 @@ L2: line from (5,2) to (8,2) "L2" below;
     b_current(i_{78}, above_, In, End, 0.6 );  
 '''
 
-_ = cm_compile('./src/cm_0100h', data, dpi=600)   
+_ = cm_compile('cm_0100h', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100h.png
@@ -666,7 +666,7 @@ Použitie makier ukazuje nasledujúci príklad.
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -682,7 +682,7 @@ dot; {tconn(right_ 1.5,O); "2" ljust;}
 line to S1.start; 
 '''
 
-_ = cm_compile('./src/cm_0100i', data, dpi=600)   
+_ = cm_compile('cm_0100i', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100i.png

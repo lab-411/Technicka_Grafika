@@ -86,7 +86,7 @@ Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -117,7 +117,7 @@ line from Here down_ (Here.y - R4.start.y) \
 "\textit{then to R4.start;}" at (LL+R4)/2 + (-0.5,-0.1) rjust below;
 '''
 
-_ = cm_compile('./src/cm_0170a', data,  dpi=600)   
+_ = cm_compile('cm_0170a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0170a.png
@@ -131,7 +131,7 @@ Podobne môžeme využiť výpočet geometrického stredu pre presné umiestneni
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 
@@ -153,7 +153,7 @@ line from B1.e + (.2, 0) right 2 dotted;
 line from P1.s + (0, -0.1) to P2.n + (0,0.1) dotted;
 '''
 
-_ = cm_compile('./src/cm_0170b', data,  dpi=600)   
+_ = cm_compile('cm_0170b', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0170b.png

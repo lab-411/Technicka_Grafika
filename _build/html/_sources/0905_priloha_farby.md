@@ -31,7 +31,7 @@ Makro pre definíciu farby pre čiary, krivky, texty a obrys plošných objektov
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_color.ckt)
@@ -79,7 +79,7 @@ color_slategrey;  box wid 1 ht 0.5 with .ne at last box.se + (0, -0.1); "co\\lor
 color_firebrick;  box wid 1 ht 0.5 with .ne at last box.se + (0, -0.1); "co\\lor\_firebrick" at last box .e ljust;
 '''
 
-_ = cm_compile('./src/cm_0905a', data, dpi=600)   
+_ = cm_compile('cm_0905a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0905a.png

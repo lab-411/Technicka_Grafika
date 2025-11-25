@@ -11,7 +11,8 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-include(lib_base.ckt)
+    include(lib_base.ckt)
+    include(lib_user.ckt)
 
 OA1: opamp(,,,,); "$A_1$" at OA1.SE below ljust;
     line from OA1.In1 left_ 0.5;

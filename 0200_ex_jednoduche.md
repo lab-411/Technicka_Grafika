@@ -44,7 +44,7 @@ V príklade sériového zapojenie rezistorov sú použité nasledujúce konštru
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -64,7 +64,7 @@ line to R1.start;
 line from DC.s to (DC.s.x, R2.end.y) to R2.end;
 '''
 
-_ = cm_compile('./src/cm_200a', data,  dpi=600)   
+_ = cm_compile('cm_200a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_200a.png
@@ -120,7 +120,7 @@ V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použ
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -167,7 +167,7 @@ R13: resistor(from Y1 to Y4,,E); {"\textit{$R_{13}$}" at R13.c + ( -.55, 0.2) }
 line <-> from (3.5, 2) to (5,2)
 '''
 
-_ = cm_compile('./src/cm_200b', data,  dpi=600)   
+_ = cm_compile('cm_200b', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_200b.png
@@ -215,7 +215,7 @@ V nasledujúcom príklade zapojenia štvorpólu je použitý blok pre vykresleni
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -249,7 +249,7 @@ line -> from DA + (0, -0.25) to D0+(0,0.25); "$u_1$" ljust at last line.c;
 line -> from DB + (0, -0.25) to DG+(0,0.25); "$u_2$" ljust at last line.c;
 '''
 
-_ = cm_compile('./src/cm_200c', data,  dpi=600)   
+_ = cm_compile('cm_200c', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_200c.png

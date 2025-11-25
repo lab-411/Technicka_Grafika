@@ -43,7 +43,7 @@ V `CircuitMacros` máme možnosť uzatvoriť kód vetvy obvodu do bloku kódu uz
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -73,7 +73,7 @@ dot;
 capacitor(); llabel(,C_1,)
 '''
 
-_ = cm_compile('./src/cm_0120a', data, dpi=600)   
+_ = cm_compile('cm_0120a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0120a.png
@@ -99,7 +99,7 @@ Bloky s výhodou využijeme pri popise prvkov zapojenie. Zadanie textu mení rov
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 Origin: Here 
@@ -114,7 +114,7 @@ box wid 2 ht 1;
 line -> 1;
 '''
 
-_ = cm_compile('./src/cm_0120b', data, dpi=600)   
+_ = cm_compile('cm_0120b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0120b.png
@@ -157,7 +157,7 @@ Referencie a premenné vytvorené vo vnútri bloku sú globálne a je možno sa 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 Origin: Here 
@@ -185,7 +185,7 @@ L4: line from DT1 left_ d/2 then down_ 7*d/8;
     line to (L3.e.x, Here.y); tconn(right_ d/4,O);
 '''
 
-_ = cm_compile('./src/cm_0120d', data,  dpi=600)   
+_ = cm_compile('cm_0120d', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0120d.png

@@ -71,6 +71,7 @@ def cm_compile(file_name, cm_data='', dpi=300):
     
     temp = r'''
     \documentclass{article}
+    \usepackage{amsmath}
     \usepackage{pstricks,pst-plot, pst-eps, tikz}
     \pagestyle{empty}
     \begin{document}
@@ -93,14 +94,14 @@ def cm_compile(file_name, cm_data='', dpi=300):
     #print('DVIPS')
     #os.system( 'dvips -E  template.dvi -G0 -o %s  '%(file_name+'.eps') )
     
-    os.system('gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s '%(file_name+'.png', file_name+'.eps'))
+    os.system('gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s > gs.log'%(file_name+'.png', file_name+'.eps'))
     
-    os.system( 'rm *.dvi' ) 
-    os.system( 'rm *.aux' ) 
-    os.system( 'rm *.log' ) 
-    os.system( 'rm *.tex' ) 
-    os.system( 'rm *.eps' ) 
-    os.system( 'rm *.dpc' ) 
+    os.system( 'rm *.dvi' )
+    os.system( 'rm *.aux' )
+    #os.system( 'rm *.log' )
+    os.system( 'rm *.tex' )
+    os.system( 'rm *.eps' )
+    os.system( 'rm *.dpc' )
     return file_name + '.ckt'
     
 #-----------------------------------------------------------------------

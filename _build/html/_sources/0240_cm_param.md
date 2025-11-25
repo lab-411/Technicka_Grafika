@@ -18,7 +18,7 @@ V Circuit-Macros je možné vlastnosti niektorých komponentov definovať pomoco
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -50,7 +50,7 @@ line from G1.In4 left_ d/2;
 line from G1.Out right_ d/2;
 '''
 
-_ = cm_compile('./src/cm_0240a', data, dpi=600)   
+_ = cm_compile('cm_0240a', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0240a.png
@@ -65,7 +65,7 @@ Pri parametrických komponentoch môžeme použiť dynamické vytváranie mien a
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -85,7 +85,7 @@ for i=1 to 8 do {
 line from G2.Out right_ d/2;
 '''
 
-_ = cm_compile('./src/cm_0240b', data, dpi=600)   
+_ = cm_compile('cm_0240b', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0240b.png

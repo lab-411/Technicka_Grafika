@@ -70,13 +70,16 @@ Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý 
 
 
 
+        
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
     include(lib_base.ckt)
+    include(lib_user.ckt)
+    
     Grid(15,5);
     move to (3,3);
 OP: opamp()
@@ -95,6 +98,7 @@ DO: dot;
 
     line from OP.In2 left_ 0.5 then down_ 0.5; gnd; 
     "\textit{Invertujúci zosilovač}" at OP.c + (0, -1.5);
+    
     "$K = -\dfrac{R_2}{R_1}$" at OP.c + (0, -2.25);
 
 move to OP.c + (6,0.5);
@@ -112,10 +116,11 @@ PP: opamp(,,,,R)
     line right_ 1;
     circle rad 0.1; "\textit{Out}" at last circle.n above;
     "\textit{Neinvertujúci zosilovač}" at PP.c + (0, 1);
+    
     "$K =1 + \dfrac{R_2}{R_1}$" at PP.c + (0.5, -2.25);
 '''
 
-_ = cm_compile('./src/cm_0204a', data, dpi=600 )   
+_ = cm_compile('cm_0204a', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0204a.png
@@ -153,29 +158,30 @@ Použitie parametra *P* pre zobrazenie napájacích vývodov zosilovača a použ
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
     include(lib_base.ckt)
+    include(lib_user.ckt)
 
 OA: opamp(,,,,P);
-line from OA.V1 up_ .75;
-dot;
-{line right_ 0.25; capacitor(right_ 1,C+); llabel(,C_1,); rlabel(,10 \mu F,); line .5 then down_ 0.25; gnd;}
-line 0.75;
-circle rad 0.1; "$V+$" at last circle.n above;
+    line from OA.V1 up_ .75;
+    dot;
+    {line right_ 0.25; capacitor(right_ 1,C+); llabel(,C_1,); rlabel(,10 \mu F,); line .5 then down_ 0.25; gnd;}
+    line 0.75;
+    circle rad 0.1; "$V+$" at last circle.n above;
 
-line from OA.V2 down_ .75;
-dot;
-{line right_ 0.25; reversed(`capacitor', right_, C+); llabel(,C_2,); rlabel(,10 \mu F,); line .5 then down_ 0.25; gnd;}
-line 0.75;
-circle rad 0.1; "$V-$" at last circle.s below;
+    line from OA.V2 down_ .75;
+    dot;
+    {line right_ 0.25; reversed(`capacitor', right_, C+); llabel(,C_2,); rlabel(,10 \mu F,); line .5 then down_ 0.25; gnd;}
+    line 0.75;
+    circle rad 0.1; "$V-$" at last circle.s below;
 
-line from OA.In1 left 0.5;
-line from OA.In2 left 0.5;
+    line from OA.In1 left 0.5;
+    line from OA.In2 left 0.5;
 '''
 
-_ = cm_compile('./src/cm_0204b', data, dpi=600 )   
+_ = cm_compile('cm_0204b', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0204b.png
@@ -221,10 +227,11 @@ V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra (vo výpise sú
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
-include(lib_base.ckt)
+    include(lib_base.ckt)
+    include(lib_user.ckt)
 
 OA1: opamp(,,,,); "$A_1$" at OA1.SE below ljust;
     line from OA1.In1 left_ 0.5;
@@ -287,7 +294,7 @@ R1: resistor(right_ (OA1.Out.x - OA1.In1.x +0.5),,E); rlabel(,R_1,); dot;
 
 '''
 
-_ = cm_compile('./src/cm_0204c', data, dpi=600 )   
+_ = cm_compile('cm_0204c', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0204c.png

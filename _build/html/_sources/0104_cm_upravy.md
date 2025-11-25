@@ -42,7 +42,7 @@ Pre zmenu farby kreslenie je definované makro *setrgb(r, g, b)*, ktorého argum
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_color.ckt)
@@ -60,7 +60,7 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 
 '''
 
-_ = cm_compile('./src/cm_0104a', data,  dpi=600)   
+_ = cm_compile('cm_0104a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0104a.png
@@ -79,7 +79,7 @@ Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určen�
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -94,7 +94,7 @@ linethick_(1.5);
 R2:resistor(,,E); llabel(, R_2,); "\textit{lin\\ethick\_(1.5); res\\istor(,,E)};" ljust; 
 '''
 
-_ = cm_compile('./src/cm_0104b', data,  dpi=600)   
+_ = cm_compile('cm_0104b', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0104b.png
@@ -122,7 +122,7 @@ _ = cm_compile('./src/cm_0104b', data,  dpi=600)
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -137,12 +137,9 @@ R1: resistor(3,,ES); llabel(,R_2,); rlabel(,470 \Omega / 5 W,)
 dot;                               # zvecseny bod
 linewid = 2.54/2                   # uprava rozmerov na standardnu velkost
 resistor(d,,E);llabel(,R_3,);      # štandardny rozmer
-                           
-
-
 '''
 
-_ = cm_compile('./src/cm_0104c', data,  dpi=600)   
+_ = cm_compile('cm_0104c', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0104c.png

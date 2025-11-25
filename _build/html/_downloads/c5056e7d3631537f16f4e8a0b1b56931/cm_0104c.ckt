@@ -24,7 +24,4 @@ dot;                               # zvecseny bod
 linewid = 2.54/2                   # uprava rozmerov na standardnu velkost
 resistor(d,,E);llabel(,R_3,);      # štandardny rozmer
 
-
-
-
 .PE

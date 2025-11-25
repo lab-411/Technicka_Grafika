@@ -42,7 +42,7 @@ d = 1;                  # premenna 1cm
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -50,7 +50,7 @@ d = 1;
 Grid(5,3);
 '''
 
-_ = cm_compile('./src/cm_0180a', data,  dpi=600)   
+_ = cm_compile('cm_0180a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0180a.png

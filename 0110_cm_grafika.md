@@ -71,7 +71,7 @@ Nasledujúci príklad ukazuje niekoľko možností definície čiary.
     
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -93,7 +93,7 @@ line from (6,1) to (7,2) to (8,1) to (9,2); {"G" above};
 line -> from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1; {"H" above};
 '''
 
-_ = cm_compile('./src/cm_0110a', data,  dpi=600)   
+_ = cm_compile('cm_0110a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_0110a.png
@@ -142,7 +142,7 @@ Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline m
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -168,7 +168,7 @@ spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
 spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
 '''
 
-_ = cm_compile('./src/cm_0110b', data, dpi=600)   
+_ = cm_compile('cm_0110b', data, dpi=600)   
 ```
 
 
@@ -226,7 +226,7 @@ Pre plošné objektu sú definované atribúty podľa svetových strán.
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -248,7 +248,7 @@ move to B.se;     "B.se"  below ljust;
 move to B.sw;     "B.sw"  below rjust; 
 '''
 
-_ = cm_compile('./src/cm_0110c', data, dpi=600)   
+_ = cm_compile('cm_0110c', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0110c.png

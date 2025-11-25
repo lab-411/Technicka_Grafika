@@ -22,7 +22,7 @@ Bipolárny tranzistor patrí medzi mnohopóly a okrem štandardných atribútov 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -50,7 +50,7 @@ move right_ hlf
 Q8:bi_tr(up_,R,P,E)
 '''
 
-_ = cm_compile('./src/cm_202a', data, dpi=600 )   
+_ = cm_compile('cm_202a', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202a.png
@@ -98,7 +98,7 @@ Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
     include(lib_base.ckt)
@@ -139,7 +139,7 @@ D3: dot; dlabel(0,0,,V_e,,R);
     gnd;
 '''
 
-_ = cm_compile('./src/cm_202b', data, dpi=600 )   
+_ = cm_compile('cm_202b', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202b.png
@@ -158,7 +158,7 @@ Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v m
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -187,7 +187,7 @@ Q1: bjt_NPN(1.5, 1, R);
 "\textit{Q1.C}" at Q1.C above; 
 '''
 
-_ = cm_compile('./src/cm_202c', data, dpi=600 )   
+_ = cm_compile('cm_202c', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202c.png
@@ -221,7 +221,7 @@ Nasledujúci príklad ukazuje použitie modifikovaných značiek bipolárnych tr
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -263,7 +263,7 @@ R4: resistor(from DT5 up_ 2,,E); llabel(,R,);
     line from DT4 left_ 1; tconn(0.5,O); "$V_{in}$" rjust;
 '''
 
-_ = cm_compile('./src/cm_202h', data, dpi=600 )   
+_ = cm_compile('cm_202h', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202h.png
@@ -299,7 +299,7 @@ Pri prekreslovaní zapojenia v tomto príklade chceme dodržať podobný typ pí
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 
@@ -367,7 +367,7 @@ move to T2.C;
 
 '''
 
-_ = cm_compile('./src/cm_202d', data, dpi=600 )   
+_ = cm_compile('cm_202d', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202d.png
@@ -399,7 +399,7 @@ Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 
@@ -448,7 +448,7 @@ DC:  dc_source( (T1.B.y - C1.c.y), 0.8, P); { line <- from DC.C.c+(-0.5,-0.5) to
      line -> from C2.c + (0, -0.2) down_ 1 "$V_{in}$" ljust; circle rad 0.1 at Here + (0, -0.2); line down_ 0.25; gnd;
 '''
 
-_ = cm_compile('./src/cm_202e', data, dpi=600 )   
+_ = cm_compile('cm_202e', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202e.png
@@ -465,14 +465,13 @@ Vnútorné zapojenia integrovaných obvodov sú často súčasťou katalógovýc
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 
 include(lib_base.ckt)
 include(lib_user.ckt)
 
-#Grid(10,10);
 move to (2,2);
 
 T3: bjt_NPN(0.6, 1, L, N); {"$T_3$" at T3.w ljust};  dot;
@@ -537,7 +536,7 @@ move to DD;
 
 '''
 
-_ = cm_compile('./src/cm_202f', data, dpi=600 )   
+_ = cm_compile('cm_202f', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202f.png
@@ -554,7 +553,7 @@ Pre zobrazenie štandardných MOSFET tranzistorov sú definované makrá *e_fet(
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
-from cm.utils import *
+from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
@@ -599,7 +598,7 @@ move right_ hlf
 d_fet(up_,R,P,S)
 '''
 
-_ = cm_compile('./src/cm_202g', data, dpi=600 )   
+_ = cm_compile('cm_202g', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202g.png
