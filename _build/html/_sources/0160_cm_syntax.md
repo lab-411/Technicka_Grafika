@@ -180,7 +180,83 @@ Jednoduchý cyklus s premennou $x$ má tvar
 
     for x = 1 to 10 by 2 do { line from (0,0) to (5,x); }
     
-kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. 
+kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo zjednodušeného kódu 
+
+    ...
+    for q=0 to 2*pi by 0.1 do{
+        x = r*cos(a*q);
+        y = r*cos(b*q);
+        line to (x,y);        <-- line from Here to (x,y); Here <- (x,y)
+    }
+    ...
+
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+boxrad = .1;
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+define(`mv_liss', `x = r*cos(0)+x0; y=r*sin($3)+y0; move to (x,y);' );
+define(`ln_liss', `x = r*cos($1*q)+x0; y=r*sin($2*q + $3)+y0; line to (x,y);' );
+
+r = 1.5;
+
+x0 = 2; y0 = 2; phi = pi/4; a=1; b=2;
+rgbfill(fill_light_grey, {box at (x0,y0) wid 4 ht 4} );
+sprintf("$a=%2.0f \,\,\, b=%2.0f \,\,\, \phi$=%2.2f", a,b, phi) at last box .n above;
+color_red;
+mv_liss(a,b,phi)
+for q=0 to 4*pi by 0.05 do{
+  ln_liss(a,b,phi);
+}
+color_reset;
+
+x0 = 7; y0 = 2; phi = pi/2; a=5; b=3;
+rgbfill(fill_light_grey, {box at (x0,y0) wid 4 ht 4} );
+sprintf("$a=%2.0f \,\,\, b=%2.0f \,\,\, \phi$=%2.2f", a,b, phi) at last box .n above;
+color_blue; 
+mv_liss(a,b,phi)
+for q=0 to 2*pi by 0.05 do{
+  ln_liss(a,b,phi);
+}
+color_reset;
+
+x0 = 2; y0 = 7; phi = pi/3; a=2; b=3;
+rgbfill(fill_light_grey, {box at (x0,y0) wid 4 ht 4} );
+sprintf("$a=%2.0f \,\,\, b=%2.0f \,\,\, \phi$=%2.2f", a,b, phi) at last box .n above;
+color_dark_green; 
+mv_liss(a,b,phi)
+for q=0 to 4*pi by 0.05 do{
+  ln_liss(a,b,phi);
+}
+color_reset;
+
+x0 = 7; y0 = 7; phi = 0; a=5; b=7;
+rgbfill(fill_light_grey, {box at (x0,y0) wid 4 ht 4} );
+sprintf("$a=%2.0f \,\,\, b=%2.0f \,\,\, \phi$=%2.2f", a,b, phi) at last box .n above;
+color_red;
+mv_liss(a,b,phi)
+for q=0 to 4*pi by 0.01 do{
+  ln_liss(a,b,phi);
+}
+'''
+
+_ = cm_compile('cm_0160b', data, dpi=600)   
+```
+
+
+```{figure} ./src/cm_0160b.png
+:width: 500px
+:name: cm_0160b
+
+[Príklad](./src/cm_0160b.ckt) použitia cyklu.
+```
 
 
 ### <font color='brown'> Vetvenie  </font>
