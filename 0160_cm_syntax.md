@@ -23,9 +23,10 @@ Programovací jazyk `dpic` historicky vychádza z jazyka [pic](./data/pic.pdf) v
 
 ## <font color='teal'> Program </font>
 
-Program je tvorený textovým súborom, ktorý začína znakmi **.PS** a končí znakmi **.PE**. Príkaz na riadku je ukončený bodkočiarkou `;` alebo ukončenim riadku (neviditeľný znak `\n`). Bodkočiarka na ukončenie príkazu nie je povinná, na rozdiel napr. od jazyka `C`, ale  využijeme  vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. 
+Program je tvorený textovým súborom, ktorý začína znakmi **.PS** a končí znakmi **.PE**. Príkaz na riadku je ukončený bodkočiarkou `;` alebo ukončenim riadku (neviditeľný znak `\n`). Bodkočiarka na ukončenie príkazu nie je povinná, na rozdiel napr. od jazyka `C`, ale  využijeme  ju vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. 
 
     .PS                           # zaciatok postupnosti prikazov
+    
     scale=2.54                    # príkaz nastavenie parametrov velkosti obrazku
     cct_init                      # príkaz pre inicializaciu kniznice makier 
                                   #  s analogovými prvkami (rezistor, ...)
@@ -172,15 +173,38 @@ Jazyk *dpic* obsahuje základnú konštrukciu pre cuklus a podmienkové vetvenie
 
 ### <font color='brown'>  Cyklus  </font>
 
-Formát cyklu
+Formát príkazu pre cyklu
 
     for variable = expr to expr [by [*] incr ] do { anything }.
 
 Jednoduchý cyklus s premennou $x$ má tvar
 
-    for x = 1 to 10 by 2 do { line from (0,0) to (5,x); }
+    for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
+
+kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený.
+ 
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
+'''
+
+_ = cm_compile('cm_0160a', data, dpi=600)   
+```
+
+
+```{figure} ./src/cm_0160a.png
+:width: 300px
+:name: cm_0160a
+
+Jednoduchý cyklus.
+```
+
     
-kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo zjednodušeného kódu 
+ Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo zjednodušeného zápisu kódu 
 
     ...
     for q=0 to 2*pi by 0.1 do{
