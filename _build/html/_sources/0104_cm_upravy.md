@@ -57,7 +57,6 @@ capacitor(right_ 1.5,,E); llabel(,C_1,); rlabel(,10 \mu F,);
 resistor(right_ 1.5,,ES); 
 color_reset; 
 llabel(,R_4,); rlabel(,10 \Omega,);
-
 '''
 
 _ = cm_compile('cm_0104a', data,  dpi=600)   

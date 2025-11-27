@@ -17,7 +17,7 @@ kernelspec:
 
 Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov z programu **PyCirkuit** tak ako je to uvedené v úvode tejto publikácie. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.
 
-## <font color='teal'> CLI PyCirkuit </font>
+## <font color='teal'> PyCirkuit CLI </font>
 
 Program **PyCirkuit** umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom
 
@@ -108,7 +108,7 @@ Konverziu zdrojového kódu *<meno_suboru>.ckt* na obrázok *.png* spustíme z k
     
 ## <font color='teal'> Python skript </font>
 
-Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad *Jupyter Lab*, je možné využiť funkciu *cm_compile()* implementovanú v súbore [cmc.py](./src/cmc.py)
+Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad *Jupyter Lab*, je možné využiť funkciu *cm_compile()* implementovanú v súbore [cmc.py](./src/cmc.py). Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti.
 
     import os
     

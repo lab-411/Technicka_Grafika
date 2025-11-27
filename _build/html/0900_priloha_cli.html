@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -346,7 +346,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-pycirkuit"><font color="teal"> CLI PyCirkuit </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycirkuit-cli"><font color="teal"> PyCirkuit CLI </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="brown"> Použitie  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a><ul class="nav section-nav flex-column">
@@ -367,8 +367,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="export-obrazkov">
 <h1><font color='navy'> Export obrázkov </font><a class="headerlink" href="#export-obrazkov" title="Link to this heading">#</a></h1>
 <p>Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov z programu <strong>PyCirkuit</strong> tak ako je to uvedené v úvode tejto publikácie. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.</p>
-<section id="cli-pycirkuit">
-<h2><font color='teal'> CLI PyCirkuit </font><a class="headerlink" href="#cli-pycirkuit" title="Link to this heading">#</a></h2>
+<section id="pycirkuit-cli">
+<h2><font color='teal'> PyCirkuit CLI </font><a class="headerlink" href="#pycirkuit-cli" title="Link to this heading">#</a></h2>
 <p>Program <strong>PyCirkuit</strong> umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit --help
 </pre></div>
@@ -458,7 +458,7 @@ rm template.log
 </section>
 <section id="python-skript">
 <h2><font color='teal'> Python skript </font><a class="headerlink" href="#python-skript" title="Link to this heading">#</a></h2>
-<p>Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a></p>
+<p>Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a>. Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
 
 CIRCUIT_MACROS_PATH = &#39;./cm&#39;
@@ -562,7 +562,7 @@ def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-pycirkuit"><font color="teal"> CLI PyCirkuit </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycirkuit-cli"><font color="teal"> PyCirkuit CLI </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="brown"> Použitie  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a><ul class="nav section-nav flex-column">
