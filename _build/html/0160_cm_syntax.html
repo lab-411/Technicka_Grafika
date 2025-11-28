@@ -172,7 +172,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
@@ -352,10 +352,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komentare"><font color="brown"> Komentáre </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodnoty"><font color="brown"> Hodnoty </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne"><font color="brown"> Premenné </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#makra-a-prikazy"><font color="brown"> Makrá a príkazy </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objekty-a-referencie"><font color="brown"> Objekty a referencie </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zlozene-objekty"><font color="brown"> Zložené objekty </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bloky"><font color="brown">  Bloky  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="brown">  Vetvy  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bloky"><font color="brown"> Bloky </font></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riadenie-toku"><font color="teal"> Riadenie toku  </font></a><ul class="nav section-nav flex-column">
@@ -402,104 +402,96 @@ resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
 <section id="komentare">
 <h3><font color='brown'> Komentáre </font><a class="headerlink" href="#komentare" title="Link to this heading">#</a></h3>
 <p>Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie sú definované, je ale možné použiť viacriadkové komentáre s riadkami ukončenými \\.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># toto je jednoriadkovy komentar</span>
-<span class="c1"># toto je dvojriadkovy komentar        \\</span>
-  <span class="n">a</span> <span class="n">jeho</span> <span class="n">pokracovanie</span> <span class="n">na</span> <span class="n">dalsom</span> <span class="n">riadku</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># toto je jednoriadkovy komentar
+# toto je dvojriadkovy komentar        \\
+  a jeho pokracovanie na dalsom riadku
 </pre></div>
 </div>
 <p>White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorované</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>    <span class="n">name</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span>
-    <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="p">)</span>
-</pre></div>
-</div>
-<p>je ekvivalent</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>    <span class="n">name</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name( x,
+y, z )
+    
+je ekvivalent
+
+name(x,y,z)
 </pre></div>
 </div>
 </section>
 <section id="hodnoty">
 <h3><font color='brown'> Hodnoty </font><a class="headerlink" href="#hodnoty" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Numerické hodnoty môžu obsahovať desatinnú bodku alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte <em>floating-point</em>.</p></li>
-<li><p>Polohy súradníc sú zapísané usporiadanou dvojicou <em>(x,y)</em>, každá súradnica implicitne obsahuje atribúty <em>.x</em> a <em>.y</em>.</p></li>
-<li><p>Textové reťazce sú zapísané pomocou úvodzoviek <em>“Toto je text”</em></p></li>
-</ul>
+<p>Jazyk <em>dpic</em> pozná len numerické hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte <em>floating-point</em>.</p>
 </section>
 <section id="premenne">
 <h3><font color='brown'> Premenné </font><a class="headerlink" href="#premenne" title="Link to this heading">#</a></h3>
 <p>Meno premennej  musí začínať písmenom nasledovaným ľubovolným počtom alfanumerických znakov. Premenné sa vytvoria pri ich definícii, musia byť inicializované <strong>numerickou</strong> hodnotou a sú globálne t.j. majú platnosť v celom zdrojovom kóde.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>  <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265359</span><span class="p">;</span>
-<span class="n">q</span>  <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="mi">8</span><span class="p">;</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d  = 2;
+pi = 3.14159265359;
+q  = 2*pi*8;
 </pre></div>
 </div>
-<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>    <span class="c1"># chyba   </span>
-<span class="n">P1</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>     <span class="c1"># ok</span>
+<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Pre súradnice  sú definované vektorové operátory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p1 = (3,4);    # chyba   
+P1: (3,4);     # ok
 </pre></div>
 </div>
-<p>Text je postupnosť znakov definované v obyčajných úvodzovkách a <strong>nemôže</strong> byť použitý ako hodnota premennej. Stred zobrazeného textu ale môže byť reprezentovaný referenciou.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Toto je text&quot;</span>          <span class="c1"># chyba   </span>
-<span class="n">T1</span><span class="p">:</span> <span class="s2">&quot;Toto je text&quot;</span> <span class="n">at</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>  <span class="c1"># ok, stred textu je v bode (1,1)</span>
+<p>Text je postupnosť znakov definované v obyčajných úvodzovkách a <strong>nemôže</strong> byť použitý ako hodnota premennej. Súradnica stredu zobrazeného textu ale môže byť reprezentovaná referenciou.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str = &quot;Toto je text&quot;          # chyba   
+T1: &quot;Toto je text&quot; at (1,1);  # ok, stred textu je v bode (1,1)
 </pre></div>
 </div>
 </section>
-<section id="makra-a-prikazy">
-<h3><font color='brown'> Makrá a príkazy </font><a class="headerlink" href="#makra-a-prikazy" title="Link to this heading">#</a></h3>
-<p>Inštrukcia (<em>statement</em>) je jeden alebo viacej príkazov končiacich znakom bodkočiarky <em>;</em> alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>           <span class="c1"># inšrukcia jazyka dpic</span>
-<span class="n">resistor</span><span class="p">(,,</span><span class="n">E</span><span class="p">);</span>                     <span class="c1"># makro inštrukcia končí znakom ;</span>
-<span class="n">capacitor</span><span class="p">()</span>                        <span class="c1"># makro inštrukcia končí \n</span>
-<span class="n">resistor</span><span class="p">()</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R2</span><span class="p">,)</span>            <span class="c1"># chyba, neoddelene inštrukcie</span>
-<span class="n">line</span> <span class="n">to</span> <span class="n">Here</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> <span class="n">resistor</span><span class="p">()</span>   <span class="c1"># dpic a makro inšrukcia </span>
+<section id="instrukcie">
+<h3><font color='brown'> Inštrukcie </font><a class="headerlink" href="#instrukcie" title="Link to this heading">#</a></h3>
+<p>Inštrukcia je jeden alebo viacej príkazov jazyka <em>dpic</em> končiacich znakom bodkočiarky <em>;</em> alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku <em>dpic</em> nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>. Formát inštrukcie v má tvar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[referencia:] objekt [ atributy] [ umiestnenie ] [ text ]
 </pre></div>
 </div>
-<div class="admonition-konflikt-mien admonition">
-<p class="admonition-title">Konflikt mien</p>
-<p>Používanie makrier spoločne s interpreterom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makie sa dozvieme až pri interpretácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.</p>
-<ul class="simple">
-<li><p>Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro <em>setrgb()</em> používa premenné <em>r_</em> , <em>g_</em>, <em>b_</em>, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. <em>r_1</em>. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca <em>r\_1</em>.</p></li>
-<li><p>Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad <em>“toto je resistor R1”</em>, pretože pri substitúcii dôjde k nahradeniu textu <em>resistor</em>  kódom definovanom v makre a následnej chybe pri interpretácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade.</p></li>
-</ul>
+<p>Príklady</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line from (1,1) to (2,2)           # inštrukcia jazyka dpic
+resistor(,,E);                     # makro inštrukcia končí znakom ;
+capacitor()                        # makro inštrukcia končí \n
+resistor() rlabel(,R2,)            # chyba, neoddelene inštrukcie
+line to Here + (2,0); resistor()   # dpic a makro inšrukcia 
+</pre></div>
 </div>
 </section>
-<section id="objekty-a-referencie">
-<h3><font color='brown'> Objekty a referencie </font><a class="headerlink" href="#objekty-a-referencie" title="Link to this heading">#</a></h3>
-<p>Každý príkazom zobrazovaný objekt  v <em>dpic</em> môže byť označený referenciou, prostredníctvom ktorej je možné odkazovať sa na jej atribúty (ak sú definované). Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov.</p>
-<p>Formát</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[ Reference :] object [ attributes ] [ placement ] [ strings ]
+<section id="referencie">
+<h3><font color='brown'> Referencie </font><a class="headerlink" href="#referencie" title="Link to this heading">#</a></h3>
+<p>Každý príkazom zobrazovaný objekt v <em>dpic</em> môže byť označený referenciou, prostredníctvom ktorej je možné odkazovať sa na jej atribúty (ak sú definované). Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. Referenciou je možné označiť aj súradnice. Príklad použitia referencií</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    L1: line from Here to Here + (2,2);
+   R1: resistor();
+Stred: (5,6);
 </pre></div>
 </div>
-<p>Príklad použitia referencií</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L1</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span> <span class="nn">Here</span> <span class="n">to</span> <span class="n">Here</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">();</span>
+<p>Pomocou referencií je možné pristupovať k atribútom komponentov, napr:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Stred.x  # má hodnotu 5
+Stred.y  # má hodnotu 6
 </pre></div>
 </div>
-<p>Referenciou je možné označiť aj súradnice.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">Stred</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Pomocou referencií je možné pristupovať k individuálnym atribútom komponentov, napr:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">Stred</span><span class="o">.</span><span class="n">x</span>  <span class="c1"># má hodnotu 5</span>
-<span class="n">Stred</span><span class="o">.</span><span class="n">y</span>  <span class="c1"># má hodnotu 6</span>
-</pre></div>
-</div>
-<p>Referencie sú globálne, referencia definovaná v bloku je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.</p>
+<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.</p>
 </section>
-<section id="zlozene-objekty">
-<h3><font color='brown'> Zložené objekty </font><a class="headerlink" href="#zlozene-objekty" title="Link to this heading">#</a></h3>
-<p>Uzatvorené v zátvorkách <em>[  .. ]</em></p>
+<section id="vetvy">
+<h3><font color='brown'>  Vetvy  </font><a class="headerlink" href="#vetvy" title="Link to this heading">#</a></h3>
+<p>Vetva je tvorená kódom uzatvoreným do zložených zátvoriek <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote <code class="docutils literal notranslate"><span class="pre">Here</span></code>, vo vetve sa vytvorí lokálna kópia <code class="docutils literal notranslate"><span class="pre">Here</span></code>. Premenné uzatvorené vo vetve <code class="docutils literal notranslate"><span class="pre">{...}</span></code> majú lokálnu platnosť, refrencie na objekty v nich vytvorené  majú platnosť globálnu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d = 2;
+{
+    d = 0.4;           # lokalna premenna
+    Q: (1,1);          # globálná definícia polohy
+    ...
+}
+line from Q right_ d   # d má hodnotu 2
+</pre></div>
+</div>
 </section>
 <section id="bloky">
-<h3><font color='brown'>  Bloky  </font><a class="headerlink" href="#bloky" title="Link to this heading">#</a></h3>
-<p>Premenné uzatvorené v bloku {…} majú lokálnu platnosť, v nich vytvorené  majú platnosť globálnu. Kód v bloku sa vzťahuje k poslednej aktuálnej polohe a nemení ju, je preto výhodné používať bloky na kreslenie vetiev obvodov vzľadom k referenčnej polohe.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">{</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
-    <span class="n">Q</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>          <span class="c1"># globálná definícia polohy</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-<span class="n">line</span> <span class="kn">from</span> <span class="nn">Q</span> <span class="n">right_</span> <span class="n">d</span>   <span class="c1"># d má hodnotu 2</span>
+<h3><font color='brown'> Bloky </font><a class="headerlink" href="#bloky" title="Link to this heading">#</a></h3>
+<p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d=1;
+A: [
+      d = d/2;
+      C: circle rad d;   # d = 1/2
+] 
+line from A.C.n up_ d;   # pristup k vnutornej referencii, d = 2
 </pre></div>
 </div>
 </section>
@@ -522,7 +514,7 @@ resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
 <a class="reference internal image-reference" href="_images/cm_0160a.png"><img alt="_images/cm_0160a.png" src="_images/cm_0160a.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 37 </span><span class="caption-text">Jednoduchý cyklus.</span><a class="headerlink" href="#cm-0160a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 38 </span><span class="caption-text">Jednoduchý cyklus.</span><a class="headerlink" href="#cm-0160a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo zjednodušeného zápisu kódu</p>
@@ -539,7 +531,7 @@ for q=0 to 2*pi by 0.1 do{
 <a class="reference internal image-reference" href="_images/cm_0160b.png"><img alt="_images/cm_0160b.png" src="_images/cm_0160b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 38 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 39 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -602,10 +594,10 @@ for q=0 to 2*pi by 0.1 do{
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komentare"><font color="brown"> Komentáre </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodnoty"><font color="brown"> Hodnoty </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne"><font color="brown"> Premenné </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#makra-a-prikazy"><font color="brown"> Makrá a príkazy </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objekty-a-referencie"><font color="brown"> Objekty a referencie </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zlozene-objekty"><font color="brown"> Zložené objekty </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bloky"><font color="brown">  Bloky  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="brown">  Vetvy  </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bloky"><font color="brown"> Bloky </font></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riadenie-toku"><font color="teal"> Riadenie toku  </font></a><ul class="nav section-nav flex-column">

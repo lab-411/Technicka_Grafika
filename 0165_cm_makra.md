@@ -340,6 +340,16 @@ _ = cm_compile('cm_0165c', data, dpi=600)
 [Implementácia](./src/cm_0165c.ckt) makra pre zobrazenie spínača a jeho použitie
 ```
 
+```{admonition} Konflikt mien 
+
+Používanie makrier spoločne s interpreterom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makie sa dozvieme až pri interpretácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.   
+
+* Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro *setrgb()* používa premenné *r_* , *g_*, *b_*, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. *r_1*. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca *r\\_1*.
+
+* Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad *"toto je resistor R1"*, pretože pri substitúcii dôjde k nahradeniu textu *resistor*  kódom definovanom v makre a následnej chybe pri interpretácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade. 
+
+```
+
 ## <font color='teal'> Modifikácia makra </font>
 
 V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach napríklad je značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s jeho typom púzdra.

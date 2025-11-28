@@ -40,132 +40,112 @@ Program je tvorený textovým súborom, ktorý začína znakmi **.PS** a končí
  
 
 Text za koncom programu je ignorovaný. Ukončenie programu môžeme prakticky využiť pri hľadaní chýb v skripte, kedy pomocou **.PE** vyradíme zbytok programu zo spracovania.
- 
+
+
 ### <font color='brown'> Komentáre </font>
 
 Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie sú definované, je ale možné použiť viacriadkové komentáre s riadkami ukončenými \\\\\\\\.
 
-```Python
-# toto je jednoriadkovy komentar
-# toto je dvojriadkovy komentar        \\
-  a jeho pokracovanie na dalsom riadku
-```
+
+    # toto je jednoriadkovy komentar
+    # toto je dvojriadkovy komentar        \\
+      a jeho pokracovanie na dalsom riadku
+
 
 White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorované
 
-```Python
     name( x,
     y, z )
-```
         
-je ekvivalent
+    je ekvivalent
 
-```Python
     name(x,y,z)
-```
+
         
 ### <font color='brown'> Hodnoty </font>
 
-* Numerické hodnoty môžu obsahovať desatinnú bodku alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte *floating-point*.
-* Polohy súradníc sú zapísané usporiadanou dvojicou *(x,y)*, každá súradnica implicitne obsahuje atribúty *.x* a *.y*.
-* Textové reťazce sú zapísané pomocou úvodzoviek *"Toto je text"*
+Jazyk *dpic* pozná len numerické hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte *floating-point*.
 
 ### <font color='brown'> Premenné </font>
 
 Meno premennej  musí začínať písmenom nasledovaným ľubovolným počtom alfanumerických znakov. Premenné sa vytvoria pri ich definícii, musia byť inicializované **numerickou** hodnotou a sú globálne t.j. majú platnosť v celom zdrojovom kóde. 
 
-```Python
-d  = 2;
-pi = 3.14159265359;
-q  = 2*pi*8;
-```    
 
-Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou.
-
-```Python
-p1 = (3,4);    # chyba   
-P1: (3,4);     # ok
-```  
-
-Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Stred zobrazeného textu ale môže byť reprezentovaný referenciou. 
-
-```Python
-str = "Toto je text"          # chyba   
-T1: "Toto je text" at (1,1);  # ok, stred textu je v bode (1,1)
-```    
+    d  = 2;
+    pi = 3.14159265359;
+    q  = 2*pi*8;
 
 
-### <font color='brown'> Makrá a príkazy </font>
+Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Pre súradnice  sú definované vektorové operátory.
 
-Inštrukcia (*statement*) je jeden alebo viacej príkazov končiacich znakom bodkočiarky *;* alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. V `CircuitMacros` je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka `dpic`.
 
-```
-line from (1,1) to (2,2)           # inšrukcia jazyka dpic
-resistor(,,E);                     # makro inštrukcia končí znakom ;
-capacitor()                        # makro inštrukcia končí \n
-resistor() rlabel(,R2,)            # chyba, neoddelene inštrukcie
-line to Here + (2,0); resistor()   # dpic a makro inšrukcia 
-```
+    p1 = (3,4);    # chyba   
+    P1: (3,4);     # ok
 
-```{admonition} Konflikt mien 
 
-Používanie makrier spoločne s interpreterom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makie sa dozvieme až pri interpretácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.   
+Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Súradnica stredu zobrazeného textu ale môže byť reprezentovaná referenciou.  
 
-* Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro *setrgb()* používa premenné *r_* , *g_*, *b_*, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. *r_1*. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca *r\\_1*.
 
-* Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad *"toto je resistor R1"*, pretože pri substitúcii dôjde k nahradeniu textu *resistor*  kódom definovanom v makre a následnej chybe pri interpretácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade. 
-
-```
-
-### <font color='brown'> Objekty a referencie </font>
-
-Každý príkazom zobrazovaný objekt  v *dpic* môže byť označený referenciou, prostredníctvom ktorej je možné odkazovať sa na jej atribúty (ak sú definované). Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. 
-
-Formát
-
-    [ Reference :] object [ attributes ] [ placement ] [ strings ]
-
-Príklad použitia referencií
-
-```
-L1: line from Here to Here + (2,2);
-R1: resistor();
-```
-
-Referenciou je možné označiť aj súradnice.
+    str = "Toto je text"          # chyba   
+    T1: "Toto je text" at (1,1);  # ok, stred textu je v bode (1,1)
     
-```Python
-Stred: (5,6);
-```    
 
-Pomocou referencií je možné pristupovať k individuálnym atribútom komponentov, napr:
+### <font color='brown'> Inštrukcie </font>
 
-```Python
-Stred.x  # má hodnotu 5
-Stred.y  # má hodnotu 6
-```
+Inštrukcia je jeden alebo viacej príkazov jazyka *dpic* končiacich znakom bodkočiarky *;* alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku *dpic* nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V `CircuitMacros` je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka `dpic`. Formát inštrukcie v má tvar
 
-Referencie sú globálne, referencia definovaná v bloku je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.
+    [referencia:] objekt [ atributy] [ umiestnenie ] [ text ]
 
+Príklady
 
-### <font color='brown'> Zložené objekty </font>
-
-Uzatvorené v zátvorkách *[  .. ]*
+    line from (1,1) to (2,2)           # inštrukcia jazyka dpic
+    resistor(,,E);                     # makro inštrukcia končí znakom ;
+    capacitor()                        # makro inštrukcia končí \n
+    resistor() rlabel(,R2,)            # chyba, neoddelene inštrukcie
+    line to Here + (2,0); resistor()   # dpic a makro inšrukcia 
 
 
-### <font color='brown'>  Bloky  </font>
+### <font color='brown'> Referencie </font>
 
-Premenné uzatvorené v bloku {...} majú lokálnu platnosť, v nich vytvorené  majú platnosť globálnu. Kód v bloku sa vzťahuje k poslednej aktuálnej polohe a nemení ju, je preto výhodné používať bloky na kreslenie vetiev obvodov vzľadom k referenčnej polohe.  
+Každý príkazom zobrazovaný objekt v *dpic* môže byť označený referenciou, prostredníctvom ktorej je možné odkazovať sa na jej atribúty (ak sú definované). Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. Referenciou je možné označiť aj súradnice. Príklad použitia referencií
 
-```
-d = 2;
-{
-    d = 0.4;
-    Q: (1,1);          # globálná definícia polohy
-    ...
-}
-line from Q right_ d   # d má hodnotu 2
-```
+
+        L1: line from Here to Here + (2,2);
+       R1: resistor();
+    Stred: (5,6);
+
+Pomocou referencií je možné pristupovať k atribútom komponentov, napr:
+
+    Stred.x  # má hodnotu 5
+    Stred.y  # má hodnotu 6
+
+Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.
+
+
+### <font color='brown'>  Vetvy  </font>
+
+Vetva je tvorená kódom uzatvoreným do zložených zátvoriek `{...}`. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote `Here`, vo vetve sa vytvorí lokálna kópia `Here`. Premenné uzatvorené vo vetve `{...}` majú lokálnu platnosť, refrencie na objekty v nich vytvorené  majú platnosť globálnu. 
+
+    d = 2;
+    {
+        d = 0.4;           # lokalna premenna
+        Q: (1,1);          # globálná definícia polohy
+        ...
+    }
+    line from Q right_ d   # d má hodnotu 2
+
+
+### <font color='brown'> Bloky </font>
+
+Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.
+
+    d=1;
+    A: [
+          d = d/2;
+          C: circle rad d;   # d = 1/2
+    ] 
+    line from A.C.n up_ d;   # pristup k vnutornej referencii, d = 2
+
 
 ## <font color='teal'> Riadenie toku  </font>
 

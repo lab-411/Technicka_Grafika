@@ -14,7 +14,8 @@ kernelspec:
 
 # <font color='navy'> Texty </font>
 
-Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v `CircuitMacros` pomocou makier *rlabel ...*, rozšírené formátovanie textov je možné s využitím príkazov jazyka `dpic` a renderovania textu pomocou LaTeX-u. Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u.
+Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v `CircuitMacros` pomocou makier *rlabel ...*, rozšírené formátovanie textov je možné s využitím príkazov jazyka `dpic` a renderovania textu pomocou LaTeX-u. 
+Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u. 
 
 ## <font color='teal'> Zadanie textu   </font>
 
@@ -163,7 +164,7 @@ Funkcia `sprintf` pre konverziu čísla na formátovaný reťazec akceptuje form
        \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$" at (5,3);   
         
        color_red;
-       sprintf("Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
+       sprintf("Formatovany text $x=%2.3f$ \,\, $y=%2.3f $", T.x, T.y) at (5, 1.5);
 
 
 ```{code-cell} ipython3 
@@ -185,7 +186,7 @@ T: "$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$" at (5, 0.5);
        \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$" at (5,3);   
 
 color_red;
-sprintf("Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
+sprintf("Formatovany text $x=%2.3f$ \,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
 '''
 
 _ = cm_compile('cm_0130c', data, dpi=600)   
@@ -198,46 +199,44 @@ _ = cm_compile('cm_0130c', data, dpi=600)
 [Použitie](./src/cm_0130c.ckt) matematických výrazov
 ```
 
-## <font color='teal'>  Formátovanie textu pomocou LateX-u  </font>
+## <font color='teal'>  Formátovanie textu pomocou LaTeX-u  </font>
 
-Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách.
+Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho [dokumentácii](https://www.latex-project.org/help/documentation/fntguide.pdf).
 
-    \textit{text}    \textbf{text}   \underline{text} 
+Pre prepínanie typu fontu sú v LaTeX-e definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách `{...}` alebo na na celý text. Výber z LaTeX príkazov pre formátovanie textu 
+
+**Výber kolekcie fontov**
+
+    font Roman        \rmfamily  \rm   \textrm{...}
+    font Sans Serif   \sffamily  \sf   \textsf{...}
+    font Typewriter   \fffamily  \tt   \texttt{...}
     
-Pre rotáciu textu je potrebné použiť príkaz
+**Forma textu**
 
+    tučný text       \bfseries   \bf   \textbf{...}
+ 
+ **Tvar textu v kolekcii**
+     
+    šikmý text       \itshape    \it   \textit{...}
+    naklonený text   \slshape    \sl   \textsl{...}
+    malé písmená     \scshape    \sc   \textsc{...}
+
+**Velkosť písma**
+
+    \tiny     \scriptsize    \footnotesize   \small   \normalsize 
+    \large    \Large         \LARGE          \huge    \Huge   
+    
+**Rotácia textu**
+    
     \rotatebox{angle}{text}
     
 Poloha otočeného textu je vždy v jeho strede, pridávanie medzier na začiatok alebo koniec textu neposunie stred textu.
 
-Velkosti písma je určená príkazmi
+**Podčiarknutý text**
 
-    \tiny     \scriptsize    \footnotesize   \small   \normalsize 
-    \large    \Large         \LARGE          \huge    \Huge 
+    \underline{Underline}
     
 Príklad formátovania textu s použitím príkazov LaTex-u:
-
-
-        "\textit{Italic}" at (7, 0.5);
-        "\textbf{Bold}" at (7, 1);
-        "\underline{Underline}" at (7, 1.5);
-
-        for i=0 to 300 by 60 do {
-            move to ( 2 + 1*cos(i/180*pi), 2 + 1*sin(i/180*pi) );
-            sprintf("\rotatebox{%g}{Text %g}", i,i );
-        }
-
-        "\large large \Large Large \LARGE LARGE" at (7,3);
-        "\huge huge \Huge Huge" at (7,4);
-
-        "\texttt{Font TT}" at (7,5);
-        "\textsf{Font SF}" at (7,5.5);
-
-        color_red;
-        move to (4, 5.5);
-        "\fbox{Text in Box}" at Here;
-
-
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -246,38 +245,38 @@ from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
-include(lib_color.ckt)
+Grid(10.5,5);
 
-Origin: Here 
-Grid(10, 6);
-"\textit{Italic}" at (7, 0.5);
-"\textbf{Bold}" at (7, 1);
-"\underline{Underline}" at (7, 1.5);
+
+"\textit{Italic 123}" at (1.5, 0.5);
+"\textbf{Bold 123}" at (1.5, 1.0);
+"\textsc{SmallCaps 123}" at (1.5, 1.5);
+"\textsl{Slanted 123}" at (1.5, 2);
+"\textrm{Roman 123}" at (1.5, 3.5);
+"\textsf{Sans Serif 123}" at (1.5, 4);
+"\texttt{Typewriter 123}" at (1.5, 4.5);
 
 for i=0 to 300 by 60 do {
-    move to ( 2 + 1*cos(i/180*pi), 2 + 1*sin(i/180*pi) );
-    sprintf("\rotatebox{%g}{Text %g}", i,i );
+  move to ( 5 + 1*cos(i/180*pi), 2.5 + 1*sin(i/180*pi) );
+  sprintf("\rotatebox{%g}{Text %g}", i,i );
 }
 
-"\large large \Large Large \LARGE LARGE" at (7,3);
-"\huge huge \Huge Huge" at (7,4);
-
-"\texttt{Font TT}" at (7,5);
-"\textsf{Font SF}" at (7,5.5);
-
-color_red;
-move to (4, 5.5);
-"\fbox{Text in Box}" at Here;
+"\tiny  tiny  \scriptsize scriptsize \footnotesize footnotesize" at (8.5, 4.5);
+" \small small \normalsize normalsize " at (8.5,4)
+"\large large  \Large Large " at (8.5,3.25)
+"\LARGE LARGE" at (8.5,2.5)
+"\huge huge" at (8.5, 1.5)
+"\Huge Huge" at (8.5, 0.5)
 '''
 
 _ = cm_compile('cm_0130d', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0130d.png
-:width: 500px
+:width: 600px
 :name: cm_0130d
 
-[Formátovanie](./src/cm_0130d.ckt) textu pomocou LaTeX-u
+[Formátovanie](./src/cm_0130d.ckt) textu pomocou príkazov LaTeX-u
 ```
 
 

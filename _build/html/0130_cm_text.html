@@ -48,7 +48,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Jazyk dpic" href="0160_cm_syntax.html" />
-    <link rel="prev" title="Vetvy" href="0120_cm_vetvy.html" />
+    <link rel="prev" title="Vetvy a bloky" href="0120_cm_vetvy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,7 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Texty </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
@@ -349,7 +349,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-textu"><font color="teal"> Zadanie textu   </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LateX-u  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a></li>
 </ul>
             </nav>
         </div>
@@ -363,7 +363,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="texty">
 <h1><font color='navy'> Texty </font><a class="headerlink" href="#texty" title="Link to this heading">#</a></h1>
-<p>Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> pomocou makier <em>rlabel …</em>, rozšírené formátovanie textov je možné s využitím príkazov jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovania textu pomocou LaTeX-u. Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u.</p>
+<p>Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> pomocou makier <em>rlabel …</em>, rozšírené formátovanie textov je možné s využitím príkazov jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovania textu pomocou LaTeX-u.
+Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u.</p>
 <section id="zadanie-textu">
 <h2><font color='teal'> Zadanie textu   </font><a class="headerlink" href="#zadanie-textu" title="Link to this heading">#</a></h2>
 <p>Pre kreslenie textu do obrázku je určený príkaz v tvare</p>
@@ -401,7 +402,7 @@ LL: line from (-1,0) to (1,0);
 <a class="reference internal image-reference" href="_images/cm_0130a.png"><img alt="_images/cm_0130a.png" src="_images/cm_0130a.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 33 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/b878abc98a1e7e888f1c1c18b76ba64a/cm_0130a.ckt"><span class="xref download myst">Relatívne</span></a> umiestnenie textu voči zadanej polohe.</span><a class="headerlink" href="#cm-0130a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 34 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/b878abc98a1e7e888f1c1c18b76ba64a/cm_0130a.ckt"><span class="xref download myst">Relatívne</span></a> umiestnenie textu voči zadanej polohe.</span><a class="headerlink" href="#cm-0130a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Text modifikuje globálnu premennú <code class="docutils literal notranslate"><span class="pre">Here</span></code>, po vykreslení textu je nová hodnota poloha <code class="docutils literal notranslate"><span class="pre">Here</span></code> v geometrickom strede textu.</p>
@@ -442,7 +443,7 @@ LL: line from (-1,0) to (1,0);
 <a class="reference internal image-reference" href="_images/cm_0130b.png"><img alt="_images/cm_0130b.png" src="_images/cm_0130b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 34 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d23d1c43b74699ed25ac696471db49ab/cm_0130b.ckt"><span class="xref download myst">Pozícia</span></a> a farby textu</span><a class="headerlink" href="#cm-0130b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 35 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d23d1c43b74699ed25ac696471db49ab/cm_0130b.ckt"><span class="xref download myst">Pozícia</span></a> a farby textu</span><a class="headerlink" href="#cm-0130b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -457,59 +458,57 @@ LL: line from (-1,0) to (1,0);
    \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$&quot; at (5,3);   
     
    color_red;
-   sprintf(&quot;Formatovany text $x=%2.3f$ \,\,\,  $y=%2.3f $&quot;, T.x, T.y) at (5, 1.5);
+   sprintf(&quot;Formatovany text $x=%2.3f$ \,\, $y=%2.3f $&quot;, T.x, T.y) at (5, 1.5);
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0130c">
 <a class="reference internal image-reference" href="_images/cm_0130c.png"><img alt="_images/cm_0130c.png" src="_images/cm_0130c.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 35 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e7a28ca76c3475b6ee8cefa3c76b9e6b/cm_0130c.ckt"><span class="xref download myst">Použitie</span></a> matematických výrazov</span><a class="headerlink" href="#cm-0130c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 36 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e7a28ca76c3475b6ee8cefa3c76b9e6b/cm_0130c.ckt"><span class="xref download myst">Použitie</span></a> matematických výrazov</span><a class="headerlink" href="#cm-0130c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="formatovanie-textu-pomocou-latex-u">
-<h2><font color='teal'>  Formátovanie textu pomocou LateX-u  </font><a class="headerlink" href="#formatovanie-textu-pomocou-latex-u" title="Link to this heading">#</a></h2>
-<p>Jaxyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\textit{text}    \textbf{text}   \underline{text} 
+<h2><font color='teal'>  Formátovanie textu pomocou LaTeX-u  </font><a class="headerlink" href="#formatovanie-textu-pomocou-latex-u" title="Link to this heading">#</a></h2>
+<p>Jaxyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho <a class="reference external" href="https://www.latex-project.org/help/documentation/fntguide.pdf">dokumentácii</a>.</p>
+<p>Pre prepínanie typu fontu sú v LaTeX-e definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách <code class="docutils literal notranslate"><span class="pre">{...}</span></code> alebo na na celý text. Výber z LaTeX príkazov pre formátovanie textu</p>
+<p><strong>Výber kolekcie fontov</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>font Roman        \rmfamily  \rm   \textrm{...}
+font Sans Serif   \sffamily  \sf   \textsf{...}
+font Typewriter   \fffamily  \tt   \texttt{...}
 </pre></div>
 </div>
-<p>Pre rotáciu textu je potrebné použiť príkaz</p>
+<p><strong>Forma textu</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tučný text       \bfseries   \bf   \textbf{...}
+</pre></div>
+</div>
+<p><strong>Tvar textu v kolekcii</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>šikmý text       \itshape    \it   \textit{...}
+naklonený text   \slshape    \sl   \textsl{...}
+malé písmená     \scshape    \sc   \textsc{...}
+</pre></div>
+</div>
+<p><strong>Velkosť písma</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\tiny     \scriptsize    \footnotesize   \small   \normalsize 
+\large    \Large         \LARGE          \huge    \Huge   
+</pre></div>
+</div>
+<p><strong>Rotácia textu</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\rotatebox{angle}{text}
 </pre></div>
 </div>
 <p>Poloha otočeného textu je vždy v jeho strede, pridávanie medzier na začiatok alebo koniec textu neposunie stred textu.</p>
-<p>Velkosti písma je určená príkazmi</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\tiny     \scriptsize    \footnotesize   \small   \normalsize 
-\large    \Large         \LARGE          \huge    \Huge 
+<p><strong>Podčiarknutý text</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\underline{Underline}
 </pre></div>
 </div>
 <p>Príklad formátovania textu s použitím príkazov LaTex-u:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;\textit{Italic}&quot; at (7, 0.5);
-    &quot;\textbf{Bold}&quot; at (7, 1);
-    &quot;\underline{Underline}&quot; at (7, 1.5);
-
-    for i=0 to 300 by 60 do {
-        move to ( 2 + 1*cos(i/180*pi), 2 + 1*sin(i/180*pi) );
-        sprintf(&quot;\rotatebox{%g}{Text %g}&quot;, i,i );
-    }
-
-    &quot;\large large \Large Large \LARGE LARGE&quot; at (7,3);
-    &quot;\huge huge \Huge Huge&quot; at (7,4);
-
-    &quot;\texttt{Font TT}&quot; at (7,5);
-    &quot;\textsf{Font SF}&quot; at (7,5.5);
-
-    color_red;
-    move to (4, 5.5);
-    &quot;\fbox{Text in Box}&quot; at Here;
-</pre></div>
-</div>
 <figure class="align-default" id="cm-0130d">
-<a class="reference internal image-reference" href="_images/cm_0130d.png"><img alt="_images/cm_0130d.png" src="_images/cm_0130d.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/cm_0130d.png"><img alt="_images/cm_0130d.png" src="_images/cm_0130d.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 36 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/630867c3d75de26fb4c1d76fb8be2291/cm_0130d.ckt"><span class="xref download myst">Formátovanie</span></a> textu pomocou LaTeX-u</span><a class="headerlink" href="#cm-0130d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 37 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/630867c3d75de26fb4c1d76fb8be2291/cm_0130d.ckt"><span class="xref download myst">Formátovanie</span></a> textu pomocou príkazov LaTeX-u</span><a class="headerlink" href="#cm-0130d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -532,7 +531,7 @@ LL: line from (-1,0) to (1,0);
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><font color='navy'> Vetvy </font></p>
+        <p class="prev-next-title"><font color='navy'> Vetvy a bloky</font></p>
       </div>
     </a>
     <a class="right-next"
@@ -563,7 +562,7 @@ LL: line from (-1,0) to (1,0);
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-textu"><font color="teal"> Zadanie textu   </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LateX-u  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a></li>
 </ul>
   </nav></div>
 

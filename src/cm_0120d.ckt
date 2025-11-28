@@ -13,26 +13,25 @@ arrowht = 0.254         # dlzka
 
 Origin: Here 
 d = 2;
-move to (2, 3);
-DT1: dot;                   # referencny bod
-{
-         diode(right_ up_); dlabel(0,0,,D_1,,XAR);
-    DT2: dot;              
-         diode(right_ down_); dlabel(0,0,,D_2,,XAL);
+DOT1: dot;                   # referencny bod
+{ # vetva D1-D2
+     D1: diode(right_ up_);  dlabel(0,0,,D_1,,XAR);
+   DOT2: dot;              
+     D2: diode(right_ down_);dlabel(0,0,,D_2,,XAL);
 }
 
-{
-         diode(right_ down_);   dlabel(0,0,,D_3,,XBR);
-    DT3: dot;
-         diode(right_ up_);    dlabel(0,0,,D_4,,XBL);
-    DT4: dot;
+{ # vetva D3-D4
+     D3: diode(right_ down_);dlabel(0,0,,D_3,,XBR);
+   DOT3: dot;
+     D4: diode(right_ up_);  dlabel(0,0,,D_4,,XBL);
+   DOT4: dot;
 }
 
-# pouzitie referencii vytvorenych v blokoch
-L1: line from DT2  up_ d/2 then left_ d;   tconn(,O);
-L2: line from DT3  down_ d/2 then left_ d; tconn(,O);
-L3: line from DT4 right_ d; tconn(d/4, O);
-L4: line from DT1 left_ d/2 then down_ 7*d/8; 
+# pouzitie referencii vytvorenych vo vetvach
+L1: line from DOT2  up_ d/2 then left_ d;   tconn(,O);
+L2: line from DOT3  down_ d/2 then left_ d; tconn(,O);
+L3: line from DOT4 right_ d; tconn(d/4, O);
+L4: line from DOT1 left_ d/2 then down_ 7*d/8; 
     line to (L3.e.x, Here.y); tconn(right_ d/4,O);
 
 .PE

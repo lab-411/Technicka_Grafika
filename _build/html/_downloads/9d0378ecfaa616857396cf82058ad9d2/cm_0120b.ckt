@@ -21,5 +21,6 @@ box wid 2 ht 1;
     line from last box.sw to last box.ne; 
 }
 line -> 1;
+box wid 2 ht 1; 
 
 .PE

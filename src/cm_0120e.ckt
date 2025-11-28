@@ -11,16 +11,21 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-Origin: Here 
-line -> 1;
-box wid 2 ht 1; 
-{
-    "top of box" at last box.n above; 
-    "bottom of box" at last box.s below;
-    line from last box.nw to last box.se; 
-    line from last box.sw to last box.ne; 
-}
-line -> 1;
-box wid 2 ht 1; 
+include(lib_base.ckt)
+include(lib_color.ckt)
+Grid(5,3);
+
+move to (1, 1.5);
+
+A:[  # absolutne suradnice v bloku 
+    B: box at (0,0) wid 2 ht 1; 
+   C1: circle at (0, 0.5) rad 0.25; 
+   C2: circle at (0,-0.5) rad 0.25;
+   C3: circle at B.w rad 0.25;
+   C4: circle at B.e rad 0.25;
+  ]
+
+color_red;
+box at A.c wid A.wid_ ht A.ht_ dashed;  # outer contour
 
 .PE
