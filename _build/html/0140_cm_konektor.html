@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Premenné &#8212; cm 1.00 documentation</title>
+    <title>Terminály &#8212; cm 1.00 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -44,13 +44,11 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '0170_cm_premenne';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0140_cm_konektor';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Funkcie" href="0175_cm_funkcie.html" />
-    <link rel="prev" title="Makrá" href="0165_cm_makra.html" />
+    <link rel="next" title="Jazyk dpic" href="0160_cm_syntax.html" />
+    <link rel="prev" title="Texty" href="0130_cm_text.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,19 +165,19 @@
 <li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Terminály </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0160_cm_syntax.html"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0165_cm_makra.html"><font color="navy"> Makrá  </font></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Premenné  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
 </ul>
@@ -192,7 +190,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -254,7 +251,7 @@
       
       
       
-      <li><a href="_sources/0170_cm_premenne.md" target="_blank"
+      <li><a href="_sources/0140_cm_konektor.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +335,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><font color='navy'> Premenné  </font></h1>
+    <h1><font color='navy'> Terminály </font></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -348,7 +345,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacie"><font color="teal">  Operácie   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napajanie-zem-vstupy-a-vystupy"><font color="teal"> Napájanie, zem, vstupy a výstupy </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konektory"><font color="teal"> Konektory </font></a></li>
 </ul>
             </nav>
         </div>
@@ -360,86 +358,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="premenne">
-<h1><font color='navy'> Premenné  </font><a class="headerlink" href="#premenne" title="Link to this heading">#</a></h1>
-<p>Všetky premenné v jazyku <code class="docutils literal notranslate"><span class="pre">dpic</span></code> sú <strong>numerické</strong> a sú nad nimi definované aritmetické a logické operácie. Súradnice bodu na ploche majú definovanú polohu usporiadanou dvojicou numerických hodnôt <span class="math notranslate nohighlight">\((x,y)\)</span>, ktoré sú dostupné ako preddefinované atribúty <em>.x</em>, <em>.y</em>. Súradnice bodu nie je možné použiť ako hodnotu premennej, prístup k nej je možný cez <em>referenciu</em> ako k objektu na ploche. Špeciálny význam má preddefinovaná premenná <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x = 1; y = 3;        # numerické premenné
-P1: (x,y)            # referencia na bod
-p1 = (x,y)           # chyba
-u = P1.x; v = P1.y   # zložky suradnice
+  <section class="tex2jax_ignore mathjax_ignore" id="terminaly">
+<h1><font color='navy'> Terminály </font><a class="headerlink" href="#terminaly" title="Link to this heading">#</a></h1>
+<p>Každé elektronické zapojenie má pripojovacie body - terminály, ktoré môžu byť formálne (napájanie, zem, vstup, výstup …) zvyčajne pripojené jedným uzlom alebo reálne (konektor, svorkovnica …), ktoré sú pripojené do niekoľkých uzlov obvodu.</p>
+<section id="napajanie-zem-vstupy-a-vystupy">
+<h2><font color='teal'> Napájanie, zem, vstupy a výstupy </font><a class="headerlink" href="#napajanie-zem-vstupy-a-vystupy" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ground( at position, T|stem_length, N|F|S|L|P[A]|E, U|D|L|R|degrees )
+
+    parametre:
+
+    position        - poloha značky
+
+    T|stem_length   - zrušenie prívodu (T) alebo dĺžka prívodu 
+
+    N|F|S|L|P[A]|E  - typ zeme
+                N   - bez označenia, uzemnenie
+                F   - uzemnenie kostry 
+                S   - digitálna zem
+                L   
+                P   - pripojenie ochranneho vodiča
+                E   - analogová zem, europske značenie
+                
+    U|D|L|R|degrees - orientácia alebo uhol otočenia
 </pre></div>
 </div>
-<div class="admonition-poznamka admonition">
-<p class="admonition-title">Poznámka</p>
-<p>Je možné používať súradnice zapísané aj bez zátvoriek v tvare <em>x</em>, <em>y</em>, ale z dôvodu možných konfliktov pri expanzii makier je vhodnejší prehľadnejší zápis so zátvorkami <em>(x, y)</em>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line to 1,1
-line to (1,1);
-</pre></div>
-</div>
-</div>
-<section id="operacie">
-<h2><font color='teal'>  Operácie   </font><a class="headerlink" href="#operacie" title="Link to this heading">#</a></h2>
-<p>Binárne a unárne aritmetické operácie sú definované pre numerické hodnoty, operácie nad súradnicami, ak je to možné, sa konvertujú na operácie nad ich zložkami. Logické operácie sú definované len pre numerické hodnoty, nie je napríklad možné porovnávať medzi sebou dva body.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>binárne aritmetické oprácie
-+   -   *   /   %   ^
-
-unárne aritmetické operácie
-+=   -=   *=   /=   %=
-
-logické operácie 
-!=   ==   &lt;   &gt;   &gt;=   &lt;=   ||   &amp;&amp;
-</pre></div>
-</div>
-<p>Operácie súčtu a rozdielu nad súradnicami sa vyhodnocujú po zložkách pred ich použitím. Násobenie súradnice je možné len numerickou hodnotou a len ako pos-multiplikácia. Príklady použitia:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1: (1,1)            # atributy P1.x, P1.y
-P2: (1,2) + (3,4)    # (4, 6)
-P3: (1,1) + P1       # (1+P1.x, 1+P1.y)
-P4: P1 + P2
-P5: P1 * P2          # chyba 
-
-P6: (P1+P2)/2        # geometrický stred medzi bodmi P1 a P2, 
-                     # ekvivalent P6: ( (P1.x + P2.x)/2, (P1.y + P2.y)/2 ) 
-
-line from P1 to P2;
-line from (P1.x + 2, 0) to (0, P2.y) + (1,0) to (P3,P1);
-
-P7: (P3, P4)         # ekvivalent P7: (P3.x, P4.y), automatické priradenie
-
-P8: P1*k             # post-multiplikacia, k je skalarna hodnota,  (P1.x*k, P1.y*k)
-                     # pre-multiplikacia nie je dovolena
-P9: k*P1             # chyba
-
-                     # operacie so zlozkami
-P10: (0, P2)         # chyba
-P11: (0, P2.y)       # ok
-
-P12: (P1 + 4, P2)    # chyba    
-P13: (P1.x+4, P2.y)  # ok
-
-P14: Here;                        # odlozenie aktualnej pozicie
-px = Here.x; py = Here.y;         # pristup k zlozkam pozicie
-line from Here to Here + (10,10); # Here ma novu hodnotu koncoveho bodu ciary
-</pre></div>
-</div>
-<p>Pri použití relačných operátorov na súradnice bodov treba príslušnú operáciu realizovať po zložkách</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">&gt;</span> <span class="n">P2</span>              <span class="c1"># chyba</span>
-<span class="n">P1</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">P2</span><span class="o">.</span><span class="n">x</span>          <span class="c1"># ok</span>
-</pre></div>
-</div>
-<p>Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím jednoduchých operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej zmene polohy objektov.</p>
-<figure class="align-default" id="cm-0170a">
-<a class="reference internal image-reference" href="_images/cm_0170a.png"><img alt="_images/cm_0170a.png" src="_images/cm_0170a.png" style="width: 600px;" />
+<figure class="align-default" id="cm-140a">
+<a class="reference internal image-reference" href="_images/cm_0140a.png"><img alt="_images/cm_0140a.png" src="_images/cm_0140a.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 44 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/15737e1d45d100b629133c74bde06d5e/cm_0170a.ckt"><span class="xref download myst">Použitie</span></a> numerických operácii pre výpočtu koncového bodu čiary.</span><a class="headerlink" href="#cm-0170a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 38 </span><span class="caption-text">Značky zeme.</span><a class="headerlink" href="#cm-140a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Podobne môžeme využiť výpočet geometrického stredu pre presné umiestnenie textu medzi svorky obvodu.</p>
-<figure class="align-default" id="cm-0170b">
-<a class="reference internal image-reference" href="_images/cm_0170b.png"><img alt="_images/cm_0170b.png" src="_images/cm_0170b.png" style="width: 300px;" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tbox(text, wid, ht, &lt;|&gt;|&lt;&gt;)
+tconn(linespec, chars|keys, wid)
+</pre></div>
+</div>
+<figure class="align-default" id="cm-140b">
+<a class="reference internal image-reference" href="_images/cm_0140b.png"><img alt="_images/cm_0140b.png" src="_images/cm_0140b.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 45 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e3b4944f28e8f454897d4112096bb88c/cm_0170b.ckt"><span class="xref download myst">Text</span></a> v strede medzi výstupnými svorkami.</span><a class="headerlink" href="#cm-0170b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 39 </span><span class="caption-text">Vstupno-výstupné terminály.</span><a class="headerlink" href="#cm-140b" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="konektory">
+<h2><font color='teal'> Konektory </font><a class="headerlink" href="#konektory" title="Link to this heading">#</a></h2>
+<p>Fyzické pripojenie elektronických obvodov je zvyčajne realizované konektormi alebo svorkovnicami.</p>
+<figure class="align-default" id="cm-020">
+<a class="reference internal image-reference" href="_images/cm_0240a.png"><img alt="_images/cm_0240a.png" src="_images/cm_0240a.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Parametrické komponenty</span><a class="headerlink" href="#cm-020" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -457,20 +426,20 @@ line from Here to Here + (10,10); # Here ma novu hodnotu koncoveho bodu ciary
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0165_cm_makra.html"
+       href="0130_cm_text.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><font color='navy'> Makrá  </font></p>
+        <p class="prev-next-title"><font color='navy'> Texty </font></p>
       </div>
     </a>
     <a class="right-next"
-       href="0175_cm_funkcie.html"
+       href="0160_cm_syntax.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><font color='navy'> Funkcie  </font></p>
+        <p class="prev-next-title"><font color='navy'> Jazyk <em>dpic</em>  </font></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -490,7 +459,8 @@ line from Here to Here + (10,10); # Here ma novu hodnotu koncoveho bodu ciary
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacie"><font color="teal">  Operácie   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napajanie-zem-vstupy-a-vystupy"><font color="teal"> Napájanie, zem, vstupy a výstupy </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konektory"><font color="teal"> Konektory </font></a></li>
 </ul>
   </nav></div>
 

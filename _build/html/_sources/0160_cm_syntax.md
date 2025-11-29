@@ -64,7 +64,7 @@ White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorov
         
 ### <font color='brown'> Hodnoty </font>
 
-Jazyk *dpic* pozná len numerické hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte *floating-point*.
+Jazyk *dpic* pozná len **numerické** hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte *floating-point*. Všetky grafické prvky ako aj texty sú pokladané za objekty na ploche a sú reprezentované súradnicami polohy ich geometrického stredu. 
 
 ### <font color='brown'> Premenné </font>
 
@@ -75,15 +75,73 @@ Meno premennej  musí začínať písmenom nasledovaným ľubovolným počtom al
     pi = 3.14159265359;
     q  = 2*pi*8;
 
+Pre premenné sú definované numerické a logické operácie
 
-Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Pre súradnice  sú definované vektorové operátory.
+    binárne aritmetické oprácie
+    +   -   *   /   %   ^
+    
+    unárne aritmetické operácie
+    +=   -=   *=   /=   %=
+    
+    logické operácie 
+    !=   ==   <   >   >=   <=   ||   &&
+    
+
+### <font color='brown'> Súradnice </font>
+    
+Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná sŕadnica `Here`, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty *.x*, *.y*, ktoré reprezentujú numerické hodnoty zložiek polohy.
 
 
-    p1 = (3,4);    # chyba   
-    P1: (3,4);     # ok
+    p1 = (3,4);    - chyba   
+    Q1: (3,4);     - vytvorenie súradnice 
+    
+    a = 1; b = 2;  - konverzia numerických hodnôt na súradnice 
+    Q2 = (a, b);
+    Q3 = (a, 0);
+    
+Pre súradnice sú definované vektorové operácie, výsledkom vektorovej operácie je zase súradnica
 
+    P1:(a,b)
+    P2:(c,d)
+    
+    numerické operácie po zložkách, pre násobenie a delenie je platná post-multiplikacia
+    (a,b) + (c,d)     P1 + P2     P1 + (c,d)
+    (a,b) - (c,d)     P1 - P2
+    (a,b)*k           P1*k        k - numerická hodnota alebo premenná
+    (a,b)/k           P1/k
+    
+    priradenie výsledku operácie novej referencii
+    P3: P1 + P2
+    
+    
+    prístup k zložkám
+    px = P1.x     - numerická hodnota x-ovej súradnice
+    py = P1.y     - numerická hodnota y-ovej súradnice
+    
+    (P1, P2) - ekvivalent (P1.x, P2.y)
 
-Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Súradnica stredu zobrazeného textu ale môže byť reprezentovaná referenciou.  
+Pri použití relačných operátorov na súradnice bodov treba príslušnú operáciu realizovať po zložkách
+
+    P1 > P2         - chyba
+    P1.x > P2.x          
+
+Aktuálna poloha virtuálneho kurzoru na ploche `Here` je tiež súradnicou 
+
+    P4: Here + (a,b)  
+    px = Here.x
+    py = Here.y
+
+    
+```{admonition} Poznámka
+Je možné používať súradnice zapísané aj bez zátvoriek v tvare *x*, *y*, ale z dôvodu možných konfliktov pri expanzii makier je vhodnejší prehľadnejší zápis so zátvorkami *(x, y)*.
+
+    line to 1,1
+    line to (1,1);
+```
+    
+### <font color='brown'> Textové reťazce </font>
+    
+Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Súradnice geometrického stredu zobrazeného textu ale môže byť reprezentovaná referenciou.  
 
 
     str = "Toto je text"          # chyba   
@@ -107,19 +165,65 @@ Príklady
 
 ### <font color='brown'> Referencie </font>
 
-Každý príkazom zobrazovaný objekt v *dpic* môže byť označený referenciou, prostredníctvom ktorej je možné odkazovať sa na jej atribúty (ak sú definované). Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. Referenciou je možné označiť aj súradnice. Príklad použitia referencií
+Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezentuje polohu jeho geometrického stredu. Pomocou referncie je možné odkazovať sa aj na atribúty objektu. Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. 
 
 
         L1: line from Here to Here + (2,2);
-       R1: resistor();
-    Stred: (5,6);
+        R1: resistor();
+         S: (5,6);
+         
+        P1: R1.start     - suradnica
+        P2: L1.end
+        
+        px = R1.end.x    - numericka hodnota
 
-Pomocou referencií je možné pristupovať k atribútom komponentov, napr:
 
-    Stred.x  # má hodnotu 5
-    Stred.y  # má hodnotu 6
+Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorvých operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej uprave polohy objektov.
 
-Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+    line 0.5 dotted;
+LL: line right_ 2;
+    dot;
+    # {"\textsf{ast line}" at last line.c above;}
+    line <- from LL.end + (.1,.1) up_ .5 right_ .5 dotted;
+    "\textsf{Here}" at last line.end ljust above;
+    
+    move to LL.end+(0.8,-1.5);
+    dot;
+R4: resistor(right_ 2 ,,E);
+    llabel(,R4,);
+    line 0.5 dotted;
+    line <- from R4.start - (.1,.1)   down_ .5 left_ .5 dotted;
+    "\textsf{R\\4.start}" at last line.end rjust below;
+
+move to LL.end;
+linethick = 1.5;
+color_red;
+line from Here down_ (Here.y - R4.start.y) \
+     then to R4.start;
+
+"\textsf{line from Here down\_ (Here.y - R4.start.y)}" at (LL+R4)/2 + (-0.5,0.1) rjust;
+"\textsf{then to R4.start;}" at (LL+R4)/2 + (-0.5,-0.1) rjust below;
+'''
+
+_ = cm_compile('cm_0160c', data,  dpi=600)   
+```
+
+```{figure} ./src/cm_0160c.png
+:width: 500px
+:name: cm_0160c
+
+[Použitie](./src/cm_0160c.ckt) referencií pre výpočtu koncového bodu čiary.
+```
+
+
 
 
 ### <font color='brown'>  Vetvy  </font>
@@ -161,30 +265,7 @@ Jednoduchý cyklus s premennou $x$ má tvar
 
     for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
 
-kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený.
- 
-```{code-cell} ipython3  
-:tags: ["remove-cell"]
-
-from src.utils import *
-
-data = r'''
-for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
-'''
-
-_ = cm_compile('cm_0160a', data, dpi=600)   
-```
-
-
-```{figure} ./src/cm_0160a.png
-:width: 300px
-:name: cm_0160a
-
-Jednoduchý cyklus.
-```
-
-    
- Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo zjednodušeného zápisu kódu 
+kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo zjednodušeného zápisu kódu 
 
     ...
     for q=0 to 2*pi by 0.1 do{

@@ -172,12 +172,12 @@
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0160_cm_syntax.html"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0165_cm_makra.html"><font color="navy"> Makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0170_cm_premenne.html"><font color="navy"> Premenné  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
 </ul>
@@ -190,7 +190,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -448,15 +447,15 @@ box at A.c wid A.wid_ ht A.ht_ dashed;
 DOT1: dot;                   # referencny bod
 { # vetva D1-D2
     D1: diode(right_ up_);  dlabel(0,0,,D_1,,XAR);
-DOT2: dot;              
+  DOT2: dot;              
     D2: diode(right_ down_);dlabel(0,0,,D_2,,XAL);
 }
 
 { # vetva D3-D4
     D3: diode(right_ down_);dlabel(0,0,,D_3,,XBR);
-DOT3: dot;
+  DOT3: dot;
     D4: diode(right_ up_);  dlabel(0,0,,D_4,,XBL);
-DOT4: dot;
+  DOT4: dot;
 }
 
 # pouzitie referencii vytvorenych vo vetvach
@@ -471,7 +470,7 @@ L4: line from DOT1 left_ d/2 then down_ 7*d/8;
 <a class="reference internal image-reference" href="_images/cm_0120d.png"><img alt="_images/cm_0120d.png" src="_images/cm_0120d.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 33 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/53a276288db81c33b3066b5cfb175381/cm_0120d.ckt"><span class="xref download myst">Použitie</span></a> refencií v bloku</span><a class="headerlink" href="#cm-0120d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 33 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/53a276288db81c33b3066b5cfb175381/cm_0120d.ckt"><span class="xref download myst">Použitie</span></a> refencií vo vetvách.</span><a class="headerlink" href="#cm-0120d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

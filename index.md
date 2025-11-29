@@ -41,6 +41,7 @@
 0110_cm_grafika.md
 0120_cm_vetvy.md
 0130_cm_text.md
+0140_cm_konektor.md
 ```
 
 ```{toctree}
@@ -48,7 +49,6 @@
 :caption: Programovanie
 0160_cm_syntax.md
 0165_cm_makra.md
-0170_cm_premenne.md
 0175_cm_funkcie.md
 0180_cm_prostredie.md
 ```
@@ -63,7 +63,6 @@
 0207_ex_integrovane_obvody.md
 0208_ex_vyvojove_diagramy.md
 0210_ex_makra.md
-0240_cm_param.md
 ```
 
 ```{toctree}

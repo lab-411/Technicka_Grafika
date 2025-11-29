@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '0165_cm_makra';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Premenné" href="0170_cm_premenne.html" />
+    <link rel="next" title="Funkcie" href="0175_cm_funkcie.html" />
     <link rel="prev" title="Jazyk dpic" href="0160_cm_syntax.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,12 +172,12 @@
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0160_cm_syntax.html"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0170_cm_premenne.html"><font color="navy"> Premenné  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
 </ul>
@@ -190,7 +190,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -384,7 +383,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_0165a.png"><img alt="_images/cm_0165a.png" src="_images/cm_0165a.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Postup generovania obrázkov.</span><a class="headerlink" href="#cm-0165a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Postup generovania obrázkov.</span><a class="headerlink" href="#cm-0165a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -445,7 +444,7 @@ ZG: zigzac(0.5); zigzac(1);
 <a class="reference internal image-reference" href="_images/cm_0165b.png"><img alt="_images/cm_0165b.png" src="_images/cm_0165b.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 41 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/a9d6238c7e27a3d223c4cfc2d8526e40/cm_0165b.ckt"><span class="xref download myst">Príklad</span></a> použitia makier</span><a class="headerlink" href="#cm-0165b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/a9d6238c7e27a3d223c4cfc2d8526e40/cm_0165b.ckt"><span class="xref download myst">Príklad</span></a> použitia makier</span><a class="headerlink" href="#cm-0165b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -530,7 +529,7 @@ dot;
 <a class="reference internal image-reference" href="_images/cm_0165c.png"><img alt="_images/cm_0165c.png" src="_images/cm_0165c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 42 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f7c6fb080c73d298efb6d49c8fc0a5b0/cm_0165c.ckt"><span class="xref download myst">Implementácia</span></a> makra pre zobrazenie spínača a jeho použitie</span><a class="headerlink" href="#cm-0165c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 45 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f7c6fb080c73d298efb6d49c8fc0a5b0/cm_0165c.ckt"><span class="xref download myst">Implementácia</span></a> makra pre zobrazenie spínača a jeho použitie</span><a class="headerlink" href="#cm-0165c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition-konflikt-mien admonition">
@@ -557,7 +556,7 @@ dot;
 <a class="reference internal image-reference" href="_images/cm_0165d.png"><img alt="_images/cm_0165d.png" src="_images/cm_0165d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 43 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d63bbde779cb705b988b16b9cda2653f/cm_0165d.ckt"><span class="xref download myst">Príklad</span></a> použitia modifikovaných makier.</span><a class="headerlink" href="#cm-0165d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d63bbde779cb705b988b16b9cda2653f/cm_0165d.ckt"><span class="xref download myst">Príklad</span></a> použitia modifikovaných makier.</span><a class="headerlink" href="#cm-0165d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -584,11 +583,11 @@ dot;
       </div>
     </a>
     <a class="right-next"
-       href="0170_cm_premenne.html"
+       href="0175_cm_funkcie.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><font color='navy'> Premenné  </font></p>
+        <p class="prev-next-title"><font color='navy'> Funkcie  </font></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

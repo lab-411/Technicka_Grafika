@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Makrá" href="0165_cm_makra.html" />
-    <link rel="prev" title="Texty" href="0130_cm_text.html" />
+    <link rel="prev" title="Terminály" href="0140_cm_konektor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,12 +174,12 @@
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Jazyk <em>dpic</em> </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0165_cm_makra.html"><font color="navy"> Makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0170_cm_premenne.html"><font color="navy"> Premenné  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0175_cm_funkcie.html"><font color="navy"> Funkcie  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0180_cm_prostredie.html"><font color="navy">  Prostredie   </font></a></li>
 </ul>
@@ -192,7 +192,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0240_cm_param.html"><font color="navy"> Parametrické komponenty </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -352,6 +351,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komentare"><font color="brown"> Komentáre </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodnoty"><font color="brown"> Hodnoty </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne"><font color="brown"> Premenné </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suradnice"><font color="brown"> Súradnice </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textove-retazce"><font color="brown"> Textové reťazce </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="brown">  Vetvy  </font></a></li>
@@ -419,7 +420,7 @@ name(x,y,z)
 </section>
 <section id="hodnoty">
 <h3><font color='brown'> Hodnoty </font><a class="headerlink" href="#hodnoty" title="Link to this heading">#</a></h3>
-<p>Jazyk <em>dpic</em> pozná len numerické hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte <em>floating-point</em>.</p>
+<p>Jazyk <em>dpic</em> pozná len <strong>numerické</strong> hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte <em>floating-point</em>. Všetky grafické prvky ako aj texty sú pokladané za objekty na ploche a sú reprezentované súradnicami polohy ich geometrického stredu.</p>
 </section>
 <section id="premenne">
 <h3><font color='brown'> Premenné </font><a class="headerlink" href="#premenne" title="Link to this heading">#</a></h3>
@@ -429,12 +430,73 @@ pi = 3.14159265359;
 q  = 2*pi*8;
 </pre></div>
 </div>
-<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Pre súradnice  sú definované vektorové operátory.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p1 = (3,4);    # chyba   
-P1: (3,4);     # ok
+<p>Pre premenné sú definované numerické a logické operácie</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>binárne aritmetické oprácie
++   -   *   /   %   ^
+
+unárne aritmetické operácie
++=   -=   *=   /=   %=
+
+logické operácie 
+!=   ==   &lt;   &gt;   &gt;=   &lt;=   ||   &amp;&amp;
 </pre></div>
 </div>
-<p>Text je postupnosť znakov definované v obyčajných úvodzovkách a <strong>nemôže</strong> byť použitý ako hodnota premennej. Súradnica stredu zobrazeného textu ale môže byť reprezentovaná referenciou.</p>
+</section>
+<section id="suradnice">
+<h3><font color='brown'> Súradnice </font><a class="headerlink" href="#suradnice" title="Link to this heading">#</a></h3>
+<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná sŕadnica <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty <em>.x</em>, <em>.y</em>, ktoré reprezentujú numerické hodnoty zložiek polohy.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p1 = (3,4);    - chyba   
+Q1: (3,4);     - vytvorenie súradnice 
+
+a = 1; b = 2;  - konverzia numerických hodnôt na súradnice 
+Q2 = (a, b);
+Q3 = (a, 0);
+</pre></div>
+</div>
+<p>Pre súradnice sú definované vektorové operácie, výsledkom vektorovej operácie je zase súradnica</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1:(a,b)
+P2:(c,d)
+
+numerické operácie po zložkách, pre násobenie a delenie je platná post-multiplikacia
+(a,b) + (c,d)     P1 + P2     P1 + (c,d)
+(a,b) - (c,d)     P1 - P2
+(a,b)*k           P1*k        k - numerická hodnota alebo premenná
+(a,b)/k           P1/k
+
+priradenie výsledku operácie novej referencii
+P3: P1 + P2
+
+
+prístup k zložkám
+px = P1.x     - numerická hodnota x-ovej súradnice
+py = P1.y     - numerická hodnota y-ovej súradnice
+
+(P1, P2) - ekvivalent (P1.x, P2.y)
+</pre></div>
+</div>
+<p>Pri použití relačných operátorov na súradnice bodov treba príslušnú operáciu realizovať po zložkách</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1 &gt; P2         - chyba
+P1.x &gt; P2.x          
+</pre></div>
+</div>
+<p>Aktuálna poloha virtuálneho kurzoru na ploche <code class="docutils literal notranslate"><span class="pre">Here</span></code> je tiež súradnicou</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P4: Here + (a,b)  
+px = Here.x
+py = Here.y
+</pre></div>
+</div>
+<div class="admonition-poznamka admonition">
+<p class="admonition-title">Poznámka</p>
+<p>Je možné používať súradnice zapísané aj bez zátvoriek v tvare <em>x</em>, <em>y</em>, ale z dôvodu možných konfliktov pri expanzii makier je vhodnejší prehľadnejší zápis so zátvorkami <em>(x, y)</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line to 1,1
+line to (1,1);
+</pre></div>
+</div>
+</div>
+</section>
+<section id="textove-retazce">
+<h3><font color='brown'> Textové reťazce </font><a class="headerlink" href="#textove-retazce" title="Link to this heading">#</a></h3>
+<p>Text je postupnosť znakov definované v obyčajných úvodzovkách a <strong>nemôže</strong> byť použitý ako hodnota premennej. Súradnice geometrického stredu zobrazeného textu ale môže byť reprezentovaná referenciou.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str = &quot;Toto je text&quot;          # chyba   
 T1: &quot;Toto je text&quot; at (1,1);  # ok, stred textu je v bode (1,1)
 </pre></div>
@@ -457,18 +519,25 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
 </section>
 <section id="referencie">
 <h3><font color='brown'> Referencie </font><a class="headerlink" href="#referencie" title="Link to this heading">#</a></h3>
-<p>Každý príkazom zobrazovaný objekt v <em>dpic</em> môže byť označený referenciou, prostredníctvom ktorej je možné odkazovať sa na jej atribúty (ak sú definované). Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. Referenciou je možné označiť aj súradnice. Príklad použitia referencií</p>
+<p>Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezentuje polohu jeho geometrického stredu. Pomocou referncie je možné odkazovať sa aj na atribúty objektu. Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    L1: line from Here to Here + (2,2);
-   R1: resistor();
-Stred: (5,6);
+    R1: resistor();
+     S: (5,6);
+     
+    P1: R1.start     - suradnica
+    P2: L1.end
+    
+    px = R1.end.x    - numericka hodnota
 </pre></div>
 </div>
-<p>Pomocou referencií je možné pristupovať k atribútom komponentov, napr:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Stred.x  # má hodnotu 5
-Stred.y  # má hodnotu 6
-</pre></div>
-</div>
-<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše.</p>
+<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorvých operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej uprave polohy objektov.</p>
+<figure class="align-default" id="cm-0160c">
+<a class="reference internal image-reference" href="_images/cm_0160c.png"><img alt="_images/cm_0160c.png" src="_images/cm_0160c.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 41 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/65e7b3d689abb312ea6ab84dccbe31b9/cm_0160c.ckt"><span class="xref download myst">Použitie</span></a> referencií pre výpočtu koncového bodu čiary.</span><a class="headerlink" href="#cm-0160c" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="vetvy">
 <h3><font color='brown'>  Vetvy  </font><a class="headerlink" href="#vetvy" title="Link to this heading">#</a></h3>
@@ -509,15 +578,7 @@ line from A.C.n up_ d;   # pristup k vnutornej referencii, d = 2
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
 </pre></div>
 </div>
-<p>kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený.</p>
-<figure class="align-default" id="cm-0160a">
-<a class="reference internal image-reference" href="_images/cm_0160a.png"><img alt="_images/cm_0160a.png" src="_images/cm_0160a.png" style="width: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 38 </span><span class="caption-text">Jednoduchý cyklus.</span><a class="headerlink" href="#cm-0160a" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo zjednodušeného zápisu kódu</p>
+<p>kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo zjednodušeného zápisu kódu</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
 for q=0 to 2*pi by 0.1 do{
     x = r*cos(a*q);
@@ -531,7 +592,7 @@ for q=0 to 2*pi by 0.1 do{
 <a class="reference internal image-reference" href="_images/cm_0160b.png"><img alt="_images/cm_0160b.png" src="_images/cm_0160b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 39 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -557,12 +618,12 @@ for q=0 to 2*pi by 0.1 do{
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0130_cm_text.html"
+       href="0140_cm_konektor.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><font color='navy'> Texty </font></p>
+        <p class="prev-next-title"><font color='navy'> Terminály </font></p>
       </div>
     </a>
     <a class="right-next"
@@ -594,6 +655,8 @@ for q=0 to 2*pi by 0.1 do{
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komentare"><font color="brown"> Komentáre </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodnoty"><font color="brown"> Hodnoty </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne"><font color="brown"> Premenné </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suradnice"><font color="brown"> Súradnice </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textove-retazce"><font color="brown"> Textové reťazce </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="brown">  Vetvy  </font></a></li>

@@ -13,21 +13,14 @@ arrowht = 0.254         # dlzka
 
 include(lib_base.ckt)
 
-Origin: Here 
-d = 2;
+#Grid(6,1.5);
+command "\sf"
 
-log_init;         # inicializacia makier pre logicke obvody
-
-move to (3,1);
-up_; 
-H1: Header(2, 6,,,fill_(0.9)); 
-"Konektor" at H1.w rjust;
-"1" at H1.P1 rjust;
-"2" at H1.P2 rjust;
-"11" at H1.P11 ljust;
-"12" at H1.P12 ljust;
-
-#line from H1.P1 down_ d/4 then right_ 2*d;
-#line from H1.P2 up_ d/4 then right_ 2*d;
+ground(at (0.5,1),,N); "N" at last box above;
+ground(at (1.5,1),,F); "F" at last box above;
+ground(at (2.5,1),,S); "S" at last box above;
+ground(at (3.5,1),,L); "L" at last box+(0,0.3) above;
+ground(at (4.5,1),,P); "P" at last box+(0,0.3) above;
+ground(at (5.5,1),,E,); "E" at last box above;
 
 .PE

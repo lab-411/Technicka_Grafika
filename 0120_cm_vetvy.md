@@ -188,15 +188,15 @@ Referencie a premenné vytvorené vo vnútri bloku sú globálne a je možno sa 
     DOT1: dot;                   # referencny bod
     { # vetva D1-D2
         D1: diode(right_ up_);  dlabel(0,0,,D_1,,XAR);
-    DOT2: dot;              
+      DOT2: dot;              
         D2: diode(right_ down_);dlabel(0,0,,D_2,,XAL);
     }
 
     { # vetva D3-D4
         D3: diode(right_ down_);dlabel(0,0,,D_3,,XBR);
-    DOT3: dot;
+      DOT3: dot;
         D4: diode(right_ up_);  dlabel(0,0,,D_4,,XBL);
-    DOT4: dot;
+      DOT4: dot;
     }
 
     # pouzitie referencii vytvorenych vo vetvach
@@ -244,5 +244,5 @@ _ = cm_compile('cm_0120d', data,  dpi=600)
 :width: 300px
 :name: cm_0120d
 
-[Použitie](./src/cm_0120d.ckt) refencií v bloku
+[Použitie](./src/cm_0120d.ckt) refencií vo vetvách.
 ```
