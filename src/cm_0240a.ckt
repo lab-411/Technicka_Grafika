@@ -21,7 +21,7 @@ log_init;         # inicializacia makier pre logicke obvody
 move to (3,1);
 up_; 
 H1: Header(2, 6,,,fill_(0.9)); 
-"Konektor" at H1.w rjust;
+"He\\ader" at H1.w rjust;
 "1" at H1.P1 rjust;
 "2" at H1.P2 rjust;
 "11" at H1.P11 ljust;

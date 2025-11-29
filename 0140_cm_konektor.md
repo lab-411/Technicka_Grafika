@@ -38,15 +38,12 @@ Každé elektronické zapojenie má pripojovacie body - terminály, ktoré môž
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-
 from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
 
-#Grid(6,1.5);
 command "\sf"
-
 ground(at (0.5,1),,N); "N" at last box above;
 ground(at (1.5,1),,F); "F" at last box above;
 ground(at (2.5,1),,S); "S" at last box above;
@@ -65,30 +62,46 @@ _ = cm_compile('cm_0140a', data, dpi=600)
 Značky zeme.
 ```
 
-    tbox(text, wid, ht, <|>|<>)
-    tconn(linespec, chars|keys, wid)
+Obojsmerné vstupno-výstupné terminály v tvare vlajky.
 
+    tbox(text, wid, ht, <|>|<>, fill)
+    
+    parametre:
+    
+        text        - označenie značky
+        wid         - šírka
+        ht          - výška
+        <|>|<>      - orientácia značky
+        fill        - výplň príkazom fill_(n), n = 0.0...1.0
+
+Jednobodový terminál.
+
+    tconn(linespec, O|<|<<|>>|>|A|M", wid)
+    
+    parametre:
+    
+        linespec        - dlžka terminálu
+        O|<|<<|>>|>|A|M - typ terminálu
+        wid             - velkosť značky O,M
+
+        
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
-
 from src.utils import *
-
 data = r'''
 include(lib_base.ckt)
-#command "\sf"
 "tb\\ox" at (1.5, 3);
 "tc\\onn" at (4, 3);
 
 move to (0.5,1.0); line 1; tbox(V_1, 1, , <); 
 move to (0.5,1.5); tbox(V_2, 1, , >); line 1
-move to (0.5,2.0); line 1; tbox(V_3, 1, , <>)
+move to (0.5,2.0); line 1; tbox(V_3, 1, , <>, fill_(0.9))
 
 move to (3.5,0.5); T1: tconn(,O); "$0$" at T1.e ljust
 move to (3.5,1.0); T2: tconn(,>); "$>$" at T2.e ljust
 move to (3.5,1.5); T3: tconn(,<); "$<$" at T3.e ljust
 move to (3.5,2.0); T4: tconn(,A); "$A$" at T4.e ljust
 move to (3.5,2.5); T5: tconn(,M); "$M$" at T5.e ljust
-
 '''
 
 _ = cm_compile('cm_0140b', data, dpi=600)   
@@ -104,6 +117,34 @@ Vstupno-výstupné terminály.
 ## <font color='teal'> Konektory </font>
 
 Fyzické pripojenie elektronických obvodov je zvyčajne realizované konektormi alebo svorkovnicami. 
+
+     Header(1|2, rows, wid, ht, type)
+     
+     parametre:
+    
+        1|2    - jedno alebo dvojradový konektor
+        rows   - počet pinov v jednom rade
+        wid    - šírka konektora
+        ht     - výška konektora
+        type   - výplň príkazom fill_(n), n = 0.0...1.0
+        
+     atribúty
+     
+        P1 ... Pn - piny konektora
+        
+Jednoradový konektor
+     
+     tstrip(R|L|U|D|degrees, chars),
+     
+     parametre:
+     
+        R|L|U|D|degree - orientácia
+        chars          - D vyplnene piny
+                         U zrušenie oddelenia pinov
+                         wid = n
+                         hr  = n
+     
+     
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -121,7 +162,7 @@ log_init;         # inicializacia makier pre logicke obvody
 move to (3,1);
 up_; 
 H1: Header(2, 6,,,fill_(0.9)); 
-"Konektor" at H1.w rjust;
+"He\\ader" at H1.w rjust;
 "1" at H1.P1 rjust;
 "2" at H1.P2 rjust;
 "11" at H1.P11 ljust;

@@ -389,8 +389,26 @@ document.write(`
 <p><span class="caption-number">Obr. 38 </span><span class="caption-text">Značky zeme.</span><a class="headerlink" href="#cm-140a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tbox(text, wid, ht, &lt;|&gt;|&lt;&gt;)
-tconn(linespec, chars|keys, wid)
+<p>Obojsmerné vstupno-výstupné terminály v tvare vlajky.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tbox(text, wid, ht, &lt;|&gt;|&lt;&gt;, fill)
+
+parametre:
+
+    text        - označenie značky
+    wid         - šírka
+    ht          - výška
+    &lt;|&gt;|&lt;&gt;      - orientácia značky
+    fill        - výplň príkazom fill_(n), n = 0.0...1.0
+</pre></div>
+</div>
+<p>Jednobodový terminál.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tconn(linespec, O|&lt;|&lt;&lt;|&gt;&gt;|&gt;|A|M&quot;, wid)
+
+parametre:
+
+    linespec        - dlžka terminálu
+    O|&lt;|&lt;&lt;|&gt;&gt;|&gt;|A|M - typ terminálu
+    wid             - velkosť značky O,M
 </pre></div>
 </div>
 <figure class="align-default" id="cm-140b">
@@ -404,6 +422,33 @@ tconn(linespec, chars|keys, wid)
 <section id="konektory">
 <h2><font color='teal'> Konektory </font><a class="headerlink" href="#konektory" title="Link to this heading">#</a></h2>
 <p>Fyzické pripojenie elektronických obvodov je zvyčajne realizované konektormi alebo svorkovnicami.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Header(1|2, rows, wid, ht, type)
+ 
+ parametre:
+
+    1|2    - jedno alebo dvojradový konektor
+    rows   - počet pinov v jednom rade
+    wid    - šírka konektora
+    ht     - výška konektora
+    type   - výplň príkazom fill_(n), n = 0.0...1.0
+    
+ atribúty
+ 
+    P1 ... Pn - piny konektora
+</pre></div>
+</div>
+<p>Jednoradový konektor</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> tstrip(R|L|U|D|degrees, chars),
+ 
+ parametre:
+ 
+    R|L|U|D|degree - orientácia
+    chars          - D vyplnene piny
+                     U zrušenie oddelenia pinov
+                     wid = n
+                     hr  = n
+</pre></div>
+</div>
 <figure class="align-default" id="cm-020">
 <a class="reference internal image-reference" href="_images/cm_0240a.png"><img alt="_images/cm_0240a.png" src="_images/cm_0240a.png" style="width: 300px;" />
 </a>
