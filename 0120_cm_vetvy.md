@@ -130,18 +130,18 @@ _ = cm_compile('cm_0120b', data, dpi=600)
 
 ## <font color='teal'> Bloky </font>
 
-Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Pre kód v bloku sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty *.s, .n ... *. Pre ukladanie zloženého objektu platia rovnaké pravidlá ako pre každý iný plošný objekt.
+Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Pre kód v bloku sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty *.s, .n ...*. Pre ukladanie zloženého objektu platia rovnaké pravidlá ako pre každý iný plošný objekt.
 
     move to (1, 1.5);
 
-    A:[  # absolute coordinate  
+    A:[                                # blok s absolutnymi suradnicami  
        B: box at (0,0) wid 2 ht 1; 
       C1: circle at (0, 0.5) rad 0.25; 
       C2: circle at (0,-0.5) rad 0.25;
       C3: circle at B.w rad 0.25;
       C4: circle at B.e rad 0.25;
     ]
-    color_red;
+    color_red;                         # zobrazenie obrysu bloku
     box at A.c wid A.wid_ ht A.ht_ dashed; 
 
     

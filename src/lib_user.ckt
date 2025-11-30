@@ -588,6 +588,130 @@ define(`bjt_PNP',`[
        } 
 ]')
 
+
+#-----------------------------------------------------------------------
+# D-sub 9 pin male connector
+# DE9_M(L|R|U|D)
+# L|R|U|D     - orientacia
+#-----------------------------------------------------------------------
+define(`DE9_M',`[
+
+   dir  = index(`RLUD', $1)                 # orientacia
+
+  dr=0.4;
+  dz=0.275
+  ph=sin(3/6);
+  dx=dz*cos(ph);
+  dy=dz*sin(ph);
+  rr=0.075;
+
+    if dir <= 0 then {
+        P1: circle at (0,   0) rad rr; {"\footnotesize 1" at P1 ljust;}
+        P2: circle at (0,  dr) rad rr;
+        P3: circle at (0,2*dr) rad rr;
+        P4: circle at (0,3*dr) rad rr;
+        P5: circle at (0,4*dr) rad rr;
+
+        P6: circle at (dr,  0+dr/2) rad rr;
+        P7: circle at (dr,  dr+dr/2) rad rr;
+        P8: circle at (dr,2*dr+dr/2) rad rr;
+        P9: circle at (dr,3*dr+dr/2) rad rr;
+
+        PA: P1+(-dz,0);
+        PB: P1+( dy, -dx);;
+        arc ccw from PA to PB with .c at P1;
+
+        PC: P6+(dz, 0)
+        PD: P6+(dy,-dx)
+        arc ccw from PD to PC with .c at P6;
+
+
+        PE: P5+(-dz, 0);
+        PF: P5+(dy, dx);
+        arc cw from PE to PF with .c at P5;
+
+        PG: P9+(dz,0)
+        PH: P9+(dy,dx)
+        arc ccw from PG to PH with .c at P9;
+
+        line from PB to PD
+        line from PC to PG;
+        line from PH to PF;
+        line from PE to PA;
+    }
+
+    if dir == 1 then {     # smer L
+        P1: circle at (0,   0) rad rr; {"\footnotesize 1" at P1 rjust;}
+        P2: circle at (0,  dr) rad rr;
+        P3: circle at (0,2*dr) rad rr;
+        P4: circle at (0,3*dr) rad rr;
+        P5: circle at (0,4*dr) rad rr;
+
+        P6: circle at (-dr,  0+dr/2) rad rr;
+        P7: circle at (-dr,  dr+dr/2) rad rr;
+        P8: circle at (-dr,2*dr+dr/2) rad rr;
+        P9: circle at (-dr,3*dr+dr/2) rad rr; {"\footnotesize 9" at P9 ljust;}
+
+        PA: P1+(dz,0);
+        PB: P1+( -dy, -dx);;
+        arc cw from PA to PB with .c at P1;
+
+        PC: P6+(-dz, 0)
+        PD: P6+(-dy,-dx)
+        arc cw from PD to PC with .c at P6;
+
+
+        PE: P5+(dz, 0);
+        PF: P5+(-dy, dx);
+        arc ccw from PE to PF with .c at P5;
+
+        PG: P9+(-dz,0)
+        PH: P9+(-dy,dx)
+        arc cw from PG to PH with .c at P9;
+
+        line from PB to PD
+        line from PC to PG;
+        line from PH to PF;
+        line from PE to PA;
+    }
+
+    if dir == 2 then {     # smer U
+        P1: circle at (  0,0) rad rr; {"\footnotesize 1" at P1 rjust;}
+        P2: circle at ( dr,0) rad rr;
+        P3: circle at (2*dr,0) rad rr;
+        P4: circle at (3*dr,0) rad rr;
+        P5: circle at (4*dr,0) rad rr;
+
+        P6: circle at ( 0+dr/2,-dr) rad rr;
+        P7: circle at ( dr+dr/2,-dr) rad rr;
+        P7: circle at (2*dr+dr/2,-dr) rad rr;
+        P9: circle at (3*dr+dr/2,-dr) rad rr; {"\footnotesize 9" at P9 ljust;}
+
+        PA: P1+(0, dz);
+        PB: P1+(-dx, -dy);;
+        arc ccw from PA to PB with .c at P1;
+
+        PC: P6+(0,-dz)
+        PD: P6+(-dx,-dy)
+        arc ccw from PD to PC with .c at P6;
+
+
+        PE: P5+(0, dz);
+        PF: P5+(dx, -dy);
+        arc cw from PE to PF with .c at P5;
+
+        PG: P9+(0,-dz)
+        PH: P9+(dx,-dy)
+        arc ccw from PG to PH with .c at P9;
+
+        line from PB to PD
+        line from PC to PG;
+        line from PH to PF;
+        line from PE to PA;
+    }
+]')
+
+
 #=======================================================================
 # Koniec dokumentu
 #=======================================================================

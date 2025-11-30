@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -418,17 +418,17 @@ box wid 2 ht 1;
 </section>
 <section id="bloky">
 <h2><font color='teal'> Bloky </font><a class="headerlink" href="#bloky" title="Link to this heading">#</a></h2>
-<p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Pre kód v bloku sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty *.s, .n … *. Pre ukladanie zloženého objektu platia rovnaké pravidlá ako pre každý iný plošný objekt.</p>
+<p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Pre kód v bloku sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty <em>.s, .n …</em>. Pre ukladanie zloženého objektu platia rovnaké pravidlá ako pre každý iný plošný objekt.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (1, 1.5);
 
-A:[  # absolute coordinate  
+A:[                                # blok s absolutnymi suradnicami  
    B: box at (0,0) wid 2 ht 1; 
   C1: circle at (0, 0.5) rad 0.25; 
   C2: circle at (0,-0.5) rad 0.25;
   C3: circle at B.w rad 0.25;
   C4: circle at B.e rad 0.25;
 ]
-color_red;
+color_red;                         # zobrazenie obrysu bloku
 box at A.c wid A.wid_ ht A.ht_ dashed;
 </pre></div>
 </div>

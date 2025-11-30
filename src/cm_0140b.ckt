@@ -12,8 +12,8 @@ arrowht = 0.254         # dlzka
 
 
 include(lib_base.ckt)
-"tb\\ox" at (1.5, 3);
-"tc\\onn" at (4, 3);
+"tb\\ox()" at (1.5, 3);
+"tc\\onn()" at (4, 3);
 
 move to (0.5,1.0); line 1; tbox(V_1, 1, , <); 
 move to (0.5,1.5); tbox(V_2, 1, , >); line 1

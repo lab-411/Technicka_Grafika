@@ -13,7 +13,7 @@ arrowht = 0.254         # dlzka
 
 include(lib_base.ckt)
 
-command "\sf"
+#command "\sf"
 ground(at (0.5,1),,N); "N" at last box above;
 ground(at (1.5,1),,F); "F" at last box above;
 ground(at (2.5,1),,S); "S" at last box above;

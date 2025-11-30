@@ -31,9 +31,20 @@ move to (1,3.5);
 H3: Header(1, 4,0.5,2,fill_(0.9));
 "(1,4,0.5,2,)" at H3.w rjust;
 
-move to H1.e + (2,0);
+move to (4,1.35);
 T1: tstrip(R,6,); 
-"(2,6,,,)" at T1.e ljust;
+"(R,6)" at T1.e ljust;
+
+move to (4,1.15+1.5);
+T2: tstrip(R,6,DO); 
+"(R,6,DU)" at T2.e ljust;
+
+move to (4,1.15+2.5);
+T2: tstrip(R,4,O; wid=3; ht=.5); 
+"(R,4,O;wid=3;ht=.5)" at T2.n above;
+
+"He\\ader()" at (1,0.5);
+"ts\\trip()" at (4,0.5);
 
 
 .PE
