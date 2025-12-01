@@ -13,5 +13,10 @@ kernelspec:
 ---
 
 
-# <font color='navy'> Vývojove diagramy</font> 
+# <font color='navy'> Blokové diagramy</font> 
+
+
+
+
+
 

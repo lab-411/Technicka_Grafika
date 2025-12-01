@@ -202,7 +202,7 @@ _ = cm_compile('cm_0165b', data, dpi=600)
     
 ## <font color='teal'> Vytvorenie makra  </font>
 
-Pri tvorbe  makier pre kreslenie vlastných prvkov zapojenia môžeme využiť nasledujúci vzor, v ktorom sú v makre vyhodnotené dva parametre
+Pri tvorbe  makier pre kreslenie vlastných prvkov zapojenia môžeme využiť nasledujúci vzor, v ktorom sú v makre vyhodnotené dva parametre. Ako substitučný reťazec použijeme kód uzatvorený v bloku `[...]`, čo nám umožní reprezentovať makro ako zložený objekt a v makre pre kreslenie používať absolútne súradnice.
  
     #----------------------------------------------
     # vzor(n, c) - template pre makro
