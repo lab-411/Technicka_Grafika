@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0014_zaklady';</script>
@@ -169,7 +171,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -190,7 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
@@ -365,14 +367,17 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="zaklady-kreslenia">
 <h1><font color='navy'> Základy kreslenia</font><a class="headerlink" href="#zaklady-kreslenia" title="Link to this heading">#</a></h1>
 <p>Princíp vytvárania zapojení v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> spočíva v zapise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  <em>.PS</em> a končí <em>.PE</em>, príkazy a texty mimo tohoto označenia sú ignorované.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.PS               - zaciatok postupnosti prikazov
-scale=2.54        - nastavenie parametru velkosti obrazku
-cct_init          - inicializacia kniznice s analogovými prvkami (rezistor, ...)
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing: 2 </span><span class="caption-text">Prvý program</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>               <span class="o">-</span> <span class="n">zaciatok</span> <span class="n">postupnosti</span> <span class="n">prikazov</span>
+<span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>        <span class="o">-</span> <span class="n">nastavenie</span> <span class="n">parametru</span> <span class="n">velkosti</span> <span class="n">obrazku</span>
+<span class="n">cct_init</span>          <span class="o">-</span> <span class="n">inicializacia</span> <span class="n">kniznice</span> <span class="n">s</span> <span class="n">analogovými</span> <span class="n">prvkami</span> <span class="p">(</span><span class="n">rezistor</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 
-resistor;         - príkaz pre vykreslenie rezistoru
+<span class="n">resistor</span><span class="p">;</span>         <span class="o">-</span> <span class="n">príkaz</span> <span class="n">pre</span> <span class="n">vykreslenie</span> <span class="n">rezistoru</span>
 
-.PE               - koniec postupnosti prikazov
+<span class="o">.</span><span class="n">PE</span>               <span class="o">-</span> <span class="n">koniec</span> <span class="n">postupnosti</span> <span class="n">prikazov</span>
 </pre></div>
+</div>
 </div>
 <p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <em>PyCirkuit</em>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch v tejto publikácii budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<em>.PS</em>, <em>.PE</em> …)</p>
 <figure class="align-default" id="pck01">
@@ -393,14 +398,14 @@ resistor;         - príkaz pre vykreslenie rezistoru
 <section id="ukladanie-prvkov">
 <h2><font color='teal'> Ukladanie prvkov </font><a class="headerlink" href="#ukladanie-prvkov" title="Link to this heading">#</a></h2>
 <p>Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii, ktorá je uchovávaná v virtuálnom kurzore označenom ako <code class="docutils literal notranslate"><span class="pre">Here</span></code>. Prvky v zapojení (<em>resistor</em>, <em>capacitor</em>) ukladáme za sebou v zadaných smeroch príkazmi <strong>up_</strong>, <strong>down_</strong>, <strong>right_</strong> a <strong>left_</strong> . Pri zmene smeru sa automaticku mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro <em>dot</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>right_;
-resistor;
-resistor;
-dot;
-down_;
-capacitor;
-right_;
-diode;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">right_</span><span class="p">;</span>
+<span class="n">resistor</span><span class="p">;</span>
+<span class="n">resistor</span><span class="p">;</span>
+<span class="n">dot</span><span class="p">;</span>
+<span class="n">down_</span><span class="p">;</span>
+<span class="n">capacitor</span><span class="p">;</span>
+<span class="n">right_</span><span class="p">;</span>
+<span class="n">diode</span><span class="p">;</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0014a">
@@ -436,13 +441,12 @@ r1: resistor;       - chyba
 </pre></div>
 </div>
 <p>Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (1,1);
-R1: resistor;                 # referencia, R1.start = (1,1)
-move to (1,2)
-C1: capacitor;                # referencia C1.start = (1,2)
-line from R1.start to C1.end; # vykreslenie ciary medzi bodmi
-                              # zadanými atribútmi prvkov
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">;</span>                 <span class="c1"># referencia, R1.start = (1,1)</span>
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">C1</span><span class="p">:</span> <span class="n">capacitor</span><span class="p">;</span>                <span class="c1"># referencia C1.start = (1,2)</span>
+<span class="hll">    <span class="n">line</span> <span class="kn">from</span> <span class="nn">R1.start</span> <span class="n">to</span> <span class="n">C1</span><span class="o">.</span><span class="n">end</span><span class="p">;</span> <span class="c1"># spoj medzi bodmi zadanými referenciami a atribútmi</span>
+</span></pre></div>
 </div>
 <figure class="align-default" id="cm-0014b">
 <a class="reference internal image-reference" href="_images/cm_0014b.png"><img alt="_images/cm_0014b.png" src="_images/cm_0014b.png" style="width: 250px;" />
@@ -475,11 +479,11 @@ parametre:
 </pre></div>
 </div>
 <p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = <span class="math notranslate nohighlight">\(R_1\)</span> (vyžaduje inštaláciu LaTeX-u).</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (1,2);
-R1: resistor(2,,E); llabel(a,R_1,b); rlabel(,10k,);
-D1: dot;
-C1: capacitor(down_ 2,); rlabel(,C_1,); llabel(,10 \mu F,);
-R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">);</span>  
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">R_1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">10</span><span class="n">k</span><span class="p">,);</span>
+<span class="n">D1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+<span class="n">C1</span><span class="p">:</span> <span class="n">capacitor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">C_1</span><span class="p">,);</span> <span class="n">llabel</span><span class="p">(,</span><span class="mi">10</span> \<span class="n">mu</span> <span class="n">F</span><span class="p">,);</span>
+<span class="n">R2</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">D1</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">33</span><span class="n">k</span><span class="p">,);</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0014c">

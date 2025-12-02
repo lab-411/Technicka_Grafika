@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0120_cm_vetvy';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -167,7 +169,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -188,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
@@ -392,7 +394,7 @@ capacitor(); llabel(,C_1,)
 <a class="reference internal image-reference" href="_images/cm_0120a.png"><img alt="_images/cm_0120a.png" src="_images/cm_0120a.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 30 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/fd01806d5a9afe7bb0ef905073690510/cm_0120a.ckt"><span class="xref download myst">Použitie</span></a> vetviev v zapojení</span><a class="headerlink" href="#cm-0120a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 32 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/fd01806d5a9afe7bb0ef905073690510/cm_0120a.ckt"><span class="xref download myst">Použitie</span></a> vetviev v zapojení</span><a class="headerlink" href="#cm-0120a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia.</p>
@@ -412,7 +414,7 @@ box wid 2 ht 1;
 <a class="reference internal image-reference" href="_images/cm_0120b.png"><img alt="_images/cm_0120b.png" src="_images/cm_0120b.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 31 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/9d0378ecfaa616857396cf82058ad9d2/cm_0120b.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0120b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 33 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/9d0378ecfaa616857396cf82058ad9d2/cm_0120b.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0120b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -436,7 +438,7 @@ box at A.c wid A.wid_ ht A.ht_ dashed;
 <a class="reference internal image-reference" href="_images/cm_0120e.png"><img alt="_images/cm_0120e.png" src="_images/cm_0120e.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 32 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0120e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 34 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0120e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -470,7 +472,7 @@ L4: line from DOT1 left_ d/2 then down_ 7*d/8;
 <a class="reference internal image-reference" href="_images/cm_0120d.png"><img alt="_images/cm_0120d.png" src="_images/cm_0120d.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 33 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/53a276288db81c33b3066b5cfb175381/cm_0120d.ckt"><span class="xref download myst">Použitie</span></a> refencií vo vetvách.</span><a class="headerlink" href="#cm-0120d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 35 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/53a276288db81c33b3066b5cfb175381/cm_0120d.ckt"><span class="xref download myst">Použitie</span></a> refencií vo vetvách.</span><a class="headerlink" href="#cm-0120d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

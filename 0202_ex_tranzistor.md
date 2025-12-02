@@ -17,7 +17,7 @@ kernelspec:
 
 ## <font color='teal'>  Bipolárny tranzistor </font> 
 
-Bipolárny tranzistor patrí medzi mnohopóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice `CircuitMacros` zobrazuje makro *bi_tr()*
+Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice `CircuitMacros` zobrazuje makro *bi_tr()*
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -83,17 +83,19 @@ _ = cm_compile('cm_202a', data, dpi=600 )
 
 Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora $R_{b1}$ je určená polohou značky zeme pri rezistore $R_e$. Pre popis spojovacieho bodu $V_b$ bolo použité makro *dlabel()*.
 
-        ...
-    T1: bi_tr(2, L, N,E); 
-        resistor(from T1.E down_ 1.5,,E); rlabel(,R_e,);
-    GN: gnd;                           # zem
-        ...
-        line from T1.B left_ 0.8;      # poloha Here
-    D1: dot; dlabel(0,0,,V_b,,AL);     # spojovaci bod a popis
-        resistor(from D1 down_ (D1.y - GN.n.y),,E); rlabel(,R_{b1},);
-        gnd;
-        ...
-
+```{code-block}
+:emphasize-lines: 7,8,9
+    ...
+T1: bi_tr(2, L, N,E); 
+    resistor(from T1.E down_ 1.5,,E); rlabel(,R_e,);
+GN: gnd;                           # zem
+    ...
+    line from T1.B left_ 0.8;      # poloha Here
+D1: dot; dlabel(0,0,,V_b,,AL);     # spojovaci bod a popis
+    resistor(from D1 down_ (D1.y - GN.n.y),,E); rlabel(,R_{b1},);
+    gnd;
+    ...
+```
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -281,21 +283,26 @@ Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky 
 Zapojenie z časopisu Amatérske rádio, ručne kreslené zapojenie pomocou šablón.
 ```
 
-Pri prekreslovaní zapojenia v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu *sans-serif*. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro *itsf()*:
+Pri prekreslovaní zapojenia v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu *sans-serif*. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro *itsf()*.
 
-    # makro pre formatovanie textu
-    define(`itsf', `"\textit{\textsf{$1}}"')   
-    
-    ...
-    # použitie makra
-    R4: resistor(from T1.E down_ 1.2,,E); 
-        { 
-            itsf(R4)  at R4.c + (-0.14, 0.15) rjust;  
-            itsf(100) at R4.c + (-0.14,-0.15) rjust; 
-        }   
-    ...
-    
+```{code-block}
+:caption: Makro pre formátovanie textu
+:emphasize-lines: 1,7,8
+define(`itsf', `"\textit{\textsf{$1}}"')   
 
+...
+# použitie makra
+R4: resistor(from T1.E down_ 1.2,,E); 
+    { 
+        itsf(R4)  at R4.c + (-0.14, 0.15) rjust;  
+        itsf(100) at R4.c + (-0.14,-0.15) rjust; 
+    }   
+...
+``` 
+
+
+
+ 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
@@ -380,21 +387,27 @@ Prekreslený [obvod](./src/cm_202d.ckt) z predchádzajúceho obrázku.
  
 Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené zapojenia častí zapojení sa používajú značky tranzistorov bez púzdier a so skrátenými vývodmi. Pre presné umiestňovanie takýchto prvkov je potom potrebné použiť konštrukciu *with ... at* s deklarovaním vývodu, ku ktorému sa umiestnenie značky vzťahuje.
 
-        ...
-        line up_ 0.8; 
-    DV: dot;
 
-         # umiestnenie T11 s emitorom do bodu DV
-    T11: bjt_NPN(1,1,R,N) with .E at Here;   
-        line from T11.B left_ 0.8;
-        
-        # T1 s redukovanou dlzkou vyvodov medzi kolektorom a emitorom 
-    T1: bjt_NPN(0.6,1,R,N) with .E at Here;  
+```{code-block}
+:caption: Použitie konštrukcie *with ... at*
+:emphasize-lines: 6
+    ...
+    line up_ 0.8; 
+DV: dot;
+
+    # umiestnenie T11 s emitorom do bodu DV
+T11: bjt_NPN(1,1,R,N) with .E at Here;   
+    line from T11.B left_ 0.8;
     
-        # pripojenie odporu R1 s dĺžkou určenou polohou emitorov T1 a T11
-        resistor(from T11.E left_ (T11.E.x - T1.E.x),,E); {llabel(,R_1,);}
-        line to T1.E; dot;
-        ...
+    # T1 s redukovanou dlzkou vyvodov medzi kolektorom a emitorom 
+T1: bjt_NPN(0.6,1,R,N) with .E at Here;  
+
+    # pripojenie odporu R1 s dĺžkou určenou polohou emitorov T1 a T11
+    resistor(from T11.E left_ (T11.E.x - T1.E.x),,E); {llabel(,R_1,);}
+    line to T1.E; dot;
+    ...
+```
+
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]

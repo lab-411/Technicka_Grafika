@@ -14,7 +14,7 @@ release = '1.00'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["myst_nb", "sphinx_copybutton","sphinx_subfigure"]
+extensions = ["myst_nb", "sphinx_copybutton", "sphinx_design" ]
 
 myst_enable_extensions = [
     "amsmath",
@@ -32,7 +32,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 numfig = True
 
 numfig_format = {
-    'code-block': 'Listing %s',
+    'code-block': 'Listing: %s',
     'figure': 'Obr. %s',
     'section': 'Section',
     'table': 'Tabulka %s',

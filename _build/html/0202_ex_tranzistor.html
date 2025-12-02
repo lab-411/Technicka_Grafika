@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0202_ex_tranzistor';</script>
@@ -169,7 +171,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -367,12 +369,12 @@ document.write(`
 <h1><font color='navy'> Tranzistory </font><a class="headerlink" href="#tranzistory" title="Link to this heading">#</a></h1>
 <section id="bipolarny-tranzistor">
 <h2><font color='teal'>  Bipolárny tranzistor </font><a class="headerlink" href="#bipolarny-tranzistor" title="Link to this heading">#</a></h2>
-<p>Bipolárny tranzistor patrí medzi mnohopóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> zobrazuje makro <em>bi_tr()</em></p>
+<p>Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> zobrazuje makro <em>bi_tr()</em></p>
 <figure class="align-default" id="cm-202a">
 <a class="reference internal image-reference" href="_images/cm_202a.png"><img alt="_images/cm_202a.png" src="_images/cm_202a.png" style="width: 620px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 57 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bdf9e8a1844e3981554178ac529ee502/cm_202a.ckt"><span class="xref download myst">Značka</span></a> bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 59 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bdf9e8a1844e3981554178ac529ee502/cm_202a.ckt"><span class="xref download myst">Značka</span></a> bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bi_tr(linespec,L|R,P,E);
@@ -394,23 +396,23 @@ atribúty:
 </pre></div>
 </div>
 <p>Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora <span class="math notranslate nohighlight">\(R_{b1}\)</span> je určená polohou značky zeme pri rezistore <span class="math notranslate nohighlight">\(R_e\)</span>. Pre popis spojovacieho bodu <span class="math notranslate nohighlight">\(V_b\)</span> bolo použité makro <em>dlabel()</em>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ...
-T1: bi_tr(2, L, N,E); 
-    resistor(from T1.E down_ 1.5,,E); rlabel(,R_e,);
-GN: gnd;                           # zem
-    ...
-    line from T1.B left_ 0.8;      # poloha Here
-D1: dot; dlabel(0,0,,V_b,,AL);     # spojovaci bod a popis
-    resistor(from D1 down_ (D1.y - GN.n.y),,E); rlabel(,R_{b1},);
-    gnd;
-    ...
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">...</span>
+<span class="n">T1</span><span class="p">:</span> <span class="n">bi_tr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span><span class="n">E</span><span class="p">);</span> 
+    <span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">T1.E</span> <span class="n">down_</span> <span class="mf">1.5</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_e</span><span class="p">,);</span>
+<span class="n">GN</span><span class="p">:</span> <span class="n">gnd</span><span class="p">;</span>                           <span class="c1"># zem</span>
+    <span class="o">...</span>
+    <span class="n">line</span> <span class="kn">from</span> <span class="nn">T1.B</span> <span class="n">left_</span> <span class="mf">0.8</span><span class="p">;</span>      <span class="c1"># poloha Here</span>
+<span class="hll"><span class="n">D1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> <span class="n">dlabel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,,</span><span class="n">V_b</span><span class="p">,,</span><span class="n">AL</span><span class="p">);</span>     <span class="c1"># spojovaci bod a popis</span>
+</span><span class="hll">    <span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">D1</span> <span class="n">down_</span> <span class="p">(</span><span class="n">D1</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">GN</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">y</span><span class="p">),,</span><span class="n">E</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_</span><span class="p">{</span><span class="n">b1</span><span class="p">},);</span>
+</span><span class="hll">    <span class="n">gnd</span><span class="p">;</span>
+</span>    <span class="o">...</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-202b">
 <a class="reference internal image-reference" href="_images/cm_202b.png"><img alt="_images/cm_202b.png" src="_images/cm_202b.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 58 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1ad30fb81a905d76df87baed9cec5527/cm_202b.ckt"><span class="xref download myst">Obvod</span></a> vykreslený s použitím relatívnych súradníc.</span><a class="headerlink" href="#cm-202b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 60 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1ad30fb81a905d76df87baed9cec5527/cm_202b.ckt"><span class="xref download myst">Obvod</span></a> vykreslený s použitím relatívnych súradníc.</span><a class="headerlink" href="#cm-202b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="modifikacie-znaciek">
@@ -420,7 +422,7 @@ D1: dot; dlabel(0,0,,V_b,,AL);     # spojovaci bod a popis
 <a class="reference internal image-reference" href="_images/cm_202c.png"><img alt="_images/cm_202c.png" src="_images/cm_202c.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 59 </span><span class="caption-text">Značky bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em></span><a class="headerlink" href="#cm-202c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 61 </span><span class="caption-text">Značky bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em></span><a class="headerlink" href="#cm-202c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bjt_NPN(length_ce, length_b, L|R|U|D, C|N)
@@ -446,7 +448,7 @@ atribúty:
 <a class="reference internal image-reference" href="_images/cm_202h.png"><img alt="_images/cm_202h.png" src="_images/cm_202h.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 60 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a>  s bipolárnymi tranzistormi v súradnicovej mriežke.</span><a class="headerlink" href="#cm-202h" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 62 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a>  s bipolárnymi tranzistormi v súradnicovej mriežke.</span><a class="headerlink" href="#cm-202h" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky pre tvorbu vlastného štýlu článkov, knižných publikácií alebo ak potrebujeme prekresliť nejaké staršie zapojenie a chceme dodržať pôvodný grafický štýl.</p>
@@ -454,53 +456,58 @@ atribúty:
 <a class="reference internal image-reference" href="_images/ar_1989_02.png"><img alt="_images/ar_1989_02.png" src="_images/ar_1989_02.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 61 </span><span class="caption-text">Zapojenie z časopisu Amatérske rádio, ručne kreslené zapojenie pomocou šablón.</span><a class="headerlink" href="#cm-090" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 63 </span><span class="caption-text">Zapojenie z časopisu Amatérske rádio, ručne kreslené zapojenie pomocou šablón.</span><a class="headerlink" href="#cm-090" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pri prekreslovaní zapojenia v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu <em>sans-serif</em>. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro <em>itsf()</em>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># makro pre formatovanie textu
-define(`itsf&#39;, `&quot;\textit{\textsf{$1}}&quot;&#39;)   
-
+<p>Pri prekreslovaní zapojenia v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu <em>sans-serif</em>. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro <em>itsf()</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing: 3 </span><span class="caption-text">Makro pre formátovanie textu</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll">define(`itsf&#39;, `&quot;\textit{\textsf{$1}}&quot;&#39;)   
+</span>
 ...
 # použitie makra
 R4: resistor(from T1.E down_ 1.2,,E); 
     { 
-        itsf(R4)  at R4.c + (-0.14, 0.15) rjust;  
-        itsf(100) at R4.c + (-0.14,-0.15) rjust; 
-    }   
+<span class="hll">        itsf(R4)  at R4.c + (-0.14, 0.15) rjust;  
+</span><span class="hll">        itsf(100) at R4.c + (-0.14,-0.15) rjust; 
+</span>    }   
 ...
 </pre></div>
+</div>
 </div>
 <figure class="align-default" id="cm-202d">
 <a class="reference internal image-reference" href="_images/cm_202d.png"><img alt="_images/cm_202d.png" src="_images/cm_202d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 62 </span><span class="caption-text">Prekreslený <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a> z predchádzajúceho obrázku.</span><a class="headerlink" href="#cm-202d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 64 </span><span class="caption-text">Prekreslený <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a> z predchádzajúceho obrázku.</span><a class="headerlink" href="#cm-202d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené zapojenia častí zapojení sa používajú značky tranzistorov bez púzdier a so skrátenými vývodmi. Pre presné umiestňovanie takýchto prvkov je potom potrebné použiť konštrukciu <em>with … at</em> s deklarovaním vývodu, ku ktorému sa umiestnenie značky vzťahuje.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ...
-    line up_ 0.8; 
-DV: dot;
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing: 4 </span><span class="caption-text">Použitie konštrukcie <em>with … at</em></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">...</span>
+    <span class="n">line</span> <span class="n">up_</span> <span class="mf">0.8</span><span class="p">;</span> 
+<span class="n">DV</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
 
-     # umiestnenie T11 s emitorom do bodu DV
-T11: bjt_NPN(1,1,R,N) with .E at Here;   
-    line from T11.B left_ 0.8;
+    <span class="c1"># umiestnenie T11 s emitorom do bodu DV</span>
+<span class="hll"><span class="n">T11</span><span class="p">:</span> <span class="n">bjt_NPN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="k">with</span> <span class="o">.</span><span class="n">E</span> <span class="n">at</span> <span class="n">Here</span><span class="p">;</span>   
+</span>    <span class="n">line</span> <span class="kn">from</span> <span class="nn">T11.B</span> <span class="n">left_</span> <span class="mf">0.8</span><span class="p">;</span>
     
-    # T1 s redukovanou dlzkou vyvodov medzi kolektorom a emitorom 
-T1: bjt_NPN(0.6,1,R,N) with .E at Here;  
+    <span class="c1"># T1 s redukovanou dlzkou vyvodov medzi kolektorom a emitorom </span>
+<span class="n">T1</span><span class="p">:</span> <span class="n">bjt_NPN</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="k">with</span> <span class="o">.</span><span class="n">E</span> <span class="n">at</span> <span class="n">Here</span><span class="p">;</span>  
 
-    # pripojenie odporu R1 s dĺžkou určenou polohou emitorov T1 a T11
-    resistor(from T11.E left_ (T11.E.x - T1.E.x),,E); {llabel(,R_1,);}
-    line to T1.E; dot;
-    ...
+    <span class="c1"># pripojenie odporu R1 s dĺžkou určenou polohou emitorov T1 a T11</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">T11.E</span> <span class="n">left_</span> <span class="p">(</span><span class="n">T11</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">T1</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">x</span><span class="p">),,</span><span class="n">E</span><span class="p">);</span> <span class="p">{</span><span class="n">llabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);}</span>
+    <span class="n">line</span> <span class="n">to</span> <span class="n">T1</span><span class="o">.</span><span class="n">E</span><span class="p">;</span> <span class="n">dot</span><span class="p">;</span>
+    <span class="o">...</span>
 </pre></div>
+</div>
 </div>
 <figure class="align-default" id="cm-202e">
 <a class="reference internal image-reference" href="_images/cm_202e.png"><img alt="_images/cm_202e.png" src="_images/cm_202e.png" style="width: 380px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 63 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2582541046804bf7eb2f94355d4fd9d1/cm_202e.ckt"><span class="xref download myst">Použitie</span></a> zjednodušených značiek tranzistorov.</span><a class="headerlink" href="#cm-202e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 65 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2582541046804bf7eb2f94355d4fd9d1/cm_202e.ckt"><span class="xref download myst">Použitie</span></a> zjednodušených značiek tranzistorov.</span><a class="headerlink" href="#cm-202e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Vnútorné zapojenia integrovaných obvodov sú často súčasťou katalógových listov a zobrazujú ekvivalentné zapojenie obvodu s diskrétnymi komponentami. Zapojenia často bývajú zjednodušené bez zobrazenia pomocných a parazitných prvkov pre lepšie pochopenie činnosti obvodu alebo jeho simuláciu, skutočná vnútorná štruktúra obvodu býva zvyčajne značne komplikovanejšia.</p>
@@ -508,7 +515,7 @@ T1: bjt_NPN(0.6,1,R,N) with .E at Here;
 <a class="reference internal image-reference" href="_images/cm_202f.png"><img alt="_images/cm_202f.png" src="_images/cm_202f.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/9f18330c95b86466056fd0e4c00d1a1c/cm_202f.ckt"><span class="xref download myst">Príklad</span></a> zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.</span><a class="headerlink" href="#cm-202f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 66 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/9f18330c95b86466056fd0e4c00d1a1c/cm_202f.ckt"><span class="xref download myst">Príklad</span></a> zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.</span><a class="headerlink" href="#cm-202f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -520,7 +527,7 @@ T1: bjt_NPN(0.6,1,R,N) with .E at Here;
 <a class="reference internal image-reference" href="_images/cm_202g.png"><img alt="_images/cm_202g.png" src="_images/cm_202g.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 65 </span><span class="caption-text">Značky MOSFET tranzistorov <em>e_fet()</em> a <em>d_fet()</em></span><a class="headerlink" href="#cm-202g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 67 </span><span class="caption-text">Značky MOSFET tranzistorov <em>e_fet()</em> a <em>d_fet()</em></span><a class="headerlink" href="#cm-202g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>e_fet(linespec,R,P,E|S)  - enhancement MOSFET

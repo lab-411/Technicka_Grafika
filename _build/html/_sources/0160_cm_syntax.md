@@ -51,16 +51,16 @@ Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie
     # toto je dvojriadkovy komentar        \\
       a jeho pokracovanie na dalsom riadku
 
-
-White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorované
+```{warning} 
+White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorované **pred** argumentom, nie ale **za** argumentom. 
 
     name( x,
     y, z )
         
     je ekvivalent
 
-    name(x,y,z)
-
+    name(x,y,z )
+```
         
 ### <font color='brown'> Hodnoty </font>
 

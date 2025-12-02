@@ -15,7 +15,7 @@ kernelspec:
 
 # <font color='navy'> Operačné zosilovače  </font> 
 
-Operačné zosilovače patria v `CicuitMacros` medzi mnohopóly a podobne pri ako iných mnohopóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (*.s, ...*) sú súčasťou prvku doplnkové atribúty (*.NE ..,*) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (*.V1, .V2*) sú dostupné len pri použití parametra makra *P*.
+Operačné zosilovače patria v `CicuitMacros` medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (*.s, ...*) sú súčasťou prvku doplnkové atribúty (*.NE ..,*) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (*.V1, .V2*) sú dostupné len pri použití parametra makra *P*.
 
     opamp(linespec, label+, label-, size, TPR);
     

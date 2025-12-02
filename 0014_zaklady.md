@@ -17,14 +17,16 @@ kernelspec:
 
 Princíp vytvárania zapojení v `CircuitMacros` spočíva v zapise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  *.PS* a končí *.PE*, príkazy a texty mimo tohoto označenia sú ignorované. 
 
-    .PS               - zaciatok postupnosti prikazov
-    scale=2.54        - nastavenie parametru velkosti obrazku
-    cct_init          - inicializacia kniznice s analogovými prvkami (rezistor, ...)
+```{code-block}
+:caption: Prvý program
+.PS               - zaciatok postupnosti prikazov
+scale=2.54        - nastavenie parametru velkosti obrazku
+cct_init          - inicializacia kniznice s analogovými prvkami (rezistor, ...)
 
-    resistor;         - príkaz pre vykreslenie rezistoru
+resistor;         - príkaz pre vykreslenie rezistoru
 
-    .PE               - koniec postupnosti prikazov
-
+.PE               - koniec postupnosti prikazov
+```
 
 Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu *PyCirkuit*, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch v tejto publikácii budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (*.PS*, *.PE* ...) 
 
@@ -49,14 +51,16 @@ Konfigurácia formátu exportovaných obrázkov v programe *PyCirkuit*
 
 Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii, ktorá je uchovávaná v virtuálnom kurzore označenom ako `Here`. Prvky v zapojení (*resistor*, *capacitor*) ukladáme za sebou v zadaných smeroch príkazmi **up_**, **down_**, **right_** a **left_** . Pri zmene smeru sa automaticku mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro *dot* 
 
-    right_;
-    resistor;
-    resistor;
-    dot;
-    down_;
-    capacitor;
-    right_;
-    diode;
+```{code-block}
+right_;
+resistor;
+resistor;
+dot;
+down_;
+capacitor;
+right_;
+diode;
+```
 
     
 ```{code-cell} ipython3 
@@ -116,13 +120,14 @@ K prvkom zapojenia a polohe ich častí pristupovať pomocou referencie a pomeno
     
 Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.
 
+```{code-block}
+:emphasize-lines: 5
     move to (1,1);
-    R1: resistor;                 # referencia, R1.start = (1,1)
+R1: resistor;                 # referencia, R1.start = (1,1)
     move to (1,2)
-    C1: capacitor;                # referencia C1.start = (1,2)
-    line from R1.start to C1.end; # vykreslenie ciary medzi bodmi
-                                  # zadanými atribútmi prvkov
-
+C1: capacitor;                # referencia C1.start = (1,2)
+    line from R1.start to C1.end; # spoj medzi bodmi zadanými referenciami a atribútmi
+```
     
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -176,12 +181,13 @@ Súčasťou zapojenia elektronickéjho obvodu je textový popis prvkov, ktorý z
     
 Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (*R2*). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = $R_1$ (vyžaduje inštaláciu LaTeX-u).
 
-    move to (1,2);
-    R1: resistor(2,,E); llabel(a,R_1,b); rlabel(,10k,);
-    D1: dot;
-    C1: capacitor(down_ 2,); rlabel(,C_1,); llabel(,10 \mu F,);
-    R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
-
+```{code-block}
+    move to (0.5, 2.5);  
+R1: resistor(2,,E); llabel(a,R_1,b); rlabel(,10k,);
+D1: dot;
+C1: capacitor(down_ 2,); rlabel(,C_1,); llabel(,10 \mu F,);
+R2: resistor(from D1 right_ 2,,E); llabel(,R_2,); rlabel(,33k,);
+```
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]

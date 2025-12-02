@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Mnohopóly &#8212; cm 1.00 documentation</title>
+    <title>Multipóly &#8212; cm 1.00 documentation</title>
   
   
   
@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0102_cm_mnohopoly';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -167,7 +169,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -188,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
@@ -335,7 +337,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><span style="color:navy"> Mnohopóly </span></h1>
+    <h1><span style="color:navy"> Multipóly </span></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -345,6 +347,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnovanie-multipolov"><font color="teal"> Umiestňovanie multipólov </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="teal"> Použitie </font></a></li>
 </ul>
             </nav>
@@ -357,17 +360,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mnohopoly">
-<h1><span style="color:navy"> Mnohopóly </span><a class="headerlink" href="#mnohopoly" title="Link to this heading">#</a></h1>
-<p>Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto  prvkom v teórii systémov je štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má mnohopól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="multipoly">
+<h1><span style="color:navy"> Multipóly </span><a class="headerlink" href="#multipoly" title="Link to this heading">#</a></h1>
+<p>Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto  prvkom v teórii systémov je štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov.</p>
 <figure class="align-default" id="cm-0102a">
 <a class="reference internal image-reference" href="_images/cm_0102a.png"><img alt="_images/cm_0102a.png" src="_images/cm_0102a.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 21 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f3f6bdc9178c1ed4d3ee2373ea55b504/cm_0102a.ckt"><span class="xref download myst">Príklady</span></a> mnohopólov definovaných v CircuitMacros.</span><a class="headerlink" href="#cm-0102a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 22 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f3f6bdc9178c1ed4d3ee2373ea55b504/cm_0102a.ckt"><span class="xref download myst">Príklady</span></a> mnohopólov definovaných v CircuitMacros.</span><a class="headerlink" href="#cm-0102a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Typickým mnohopólom je transformátor, makro pre jeho zobrazenie má tvar</p>
+<p>Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
 
 parametre:
@@ -389,6 +392,28 @@ atribúty:
 .TP  .TS               - poloha stredov vinutia
 </pre></div>
 </div>
+<section id="umiestnovanie-multipolov">
+<h2><font color='teal'> Umiestňovanie multipólov </font><a class="headerlink" href="#umiestnovanie-multipolov" title="Link to this heading">#</a></h2>
+<p>Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi</p>
+<ol class="arabic simple">
+<li><p>Zadaním východzieho bodu kreslenia presunom kurzora - <strong>move to <em>pos</em>; object( <em>dir length</em>, … );</strong>. Objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu <em>.n, .s, .w .e</em></p></li>
+<li><p>Umiestnením zvoleného terminálu multipólu do určenej polohy - <strong>object( …) with <em>.attribute</em> at <em>pos</em>;</strong></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">right_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span> 
+<span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>                      <span class="c1"># (1)</span>
+
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span> 
+<span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">with</span> <span class="o">.</span><span class="n">P1</span> <span class="n">at</span> <span class="n">R1</span><span class="o">.</span><span class="n">end</span><span class="p">;</span>   <span class="c1"># (2)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0102c">
+<a class="reference internal image-reference" href="_images/cm_0102c.png"><img alt="_images/cm_0102c.png" src="_images/cm_0102c.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 23 </span><span class="caption-text">Ukladanie multipólov.</span><a class="headerlink" href="#cm-0102c" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="pouzitie">
 <h2><font color='teal'> Použitie </font><a class="headerlink" href="#pouzitie" title="Link to this heading">#</a></h2>
 <p>Použitie atribútov mnohopólu demonštruje nasledujúci príklad.</p>
@@ -418,7 +443,7 @@ D1: diode(1); llabel(,D_1,);       # usmerňovač
 <a class="reference internal image-reference" href="_images/cm_0102b.png"><img alt="_images/cm_0102b.png" src="_images/cm_0102b.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 22 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/dd3fdce729937efada0623d90a492568/cm_0102b.ckt"><span class="xref download myst">Použitie</span></a> atribútov mnohopólu.</span><a class="headerlink" href="#cm-0102b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 24 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/dd3fdce729937efada0623d90a492568/cm_0102b.ckt"><span class="xref download myst">Použitie</span></a> atribútov mnohopólu.</span><a class="headerlink" href="#cm-0102b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -469,6 +494,7 @@ D1: diode(1); llabel(,D_1,);       # usmerňovač
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnovanie-multipolov"><font color="teal"> Umiestňovanie multipólov </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="teal"> Použitie </font></a></li>
 </ul>
   </nav></div>

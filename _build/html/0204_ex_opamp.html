@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0204_ex_opamp';</script>
@@ -169,7 +171,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -351,7 +353,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="operacne-zosilovace">
 <h1><font color='navy'> Operačné zosilovače  </font><a class="headerlink" href="#operacne-zosilovace" title="Link to this heading">#</a></h1>
-<p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi mnohopóly a podobne pri ako iných mnohopóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE ..,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra makra <em>P</em>.</p>
+<p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE ..,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra makra <em>P</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>opamp(linespec, label+, label-, size, TPR);
 
 parametre:
@@ -405,7 +407,7 @@ DO: dot;
 <a class="reference internal image-reference" href="_images/cm_0204a.png"><img alt="_images/cm_0204a.png" src="_images/cm_0204a.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 66 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/08b8611095359c465485621d9e416124/cm_0204a.ckt"><span class="xref download myst">Zapojenie</span></a> invertujúceho a neinvertujúceho zosilovača.</span><a class="headerlink" href="#cm-0204a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 68 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/08b8611095359c465485621d9e416124/cm_0204a.ckt"><span class="xref download myst">Zapojenie</span></a> invertujúceho a neinvertujúceho zosilovača.</span><a class="headerlink" href="#cm-0204a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Použitie parametra <em>P</em> pre zobrazenie napájacích vývodov zosilovača a použitie makra <em>reversed</em> pre zobrazenie kondenzátora <span class="math notranslate nohighlight">\(C_2\)</span> s obrátenou polaritou ukazuje nasledujúci príklad.</p>
@@ -436,7 +438,7 @@ DO: dot;
 <a class="reference internal image-reference" href="_images/cm_0204b.png"><img alt="_images/cm_0204b.png" src="_images/cm_0204b.png" style="width: 170px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 67 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/208534a62bdedadc7eb5ff5d46532f7b/cm_0204b.ckt"><span class="xref download myst">Obvod</span></a> napájania operačného zosilovača.</span><a class="headerlink" href="#cm-0204b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 69 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/208534a62bdedadc7eb5ff5d46532f7b/cm_0204b.ckt"><span class="xref download myst">Obvod</span></a> napájania operačného zosilovača.</span><a class="headerlink" href="#cm-0204b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra (vo výpise sú vynechané nepodstatné časti) sú použité vnorené bloky pri kreslení vetiev obvodu a použitá konštrukcia <em>with</em> pri ukladaní zosilovača <em>OA2</em> na aktuálnu polohu vývodom <em>In2</em>.</p>
@@ -475,7 +477,7 @@ R1: resistor(right_ 2.15,,E); rlabel(,R_1,); dot;
 <a class="reference internal image-reference" href="_images/cm_0204c.png"><img alt="_images/cm_0204c.png" src="_images/cm_0204c.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 68 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/0303d462cc2f6a0bfd5517981b7ab1ea/cm_0204c.ckt"><span class="xref download myst">Zapojenie</span></a> aktívneho filtra.</span><a class="headerlink" href="#cm-0204c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 70 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/0303d462cc2f6a0bfd5517981b7ab1ea/cm_0204c.ckt"><span class="xref download myst">Zapojenie</span></a> aktívneho filtra.</span><a class="headerlink" href="#cm-0204c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

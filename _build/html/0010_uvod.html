@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,6 +45,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0010_uvod';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -167,7 +169,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -188,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
@@ -382,22 +384,28 @@ document.write(`
 <section id="circuitmacros">
 <h2><font color='teal'>  CircuitMacros </font><a class="headerlink" href="#circuitmacros" title="Link to this heading">#</a></h2>
 <p>Prostredie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je súbor open-source programov pre kreslenie elektrických zapojení. Je určený výhradne pre tvorbu zapojení, diagramov a obrázkov pre publikácie a prezentácie, <strong>nie je</strong> učený pre vytváranie schém a ich ďaľšie použitie v aplikáciách pre návrhy, výpočty, simulácie zapojení a kreslenie plošných spojov (EDA). Zapojenia, diagramy a schémy sa vytvárajú pomocou programovania v skriptovacom jazyku <em>dpic</em>, pre jednoduchšie kreslenie zložitejších značiek elektronických prvkov sú použití makrá. Tento spôsob vytvárania diagramov a schém pomocou skriptov je základom veľkej skupiny programov, medzi ktoré patrí <em>Graphviz</em>, <em>DOT</em>, <em>MetaPost</em>, <em>Pikchr</em> a ďaľšie.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Origin: Here; 
-P1: circle rad .12; {&quot;$V_{in}$&quot; at P1.n above;}    # prikaz jazyka dpic
-    line right_ 0.25;
-R1: resistor(2,,E); llabel(,R_1,); rlabel(,100,);  # makro pre zobrazenie rezistora
-D1: dot;
-C1: capacitor(down_ 1.5); rlabel(,C_1,); llabel(,1 \mu F,);
-    gnd;
-    line from D1 right_ 1;
-P2: circle rad .12; {&quot;$V_{out}$&quot; at P2.n above;}
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing: 1 </span><span class="caption-text">Program v CircuitMacros</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">.</span><span class="n">PS</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>
+    <span class="n">cct_init</span>
+<span class="n">P1</span><span class="p">:</span> <span class="n">circle</span> <span class="n">rad</span> <span class="mf">.12</span><span class="p">;</span> <span class="p">{</span><span class="s2">&quot;$V_</span><span class="si">{in}</span><span class="s2">$&quot;</span> <span class="n">at</span> <span class="n">P1</span><span class="o">.</span><span class="n">n</span> <span class="n">above</span><span class="p">;}</span>    <span class="c1"># prikaz jazyka dpic</span>
+    <span class="n">line</span> <span class="n">right_</span> <span class="mf">0.25</span><span class="p">;</span>
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">100</span><span class="p">,);</span>  <span class="c1"># makro pre zobrazenie rezistora</span>
+<span class="n">D1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+<span class="n">C1</span><span class="p">:</span> <span class="n">capacitor</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">C_1</span><span class="p">,);</span> <span class="n">llabel</span><span class="p">(,</span><span class="mi">1</span> \<span class="n">mu</span> <span class="n">F</span><span class="p">,);</span>
+    <span class="n">gnd</span><span class="p">;</span>
+    <span class="n">line</span> <span class="kn">from</span> <span class="nn">D1</span> <span class="n">right_</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">P2</span><span class="p">:</span> <span class="n">circle</span> <span class="n">rad</span> <span class="mf">.12</span><span class="p">;</span> <span class="p">{</span><span class="s2">&quot;$V_</span><span class="si">{out}</span><span class="s2">$&quot;</span> <span class="n">at</span> <span class="n">P2</span><span class="o">.</span><span class="n">n</span> <span class="n">above</span><span class="p">;}</span>
+   <span class="o">.</span><span class="n">PE</span>
 </pre></div>
+</div>
 </div>
 <figure class="align-default" id="cm-0010a">
 <a class="reference internal image-reference" href="_images/cm_010a.png"><img alt="_images/cm_010a.png" src="_images/cm_010a.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Obvod vytvorený skriptom v Circuit-Macros.</span><a class="headerlink" href="#cm-0010a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Obvod vytvorený programom v Circuit-Macros.</span><a class="headerlink" href="#cm-0010a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="vlastnosti">
@@ -416,7 +424,10 @@ P2: circle rad .12; {&quot;$V_{out}$&quot; at P2.n above;}
 <p><span class="caption-number">Obr. 4 </span><span class="caption-text">Vnútorná štruktúra dvojkanálového generátora priamej digitálnej syntézy (DDS) použitého v kapacitnom extenzometri v projekte sledovania slapových síl v zemskej kôre, projekt VEGA 2/0013/25.</span><a class="headerlink" href="#res-010" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition-poznamka admonition">
+<p class="admonition-title">Poznámka</p>
 <p>Táto publikácia nepokrýva všetky možnosti, ktoré poskytuje platforma <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code>, podrobnejšie informácie sú dostupné v dokumentácii priebežne aktualizovanej na stránkach <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">projektu</a>.</p>
+</div>
 </section>
 </section>
 </section>

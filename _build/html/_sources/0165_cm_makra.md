@@ -121,6 +121,10 @@ Pre odstránenie tejto chyby je potrebné vhodným spôsobom pozmeniť text tak,
 
     "terminal res\\istor" at R1.c above; # dve lomítka \\ sú pri zobrazení ignorované 
     
+Inou možnosťou je vložiť konfliktný text do úvodzoviek makra m4, ktoré makroprocesor ignoruje 
+
+    "terminal `resistor' " at R1.c above; # `text' je ignorovaný
+    
 ```
 
 ## <font color='teal'> Použitie makier  </font>

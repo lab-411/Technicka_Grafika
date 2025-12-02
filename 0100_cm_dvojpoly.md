@@ -16,10 +16,10 @@ kernelspec:
 
 Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú v `CircuitMacros` reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar:
 
-    [referencia:] objekt([linespec], [parameters ...]);
+    [reference:] object([linespec], [parameters ...]);
     
-    referencia - označenie objektu pre prístup k jeho parametrom
-    objekt     - typ dvojpólu (resistor, capacitor ...)
+    reference - označenie objektu pre prístup k jeho parametrom
+    object     - typ dvojpólu (resistor, capacitor ...)
     linespec   - dĺžka prívodov a umiestnenie objektu
     parameters - parametre určujúce tvar objektu
     
@@ -177,11 +177,11 @@ _ = cm_compile('cm_0100b', data, dpi=600)
 :width: 450px
 :name: cm_0100b
 
-[Typy](./src/cm_0100b.ckt) rezistorov.
+Typy rezistorov.
 ```
 
 ```{warning} 
-Niektoré verzie `CircuitMacros` nekorektne spracovávajú parametre makier a medzery pokladajú za súčasť parametra. Je preto potrebné zadávať parametre makier bez medzier.
+ Medzery pre parametrom makra sú ignorované, v niektorých prípadoch ale môžu byť medzery pokladané za súčasť parametra makra. Je preto vhodné zadávať parametre makier bez medzier.
     
     resistor(,, E );       # chyba, ignorovanie parametra E
     resistor(,,E);         # správne vykreslenie rezistora 
@@ -257,7 +257,7 @@ _ = cm_compile('cm_0100c', data, dpi=600)
 :width: 450px
 :name: cm_0100c
 
-[Typy](./src/cm_0100c.ckt) kondenzátorov.
+Typy kondenzátorov.
 ```
     
 ## <font color='teal'> Cievka </font>
@@ -306,7 +306,7 @@ _ = cm_compile('cm_0100d', data, dpi=600)
 :width: 450px
 :name: cm_0100d
 
-[Typy](./src/cm_0100d.ckt) cievok.
+Typy cievok.
 ```
     
 ## <font color='teal'> Dióda </font>
@@ -376,7 +376,7 @@ _ = cm_compile('cm_0100e', data, dpi=600)
 :width: 450px
 :name: cm_0100e
 
-[Typy](./src/cm_0100e.ckt) diód.
+Typy diód.
 ```
     
 
@@ -425,7 +425,7 @@ _ = cm_compile('cm_0100e', data, dpi=600)
     
     
     
-## <font color='teal'> Popis dvojpólov   </font>
+## <font color='teal'> Popis dvojpólov </font>
 
 Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *rlabel()* a *dlabel()* pre popis posledného uloženého prvku. Pre označenie je možné použiť syntax pre zápis matematických vzťahov LaTeX-u, text popisu nemusí byť uzatvorená medzi znakmi \$ ... \$.  
 
@@ -486,6 +486,79 @@ _ = cm_compile('cm_0100f', data, dpi=600)
 
 [Makrá](./src/cm_0100f.ckt) pre popis dvojpólov.
 ```
+
+## <font color='teal'> Umiestňovanie dvojpólov </font>
+
+Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi
+
+1. Zadaním východzieho bodu kreslenia presunom kurzora - **move to *pos*; object( [*length*], ... );**
+2. Zadaním polohy stredu dvojpólu, smeru a velkosti - **object( at *pos* [*dir*] [*length*], ... );**
+3. Zadaním smeru, veľkosti objektu a polohy východzieho bodu - **object( [*dir*] [*lenght*] from *pos*, ... );**
+4. Pokračovaním od koncového bodu predchádzajúceho objektu - **object( *dir* [*length*], ... )**
+5. Zadaním koncových bodov dvojpólu - **object( from *pos_A* to *pos_B* )**
+
+```{code-block}
+move to (1,2.5); resistor(2);       # (1)
+resistor(at (2,1.5) right_ 2,,E);   # (2)
+resistor(right_ 2 from (1,0.5))     # (3)
+
+move to (4,2.5); 
+RA: resistor(right_ 2); 
+RB: resistor(down_ 2);              # (4)
+resistor(from RA.start to RB.end);  # (5)
+```
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+define(`xc', `
+  {
+   Q: Here; line from Q+(-.1,-.1) to Q+(0.1, 0.1); 
+   line from Q+(-.1, .1) to Q+(0.1, -0.1);
+   circle at Q rad 0.1*1.4; 
+   color_black;
+   }
+')
+
+Grid(7,3);
+
+circle at (0.5,2.5)rad 0.25 "1"
+right_; move to (1,2.5); color_red; xc;
+resistor(2);    # (1)
+
+circle at (0.5,1.5)rad 0.25 "2"
+move to (2,1.5); color_red; xc;
+resistor(at (2,1.5) right_ 2,,E)
+
+
+circle at (0.5, 0.5)rad 0.25 "3";
+move to (1,0.5); color_red; xc;
+resistor(right_ 2 from (1,0.5))
+
+circle at (6.5, 2.5)rad 0.25 "4"; move to (6,2.5); color_red; xc;
+move to (4,2.5); color_blue; xc;
+RA: resistor(right_ 2); llabel(,R_a,); 
+RB: resistor(down_ 2); llabel(,R_b,); color_blue; xc;
+resistor(from RA.start to RB.end)
+circle at (4.65, 1.15)rad 0.25 "5"; 
+'''
+
+_ = cm_compile('cm_0100k', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0100k.png
+:width: 450px
+:name: cm_0100k
+
+Ukladanie dvojpólov.
+```
+
+## <font color='teal'> Modifikácie dvojpólov </font>
 
 ### <font color='brown'> Premenné prvky  </font>
 

@@ -135,7 +135,7 @@ Signálové konektory typu DIN, [zdroj](https://en.wikipedia.org/wiki/DIN_connec
 Signálové konektory typu D-sub, [zdroj](https://en.wikipedia.org/wiki/D-subminiature).
 ```
 
-V knižnici `CircuiytMacros` je pre zobrazenie jedno a dvojradových lineárnych konektorov pre ploché káble ako aj pre kolíkové lišty a spojky definované makro *Header()*. V praxi sa môžeme stretnúť s veľkým množstvo typov a prevedení kolíkových líšt a konektorov.
+V knižnici `CircuiytMacros` je pre zobrazenie jedno a dvojradových lineárnych konektorov pre ploché káble ako aj pre kolíkové lišty a spojky definované makro *Header()*. V praxi sa môžeme stretnúť s veľkým množstvom typov a prevedení kolíkových líšt a konektorov.
 
 ```{figure} ./img/headers.jpg
 :width: 500px

@@ -1,0 +1,35 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+define(`xc', `
+  {
+   Q: Here; line from Q+(-.1,-.1) to Q+(0.1, 0.1); 
+   line from Q+(-.1, .1) to Q+(0.1, -0.1);
+   circle at Q rad 0.1*1.4; 
+   color_black;
+   }
+')
+
+Grid(7,3);
+
+circle at (0.5,1.)rad 0.25 "1"
+right_; move to (1,1.); color_red; xc;
+transformer(down_ 1.5,L,4,W,4);
+
+circle at (5.35, 2.35)rad 0.25 "2"
+R1: resistor(right_ 2 from (3,2)); llabel(,R_1,); color_red; xc;
+transformer(down_ 1.5,L,4,W,4) with .P1 at R1.end;
+
+.PE

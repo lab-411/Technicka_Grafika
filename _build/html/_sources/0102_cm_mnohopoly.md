@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# <span style="color:navy"> Mnohopóly </span>
+# <span style="color:navy"> Multipóly </span>
 
-Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto  prvkom v teórii systémov je štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má mnohopól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov. 
+Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto  prvkom v teórii systémov je štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov. 
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -63,7 +63,7 @@ _ = cm_compile('cm_0102a', data,  dpi=600)
 ```
 
 
-Typickým mnohopólom je transformátor, makro pre jeho zobrazenie má tvar
+Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar
 
     transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
     
@@ -84,7 +84,61 @@ Typickým mnohopólom je transformátor, makro pre jeho zobrazenie má tvar
     .P1  .P2               - poloha koncov primárneho vinutia
     .S1  .S2               - poloha koncov sekundárneho vinutia
     .TP  .TS               - poloha stredov vinutia
-    
+ 
+ 
+## <font color='teal'> Umiestňovanie multipólov </font>
+
+Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi
+
+1. Zadaním východzieho bodu kreslenia presunom kurzora - **move to *pos*; object( *dir length*, ... );**. Objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu *.n, .s, .w .e*
+2. Umiestnením zvoleného terminálu multipólu do určenej polohy - **object( ...) with *.attribute* at *pos*;**
+
+```{code-block}
+right_; move to (1,1.); 
+transformer(down_ 1.5,L,4,W,4);                      # (1)
+
+R1: resistor(right_ 2 from (3,2)); 
+transformer(down_ 1.5,L,4,W,4) with .P1 at R1.end;   # (2)
+```
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+define(`xc', `
+  {
+   Q: Here; line from Q+(-.1,-.1) to Q+(0.1, 0.1); 
+   line from Q+(-.1, .1) to Q+(0.1, -0.1);
+   circle at Q rad 0.1*1.4; 
+   color_black;
+   }
+')
+
+Grid(7,3);
+
+circle at (0.5,1.)rad 0.25 "1"
+right_; move to (1,1.); color_red; xc;
+transformer(down_ 1.5,L,4,W,4);
+
+circle at (5.35, 2.35)rad 0.25 "2"
+R1: resistor(right_ 2 from (3,2)); llabel(,R_1,); color_red; xc;
+transformer(down_ 1.5,L,4,W,4) with .P1 at R1.end;
+'''
+
+_ = cm_compile('cm_0102c', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0102c.png
+:width: 450px
+:name: cm_0102c
+
+Ukladanie multipólov.
+```
+ 
     
 ## <font color='teal'> Použitie </font> 
 

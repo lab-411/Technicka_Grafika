@@ -30,8 +30,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -44,10 +45,11 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0100_cm_dvojpoly';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Mnohopóly" href="0102_cm_mnohopoly.html" />
+    <link rel="next" title="Multipóly" href="0102_cm_mnohopoly.html" />
     <link rel="prev" title="Základy kreslenia" href="0014_zaklady.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -167,7 +169,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Dvojpóly</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Mnohopóly </span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
@@ -188,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Vývojove diagramy</font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
@@ -350,7 +352,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cievka"><font color="teal"> Cievka </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dioda"><font color="teal"> Dióda </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zdroje"><font color="teal"> Zdroje </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis-dvojpolov"><font color="teal"> Popis dvojpólov   </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis-dvojpolov"><font color="teal"> Popis dvojpólov </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnovanie-dvojpolov"><font color="teal"> Umiestňovanie dvojpólov </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifikacie-dvojpolov"><font color="teal"> Modifikácie dvojpólov </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne-prvky"><font color="brown"> Premenné prvky  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prud-dvojpolom"><font color="brown"> Prúd dvojpólom  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napatie-na-dvojpole"><font color="brown"> Napätie na dvojpóle </font></a></li>
@@ -370,10 +374,10 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="dvojpoly">
 <h1><font color='navy'> Dvojpóly</font><a class="headerlink" href="#dvojpoly" title="Link to this heading">#</a></h1>
 <p>Základné elektronické komponenty (R,L,C, dióda, zdroje …) sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[referencia:] objekt([linespec], [parameters ...]);
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] object([linespec], [parameters ...]);
 
-referencia - označenie objektu pre prístup k jeho parametrom
-objekt     - typ dvojpólu (resistor, capacitor ...)
+reference - označenie objektu pre prístup k jeho parametrom
+object     - typ dvojpólu (resistor, capacitor ...)
 linespec   - dĺžka prívodov a umiestnenie objektu
 parameters - parametre určujúce tvar objektu
 </pre></div>
@@ -438,12 +442,12 @@ R5: resistor(,,E);  R6: resistor(,,ES);   R7: resistor(,,V);   R8: resistor(3,,E
 <a class="reference internal image-reference" href="_images/cm_0100b.png"><img alt="_images/cm_0100b.png" src="_images/cm_0100b.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 13 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/4489b08e69a9e1b845afce1ca3194cb1/cm_0100b.ckt"><span class="xref download myst">Typy</span></a> rezistorov.</span><a class="headerlink" href="#cm-0100b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 13 </span><span class="caption-text">Typy rezistorov.</span><a class="headerlink" href="#cm-0100b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Niektoré verzie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> nekorektne spracovávajú parametre makier a medzery pokladajú za súčasť parametra. Je preto potrebné zadávať parametre makier bez medzier.</p>
+<p>Medzery pre parametrom makra sú ignorované, v niektorých prípadoch ale môžu byť medzery pokladané za súčasť parametra makra. Je preto vhodné zadávať parametre makier bez medzier.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>resistor(,, E );       # chyba, ignorovanie parametra E
 resistor(,,E);         # správne vykreslenie rezistora 
 </pre></div>
@@ -490,7 +494,7 @@ C5: capacitor(,M,,0.75, 0.25);
 <a class="reference internal image-reference" href="_images/cm_0100c.png"><img alt="_images/cm_0100c.png" src="_images/cm_0100c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 14 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/25665b8b56d228105cea267fb991f73a/cm_0100c.ckt"><span class="xref download myst">Typy</span></a> kondenzátorov.</span><a class="headerlink" href="#cm-0100c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 14 </span><span class="caption-text">Typy kondenzátorov.</span><a class="headerlink" href="#cm-0100c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -519,7 +523,7 @@ C5: capacitor(,M,,0.75, 0.25);
 <a class="reference internal image-reference" href="_images/cm_0100d.png"><img alt="_images/cm_0100d.png" src="_images/cm_0100d.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 15 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2dbdebab9768d1615d99e0c7c9989193/cm_0100d.ckt"><span class="xref download myst">Typy</span></a> cievok.</span><a class="headerlink" href="#cm-0100d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 15 </span><span class="caption-text">Typy cievok.</span><a class="headerlink" href="#cm-0100d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -563,7 +567,7 @@ D5: diode(,U);  D6: diode(,ZK);    D7: diode(,T);   D8: diode(,,R);
 <a class="reference internal image-reference" href="_images/cm_0100e.png"><img alt="_images/cm_0100e.png" src="_images/cm_0100e.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 16 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/83c5c2422b5a676103998d144554d982/cm_0100e.ckt"><span class="xref download myst">Typy</span></a> diód.</span><a class="headerlink" href="#cm-0100e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 16 </span><span class="caption-text">Typy diód.</span><a class="headerlink" href="#cm-0100e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -613,7 +617,7 @@ parametre:
 </div>
 </section>
 <section id="popis-dvojpolov">
-<h2><font color='teal'> Popis dvojpólov   </font><a class="headerlink" href="#popis-dvojpolov" title="Link to this heading">#</a></h2>
+<h2><font color='teal'> Popis dvojpólov </font><a class="headerlink" href="#popis-dvojpolov" title="Link to this heading">#</a></h2>
 <p>Pre popis dvojpólov sú definované podporné makrá <em>llabel()</em>, <em>clabel()</em>, <em>rlabel()</em> a <em>dlabel()</em> pre popis posledného uloženého prvku. Pre označenie je možné použiť syntax pre zápis matematických vzťahov LaTeX-u, text popisu nemusí byť uzatvorená medzi znakmi $ … $.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>llabel( slabel, xlabel, elabel )       - označenie po lavej strane v smere ukladania
 clabel( slabel, xlabel, elabel )       - označenie po pravej strane v smere ukladanie 
@@ -651,6 +655,37 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 <p><span class="caption-number">Obr. 17 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d851c15eb70d3d1ed6a66d18cb3db06d/cm_0100f.ckt"><span class="xref download myst">Makrá</span></a> pre popis dvojpólov.</span><a class="headerlink" href="#cm-0100f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="umiestnovanie-dvojpolov">
+<h2><font color='teal'> Umiestňovanie dvojpólov </font><a class="headerlink" href="#umiestnovanie-dvojpolov" title="Link to this heading">#</a></h2>
+<p>Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi</p>
+<ol class="arabic simple">
+<li><p>Zadaním východzieho bodu kreslenia presunom kurzora - <strong>move to <em>pos</em>; object( [<em>length</em>], … );</strong></p></li>
+<li><p>Zadaním polohy stredu dvojpólu, smeru a velkosti - <strong>object( at <em>pos</em> [<em>dir</em>] [<em>length</em>], … );</strong></p></li>
+<li><p>Zadaním smeru, veľkosti objektu a polohy východzieho bodu - <strong>object( [<em>dir</em>] [<em>lenght</em>] from <em>pos</em>, … );</strong></p></li>
+<li><p>Pokračovaním od koncového bodu predchádzajúceho objektu - <strong>object( <em>dir</em> [<em>length</em>], … )</strong></p></li>
+<li><p>Zadaním koncových bodov dvojpólu - <strong>object( from <em>pos_A</em> to <em>pos_B</em> )</strong></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>       <span class="c1"># (1)</span>
+<span class="n">resistor</span><span class="p">(</span><span class="n">at</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span>   <span class="c1"># (2)</span>
+<span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>     <span class="c1"># (3)</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> 
+<span class="n">RA</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span><span class="p">);</span> 
+<span class="n">RB</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">);</span>              <span class="c1"># (4)</span>
+<span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">RA.start</span> <span class="n">to</span> <span class="n">RB</span><span class="o">.</span><span class="n">end</span><span class="p">);</span>  <span class="c1"># (5)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0100k">
+<a class="reference internal image-reference" href="_images/cm_0100k.png"><img alt="_images/cm_0100k.png" src="_images/cm_0100k.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Ukladanie dvojpólov.</span><a class="headerlink" href="#cm-0100k" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="modifikacie-dvojpolov">
+<h2><font color='teal'> Modifikácie dvojpólov </font><a class="headerlink" href="#modifikacie-dvojpolov" title="Link to this heading">#</a></h2>
 <section id="premenne-prvky">
 <h3><font color='brown'> Premenné prvky  </font><a class="headerlink" href="#premenne-prvky" title="Link to this heading">#</a></h3>
 <p>Pre zobrazenie premenných komponentov môžeme využiť makro <em>variable</em>.</p>
@@ -698,7 +733,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100g.png"><img alt="_images/cm_0100g.png" src="_images/cm_0100g.png" style="width: 220px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 18 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 19 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -743,7 +778,7 @@ L2: line from (5,2.5) to (8,2.5) &quot;L2&quot; below;
 <a class="reference internal image-reference" href="_images/cm_0100h.png"><img alt="_images/cm_0100h.png" src="_images/cm_0100h.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 19 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 20 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -775,7 +810,7 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <a class="reference internal image-reference" href="_images/cm_0100i.png"><img alt="_images/cm_0100i.png" src="_images/cm_0100i.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 20 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 21 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -807,7 +842,7 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span style="color:navy"> Mnohopóly </span></p>
+        <p class="prev-next-title"><span style="color:navy"> Multipóly </span></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -832,7 +867,9 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cievka"><font color="teal"> Cievka </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dioda"><font color="teal"> Dióda </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zdroje"><font color="teal"> Zdroje </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis-dvojpolov"><font color="teal"> Popis dvojpólov   </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis-dvojpolov"><font color="teal"> Popis dvojpólov </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnovanie-dvojpolov"><font color="teal"> Umiestňovanie dvojpólov </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifikacie-dvojpolov"><font color="teal"> Modifikácie dvojpólov </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne-prvky"><font color="brown"> Premenné prvky  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prud-dvojpolom"><font color="brown"> Prúd dvojpólom  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napatie-na-dvojpole"><font color="brown"> Napätie na dvojpóle </font></a></li>
