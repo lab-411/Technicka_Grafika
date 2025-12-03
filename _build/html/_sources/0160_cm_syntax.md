@@ -280,12 +280,12 @@ color_black;
 resistor(right_ d); llabel(,R4,);
 '''
 
-_ = cm_compile('cm_0160d', data, dpi=600)   
+_ = cm_compile('cm_0160f', data, dpi=600)   
 ```
 
-```{figure} ./src/cm_0160d.png
+```{figure} ./src/cm_0160f.png
 :width: 300px
-:name: cm_160d
+:name: cm_160f
 
 Použitie vetiev na kreslenie častí obvodu.
 ```

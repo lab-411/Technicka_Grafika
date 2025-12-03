@@ -1,0 +1,37 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+d=3;
+resistor(right_ d,); llabel(,R1,); dot;
+{ 
+  color_red;
+  d = 2;
+  resistor(down_ d,);llabel(,R2,);
+  ground(at Here, T);
+  d=1.5;
+}
+
+{ 
+  color_blue;
+  resistor(up_ d,);llabel(,R3,);
+  tconn(0.5,O);
+  d=2.5
+}
+
+color_black;
+resistor(right_ d); llabel(,R4,);
+
+.PE
