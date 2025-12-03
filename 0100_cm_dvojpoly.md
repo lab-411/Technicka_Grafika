@@ -491,12 +491,29 @@ _ = cm_compile('cm_0100f', data, dpi=600)
 
 Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi
 
-1. Zadaním východzieho bodu kreslenia presunom kurzora - **move to *pos*; object( [*length*], ... );**
-2. Zadaním polohy stredu dvojpólu, smeru a velkosti - **object( at *pos* [*dir*] [*length*], ... );**
-3. Zadaním smeru, veľkosti objektu a polohy východzieho bodu - **object( [*dir*] [*lenght*] from *pos*, ... );**
-4. Pokračovaním od koncového bodu predchádzajúceho objektu - **object( *dir* [*length*], ... )**
-5. Zadaním koncových bodov dvojpólu - **object( from *pos_A* to *pos_B* )**
+1. Zadaním východzieho bodu kreslenia presunom kurzora 
 
+        move to pos; 
+        object([length], ... );
+
+2. Zadaním polohy stredu dvojpólu, smeru a velkosti 
+
+        object( at pos [dir] [length], ... );
+
+3. Zadaním smeru, veľkosti objektu a polohy východzieho bodu 
+
+        object( [dir] [lenght] from pos, ... );
+
+4. Pokračovaním od koncového bodu predchádzajúceho objektu 
+
+        object(dir [length], ... );
+
+5. Zadaním koncových bodov dvojpólu 
+
+        object(from pos_A to pos_B);
+
+Príklady použitia:
+        
 ```{code-block}
 move to (1,2.5); resistor(2);       # (1)
 resistor(at (2,1.5) right_ 2,,E);   # (2)
@@ -555,7 +572,7 @@ _ = cm_compile('cm_0100k', data, dpi=600)
 :width: 450px
 :name: cm_0100k
 
-Ukladanie dvojpólov.
+Príklady umiestňovania dvojpólov.
 ```
 
 ## <font color='teal'> Modifikácie dvojpólov </font>

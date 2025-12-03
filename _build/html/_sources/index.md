@@ -39,7 +39,6 @@
 0102_cm_mnohopoly.md
 0104_cm_upravy.md
 0110_cm_grafika.md
-0120_cm_vetvy.md
 0130_cm_text.md
 0140_cm_konektor.md
 ```

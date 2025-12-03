@@ -90,9 +90,18 @@ Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar
 
 Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi
 
-1. Zadaním východzieho bodu kreslenia presunom kurzora - **move to *pos*; object( *dir length*, ... );**. Objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu *.n, .s, .w .e*
-2. Umiestnením zvoleného terminálu multipólu do určenej polohy - **object( ...) with *.attribute* at *pos*;**
+1. Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e
 
+        move to pos; 
+        object( dir length, ... );
+
+2. Umiestnením zvoleného terminálu multipólu do určenej polohy 
+
+        object( ...) with .attribute at pos;
+
+
+Príklad použitia:
+    
 ```{code-block}
 right_; move to (1,1.); 
 transformer(down_ 1.5,L,4,W,4);                      # (1)
@@ -136,7 +145,7 @@ _ = cm_compile('cm_0102c', data, dpi=600)
 :width: 450px
 :name: cm_0102c
 
-Ukladanie multipólov.
+Príklady umiestňovania multipólov.
 ```
  
     

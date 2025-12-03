@@ -172,10 +172,10 @@ Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezent
         R1: resistor();
          S: (5,6);
          
-        P1: R1.start     - suradnica
+        P1: R1.start     # suradnica
         P2: L1.end
         
-        px = R1.end.x    - numericka hodnota
+        px = R1.end.x    # numericka hodnota
 
 
 Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorvých operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej uprave polohy objektov.
@@ -228,29 +228,181 @@ _ = cm_compile('cm_0160c', data,  dpi=600)
 
 ### <font color='brown'>  Vetvy  </font>
 
-Vetva je tvorená kódom uzatvoreným do zložených zátvoriek `{...}`. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote `Here`, vo vetve sa vytvorí lokálna kópia `Here`. Premenné uzatvorené vo vetve `{...}` majú lokálnu platnosť, refrencie na objekty v nich vytvorené  majú platnosť globálnu. 
+Vetva je tvorená kódom uzatvoreným do zložených zátvoriek `{...}`. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote `Here`, vo vetve sa vytvorí lokálna kópia `Here`. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.
 
-    d = 2;
+Uzatvorenie kódu do vetvy `{...}` neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať.  
+
+```{code-block}
+d=3;
+R1: resistor(right_ d,);        # d -> 3
+DT: dot;
+   {      d = 2;                # Here -> DT
+      R2: resistor(down_ d,);   # Here -> R2.end
+          ground(at Here, T);   
+          d=1.5;
+   }
+
+   {  R3: resistor(up_ d,);     # d -> 1.5   Here -> R3.end
+          tconn(0.5,O);         
+          d=2.5;
+   }
+                                # Here -> DT
+R4: resistor(right_ d);         # d -> 2.5   Here -> R4.end
+```
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+d=3;
+resistor(right_ d,); llabel(,R1,); dot;
+{ 
+  color_red;
+  d = 2;
+  resistor(down_ d,);llabel(,R2,);
+  ground(at Here, T);
+  d=1.5;
+}
+
+{ 
+  color_blue;
+  resistor(up_ d,);llabel(,R3,);
+  tconn(0.5,O);
+  d=2.5
+}
+
+color_black;
+resistor(right_ d); llabel(,R4,);
+'''
+
+_ = cm_compile('cm_0160d', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0160d.png
+:width: 300px
+:name: cm_160d
+
+Použitie vetiev na kreslenie častí obvodu.
+```
+
+Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu `Here`, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (*llabel ...*) hodnotu `Here` nemenia.
+
+    line -> 1;
+    box wid 2 ht 1;     
     {
-        d = 0.4;           # lokalna premenna
-        Q: (1,1);          # globálná definícia polohy
-        ...
+        "top of box" at last box.n above; 
+        "bottom of box" at last box.s below;
+        line from last box.nw to last box.se; 
+        line from last box.sw to last box.ne; 
     }
-    line from Q right_ d   # d má hodnotu 2
+    line -> 1;     
+    box wid 2 ht 1; 
+    
+    
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+Origin: Here 
+line -> 1;
+box wid 2 ht 1; 
+{
+    "top of box" at last box.n above; 
+    "bottom of box" at last box.s below;
+    line from last box.nw to last box.se; 
+    line from last box.sw to last box.ne; 
+}
+line -> 1;
+box wid 2 ht 1; 
+'''
+
+_ = cm_compile('cm_0160e', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0160e.png
+:width: 400px
+:name: cm_0160e
+
+[Lokálne](./src/cm_0160e.ckt) súradnice vo vetve.
+```
 
 
-### <font color='brown'> Bloky </font>
+
+
+### <font color='brown'> Bloky a zložené objekty</font>
 
 Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.
 
-    d=1;
-    A: [
-          d = d/2;
-          C: circle rad d;   # d = 1/2
-    ] 
-    line from A.C.n up_ d;   # pristup k vnutornej referencii, d = 2
+       d=1;
+       move to (1,1);                 # poloha zloženého objektu
+    A: [                              # referencia na zložený objekt
+          d = d/2;                    # inicializacia vnutornej premennej, d -> 1/2 
+          C:  circle rad d;           # lokálne Here -> (0,0)
+          L1: line from C.e to C.w;
+          L2: line from C.n to C.s;
+              rr = 1;
+       ] 
+       circle at A.C.c rad d;         # pristup k vnutornej referencii pmocou A.C, d -> 1
+       circle at A.C.c rad rr;        <- ! chyba, rr nie je viditeľná
+
+Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty *.s, .n .w .e*. Pre ukladanie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.
+
+    move to (1, 1.5);
+
+    A:[                                # blok s absolutnymi suradnicami  
+       B: box at (0,0) wid 2 ht 1; 
+      C1: circle at (0, 0.5) rad 0.25; 
+      C2: circle at (0,-0.5) rad 0.25;
+      C3: circle at B.w rad 0.25;
+      C4: circle at B.e rad 0.25;
+    ]
+    color_red;                         # zobrazenie obrysu bloku
+    box at A.c wid A.wid_ ht A.ht_ dashed; 
+
+    
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+Grid(5,3);
+
+move to (1, 1.5);
+
+A:[  # absolutne suradnice v bloku 
+    B: box at (0,0) wid 2 ht 1; 
+   C1: circle at (0, 0.5) rad 0.25; 
+   C2: circle at (0,-0.5) rad 0.25;
+   C3: circle at B.w rad 0.25;
+   C4: circle at B.e rad 0.25;
+  ]
+
+color_red;
+box at A.c wid A.wid_ ht A.ht_ dashed;  # outer contour
+'''
+
+_ = cm_compile('cm_0160d', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0160d.png
+:width: 350px
+:name: cm_0160d
+
+Blok reprezentujúci zložený objekt a jeho vonkajší obrys.
+```
 
 
+       
 ## <font color='teal'> Riadenie toku  </font>
 
 Jazyk *dpic* obsahuje základnú konštrukciu pre cuklus a podmienkové vetvenie toku programu. 

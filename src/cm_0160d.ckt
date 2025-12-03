@@ -13,28 +13,19 @@ arrowht = 0.254         # dlzka
 
 include(lib_base.ckt)
 include(lib_color.ckt)
+Grid(5,3);
 
-Origin: Here 
-d = 2;
-move to (0.5, 3);
-resistor(right_ d,E);        llabel(,R1,);
-dot;
+move to (1, 1.5);
 
-color_blue;
-{ 
-    resistor(down_ d, E);    llabel(,R2,);
-    gnd;
-}
+A:[  # absolutne suradnice v bloku 
+    B: box at (0,0) wid 2 ht 1; 
+   C1: circle at (0, 0.5) rad 0.25; 
+   C2: circle at (0,-0.5) rad 0.25;
+   C3: circle at B.w rad 0.25;
+   C4: circle at B.e rad 0.25;
+  ]
 
 color_red;
-{
-    resistor(up_ d,E);       rlabel(,R3,);
-    P: power();    {"Power" at P.n above};  # vnoreny blok
-
-}
-color_black
-resistor(right_ d,E);        llabel(,R4,);
-dot;
-capacitor(); llabel(,C_1,)
+box at A.c wid A.wid_ ht A.ht_ dashed;  # outer contour
 
 .PE

@@ -172,7 +172,6 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 </ul>
@@ -395,10 +394,20 @@ atribúty:
 <section id="umiestnovanie-multipolov">
 <h2><font color='teal'> Umiestňovanie multipólov </font><a class="headerlink" href="#umiestnovanie-multipolov" title="Link to this heading">#</a></h2>
 <p>Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi</p>
-<ol class="arabic simple">
-<li><p>Zadaním východzieho bodu kreslenia presunom kurzora - <strong>move to <em>pos</em>; object( <em>dir length</em>, … );</strong>. Objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu <em>.n, .s, .w .e</em></p></li>
-<li><p>Umiestnením zvoleného terminálu multipólu do určenej polohy - <strong>object( …) with <em>.attribute</em> at <em>pos</em>;</strong></p></li>
+<ol class="arabic">
+<li><p>Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> move to pos; 
+ object( dir length, ... );
+</pre></div>
+</div>
+</li>
+<li><p>Umiestnením zvoleného terminálu multipólu do určenej polohy</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> object( ...) with .attribute at pos;
+</pre></div>
+</div>
+</li>
 </ol>
+<p>Príklad použitia:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">right_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span> 
 <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>                      <span class="c1"># (1)</span>
 
@@ -410,7 +419,7 @@ atribúty:
 <a class="reference internal image-reference" href="_images/cm_0102c.png"><img alt="_images/cm_0102c.png" src="_images/cm_0102c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 23 </span><span class="caption-text">Ukladanie multipólov.</span><a class="headerlink" href="#cm-0102c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 23 </span><span class="caption-text">Príklady umiestňovania multipólov.</span><a class="headerlink" href="#cm-0102c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

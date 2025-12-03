@@ -172,7 +172,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0120_cm_vetvy.html"><font color="navy"> Vetvy a bloky</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 </ul>
@@ -659,13 +658,35 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 <section id="umiestnovanie-dvojpolov">
 <h2><font color='teal'> Umiestňovanie dvojpólov </font><a class="headerlink" href="#umiestnovanie-dvojpolov" title="Link to this heading">#</a></h2>
 <p>Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi</p>
-<ol class="arabic simple">
-<li><p>Zadaním východzieho bodu kreslenia presunom kurzora - <strong>move to <em>pos</em>; object( [<em>length</em>], … );</strong></p></li>
-<li><p>Zadaním polohy stredu dvojpólu, smeru a velkosti - <strong>object( at <em>pos</em> [<em>dir</em>] [<em>length</em>], … );</strong></p></li>
-<li><p>Zadaním smeru, veľkosti objektu a polohy východzieho bodu - <strong>object( [<em>dir</em>] [<em>lenght</em>] from <em>pos</em>, … );</strong></p></li>
-<li><p>Pokračovaním od koncového bodu predchádzajúceho objektu - <strong>object( <em>dir</em> [<em>length</em>], … )</strong></p></li>
-<li><p>Zadaním koncových bodov dvojpólu - <strong>object( from <em>pos_A</em> to <em>pos_B</em> )</strong></p></li>
+<ol class="arabic">
+<li><p>Zadaním východzieho bodu kreslenia presunom kurzora</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> move to pos; 
+ object([length], ... );
+</pre></div>
+</div>
+</li>
+<li><p>Zadaním polohy stredu dvojpólu, smeru a velkosti</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> object( at pos [dir] [length], ... );
+</pre></div>
+</div>
+</li>
+<li><p>Zadaním smeru, veľkosti objektu a polohy východzieho bodu</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> object( [dir] [lenght] from pos, ... );
+</pre></div>
+</div>
+</li>
+<li><p>Pokračovaním od koncového bodu predchádzajúceho objektu</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> object(dir [length], ... );
+</pre></div>
+</div>
+</li>
+<li><p>Zadaním koncových bodov dvojpólu</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> object(from pos_A to pos_B);
+</pre></div>
+</div>
+</li>
 </ol>
+<p>Príklady použitia:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>       <span class="c1"># (1)</span>
 <span class="n">resistor</span><span class="p">(</span><span class="n">at</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span>   <span class="c1"># (2)</span>
 <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>     <span class="c1"># (3)</span>
@@ -680,7 +701,7 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 <a class="reference internal image-reference" href="_images/cm_0100k.png"><img alt="_images/cm_0100k.png" src="_images/cm_0100k.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Ukladanie dvojpólov.</span><a class="headerlink" href="#cm-0100k" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Príklady umiestňovania dvojpólov.</span><a class="headerlink" href="#cm-0100k" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
