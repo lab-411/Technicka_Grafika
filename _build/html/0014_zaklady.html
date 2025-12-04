@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dvojpóly" href="0100_cm_dvojpoly.html" />
-    <link rel="prev" title="Inštalácia" href="0012_instalacia.html" />
+    <link rel="prev" title="Terminológia" href="0013_terminologia.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,6 +166,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0010_uvod.html"><font color="navy">  Technická grafika  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0012_instalacia.html"><font color="navy"> Inštalácia  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0013_terminologia.html"><font color="navy">  Terminológia  </font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Základy kreslenia</font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
@@ -365,20 +366,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="zaklady-kreslenia">
 <h1><font color='navy'> Základy kreslenia</font><a class="headerlink" href="#zaklady-kreslenia" title="Link to this heading">#</a></h1>
-<p>Princíp vytvárania zapojení v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> spočíva v zapise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  <em>.PS</em> a končí <em>.PE</em>, príkazy a texty mimo tohoto označenia sú ignorované.</p>
+<p>Princíp vytvárania zapojení v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> spočíva v zápise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  <strong>.PS</strong> a končí <strong>.PE</strong>. Príkazy a texty mimo tohto označenia sú ignorované.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing: 2 </span><span class="caption-text">Prvý program</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>               <span class="o">-</span> <span class="n">zaciatok</span> <span class="n">postupnosti</span> <span class="n">prikazov</span>
-<span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>        <span class="o">-</span> <span class="n">nastavenie</span> <span class="n">parametru</span> <span class="n">velkosti</span> <span class="n">obrazku</span>
-<span class="n">cct_init</span>          <span class="o">-</span> <span class="n">inicializacia</span> <span class="n">kniznice</span> <span class="n">s</span> <span class="n">analogovými</span> <span class="n">prvkami</span> <span class="p">(</span><span class="n">rezistor</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>               <span class="c1"># začiatok postupnosti príkazov</span>
+<span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>        <span class="c1"># nastavenie parametru veľkosti obrázku</span>
+<span class="n">cct_init</span>          <span class="c1"># inicializácia knižnice s analogovými prvkami (rezistor, ...)</span>
 
-<span class="n">resistor</span><span class="p">;</span>         <span class="o">-</span> <span class="n">príkaz</span> <span class="n">pre</span> <span class="n">vykreslenie</span> <span class="n">rezistoru</span>
+<span class="n">resistor</span><span class="p">;</span>         <span class="c1"># príkaz pre vykreslenie rezistoru</span>
 
-<span class="o">.</span><span class="n">PE</span>               <span class="o">-</span> <span class="n">koniec</span> <span class="n">postupnosti</span> <span class="n">prikazov</span>
+<span class="o">.</span><span class="n">PE</span>               <span class="c1"># koniec postupnosti príkazov</span>
 </pre></div>
 </div>
 </div>
-<p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <em>PyCirkuit</em>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch v tejto publikácii budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<em>.PS</em>, <em>.PE</em> …)</p>
+<p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <code class="docutils literal notranslate"><span class="pre">PyCirkuit</span></code>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<strong>.PS</strong>, <strong>.PE</strong> …).</p>
 <figure class="align-default" id="pck01">
 <a class="reference internal image-reference" href="_images/pck_01.png"><img alt="_images/pck_01.png" src="_images/pck_01.png" style="width: 500px;" />
 </a>
@@ -386,7 +387,7 @@ document.write(`
 <p><span class="caption-number">Obr. 5 </span><span class="caption-text">Editácia a preklad zapojenia v programe <em>PyCirkuit</em></span><a class="headerlink" href="#pck01" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo ukončenim riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom <em>Export</em> vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.</p>
+<p>Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo znakom ukončenia riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom <em>Export</em> vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.</p>
 <figure class="align-default" id="pck02">
 <a class="reference internal image-reference" href="_images/pck_02.png"><img alt="_images/pck_02.png" src="_images/pck_02.png" style="width: 600px;" />
 </a>
@@ -396,7 +397,7 @@ document.write(`
 </figure>
 <section id="ukladanie-prvkov">
 <h2><font color='teal'> Ukladanie prvkov </font><a class="headerlink" href="#ukladanie-prvkov" title="Link to this heading">#</a></h2>
-<p>Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii, ktorá je uchovávaná v virtuálnom kurzore označenom ako <code class="docutils literal notranslate"><span class="pre">Here</span></code>. Prvky v zapojení (<em>resistor</em>, <em>capacitor</em>) ukladáme za sebou v zadaných smeroch príkazmi <strong>up_</strong>, <strong>down_</strong>, <strong>right_</strong> a <strong>left_</strong> . Pri zmene smeru sa automaticku mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro <em>dot</em></p>
+<p>Každý prvok diagramu alebo schémy je vykreslený v diagrame na 2D pozícii, ktorá je uchovávaná vo virtuálnom kurzore označenom ako <code class="docutils literal notranslate"><span class="pre">Here</span></code>. Prvky v zapojení (<em>resistor</em>, <em>capacitor</em>) ukladáme za sebou v zadaných smeroch príkazmi <strong>up_</strong>, <strong>down_</strong>, <strong>right_</strong> a <strong>left_</strong> . Pri zmene smeru sa automaticky mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro <strong>dot</strong>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">right_</span><span class="p">;</span>
 <span class="n">resistor</span><span class="p">;</span>
 <span class="n">resistor</span><span class="p">;</span>
@@ -414,32 +415,32 @@ document.write(`
 <p><span class="caption-number">Obr. 7 </span><span class="caption-text">Ukladanie prvkov zapojenia na základe ich poradia v programe.</span><a class="headerlink" href="#cm-0014a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Po vykreslení nejakého prvku zapojenie sa hodnota kurzora <code class="docutils literal notranslate"><span class="pre">Here</span></code> posúva v smere ukladanie tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu</p>
+<p>Po vykreslení prvku zapojenia sa hodnota kurzora <code class="docutils literal notranslate"><span class="pre">Here</span></code> posúva v smere ukladania tak, aby prvky zapojenia na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (x,y);
 </pre></div>
 </div>
-<p>alebo vykreslením prepojovacieho vodiča alebo čiary príkazom <em>line</em>, kurzor <code class="docutils literal notranslate"><span class="pre">Here</span></code> sa po vykreslení presunie na koniec čiary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line to (x,y);                 - vykrelenie čiary z Here do (x,y) 
-line right_ d;                 - čiara z Here zadaným smerom a dĺžkou
-line from (x1,y1) to (x2,y2);  - čiara medzi dvoma bodmi
+<p>alebo vykreslením prepojovacieho vodiča alebo čiary príkazom <em>line</em>. Kurzor <code class="docutils literal notranslate"><span class="pre">Here</span></code> sa po vykreslení presunie na koniec čiary</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line to (x,y);                 # vykreslenie čiary z Here do (x,y) 
+line right_ d;                 # čiara z Here zadaným smerom a dĺžkou
+line from (x1,y1) to (x2,y2);  # čiara medzi dvoma bodmi
 </pre></div>
 </div>
 </section>
 <section id="referencie-a-atributy">
 <h2><font color='teal'> Referencie a atribúty </font><a class="headerlink" href="#referencie-a-atributy" title="Link to this heading">#</a></h2>
-<p>Každý prvok v zapojení môžeme označiť pomocou textovej referencie ukončenej znakom <code class="docutils literal notranslate"><span class="pre">:</span></code>, táto musí byť zapísaná veľkými písmenani a nesmie začínať číslicou. Po vytvorení je referencia globálna, je ju možno použiť v ktorejkolvek časti zapojenia.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor;       - referencia R1
-r1: resistor;       - chyba
-1R: resistor;       - chyba
+<p>Každý prvok v zapojení môžeme označiť pomocou textovej referencie ukončenej znakom <code class="docutils literal notranslate"><span class="pre">:</span></code>, táto musí byť zapísaná veľkými písmenani a nesmie začínať číslicou. Po vytvorení je referencia globálna, je ju možno použiť v ktorejkoľvek časti zapojenia</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor;       # referencia R1
+r1: resistor;       # chyba
+1R: resistor;       # chyba
 </pre></div>
 </div>
-<p>K prvkom zapojenia a polohe ich častí pristupovať pomocou referencie a pomenovaných atribútov oddelených od seba bodkou <code class="docutils literal notranslate"><span class="pre">.</span></code> Skupiny prvkov, napríklad dvojpóly (<em>resistor</em> …), majú spoločné atribúty a každý typ prvku môže mať naviac aj vlastné, špecifické atribúty. Napríklad, spoločné atribúty pre dvojpóly sú:</p>
+<p>K prvkom zapojenia a polohe ich častí môžeme pristupovať pomocou referencie a pomenovaných atribútov oddelených od seba bodkou <code class="docutils literal notranslate"><span class="pre">.</span></code>. Skupiny prvkov, napríklad dvojpóly (<em>resistor</em> …), majú spoločné atribúty a každý typ prvku môže mať naviac aj vlastné, špecifické atribúty. Napríklad, spoločné atribúty pre dvojpóly sú</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.start    .s         - bod v ktorom bol začiatok kreslenia prvku
 .end      .e         - bod v ktorom skončilo kreslenie prvku
 .center   .c         - geometrický stred prvku
 </pre></div>
 </div>
-<p>Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.</p>
+<p>Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">;</span>                 <span class="c1"># referencia, R1.start = (1,1)</span>
     <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -457,7 +458,7 @@ r1: resistor;       - chyba
 </section>
 <section id="vlastnosti-prvkov">
 <h2><font color='teal'> Vlastnosti prvkov </font><a class="headerlink" href="#vlastnosti-prvkov" title="Link to this heading">#</a></h2>
-<p>Makrá pre zobrazenie prvkov majú zvyčajne niekoľko parametrov, pomocou ktorých môžeme meniť a upravovať zobrazenie prvku v zapojení. Napríklad pre zobrazenie rezistoru má makro zo štandardnej knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> nasledujúci formát:</p>
+<p>Makrá pre zobrazenie prvkov majú zvyčajne niekoľko parametrov, pomocou ktorých môžeme meniť a upravovať zobrazenie prvku v zapojení. Napríklad pre zobrazenie rezistoru má makro zo štandardnej knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> nasledujúci formát</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>resistor(linespec, n, chars, cycle wid)
 
 linespec    - dĺžka rezistoru, môže byť aj so zadaním smeru
@@ -466,7 +467,7 @@ chars       - typ zobrazenia rezistoru (napr. E - europske zobrazenie)
 cycle wid   - velkosť cyklov v USA norme
 </pre></div>
 </div>
-<p>Súčasťou zapojenia elektronickéjho obvodu je textový popis prvkov, ktorý zvyčajne pozostáva z označenie prvku, napríklad <span class="math notranslate nohighlight">\(R_1\)</span> a jeho hodnoty, napríklad <span class="math notranslate nohighlight">\(100 \Omega\)</span>. Ukladanie popisov prvkov v komplikovanejších obvodoch pomocou jednoduchých textov by bolo značne náročné, naviac s rizikom nesprávneho označenia alebo pomiešania označenia napríklad pri zmene alebo úprave polohy prvkov. Pre zjednodušenie popisu (označenie, hodnota) posledného zobrazovaného prvku typu dvojpól môžeme preto použiť makrá, ktoré zväzujú texty s označením a s príslušným prvkom.</p>
+<p>Súčasťou zapojenia elektronického obvodu je textový popis prvkov, ktorý zvyčajne pozostáva z označenie prvku, napríklad <span class="math notranslate nohighlight">\(R_1\)</span> a jeho hodnoty, napríklad <span class="math notranslate nohighlight">\(100 \Omega\)</span>. Ukladanie popisov prvkov v komplikovanejších obvodoch pomocou jednoduchých textov by bolo značne náročné, naviac s rizikom nesprávneho označenia alebo pomiešania označenia, napríklad pri zmene hodnoty alebo úprave polohy prvkov. Pre zjednodušenie popisu (označenie, hodnota) posledného zobrazovaného prvku typu dvojpól môžeme preto použiť makrá, ktoré zväzujú texty s označením a s príslušným prvkom</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>llabel( slabel, xlabel, elabel )  - označenie po lavej strane v smere ukladania
 rlabel( slabel, xlabel, elabel )  - označenie po pravej strane v smere ukladanie 
 
@@ -477,7 +478,7 @@ parametre:
     elabel       - označenie v bode konca prvku
 </pre></div>
 </div>
-<p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = <span class="math notranslate nohighlight">\(R_1\)</span> (vyžaduje inštaláciu LaTeX-u).</p>
+<p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = <span class="math notranslate nohighlight">\(R_1\)</span> (vyžaduje inštaláciu LaTeX-u)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">);</span>  
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">R_1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">10</span><span class="n">k</span><span class="p">,);</span>
 <span class="n">D1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
@@ -525,12 +526,12 @@ ellipse wid 2 ht 1 &quot;Ellipse&quot;;
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0012_instalacia.html"
+       href="0013_terminologia.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><font color='navy'> Inštalácia  </font></p>
+        <p class="prev-next-title"><font color='navy'>  Terminológia  </font></p>
       </div>
     </a>
     <a class="right-next"

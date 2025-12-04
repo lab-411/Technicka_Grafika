@@ -40,33 +40,72 @@ Operačné zosilovače patria v `CicuitMacros` medzi multipóly a podobne pri ak
     .Out                   - poloha výstupu
     .V1 .V2                - poloha napájacích prívodov, parameter P
     
+Príklady použitia značky operačného zosilovača
 
-Pri kreslení zapojení s operačnýmí zosilovačmi musíme používať ako referenciu stred zosilovača a pripojené komponenty ukladať relatívne voči jeho vývodom.
+    A1: opamp(); 
+    A2: opamp(,,,,R); 
+    A3: opamp(,"\sf x" ljust, "\sf y" ljust) "\sf A3" rjust;
+    A4: opamp(1,,,,TP); 
+    A5: opamp(up_ 1,,,0.85,);
 
-Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou LaTeX-u. Ako vstupné a výstupné uzly obvodu sú použité kružnice. 
 
-    # Invertujuci zosilovač
     
-    OP: opamp()
-        line from OP.In1 left 0.5;
-    DN: dot;
-         # ---- poloha viazaná k In1
-        resistor(2,,E); llabel(,R_1,); 
-        circle rad 0.1; "\textit{In}" at last circle.n above;
-        
-        line from DN up_ 1;
-        resistor(right_ 2.5,,E); llabel(,R_2,);
-        line down_ (Here.y - OP.Out.y);
-    DO: dot;
-        { line to OP.Out; }
-        line right_ 1;
-        circle rad 0.1; "\textit{Out}" at last circle.n above;
-        line from OP.In2 left_ 0.5 then down_ 0.5; gnd; 
-    
-        # ---- popis a matematicky vztah
-        "\textit{Invertujúci zosilovač}" at OP.c + (0, -1.5);
-        "$K = -\dfrac{R_2}{R_1}$" at OP.c + (0, -2.25);
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
 
+from src.utils import *
+
+data = r'''
+A1: opamp(); {"\sf A1" at A1.n }
+move to Here+(0.5,0)
+A2: opamp(,,,,R); {"\sf A2" at A2.n }
+move to Here+(0.5,0)
+A3: opamp(,"\sf x" ljust, "\sf y" ljust) "\sf A3" rjust ;
+move to Here+(0.5,0)
+A4: opamp(1,,,,TP); {"\sf A4" at A4.ne rjust}
+move to Here+(0.5,0)
+A5: opamp(up_ 1,,,0.85,);{"\sf A5" at A5.ne }
+'''
+
+_ = cm_compile('cm_0204d', data, dpi=700 )   
+```
+
+```{figure} ./src/cm_0204d.png
+:width: 550px
+:name: cm_0204d
+ 
+```    
+    
+
+    
+    
+Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia, pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou LaTeX-u. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice. 
+
+```{code-block}
+# Invertujuci zosilovač
+
+OP: opamp()
+    line from OP.In1 left 0.5;
+    
+DN: dot;
+        # ---- poloha viazaná k In1
+    resistor(2,,E); llabel(,R_1,); 
+    circle rad 0.1; "\textit{In}" at last circle.n above;
+    
+    line from DN up_ 1;
+    resistor(right_ 2.5,,E); llabel(,R_2,);
+    line down_ (Here.y - OP.Out.y);
+    
+DO: dot;
+    { line to OP.Out; }
+    line right_ 1;
+    circle rad 0.1; "\textit{Out}" at last circle.n above;
+    line from OP.In2 left_ 0.5 then down_ 0.5; gnd; 
+
+    # ---- popis a matematicky vztah
+    "\textit{Invertujúci zosilovač}" at OP.c + (0, -1.5);
+    "$K = -\dfrac{R_2}{R_1}$" at OP.c + (0, -2.25);
+```
 
 
         
@@ -79,7 +118,7 @@ data = r'''
     include(lib_base.ckt)
     include(lib_user.ckt)
     
-    Grid(15,5);
+    Grid(14,5);
     move to (3,3);
 OP: opamp()
     line from OP.In1 left 0.5;
@@ -119,7 +158,7 @@ PP: opamp(,,,,R)
     "$K =1 + \dfrac{R_2}{R_1}$" at PP.c + (0.5, -2.25);
 '''
 
-_ = cm_compile('cm_0204a', data, dpi=600 )   
+_ = cm_compile('cm_0204a', data, dpi=700 )   
 ```
 
 ```{figure} ./src/cm_0204a.png
@@ -129,7 +168,7 @@ _ = cm_compile('cm_0204a', data, dpi=600 )
 [Zapojenie](./src/cm_0204a.ckt) invertujúceho a neinvertujúceho zosilovača. 
 ```
 
-Použitie parametra *P* pre zobrazenie napájacích vývodov zosilovača a použitie makra *reversed* pre zobrazenie kondenzátora $C_2$ s obrátenou polaritou ukazuje nasledujúci príklad.
+Použitie parametra **P** pre zobrazenie napájacích vývodov zosilovača a použitie makra *reversed()* pre zobrazenie kondenzátora $C_2$ s obrátenou polaritou ukazuje nasledujúci príklad.
 
     OA: opamp(,,,,P);                # zobrazenie napajacich privodov
         line from OA.V1 up_ .75;

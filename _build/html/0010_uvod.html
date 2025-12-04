@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -164,6 +164,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy">  Technická grafika  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0012_instalacia.html"><font color="navy"> Inštalácia  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0013_terminologia.html"><font color="navy">  Terminológia  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
@@ -363,15 +364,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="technicka-grafika">
 <h1><font color='navy'>  Technická grafika  </font><a class="headerlink" href="#technicka-grafika" title="Link to this heading">#</a></h1>
-<p>Počiatky zobrazovania predmetov, nástrojov a jednoducjýcj mechanizmov siahajú do prvpočiatkov vývoja človeka. Rozvoj techniky v 16-tom storočí, v období renesancie, si vynútil aj pokrok v zobrazovaní poznatkov zo širokého spektra vedomostí, od techniky, geológie, kartografie, medicíny. Príkladom vtedajšej úrovne zobrazovania mechanických sústav môžu byť nákresy geniálneho vynálezca <a class="reference external" href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci">Leonarda da Vinci</a>.</p>
+<p>Počiatky zobrazovania predmetov, nástrojov a jednoduchýcj mechanizmov siahajú do prvpočiatkov vývoja človeka. Rozvoj techniky v 16-tom storočí, v období renesancie, si vynútil aj pokrok v zobrazovaní poznatkov zo širokého spektra vedomostí, od techniky, geológie, kartografie, medicíny. Príkladom vtedajšej úrovne zobrazovania mechanických sústav môžu byť nákresy geniálneho vynálezca <a class="reference external" href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci">Leonarda da Vinci</a>.</p>
 <figure class="align-default" id="cm-010">
 <a class="reference internal image-reference" href="_images/tank.jpg"><img alt="_images/tank.jpg" src="_images/tank.jpg" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 1 </span><span class="caption-text">Nákresy návrhov bojových strojov od Lenarda da Vinci, <a class="reference external" href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci">zdroj</a>.</span><a class="headerlink" href="#cm-010" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 1 </span><span class="caption-text">Nákresy návrhov bojových strojov od Leonarda da Vinci, <a class="reference external" href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci">zdroj</a>.</span><a class="headerlink" href="#cm-010" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Vizuálna reprezentácia ideí, nápadov, diagramov, elektrických, mechanických a hydraulických schém je základom komunikácie v technickej praxi. Existuje nepreberné množstvo typov zbrazení, veľmi často s definovanými pravidlami a normami, ktoré umožňujú ich zrozumiteľnosť na medzinárodnej úrovni. V technickej praxi sú pre výkresovú dokumentáciu zavedené štandardy podľa ISO noriem, v elektrotechnickej praxi sú grafické značky, symboly prvkov obvodov a zapojení predmetom databázy <a class="reference external" href="https://agenturacas.gov.cz/wp-content/uploads/Graficke-znacky-na-schematech.pdf">IEC</a>.</p>
+<p>Vizuálna reprezentácia ideí, nápadov, diagramov, elektrických, mechanických a hydraulických schém je základom komunikácie v technickej praxi. Existuje množstvo typov zobrazení, veľmi často s definovanými pravidlami a normami, ktoré umožňujú ich zrozumiteľnosť na medzinárodnej úrovni. V technickej praxi sú pre výkresovú dokumentáciu zavedené štandardy podľa noriem ISO, v elektrotechnickej praxi sú grafické značky, symboly prvkov obvodov a zapojení predmetom databázy <a class="reference external" href="https://agenturacas.gov.cz/wp-content/uploads/Graficke-znacky-na-schematech.pdf">IEC</a>.</p>
 <p>Okrem štandardizovaných typov diagramov existuje množstvo grafických reprezentácií rôznych štrukturálnych vzťahov, časových relácií a sekvencií pre rôzne oblasti vedy a techniky.</p>
 <figure class="align-default" id="cm-011">
 <a class="reference internal image-reference" href="_images/prg_101.png"><img alt="_images/prg_101.png" src="_images/prg_101.png" style="width: 400px;" />
@@ -382,7 +383,7 @@ document.write(`
 </figure>
 <section id="circuitmacros">
 <h2><font color='teal'>  CircuitMacros </font><a class="headerlink" href="#circuitmacros" title="Link to this heading">#</a></h2>
-<p>Prostredie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je súbor open-source programov pre kreslenie elektrických zapojení. Je určený výhradne pre tvorbu zapojení, diagramov a obrázkov pre publikácie a prezentácie, <strong>nie je</strong> učený pre vytváranie schém a ich ďaľšie použitie v aplikáciách pre návrhy, výpočty, simulácie zapojení a kreslenie plošných spojov (EDA). Zapojenia, diagramy a schémy sa vytvárajú pomocou programovania v skriptovacom jazyku <em>dpic</em>, pre jednoduchšie kreslenie zložitejších značiek elektronických prvkov sú použití makrá. Tento spôsob vytvárania diagramov a schém pomocou skriptov je základom veľkej skupiny programov, medzi ktoré patrí <em>Graphviz</em>, <em>DOT</em>, <em>MetaPost</em>, <em>Pikchr</em> a ďaľšie.</p>
+<p>Prostredie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je súbor open-source programov pre kreslenie elektrických zapojení. Je určený výhradne pre tvorbu zapojení, diagramov a obrázkov pre publikácie a prezentácie, <strong>nie je</strong> učený pre vytváranie schém a ich ďaľšie použitie v aplikáciách pre návrhy, výpočty, simulácie zapojení a kreslenie plošných spojov (EDA). Zapojenia, diagramy a schémy sa vytvárajú pomocou programovania v skriptovacom jazyku <em>dpic</em>, pre jednoduchšie kreslenie zložitejších značiek elektronických prvkov sú použité makrá. Tento spôsob vytvárania diagramov a schém pomocou skriptov je základom veľkej skupiny programov, medzi ktoré patrí <em>Graphviz</em>, <em>DOT</em>, <em>MetaPost</em>, <em>Pikchr</em> a ďaľšie.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing: 1 </span><span class="caption-text">Program v CircuitMacros</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">.</span><span class="n">PS</span>
@@ -404,16 +405,16 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_010a.png"><img alt="_images/cm_010a.png" src="_images/cm_010a.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Obvod vytvorený programom v Circuit-Macros.</span><a class="headerlink" href="#cm-0010a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Obvod vytvorený programom v CircuitMacros.</span><a class="headerlink" href="#cm-0010a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="vlastnosti">
 <h3><font color='brown'> Vlastnosti</font><a class="headerlink" href="#vlastnosti" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Zapojenia je možné vytvárať programovaním skriptov v jednoduchom prostredí <a class="reference external" href="https://github.com/orestesmas/pycirkuit">pycirkuit</a>, ktoré obsahuje editora a prehliadač vytvorených obrázkov</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> obsahuje rozsialu knižnicu makier pre kreslenie prvkov zapojení naprogramovaných pomocou jednoduchého jazyka <code class="docutils literal notranslate"><span class="pre">gpic</span></code> podobného jazyku <code class="docutils literal notranslate"><span class="pre">C</span></code>. Zobrazenie prvkov je možné upravovať v širokých medziach pomocou parametrov makier.</p></li>
+<li><p>Zapojenia je možné vytvárať programovaním skriptov v jednoduchom prostredí <a class="reference external" href="https://github.com/orestesmas/pycirkuit">pycirkuit</a>, ktoré obsahuje editor a prehliadač vytvorených obrázkov.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> obsahuje rozsiahlu knižnicu makier pre kreslenie prvkov zapojení naprogramovaných pomocou jednoduchého jazyka <code class="docutils literal notranslate"><span class="pre">gpic</span></code> podobného jazyku <code class="docutils literal notranslate"><span class="pre">C</span></code>. Zobrazenie prvkov je možné upravovať v širokých medziach pomocou parametrov makier.</p></li>
 <li><p>V skriptoch je možné používať makrá spolu s príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>, je možné jednoducho vytvárať vlastné makrá a knižnice.</p></li>
-<li><p>Generované obrázky sú generované vo vysokej profesionálnej kvalite v rastrovej grafike (<em>.png</em>, <em>jpeg</em>), vektorovej grafike (<em>.ps</em>, <em>.svg</em> …) alebo v tvare makier <em>pstricks</em> pre priame vloženie do dokumentov LaTeX-u.</p></li>
+<li><p>Obrázky sú generované vo vysokej profesionálnej kvalite v rastrovej grafike (<em>.png</em>, <em>jpeg</em>), vektorovej grafike (<em>.ps</em>, <em>.svg</em> …) alebo v tvare makier <em>tikz</em> pre priame vloženie do dokumentov LaTeX-u.</p></li>
 <li><p>Makrá z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> ako aj programy pre ich spracovanie, generovanie obrázkov a publikovanie sú open source a voľne dostupné.</p></li>
 </ul>
 <figure class="align-default" id="res-010">
@@ -425,7 +426,7 @@ document.write(`
 </figure>
 <div class="admonition-poznamka admonition">
 <p class="admonition-title">Poznámka</p>
-<p>Táto publikácia nepokrýva všetky možnosti, ktoré poskytuje platforma <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code>, podrobnejšie informácie sú dostupné v dokumentácii priebežne aktualizovanej na stránkach <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">projektu</a>.</p>
+<p>Táto publikácia nepokrýva všetky možnosti, ktoré poskytuje platforma <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code>. Podrobnejšie informácie sú dostupné v dokumentácii priebežne aktualizovanej na stránkach <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">projektu</a>.</p>
 </div>
 </section>
 </section>

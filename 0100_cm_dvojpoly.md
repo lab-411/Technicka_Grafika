@@ -14,11 +14,11 @@ kernelspec:
 
 # <font color='navy'> Dvojpóly</font>
 
-Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú v `CircuitMacros` reprezentované ako dvojpóly, na ich pripojenie do elektrického obvodu sú použité dva uzly.  Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar:
+Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú v `CircuitMacros` reprezentované ako dvojpóly. Na ich pripojenie do elektrického obvodu sú použité dva uzly. Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar
 
     [reference:] object([linespec], [parameters ...]);
     
-    reference - označenie objektu pre prístup k jeho parametrom
+    reference  - označenie objektu pre prístup k jeho parametrom
     object     - typ dvojpólu (resistor, capacitor ...)
     linespec   - dĺžka prívodov a umiestnenie objektu
     parameters - parametre určujúce tvar objektu
@@ -55,7 +55,7 @@ _ = cm_compile('cm_0100a', data,  dpi=600)
 Príklady dvojpólov. 
 ```
 
-Základné rozmery a zobrazenie dvojpólov v knižniciach `CircuitMacros` sú zobrazené na nasledujúcom obrázku. Rozmery objektu závisia od aktuálneho nastavenie parametrov prostredia, ktoré sú popísané v kapitole **Prostredie**.
+Základné rozmery a tvar dvojpólov v knižniciach `CircuitMacros` sú zobrazené na nasledujúcom obrázku. Rozmery objektu závisia od aktuálneho nastavenia parametrov prostredia, ktoré sú popísané v kapitole **Prostredie**.
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -97,11 +97,11 @@ _ = cm_compile('cm_0100j', data, dpi=600)
 :width: 450px
 :name: cm_0100j
 
-Rozmery dvojpólu a jeho atribúty,.
+Rozmery dvojpólu a jeho atribúty.
 ```
 
 
-Vlastnosti dvojpólov potom popisuje nasledujúce parametre 
+Vlastnosti dvojpólov potom popisujú nasledujúce parametre 
     
     premenné
     
@@ -110,9 +110,9 @@ Vlastnosti dvojpólov potom popisuje nasledujúce parametre
     
     atribúty
     
-      .start   - súradnice začiatku vykreslovania prvku
+      .start   - súradnice začiatku vykresľovania prvku
       .centre  - súradnice stredu prvku
-      .end     - súradnice ukončenia vykreslovania prvku
+      .end     - súradnice ukončenia vykresľovania prvku
         
         
 Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, cievka, dióda a zdroj sú uvedené v nasledujúcich kapitolách. Kompletný zoznam makier pre kreslenie dvojpólov a ich parametrov je v [dokumentácii](./data/Circuit_macros_10_6.pdf). 
@@ -120,7 +120,7 @@ Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, ci
 
 ## <font color='teal'> Rezistor </font>
 
-Makro pre zobrazenie rezistora v `CircuitMacros` je možné parametrami upraviť pre zobrazenie rôznych typov príbuzných prvkov. Definícia makra pre vykreslenie rezistora:
+Makro pre zobrazenie rezistora v `CircuitMacros` je možné parametrami upraviť pre zobrazenie rôznych typov príbuzných prvkov. Definícia makra pre vykreslenie rezistora
 
     rezistor(linespec, n, param, cwidth);
     
@@ -140,7 +140,7 @@ Makro pre zobrazenie rezistora v `CircuitMacros` je možné parametrami upraviť
         cwidth   - rozmer cyklov rezistora v anglos. zobrazení 
         
 
-Makro bez parametrov sa vykreslí rezistor s prednastavenými hodnotami ako značku rezistoru v anglosaskej notácii.
+Makro bez parametrov vykreslí rezistor s prednastavenými hodnotami ako značku rezistora v anglosaskej notácii.
 
     R1: resistor;       R2: resistor(3,6,);   R3: resistor(,,Q);   R4: resistor(,,H);      
     R5: resistor(,,E);  R6: resistor(,,ES);   R7: resistor(,,V);   R8: resistor(3,,E,1.5);    
@@ -181,7 +181,7 @@ Typy rezistorov.
 ```
 
 ```{warning} 
- Medzery pre parametrom makra sú ignorované, v niektorých prípadoch ale môžu byť medzery pokladané za súčasť parametra makra. Je preto vhodné zadávať parametre makier bez medzier.
+ Medzery pred parametrom makra sú ignorované, v niektorých prípadoch ale môžu byť medzery za parametrom pokladané za súčasť parametra makra. Je preto vhodné zadávať parametre makier bez medzier.
     
     resistor(,, E );       # chyba, ignorovanie parametra E
     resistor(,,E);         # správne vykreslenie rezistora 
@@ -191,7 +191,7 @@ Typy rezistorov.
 
 ## <font color='teal'> Kondenzátor </font>
 
-Kondenzátoroch je orientovaný dvojpól, preto okrem typu kondenzátora môžeme parametrom *Rev* zvoliť aj jeho orientáciu. Pomocou parametrov *height* a *width* môžeme upraviť veľkosť a vzdialenosť elektród.  
+Kondenzátor je orientovaný dvojpól, preto okrem jeho typu môžeme parametrom **Rev** zvoliť jeho polaritu. Pomocou parametrov **height** a **width** môžeme upraviť veľkosť a vzdialenosť elektród.  
 
     capacitor(linespec, chars, [Rev], height, width)
     
@@ -311,7 +311,7 @@ Typy cievok.
     
 ## <font color='teal'> Dióda </font>
 
-Dióda je orientovaný dvojpól, parametrom *Rev* môžeme otočiť smer diódy. Doplnenie typu diódy písmenom *K* vykreslí nevyplnenú značku diódy.
+Dióda je orientovaný dvojpól. Parametrom **Rev** môžeme otočiť smer diódy. Doplnenie typu diódy písmenom **K** vykreslí nevyplnenú značku diódy.
 
     diode(linespec, chars, [Rev][E])
     
@@ -427,13 +427,13 @@ Typy diód.
     
 ## <font color='teal'> Popis dvojpólov </font>
 
-Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *rlabel()* a *dlabel()* pre popis posledného uloženého prvku. Pre označenie je možné použiť syntax pre zápis matematických vzťahov LaTeX-u, text popisu nemusí byť uzatvorená medzi znakmi \$ ... \$.  
+Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *rlabel()* a *dlabel()* pre popis posledného uloženého prvku. Pre označenie je možné použiť syntax pre zápis matematických vzťahov LaTeX-u. Text popisu nemusí byť uzatvorený medzi znakmi `$...$`.  
 
-    llabel( slabel, xlabel, elabel )       - označenie po lavej strane v smere ukladania
-    clabel( slabel, xlabel, elabel )       - označenie po pravej strane v smere ukladanie 
-    rlabel( slabel, xlabel, elabel )       - označenie cez stred v smere ukladania
+    llabel( slabel, xlabel, elabel )  - označenie po lavej strane v smere ukladania
+    clabel( slabel, xlabel, elabel )  - označenie po pravej strane v smere ukladanie 
+    rlabel( slabel, xlabel, elabel )  - označenie cez stred v smere ukladania
     dlabel( long, lat, slabel, xlabel, elabel, [X][A|B][L|R])
-                                           - označenie s offsetom voči stredu 
+                                      - označenie s offsetom voči stredu 
   
     slabel       - označenie v bode začiatku prvku
     xlabel       - označenie v strede prvku
@@ -447,7 +447,7 @@ Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *r
     L            - ljust, zarovnanie textu doľava
     R            - rjust, zarovnanie textu doprava
     
-Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu, *rlabel()* ukladá text po pravej strane v smere ukladania. V prípade potreby môžeme modifikovať aj font a veľkosť textu.
+Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. *rlabel()* ukladá text po pravej strane v smere ukladania. V prípade potreby môžeme modifikovať aj font a veľkosť textu
 
     R1: resistor(,,);   llabel(a,R_1,b); 
     C2: capacitor,,C);  llabel( ,C_2, );   rlabel(, 10 \mu F, ); 
@@ -489,7 +489,7 @@ _ = cm_compile('cm_0100f', data, dpi=600)
 
 ## <font color='teal'> Umiestňovanie dvojpólov </font>
 
-Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi
+Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi:
 
 1. Zadaním východzieho bodu kreslenia presunom kurzora 
 
@@ -512,7 +512,7 @@ Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi
 
         object(from pos_A to pos_B);
 
-Príklady použitia:
+Príklady použitia
         
 ```{code-block}
 move to (1,2.5); resistor(2);       # (1)
@@ -579,7 +579,7 @@ Príklady umiestňovania dvojpólov.
 
 ### <font color='brown'> Premenné prvky  </font>
 
-Pre zobrazenie premenných komponentov môžeme využiť makro *variable*.
+Pre zobrazenie premenných prvkov môžeme využiť makro *variable()*
 
     variable(‘element’,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
     variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
@@ -602,9 +602,9 @@ Pre zobrazenie premenných komponentov môžeme využiť makro *variable*.
         
         length      - dĺžka označenia 
 
-Makro môžeme použiť dvoma spôsobmi
+Makro môžeme použiť dvoma spôsobmi:
 
-* s prvým argumentom v ktorom zadáme makro s parametrami prvku, ktorý chceme označiť ako premenný 
+* s prvým argumentom, v ktorom zadáme makro s parametrami prvku, ktorý chceme označiť ako premenný, 
 * makro použijeme podobne ako makrá na popis prvkov *llabel ..*, v tomto prípade ponecháme prvý argument prázdny.
 
             move to (0,0)
@@ -654,7 +654,7 @@ _ = cm_compile('cm_0100g', data, dpi=600)
 
 ### <font color='brown'> Prúd dvojpólom  </font>
 
-Pre zobrazenie šípky reprezentujúcu prúd v prívode prvku môžeme použiť makro
+Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro
 
     b_current(label, above_|below_, In|O[ut], Start|E[nd], frac);
     
@@ -673,7 +673,7 @@ Pre zobrazenie šípky reprezentujúcu prúd v prívode prvku môžeme použiť 
             
             frac  - posun šípky voči zadanej súradnici
             
-Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj na vyznačenie prúdu vetvou obvodu v príkaze *line*. Hodnota parametra *frac* závisí od aktuálneho nastavenia vykreslenia šípky a parametrov prostredia, približne zodpovedá aktuálnej dĺžkovej jednotke. 
+Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj na vyznačenie prúdu vetvou obvodu príkazom *line*. Hodnota parametra *frac* závisí od aktuálneho nastavenia vykreslenia šípky a parametrov prostredia, približne zodpovedá aktuálnej dĺžkovej jednotke. 
             
     R1: resistor(right_ 3,,E); 
         llabel(,R_2,); rlabel(,100,); 
@@ -730,7 +730,7 @@ _ = cm_compile('cm_0100h', data, dpi=600)
             
 ### <font color='brown'> Napätie na dvojpóle </font>
 
-Úbytok napätia na prvku znázorňujeme šipkou umiestnenou paralelne s prvkom. Pre zpbrazenie môžeme využiť štandarný príkaz *line -> ...* alebo makrá
+Úbytok napätia na prvku znázorňujeme šipkou umiestnenou paralelne s prvkom. Pre zobrazenie môžeme využiť štandarný príkaz *line -> ...* alebo makrá
 
     larrow(label, direction);
     rarrow(label, direction);
@@ -741,7 +741,7 @@ _ = cm_compile('cm_0100h', data, dpi=600)
             
             direction - smer šipky zadaný ako <- alebo ->
             
-Použitie makier ukazuje nasledujúci príklad.
+Použitie makier ukazuje nasledujúci príklad
 
     S1: source(up_ 2.5, AC); larrow(V_{0}, <-); b_current(i_0, ,Out, End, 0.45 );
     

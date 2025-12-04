@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -166,6 +166,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0010_uvod.html"><font color="navy">  Technická grafika  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0012_instalacia.html"><font color="navy"> Inštalácia  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0013_terminologia.html"><font color="navy">  Terminológia  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
@@ -377,29 +378,42 @@ atribúty:
 .V1 .V2                - poloha napájacích prívodov, parameter P
 </pre></div>
 </div>
-<p>Pri kreslení zapojení s operačnýmí zosilovačmi musíme používať ako referenciu stred zosilovača a pripojené komponenty ukladať relatívne voči jeho vývodom.</p>
-<p>Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou LaTeX-u. Ako vstupné a výstupné uzly obvodu sú použité kružnice.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Invertujuci zosilovač
+<p>Príklady použitia značky operačného zosilovača</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A1: opamp(); 
+A2: opamp(,,,,R); 
+A3: opamp(,&quot;\sf x&quot; ljust, &quot;\sf y&quot; ljust) &quot;\sf A3&quot; rjust;
+A4: opamp(1,,,,TP); 
+A5: opamp(up_ 1,,,0.85,);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0204d">
+<a class="reference internal image-reference" href="_images/cm_0204d.png"><img alt="_images/cm_0204d.png" src="_images/cm_0204d.png" style="width: 550px;" />
+</a>
+</figure>
+<p>Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia, pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou LaTeX-u. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Invertujuci zosilovač</span>
 
-OP: opamp()
-    line from OP.In1 left 0.5;
-DN: dot;
-     # ---- poloha viazaná k In1
-    resistor(2,,E); llabel(,R_1,); 
-    circle rad 0.1; &quot;\textit{In}&quot; at last circle.n above;
+<span class="n">OP</span><span class="p">:</span> <span class="n">opamp</span><span class="p">()</span>
+    <span class="n">line</span> <span class="kn">from</span> <span class="nn">OP.In1</span> <span class="n">left</span> <span class="mf">0.5</span><span class="p">;</span>
     
-    line from DN up_ 1;
-    resistor(right_ 2.5,,E); llabel(,R_2,);
-    line down_ (Here.y - OP.Out.y);
-DO: dot;
-    { line to OP.Out; }
-    line right_ 1;
-    circle rad 0.1; &quot;\textit{Out}&quot; at last circle.n above;
-    line from OP.In2 left_ 0.5 then down_ 0.5; gnd; 
+<span class="n">DN</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+        <span class="c1"># ---- poloha viazaná k In1</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span> 
+    <span class="n">circle</span> <span class="n">rad</span> <span class="mf">0.1</span><span class="p">;</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">extit</span><span class="si">{In}</span><span class="s2">&quot;</span> <span class="n">at</span> <span class="n">last</span> <span class="n">circle</span><span class="o">.</span><span class="n">n</span> <span class="n">above</span><span class="p">;</span>
+    
+    <span class="n">line</span> <span class="kn">from</span> <span class="nn">DN</span> <span class="n">up_</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mf">2.5</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,);</span>
+    <span class="n">line</span> <span class="n">down_</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">OP</span><span class="o">.</span><span class="n">Out</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+    
+<span class="n">DO</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+    <span class="p">{</span> <span class="n">line</span> <span class="n">to</span> <span class="n">OP</span><span class="o">.</span><span class="n">Out</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">line</span> <span class="n">right_</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">circle</span> <span class="n">rad</span> <span class="mf">0.1</span><span class="p">;</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">extit</span><span class="si">{Out}</span><span class="s2">&quot;</span> <span class="n">at</span> <span class="n">last</span> <span class="n">circle</span><span class="o">.</span><span class="n">n</span> <span class="n">above</span><span class="p">;</span>
+    <span class="n">line</span> <span class="kn">from</span> <span class="nn">OP.In2</span> <span class="n">left_</span> <span class="mf">0.5</span> <span class="n">then</span> <span class="n">down_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">gnd</span><span class="p">;</span> 
 
-    # ---- popis a matematicky vztah
-    &quot;\textit{Invertujúci zosilovač}&quot; at OP.c + (0, -1.5);
-    &quot;$K = -\dfrac{R_2}{R_1}$&quot; at OP.c + (0, -2.25);
+    <span class="c1"># ---- popis a matematicky vztah</span>
+    <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">extit{Invertujúci zosilovač}&quot;</span> <span class="n">at</span> <span class="n">OP</span><span class="o">.</span><span class="n">c</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">);</span>
+    <span class="s2">&quot;$K = -\dfrac</span><span class="si">{R_2}{R_1}</span><span class="s2">$&quot;</span> <span class="n">at</span> <span class="n">OP</span><span class="o">.</span><span class="n">c</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.25</span><span class="p">);</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0204a">
@@ -409,7 +423,7 @@ DO: dot;
 <p><span class="caption-number">Obr. 67 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/08b8611095359c465485621d9e416124/cm_0204a.ckt"><span class="xref download myst">Zapojenie</span></a> invertujúceho a neinvertujúceho zosilovača.</span><a class="headerlink" href="#cm-0204a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Použitie parametra <em>P</em> pre zobrazenie napájacích vývodov zosilovača a použitie makra <em>reversed</em> pre zobrazenie kondenzátora <span class="math notranslate nohighlight">\(C_2\)</span> s obrátenou polaritou ukazuje nasledujúci príklad.</p>
+<p>Použitie parametra <strong>P</strong> pre zobrazenie napájacích vývodov zosilovača a použitie makra <em>reversed()</em> pre zobrazenie kondenzátora <span class="math notranslate nohighlight">\(C_2\)</span> s obrátenou polaritou ukazuje nasledujúci príklad.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OA: opamp(,,,,P);                # zobrazenie napajacich privodov
     line from OA.V1 up_ .75;
     dot;

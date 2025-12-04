@@ -14,7 +14,7 @@ arrowht = 0.254         # dlzka
     include(lib_base.ckt)
     include(lib_user.ckt)
 
-    Grid(15,5);
+    Grid(14,5);
     move to (3,3);
 OP: opamp()
     line from OP.In1 left 0.5;

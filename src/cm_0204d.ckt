@@ -1,0 +1,24 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+A1: opamp(); {"\sf A1" at A1.n }
+move to Here+(0.5,0)
+A2: opamp(,,,,R); {"\sf A2" at A2.n }
+move to Here+(0.5,0)
+A3: opamp(,"\sf x" ljust, "\sf y" ljust) "\sf A3" rjust ;
+move to Here+(0.5,0)
+A4: opamp(1,,,,TP); {"\sf A4" at A4.ne rjust}
+move to Here+(0.5,0)
+A5: opamp(up_ 1,,,0.85,);{"\sf A5" at A5.ne }
+
+.PE

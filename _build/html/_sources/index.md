@@ -29,6 +29,7 @@
 :caption: Úvod
 0010_uvod.md
 0012_instalacia.md
+0013_terminologia.md
 0014_zaklady.md
 ```
 

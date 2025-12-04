@@ -15,20 +15,20 @@ kernelspec:
 
 # <font color='navy'> Základy kreslenia</font> 
 
-Princíp vytvárania zapojení v `CircuitMacros` spočíva v zapise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  *.PS* a končí *.PE*, príkazy a texty mimo tohoto označenia sú ignorované. 
+Princíp vytvárania zapojení v `CircuitMacros` spočíva v zápise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  **.PS** a končí **.PE**. Príkazy a texty mimo tohto označenia sú ignorované. 
 
 ```{code-block}
 :caption: Prvý program
-.PS               - zaciatok postupnosti prikazov
-scale=2.54        - nastavenie parametru velkosti obrazku
-cct_init          - inicializacia kniznice s analogovými prvkami (rezistor, ...)
+.PS               # začiatok postupnosti príkazov
+scale=2.54        # nastavenie parametru veľkosti obrázku
+cct_init          # inicializácia knižnice s analogovými prvkami (rezistor, ...)
 
-resistor;         - príkaz pre vykreslenie rezistoru
+resistor;         # príkaz pre vykreslenie rezistoru
 
-.PE               - koniec postupnosti prikazov
+.PE               # koniec postupnosti príkazov
 ```
 
-Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu *PyCirkuit*, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch v tejto publikácii budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (*.PS*, *.PE* ...) 
+Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu `PyCirkuit`, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (**.PS**, **.PE** ...). 
 
 ```{figure} ./img/pck_01.png
 :width: 500px
@@ -37,7 +37,7 @@ Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého progr
 Editácia a preklad zapojenia v programe *PyCirkuit*
 ```
 
-Príkaz na riadku je ukončený bodkočiarkou `;` alebo ukončenim riadku (neviditeľný znak `\n`). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom *Export* vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.
+Príkaz na riadku je ukončený bodkočiarkou `;` alebo znakom ukončenia riadku (neviditeľný znak `\n`). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom *Export* vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.
 
 ```{figure} ./img/pck_02.png
 :width: 600px
@@ -49,7 +49,7 @@ Konfigurácia formátu exportovaných obrázkov v programe *PyCirkuit*
 
 ## <font color='teal'> Ukladanie prvkov </font> 
 
-Každý prvok diagramu alebo schémy je vykreslený na v diagrame na 2D pozícii, ktorá je uchovávaná v virtuálnom kurzore označenom ako `Here`. Prvky v zapojení (*resistor*, *capacitor*) ukladáme za sebou v zadaných smeroch príkazmi **up_**, **down_**, **right_** a **left_** . Pri zmene smeru sa automaticku mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro *dot* 
+Každý prvok diagramu alebo schémy je vykreslený v diagrame na 2D pozícii, ktorá je uchovávaná vo virtuálnom kurzore označenom ako `Here`. Prvky v zapojení (*resistor*, *capacitor*) ukladáme za sebou v zadaných smeroch príkazmi **up_**, **down_**, **right_** a **left_** . Pri zmene smeru sa automaticky mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro **dot**. 
 
 ```{code-block}
 right_;
@@ -93,32 +93,32 @@ _ = cm_compile('cm_0014a', data, dpi=600)
 Ukladanie prvkov zapojenia na základe ich poradia v programe.
 ```
 
-Po vykreslení nejakého prvku zapojenie sa hodnota kurzora `Here` posúva v smere ukladanie tak, aby prvky zapojenie na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu 
+Po vykreslení prvku zapojenia sa hodnota kurzora `Here` posúva v smere ukladania tak, aby prvky zapojenia na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu 
 
     move to (x,y);
     
-alebo vykreslením prepojovacieho vodiča alebo čiary príkazom *line*, kurzor `Here` sa po vykreslení presunie na koniec čiary
+alebo vykreslením prepojovacieho vodiča alebo čiary príkazom *line*. Kurzor `Here` sa po vykreslení presunie na koniec čiary
 
-    line to (x,y);                 - vykrelenie čiary z Here do (x,y) 
-    line right_ d;                 - čiara z Here zadaným smerom a dĺžkou
-    line from (x1,y1) to (x2,y2);  - čiara medzi dvoma bodmi
+    line to (x,y);                 # vykreslenie čiary z Here do (x,y) 
+    line right_ d;                 # čiara z Here zadaným smerom a dĺžkou
+    line from (x1,y1) to (x2,y2);  # čiara medzi dvoma bodmi
 
 
 ## <font color='teal'> Referencie a atribúty </font> 
     
-Každý prvok v zapojení môžeme označiť pomocou textovej referencie ukončenej znakom `:`, táto musí byť zapísaná veľkými písmenani a nesmie začínať číslicou. Po vytvorení je referencia globálna, je ju možno použiť v ktorejkolvek časti zapojenia.
+Každý prvok v zapojení môžeme označiť pomocou textovej referencie ukončenej znakom `:`, táto musí byť zapísaná veľkými písmenani a nesmie začínať číslicou. Po vytvorení je referencia globálna, je ju možno použiť v ktorejkoľvek časti zapojenia
 
-    R1: resistor;       - referencia R1
-    r1: resistor;       - chyba
-    1R: resistor;       - chyba
+    R1: resistor;       # referencia R1
+    r1: resistor;       # chyba
+    1R: resistor;       # chyba
 
-K prvkom zapojenia a polohe ich častí pristupovať pomocou referencie a pomenovaných atribútov oddelených od seba bodkou `.` Skupiny prvkov, napríklad dvojpóly (*resistor* ...), majú spoločné atribúty a každý typ prvku môže mať naviac aj vlastné, špecifické atribúty. Napríklad, spoločné atribúty pre dvojpóly sú:
+K prvkom zapojenia a polohe ich častí môžeme pristupovať pomocou referencie a pomenovaných atribútov oddelených od seba bodkou `.`. Skupiny prvkov, napríklad dvojpóly (*resistor* ...), majú spoločné atribúty a každý typ prvku môže mať naviac aj vlastné, špecifické atribúty. Napríklad, spoločné atribúty pre dvojpóly sú
 
     .start    .s         - bod v ktorom bol začiatok kreslenia prvku
     .end      .e         - bod v ktorom skončilo kreslenie prvku
     .center   .c         - geometrický stred prvku
     
-Atribút má hodnotu súradnice označenej časti prvku. Na nasledujúcom príklade je ukázané použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia.
+Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia
 
 ```{code-block}
 :emphasize-lines: 5
@@ -159,7 +159,7 @@ Použitie referencií pri ukladaní prvkov zapojenia.
 
 ## <font color='teal'> Vlastnosti prvkov </font> 
 
-Makrá pre zobrazenie prvkov majú zvyčajne niekoľko parametrov, pomocou ktorých môžeme meniť a upravovať zobrazenie prvku v zapojení. Napríklad pre zobrazenie rezistoru má makro zo štandardnej knižnice `CircuitMacros` nasledujúci formát:
+Makrá pre zobrazenie prvkov majú zvyčajne niekoľko parametrov, pomocou ktorých môžeme meniť a upravovať zobrazenie prvku v zapojení. Napríklad pre zobrazenie rezistoru má makro zo štandardnej knižnice `CircuitMacros` nasledujúci formát
 
     resistor(linespec, n, chars, cycle wid)
 
@@ -168,7 +168,7 @@ Makrá pre zobrazenie prvkov majú zvyčajne niekoľko parametrov, pomocou ktor�
     chars       - typ zobrazenia rezistoru (napr. E - europske zobrazenie)
     cycle wid   - velkosť cyklov v USA norme
     
-Súčasťou zapojenia elektronickéjho obvodu je textový popis prvkov, ktorý zvyčajne pozostáva z označenie prvku, napríklad $R_1$ a jeho hodnoty, napríklad $100 \Omega$. Ukladanie popisov prvkov v komplikovanejších obvodoch pomocou jednoduchých textov by bolo značne náročné, naviac s rizikom nesprávneho označenia alebo pomiešania označenia napríklad pri zmene alebo úprave polohy prvkov. Pre zjednodušenie popisu (označenie, hodnota) posledného zobrazovaného prvku typu dvojpól môžeme preto použiť makrá, ktoré zväzujú texty s označením a s príslušným prvkom. 
+Súčasťou zapojenia elektronického obvodu je textový popis prvkov, ktorý zvyčajne pozostáva z označenie prvku, napríklad $R_1$ a jeho hodnoty, napríklad $100 \Omega$. Ukladanie popisov prvkov v komplikovanejších obvodoch pomocou jednoduchých textov by bolo značne náročné, naviac s rizikom nesprávneho označenia alebo pomiešania označenia, napríklad pri zmene hodnoty alebo úprave polohy prvkov. Pre zjednodušenie popisu (označenie, hodnota) posledného zobrazovaného prvku typu dvojpól môžeme preto použiť makrá, ktoré zväzujú texty s označením a s príslušným prvkom 
 
     llabel( slabel, xlabel, elabel )  - označenie po lavej strane v smere ukladania
     rlabel( slabel, xlabel, elabel )  - označenie po pravej strane v smere ukladanie 
@@ -179,7 +179,7 @@ Súčasťou zapojenia elektronickéjho obvodu je textový popis prvkov, ktorý z
         xlabel       - označenie v strede prvku
         elabel       - označenie v bode konca prvku
     
-Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (*R2*). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = $R_1$ (vyžaduje inštaláciu LaTeX-u).
+Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (*R2*). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = $R_1$ (vyžaduje inštaláciu LaTeX-u)
 
 ```{code-block}
     move to (0.5, 2.5);  
