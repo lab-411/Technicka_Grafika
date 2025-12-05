@@ -32,7 +32,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 numfig = True
 
 numfig_format = {
-    'code-block': 'Listing: %s',
+    'code-block': 'Listing %s :',
     'figure': 'Obr. %s',
     'section': 'Section',
     'table': 'Tabulka %s',

@@ -14,7 +14,7 @@ kernelspec:
 
 
     
-# <font color='navy'> Úpravy zobrazenia </font>
+# <font color='navy'> Úpravy </font>
 
 Súčasťou `CircuitMacros` sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Môžeme hrubšími čiarami zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis obvodov, popis prvkov alebo upozorniť na konštrukčné detaily.
 

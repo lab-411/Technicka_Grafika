@@ -14,8 +14,11 @@ kernelspec:
 
 # <font color='navy'> Užitočné makrá  </font>
 
-    sinusoid(amplitude, frequency, phase, tmin, tmax, linetype)
 
+
+%========================================================================
+% SINUSOID
+%-------------------------------------------------------------------------
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -46,41 +49,88 @@ sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max, dotted);
 _ = cm_compile('cm_0210a', data,  dpi=600 )   
 ```
 
-```{figure} ./src/cm_0210a.png
-:width: 600px
-:name: cm_035
+%-------------------------------------------------------------------------
 
-Makro sinusoid()
+````{tab-set}
+
+```{tab-item} sinusoid()
+<img src="./src/cm_0210a.png" width="600px" class="center">
 ```
 
-    rand()
+```{tab-item} Popis
+    Zobrazenie harmonického priebehu
     
+    sinusoid(ampl, freq, phase, t_min, t_max)
     
+      ampl  - amplitúda
+      freq  - frekvencia
+      phase - fáza
+      t_min - začiatok časovej osi
+      t_max - koniec časovej osi
+```
+
+
+```{tab-item} Príklad
+    Origin: Here;
+    sinusoid(1.0, twopi_*2/10,-pi_/2, 0, 10) at Origin;
+    sinusoid(1.0, twopi_*6/10, pi_/2, 0, 10, dashed) at Origin;
+    sinusoid(0.5, twopi_*3/10,     0, 0, 10, dotted) at Origin;
+```
+
+````
+
+%========================================================================
+% RAND, RANDN
+%-------------------------------------------------------------------------
+
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 from src.utils import *
 
 data = r'''
-include(lib_base.ckt)
-include(lib_color.ckt)
+#include(lib_base.ckt)
+#include(lib_color.ckt)
 
 Origin: Here 
-Grid(10, 1);
+#Grid(10, 1);
 
 move to (0,0.5);
-for x = 0 to 10  by 0.05 do { line to (x, rand()*0.2 + 0.4); } 
+for x = 0 to 10  by 0.05 do { line to (x, rand()*0.25); } 
 '''
 
 _ = cm_compile('cm_0210b', data,  dpi=600)   
 ```
 
+%-------------------------------------------------------------------------
 
-```{figure} ./src/cm_0210b.png
-:width: 600px
-:name: cm_036
 
-Makro rand()
+````{tab-set}
+
+```{tab-item} rand(), randn()
+<img src="./src/cm_0210b.png" width="600px" class="center">
 ```
+
+```{tab-item} Popis    
+    rand(), randn()
+```
+
+
+```{tab-item} Príklad
+    for x = 0 to 10  by 0.05 do { line to (x, rand()*0.25); } 
+    
+    stddev = 0.25
+    n=100
+    randn(z,n,0,stddev) 
+    m = 0
+    for i=1 to n-1 by 2 do { m +=1; x[m] = z[i]; y[m] = z[i+1]
+        dot(at (x[m],y[m]))
+    }
+```
+
+````
+
+%========================================================================
+
 
     shadebox(box attributes, shade width)
     
