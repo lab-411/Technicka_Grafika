@@ -1,0 +1,45 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+Grid(8,4);
+
+define(`gnd_line',`[
+    move to ($1,0);
+    linethick_(5);
+    L: line to Here + ($1,0);
+    linethick_();
+]')
+
+define(`gnd_dot',`[ C:circle at Here rad 0.09 fill 1; ]')
+
+P1:(1,0.5);    P2:(1,1);   P3:(1,1.5);   DX:(0.5,0)
+P4:(0.5, 2.5); P5:(1,2.5); P6:(1.5,2.5); DY:(0,0.5)
+
+LA: line from P1 to P3; "\sf LA" ljust;
+    crossover(from P2-DX to P2+DX,,LA)
+
+LC: line from P4 to P6; "\sf LC" ljust;
+    crossover(from P5-DY to P5+DY,R,LC)
+
+
+GL:  gnd_line(4) at (3, 0.5);  "\sf GL" ljust
+Q1: line from (3, 1.0) right_ 4; "\sf Q1" ljust
+Q2: line from (3, 1.5) right_ 4; "\sf Q2" ljust
+
+CR: crossover(from (4,.5) to (4, 2),L,Q1, Q2); { gnd_dot() at CR.s }
+TR:  transformer(up_ 1.5,R,4,W,4) with .P1 at CR.n; line from TR.S2 to (TR.S1, TR.P2)
+     crossover(from TR.S1 to (TR.S1, (Q2.start+Q1.start)/2),R,Q2);
+     line to (TR.S1, Q1.start); dot;
+
+.PE

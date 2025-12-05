@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Programová tvorba technickej grafiky &#8212; cm 1.00 documentation</title>
+    <title>Prepojenia &#8212; cm 1.00 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -46,9 +46,11 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0106_cm_prepojenia';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Grafika" href="0110_cm_grafika.html" />
+    <link rel="prev" title="Úpravy zobrazenia" href="0104_cm_upravy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -111,8 +113,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -168,11 +168,11 @@
 <li class="toctree-l1"><a class="reference internal" href="0014_zaklady.html"><font color="navy"> Základy kreslenia</font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prvky zapojenia</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Prepojenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
@@ -254,7 +254,7 @@
       
       
       
-      <li><a href="_sources/README.md" target="_blank"
+      <li><a href="_sources/0106_cm_prepojenia.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,9 +325,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -338,30 +336,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Programová tvorba technickej grafiky</h1>
+    <h1><font color='navy'> Prepojenia </font></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Programová tvorba technickej grafiky</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis">Popis</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-creation-of-technical-graphics">Programmatic creation of technical graphics</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kniha-book">Kniha / Book</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -371,25 +350,84 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="programova-tvorba-technickej-grafiky">
-<h1>Programová tvorba technickej grafiky<a class="headerlink" href="#programova-tvorba-technickej-grafiky" title="Link to this heading">#</a></h1>
-<section id="popis">
-<h2>Popis<a class="headerlink" href="#popis" title="Link to this heading">#</a></h2>
-<p>Učebný text je určený záujemcom o tvorbu profesionálnej grafiky pre publikácie z oblasti eletroniky pomocou <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">CircuitMacros</a>. Popisuje základné postupy pri kreslení zapojení elektronických obvodov, spôsoby vytvárania makier pre tvorbu vlastných komponentov a príklady použitia knižníc. Zdrojové kódy knihy sú vytvorené v jazyku Markdown na platforme Sphinx.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="programmatic-creation-of-technical-graphics">
-<h1>Programmatic creation of technical graphics<a class="headerlink" href="#programmatic-creation-of-technical-graphics" title="Link to this heading">#</a></h1>
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-<p>The textbook (in slovak language) is intended for those interested in creating professional graphics for publications in the field of electronics using <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">CircuitMacros</a>. It describes basic procedures for drawing electronic circuit connections, methods for creating macros for creating custom components, and examples of using libraries. The source codes of the book are created in the Markdown language on the Sphinx platform.</p>
-<section id="kniha-book">
-<h3>Kniha / Book<a class="headerlink" href="#kniha-book" title="Link to this heading">#</a></h3>
-<p>Renderovaná kniha je dostupná na URL</p>
-<p>The rendered book is available at URL</p>
-<p>https://lab-411.github.io/Technicka_Grafika/_build/html/index.html</p>
-</section>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="prepojenia">
+<h1><font color='navy'> Prepojenia </font><a class="headerlink" href="#prepojenia" title="Link to this heading">#</a></h1>
+<p>V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu <em>line</em>. Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. Pri prepojeniach sa kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na nasledujúcom obrázku, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, je zobrazená hrubou čiarou.</p>
+<figure class="align-default" id="cm-0106a">
+<a class="reference internal image-reference" href="_images/radio_r731.jpg"><img alt="_images/radio_r731.jpg" src="_images/radio_r731.jpg" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 28 </span><span class="caption-text">Zapojenie elektrónkového rádia, <a class="reference external" href="https://archive.org/details/ABC_Radiocostruzioni_R731_R841">zdroj</a>.</span><a class="headerlink" href="#cm-0106a" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Pre kreslenie takejto formy zapojenia môžeme využť makro <em>crossover()</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>crossover(linespec, [L|R][:line_attributes], Linename1, Linename2, . . .)
+
+parametre:
+
+    linespec           - začiatok a koniec prepojenia
+    [L|R]              - smer oblúka
+    [:line_attributes] - doplnkové atrubúty (dashed ...)
+    Linename1          - referencie na spoje, nad ktorými prechádza prepojenie 
+    Linename2
+</pre></div>
+</div>
+<p>Pre nakreslenie hrubšieho zemného vodiča a pripojovacích bodov si vytvoríme vlastné makrá <em>gnd_line()</em> a <em>gnd_dot()</em>, použitie makier zobrazuje nasledujúci príklad</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>define(`gnd_line&#39;,`[ move to ($1,0); linethick_(5);
+    L: line to Here + ($1,0); linethick_(); ]&#39;)
+
+define(`gnd_dot&#39;,`[ C:circle at Here rad 0.09 fill 1; ]&#39;)
+
+P1:(1,0.5);    P2:(1,1);   P3:(1,1.5);   DX:(0.5,0)
+P4:(0.5, 2.5); P5:(1,2.5); P6:(1.5,2.5); DY:(0,0.5)
+
+LA: line from P1 to P3; &quot;\sf LA&quot; ljust;
+    crossover(from P2-DX to P2+DX,,LA)
+
+LC: line from P4 to P6; &quot;\sf LC&quot; ljust;
+    crossover(from P5-DY to P5+DY,R,LC)
+
+GL:  gnd_line(4) at (3, 0.5);  &quot;\sf GL&quot; ljust
+Q1: line from (3, 1.0) right_ 4; &quot;\sf Q1&quot; ljust
+Q2: line from (3, 1.5) right_ 4; &quot;\sf Q2&quot; ljust
+
+CR: crossover(from (4,.5) to (4, 2),L,Q1, Q2); { gnd_dot() at CR.s }
+TR:  transformer(up_ 1.5,R,4,W,4) with .P1 at CR.n; line from TR.S2 to (TR.S1, TR.P2)
+     crossover(from TR.S1 to (TR.S1, (Q2.start+Q1.start)/2),R,Q2);
+     line to (TR.S1, Q1.start); dot;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0106b">
+<a class="reference internal image-reference" href="_images/cm_0106b.png"><img alt="_images/cm_0106b.png" src="_images/cm_0106b.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 29 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/4c3a926ff850e9858a25244bf5aef051/cm_0106b.ckt"><span class="xref download myst">Vykreslenie</span></a> časti zapojenia so starším prevedením križovania vodičov.</span><a class="headerlink" href="#cm-0106b" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Pre vykreslenie štandarného spojenie vodičov použijeme makro <em>dot()</em>. Pokiaľ nie je križovanie vodičov nijako označené, predpokladáme že sú nespojené. Parametrami makra môžeme upraviť veľkost spoja, makro bez parametrov vykreslí bod spojenia v preddefinovanom tvare.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dot(at location,radius|keys,fill)
+
+parametre:
+
+    at location  - umiestnenie spojenia
+    radius|keys  - parametre spoja, priemer vonkajšej kružnice
+    fill         - hodnota 0...1 výplne, 0-čierna, 1-biela
+</pre></div>
+</div>
+<p>Polohu prepojenia môžeme využiť aj na vyznačenie parametrov spoja</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="n">R_1</span><span class="p">,)</span>
+<span class="hll"><span class="n">dot</span> <span class="s2">&quot;\sf 3.3V&quot;</span> <span class="n">above</span><span class="p">;</span> 
+</span><span class="p">{</span><span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span> <span class="p">,,</span><span class="n">E</span><span class="p">);</span>  <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="n">R_3</span><span class="p">,)}</span>
+<span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span>  <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="n">R_2</span><span class="p">,)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0106c">
+<a class="reference internal image-reference" href="_images/cm_0106c.png"><img alt="_images/cm_0106c.png" src="_images/cm_0106c.png" style="width: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 30 </span><span class="caption-text">Zobrazenia napätia v uzle zapojenia.</span><a class="headerlink" href="#cm-0106c" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 
 
@@ -403,38 +441,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="0104_cm_upravy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><font color='navy'> Úpravy zobrazenia </font></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0110_cm_grafika.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font color='navy'> Grafika </font></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Programová tvorba technickej grafiky</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popis">Popis</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-creation-of-technical-graphics">Programmatic creation of technical graphics</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kniha-book">Kniha / Book</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

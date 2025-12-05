@@ -12,7 +12,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB-411 Production </b> </font>      </h3>
-<h3> <font color='brown'>  <b> Verzia 0.2 / 2025 </b> </font>                   </h3>
+<h3> <font color='brown'>  <b> Verzia 0.25 / 2025 </b> </font>                   </h3>
 </center> 
 
 ----------------
@@ -39,6 +39,7 @@
 0100_cm_dvojpoly.md
 0102_cm_mnohopoly.md
 0104_cm_upravy.md
+0106_cm_prepojenia.md
 0110_cm_grafika.md
 0130_cm_text.md
 0140_cm_konektor.md
