@@ -171,8 +171,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
@@ -348,7 +348,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycirkuit-cli"><font color="teal"> PyCirkuit CLI </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycirkuit"><font color="teal"> PyCirkuit </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="brown"> Použitie  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a><ul class="nav section-nav flex-column">
@@ -368,9 +368,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="export-obrazkov">
 <h1><font color='navy'> Export obrázkov </font><a class="headerlink" href="#export-obrazkov" title="Link to this heading">#</a></h1>
-<p>Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov z programu <strong>PyCirkuit</strong> tak ako je to uvedené v úvode tejto publikácie. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.</p>
-<section id="pycirkuit-cli">
-<h2><font color='teal'> PyCirkuit CLI </font><a class="headerlink" href="#pycirkuit-cli" title="Link to this heading">#</a></h2>
+<p>Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov priamo v programe <strong>PyCirkuit</strong>. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.</p>
+<section id="pycirkuit">
+<h2><font color='teal'> PyCirkuit </font><a class="headerlink" href="#pycirkuit" title="Link to this heading">#</a></h2>
 <p>Program <strong>PyCirkuit</strong> umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit --help
 </pre></div>
@@ -401,50 +401,53 @@ sudo apt-get install ghostscript
 <ul class="simple">
 <li><p>V textovom editore vytvoríme zdrojový text obrázku</p></li>
 <li><p>Pomocou makroprocesora <strong>m4</strong> a knižníc makier expandujeme makrá do jazyka <em>dpic</em></p></li>
-<li><p>Kompilátorom <strong>dpic</strong> preložíme makrá do skriptov <em>tikz</em> pre sadzací systém LaTex</p></li>
-<li><p>Vložíme skript <em>tikz</em> do pomocného konfiguračného súboru a pomocou  <strong>Latex</strong> ho preložíme do súboru <em>.dvi</em>. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií.</p></li>
+<li><p>Kompilátorom <strong>dpic</strong> preložíme makrá do skriptov <em>tikz</em> pre sadzací systém <em>LaTex</em></p></li>
+<li><p>Vložíme skript <em>tikz</em> do pomocného konfiguračného súboru a pomocou  <em>Latex</em> ho preložíme do súboru <em>.dvi</em>. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií.</p></li>
 <li><p>Pomocou programu <strong>dvips</strong> konvertujeme obrázok do vektorového formátu <em>.eps</em></p></li>
 <li><p>Pomocou konvertoru <strong>gs</strong> prevedieme vektorový obrázok do rastrového formátu <em>.png</em>. V konfigurácii konvertoru môžeme nastaviť rozlíšenie obrázku.</p></li>
 </ul>
 <p>Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte <a class="reference download internal" download="" href="_downloads/043fc0c8e4396601a41477bd2b6f1db7/cmc.sh"><span class="xref download myst">cmc.sh</span></a> pre príkazový interpreter <em>bash</em>. Konfiguračný súbor pre LateX <em>template.tex</em> generuje skript, v prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v LaTex-e doplniť ďaľšie prostredie a pod.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 5 : </span><span class="caption-text">Skript <em>cmc.sh</em></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-echo &#39;% LaTeX template file
-\documentclass{article}
-\usepackage{amsmath}
-\usepackage{pst-plot, pst-eps, tikz}
-\pagestyle{empty}
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;% LaTeX template file</span>
+<span class="s1">\documentclass{article}</span>
+<span class="s1">\usepackage{amsmath}</span>
+<span class="s1">\usepackage{pst-plot, pst-eps, tikz}</span>
+<span class="s1">\pagestyle{empty}</span>
 
-\begin{document}
-\begin{TeXtoEPS}
-    \input{data.tex}
-\end{TeXtoEPS}
+<span class="s1">\begin{document}</span>
+<span class="s1">\begin{TeXtoEPS}</span>
+<span class="s1">    \input{data.tex}</span>
+<span class="s1">\end{TeXtoEPS}</span>
 
-\end{document}&#39; &gt; template.tex
+<span class="s1">\end{document}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>template.tex
 
-# cesta ku M4 knizniciam CircuitMacros (libcct.m4 ... )
-CIRCUIT_MACROS=&#39;./cm/&#39;
+<span class="c1"># cesta ku M4 knizniciam CircuitMacros (libcct.m4 ... )</span>
+<span class="nv">CIRCUIT_MACROS</span><span class="o">=</span><span class="s1">&#39;./cm/&#39;</span>
 
-# expadovanie makier do formatu TIKZ
-m4 -I $CIRCUIT_MACROS pgf.m4  $1 | dpic -g &gt; data.tex
+<span class="c1"># expadovanie makier do formatu TIKZ</span>
+m4<span class="w"> </span>-I<span class="w"> </span><span class="nv">$CIRCUIT_MACROS</span><span class="w"> </span>pgf.m4<span class="w">  </span><span class="nv">$1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dpic<span class="w"> </span>-g<span class="w"> </span>&gt;<span class="w"> </span>data.tex
 
-# kompilacia latex suboru
-latex template.tex &gt; latex.log
-dvips -q* -E template.dvi -G0 -o $(basename $1 .ckt).eps &gt; dvips.log
+<span class="c1"># kompilacia latex suboru</span>
+latex<span class="w"> </span>template.tex<span class="w"> </span>&gt;<span class="w"> </span>latex.log
+dvips<span class="w"> </span>-q*<span class="w"> </span>-E<span class="w"> </span>template.dvi<span class="w"> </span>-G0<span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>.ckt<span class="k">)</span>.eps<span class="w"> </span>&gt;<span class="w"> </span>dvips.log
 
-# konverzia *.eps -&gt; *.png, parameter r-rozlisenie v dpi
-gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o $(basename $1 .ckt).png $(basename $1 .ckt).eps &gt; gs.log
+<span class="c1"># konverzia *.eps -&gt; *.png, parameter r-rozlisenie v dpi</span>
+gs<span class="w"> </span>-dSAFER<span class="w"> </span>-dEPSCrop<span class="w"> </span>-r600<span class="w"> </span>-sDEVICE<span class="o">=</span>pngalpha<span class="w"> </span>-dALLOWPSTRANSPARENCY<span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>.ckt<span class="k">)</span>.png<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>.ckt<span class="k">)</span>.eps<span class="w"> </span>&gt;<span class="w"> </span>gs.log
 
-# zmazanie docasnych suborov
-rm dvips.log
-rm latex.log
-rm $(basename $1 .ckt).eps
-rm data.tex
-rm template.tex
-rm template.dvi
-rm template.aux
-rm template.log
+<span class="c1"># zmazanie docasnych suborov</span>
+rm<span class="w"> </span>dvips.log
+rm<span class="w"> </span>latex.log
+rm<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>.ckt<span class="k">)</span>.eps
+rm<span class="w"> </span>data.tex
+rm<span class="w"> </span>template.tex
+rm<span class="w"> </span>template.dvi
+rm<span class="w"> </span>template.aux
+rm<span class="w"> </span>template.log
 </pre></div>
+</div>
 </div>
 </section>
 <section id="pouzitie">
@@ -461,49 +464,53 @@ rm template.log
 <section id="python-skript">
 <h2><font color='teal'> Python skript </font><a class="headerlink" href="#python-skript" title="Link to this heading">#</a></h2>
 <p>Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a>. Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 6 : </span><span class="caption-text">Skript <em>cmc.py</em></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-CIRCUIT_MACROS_PATH = &#39;./cm&#39;
+<span class="n">CIRCUIT_MACROS_PATH</span> <span class="o">=</span> <span class="s1">&#39;./cm&#39;</span>
 
-def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
+<span class="k">def</span> <span class="nf">cm_compile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">cm_data</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
 
-    fp = open( file_name + &#39;.ckt&#39;, &#39;w&#39;); 
-    fp.write(cm_data);
-    fp.close()
+    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;.ckt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span> 
+    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cm_data</span><span class="p">);</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         
-    os.system( &#39;m4 -I %s pgf.m4  %s &gt; data.dpc&#39;%(CIRCUIT_MACROS_PATH, file_name+&#39;.ckt&#39;) )
-    os.system( &#39;dpic -g data.dpc &gt; data.tex&#39;) 
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;m4 -I </span><span class="si">%s</span><span class="s1"> pgf.m4  </span><span class="si">%s</span><span class="s1"> &gt; data.dpc&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">CIRCUIT_MACROS_PATH</span><span class="p">,</span> <span class="n">file_name</span><span class="o">+</span><span class="s1">&#39;.ckt&#39;</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;dpic -g data.dpc &gt; data.tex&#39;</span><span class="p">)</span> 
     
-    temp = r&#39;&#39;&#39;
-    \documentclass{article}
-    \usepackage{amsmath}
-    \usepackage{pst-plot, pst-eps, tikz}
-    \pagestyle{empty}
+    <span class="n">temp</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    \documentclass</span><span class="si">{article}</span>
+<span class="s1">    \usepackage</span><span class="si">{amsmath}</span>
+<span class="s1">    \usepackage{pst-plot, pst-eps, tikz}</span>
+<span class="s1">    \pagestyle</span><span class="si">{empty}</span>
 
-    \begin{document}
-      \begin{TeXtoEPS}
-        \input{data.tex}
-      \end{TeXtoEPS}
-    \end{document}
-    &#39;&#39;&#39;
+<span class="s1">    \begin</span><span class="si">{document}</span>
+<span class="s1">        \begin</span><span class="si">{TeXtoEPS}</span>
+<span class="s1">        \input</span><span class="si">{data.tex}</span>
+<span class="s1">        \end</span><span class="si">{TeXtoEPS}</span>
+<span class="s1">    </span>
+<span class="s1">    \end</span><span class="si">{document}</span>
+<span class="s1">    &#39;&#39;&#39;</span>
 
-    f = open(&#39;template.tex&#39;, &#39;w&#39; ) 
-    f.write(temp)
-    f.flush()
-    f.close()
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;template.tex&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span> <span class="p">)</span> 
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     
-    os.system( &#39;latex template.tex &gt; latex.log&#39;)   
-    os.system( &#39;dvips -q* -E template.dvi -G0 -o %s &gt; dvips.log &#39;%(file_name+&#39;.eps&#39;) )        
-    os.system(&#39;gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o %s %s &gt; gs.log&#39;%(file_name+&#39;.png&#39;, file_name+&#39;.eps&#39;))
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;latex template.tex &gt; latex.log&#39;</span><span class="p">)</span>   
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;dvips -q* -E template.dvi -G0 -o </span><span class="si">%s</span><span class="s1"> &gt; dvips.log &#39;</span><span class="o">%</span><span class="p">(</span><span class="n">file_name</span><span class="o">+</span><span class="s1">&#39;.eps&#39;</span><span class="p">)</span> <span class="p">)</span>        
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;gs -dSAFER -dEPSCrop -r600 -sDEVICE=pngalpha -dALLOWPSTRANSPARENCY -o </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> &gt; gs.log&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">file_name</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">+</span><span class="s1">&#39;.eps&#39;</span><span class="p">))</span>
     
-    os.system( &#39;rm *.dvi&#39; )
-    os.system( &#39;rm *.aux&#39; )
-    os.system( &#39;rm *.log&#39; )
-    os.system( &#39;rm *.tex&#39; )
-    os.system( &#39;rm *.eps&#39; )
-    os.system( &#39;rm *.dpc&#39; )
-    return file_name + &#39;.ckt&#39;
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;rm *.dvi&#39;</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;rm *.aux&#39;</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;rm *.log&#39;</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;rm *.tex&#39;</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;rm *.eps&#39;</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="s1">&#39;rm *.dpc&#39;</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;.ckt&#39;</span>
 </pre></div>
+</div>
 </div>
 <section id="id1">
 <h3><font color='brown'> Použitie </font><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -512,7 +519,7 @@ def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
 <a class="reference internal image-reference" href="_images/jupyter.png"><img alt="_images/jupyter.png" src="_images/jupyter.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 82 </span><span class="caption-text">CircuitMacros v prostredí Jupyter Lab</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 80 </span><span class="caption-text">CircuitMacros v prostredí Jupyter Lab</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -564,7 +571,7 @@ def cm_compile(file_name, cm_data=&#39;&#39;, dpi=300):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycirkuit-cli"><font color="teal"> PyCirkuit CLI </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pycirkuit"><font color="teal"> PyCirkuit </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-skript"><font color="teal"> Shell skript </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pouzitie"><font color="brown"> Použitie  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript"><font color="teal"> Python skript </font></a><ul class="nav section-nav flex-column">

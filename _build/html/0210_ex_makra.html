@@ -171,8 +171,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy zobrazenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
@@ -352,26 +352,69 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="uzitocne-makra">
 <h1><font color='navy'> Užitočné makrá  </font><a class="headerlink" href="#uzitocne-makra" title="Link to this heading">#</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sinusoid(amplitude, frequency, phase, tmin, tmax, linetype)
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+sinusoid()</label><div class="sd-tab-content docutils">
+<a class="center reference internal image-reference" href="_images/cm_0210a.png"><img alt="_images/cm_0210a.png" class="center" src="_images/cm_0210a.png" style="width: 600px;" />
+</a>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Popis</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Zobrazenie harmonického priebehu
+
+sinusoid(ampl, freq, phase, t_min, t_max)
+
+  ampl  - amplitúda
+  freq  - frekvencia
+  phase - fáza
+  t_min - začiatok časovej osi
+  t_max - koniec časovej osi
 </pre></div>
 </div>
-<figure class="align-default" id="cm-035">
-<a class="reference internal image-reference" href="_images/cm_0210a.png"><img alt="_images/cm_0210a.png" src="_images/cm_0210a.png" style="width: 600px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 78 </span><span class="caption-text">Makro sinusoid()</span><a class="headerlink" href="#cm-035" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rand()
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Príklad</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Origin: Here;
+sinusoid(1.0, twopi_*2/10,-pi_/2, 0, 10) at Origin;
+sinusoid(1.0, twopi_*6/10, pi_/2, 0, 10, dashed) at Origin;
+sinusoid(0.5, twopi_*3/10,     0, 0, 10, dotted) at Origin;
 </pre></div>
 </div>
-<figure class="align-default" id="cm-036">
-<a class="reference internal image-reference" href="_images/cm_0210b.png"><img alt="_images/cm_0210b.png" src="_images/cm_0210b.png" style="width: 600px;" />
+</div>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+rand(), randn()</label><div class="sd-tab-content docutils">
+<a class="center reference internal image-reference" href="_images/cm_0210b.png"><img alt="_images/cm_0210b.png" class="center" src="_images/cm_0210b.png" style="width: 600px;" />
 </a>
-<figcaption>
-<p><span class="caption-number">Obr. 79 </span><span class="caption-text">Makro rand()</span><a class="headerlink" href="#cm-036" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Popis</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rand(), randn()
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+Príklad</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for x = 0 to 10  by 0.05 do { line to (x, rand()*0.25); } 
+
+stddev = 0.25
+n=100
+randn(z,n,0,stddev) 
+m = 0
+for i=1 to n-1 by 2 do { m +=1; x[m] = z[i]; y[m] = z[i+1]
+    dot(at (x[m],y[m]))
+}
+</pre></div>
+</div>
+</div>
+</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shadebox(box attributes, shade width)
 </pre></div>
 </div>
@@ -379,7 +422,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_0210c.png"><img alt="_images/cm_0210c.png" src="_images/cm_0210c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 80 </span><span class="caption-text">Makro shadebox()</span><a class="headerlink" href="#cm-037" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 78 </span><span class="caption-text">Makro shadebox()</span><a class="headerlink" href="#cm-037" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hatchbox()
@@ -389,7 +432,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_0210d.png"><img alt="_images/cm_0210d.png" src="_images/cm_0210d.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 81 </span><span class="caption-text">Makro hatchbox()</span><a class="headerlink" href="#cm-038" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 79 </span><span class="caption-text">Makro hatchbox()</span><a class="headerlink" href="#cm-038" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -12,7 +12,6 @@ kernelspec:
   name: python3
 ---
 
-
 # <font color='navy'> Základy kreslenia</font> 
 
 Princíp vytvárania zapojení v `CircuitMacros` spočíva v zápise príkazov do štandardného textového súboru, ktorý po kompilácii vytvára prvky zapojenia na virtuálnej ploche. Súbor s príkazmi začína  **.PS** a končí **.PE**. Príkazy a texty mimo tohto označenia sú ignorované. 
@@ -45,7 +44,6 @@ Príkaz na riadku je ukončený bodkočiarkou `;` alebo znakom ukončenia riadku
 
 Konfigurácia formátu exportovaných obrázkov v programe *PyCirkuit*
 ```
-
 
 ## <font color='teal'> Ukladanie prvkov </font> 
 
