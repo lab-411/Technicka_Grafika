@@ -14,11 +14,81 @@ kernelspec:
 
 # <font color='navy'> Užitočné makrá  </font>
 
+## <font color='teal'> Pracovná plocha  </font>
 
+%========================================================================
+% SHADEBOX
+%------------------------------------------------------------------------
+
+````{tab-set}
+
+```{tab-item} Grid()
+   Obrazok
+```
+
+```{tab-item} Popis  
+        Grid(x,y)
+        
+        Vykreslenie pomocnej mriežky na ploche pre jednoduchšiu rozmiestňovanie prvkov.
+        Mierka mriežky je v centimetroch.
+        
+```
+
+```{tab-item} Príklad
+        include(lib_base.ckt)
+        Grid(10,5)
+```
+````
+
+## <font color='teal'> Grafické objekty  </font>
+
+%========================================================================
+% SHADEBOX
+%------------------------------------------------------------------------
+
+````{tab-set}
+
+```{tab-item} shadebox()
+   Obrazok
+```
+
+```{tab-item} Popis  
+   popis
+```
+
+```{tab-item} Príklad
+        linethick_(0.8);
+        hatchbox(wid 3 ht 2, ,dashed,angle=125 ); 
+```
+
+````
+
+%========================================================================
+% HATCHBOX
+%------------------------------------------------------------------------
+
+````{tab-set}
+
+```{tab-item} hatchbox()
+   obrazok
+```
+
+```{tab-item} Popis   
+   popis
+```
+
+```{tab-item} Príklad
+        shadebox(B:box wid 3 ht 1 with .sw at (1,1), 2) 
+```
+
+````
+
+
+## <font color='teal'> Doplnky </font>
 
 %========================================================================
 % SINUSOID
-%-------------------------------------------------------------------------
+%------------------------------------------------------------------------
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -81,7 +151,7 @@ _ = cm_compile('cm_0210a', data,  dpi=600 )
 
 %========================================================================
 % RAND, RANDN
-%-------------------------------------------------------------------------
+%------------------------------------------------------------------------
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -129,70 +199,6 @@ _ = cm_compile('cm_0210b', data,  dpi=600)
 
 ````
 
-%========================================================================
-
-
-    shadebox(box attributes, shade width)
-    
-    
-```{code-cell} ipython3 
-:tags: ["remove-cell"]
-from src.utils import *
-
-data = r'''
-
-include(lib_base.ckt)
-include(lib_color.ckt)
-
-Origin: Here 
-Grid(5, 3);
-
-move to (0,0);
-shadebox(B:box wid 3 ht 1 with .sw at (1,1), 2) 
-"text" at B.c;
-'''
-
-_ = cm_compile('cm_0210c', data, dpi=600)   
-```
-
-
-```{figure} ./src/cm_0210c.png
-:width: 300px
-:name: cm_037
-
-Makro shadebox()
-```
-
-
-    hatchbox()
-
-    
-
-```{code-cell} ipython3 
-:tags: ["remove-cell"]
-from src.utils import *
-
-data = r'''
-include(lib_base.ckt)
-
-Origin: Here 
-Grid(5, 3);
-
-move to (1,1.5);
-linethick_(0.8);
-hatchbox(wid 3 ht 2, ,dashed,angle=125 ); 
-'''
-
-_ = cm_compile('cm_0210d', data,  dpi=600)   
-```
-
-
-```{figure} ./src/cm_0210d.png
-:width: 300px
-:name: cm_038
-
-Makro hatchbox()
-```
 
 
 

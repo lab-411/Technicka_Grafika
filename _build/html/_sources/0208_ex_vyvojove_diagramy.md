@@ -16,23 +16,3 @@ kernelspec:
 # <font color='navy'> Blokové diagramy</font> 
 
 
-:::{card} Card Title
-Header
-^^^
-Card content
-+++
-Footer
-:::
-
-
-````{tab-set}
-
-```{tab-item} Label1
-<img src="./src/cm_0140a.png" width="80%">
-```
-
-```{tab-item} Label2
-<img src="./src/cm_0140b.png" width="300px">
-```
-
-````

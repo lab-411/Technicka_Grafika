@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -325,7 +325,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -341,6 +343,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pracovna-plocha"><font color="teal"> Pracovná plocha  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficke-objekty"><font color="teal"> Grafické objekty  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doplnky"><font color="teal"> Doplnky </font></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -352,15 +364,87 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="uzitocne-makra">
 <h1><font color='navy'> Užitočné makrá  </font><a class="headerlink" href="#uzitocne-makra" title="Link to this heading">#</a></h1>
+<section id="pracovna-plocha">
+<h2><font color='teal'> Pracovná plocha  </font><a class="headerlink" href="#pracovna-plocha" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
+Grid()</label><div class="sd-tab-content docutils">
+<p>Obrazok</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Popis</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Grid(x,y)
+    
+    Vykreslenie pomocnej mriežky na ploche pre jednoduchšiu rozmiestňovanie prvkov.
+    Mierka mriežky je v centimetroch.
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Príklad</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    include(lib_base.ckt)
+    Grid(10,5)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graficke-objekty">
+<h2><font color='teal'> Grafické objekty  </font><a class="headerlink" href="#graficke-objekty" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+shadebox()</label><div class="sd-tab-content docutils">
+<p>Obrazok</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Popis</label><div class="sd-tab-content docutils">
+<p>popis</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+Príklad</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    linethick_(0.8);
+    hatchbox(wid 3 ht 2, ,dashed,angle=125 ); 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+hatchbox()</label><div class="sd-tab-content docutils">
+<p>obrazok</p>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+Popis</label><div class="sd-tab-content docutils">
+<p>popis</p>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
+Príklad</label><div class="sd-tab-content docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    shadebox(B:box wid 3 ht 1 with .sw at (1,1), 2) 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="doplnky">
+<h2><font color='teal'> Doplnky </font><a class="headerlink" href="#doplnky" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
 sinusoid()</label><div class="sd-tab-content docutils">
 <a class="center reference internal image-reference" href="_images/cm_0210a.png"><img alt="_images/cm_0210a.png" class="center" src="_images/cm_0210a.png" style="width: 600px;" />
 </a>
 </div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-1">
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-10">
 Popis</label><div class="sd-tab-content docutils">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Zobrazenie harmonického priebehu
 
@@ -374,8 +458,8 @@ sinusoid(ampl, freq, phase, t_min, t_max)
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-2">
+<input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-11">
 Príklad</label><div class="sd-tab-content docutils">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Origin: Here;
 sinusoid(1.0, twopi_*2/10,-pi_/2, 0, 10) at Origin;
@@ -386,21 +470,21 @@ sinusoid(0.5, twopi_*3/10,     0, 0, 10, dotted) at Origin;
 </div>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-3">
+<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-12">
 rand(), randn()</label><div class="sd-tab-content docutils">
 <a class="center reference internal image-reference" href="_images/cm_0210b.png"><img alt="_images/cm_0210b.png" class="center" src="_images/cm_0210b.png" style="width: 600px;" />
 </a>
 </div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-4">
+<input id="sd-tab-item-13" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-13">
 Popis</label><div class="sd-tab-content docutils">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rand(), randn()
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-5">
+<input id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-14">
 Príklad</label><div class="sd-tab-content docutils">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for x = 0 to 10  by 0.05 do { line to (x, rand()*0.25); } 
 
@@ -415,26 +499,7 @@ for i=1 to n-1 by 2 do { m +=1; x[m] = z[i]; y[m] = z[i+1]
 </div>
 </div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shadebox(box attributes, shade width)
-</pre></div>
-</div>
-<figure class="align-default" id="cm-037">
-<a class="reference internal image-reference" href="_images/cm_0210c.png"><img alt="_images/cm_0210c.png" src="_images/cm_0210c.png" style="width: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 78 </span><span class="caption-text">Makro shadebox()</span><a class="headerlink" href="#cm-037" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hatchbox()
-</pre></div>
-</div>
-<figure class="align-default" id="cm-038">
-<a class="reference internal image-reference" href="_images/cm_0210d.png"><img alt="_images/cm_0210d.png" src="_images/cm_0210d.png" style="width: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 79 </span><span class="caption-text">Makro hatchbox()</span><a class="headerlink" href="#cm-038" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+</section>
 </section>
 
 
@@ -472,6 +537,23 @@ for i=1 to n-1 by 2 do { m +=1; x[m] = z[i]; y[m] = z[i+1]
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pracovna-plocha"><font color="teal"> Pracovná plocha  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficke-objekty"><font color="teal"> Grafické objekty  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doplnky"><font color="teal"> Doplnky </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
