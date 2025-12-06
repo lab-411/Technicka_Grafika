@@ -59,7 +59,7 @@ _ = cm_compile('cm_0102a', data,  dpi=600)
 :width: 500px
 :name: cm_0102a
 
-[Príklady](./src/cm_0102a.ckt) mnohopólov definovaných v CircuitMacros.
+[Príklady](./src/cm_0102a.ckt) multipólov definovaných v CircuitMacros.
 ```
 
 

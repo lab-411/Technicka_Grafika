@@ -133,76 +133,34 @@ Makrá sa definujú podľa syntaxe makroprocesora **m4**. Všeobecný tvar makra
 
     define (name, [expansion])
     
-Reťazec *name* je nahradený reťazcom *expansion*, typ úvodzoviek v makre je dôležitý. Príklad
+Reťazec *name* je nahradený reťazcom *expansion*, typ úvodzoviek v makre je dôležitý. Príklad vytvorenia makra a jeho použitia
 
     define(`foo', `Hello world.')
 
-po spracovaní dostaneme
 
-    foo
-    Hello world.
+```{figure} ./img/pck_03.png
+:width: 650px
+:name: pck_03
+
+Vytvorenie a použitie makra.
+```
     
 ```{admonition} Poznámka
 
 Substitučné reťazce v makrách `m4` začínajú znakom spätného apostrofu `chr(96)` a končia znakom apostrofu `chr(39)`. Textové reťazce v jazyku `dpic` začínajú a končia úvodzovkami `"`.
+
+<img src="./img/keyb.png" width="700px" >
 ```
 
-Makro môže mať argumenty, tieto sú označované ako \$1, \$2 ... , špeciálny význam má argument označený ako \$0, ktorý obsahuje meno makra. Príklad makra, ktoré vymení poradie argumentov
+Makro môže mať argumenty, tieto sú označované ako \$1, \$2 ... , špeciálny význam má argument označený ako \$0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami
 
-    define(`exch', `$2, $1')
-  
-po spracovaní dostaneme
+    define(`exr', `$2, $1')               # zamena poradia argumentov 
+    exr(abc, 123)                         # -->  123, abc
 
-    exch(`arg1', `arg2')
-    arg2, arg1
+    define(`exc', `$1.y, $1.x')           # vymena zložiek súradnice
+    P: (3,1)
+    sprintf("(%2.0f, %2.0f)", exc(P))     # --> (1,3) 
 
-    
-Nasledujúci príklad ukazuje použitie makier.
-
-    # definicia makier 
-    #--------------------------------------------
-    define(`text', `klukata ciara');
-    define(`zigzac', `[line up_ $1 right_ $1 then down_ $1 right_ $1 then up_ $1 right_ $1]' )
-
-    # pouzitie
-    #--------------------------------------------
-        move to (0.5,0.5); dot;
-    ZG: zigzac(0.5); zigzac(1);
-        "text" at ZG.n above;
-
-Makro **text** je jednoducha nahrada reťazca. Makro **zigzac** má jeden parameter a pri jeho použití je jeho meno nahradené príkazom, argument je nahradený jeho hodnotou. Uzatvorenie príkazov do hranatých zátvoriek [...] znamená, že obsah príkazov v zátvorkách bude pokladaný za jeden zložený objekt. 
-    
-    
-```{code-cell} ipython3 
-:tags: ["remove-cell"]
-
-from src.utils import *
-
-data = r'''
-include(lib_base.ckt)
-
-Origin: Here 
-
-Grid(6,1.5)
-
-define(`text', `klukata ciara');
-define(`zigzac', `[line up_ $1 right_ $1 then down_ $1 right_ $1 then up_ $1 right_ $1]' )
-
-move to (0.5,0.5);
-dot;
-ZG: zigzac(0.5); zigzac(1);
-"text" at ZG.n above;
-'''
-
-_ = cm_compile('cm_0165b', data, dpi=600)   
-```
-
-```{figure} ./src/cm_0165b.png
-:width: 400px
-:name: cm_0165b
-
-[Príklad](./src/cm_0165b.ckt) použitia makier
-```
     
 ## <font color='teal'> Vytvorenie makra  </font>
 

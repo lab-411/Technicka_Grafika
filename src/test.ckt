@@ -1,0 +1,8 @@
+.PS
+scale=2.54
+cct_init
+
+define(`foo', `Hello World')
+"foo"
+
+.PE
