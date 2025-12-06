@@ -22,50 +22,58 @@ Základné grafické objekty (*line*, *spline*, *arc*, *box*, *circle*, *ellipse
 
 Všeobecný formát pre definíciu grafických objektov v *dpic* má tvar
 
-    [reference:] object [atribútes] [placement] [string]
+    [reference:] object [atribútes] [placement] [parameters] [string]
     
     reference  - označenie objektu pre prístup k jeho parametrom
     object     - grafický objekt (line, box ...)
-    atribútes  - forma zobrazenie objektu
+    atribútes  - tvar objektu (šípky ...)
     placement  - umiestnenie objektu
+    parameters - parametre zobrazenia (dotted, dashed ...)
     string     - text ktorý sa zobrazí v geometrickom strede objektu
     
-Príklad
+    
+
+## <font color='teal'> Čiary </font>
+
+Definovanie čiary je  možné niekoľkými spôsobmi. V súradnicovej sústave môžeme zadať polohu absolútne dvojicou `(x,y)`. alebo  smerom kreslenia a dĺžkou relatívne voči poslednej polohe, ktorá je obsahom premennej `Here`. Pri prácu so súradnicami môžeme využívať vektorovú aritmetiku. Vykreslením čiary sa aktualizuje hodnota `Here` na polohu koncového bodu čiary. 
+
+    [reference:] line [atribútes] [linespec] [string]
+    
+    attributes - <-|<->|-> vykreslenie šípky na konci čiary
+
+    linespec   -  from position | to position | direction [ expr ]
+                  | linespec linespec
+                  | linespec then linespec
+                  
+    string     - text vykreslený v strede čiary
+
+
+Príklad použitia
 
     L1: line -> from (1,1) to (2,2) "line L1" 
     
     L1:                 - referencia
-    ->                  - atribút
-    line                - grafický objekt
+    ->                  - atribút, šipka na konci čiary
     from (1,1) to (2,2) - placement, umiestnenie objektu na ploche
     "line L1"           - text v geometrickom strede objektu
-
-## <font color='teal'> Čiary </font>
-
-Definovanie čiary je v `CircuitMacros` možné niekoľkými spôsobmi. V súradnicovej sústave môžeme zadať polohu absolútne dvojicou `(x,y)`. alebo  smerom kreslenia a dĺžkou relatívne voči poslednej polohe, ktorá je obsahom premennej `Here`. Pri prácu so súradnicami môžeme využívať vektorovú aritmetiku. Vykreslením čiary sa aktualizuje hodnota `Here` na polohu koncového bodu čiary. Ak nechceme kresliť čiaru od aktuálnej pozície, môžeme umiestnenie čiary (*placement*) definovať nasledujúcim spôsobom
-
-    linespec = from position | to position | direction [ expr ]
-               | linespec linespec
-               | linespec then linespec
-
-Ak čiaru doplníme atribútom  *<-*, *<->*, *->*, čiara sa vykreslí ako šípka v príslušnej orientácii.
-
-Nasledujúci príklad ukazuje niekoľko možností definície čiary.
+                  
+                  
+Nasledujúce príklady ukazuje niekoľko možností použitia čiary.
 
     Origin: Here 
-    line from (1,1) to (3,2); {"A" above};  # A. absolutne polohy bodov, nastavuje 
-                                            #    poziciu Here na konc. bod 
-    line from Here to (4,2);  {"B" below};  # B. ciara od aktualnej pozicie
-    line to (5,3);            {"C" below};  # C. to iste od posledneho bodu
-    line to Here + (0,1);     {"D" ljust};  # D. relativne od poslednej pozicie 
-    line left_ 2;             {"E" above};  # E. relativne zadanim smeru v jednej osi
-    line left_ 1 up_ 1;       {"F" rjust};  # F. relativne v dvoch osiach
+    line from (1,1) to (3,2); # A. absolutne polohy bodov, nastavuje 
+                              #    poziciu Here na konc. bod 
+    line from Here to (4,2);  # B. ciara od aktualnej pozicie
+    line to (5,3);            # C. to iste od posledneho bodu
+    line to Here + (0,1);     # D. relativne od poslednej pozicie 
+    line left_ 2;             # E. relativne zadanim smeru v jednej osi
+    line left_ 1 up_ 1;       # F. relativne v dvoch osiach
 
-                                            # G. zadanim postupnosti bodov
+                              # G. zadanim postupnosti bodov
     line from (6,1) to (7,2) to (8,1) to (9,2); {"G" above};
 
-                                            # H. postupnostou relativnych krokov
-    line -> from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1; {"H" above};
+                              # H. postupnostou relativnych krokov
+    line -> from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1;
 
 
     
@@ -116,23 +124,28 @@ ale aj ich kombináciu, ktorá vykreslí šikmú čiaru
 
 ## <font color='teal'> Krivky  </font>
 
-Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami *dashed* a *dotted*, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, skutočné závisí od zvolenej mierky obrázku.
+Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami *dashed* a *dotted*, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, skutočné závisí od zvolenej mierky obrázku. Pri krivkách nie je možné vykresliť v ich definícii text na ich konci ako pri čiare.
 
-    Origin: Here 
-                                                # J. spline krivka, suradnice 
-                                                #    rovnake ako pri ciare
+    [reference:] spline [t] [atribútes] [linespec] 
+    
+    t          - napätie (tension) krivky v rozsahu 0...1 
+    
+    attributes - <-|<->|-> vykreslenie šípky na konci krivky
+
+    linespec   -  from position | to position | direction [ expr ]
+                  | linespec linespec
+                  | linespec then linespec
+                  
+    
+Príklad použitia kriviek
+
+    # I. spline krivka, súradnic rovnake ako pri čiare
     spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
-                                {"J" rjust};
-    color_coral;
-    arrow from (1,4) right_ 2;     {"K" ljust};  # K. sipka menom      
-    line -> from (1,4.5) right_ 2; {"L" ljust};  # L. sipka smerom doprava
-    line <- from (1, 5) right_ 2;  {"M" ljust};  # M. sipka smerom dolava
-
-                                                 # N. obojstranna sipka, oznacenie 
-    color_blue                                   #     v strede
-    S1: spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); {"N" at S1.c}; 
-
-    color_red;
+                              
+    # J. obojstranná šipka na krivke                       
+    spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); 
+    
+    # K. Parameter tension
     spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
     spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
     spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
@@ -149,23 +162,19 @@ include(lib_base.ckt)
 include(lib_color.ckt)
 Origin: Here 
 Grid(10, 6);
-                                             # J. spline krivka, suradnice 
-                                             #    rovnake ako pri ciare
+           
 spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
-                               {"J" rjust};
-color_coral;
-arrow from (1,4) right_ 2;     {"K" ljust};  # K. sipka menom      
-line -> from (1,4.5) right_ 2; {"L" ljust};  # L. sipka smerom doprava
-line <- from (1, 5) right_ 2;  {"M" ljust};  # M. sipka smerom dolava
+{"I" rjust};
 
-                                             # N. obojstranna sipka, oznacenie 
-color_blue                                   #     v strede
-S1: spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); {"N" at S1.c}; 
+color_blue                                 
+spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); 
+{"J" rjust}; 
 
 color_red;
 spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
 spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
 spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
+{"K" ljust;}
 '''
 
 _ = cm_compile('cm_0110b', data, dpi=600)   
@@ -198,20 +207,51 @@ Každý atribút reprezentuje súradnicu v tvare dvojice hodnôt (x,y). Príklad
     
     (L.s, L.e)  - je ekvivalentom (L.s.x, L.e.y)
 
+    
+## <font color='teal'> Šípky </font>
+
+Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  *<-*, *<->*, *->* alebo príkazom *arrow*, ktorý umožňuje nastavenie parametrov šíky 
+
+    [reference:] arrow [atribútes] [linespec] [parameters]
+    
+    attributes - <-|<->|-> vykreslenie šípky na konci čiary
+
+    linespec   -  from position | to position | direction [ expr ]
+                  | linespec linespec
+                  | linespec then linespec
+                  
+    parameters - tvar a veľkosť šípky
+                 thick  - hrúbka čiary (0.8)
+                 ht     - výška šípky  (0.1)
+                 wid    - šírka šípky  (0.05)
+ 
+Príklady použitia 
+
+    arrow -> from (0,0) to (1,1) thick 2 ht 0.5 wid 0.5
+    arrow from (1,4) right_ 2;     {"K" ljust};  # K. sipka menom      
+    arrow -> from (1,4.5) right_ 2; {"L" ljust};  # L. sipka smerom doprava
+    arrow <- from (1, 5) right_ 2;  {"M" ljust};  # M. sipka smerom dolava
 
 ## <font color='teal'> Obddĺžnik, kružnica a elipsa </font>
 
 Definícia plošných objektov má tvar
 
-    box wid x ht y;
-    circle rad r;
-    ellipse wid x ht y;
+    [reference:] box [at pos] [wid x] [ht y] [parameters] [string]
+    [reference:] circle [at pos] [rad r] [parameters] [string]
+    [reference:] ellipse [at pos] [wid x] [ht y] [parameters] [string]
     
-Pri zadaní príkazu vykreslenia objektu tento zadáme bez parametrov,  objekt sa vykreslí s prednastavenými (default) hodnotami.
+    at pos     - poloha stredu objektu
+    wid        - šírka
+    ht         - výška
+    rad        - polomer
+    parameters - parametre zobrazenia
+    strin      - text v strede objektu
+    
+Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami.
 
 ### <font color='brown'> Atribúty plošných prvkov  </font>    
 
-Pre plošné objektu sú definované atribúty podľa svetových strán.
+Pri obryse plošných objektov sú atribúty definované podľa svetových strán.
 
     .ne       .se     .nw       .sw
     .t        .top              .north   .n
@@ -262,9 +302,14 @@ _ = cm_compile('cm_0110c', data, dpi=600)
 
 Kruhový oblúk je objekt, ktorý zdiela atribútu lineárnych ako aj plošných objektov. Oblúk je definovaný smerom a pomocou dvoch alebo troch bodov
 
-    arc  cw|ccw from position to position [with .c at position]     
+    arc  [atribútes] cw|ccw from position to position [with .c at centre]
     
-Bez zadaného centra je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.
+    atribútes - <-|<->|-> vykreslenie šípky na konci oblúka
+    cw|ccw    - smer oblúka
+    position  - súradnice počiatočného a koncového bodu oblúka
+    centre    - súradnice stredu kružnice oblúka
+    
+Bez zadaného stedu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.
 
 
     P1: (1, 1);
@@ -276,7 +321,7 @@ Bez zadaného centra je oblúk vykreslený ako polkružnica so stredom medzi kon
         rad 0.1 at P3;                  # stred A2
         
         color_red;
-    A1: arc cw from P1 to P2            # obluk A1
+    A1: arc cw from P1 to P2            # obluk A1 bez zadaného stredu
         "A1" at A1.nw above rjust;
     L1: line from P1 to P2 dashed; 
         circle rad 0.1 at L1.c;         # stred A1

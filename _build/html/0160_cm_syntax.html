@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Makrá" href="0165_cm_makra.html" />
-    <link rel="prev" title="Terminály" href="0140_cm_konektor.html" />
+    <link rel="prev" title="Úpravy" href="0104_cm_upravy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,10 +174,10 @@
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
 <ul class="current nav bd-sidenav">
@@ -597,31 +597,31 @@ box wid 2 ht 1;
 <section id="bloky-a-zlozene-objekty">
 <h3><font color='brown'> Bloky a zložené objekty</font><a class="headerlink" href="#bloky-a-zlozene-objekty" title="Link to this heading">#</a></h3>
 <p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   d=1;
-   move to (1,1);                 # poloha zloženého objektu
-A: [                              # referencia na zložený objekt
-      d = d/2;                    # inicializacia vnutornej premennej, d -&gt; 1/2 
-      C:  circle rad d;           # lokálne Here -&gt; (0,0)
-      L1: line from C.e to C.w;
-      L2: line from C.n to C.s;
-          rr = 1;
-   ] 
-   circle at A.C.c rad d;         # pristup k vnutornej referencii pmocou A.C, d -&gt; 1
-   circle at A.C.c rad rr;        &lt;- ! chyba, rr nie je viditeľná
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   w=2;
+   move to (1,1.5);                  # poloha zloženého objektu
+A:[                                  # blok s absolutnymi suradnicami  
+     rr=0.25;                        # inicializácia vnútorných premenných 
+     h=w/2; w=w+1/2;                 # použitie vonkajšej premennej  
+ B:  box at (0,0) wid w ht h; 
+ C1: circle at (0, 0.5) rad rr; 
+ C2: circle at (0,-0.5) rad rr;
+ C3: circle at B.w rad  rr;
+ C4: circle at B.e rad rr;
+] 
 </pre></div>
 </div>
-<p>Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty <em>.s, .n .w .e</em>. Pre ukladanie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>move to (1, 1.5);
-
-A:[                                # blok s absolutnymi suradnicami  
-   B: box at (0,0) wid 2 ht 1; 
-  C1: circle at (0, 0.5) rad 0.25; 
-  C2: circle at (0,-0.5) rad 0.25;
-  C3: circle at B.w rad 0.25;
-  C4: circle at B.e rad 0.25;
-]
-color_red;                         # zobrazenie obrysu bloku
-box at A.c wid A.wid_ ht A.ht_ dashed;
+<p>Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.s   .n   .w   .e   .c
+.sw  .se  .nw  .ne
+.wid_     .ht_
+</pre></div>
+</div>
+<p>Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>r = A.rr;                            # chyba, premenná rr nie je viditeľná
+r = A.C1.rad                         # použitie vnútorných referncií
+line &lt;- from A.B.nw left_ 1 up_ 1; 
+line &lt;- from A.ne right_ 1 up_ 1;    # použitie vonkajších referencií a atribútov
+right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0160d">
@@ -686,12 +686,12 @@ for q=0 to 2*pi by 0.1 do{
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0140_cm_konektor.html"
+       href="0104_cm_upravy.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><font color='navy'> Terminály </font></p>
+        <p class="prev-next-title"><font color='navy'> Úpravy </font></p>
       </div>
     </a>
     <a class="right-next"

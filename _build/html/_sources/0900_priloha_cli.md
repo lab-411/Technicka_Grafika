@@ -162,13 +162,37 @@ def cm_compile(file_name, cm_data='', dpi=300):
 
 ### <font color='brown'> Použitie </font>
 
-Skript môžeme používať na generovanie obrázkov pomocou Pythonu, napríklad v prostredí Jupyter Lab. 
+Vytvoríme program pre Python, v ktorom v textovom (raw) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie *cm_compile()*.
+
+
+```{code-block} python
+:caption: Generovanie obrázkov v prostredí Pythonu 
+
+dat a = r'''
+.PS
+scale = 2.54     
+maxpswid = 30   
+maxpsht = 30           
+cct_init              
+
+R1: resistor(2,,E); llabel(,R_1,); 
+    dot; 
+    { 
+       R3: resistor(down_ 1.5,,E); rlabel(,R_3,);
+    }
+    capacitor(right_ 1.5,,E); llabel(,C_1,); rlabel(,10 \mu F,);
+.PE
+'''
+cm_compile('obr_010', data)
+```
+
+Skript môžeme používať aj na generovanie obrázkov priamo v prostredí *Jupyter Lab*. 
 
 ```{figure} ./img/jupyter.png
 :width: 700px
 :name: cm_0900a
 
-CircuitMacros v prostredí Jupyter Lab
+CircuitMacros v prostredí *Jupyter Lab*.
 ```
 
 

@@ -49,7 +49,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '0106_cm_prepojenia';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Úpravy" href="0104_cm_upravy.html" />
+    <link rel="next" title="Terminály" href="0140_cm_konektor.html" />
     <link rel="prev" title="Multipóly" href="0102_cm_mnohopoly.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,10 +172,10 @@
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Prepojenia </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
 <ul class="nav bd-sidenav">
@@ -381,15 +381,15 @@ define(`gnd_dot&#39;,`[ C:circle at Here rad 0.09 fill 1; ]&#39;)
 P1:(1,0.5);    P2:(1,1);   P3:(1,1.5);   DX:(0.5,0)
 P4:(0.5, 2.5); P5:(1,2.5); P6:(1.5,2.5); DY:(0,0.5)
 
-LA: line from P1 to P3; &quot;\sf LA&quot; ljust;
+LA: line from P1 to P3; 
     crossover(from P2-DX to P2+DX,,LA)
 
-LC: line from P4 to P6; &quot;\sf LC&quot; ljust;
+LC: line from P4 to P6; 
     crossover(from P5-DY to P5+DY,R,LC)
 
-GL:  gnd_line(4) at (3, 0.5);  &quot;\sf GL&quot; ljust
-Q1: line from (3, 1.0) right_ 4; &quot;\sf Q1&quot; ljust
-Q2: line from (3, 1.5) right_ 4; &quot;\sf Q2&quot; ljust
+GL:  gnd_line(4) at (3, 0.5);  
+Q1: line from (3, 1.0) right_ 4; 
+Q2: line from (3, 1.5) right_ 4; 
 
 CR: crossover(from (4,.5) to (4, 2),L,Q1, Q2); { gnd_dot() at CR.s }
 TR:  transformer(up_ 1.5,R,4,W,4) with .P1 at CR.n; line from TR.S2 to (TR.S1, TR.P2)
@@ -414,7 +414,7 @@ parametre:
     fill         - hodnota 0...1 výplne, 0-čierna, 1-biela
 </pre></div>
 </div>
-<p>Polohu prepojenia môžeme využiť aj na vyznačenie parametrov spoja</p>
+<p>Polohu prepojenia môžeme využiť aj na vyznačenie eletrických veličín v uzle zapojenia.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="n">R_1</span><span class="p">,)</span>
 <span class="hll"><span class="n">dot</span> <span class="s2">&quot;\sf 3.3V&quot;</span> <span class="n">above</span><span class="p">;</span> 
 </span><span class="p">{</span><span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span> <span class="p">,,</span><span class="n">E</span><span class="p">);</span>  <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="n">R_3</span><span class="p">,)}</span>
@@ -451,11 +451,11 @@ parametre:
       </div>
     </a>
     <a class="right-next"
-       href="0104_cm_upravy.html"
+       href="0140_cm_konektor.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><font color='navy'> Úpravy </font></p>
+        <p class="prev-next-title"><font color='navy'> Terminály </font></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

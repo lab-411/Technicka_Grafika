@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -172,10 +172,10 @@
 <li class="toctree-l1"><a class="reference internal" href="0100_cm_dvojpoly.html"><font color="navy"> Dvojpóly</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0102_cm_mnohopoly.html"><span style="color:navy"> Multipóly </span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
 <ul class="nav bd-sidenav">
@@ -514,12 +514,34 @@ rm<span class="w"> </span>template.log
 </div>
 <section id="id1">
 <h3><font color='brown'> Použitie </font><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Skript môžeme používať na generovanie obrázkov pomocou Pythonu, napríklad v prostredí Jupyter Lab.</p>
+<p>Vytvoríme program pre Python, v ktorom v textovom (raw) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie <em>cm_compile()</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 7 : </span><span class="caption-text">Generovanie obrázkov v prostredí Pythonu</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="n">a</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">.PS</span>
+<span class="s1">scale = 2.54     </span>
+<span class="s1">maxpswid = 30   </span>
+<span class="s1">maxpsht = 30           </span>
+<span class="s1">cct_init              </span>
+
+<span class="s1">R1: resistor(2,,E); llabel(,R_1,); </span>
+<span class="s1">    dot; </span>
+<span class="s1">    { </span>
+<span class="s1">       R3: resistor(down_ 1.5,,E); rlabel(,R_3,);</span>
+<span class="s1">    }</span>
+<span class="s1">    capacitor(right_ 1.5,,E); llabel(,C_1,); rlabel(,10 \mu F,);</span>
+<span class="s1">.PE</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">cm_compile</span><span class="p">(</span><span class="s1">&#39;obr_010&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Skript môžeme používať aj na generovanie obrázkov priamo v prostredí <em>Jupyter Lab</em>.</p>
 <figure class="align-default" id="cm-0900a">
 <a class="reference internal image-reference" href="_images/jupyter.png"><img alt="_images/jupyter.png" src="_images/jupyter.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 78 </span><span class="caption-text">CircuitMacros v prostredí Jupyter Lab</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 78 </span><span class="caption-text">CircuitMacros v prostredí <em>Jupyter Lab</em>.</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -48,15 +48,15 @@ define(`gnd_dot',`[ C:circle at Here rad 0.09 fill 1; ]')
 P1:(1,0.5);    P2:(1,1);   P3:(1,1.5);   DX:(0.5,0)
 P4:(0.5, 2.5); P5:(1,2.5); P6:(1.5,2.5); DY:(0,0.5)
 
-LA: line from P1 to P3; "\sf LA" ljust;
+LA: line from P1 to P3; 
     crossover(from P2-DX to P2+DX,,LA)
 
-LC: line from P4 to P6; "\sf LC" ljust;
+LC: line from P4 to P6; 
     crossover(from P5-DY to P5+DY,R,LC)
 
-GL:  gnd_line(4) at (3, 0.5);  "\sf GL" ljust
-Q1: line from (3, 1.0) right_ 4; "\sf Q1" ljust
-Q2: line from (3, 1.5) right_ 4; "\sf Q2" ljust
+GL:  gnd_line(4) at (3, 0.5);  
+Q1: line from (3, 1.0) right_ 4; 
+Q2: line from (3, 1.5) right_ 4; 
 
 CR: crossover(from (4,.5) to (4, 2),L,Q1, Q2); { gnd_dot() at CR.s }
 TR:  transformer(up_ 1.5,R,4,W,4) with .P1 at CR.n; line from TR.S2 to (TR.S1, TR.P2)
@@ -123,7 +123,7 @@ Pre vykreslenie štandarného spojenie vodičov použijeme makro *dot()*. Pokia�
         radius|keys  - parametre spoja, priemer vonkajšej kružnice
         fill         - hodnota 0...1 výplne, 0-čierna, 1-biela
 
-Polohu prepojenia môžeme využiť aj na vyznačenie parametrov spoja
+Polohu prepojenia môžeme využiť aj na vyznačenie eletrických veličín v uzle zapojenia.
 
 ```{code-block}
 :emphasize-lines: 2

@@ -340,31 +340,31 @@ _ = cm_compile('cm_0160e', data, dpi=600)
 
 Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.
 
-       d=1;
-       move to (1,1);                 # poloha zloženého objektu
-    A: [                              # referencia na zložený objekt
-          d = d/2;                    # inicializacia vnutornej premennej, d -> 1/2 
-          C:  circle rad d;           # lokálne Here -> (0,0)
-          L1: line from C.e to C.w;
-          L2: line from C.n to C.s;
-              rr = 1;
-       ] 
-       circle at A.C.c rad d;         # pristup k vnutornej referencii pmocou A.C, d -> 1
-       circle at A.C.c rad rr;        <- ! chyba, rr nie je viditeľná
+       w=2;
+       move to (1,1.5);                  # poloha zloženého objektu
+    A:[                                  # blok s absolutnymi suradnicami  
+         rr=0.25;                        # inicializácia vnútorných premenných 
+         h=w/2; w=w+1/2;                 # použitie vonkajšej premennej  
+     B:  box at (0,0) wid w ht h; 
+     C1: circle at (0, 0.5) rad rr; 
+     C2: circle at (0,-0.5) rad rr;
+     C3: circle at B.w rad  rr;
+     C4: circle at B.e rad rr;
+    ] 
 
-Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty *.s, .n .w .e*. Pre ukladanie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.
+Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty 
 
-    move to (1, 1.5);
+    .s   .n   .w   .e   .c
+    .sw  .se  .nw  .ne
+    .wid_     .ht_
+    
+Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.
 
-    A:[                                # blok s absolutnymi suradnicami  
-       B: box at (0,0) wid 2 ht 1; 
-      C1: circle at (0, 0.5) rad 0.25; 
-      C2: circle at (0,-0.5) rad 0.25;
-      C3: circle at B.w rad 0.25;
-      C4: circle at B.e rad 0.25;
-    ]
-    color_red;                         # zobrazenie obrysu bloku
-    box at A.c wid A.wid_ ht A.ht_ dashed; 
+    r = A.rr;                            # chyba, premenná rr nie je viditeľná
+    r = A.C1.rad                         # použitie vnútorných referncií
+    line <- from A.B.nw left_ 1 up_ 1; 
+    line <- from A.ne right_ 1 up_ 1;    # použitie vonkajších referencií a atribútov
+    right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 
     
 ```{code-cell} ipython3 
@@ -377,18 +377,24 @@ include(lib_base.ckt)
 include(lib_color.ckt)
 Grid(5,3);
 
-move to (1, 1.5);
-
-A:[  # absolutne suradnice v bloku 
-    B: box at (0,0) wid 2 ht 1; 
-   C1: circle at (0, 0.5) rad 0.25; 
-   C2: circle at (0,-0.5) rad 0.25;
-   C3: circle at B.w rad 0.25;
-   C4: circle at B.e rad 0.25;
-  ]
+    w=2;
+    move to (1,1.5);                  # poloha zloženého objektu
+A:[                                # blok s absolutnymi suradnicami  
+        rr=0.25;                      # vnutorne premenne
+        h=w/2; w=w+1/2;
+    B:  box at (0,0) wid w ht h; 
+    C1: circle at (0, 0.5) rad rr; 
+    C2: circle at (0,-0.5) rad rr;
+    C3: circle at B.w rad  rr;
+    C4: circle at B.e rad rr;
+] 
 
 color_red;
-box at A.c wid A.wid_ ht A.ht_ dashed;  # outer contour
+r = A.C1.rad
+line <- from A.B.nw left_ 1 up_ 1; "\sf A.B.nw" above;
+line <- from A.ne right_ 1 up_ 1; "\sf A.ne" above;
+
+right_; box at A.c wid A.wid_   ht A.ht_ dashed;
 '''
 
 _ = cm_compile('cm_0160d', data, dpi=600)   

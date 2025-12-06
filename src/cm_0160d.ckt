@@ -15,17 +15,23 @@ include(lib_base.ckt)
 include(lib_color.ckt)
 Grid(5,3);
 
-move to (1, 1.5);
-
-A:[  # absolutne suradnice v bloku 
-    B: box at (0,0) wid 2 ht 1; 
-   C1: circle at (0, 0.5) rad 0.25; 
-   C2: circle at (0,-0.5) rad 0.25;
-   C3: circle at B.w rad 0.25;
-   C4: circle at B.e rad 0.25;
-  ]
+    w=2;
+    move to (1,1.5);                  # poloha zloženého objektu
+A:[                                # blok s absolutnymi suradnicami  
+        rr=0.25;                      # vnutorne premenne
+        h=w/2; w=w+1/2;
+    B:  box at (0,0) wid w ht h; 
+    C1: circle at (0, 0.5) rad rr; 
+    C2: circle at (0,-0.5) rad rr;
+    C3: circle at B.w rad  rr;
+    C4: circle at B.e rad rr;
+] 
 
 color_red;
-box at A.c wid A.wid_ ht A.ht_ dashed;  # outer contour
+r = A.C1.rad
+line <- from A.B.nw left_ 1 up_ 1; "\sf A.B.nw" above;
+line <- from A.ne right_ 1 up_ 1; "\sf A.ne" above;
+
+right_; box at A.c wid A.wid_   ht A.ht_ dashed;
 
 .PE
