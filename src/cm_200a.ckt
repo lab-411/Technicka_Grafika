@@ -11,20 +11,21 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-include(lib_base.ckt)
-include(lib_user.ckt)
-d = 1.5;
+    d = 1.5;
 
-R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, ->, 0.2)
-R2: resistor(d,,E); rlabel(,R_2,);       larrow(u_{2}, ->, 0.2)
+R1: resistor(down_ d,,E); llabel(,R_1,); rarrow(u_{1}, ->, 0.2)
+D1: dot; {right_ tconn(,O); "A" ljust;}
+R2: resistor(down_ d,,E); llabel(,R_2,); rarrow(u_{2}, ->, 0.2);
+D2: dot; {right_ tconn(,O); "B" ljust; }
 
-move to (R1.end -(d, -d/2 ) )
-
-DC: dc_source(d, 1); rarrow(u, ->, 0.2);
-line from DC.n to (DC.n.x, R1.start.y); 
-line -> right d/2; {"\textit{i}" at last line.e above}
-line to R1.start;
-
-line from DC.s to (DC.s.x, R2.end.y) to R2.end;
+DC: source(at D1-(2,0)  up_ d); 
+   {    DCsymbol(at DC.c,,,R); 
+        "$V_0$" at DC.center -(0.6,0); 
+        rarrow(u_{0}, <-, 0.3);
+    }
+    {    line up_ to (Here, R1.start);
+         line right_ to R1.start; b_current(i,,,Start, 1.5);
+    }
+    line from DC.start to (Here, R2.end) then to R2.end;
 
 .PE

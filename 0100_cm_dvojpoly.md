@@ -498,7 +498,7 @@ Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi:
 
 2. Zadaním polohy stredu dvojpólu, smeru a velkosti 
 
-        object( at pos [dir] [length], ... );
+        object( at pos [dir [length]], ... );
 
 3. Zadaním smeru, veľkosti objektu a polohy východzieho bodu 
 

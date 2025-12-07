@@ -19,27 +19,28 @@ kernelspec:
 
 V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:
 
-* zaradenie pomocnej knižnice [lib_base.ckt](./src/lib_base.ckt) a [lib_user.ckt](./src/lib_user.ckt) do zdrojového kódu, tieto obsahujú makrá pre vykreslovanie mriežky a prvky, ktoré nie sú súčasťou distribúcie `CircuitMacros`
-* používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. Prvky zapojenia **nie sú** v tomto príklade ukladané na absolútne súradnice pracovnej plochy
-* použitie atribútov komponentov na výpočty *(x,y)* súradníc, napr. *(DC.s.x, R2.end.y)*
-* použitie príkazov *larrow* pre zobrazenie napätí na rezistoroch
-* použitie šípky *line -> * v rozdelenej čiare na zobrazenie prúdu vetvou obvodu **TODO**
+* používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. 
+* atribúty pre určenie súradníc, napr. *(Here, R2.end)*
+* príkaz *rarrow* pre zobrazenie napätí na rezistoroch
+* príkaz *b_current* pre zobrazenie prúdu obvodom
+* použitie vetiev
 
-      include(lib_base.ckt)
-      include(lib_user.ckt)
-      d = 1.5;
 
-      R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, ->, 0.2)
-      R2: resistor(d,,E); rlabel(,R_2,);       larrow(u_{2}, ->, 0.2)
-      
-      move to (R1.end -(d, -d/2 ) )  # poloha stredu zdroja vzhladom k spoju rezistorov
+        d = 1.5;
+        R1: resistor(down_ d,,E); llabel(,R_1,); rarrow(u_{1}, ->, 0.2);
+        D1: dot; {right_ tconn(,O); "A" ljust;}
+        R2: resistor(down_ d,,E); llabel(,R_2,); rarrow(u_{2}, ->, 0.2);
+        D2: dot; {right_ tconn(,O); "B" ljust; }
 
-      DC: dc_source(d, 1); rarrow(u, ->, 0.2);
-      line from DC.n to (DC.n.x, R1.start.y); 
-      line -> right d/2; {"\textit{i}" at last line.e above}
-      line to R1.start;
-
-      line from DC.s to (DC.s.x, R2.end.y) to R2.end;
+        DC: source(at D1-(2,0)  up_ d); 
+        {    DCsymbol(at DC.c,,,R); 
+            "$V_0$" at DC.center -(0.6,0); 
+            rarrow(u_{0}, <-, 0.3);
+        }
+        {    line up_ to (Here, R1.start);
+            line right_ to R1.start; b_current(i,,,Start, 1.5);
+        }
+        line from DC.start to (Here, R2.end) then to R2.end;
 
 
 ```{code-cell} ipython3 
@@ -47,31 +48,32 @@ V príklade sériového zapojenie rezistorov sú použité nasledujúce konštru
 from src.utils import *
 
 data = r'''
-include(lib_base.ckt)
-include(lib_user.ckt)
-d = 1.5;
+    d = 1.5;
 
-R1: resistor(down_ d,,E); rlabel(,R_1,); larrow(u_{1}, ->, 0.2)
-R2: resistor(d,,E); rlabel(,R_2,);       larrow(u_{2}, ->, 0.2)
- 
-move to (R1.end -(d, -d/2 ) )
+R1: resistor(down_ d,,E); llabel(,R_1,); rarrow(u_{1}, ->, 0.2)
+D1: dot; {right_ tconn(,O); "A" ljust;}
+R2: resistor(down_ d,,E); llabel(,R_2,); rarrow(u_{2}, ->, 0.2);
+D2: dot; {right_ tconn(,O); "B" ljust; }
 
-DC: dc_source(d, 1); rarrow(u, ->, 0.2);
-line from DC.n to (DC.n.x, R1.start.y); 
-line -> right d/2; {"\textit{i}" at last line.e above}
-line to R1.start;
-
-line from DC.s to (DC.s.x, R2.end.y) to R2.end;
+DC: source(at D1-(2,0)  up_ d); 
+   {    DCsymbol(at DC.c,,,R); 
+        "$V_0$" at DC.center -(0.6,0); 
+        rarrow(u_{0}, <-, 0.3);
+    }
+    {    line up_ to (Here, R1.start);
+         line right_ to R1.start; b_current(i,,,Start, 1.5);
+    }
+    line from DC.start to (Here, R2.end) then to R2.end;
 '''
 
 _ = cm_compile('cm_200a', data,  dpi=600)   
 ```
 
 ```{figure} ./src/cm_200a.png
-:width: 200px
+:width: 230px
 :name: cm_200a
 
-[Príklad](./src/cm_200a.ckt) sériového zapojenia rezistorov.
+[Príklad](./src/cm_200a.ckt) zapojenia s popísaním veličín v obvode.
 ```
 
 ## <font color='teal'> Konfigurácia hviezda - trojuholník </font> 
@@ -177,6 +179,95 @@ _ = cm_compile('cm_200b', data,  dpi=600)
 [Zapojenie](./src/cm_200b.ckt) konfigurácie hviezda-trojuholník.
 ```
 
+## <font color='teal'> Jednoduché rádio </font> 
+
+V príklade je použité makro *gnd()* pre vykreslenie alternatívnej značky zeme. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia *with ... at ..*.
+
+```{code-block}
+:emphasize-lines: 2,3,4,5,6,7,8,27
+# makro pre vykreslenie 'europskej' zeme
+define(`gnd',`[
+    ifelse(defn(`d'),  $1, d=1/4,  d=$1)
+    L: line from Here to Here + (0, -d)
+    linethick_(2);
+    line from L.end + (-1/4, 0) to L.end + (1/4, 0);
+    linethick_();
+]')
+
+TR: transformer(down_ 1.25,L,7,AW,4);
+    llabel(,L_3,); rlabel(,L_1,);    
+
+    linethick_(1.5)              # jadro transformatora
+    line at TR.c up_ 1 dashed    # hrubšia čiara
+    linethick_()                 # onovenie pôvodnej hrúbky
+
+C:  capacitor(from TR.P2 down_ 0.75); rlabel(,C_3,); variable(,A);
+G:  gnd();
+
+    line from TR.S2 to (TR.S2, C.end)
+    gnd;
+   
+    line from TR.S1 up_ 0.25 then right_ 0.25;
+    diode(1); llabel(,D,);
+LL: line right_ 0.25 then down_ 0.5; 
+
+EP: earphone() with .Box.n at LL.end; llabel(,Sl,);
+    line from EP.Box.s to (EP.Box.s, C.end);
+    gnd;
+
+    line from TR.P1 up_ 0.5; antenna()
+```
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+define(`gnd',`[
+    ifelse(defn(`d'),  $1, d=1/4,  d=$1)
+    L: line from Here to Here + (0, -d)
+    linethick_(2);
+    line from L.end + (-1/4, 0) to L.end + (1/4, 0);
+    linethick_();
+]')
+
+
+TR: transformer(down_ 1.25,L,7,AW,4);
+    llabel(,L_3,); rlabel(,L_1,);    
+
+
+linethick_(1.5)    # core
+line at TR.c up_ 1 dashed
+linethick_()
+
+C: capacitor(from TR.P2 down_ 0.75); rlabel(,C_3,); variable(,A);
+G: gnd();
+
+line from TR.S2 to (TR.S2, C.end)
+gnd;
+line from TR.S1 up_ 0.25 then right_ 0.25;
+diode(1); llabel(,D,);
+LL: line right_ 0.25 then down_ 0.5; 
+
+EP: earphone() with .Box.n at LL.end; llabel(,Sl,);
+line from EP.Box.s to (EP.Box.s, C.end);
+gnd;
+
+line from TR.P1 up_ 0.5; antenna()
+'''
+
+_ = cm_compile('cm_200d', data,  dpi=600)   
+```
+
+```{figure} ./src/cm_200d.png
+:width: 200px
+:name: cm_200d
+
+[Zapojenie](./src/cm_200d.ckt) jednoduchého rádia. 
+```
+
+
+
 
 ## <font color='teal'> Štvorpól </font> 
 
@@ -253,7 +344,7 @@ _ = cm_compile('cm_200c', data,  dpi=600)
 ```
 
 ```{figure} ./src/cm_200c.png
-:width: 500px
+:width: 450px
 :name: cm_200c
 
 [Zapojenie](./src/cm_200c.ckt) štvorpólu.

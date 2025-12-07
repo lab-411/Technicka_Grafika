@@ -1,0 +1,46 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+define(`gnd',`[
+    ifelse(defn(`d'),  $1, d=1/4,  d=$1)
+    L: line from Here to Here + (0, -d)
+    linethick_(2);
+    line from L.end + (-1/4, 0) to L.end + (1/4, 0);
+    linethick_();
+]')
+
+
+TR: transformer(down_ 1.25,L,7,AW,4);
+    llabel(,L_3,); rlabel(,L_1,);    
+
+
+linethick_(1.5)    # core
+line at TR.c up_ 1 dashed
+linethick_()
+
+C: capacitor(from TR.P2 down_ 0.75); rlabel(,C_3,); variable(,A);
+G: gnd();
+
+line from TR.S2 to (TR.S2, C.end)
+gnd;
+line from TR.S1 up_ 0.25 then right_ 0.25;
+diode(1); llabel(,D,);
+LL: line right_ 0.25 then down_ 0.5; 
+
+EP: earphone() with .Box.n at LL.end; llabel(,Sl,);
+line from EP.Box.s to (EP.Box.s, C.end);
+gnd;
+
+line from TR.P1 up_ 0.5; antenna()
+
+.PE
