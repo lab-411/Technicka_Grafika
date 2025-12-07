@@ -144,13 +144,6 @@ Reťazec *name* je nahradený reťazcom *expansion*, typ úvodzoviek v makre je 
 
 Vytvorenie a použitie makra.
 ```
-    
-```{admonition} Poznámka
-
-Substitučné reťazce v makrách `m4` začínajú znakom spätného apostrofu `chr(96)` a končia znakom apostrofu `chr(39)`. Textové reťazce v jazyku `dpic` začínajú a končia úvodzovkami `"`.
-
-<img src="./img/keyb.png" width="700px" >
-```
 
 Makro môže mať argumenty, tieto sú označované ako \$1, \$2 ... , špeciálny význam má argument označený ako \$0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami
 
@@ -160,6 +153,14 @@ Makro môže mať argumenty, tieto sú označované ako \$1, \$2 ... , špeciál
     define(`exc', `$1.y, $1.x')           # vymena zložiek súradnice
     P: (3,1)
     sprintf("(%2.0f, %2.0f)", exc(P))     # --> (1,3) 
+    
+    
+```{admonition} Poznámka
+
+Substitučné reťazce v makrách `m4` začínajú znakom spätného apostrofu `chr(96)` a končia znakom apostrofu `chr(39)`. Textové reťazce v jazyku `dpic` začínajú a končia úvodzovkami `"`.
+
+<img src="./img/keyb.png" width="700px" >
+```
 
     
 ## <font color='teal'> Vytvorenie makra  </font>

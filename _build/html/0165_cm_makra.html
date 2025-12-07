@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -186,7 +186,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Príklady</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> Pasívne obvody  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> RLC obvody  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
@@ -386,7 +386,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_0165a.png"><img alt="_images/cm_0165a.png" src="_images/cm_0165a.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Postup generovania obrázkov.</span><a class="headerlink" href="#cm-0165a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 52 </span><span class="caption-text">Postup generovania obrázkov.</span><a class="headerlink" href="#cm-0165a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -419,15 +419,9 @@ document.write(`
 <a class="reference internal image-reference" href="_images/pck_03.png"><img alt="_images/pck_03.png" src="_images/pck_03.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 52 </span><span class="caption-text">Vytvorenie a použitie makra.</span><a class="headerlink" href="#pck-03" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Vytvorenie a použitie makra.</span><a class="headerlink" href="#pck-03" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition-poznamka admonition">
-<p class="admonition-title">Poznámka</p>
-<p>Substitučné reťazce v makrách <code class="docutils literal notranslate"><span class="pre">m4</span></code> začínajú znakom spätného apostrofu <code class="docutils literal notranslate"><span class="pre">chr(96)</span></code> a končia znakom apostrofu <code class="docutils literal notranslate"><span class="pre">chr(39)</span></code>. Textové reťazce v jazyku <code class="docutils literal notranslate"><span class="pre">dpic</span></code> začínajú a končia úvodzovkami <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>.</p>
-<a class="reference internal image-reference" href="_images/keyb.png"><img alt="_images/keyb.png" src="_images/keyb.png" style="width: 700px;" />
-</a>
-</div>
 <p>Makro môže mať argumenty, tieto sú označované ako $1, $2 … , špeciálny význam má argument označený ako $0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`exr&#39;, `$2, $1&#39;)               # zamena poradia argumentov 
 exr(abc, 123)                         # --&gt;  123, abc
@@ -436,6 +430,12 @@ define(`exc&#39;, `$1.y, $1.x&#39;)           # vymena zložiek súradnice
 P: (3,1)
 sprintf(&quot;(%2.0f, %2.0f)&quot;, exc(P))     # --&gt; (1,3) 
 </pre></div>
+</div>
+<div class="admonition-poznamka admonition">
+<p class="admonition-title">Poznámka</p>
+<p>Substitučné reťazce v makrách <code class="docutils literal notranslate"><span class="pre">m4</span></code> začínajú znakom spätného apostrofu <code class="docutils literal notranslate"><span class="pre">chr(96)</span></code> a končia znakom apostrofu <code class="docutils literal notranslate"><span class="pre">chr(39)</span></code>. Textové reťazce v jazyku <code class="docutils literal notranslate"><span class="pre">dpic</span></code> začínajú a končia úvodzovkami <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>.</p>
+<a class="reference internal image-reference" href="_images/keyb.png"><img alt="_images/keyb.png" src="_images/keyb.png" style="width: 700px;" />
+</a>
 </div>
 </section>
 <section id="vytvorenie-makra">
@@ -519,7 +519,7 @@ dot;
 <a class="reference internal image-reference" href="_images/cm_0165c.png"><img alt="_images/cm_0165c.png" src="_images/cm_0165c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 53 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f7c6fb080c73d298efb6d49c8fc0a5b0/cm_0165c.ckt"><span class="xref download myst">Implementácia</span></a> makra pre zobrazenie spínača a jeho použitie</span><a class="headerlink" href="#cm-0165c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 54 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f7c6fb080c73d298efb6d49c8fc0a5b0/cm_0165c.ckt"><span class="xref download myst">Implementácia</span></a> makra pre zobrazenie spínača a jeho použitie</span><a class="headerlink" href="#cm-0165c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition-konflikt-mien admonition">
@@ -546,7 +546,7 @@ dot;
 <a class="reference internal image-reference" href="_images/cm_0165d.png"><img alt="_images/cm_0165d.png" src="_images/cm_0165d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 54 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d63bbde779cb705b988b16b9cda2653f/cm_0165d.ckt"><span class="xref download myst">Príklad</span></a> použitia modifikovaných makier.</span><a class="headerlink" href="#cm-0165d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 55 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d63bbde779cb705b988b16b9cda2653f/cm_0165d.ckt"><span class="xref download myst">Príklad</span></a> použitia modifikovaných makier.</span><a class="headerlink" href="#cm-0165d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

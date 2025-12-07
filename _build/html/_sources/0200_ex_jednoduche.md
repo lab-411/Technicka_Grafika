@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 
-# <font color='navy'> Pasívne obvody  </font> 
+# <font color='navy'> RLC obvody  </font> 
 
 ## <font color='teal'>  Odporový delič </font> 
 

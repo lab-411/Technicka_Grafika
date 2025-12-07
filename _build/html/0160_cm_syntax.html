@@ -188,7 +188,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Príklady</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> Pasívne obvody  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> RLC obvody  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
@@ -354,7 +354,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komentare"><font color="brown"> Komentáre </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodnoty"><font color="brown"> Hodnoty </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne"><font color="brown"> Premenné </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suradnice"><font color="brown"> Súradnice </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suradnice"><font color="brown"> Súradnice </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vytvorenie-suradnice"><font color="purple"> Vytvorenie súradnice </font></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorove-operacie"><font color="purple"> Vektorové operácie </font></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poloha-medzi-dvoma-bodmi"><font color="purple"> Poloha medzi dvoma bodmi </font></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textove-retazce"><font color="brown"> Textové reťazce </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
@@ -413,7 +418,7 @@ resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorované <strong>pred</strong> argumentom, nie ale <strong>za</strong> argumentom.</p>
+<p>White-space (tabulátory, medzery, znak nového riadku) sú vo v argumentoch makier ignorované <strong>pred</strong> argumentom, nie ale <strong>za</strong> argumentom.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name( x,
 y, z )
     
@@ -443,52 +448,47 @@ q  = 2*pi*8;
 unárne aritmetické operácie
 +=   -=   *=   /=   %=
 
-logické operácie 
+relačné operácie 
 !=   ==   &lt;   &gt;   &gt;=   &lt;=   ||   &amp;&amp;
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pretože <em>dpic</em> používa pre numerické hodnoty výhradne čísla typu <em>floating point</em>, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt súradníc je vyhodnotená vetva False</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor
+up_
+R2: resistor     # R1 a R2 majú rovnakú x-ovú súradnicu
+
+if R1.x == R2.x then 
+   { ...  }      # vetva True      
+   { ...  }      # vetva False -  
+</pre></div>
+</div>
 </div>
 </section>
 <section id="suradnice">
 <h3><font color='brown'> Súradnice </font><a class="headerlink" href="#suradnice" title="Link to this heading">#</a></h3>
-<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná sŕadnica <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty <em>.x</em>, <em>.y</em>, ktoré reprezentujú numerické hodnoty zložiek polohy.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p1 = (3,4);    - chyba   
-Q1: (3,4);     - vytvorenie súradnice 
-
-a = 1; b = 2;  - konverzia numerických hodnôt na súradnice 
-Q2 = (a, b);
-Q3 = (a, 0);
-</pre></div>
-</div>
-<p>Pre súradnice sú definované vektorové operácie, výsledkom vektorovej operácie je zase súradnica</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1:(a,b)
-P2:(c,d)
-
-numerické operácie po zložkách, pre násobenie a delenie je platná post-multiplikacia
-(a,b) + (c,d)     P1 + P2     P1 + (c,d)
-(a,b) - (c,d)     P1 - P2
-(a,b)*k           P1*k        k - numerická hodnota alebo premenná
-(a,b)/k           P1/k
-
-priradenie výsledku operácie novej referencii
-P3: P1 + P2
+<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná súadnica <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty <em>.x</em>, <em>.y</em>, ktoré reprezentujú numerické hodnoty zložiek polohy. Pre prácu so súradnicami sú definované vektorové operácie.</p>
+<section id="vytvorenie-suradnice">
+<h4><font color='purple'> Vytvorenie súradnice </font><a class="headerlink" href="#vytvorenie-suradnice" title="Link to this heading">#</a></h4>
+<p>Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou iných súradníc.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1: (3,4);      # vytvorenie súradnice bodu
+p1 = (3,4);     # chyba   
 
 
-prístup k zložkám
-px = P1.x     - numerická hodnota x-ovej súradnice
-py = P1.y     - numerická hodnota y-ovej súradnice
+a = 1; b = 2;   # konverzia numerických hodnôt na súradnice 
+P2 = (a, b);
+P3 = (a, 0);    # bod na osi x
 
-(P1, P2) - ekvivalent (P1.x, P2.y)
-</pre></div>
-</div>
-<p>Pri použití relačných operátorov na súradnice bodov treba príslušnú operáciu realizovať po zložkách</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1 &gt; P2         - chyba
-P1.x &gt; P2.x          
-</pre></div>
-</div>
-<p>Aktuálna poloha virtuálneho kurzoru na ploche <code class="docutils literal notranslate"><span class="pre">Here</span></code> je tiež súradnicou</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P4: Here + (a,b)  
-px = Here.x
-py = Here.y
+                # prístup k zložkám súradnice
+px = P1.x       # numerická hodnota x-ovej súradnice
+py = P1.y       # numerická hodnota y-ovej súradnice
+nx = Here.x     # hodnoty aktuálnej pozície
+ny = Here.y
+
+P4: (P1, P2)    # ekvivalent (P1.x, P2.y)
+P5: P4          # nová súradnica 
+P5: P1          # redefinícia súradnice
 </pre></div>
 </div>
 <div class="admonition-poznamka admonition">
@@ -499,6 +499,43 @@ line to (1,1);
 </pre></div>
 </div>
 </div>
+</section>
+<section id="vektorove-operacie">
+<h4><font color='purple'> Vektorové operácie </font><a class="headerlink" href="#vektorove-operacie" title="Link to this heading">#</a></h4>
+<p>Výsledkom vektorovej operácie nad súradnicami je zase súradnica. Pre násobenie a delenie je platná len post-multiplikacia.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>S1: (a,b) + (c,d)      # súčet   
+S2: P1 + P2
+S3: P1 + (c,d)
+S4: Here + (dx,dy)     # offset k aktuálnej polohe
+
+D1: (a,b) - (c,d)      # rozdiel 
+D2: P1 - P2
+D3: P1 - (c,d)
+
+M1: (a,b)*k            # násobenie, k - numerická hodnota alebo premenná
+M2: P1*k
+M3: k*P1               # chyba
+
+Q1: (a,b)/k            # delenie       
+Q2: P1/k
+</pre></div>
+</div>
+</section>
+<section id="poloha-medzi-dvoma-bodmi">
+<h4><font color='purple'> Poloha medzi dvoma bodmi </font><a class="headerlink" href="#poloha-medzi-dvoma-bodmi" title="Link to this heading">#</a></h4>
+<p>Pri kreslení zapojení často potrebujeme určiť polohu medzi dvoma bodmi, v <em>dpic</em> môžeme použiť konštrukciu <em>between</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PB: k between P1 and P2  
+</pre></div>
+</div>
+<p>Hodnota <em>k</em> určuje relatívnu vzdialenosť ku koncovým bodom, <em>k=0.5</em> je stredom, <em>k=0</em> a <em>k=1</em> sú polohy koncových bodov. Pri hodnote <em>k</em> mimo intervalu <em>0…1</em> leží za krajnými bodmi <em>P1</em> a <em>P2</em>.</p>
+<figure class="align-default" id="cm-0160k">
+<a class="reference internal image-reference" href="_images/cm_0160k.png"><img alt="_images/cm_0160k.png" src="_images/cm_0160k.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text">Použitie konštrukcie <em>between</em>.</span><a class="headerlink" href="#cm-0160k" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="textove-retazce">
 <h3><font color='brown'> Textové reťazce </font><a class="headerlink" href="#textove-retazce" title="Link to this heading">#</a></h3>
@@ -541,7 +578,7 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
 <a class="reference internal image-reference" href="_images/cm_0160c.png"><img alt="_images/cm_0160c.png" src="_images/cm_0160c.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 46 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/65e7b3d689abb312ea6ab84dccbe31b9/cm_0160c.ckt"><span class="xref download myst">Použitie</span></a> referencií pre výpočtu koncového bodu čiary.</span><a class="headerlink" href="#cm-0160c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 47 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/65e7b3d689abb312ea6ab84dccbe31b9/cm_0160c.ckt"><span class="xref download myst">Použitie</span></a> referencií pre výpočtu koncového bodu čiary.</span><a class="headerlink" href="#cm-0160c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -570,7 +607,7 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
 <a class="reference internal image-reference" href="_images/cm_0160f.png"><img alt="_images/cm_0160f.png" src="_images/cm_0160f.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 47 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-160f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 48 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-160f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia.</p>
@@ -590,7 +627,7 @@ box wid 2 ht 1;
 <a class="reference internal image-reference" href="_images/cm_0160e.png"><img alt="_images/cm_0160e.png" src="_images/cm_0160e.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 48 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bbbb196dc5458c509df3c097baf05f04/cm_0160e.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0160e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 49 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bbbb196dc5458c509df3c097baf05f04/cm_0160e.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0160e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -628,7 +665,7 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <a class="reference internal image-reference" href="_images/cm_0160d.png"><img alt="_images/cm_0160d.png" src="_images/cm_0160d.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 49 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0160d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 50 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0160d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -660,7 +697,7 @@ for q=0 to 2*pi by 0.1 do{
 <a class="reference internal image-reference" href="_images/cm_0160b.png"><img alt="_images/cm_0160b.png" src="_images/cm_0160b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 50 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 51 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -723,7 +760,12 @@ for q=0 to 2*pi by 0.1 do{
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komentare"><font color="brown"> Komentáre </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hodnoty"><font color="brown"> Hodnoty </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premenne"><font color="brown"> Premenné </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suradnice"><font color="brown"> Súradnice </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suradnice"><font color="brown"> Súradnice </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vytvorenie-suradnice"><font color="purple"> Vytvorenie súradnice </font></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vektorove-operacie"><font color="purple"> Vektorové operácie </font></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poloha-medzi-dvoma-bodmi"><font color="purple"> Poloha medzi dvoma bodmi </font></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textove-retazce"><font color="brown"> Textové reťazce </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>

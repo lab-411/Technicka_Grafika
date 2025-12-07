@@ -52,7 +52,7 @@ Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie
       a jeho pokracovanie na dalsom riadku
 
 ```{warning} 
-White-space (tabulátory, medzery, znak nového riadku) sú vo výrazoch ignorované **pred** argumentom, nie ale **za** argumentom. 
+White-space (tabulátory, medzery, znak nového riadku) sú vo v argumentoch makier ignorované **pred** argumentom, nie ale **za** argumentom. 
 
     name( x,
     y, z )
@@ -83,54 +83,49 @@ Pre premenné sú definované numerické a logické operácie
     unárne aritmetické operácie
     +=   -=   *=   /=   %=
     
-    logické operácie 
+    relačné operácie 
     !=   ==   <   >   >=   <=   ||   &&
     
 
+```{warning} 
+Pretože *dpic* používa pre numerické hodnoty výhradne čísla typu *floating point*, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt súradníc je vyhodnotená vetva False 
+
+    R1: resistor
+    up_
+    R2: resistor     # R1 a R2 majú rovnakú x-ovú súradnicu
+    
+    if R1.x == R2.x then 
+       { ...  }      # vetva True      
+       { ...  }      # vetva False -  
+
+```
+    
 ### <font color='brown'> Súradnice </font>
     
-Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná sŕadnica `Here`, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty *.x*, *.y*, ktoré reprezentujú numerické hodnoty zložiek polohy.
+Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná súadnica `Here`, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty *.x*, *.y*, ktoré reprezentujú numerické hodnoty zložiek polohy. Pre prácu so súradnicami sú definované vektorové operácie.
 
+#### <font color='purple'> Vytvorenie súradnice </font>
 
-    p1 = (3,4);    - chyba   
-    Q1: (3,4);     - vytvorenie súradnice 
-    
-    a = 1; b = 2;  - konverzia numerických hodnôt na súradnice 
-    Q2 = (a, b);
-    Q3 = (a, 0);
-    
-Pre súradnice sú definované vektorové operácie, výsledkom vektorovej operácie je zase súradnica
+Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou iných súradníc.
 
-    P1:(a,b)
-    P2:(c,d)
-    
-    numerické operácie po zložkách, pre násobenie a delenie je platná post-multiplikacia
-    (a,b) + (c,d)     P1 + P2     P1 + (c,d)
-    (a,b) - (c,d)     P1 - P2
-    (a,b)*k           P1*k        k - numerická hodnota alebo premenná
-    (a,b)/k           P1/k
-    
-    priradenie výsledku operácie novej referencii
-    P3: P1 + P2
+    P1: (3,4);      # vytvorenie súradnice bodu
+    p1 = (3,4);     # chyba   
     
     
-    prístup k zložkám
-    px = P1.x     - numerická hodnota x-ovej súradnice
-    py = P1.y     - numerická hodnota y-ovej súradnice
+    a = 1; b = 2;   # konverzia numerických hodnôt na súradnice 
+    P2 = (a, b);
+    P3 = (a, 0);    # bod na osi x
     
-    (P1, P2) - ekvivalent (P1.x, P2.y)
-
-Pri použití relačných operátorov na súradnice bodov treba príslušnú operáciu realizovať po zložkách
-
-    P1 > P2         - chyba
-    P1.x > P2.x          
-
-Aktuálna poloha virtuálneho kurzoru na ploche `Here` je tiež súradnicou 
-
-    P4: Here + (a,b)  
-    px = Here.x
-    py = Here.y
-
+                    # prístup k zložkám súradnice
+    px = P1.x       # numerická hodnota x-ovej súradnice
+    py = P1.y       # numerická hodnota y-ovej súradnice
+    nx = Here.x     # hodnoty aktuálnej pozície
+    ny = Here.y
+    
+    P4: (P1, P2)    # ekvivalent (P1.x, P2.y)
+    P5: P4          # nová súradnica 
+    P5: P1          # redefinícia súradnice
+    
     
 ```{admonition} Poznámka
 Je možné používať súradnice zapísané aj bez zátvoriek v tvare *x*, *y*, ale z dôvodu možných konfliktov pri expanzii makier je vhodnejší prehľadnejší zápis so zátvorkami *(x, y)*.
@@ -138,6 +133,69 @@ Je možné používať súradnice zapísané aj bez zátvoriek v tvare *x*, *y*,
     line to 1,1
     line to (1,1);
 ```
+   
+#### <font color='purple'> Vektorové operácie </font>
+
+Výsledkom vektorovej operácie nad súradnicami je zase súradnica. Pre násobenie a delenie je platná len post-multiplikacia.
+    
+    S1: (a,b) + (c,d)      # súčet   
+    S2: P1 + P2
+    S3: P1 + (c,d)
+    S4: Here + (dx,dy)     # offset k aktuálnej polohe
+    
+    D1: (a,b) - (c,d)      # rozdiel 
+    D2: P1 - P2
+    D3: P1 - (c,d)
+    
+    M1: (a,b)*k            # násobenie, k - numerická hodnota alebo premenná
+    M2: P1*k
+    M3: k*P1               # chyba
+    
+    Q1: (a,b)/k            # delenie       
+    Q2: P1/k
+
+
+#### <font color='purple'> Poloha medzi dvoma bodmi </font>
+
+Pri kreslení zapojení často potrebujeme určiť polohu medzi dvoma bodmi, v *dpic* môžeme použiť konštrukciu *between*
+
+    PB: k between P1 and P2  
+    
+Hodnota *k* určuje relatívnu vzdialenosť ku koncovým bodom, *k=0.5* je stredom, *k=0* a *k=1* sú polohy koncových bodov. Pri hodnote *k* mimo intervalu *0...1* leží za krajnými bodmi *P1* a *P2*.
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+Grid(7,3.5)
+P1: (1, 0.5)
+P2: (5,2)
+D1: dot(at P1) "\small \sf P1" above;
+D2: dot(at P2) "\small \sf P2" above;
+line from P1 to P2
+color_red;
+X1: 0.5 between P1 and P2; dot(at X1) "\small \sf 0.5 between P1 and P2" ljust below
+color_blue;
+X2: 0.75 between P1 and P2; dot(at X2) "\small \sf 0.75 between P1 and P2" rjust above
+color_dark_cyan;
+X3: 1.35 between P1 and P2; dot(at X3) "\small \sf 1.35 between P1 and P2" rjust above
+'''
+
+_ = cm_compile('cm_0160k', data,  dpi=600)   
+```
+
+```{figure} ./src/cm_0160k.png
+:width: 450px
+:name: cm_0160k
+
+Použitie konštrukcie *between*.
+```
+
+
     
 ### <font color='brown'> Textové reťazce </font>
     
@@ -222,8 +280,6 @@ _ = cm_compile('cm_0160c', data,  dpi=600)
 
 [Použitie](./src/cm_0160c.ckt) referencií pre výpočtu koncového bodu čiary.
 ```
-
-
 
 
 ### <font color='brown'>  Vetvy  </font>
