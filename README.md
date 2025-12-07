@@ -4,7 +4,7 @@
 
 Učebný text je určený záujemcom o tvorbu profesionálnej grafiky pre publikácie z oblasti eletroniky pomocou [CircuitMacros](https://ece.uwaterloo.ca/~aplevich/Circuit_macros/). Popisuje základné postupy pri kreslení zapojení elektronických obvodov, spôsoby vytvárania makier pre tvorbu vlastných komponentov a príklady použitia knižníc. Zdrojové kódy knihy sú vytvorené v jazyku Markdown na platforme Sphinx.
 
-# Programmatic creation of technical graphics
+# Software creation of technical graphics
 
 ## Description
 
