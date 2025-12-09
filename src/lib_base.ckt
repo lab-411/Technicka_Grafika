@@ -11,10 +11,16 @@
 #-----------------------------------------------------------------------
 define(`gnd',`[
     ifelse(defn(`d'),  $1, d=1/4,  d=$1)
-    L: line from Here to Here + (0, -d)
-    linethick = 2;
-    w=1;
-    line from L.end + (-w/4, 0) to L.end + (w/4, 0);
+    dir = index(`DULR',$2)
+    w=1/4;
+    if dir <= 0 then { DD: ( 0,-d); WW: (-w, 0); }
+    if dir == 1 then { DD: ( 0, d); WW: ( w, 0);}
+    if dir == 2 then { DD: (-d, 0); WW: ( 0, w);}
+    if dir == 3 then { DD: ( d, 0); WW: ( 0,-w);}
+
+    L: line from Here to Here + DD;
+    linethick_(2);
+    line from L.end + WW to L.end -WW
 ]')
 
 #=======================================================================

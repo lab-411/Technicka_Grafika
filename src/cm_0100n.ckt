@@ -1,0 +1,41 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_user.ckt)
+
+move to (1,0)
+VR1: vres_v(1.5,V,L);
+     { 
+       "\sf 50k" at VR1.w;
+       line from VR1.S down_ 0.5  
+     }
+
+move to 2.5,0
+VR2: vres_v(1.5,P,L); line from VR2.s down 0.25
+
+move to 4,0; right_
+VR3: vres_v(1.5,T,R);
+{ 
+       "\sf 25k" at VR3.w;
+       line from VR3.S down_ 0.5  
+     }
+
+move to 5.5,0; 
+VR4: vres_v(1.5,S,L); line from VR4.s down 0.25
+
+right_
+move to 7,0
+VC1: vcap_v(1.5, R); line from VC1.S right_ 1 dashed; 
+
+.PE

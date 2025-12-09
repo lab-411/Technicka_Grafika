@@ -181,13 +181,13 @@ Pri tvorbe  makier pre kreslenie vlastných prvkov zapojenia môžeme využiť n
         # vyber indexu 0...3 z preddefinovanej množiny parametrov L R U P 
         # pri neexistujucej ma index hodnotu -1
         
-        par2 = index(`LRUD', $3)
+        par2 = index(`LRUD', $2)
 
         # vyhodnotenie pre hodnoty parametra podla hodnoty indexu
-        if <= 0 then  { line -> left_  par1; } 
-        if == 1 then  { line -> right_ par1; }
-        if == 2 then  { line -> up_    par1; } 
-        if == 3 then  { line -> down_  par1; } 
+        if par2 <= 0 then  { line -> left_  par1; } 
+        if par2 == 1 then  { line -> right_ par1; }
+        if par2 == 2 then  { line -> up_    par1; } 
+        if par2 == 3 then  { line -> down_  par1; } 
     ]')
 
 Makro *defn()* v predlohe vytvorí premennú *par1* a skontroluje existenciu  argumentu \$1, ak tento neexistuje, *ifelse* priradí *par1=1*, ak existuje, tak potom jej priradí hodnotu *par1=\$1*. Premenná *par2* je inicializovaná hodnotou indexu z poľa dovolených parametrov. Makro pri použití pokrýva nasledujúce prípady

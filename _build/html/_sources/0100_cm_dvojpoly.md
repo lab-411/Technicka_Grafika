@@ -650,7 +650,121 @@ _ = cm_compile('cm_0100g', data, dpi=600)
 
 [Zobrazenie](./src/cm_0100g.ckt) premenných prvkov.
 ```
+V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh.
     
+```{figure} ./img/radio_325.jpg
+:width: 600px
+
+Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.
+```
+
+Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici [lib_user](./src/lib_user.ckt) definované makrá *vres_v()* a *vcap_v()* 
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_user.ckt)
+
+move to (1,0)
+VR1: vres_v(1.5,V,L);
+     { 
+       "\sf 50k" at VR1.w;
+       line from VR1.S down_ 0.5  
+     }
+
+move to 2.5,0
+VR2: vres_v(1.5,P,L); line from VR2.s down 0.25
+
+move to 4,0; right_
+VR3: vres_v(1.5,T,R);
+{ 
+       "\sf 25k" at VR3.w;
+       line from VR3.S down_ 0.5  
+     }
+
+move to 5.5,0; 
+VR4: vres_v(1.5,S,L); line from VR4.s down 0.25
+
+right_
+move to 7,0
+VC1: vcap_v(1.5, R); line from VC1.S right_ 1 dashed; 
+'''
+
+_ = cm_compile('cm_0100n', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0100n.png
+:width: 450px
+:name: cm_0100n
+
+Zobrazenie upravených premenných prvkov z knižnice *lib_user*.
+```
+
+Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v `CircuitMacros`, bolo pre ich zobrazenie definované nové makro *res()*
+
+    define(`res', `ebox($1, 0.8);')
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_user.ckt)
+
+VR1: vres_v(1.5,V,R); "\sf 50k" at VR1.w below; {line from VR1.n left_ 1;}
+     gnd(0.1) at VR1.R.end 
+     line from VR1.S right_ 0.5; DT1: dot; 
+     line 0.25; Q0:circle rad 0.08
+
+T1:  bjt_NPN(1.5,0.8,,N) with .B at last circle.e;
+     Q1: circle with .n at T1.E rad 0.08;
+     DT2: dot(at T1.C)
+
+T2:  bjt_NPN(0.6,,,N); line from T2.E to (T2.E, Q1.n)
+     Q2: circle with .n at last line.end rad 0.08;
+     line from T2.C right_ 0.5;
+     Q3: circle rad 0.08;
+     down_; move to Q2.s; gnd(0.5);
+
+     res(from DT1 up_ 3, E); llabel(,\sf M1,)
+VR2: vres_v(1.75,P,L); "\sf 1M" at VR2.w;
+     res(from DT2 up_ 1.75, E); rlabel(,\sf 3k5,)
+     DT3: dot; {line left_ 3; }; line 0.5;
+     Q4: circle rad 0.08;
+     line up_ 0.5; DT4: dot;
+     {res(right_ 1.5); llabel(,\sf 350,); gnd(0.25, R); }
+     res(up_ 1.5); llabel(,\sf 1k,); DT5: dot;
+     
+     line from VR2.n to (VR2, DT5); DT6: dot;
+     right_;res(from DT5 to DT6,E); llabel(,\sf 330,)
+     capacitor(from DT6 left_ 1.2,+K,, 0.4, 0.25); llabel(,\sf 50M,); gnd(.15,L);
+     line from DT5 right_ 2;
+
+# MAA325 box 
+    line from Q1.w to (Q0,Q1) then to Q0.s dashed;
+    line from Q0.n to (Q0,Q4) then to Q4.w dashed;
+    line from Q4.e to (Q3,Q4) then to Q3.n dashed;
+    line from Q3.s to (Q3,Q2) then to Q2.e dashed;
+    line from Q2.w to Q1.e dashed; 
+'''
+
+_ = cm_compile('cm_0100m', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0100m.png
+:width: 220px
+:name: cm_0100m
+
+[Použitie](./src/cm_0100m.ckt) premenných prvkov v časti zapojenia rádia.
+```
 
 ### <font color='brown'> Prúd dvojpólom  </font>
 

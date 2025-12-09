@@ -27,7 +27,7 @@ define(`ac_source',`[
     line from CX.n to Q.n;
 ]')
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # DC source
 # krajsie zobrazenie
 # dc_source(d, r, P)
@@ -59,73 +59,7 @@ define(`dc_source',`[
 ]')
 
 
-#-----------------------------------------------------------------------
-# register 32 bit horizontal
-#-----------------------------------------------------------------------
-define(`reg32_h',`[
-    right;
-    boxrad=0.1;
-    w=0.5
-    h=0.5
-    color_light_grey;
-    BD: box ht h wid 7*w;
-    color_black;
-    move to BD.w
-    box ht h wid w; {"31" at last box.c}
-    box ht h wid w; {"30" at last box.c}
-    box ht h wid w; {"29" at last box.c}
-    box ht h wid w invis; {"..." at last box.c} 
-    box ht h wid w; {"2" at last box.c}
-    box ht h wid w; {"1" at last box.c}
-    box ht h wid w; {"0" at last box.c}
-]')
-
-#-----------------------------------------------------------------------
-# register 32 bit vertical
-#-----------------------------------------------------------------------
-define(`reg32_v',`[
-    down;
-    boxrad=0.1;
-    w=0.5
-    h=0.5
-    color_grey;
-    BD: box ht 7*h wid w;
-    color_black;
-    move to BD.n
-    box ht h wid w; {"31" at last box.c}
-    box ht h wid w; {"30" at last box.c}
-    box ht h wid w; {"29" at last box.c}
-    box ht h wid w invis; {"..." at last box.c} 
-    box ht h wid w; {"2" at last box.c}
-    box ht h wid w; {"1" at last box.c}
-    box ht h wid w; {"0" at last box.c}
-]')
-
-
-#-----------------------------------------------------------------------
-# buffer horizontalny
-#-----------------------------------------------------------------------
-define(`buffer_h',`[
-    right;
-    boxrad=0.1;
-    w=0.35
-    h=0.8
-    color_light_grey;
-    BD: box ht h wid 7*w;
-    color_black;
-    move to BD.w
-    box ht h wid w; 
-    box ht h wid w; 
-    box ht h wid w; 
-    box ht h wid w;
-    box ht h wid w invis; {"..." at last box.c} 
-    box ht h wid w; 
-    box ht h wid w; 
-    box ht h wid w; 
-    box ht h wid w;
-]')
-
-#-----------------------------------------------------------------------
+#=======================================================================
 # dual_switch(d, ON | OFF)
 # vodorovne vyvody
 #-----------------------------------------------------------------------
@@ -157,7 +91,7 @@ define(`dual_switch',`[
 ]')
 
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # single_switch(d, ON|OFF, H|V, L|R) - spinac
 #-----------------------------------------------------------------------
 define(`single_switch',`[
@@ -230,7 +164,7 @@ define(`single_switch',`[
 ]')
 
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # dual_switch_wide(d, ON | OFF, L | R)
 # vertikalne vyvody
 #-----------------------------------------------------------------------
@@ -281,7 +215,7 @@ define(`dual_switch_wide',`[
 ]')
 
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # single_switch_h(d, ON | OFF) - horizontalny spinac
 #-----------------------------------------------------------------------
 define(`single_switch_h',`[
@@ -304,7 +238,7 @@ define(`single_switch_h',`[
     );
 ]')
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # single_switch_v(d, ON | OFF) - vertikalny spinac
 #-----------------------------------------------------------------------
 define(`single_switch_v',`[
@@ -327,7 +261,7 @@ define(`single_switch_v',`[
     )
 ]')
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # N - fet
 # fet_N(length, L|R)  - dlzka vyvodov, orientacia 
 #-----------------------------------------------------------------------
@@ -359,7 +293,7 @@ define(`fet_N',`[
     line from L2.end to (Q.c, L2.end) to D
 ]')
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # P - fet
 # fet_P(length, L|R)  - dlzka vyvodov, orientacia 
 #-----------------------------------------------------------------------
@@ -399,7 +333,7 @@ define(`fet_P',`[
     line from L2.end to (Q.c, L2.end) to D
 ]')
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # NPN - bipolárny tranzistor
 # bjt_NPN(length_ce, length_b, L|R|U|D, C|N)
 # length_ce   - dlzka vyvodov medzi C a E
@@ -496,7 +430,7 @@ define(`bjt_NPN',`[
 ]')
 
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # PNP - bipolarny tranzistor
 # bjt_PNP(length_ce, length_b, L|R|U|D, C|N)
 # length_ce   - dlzka vyvodov medzi C a E
@@ -589,7 +523,7 @@ define(`bjt_PNP',`[
 ]')
 
 
-#-----------------------------------------------------------------------
+#=======================================================================
 # D-sub 9 pin male connector
 # DE9_M(L|R|U|D)
 # L|R|U|D     - orientacia
@@ -711,6 +645,82 @@ define(`DE9_M',`[
     }
 ]')
 
+
+#=======================================================================
+# premenný odpor, vertikálny
+# vres_v(d, V|P|T, H|V, b)
+# d     - velkost, default 1.5
+# V|P|T - Variable, Potenciometer, Trimer,
+# L|R   - Left | Right
+# b     - velkost bezca, default 1.25
+#
+# Attrib  .S - slider
+#-----------------------------------------------------------------------
+# upraveny resistor
+define(`res', `ebox($1, 0.8);')
+
+define(`vres_v', `[
+    ifelse(defn(`d'),  $1, d=1.5, d=$1)
+    typ = index(`VPTS',$2)
+    dir = index(`LR',$3)
+    ifelse(defn(`b'),  $4, b=1.25,  b=$4)
+
+    	 down_; R: res(d);
+         if (typ <= 0) || (typ==1) then {  # Variable
+              if dir <= 0 then {
+              	L: line -> at R.c right_ b/sqrt(2) up_ b/sqrt(2);
+              } else
+              {
+                 L: line -> at R.c left_ b/sqrt(2) up_ b/sqrt(2);
+              }
+              S: dot(at last line .s);
+           }
+
+         if typ == 1 then {                # Potenciometer
+            line from L.s to (L.s , R.s) to R.s; dot;
+         }
+
+         if (typ == 2) || (typ==3) then { # Trimer
+            if dir <= 0 then {
+              L: line  at R.c right_ b/sqrt(2) up_ b/sqrt(2);
+              line at L.end right_ 0.2 down_ 0.2;
+            } else
+            {
+               L: line  at R.c left_ b/sqrt(2) up_ b/sqrt(2);
+               line at L.end left_ 0.2 down_ 0.2;
+            }
+            S: dot(at L.s);
+         }
+
+         if typ == 3 then { # Trimer a potenciometer
+            line from L.s to (L.s , R.s) to R.s; dot;
+         }
+         B: box at R.center wid b/sqrt(2) +0.25 ht d invis;
+]')
+
+#=======================================================================
+# premenný kondenzator, vertikálny
+# d     - velkost, default 1.5
+# L|R   - Left | Right
+# b     - velkost bezca, default 1.25
+#
+# Attrib  .S - slider
+#-----------------------------------------------------------------------
+define(`vcap_v',`[
+    ifelse(defn(`d'),  $1, d=1.5, d=$1)
+    dir = index(`LR',$2)
+    ifelse(defn(`b'), $3, b=1.25,  b=$4)
+
+    down_; C: capacitor(d);
+    if dir <= 0 then {
+       L: line -> at C.c right_ b/sqrt(2) up_ b/sqrt(2);
+    } else
+    {
+        L: line -> at C.c left_ b/sqrt(2) up_ b/sqrt(2);
+    }
+    S: L.s;
+    B: box at C.center wid b/sqrt(2) +0.25 ht d invis;
+]')
 
 #=======================================================================
 # Koniec dokumentu
