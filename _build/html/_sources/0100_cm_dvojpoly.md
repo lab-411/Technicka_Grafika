@@ -291,8 +291,7 @@ data = r'''
 include(lib_base.ckt)
 
 Origin: Here 
-move to (0.5, 1.5);   
-
+ 
 inductor;          llabel(,L_1,); dot;
 inductor(,W);      llabel(,L_2,); rlabel(,W,);  dot;  
 inductor(,L);      llabel(,L_3,); rlabel(,L,);  dot;
@@ -768,7 +767,7 @@ _ = cm_compile('cm_0100m', data, dpi=600)
 
 ### <font color='brown'> Prúd dvojpólom  </font>
 
-Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro
+Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro *b_current()* z knižnice `CircuitMacros`
 
     b_current(label, above_|below_, In|O[ut], Start|E[nd], frac);
     
@@ -785,25 +784,47 @@ Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použ
             Start  - súradnica dvojpólu, voči ktorej bude vykreslená šípka a jej smer 
             End
             
-            frac  - posun šípky voči zadanej súradnici
+            frac  - posun šípky voči zadanej súradnici (Start | End)
             
-Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj na vyznačenie prúdu vetvou obvodu príkazom *line*. Hodnota parametra *frac* závisí od aktuálneho nastavenia vykreslenia šípky a parametrov prostredia, približne zodpovedá aktuálnej dĺžkovej jednotke. 
+Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro *l_current()*, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi
+
+    l_current(label, above_|below_, frac);
+    
+        parametre:
+        
+            label  - označenie veličiny (prúd ...)
+            
+            above_ - vertikálna poloha označenia 
+            below_
+            rjust_ - horizontálna poloha označenia 
+            ljust_
+            
+            frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
+
+Príklady označenia prúdu prvkom a vetvou obvodu. Makro *l_current()* je implementované ako vetva obvodu, neovplyvňuje hodnotu kurzoru `Here`.
+
+    define( `l_current', `{
+        S: last line .start;
+        E: last line .end;
+        C: $3 between S and E;
+        line -> from S to C; line from C to E;
+        "$ $1 $" at last line.start $2;
+    }')
             
     R1: resistor(right_ 3,,E); 
         llabel(,R_2,); rlabel(,100,); 
         b_current(i_{12} ); 
 
-    R1: resistor(right_ 3 at (2.5, 2.5),,E) ; 
+    R1: resistor(right_ 3 at (2.5, 2),,E) ; 
         llabel(,R_2,); rlabel(,100,); 
         b_current(i_{34}, below_, Out, End, 0.45 ); 
 
-    L1: line from (5,1) to (8,1) "L1" above;
-        b_current(i_{56}, above_, In, Start, 0.6 ); 
+    L1: line from (5,0.5) to (8,0.5) "L1" above;
+        l_current(i_{56}, above_, 0.25 ); 
 
-    L2: line from (5,2.5) to (8,2.5) "L2" below;
-        b_current(i_{78}, above_, In, End, 0.6 );
-            
-            
+    L2: line from (5,2) to (8,2) "L2" above;
+        l_current(i_{78}, below_, 0.75 );  
+
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
@@ -811,6 +832,7 @@ from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
+include(lib_user.ckt)
 
 Origin: Here 
 
@@ -826,10 +848,10 @@ R1: resistor(right_ 3 at (2.5, 2),,E) ;
     b_current(i_{34}, below_, Out, End, 0.45 ); 
 
 L1: line from (5,0.5) to (8,0.5) "L1" above;
-    b_current(i_{56}, above_, In, Start, 0.6 ); 
+    l_current(i_{56}, above_, 0.25 ); 
 
-L2: line from (5,2) to (8,2) "L2" below;
-    b_current(i_{78}, above_, In, End, 0.6 );  
+L2: line from (5,2) to (8,2) "L2" above;
+    l_current(i_{78}, below_, 0.75 );  
 '''
 
 _ = cm_compile('cm_0100h', data, dpi=600)   

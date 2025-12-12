@@ -1,0 +1,14 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+TR:[Q:transformer(down_ 1.5,L,6,W,4);  line from Q.S1 to (Q.S1,Q.P1);          line from Q.S2 to (Q.S2,Q.P2)];  "$L_1$" at TR.w rjust; "$L_2$" at TR.e ljust;
+.PE

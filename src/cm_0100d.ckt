@@ -14,7 +14,6 @@ arrowht = 0.254         # dlzka
 include(lib_base.ckt)
 
 Origin: Here 
-move to (0.5, 1.5);   
 
 inductor;          llabel(,L_1,); dot;
 inductor(,W);      llabel(,L_2,); rlabel(,W,);  dot;  

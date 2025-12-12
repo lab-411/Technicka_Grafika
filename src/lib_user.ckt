@@ -700,6 +700,7 @@ define(`vres_v', `[
 
 #=======================================================================
 # premenný kondenzator, vertikálny
+# vcap_v(d, L|R, b)
 # d     - velkost, default 1.5
 # L|R   - Left | Right
 # b     - velkost bezca, default 1.25
@@ -722,6 +723,27 @@ define(`vcap_v',`[
     B: box at C.center wid b/sqrt(2) +0.25 ht d invis;
 ]')
 
+#=======================================================================
+# Oznacenie prudu vetvou obvodu
+# l_current(label, [pos], [frac])
+#
+#    label  - označenie veličiny (prúd ...)
+#
+#    pos
+#       above_ - vertikálna poloha označenia
+#       below_
+#       rjust_ - horizontálna poloha označenia
+#       ljust_
+#
+#    frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
+#-----------------------------------------------------------------------
+define( `l_current', `{
+    S: last line .start;
+    E: last line .end;
+    C: $3 between S and E;
+    line -> from S to C; line from C to E;
+    "$ $1 $" at last line.start $2;
+}')
 #=======================================================================
 # Koniec dokumentu
 #=======================================================================

@@ -192,7 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -789,7 +789,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 </section>
 <section id="prud-dvojpolom">
 <h3><font color='brown'> Prúd dvojpólom  </font><a class="headerlink" href="#prud-dvojpolom" title="Link to this heading">#</a></h3>
-<p>Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro</p>
+<p>Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro <em>b_current()</em> z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b_current(label, above_|below_, In|O[ut], Start|E[nd], frac);
 
     parametre:
@@ -805,23 +805,46 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
         Start  - súradnica dvojpólu, voči ktorej bude vykreslená šípka a jej smer 
         End
         
-        frac  - posun šípky voči zadanej súradnici
+        frac  - posun šípky voči zadanej súradnici (Start | End)
 </pre></div>
 </div>
-<p>Makro môžeme použiť nielen na označovanie prúdu prvkami zapojenia, ale aj na vyznačenie prúdu vetvou obvodu príkazom <em>line</em>. Hodnota parametra <em>frac</em> závisí od aktuálneho nastavenia vykreslenia šípky a parametrov prostredia, približne zodpovedá aktuálnej dĺžkovej jednotke.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor(right_ 3,,E); 
+<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro <em>l_current()</em>, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l_current(label, above_|below_, frac);
+
+    parametre:
+    
+        label  - označenie veličiny (prúd ...)
+        
+        above_ - vertikálna poloha označenia 
+        below_
+        rjust_ - horizontálna poloha označenia 
+        ljust_
+        
+        frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
+</pre></div>
+</div>
+<p>Príklady označenia prúdu prvkom a vetvou obvodu. Makro <em>l_current()</em> je implementované ako vetva obvodu, neovplyvňuje hodnotu kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define( `l_current&#39;, `{
+    S: last line .start;
+    E: last line .end;
+    C: $3 between S and E;
+    line -&gt; from S to C; line from C to E;
+    &quot;$ $1 $&quot; at last line.start $2;
+}&#39;)
+        
+R1: resistor(right_ 3,,E); 
     llabel(,R_2,); rlabel(,100,); 
     b_current(i_{12} ); 
 
-R1: resistor(right_ 3 at (2.5, 2.5),,E) ; 
+R1: resistor(right_ 3 at (2.5, 2),,E) ; 
     llabel(,R_2,); rlabel(,100,); 
     b_current(i_{34}, below_, Out, End, 0.45 ); 
 
-L1: line from (5,1) to (8,1) &quot;L1&quot; above;
-    b_current(i_{56}, above_, In, Start, 0.6 ); 
+L1: line from (5,0.5) to (8,0.5) &quot;L1&quot; above;
+    l_current(i_{56}, above_, 0.25 ); 
 
-L2: line from (5,2.5) to (8,2.5) &quot;L2&quot; below;
-    b_current(i_{78}, above_, In, End, 0.6 );
+L2: line from (5,2) to (8,2) &quot;L2&quot; above;
+    l_current(i_{78}, below_, 0.75 );
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0100h">

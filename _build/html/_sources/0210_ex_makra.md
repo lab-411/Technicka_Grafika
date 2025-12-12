@@ -1,205 +1,264 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
+# <font color='navy'> Katalóg </font> 
+ Katalóg obsahuje najčastejšie používané prvky zapojení. 
 
-# <font color='navy'> Užitočné makrá  </font>
+## <font color='teal'> Pasívne prvky </font> 
 
-## <font color='teal'> Pracovná plocha  </font>
+::::{grid} 2
+:gutter: 0
+:margin: 0
 
-%========================================================================
-% SHADEBOX
-%------------------------------------------------------------------------
+:::{grid-item}
+:columns: 5
 
-````{tab-set}
-
-```{tab-item} Grid()
-   Obrazok
+```{figure} ./src/comp_0.png
+:width: 120px
 ```
+:::
 
-```{tab-item} Popis  
-        Grid(x,y)
-        
-        Vykreslenie pomocnej mriežky na ploche pre jednoduchšiu rozmiestňovanie prvkov.
-        Mierka mriežky je v centimetroch.
-        
+:::{grid-item}
+:columns: 7
+
+    resistor(,E);llabel(,R_1,);rlabel(,10k,)
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_1.png
+:width: 120px
 ```
+:::
 
-```{tab-item} Príklad
-        include(lib_base.ckt)
-        Grid(10,5)
+:::{grid-item}
+:columns: 7
+
+    resistor(,E);llabel(,R_1,);
+	b_current(i);
+	rarrow(u);
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_2.png
+:width: 120px
 ```
-````
+:::
 
-## <font color='teal'> Grafické objekty  </font>
+:::{grid-item}
+:columns: 7
 
-%========================================================================
-% SHADEBOX
-%------------------------------------------------------------------------
+    resistor(,E);variable(,A,,elen_*0.65);
+:::
+::::
 
-````{tab-set}
+::::{grid} 2
+:gutter: 0
+:margin: 0
 
-```{tab-item} shadebox()
-   Obrazok
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_3.png
+:width: 120px
 ```
+:::
 
-```{tab-item} Popis  
-   popis
+:::{grid-item}
+:columns: 7
+
+    capacitor(,,,0.55,0.15); 
+	llabel(,C_1,);rlabel(,100 nF,);
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_4.png
+:width: 120px
 ```
+:::
 
-```{tab-item} Príklad
-        linethick_(0.8);
-        hatchbox(wid 3 ht 2, ,dashed,angle=125 ); 
+:::{grid-item}
+:columns: 7
+
+    capacitor(,K+,,0.55, 0.18); 
+	llabel(,C_1,);rlabel(,10 \mu F,)
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_5.png
+:width: 120px
 ```
+:::
 
-````
+:::{grid-item}
+:columns: 7
 
-%========================================================================
-% HATCHBOX
-%------------------------------------------------------------------------
+    inductor(,L,6); 
+	llabel(,L_1,);rlabel(,100 \mu H,);
+:::
+::::
 
-````{tab-set}
+::::{grid} 2
+:gutter: 0
+:margin: 0
 
-```{tab-item} hatchbox()
-   obrazok
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_6.png
+:width: 140px
 ```
+:::
 
-```{tab-item} Popis   
-   popis
+:::{grid-item}
+:columns: 7
+
+    L1:[Q: inductor(,L,6); linethick_(2); 
+	line dimen_*0.7 at Q.c + (0,0.25);];          
+	"$L_1$" at L1.n above;
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_7.png
+:width: 120px
 ```
+:::
 
-```{tab-item} Príklad
-        shadebox(B:box wid 3 ht 1 with .sw at (1,1), 2) 
+:::{grid-item}
+:columns: 7
+
+    TR:[Q:transformer(down_ 1.5,L,6,W,4); 
+	 line from Q.S1 to (Q.S1,Q.P1);         
+	 line from Q.S2 to (Q.S2,Q.P2)]; 
+	 "$L_1$" at TR.w rjust; "$L_2$" at TR.e ljust;
+:::
+::::
+## <font color='teal'> Grafické prvky </font> 
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/graph_0.png
+:width: 380px
 ```
+:::
 
-````
+:::{grid-item}
+:columns: 7
 
+    sinusoid(1.0, pi_*4/10,-pi_/2, 0, 10);
+:::
+::::
 
-## <font color='teal'> Doplnky </font>
+::::{grid} 2
+:gutter: 0
+:margin: 0
 
-%========================================================================
-% SINUSOID
-%------------------------------------------------------------------------
+:::{grid-item}
+:columns: 5
 
-```{code-cell} ipython3 
-:tags: ["remove-cell"]
-
-from src.utils import *
-
-data = r'''
-include(lib_base.ckt)
-include(lib_color.ckt)
-
-Origin: Here 
-
-move to (0,1); 
-ampl = 1;  freq = 2;  t_min = 0;  t_max = 10;  phase = -pi_/2;
-sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max);
-
-move to (0,1); 
-color_blue;
-ampl = 1;  freq = 6;  t_min = 0;  t_max = 10;  phase = pi_/2;
-sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max, dashed);
-
-move to (0,1); 
-color_red;
-ampl = 1;  freq = 3;  t_min = 0;  t_max = 10;  phase = 0;
-sinusoid(ampl, twopi_*freq/t_max, phase, t_min , t_max, dotted);
-'''
-
-_ = cm_compile('cm_0210a', data,  dpi=600 )   
+```{figure} ./src/graph_1.png
+:width: 150px
 ```
+:::
 
-%-------------------------------------------------------------------------
+:::{grid-item}
+:columns: 7
 
-````{tab-set}
+    hatchbox(wid 3 ht 1.5,,dashed,angle=125 );
+:::
+::::
 
-```{tab-item} sinusoid()
-<img src="./src/cm_0210a.png" width="600px" class="center">
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/graph_2.png
+:width: 150px
 ```
+:::
 
-```{tab-item} Popis
-    Zobrazenie harmonického priebehu
-    
-    sinusoid(ampl, freq, phase, t_min, t_max)
-    
-      ampl  - amplitúda
-      freq  - frekvencia
-      phase - fáza
-      t_min - začiatok časovej osi
-      t_max - koniec časovej osi
+:::{grid-item}
+:columns: 7
+
+    shadebox(box wid 3 ht 1.5 "text", 2);
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/graph_3.png
+:width: 380px
 ```
+:::
 
+:::{grid-item}
+:columns: 7
 
-```{tab-item} Príklad
-    Origin: Here;
-    sinusoid(1.0, twopi_*2/10,-pi_/2, 0, 10) at Origin;
-    sinusoid(1.0, twopi_*6/10, pi_/2, 0, 10, dashed) at Origin;
-    sinusoid(0.5, twopi_*3/10,     0, 0, 10, dotted) at Origin;
+    for x = 0 to 10  by 0.05 do 
+	   { line to (x, rand()*0.25); } ;
+:::
+::::
+## <font color='teal'> Pracovná plocha </font> 
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/space_0.png
+:width: 300px
 ```
+:::
 
-````
+:::{grid-item}
+:columns: 7
 
-%========================================================================
-% RAND, RANDN
-%------------------------------------------------------------------------
-
-```{code-cell} ipython3 
-:tags: ["remove-cell"]
-from src.utils import *
-
-data = r'''
-#include(lib_base.ckt)
-#include(lib_color.ckt)
-
-Origin: Here 
-#Grid(10, 1);
-
-move to (0,0.5);
-for x = 0 to 10  by 0.05 do { line to (x, rand()*0.25); } 
-'''
-
-_ = cm_compile('cm_0210b', data,  dpi=600)   
-```
-
-%-------------------------------------------------------------------------
-
-
-````{tab-set}
-
-```{tab-item} rand(), randn()
-<img src="./src/cm_0210b.png" width="600px" class="center">
-```
-
-```{tab-item} Popis    
-    rand(), randn()
-```
-
-
-```{tab-item} Príklad
-    for x = 0 to 10  by 0.05 do { line to (x, rand()*0.25); } 
-    
-    stddev = 0.25
-    n=100
-    randn(z,n,0,stddev) 
-    m = 0
-    for i=1 to n-1 by 2 do { m +=1; x[m] = z[i]; y[m] = z[i+1]
-        dot(at (x[m],y[m]))
-    }
-```
-
-````
-
-
-
-
-
+    Grid(5,2);
+:::
+::::
