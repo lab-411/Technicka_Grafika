@@ -164,6 +164,28 @@
 	 "$L_1$" at TR.w rjust; "$L_2$" at TR.e ljust;
 :::
 ::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_8.png
+:width: 120px
+```
+:::
+
+:::{grid-item}
+:columns: 7
+
+    line 1.5; l_current(i_1,above,0.5); dot;       
+	{ line right_ 1 up_ 1; l_current(i_2,above rjust)
+	};      
+	line right_ 1 down_ 1;l_current(i_3,above ljust);
+:::
+::::
 ## <font color='teal'> Grafické prvky </font> 
 
 ::::{grid} 2

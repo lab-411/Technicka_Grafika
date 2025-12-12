@@ -78,6 +78,9 @@ prg_comp = [
           \n\t"$L_1$" at L1.n above;', 140 ),
     ('', 'TR:[Q:transformer(down_ 1.5,L,6,W,4); \n\t line from Q.S1 to (Q.S1,Q.P1);\
          \n\t line from Q.S2 to (Q.S2,Q.P2)]; \n\t "$L_1$" at TR.w rjust; "$L_2$" at TR.e ljust;', 120 ),
+    ('include(lib_user.ckt);', 'line 1.5; l_current(i_1,above,0.5); dot; \
+      \n\t{ line right_ 1 up_ 1; l_current(i_2,above rjust)\n\t};\
+      \n\tline right_ 1 down_ 1;l_current(i_3,above ljust);', 120),
    
 ]
 
