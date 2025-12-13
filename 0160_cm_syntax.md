@@ -88,16 +88,13 @@ Pre premenné sú definované numerické a logické operácie
     
 
 ```{warning} 
-Pretože *dpic* používa pre numerické hodnoty výhradne čísla typu *floating point*, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt súradníc je vyhodnotená vetva False 
+Pretože *dpic* používa pre numerické hodnoty výhradne čísla typu *floating point*, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt x-ových súradníc bude výsledok negatívny (false)
 
     R1: resistor
     up_
     R2: resistor     # R1 a R2 majú rovnakú x-ovú súradnicu
-    
-    if R1.x == R2.x then 
-       { ...  }      # vetva True      
-       { ...  }      # vetva False -  
-
+                     
+    if R1.x == R2.x then { # if true ... } else {  # if false  }     
 ```
     
 ### <font color='brown'> Súradnice </font>
@@ -113,8 +110,8 @@ Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou in�
     
     
     a = 1; b = 2;   # konverzia numerických hodnôt na súradnice 
-    P2 = (a, b);
-    P3 = (a, 0);    # bod na osi x
+    P2: (a, b);
+    P3: (a, 0);     # bod na osi x
     
                     # prístup k zložkám súradnice
     px = P1.x       # numerická hodnota x-ovej súradnice

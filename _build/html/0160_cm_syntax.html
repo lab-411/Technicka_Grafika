@@ -194,7 +194,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -454,14 +454,12 @@ relačné operácie
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Pretože <em>dpic</em> používa pre numerické hodnoty výhradne čísla typu <em>floating point</em>, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt súradníc je vyhodnotená vetva False</p>
+<p>Pretože <em>dpic</em> používa pre numerické hodnoty výhradne čísla typu <em>floating point</em>, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt x-ových súradníc bude výsledok negatívny (false)</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor
 up_
 R2: resistor     # R1 a R2 majú rovnakú x-ovú súradnicu
-
-if R1.x == R2.x then 
-   { ...  }      # vetva True      
-   { ...  }      # vetva False -  
+                 
+if R1.x == R2.x then { # if true ... } else {  # if false  }     
 </pre></div>
 </div>
 </div>
@@ -477,8 +475,8 @@ p1 = (3,4);     # chyba
 
 
 a = 1; b = 2;   # konverzia numerických hodnôt na súradnice 
-P2 = (a, b);
-P3 = (a, 0);    # bod na osi x
+P2: (a, b);
+P3: (a, 0);     # bod na osi x
 
                 # prístup k zložkám súradnice
 px = P1.x       # numerická hodnota x-ovej súradnice
