@@ -86,16 +86,6 @@ Pre premenné sú definované numerické a logické operácie
     relačné operácie 
     !=   ==   <   >   >=   <=   ||   &&
     
-
-```{warning} 
-Pretože *dpic* používa pre numerické hodnoty výhradne čísla typu *floating point*, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt x-ových súradníc bude výsledok negatívny (false)
-
-    R1: resistor
-    up_
-    R2: resistor     # R1 a R2 majú rovnakú x-ovú súradnicu
-                     
-    if R1.x == R2.x then { # if true ... } else {  # if false  }     
-```
     
 ### <font color='brown'> Súradnice </font>
     

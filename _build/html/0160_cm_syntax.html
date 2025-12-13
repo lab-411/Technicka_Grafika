@@ -452,17 +452,6 @@ relačné operácie
 !=   ==   &lt;   &gt;   &gt;=   &lt;=   ||   &amp;&amp;
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Pretože <em>dpic</em> používa pre numerické hodnoty výhradne čísla typu <em>floating point</em>, v dôsledku internej reprezentácie tohoto číselného typu nemusí byť výsledok použitia relačného operátora jednoznačný, napríklad pri porovnaní formálne rovnakých hodnôt x-ových súradníc bude výsledok negatívny (false)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor
-up_
-R2: resistor     # R1 a R2 majú rovnakú x-ovú súradnicu
-                 
-if R1.x == R2.x then { # if true ... } else {  # if false  }     
-</pre></div>
-</div>
-</div>
 </section>
 <section id="suradnice">
 <h3><font color='brown'> Súradnice </font><a class="headerlink" href="#suradnice" title="Link to this heading">#</a></h3>
