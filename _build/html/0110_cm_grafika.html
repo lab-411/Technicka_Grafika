@@ -192,7 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -353,12 +353,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-linearnych-prvkov"><font color="brown"> Atribúty lineárnych prvkov  </font></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sipky"><font color="teal"> Šípky </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obddlznik-kruznica-a-elipsa"><font color="teal"> Obddĺžnik, kružnica a elipsa </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-plosnych-prvkov"><font color="brown"> Atribúty plošných prvkov  </font></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kruhovy-obluk"><font color="teal"> Kruhový oblúk </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sipky"><font color="teal"> Šípky </font></a></li>
 </ul>
             </nav>
         </div>
@@ -500,31 +500,6 @@ L.center    - je ekvivalentom  (L.center.x, L.center.y)
 </div>
 </section>
 </section>
-<section id="sipky">
-<h2><font color='teal'> Šípky </font><a class="headerlink" href="#sipky" title="Link to this heading">#</a></h2>
-<p>Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  <em>&lt;-</em>, <em>&lt;-&gt;</em>, <em>-&gt;</em> alebo príkazom <em>arrow</em>, ktorý umožňuje nastavenie parametrov šíky</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] arrow [atribútes] [linespec] [parameters]
-
-attributes - &lt;-|&lt;-&gt;|-&gt; vykreslenie šípky na konci čiary
-
-linespec   -  from position | to position | direction [ expr ]
-              | linespec linespec
-              | linespec then linespec
-              
-parameters - tvar a veľkosť šípky
-             thick  - hrúbka čiary (0.8)
-             ht     - výška šípky  (0.1)
-             wid    - šírka šípky  (0.05)
-</pre></div>
-</div>
-<p>Príklady použitia</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>arrow -&gt; from (0,0) to (1,1) thick 2 ht 0.5 wid 0.5
-arrow from (1,4) right_ 2;     {&quot;K&quot; ljust};  # K. sipka menom      
-arrow -&gt; from (1,4.5) right_ 2; {&quot;L&quot; ljust};  # L. sipka smerom doprava
-arrow &lt;- from (1, 5) right_ 2;  {&quot;M&quot; ljust};  # M. sipka smerom dolava
-</pre></div>
-</div>
-</section>
 <section id="obddlznik-kruznica-a-elipsa">
 <h2><font color='teal'> Obddĺžnik, kružnica a elipsa </font><a class="headerlink" href="#obddlznik-kruznica-a-elipsa" title="Link to this heading">#</a></h2>
 <p>Definícia plošných objektov má tvar</p>
@@ -558,7 +533,7 @@ strin      - text v strede objektu
 <a class="reference internal image-reference" href="_images/cm_0110c.png"><img alt="_images/cm_0110c.png" src="_images/cm_0110c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 40 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/507cf5600b21d473a215df340ebbb14f/cm_0110c.ckt"><span class="xref download myst">Atribúty</span></a> pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -574,7 +549,7 @@ position  - súradnice počiatočného a koncového bodu oblúka
 centre    - súradnice stredu kružnice oblúka
 </pre></div>
 </div>
-<p>Bez zadaného stedu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.</p>
+<p>Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1: (1, 1);
 P2: (4, 4);
 P3: (3.5, 1.5)
@@ -601,6 +576,47 @@ A2: arc -&gt; cw from P1 to P2 with .c at P3
 </a>
 <figcaption>
 <p><span class="caption-number">Obr. 41 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="sipky">
+<h2><font color='teal'> Šípky </font><a class="headerlink" href="#sipky" title="Link to this heading">#</a></h2>
+<p>Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  <em>&lt;-</em>, <em>&lt;-&gt;</em>, <em>-&gt;</em> alebo príkazom <em>arrow</em>, ktorý umožňuje nastavenie parametrov šíky</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] arrow [atribútes] [linespec] [parameters]
+
+attributes - &lt;-|&lt;-&gt;|-&gt; vykreslenie šípky na konci čiary
+
+linespec   -  from position | to position | direction [ expr ]
+              | linespec linespec
+              | linespec then linespec
+              
+parameters - tvar a veľkosť šípky
+             thick  - hrúbka čiary (0.8)
+             ht     - výška šípky  (0.1)
+             wid    - šírka šípky  (0.05)
+</pre></div>
+</div>
+<p>Príklady použitia</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt);
+include(lib_base.ckt);
+
+Grid(8.5,2.5);
+color_red;
+arrow -&gt; from (0,0) to (1.5,1.5) thick 2 ht 0.5 wid 0.5
+color_blue;
+arrow from (2,0.5) right_ 2;    {&quot;K&quot; ljust};  # K. šipka v smere kreslenia      
+arrow &lt;- from (2,1) right_ 2;   {&quot;L&quot; ljust};  # L. sipka smerom dolava
+line &lt;-&gt; from (2,1.5) right_ 2; {&quot;M&quot; ljust};  # M. obojsmerna sipka 
+
+color_dark_cyan;                              # K. sipke v obluku 
+arc -&gt; cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed &quot;N&quot;;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0110e">
+<a class="reference internal image-reference" href="_images/cm_0110e.png"><img alt="_images/cm_0110e.png" src="_images/cm_0110e.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -656,12 +672,12 @@ A2: arc -&gt; cw from P1 to P2 with .c at P3
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-linearnych-prvkov"><font color="brown"> Atribúty lineárnych prvkov  </font></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sipky"><font color="teal"> Šípky </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obddlznik-kruznica-a-elipsa"><font color="teal"> Obddĺžnik, kružnica a elipsa </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-plosnych-prvkov"><font color="brown"> Atribúty plošných prvkov  </font></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kruhovy-obluk"><font color="teal"> Kruhový oblúk </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sipky"><font color="teal"> Šípky </font></a></li>
 </ul>
   </nav></div>
 

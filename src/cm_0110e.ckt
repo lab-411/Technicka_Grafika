@@ -1,0 +1,28 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+    include(lib_color.ckt);
+    include(lib_base.ckt);
+
+    Grid(8.5,2.5);
+    color_red;
+    arrow -> from (0,0) to (1.5,1.5) thick 2 ht 0.5 wid 0.5
+    color_blue;
+    arrow from (2,0.5) right_ 2;    {"K" ljust};  # K. obojsmerna šipka      
+    arrow <- from (2,1) right_ 2;   {"L" ljust};  # L. sipka smerom dolava
+    line <-> from (2,1.5) right_ 2; {"M" ljust};  # M. obojsmerna sipka 
+
+    color_dark_cyan;                              # K. sipke v obluku 
+    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "N";
+
+.PE

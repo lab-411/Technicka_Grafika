@@ -208,30 +208,6 @@ Každý atribút reprezentuje súradnicu v tvare dvojice hodnôt (x,y). Príklad
     (L.s, L.e)  - je ekvivalentom (L.s.x, L.e.y)
 
     
-## <font color='teal'> Šípky </font>
-
-Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  *<-*, *<->*, *->* alebo príkazom *arrow*, ktorý umožňuje nastavenie parametrov šíky 
-
-    [reference:] arrow [atribútes] [linespec] [parameters]
-    
-    attributes - <-|<->|-> vykreslenie šípky na konci čiary
-
-    linespec   -  from position | to position | direction [ expr ]
-                  | linespec linespec
-                  | linespec then linespec
-                  
-    parameters - tvar a veľkosť šípky
-                 thick  - hrúbka čiary (0.8)
-                 ht     - výška šípky  (0.1)
-                 wid    - šírka šípky  (0.05)
- 
-Príklady použitia 
-
-    arrow -> from (0,0) to (1,1) thick 2 ht 0.5 wid 0.5
-    arrow from (1,4) right_ 2;     {"K" ljust};  # K. sipka menom      
-    arrow -> from (1,4.5) right_ 2; {"L" ljust};  # L. sipka smerom doprava
-    arrow <- from (1, 5) right_ 2;  {"M" ljust};  # M. sipka smerom dolava
-
 ## <font color='teal'> Obddĺžnik, kružnica a elipsa </font>
 
 Definícia plošných objektov má tvar
@@ -272,7 +248,6 @@ data = r'''
 include(lib_base.ckt)
 Origin: Here 
 
-move to (2, 3);
 B: box wid 4 ht 2 
 
 move to B.west;   "B.w"  rjust;    # rovnako ako B.w
@@ -295,7 +270,7 @@ _ = cm_compile('cm_0110c', data, dpi=600)
 :width: 300px
 :name: cm_0110c
 
-[Atribúty](./src/cm_0110c.ckt) pre box, orientácia podľa svetových strán
+Atribúty pre box, orientácia podľa svetových strán
 ```
 
 ## <font color='teal'> Kruhový oblúk </font>
@@ -309,7 +284,7 @@ Kruhový oblúk je objekt, ktorý zdiela atribútu lineárnych ako aj plošných
     position  - súradnice počiatočného a koncového bodu oblúka
     centre    - súradnice stredu kružnice oblúka
     
-Bez zadaného stedu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.
+Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.
 
 
     P1: (1, 1);
@@ -376,4 +351,66 @@ _ = cm_compile('cm_0110d', data, dpi=600)
 [Vykreslenie](./src/cm_0110d.ckt) kruhového oblúku
 ```
 
+## <font color='teal'> Šípky </font>
 
+Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  *<-*, *<->*, *->* alebo príkazom *arrow*, ktorý umožňuje nastavenie parametrov šíky 
+
+    [reference:] arrow [atribútes] [linespec] [parameters]
+    
+    attributes - <-|<->|-> vykreslenie šípky na konci čiary
+
+    linespec   -  from position | to position | direction [ expr ]
+                  | linespec linespec
+                  | linespec then linespec
+                  
+    parameters - tvar a veľkosť šípky
+                 thick  - hrúbka čiary (0.8)
+                 ht     - výška šípky  (0.1)
+                 wid    - šírka šípky  (0.05)
+ 
+Príklady použitia 
+
+    include(lib_color.ckt);
+    include(lib_base.ckt);
+
+    Grid(8.5,2.5);
+    color_red;
+    arrow -> from (0,0) to (1.5,1.5) thick 2 ht 0.5 wid 0.5
+    color_blue;
+    arrow from (2,0.5) right_ 2;    {"K" ljust};  # K. šipka v smere kreslenia      
+    arrow <- from (2,1) right_ 2;   {"L" ljust};  # L. sipka smerom dolava
+    line <-> from (2,1.5) right_ 2; {"M" ljust};  # M. obojsmerna sipka 
+
+    color_dark_cyan;                              # K. sipke v obluku 
+    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "N";
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+    include(lib_color.ckt);
+    include(lib_base.ckt);
+
+    Grid(8.5,2.5);
+    color_red;
+    arrow -> from (0,0) to (1.5,1.5) thick 2 ht 0.5 wid 0.5
+    color_blue;
+    arrow from (2,0.5) right_ 2;    {"K" ljust};  # K. obojsmerna šipka      
+    arrow <- from (2,1) right_ 2;   {"L" ljust};  # L. sipka smerom dolava
+    line <-> from (2,1.5) right_ 2; {"M" ljust};  # M. obojsmerna sipka 
+
+    color_dark_cyan;                              # K. sipke v obluku 
+    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "N";
+'''
+
+_ = cm_compile('cm_0110e', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0110e.png
+:width: 500px
+:name: cm_0110e
+
+Vykreslenie šípiek.
+```

@@ -14,7 +14,6 @@ arrowht = 0.254         # dlzka
 include(lib_base.ckt)
 Origin: Here 
 
-move to (2, 3);
 B: box wid 4 ht 2 
 
 move to B.west;   "B.w"  rjust;    # rovnako ako B.w
