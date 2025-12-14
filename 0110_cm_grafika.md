@@ -124,7 +124,7 @@ ale aj ich kombináciu, ktorá vykreslí šikmú čiaru
 
 ## <font color='teal'> Krivky  </font>
 
-Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami *dashed* a *dotted*, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, skutočné závisí od zvolenej mierky obrázku. Pri krivkách nie je možné vykresliť v ich definícii text na ich konci ako pri čiare.
+Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami *dashed* a *dotted*, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, ich zobrazenie závisí od nastavenie parametrov kreslenia. 
 
     [reference:] spline [t] [atribútes] [linespec] 
     
@@ -137,18 +137,22 @@ Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline m
                   | linespec then linespec
                   
     
-Príklad použitia kriviek
+Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek
 
-    # I. spline krivka, súradnic rovnake ako pri čiare
-    spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
-                              
-    # J. obojstranná šipka na krivke                       
-    spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); 
-    
-    # K. Parameter tension
-    spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
-    spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
-    spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
+    Grid(8.5,2.5);
+    color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
+    spline from (0,1.5) right_ 1 up_ 1 then right_ 0.5 down_ 1 then \
+           right_ 1 down_ 2 then up_ 3; "A" rjust below; 
+
+                            
+    color_blue;        # B. obojstranná šipka na krivke                       
+    spline <-> from (5.5,0) to (6,2) to (7,0.5) to (8.5,2); "B" rjust above; 
+
+
+    color_dark_green;  # C. Parameter tension
+    spline 1.4 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dashed .08;
+    spline 1.0 from (3, 0.) up_ 2 then right_ 2 then down_ 2;
+    spline 0.6 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dotted .05;"C" rjust above;
 
 
 
@@ -160,21 +164,19 @@ from src.utils import *
 data = r'''
 include(lib_base.ckt)
 include(lib_color.ckt)
-Origin: Here 
-Grid(10, 6);
-           
-spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
-{"I" rjust};
+Grid(8.5,2.5);
+color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
+spline from (0,1.5) right_ 1 up_ 1 then right_ 0.5 down_ 1 then right_ 1 down_ 2 then up_ 3; "A" rjust below; 
 
-color_blue                                 
-spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); 
-{"J" rjust}; 
+                         
+color_blue;        # B. obojstranná šipka na krivke                       
+spline <-> from (5.5,0) to (6,2) to (7,0.5) to (8.5,2); "B" rjust above; 
 
-color_red;
-spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
-spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
-spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
-{"K" ljust;}
+
+color_dark_green;  # C. Parameter tension
+spline 1.4 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dashed .08;
+spline 1.0 from (3, 0.) up_ 2 then right_ 2 then down_ 2;
+spline 0.6 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dotted .05;"C" rjust above;
 '''
 
 _ = cm_compile('cm_0110b', data, dpi=600)   
@@ -185,7 +187,7 @@ _ = cm_compile('cm_0110b', data, dpi=600)
 :width: 500px
 :name: cm_0110b
 
-[Použitie](./src/cm_0110b.ckt) splajnových kriviek.
+Použitie splajnových kriviek.
 ```
 
 
@@ -208,9 +210,9 @@ Každý atribút reprezentuje súradnicu v tvare dvojice hodnôt (x,y). Príklad
     (L.s, L.e)  - je ekvivalentom (L.s.x, L.e.y)
 
     
-## <font color='teal'> Obddĺžnik, kružnica a elipsa </font>
+## <font color='teal'> Plošné objekty </font>
 
-Definícia plošných objektov má tvar
+Definícia plošných objektov, obdĺžnik, kružnica a elipsa, má v `dpic` tvar
 
     [reference:] box [at pos] [wid x] [ht y] [parameters] [string]
     [reference:] circle [at pos] [rad r] [parameters] [string]
@@ -223,8 +225,58 @@ Definícia plošných objektov má tvar
     parameters - parametre zobrazenia
     strin      - text v strede objektu
     
-Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami.
+Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami *dashed* a *dotted* a výplň parametrom *fill*. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou *boxrad*. 
 
+       color_red;      
+    A: box wid 1 ht 1 at (1,0.5) "A"; line -> right_ 1;
+    
+       color_blue; boxrad = 0.15; 
+    B: box wid 1 ht 1 dashed "B";
+    
+       color_dark_green;  line <-> up_ 1 from A.n;
+    C: box wid 1 ht 1 fill 0.9 "C";
+    
+       color_dark_cyan; line -> from last box.e right_ 1
+    D: circle rad 0.5 "D";
+    Y: (0.5 between D and B) + (2,0)
+
+       color_coral;
+    E: ellipse at Y wid 2 ht 1 "E"
+       line -> from D.e to (E.n, D.e) to E.n;
+       line -> from B.e to (E.s, B.e) to E.s;
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+    include(lib_color.ckt);
+color_red;      
+A: box wid 1 ht 1 at (1,0.5) "A"; line -> right_ 1;
+   color_blue; boxrad = 0.15; 
+B: box wid 1 ht 1 dashed "B";
+   color_dark_green;  line <-> up_ 1 from A.n;
+C: box wid 1 ht 1 fill 0.9 "C";
+   color_dark_cyan; line -> from last box.e right_ 1
+D: circle rad 0.5 "D";
+Y: (0.5 between D and B) + (2,0)
+   color_coral;
+E: ellipse at Y wid 2 ht 1 "E"
+   line -> from D.e to (E.n, D.e) to E.n;
+   line -> from B.e to (E.s, B.e) to E.s;
+'''
+
+_ = cm_compile('cm_0110f', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0110f.png
+:width: 380px
+:name: cm_0110f
+
+Plošné objekty.
+```
+       
 ### <font color='brown'> Atribúty plošných prvkov  </font>    
 
 Pri obryse plošných objektov sú atribúty definované podľa svetových strán.

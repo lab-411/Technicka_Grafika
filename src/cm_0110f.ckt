@@ -1,0 +1,29 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+    include(lib_color.ckt);
+color_red;      
+A: box wid 1 ht 1 at (1,0.5) "A"; line -> right_ 1;
+   color_blue; boxrad = 0.15; 
+B: box wid 1 ht 1 dashed "B";
+   color_dark_green;  line <-> up_ 1 from A.n;
+C: box wid 1 ht 1 fill 0.9 "C";
+   color_dark_cyan; line -> from last box.e right_ 1
+D: circle rad 0.5 "D";
+Y: (0.5 between D and B) + (2,0)
+   color_coral;
+E: ellipse at Y wid 2 ht 1 "E"
+   line -> from D.e to (E.n, D.e) to E.n;
+   line -> from B.e to (E.s, B.e) to E.s;
+
+.PE

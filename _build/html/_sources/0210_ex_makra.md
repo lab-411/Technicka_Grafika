@@ -186,6 +186,28 @@
 	line right_ 1 down_ 1;l_current(i_3,above ljust);
 :::
 ::::
+## <font color='teal'> Aktívne prvky </font> 
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/act_0.png
+:width: 180px
+```
+:::
+
+:::{grid-item}
+:columns: 7
+
+       line -> right_ 1; 
+	OA:opamp(,"","",); 
+	   "$\displaystyle \int $" at OA.w + (0.25,0);
+:::
+::::
 ## <font color='teal'> Grafické prvky </font> 
 
 ::::{grid} 2

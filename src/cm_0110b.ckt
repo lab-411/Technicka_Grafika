@@ -13,20 +13,18 @@ arrowht = 0.254         # dlzka
 
 include(lib_base.ckt)
 include(lib_color.ckt)
-Origin: Here 
-Grid(10, 6);
+Grid(8.5,2.5);
+color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
+spline from (0,1.5) right_ 1 up_ 1 then right_ 0.5 down_ 1 then right_ 1 down_ 2 then up_ 3; "A" rjust below; 
 
-spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
-{"I" rjust};
 
-color_blue                                 
-spline <-> from (6,1) to (7,4) to (8,1) to (9.5,3); 
-{"J" rjust}; 
+color_blue;        # B. obojstranná šipka na krivke                       
+spline <-> from (5.5,0) to (6,2) to (7,0.5) to (8.5,2); "B" rjust above; 
 
-color_red;
-spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
-spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
-spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05; 
-{"K" ljust;}
+
+color_dark_green;  # C. Parameter tension
+spline 1.4 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dashed .08;
+spline 1.0 from (3, 0.) up_ 2 then right_ 2 then down_ 2;
+spline 0.6 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dotted .05;"C" rjust above;
 
 .PE

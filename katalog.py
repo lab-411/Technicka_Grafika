@@ -89,6 +89,15 @@ katalog(prg_comp, file, 'comp', s)
 
 #-----------------------------------------------------------------------
 
+prg_act = [
+    ('','   line -> right_ 1; \n\tOA:opamp(,"","",); \n\t   "$\displaystyle \int $" at OA.w + (0.25,0);', 180),
+]
+
+s = "## <font color='teal'> Aktívne prvky </font> \n"
+katalog(prg_act, file, 'act', s)
+
+#-----------------------------------------------------------------------
+
 prg_graph = [
     ('include(lib_color.ckt); color_red;','sinusoid(1.0, pi_*4/10,-pi_/2, 0, 10);', 380),
     ('','hatchbox(wid 3 ht 1.5,,dashed,angle=125 );', 150 ),

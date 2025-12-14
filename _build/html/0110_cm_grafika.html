@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -353,7 +353,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-linearnych-prvkov"><font color="brown"> Atribúty lineárnych prvkov  </font></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obddlznik-kruznica-a-elipsa"><font color="teal"> Obddĺžnik, kružnica a elipsa </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plosne-objekty"><font color="teal"> Plošné objekty </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-plosnych-prvkov"><font color="brown"> Atribúty plošných prvkov  </font></a></li>
 </ul>
 </li>
@@ -449,7 +449,7 @@ line -&gt; from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1;
 </section>
 <section id="krivky">
 <h2><font color='teal'> Krivky  </font><a class="headerlink" href="#krivky" title="Link to this heading">#</a></h2>
-<p>Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami <em>dashed</em> a <em>dotted</em>, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, skutočné závisí od zvolenej mierky obrázku. Pri krivkách nie je možné vykresliť v ich definícii text na ich konci ako pri čiare.</p>
+<p>Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami <em>dashed</em> a <em>dotted</em>, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, ich zobrazenie závisí od nastavenie parametrov kreslenia.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] spline [t] [atribútes] [linespec] 
 
 t          - napätie (tension) krivky v rozsahu 0...1 
@@ -461,24 +461,28 @@ linespec   -  from position | to position | direction [ expr ]
               | linespec then linespec
 </pre></div>
 </div>
-<p>Príklad použitia kriviek</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># I. spline krivka, súradnic rovnake ako pri čiare
-spline from (1,1.5) right_ 1 up_ 1 then right_ 1 down_ 1 then right_ 1 down_ 2 then up_ 3; 
-                          
-# J. obojstranná šipka na krivke                       
-spline &lt;-&gt; from (6,1) to (7,4) to (8,1) to (9.5,3); 
+<p>Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Grid(8.5,2.5);
+color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
+spline from (0,1.5) right_ 1 up_ 1 then right_ 0.5 down_ 1 then \
+       right_ 1 down_ 2 then up_ 3; &quot;A&quot; rjust below; 
 
-# K. Parameter tension
-spline 1.4 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dashed .08;
-spline 1.0 from (6, 3.5) up_ 2 then right_ 2 then down_ 2;
-spline 0.6 from (6, 3.5) up_ 2 then right_ 2 then down_ 2 dotted .05;
+                        
+color_blue;        # B. obojstranná šipka na krivke                       
+spline &lt;-&gt; from (5.5,0) to (6,2) to (7,0.5) to (8.5,2); &quot;B&quot; rjust above; 
+
+
+color_dark_green;  # C. Parameter tension
+spline 1.4 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dashed .08;
+spline 1.0 from (3, 0.) up_ 2 then right_ 2 then down_ 2;
+spline 0.6 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dotted .05;&quot;C&quot; rjust above;
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0110b">
 <a class="reference internal image-reference" href="_images/cm_0110b.png"><img alt="_images/cm_0110b.png" src="_images/cm_0110b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 39 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/ff9382584685cb14d171b09ad4ab7286/cm_0110b.ckt"><span class="xref download myst">Použitie</span></a> splajnových kriviek.</span><a class="headerlink" href="#cm-0110b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 39 </span><span class="caption-text">Použitie splajnových kriviek.</span><a class="headerlink" href="#cm-0110b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="atributy-linearnych-prvkov">
@@ -500,9 +504,9 @@ L.center    - je ekvivalentom  (L.center.x, L.center.y)
 </div>
 </section>
 </section>
-<section id="obddlznik-kruznica-a-elipsa">
-<h2><font color='teal'> Obddĺžnik, kružnica a elipsa </font><a class="headerlink" href="#obddlznik-kruznica-a-elipsa" title="Link to this heading">#</a></h2>
-<p>Definícia plošných objektov má tvar</p>
+<section id="plosne-objekty">
+<h2><font color='teal'> Plošné objekty </font><a class="headerlink" href="#plosne-objekty" title="Link to this heading">#</a></h2>
+<p>Definícia plošných objektov, obdĺžnik, kružnica a elipsa, má v <code class="docutils literal notranslate"><span class="pre">dpic</span></code> tvar</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] box [at pos] [wid x] [ht y] [parameters] [string]
 [reference:] circle [at pos] [rad r] [parameters] [string]
 [reference:] ellipse [at pos] [wid x] [ht y] [parameters] [string]
@@ -515,7 +519,33 @@ parameters - parametre zobrazenia
 strin      - text v strede objektu
 </pre></div>
 </div>
-<p>Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami.</p>
+<p>Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami <em>dashed</em> a <em>dotted</em> a výplň parametrom <em>fill</em>. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou <em>boxrad</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   color_red;      
+A: box wid 1 ht 1 at (1,0.5) &quot;A&quot;; line -&gt; right_ 1;
+
+   color_blue; boxrad = 0.15; 
+B: box wid 1 ht 1 dashed &quot;B&quot;;
+
+   color_dark_green;  line &lt;-&gt; up_ 1 from A.n;
+C: box wid 1 ht 1 fill 0.9 &quot;C&quot;;
+
+   color_dark_cyan; line -&gt; from last box.e right_ 1
+D: circle rad 0.5 &quot;D&quot;;
+Y: (0.5 between D and B) + (2,0)
+
+   color_coral;
+E: ellipse at Y wid 2 ht 1 &quot;E&quot;
+   line -&gt; from D.e to (E.n, D.e) to E.n;
+   line -&gt; from B.e to (E.s, B.e) to E.s;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0110f">
+<a class="reference internal image-reference" href="_images/cm_0110f.png"><img alt="_images/cm_0110f.png" src="_images/cm_0110f.png" style="width: 380px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Plošné objekty.</span><a class="headerlink" href="#cm-0110f" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="atributy-plosnych-prvkov">
 <h3><font color='brown'> Atribúty plošných prvkov  </font><a class="headerlink" href="#atributy-plosnych-prvkov" title="Link to this heading">#</a></h3>
 <p>Pri obryse plošných objektov sú atribúty definované podľa svetových strán.</p>
@@ -533,7 +563,7 @@ strin      - text v strede objektu
 <a class="reference internal image-reference" href="_images/cm_0110c.png"><img alt="_images/cm_0110c.png" src="_images/cm_0110c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 41 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -575,7 +605,7 @@ A2: arc -&gt; cw from P1 to P2 with .c at P3
 <a class="reference internal image-reference" href="_images/cm_0110d.png"><img alt="_images/cm_0110d.png" src="_images/cm_0110d.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 41 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -616,7 +646,7 @@ arc -&gt; cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed &quot;D&quot;;
 <a class="reference internal image-reference" href="_images/cm_0110e.png"><img alt="_images/cm_0110e.png" src="_images/cm_0110e.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 42 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -672,7 +702,7 @@ arc -&gt; cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed &quot;D&quot;;
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-linearnych-prvkov"><font color="brown"> Atribúty lineárnych prvkov  </font></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obddlznik-kruznica-a-elipsa"><font color="teal"> Obddĺžnik, kružnica a elipsa </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plosne-objekty"><font color="teal"> Plošné objekty </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atributy-plosnych-prvkov"><font color="brown"> Atribúty plošných prvkov  </font></a></li>
 </ul>
 </li>
