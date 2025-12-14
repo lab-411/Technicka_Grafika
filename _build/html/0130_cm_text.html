@@ -192,7 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -348,7 +348,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-textu"><font color="teal"> Zadanie textu   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnenie-textu"><font color="teal"> Umiestnenie textu   </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a></li>
@@ -365,10 +365,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="texty">
 <h1><font color='navy'> Texty </font><a class="headerlink" href="#texty" title="Link to this heading">#</a></h1>
-<p>Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> pomocou makier <em>rlabel …</em>, rozšírené formátovanie textov je možné s využitím príkazov jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovania textu pomocou LaTeX-u.
-Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u.</p>
-<section id="zadanie-textu">
-<h2><font color='teal'> Zadanie textu   </font><a class="headerlink" href="#zadanie-textu" title="Link to this heading">#</a></h2>
+<p>Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier <em>rlabel(), llabel() …</em>, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovanie textu pomocou LaTeX-u.
+Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.</p>
+<section id="umiestnenie-textu">
+<h2><font color='teal'> Umiestnenie textu   </font><a class="headerlink" href="#umiestnenie-textu" title="Link to this heading">#</a></h2>
 <p>Pre kreslenie textu do obrázku je určený príkaz v tvare</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;text&quot;  at location [position];
 
@@ -561,7 +561,7 @@ malé písmená     \scshape    \sc   \textsc{...}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zadanie-textu"><font color="teal"> Zadanie textu   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnenie-textu"><font color="teal"> Umiestnenie textu   </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a></li>

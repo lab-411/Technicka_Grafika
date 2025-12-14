@@ -14,10 +14,10 @@ kernelspec:
 
 # <font color='navy'> Texty </font>
 
-Základné formátovanie textov a popisov prvkov zapojenie je možné priamo v `CircuitMacros` pomocou makier *rlabel ...*, rozšírené formátovanie textov je možné s využitím príkazov jazyka `dpic` a renderovania textu pomocou LaTeX-u. 
-Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy v syntaxi LaTeX-u. 
+Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier *rlabel(), llabel() ...*, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka `dpic` a renderovanie textu pomocou LaTeX-u. 
+Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.
 
-## <font color='teal'> Zadanie textu   </font>
+## <font color='teal'> Umiestnenie textu   </font>
 
 Pre kreslenie textu do obrázku je určený príkaz v tvare 
 

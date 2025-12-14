@@ -11,12 +11,17 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-right_; 
-resistor(2,,E); llabel(,R_1,); 
-R2: [ linethick_(1.2); 
-      resistor(2,,ES);
-    ]
-    llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
-resistor(2,,E); llabel(,R_3,);
+    right_; 
+    resistor(2,,E); llabel(,R_1,); 
+
+    SH:[  
+         RR:resistor(2,,ES);
+            llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
+            box wid elen_ ht elen_*4/5 at RR.center dashed;
+        ]
+        llabel(,Shield,);  
+        { dot(at SH.s); ground;}
+
+        resistor(2,,E); llabel(,R_3,); 
 
 .PE

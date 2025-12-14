@@ -46,8 +46,6 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0104_cm_upravy';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -194,7 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Užitočné makrá  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0210_ex_makra.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
@@ -353,6 +351,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-farby"><font color="teal">  Zmena farby  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvyraznenie-prvku"><font color="teal">  Zvýraznenie prvku </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-velkosti-prvkov"><font color="teal">  Zmena veľkosti prvkov   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tienenie-prvkov"><font color="teal"> Tienenie prvkov </font></a></li>
 </ul>
             </nav>
         </div>
@@ -369,7 +368,7 @@ document.write(`
 <p>Súčasťou <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Môžeme hrubšími čiarami zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis obvodov, popis prvkov alebo upozorniť na konštrukčné detaily.</p>
 <section id="zmena-farby">
 <h2><font color='teal'>  Zmena farby  </font><a class="headerlink" href="#zmena-farby" title="Link to this heading">#</a></h2>
-<p>Pre zmenu farby kreslenie je definované makro <em>setrgb(r, g, b)</em>, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby <em>color_<meno farby></em> zo súboru <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a>, popis fabieb je uvedený v prílohe <strong>Farby</strong>. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra <em>color_reset</em>.</p>
+<p>Pre zmenu farby kreslenie je definované makro <em>setrgb(r, g, b)</em>, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby <em>color_<meno farby></em> zo súboru <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a>. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra <em>color_reset</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt)
 
 resistor(2,,E); 
@@ -381,8 +380,8 @@ dot;
 
 color_red;
 capacitor(right_ 1.5,,E); llabel(,C_1,); rlabel(,10 \mu F,);
-resistor(right_ 2,,ES); 
 
+resistor(right_ 2,,ES); 
 color_reset; 
 llabel(,R_4,); rlabel(,10 \Omega,);
 </pre></div>
@@ -391,39 +390,73 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 <a class="reference internal image-reference" href="_images/cm_0104a.png"><img alt="_images/cm_0104a.png" src="_images/cm_0104a.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 46 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/a2c6c7fba89f4dd46b1662ac83e8670a/cm_0104a.ckt"><span class="xref download myst">Použitie</span></a> pomenovaných farieb</span><a class="headerlink" href="#cm-0104a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text">Použitie pomenovaných farieb</span><a class="headerlink" href="#cm-0104a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="zvyraznenie-prvku">
 <h2><font color='teal'>  Zvýraznenie prvku </font><a class="headerlink" href="#zvyraznenie-prvku" title="Link to this heading">#</a></h2>
-<p>Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom   <em>linethick_(n)</em> . Hodnota argumentu <span class="math notranslate nohighlight">\(n=1\)</span> zodpovedá štandardnej šírke čiary. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.</p>
+<p>Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  <em>linethick_(n)</em>, volanie makra bez argumentu nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
+   resistor(2,,E); llabel(,R_1,); 
+R2:[ linethick_(1.2);         # lokálna zmena hrubky čiary
+      resistor(2,,ES);
+   ]
+   llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
+   linethick_();
+   resistor(2,,E); llabel(,R_3,);
+</pre></div>
+</div>
 <figure class="align-default" id="cm-0104b">
 <a class="reference internal image-reference" href="_images/cm_0104b.png"><img alt="_images/cm_0104b.png" src="_images/cm_0104b.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 47 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/b1fc4c3d80321bf4ffd993968d1977e8/cm_0104b.ckt"><span class="xref download myst">Zvýraznenie</span></a> komponentu.</span><a class="headerlink" href="#cm-0104b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 47 </span><span class="caption-text">Zvýraznenie komponentu zmenou hrúbky čiary.</span><a class="headerlink" href="#cm-0104b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="zmena-velkosti-prvkov">
 <h2><font color='teal'>  Zmena veľkosti prvkov   </font><a class="headerlink" href="#zmena-velkosti-prvkov" title="Link to this heading">#</a></h2>
-<p>Štandardná velkosť komponentov je určená hodnotou parametra <em>linewid</em>. Default hodnota parametra je 2.54 / 2 a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>resistor(2,,E); llabel(,R_1,); dot;
-
-linewid = 2.0                      # zmena velkosti komponentu
-R1: resistor(3,,ES); llabel(,R_2,); rlabel(,470 \Omega / 5 W,)
-
-dot;                               # zvecseny bod
-linewid = 2.54/2                   # uprava rozmerov na standardnu velkost
-resistor(d,,E);llabel(,R_3,);      # štandardny rozmer
+<p>Veľkosť prvkov zapojenia je úmerná hodnote premennej <em>linewid</em>, ktorá je definovaná v nastavení parametrov prostredia a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
+   resistor(2,,E); llabel(,R_1,);    # štandardná veľkosť
+R2:[ linewid = linewid*1.5;      # lokálna zmena velkosti v bloku  
+      resistor(2,,ES);
+   ]
+   llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
+   resistor(2,,E); llabel(,R_3,);    # štandardná veľkosť
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0104c">
 <a class="reference internal image-reference" href="_images/cm_0104c.png"><img alt="_images/cm_0104c.png" src="_images/cm_0104c.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 48 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c5056e7d3631537f16f4e8a0b1b56931/cm_0104c.ckt"><span class="xref download myst">Zmena</span></a> veľkosti komponentov</span><a class="headerlink" href="#cm-0104c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 48 </span><span class="caption-text">Zmena veľkosti komponentov pomocou premennej <em>linewid</em>.</span><a class="headerlink" href="#cm-0104c" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="tienenie-prvkov">
+<h2><font color='teal'> Tienenie prvkov </font><a class="headerlink" href="#tienenie-prvkov" title="Link to this heading">#</a></h2>
+<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <em>elen_</em>, ktorá definuje veľkosť prvku.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>right_; 
+resistor(2,,E); llabel(,R_1,); 
+
+SH:[                                               # blok
+     RR:resistor(2,,ES);
+        llabel(,R_2,); rlabel(,470 \Omega / 5 W,); # vnutorny popis  
+        box wid elen_ ht elen_*4/5 at RR.center dashed;
+    ]
+    llabel(,Shield,);                              # vonkajsi popis 
+    { dot(at SH.s); ground;}                       # pripojenie tienenia
+
+    resistor(2,,E); llabel(,R_3,);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0104d">
+<a class="reference internal image-reference" href="_images/cm_0104d.png"><img alt="_images/cm_0104d.png" src="_images/cm_0104d.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 49 </span><span class="caption-text">Tienenie prvku zapojenia.</span><a class="headerlink" href="#cm-0104d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -477,6 +510,7 @@ resistor(d,,E);llabel(,R_3,);      # štandardny rozmer
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-farby"><font color="teal">  Zmena farby  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvyraznenie-prvku"><font color="teal">  Zvýraznenie prvku </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-velkosti-prvkov"><font color="teal">  Zmena veľkosti prvkov   </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tienenie-prvkov"><font color="teal"> Tienenie prvkov </font></a></li>
 </ul>
   </nav></div>
 
