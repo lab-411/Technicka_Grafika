@@ -11,18 +11,19 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-    right_; 
-    resistor(2,,E); llabel(,R_1,); 
+include(lib_color.ckt);
+right_; 
+resistor(2,,E); llabel(,R_1,); 
 
-    SH:[  
-         RR:resistor(2,,ES);
-            llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
-            boxrad=0.1;
-            box wid elen_ ht elen_*4/5 at RR.center dashed;
-        ]
-        llabel(,Shield,);  
-        { dot(at SH.s); ground;}
+[  
+      color_grey;
+      boxrad=0.1
+      box wid elen_ ht elen_*4/5 fill 0.95 ;
+      color_reset;
+      resistor(from last box.w to last box.e,, ES);
+      llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
 
-        resistor(2,,E); llabel(,R_3,); 
+]
+resistor(2,,E); llabel(,R_3,);
 
 .PE

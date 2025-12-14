@@ -348,10 +348,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-farby"><font color="teal">  Zmena farby  </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvyraznenie-prvku"><font color="teal">  Zvýraznenie prvku </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-velkosti-prvkov"><font color="teal">  Zmena veľkosti prvkov   </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tienenie-prvkov"><font color="teal"> Tienenie prvkov </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba"><font color="teal"> Farba  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvyraznenie"><font color="teal"> Zvýraznenie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-velkosti"><font color="teal"> Zmena veľkosti  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tienenie"><font color="teal"> Tienenie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pozadie"><font color="teal"> Pozadie </font></a></li>
 </ul>
             </nav>
         </div>
@@ -366,8 +367,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="upravy">
 <h1><font color='navy'> Úpravy </font><a class="headerlink" href="#upravy" title="Link to this heading">#</a></h1>
 <p>Súčasťou <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Môžeme hrubšími čiarami zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis obvodov, popis prvkov alebo upozorniť na konštrukčné detaily.</p>
-<section id="zmena-farby">
-<h2><font color='teal'>  Zmena farby  </font><a class="headerlink" href="#zmena-farby" title="Link to this heading">#</a></h2>
+<section id="farba">
+<h2><font color='teal'> Farba  </font><a class="headerlink" href="#farba" title="Link to this heading">#</a></h2>
 <p>Pre zmenu farby kreslenie je definované makro <em>setrgb(r, g, b)</em>, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby <em>color_<meno farby></em> zo súboru <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a>. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra <em>color_reset</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt)
 
@@ -394,8 +395,8 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 </figcaption>
 </figure>
 </section>
-<section id="zvyraznenie-prvku">
-<h2><font color='teal'>  Zvýraznenie prvku </font><a class="headerlink" href="#zvyraznenie-prvku" title="Link to this heading">#</a></h2>
+<section id="zvyraznenie">
+<h2><font color='teal'> Zvýraznenie </font><a class="headerlink" href="#zvyraznenie" title="Link to this heading">#</a></h2>
 <p>Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  <em>linethick_(n)</em>, volanie makra bez argumentu nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
    resistor(2,,E); llabel(,R_1,); 
@@ -415,8 +416,8 @@ R2:[ linethick_(1.2);         # lokálna zmena hrubky čiary
 </figcaption>
 </figure>
 </section>
-<section id="zmena-velkosti-prvkov">
-<h2><font color='teal'>  Zmena veľkosti prvkov   </font><a class="headerlink" href="#zmena-velkosti-prvkov" title="Link to this heading">#</a></h2>
+<section id="zmena-velkosti">
+<h2><font color='teal'> Zmena veľkosti  </font><a class="headerlink" href="#zmena-velkosti" title="Link to this heading">#</a></h2>
 <p>Veľkosť prvkov zapojenia je úmerná hodnote premennej <em>linewid</em>, ktorá je definovaná v nastavení parametrov prostredia a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
    resistor(2,,E); llabel(,R_1,);    # štandardná veľkosť
@@ -435,8 +436,8 @@ R2:[ linewid = linewid*1.5;      # lokálna zmena velkosti v bloku
 </figcaption>
 </figure>
 </section>
-<section id="tienenie-prvkov">
-<h2><font color='teal'> Tienenie prvkov </font><a class="headerlink" href="#tienenie-prvkov" title="Link to this heading">#</a></h2>
+<section id="tienenie">
+<h2><font color='teal'> Tienenie </font><a class="headerlink" href="#tienenie" title="Link to this heading">#</a></h2>
 <p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <em>elen_</em>, ktorá definuje veľkosť prvku.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>right_; 
 resistor(2,,E); llabel(,R_1,); 
@@ -444,6 +445,7 @@ resistor(2,,E); llabel(,R_1,);
 SH:[                                               # blok
      RR:resistor(2,,ES);
         llabel(,R_2,); rlabel(,470 \Omega / 5 W,); # vnutorny popis  
+        boxrad=0.1;                                # tienenie
         box wid elen_ ht elen_*4/5 at RR.center dashed;
     ]
     llabel(,Shield,);                              # vonkajsi popis 
@@ -457,6 +459,71 @@ SH:[                                               # blok
 </a>
 <figcaption>
 <p><span class="caption-number">Obr. 49 </span><span class="caption-text">Tienenie prvku zapojenia.</span><a class="headerlink" href="#cm-0104d" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pozadie">
+<h2><font color='teal'> Pozadie </font><a class="headerlink" href="#pozadie" title="Link to this heading">#</a></h2>
+<p>Ak potrebujeme zvýrazniť plochu na ktorej je nakreslená časť zariadenia (napríklad na vizuálne oddelnie samostatných funkčných celkov ako je predzosilovač, filter, ochranné obvody a pod.), musíme podklad nakresliť vopred. V prípade jedného prvku odvodíme rozmery plochy priamo z predefinovaných parametrov prostredia.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt);
+right_; 
+resistor(2,,E); llabel(,R_1,); 
+
+[  
+  color_grey;
+  boxrad=0.1
+  box wid elen_ ht elen_*4/5 fill 0.95 ;
+  color_reset;
+  resistor(from last box.w to last box.e,, ES);
+  llabel(,R_2,); rlabel(,470 \Omega / 5 W,);
+]
+resistor(2,,E); llabel(,R_3,);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0104e">
+<a class="reference internal image-reference" href="_images/cm_0104e.png"><img alt="_images/cm_0104e.png" src="_images/cm_0104e.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 50 </span><span class="caption-text">Zvýraznenie pozadia jedného prvku zapojenia.</span><a class="headerlink" href="#cm-0104e" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>V prípade väčších obvodov je vhodné si určiť veľkosť zvýrazneje plochy a na jej obvode si zadefinovať body pripojenie. Zapojenie potom nakreslíme do plochu ako zložený objekt s vlastnosťami plošného prvku.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d  = elen_*5/6;    # veľkosť prvkov
+dx = 2*d;          # šírka plochu
+dy = 2*d*4/5;      # výška plochy
+
+FL:[  
+    color_grey;
+    boxrad=0.1
+BX: box wid dx ht dy fill 0.95 ;
+IN1:BX.w + (0,d/2); IN2: BX.w + (0,-d/2);    # súradnice bodov na obvode 
+OU1:BX.e + (0,d/2); OU2: BX.e + (0,-d/2 );
+    color_reset;
+
+    line from IN1 right_ d/2;                # zapojenie na ploche
+    dot; {inductor(down_ d,W); rlabel(,L,); DD1:dot;}
+    capacitor(right_ d); rlabel(,C,);
+    dot; {inductor(down_ d,W); llabel(,L,); DD2:dot;}
+    line  to OU1;
+    line from IN2 to DD1 then to DD2 then to OU2;
+]
+                                             # vonkajšie obvody
+resistor(from FL.IN1 left_ d,,E); rlabel(,R_g,);
+AC:source(down_ d); {rlabel(,V_g,); ACsymbol(at AC,,, L);}
+line to FL.IN2;
+
+line from FL.OU1 right_ 1;
+resistor(down_ d,,E); llabel(,R_z,);
+line to FL.OU2;
+
+&quot;LC Filter&quot; at FL.n above;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0104f">
+<a class="reference internal image-reference" href="_images/cm_0104f.png"><img alt="_images/cm_0104f.png" src="_images/cm_0104f.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Zvýraznená časť zapojenia obvodu.</span><a class="headerlink" href="#cm-0104f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -507,10 +574,11 @@ SH:[                                               # blok
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-farby"><font color="teal">  Zmena farby  </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvyraznenie-prvku"><font color="teal">  Zvýraznenie prvku </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-velkosti-prvkov"><font color="teal">  Zmena veľkosti prvkov   </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tienenie-prvkov"><font color="teal"> Tienenie prvkov </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba"><font color="teal"> Farba  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvyraznenie"><font color="teal"> Zvýraznenie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmena-velkosti"><font color="teal"> Zmena veľkosti  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tienenie"><font color="teal"> Tienenie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pozadie"><font color="teal"> Pozadie </font></a></li>
 </ul>
   </nav></div>
 

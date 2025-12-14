@@ -1,0 +1,52 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_color.ckt);
+
+d  = elen_*5/6; 
+dx = 2*d; 
+dy = 2*d*4/5; 
+
+FL:[  
+          color_grey;
+          boxrad=0.1
+      BX: box wid dx ht dy fill 0.95 ;
+      IN1:BX.w + (0,d/2); IN2: BX.w + (0,-d/2);
+      OU1:BX.e + (0,d/2); OU2: BX.e + (0,-d/2 );
+          color_reset;
+
+          line from IN1 right_ d/2; 
+          dot; {inductor(down_ d,W); rlabel(,L,); DD1:dot;}
+          capacitor(right_ d); rlabel(,C,);
+          dot; {inductor(down_ d,W); llabel(,L,); DD2:dot;}
+          line  to OU1;
+          line from IN2 to DD1 then to DD2 then to OU2;
+   ]
+
+   resistor(from FL.IN1 left_ d,,E); rlabel(,R_g,);
+   AC:source(down_ d); {rlabel(,V_g,); ACsymbol(at AC,,, L);}
+   line to FL.IN2;
+
+   line from FL.OU1 right_ 1;
+   resistor(down_ d,,E); llabel(,R_z,);
+   line to FL.OU2;
+
+   "LC Filter" at FL.n above;
+
+color_red; 
+line <- from FL.IN1+(-0.1, 0.1) left_ 3/4 up_ 3/4; "IN1" at last line .end above
+line <- from FL.OU1+( 0.1, 0.1) right_ 3/4 up_ 3/4; "OU1" at last line .end above
+line <- from FL.IN2+(-0.1, -0.1) left_ 3/4 down_ 3/4; "IN2" at last line .end below
+line <- from FL.OU2+( 0.1, -0.1) right_ 3/4 down_ 3/4; "OU2" at last line .end below
+
+.PE
