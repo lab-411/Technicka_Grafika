@@ -377,12 +377,12 @@ Príklady použitia
     color_red;
     arrow -> from (0,0) to (1.5,1.5) thick 2 ht 0.5 wid 0.5
     color_blue;
-    arrow from (2,0.5) right_ 2;    {"K" ljust};  # K. šipka v smere kreslenia      
-    arrow <- from (2,1) right_ 2;   {"L" ljust};  # L. sipka smerom dolava
-    line <-> from (2,1.5) right_ 2; {"M" ljust};  # M. obojsmerna sipka 
+    arrow from (2,0.5) right_ 2;    {"A" ljust};  # šipka v smere kreslenia      
+    arrow <- from (2,1) right_ 2;   {"B" ljust};  # sipka smerom dolava
+    line <-> from (2,1.5) right_ 2; {"C" ljust};  # obojsmerna sipka 
 
-    color_dark_cyan;                              # K. sipke v obluku 
-    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "N";
+    color_dark_cyan;                              # šipka v obluku 
+    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "D";
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -397,12 +397,12 @@ data = r'''
     color_red;
     arrow -> from (0,0) to (1.5,1.5) thick 2 ht 0.5 wid 0.5
     color_blue;
-    arrow from (2,0.5) right_ 2;    {"K" ljust};  # K. obojsmerna šipka      
-    arrow <- from (2,1) right_ 2;   {"L" ljust};  # L. sipka smerom dolava
-    line <-> from (2,1.5) right_ 2; {"M" ljust};  # M. obojsmerna sipka 
+    arrow from (2,0.5) right_ 2;    {"A" ljust};  # K. obojsmerna šipka      
+    arrow <- from (2,1) right_ 2;   {"B" ljust};  # L. sipka smerom dolava
+    line <-> from (2,1.5) right_ 2; {"C" ljust};  # M. obojsmerna sipka 
 
-    color_dark_cyan;                              # K. sipke v obluku 
-    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "N";
+    color_dark_cyan;                              # sipka v obluku 
+    arc -> cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed "D";
 '''
 
 _ = cm_compile('cm_0110e', data, dpi=600)   
