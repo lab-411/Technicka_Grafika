@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Texty &#8212; cm 1.00 documentation</title>
+    <title>Text &#8212; cm 1.00 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -174,7 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Texty </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Text </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
@@ -338,7 +338,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><font color='navy'> Texty </font></h1>
+    <h1><font color='navy'> Text </font></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -351,7 +351,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnenie-textu"><font color="teal"> Umiestnenie textu   </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fonty"><font color="brown">  Fonty </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-v-ramiku"><font color="brown"> Text v rámiku </font></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -363,8 +367,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="texty">
-<h1><font color='navy'> Texty </font><a class="headerlink" href="#texty" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="text">
+<h1><font color='navy'> Text </font><a class="headerlink" href="#text" title="Link to this heading">#</a></h1>
 <p>Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier <em>rlabel(), llabel() …</em>, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovanie textu pomocou LaTeX-u.
 Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.</p>
 <section id="umiestnenie-textu">
@@ -474,6 +478,8 @@ LL: line from (-1,0) to (1,0);
 <section id="formatovanie-textu-pomocou-latex-u">
 <h2><font color='teal'>  Formátovanie textu pomocou LaTeX-u  </font><a class="headerlink" href="#formatovanie-textu-pomocou-latex-u" title="Link to this heading">#</a></h2>
 <p>Jaxyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho <a class="reference external" href="https://www.latex-project.org/help/documentation/fntguide.pdf">dokumentácii</a>.</p>
+<section id="fonty">
+<h3><font color='brown'>  Fonty </font><a class="headerlink" href="#fonty" title="Link to this heading">#</a></h3>
 <p>Pre prepínanie typu fontu sú v LaTeX-e definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách <code class="docutils literal notranslate"><span class="pre">{...}</span></code> alebo na na celý text. Výber z LaTeX príkazov pre formátovanie textu</p>
 <p><strong>Výber kolekcie fontov</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>font Roman        \rmfamily  \rm   \textrm{...}
@@ -510,9 +516,27 @@ malé písmená     \scshape    \sc   \textsc{...}
 <a class="reference internal image-reference" href="_images/cm_0130d.png"><img alt="_images/cm_0130d.png" src="_images/cm_0130d.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 47 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/630867c3d75de26fb4c1d76fb8be2291/cm_0130d.ckt"><span class="xref download myst">Formátovanie</span></a> textu pomocou príkazov LaTeX-u</span><a class="headerlink" href="#cm-0130d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 47 </span><span class="caption-text">Formátovanie textu pomocou príkazov LaTeX-u</span><a class="headerlink" href="#cm-0130d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="text-v-ramiku">
+<h3><font color='brown'> Text v rámiku </font><a class="headerlink" href="#text-v-ramiku" title="Link to this heading">#</a></h3>
+<p>Pre umiestnenenie textu do rámiku môžeme použiť príkaz <em>box</em>, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz <a class="reference external" href="https://texdoc.org/serve/fbox/0"><em>fbox</em></a> LaTeX-u, takto vytvorený text ale nie je objektom v <em>dpic</em>, t.j. nemôžeme sa odkazovať na jeho atribúty <em>.s, .n …</em>. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, poloha textu je jeho geometrický stred.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt)
+&quot;\fbox{\color{red} Text v rámiku}&quot; at (0,0);
+color_blue; &quot;\fbox{\large Text large v rámiku}&quot; at (0,1);
+color_reset; &quot;\sf \fbox{\Large Text {\color{red} Large} v rámiku}&quot; at (0,2);
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0130g">
+<a class="reference internal image-reference" href="_images/cm_0130g.png"><img alt="_images/cm_0130g.png" src="_images/cm_0130g.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 48 </span><span class="caption-text">Text v rámiku.</span><a class="headerlink" href="#cm-0130g" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 </section>
 
@@ -564,7 +588,11 @@ malé písmená     \scshape    \sc   \textsc{...}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umiestnenie-textu"><font color="teal"> Umiestnenie textu   </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#farba-textu"><font color="teal">  Farba textu  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matematicke-vyrazy"><font color="teal">  Matematické výrazy  </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatovanie-textu-pomocou-latex-u"><font color="teal">  Formátovanie textu pomocou LaTeX-u  </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fonty"><font color="brown">  Fonty </font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-v-ramiku"><font color="brown"> Text v rámiku </font></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

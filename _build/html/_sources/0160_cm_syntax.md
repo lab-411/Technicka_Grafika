@@ -186,7 +186,7 @@ Použitie konštrukcie *between*.
     
 ### <font color='brown'> Textové reťazce </font>
     
-Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Súradnice geometrického stredu zobrazeného textu ale môže byť reprezentovaná referenciou.  
+Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. 
 
 
     str = "Toto je text"          # chyba   

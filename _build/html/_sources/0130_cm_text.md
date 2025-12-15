@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# <font color='navy'> Texty </font>
+# <font color='navy'> Text </font>
 
 Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier *rlabel(), llabel() ...*, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka `dpic` a renderovanie textu pomocou LaTeX-u. 
 Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.
@@ -203,6 +203,8 @@ _ = cm_compile('cm_0130c', data, dpi=600)
 
 Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho [dokumentácii](https://www.latex-project.org/help/documentation/fntguide.pdf).
 
+### <font color='brown'>  Fonty </font>
+
 Pre prepínanie typu fontu sú v LaTeX-e definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách `{...}` alebo na na celý text. Výber z LaTeX príkazov pre formátovanie textu 
 
 **Výber kolekcie fontov**
@@ -276,7 +278,49 @@ _ = cm_compile('cm_0130d', data, dpi=600)
 :width: 600px
 :name: cm_0130d
 
-[Formátovanie](./src/cm_0130d.ckt) textu pomocou príkazov LaTeX-u
+Formátovanie textu pomocou príkazov LaTeX-u
 ```
+
+
+### <font color='brown'> Text v rámiku </font>
+
+Pre umiestnenenie textu do rámiku môžeme použiť príkaz *box*, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz [*fbox*](https://texdoc.org/serve/fbox/0) LaTeX-u, takto vytvorený text ale nie je objektom v *dpic*, t.j. nemôžeme sa odkazovať na jeho atribúty *.s, .n ...*. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, poloha textu je jeho geometrický stred.
+
+    include(lib_color.ckt)
+    "\fbox{\color{red} Text v rámiku}" at (0,0);
+    color_blue; "\fbox{\large Text large v rámiku}" at (0,1);
+    color_reset; "\sf \fbox{\Large Text {\color{red} Large} v rámiku}" at (0,2);
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_color.ckt)
+include(lib_base.ckt)
+Grid(5,3)
+
+"\fbox{\color{red} Text v rámiku}" at (2.5, 0.5)
+
+color_blue;
+"\fbox{\large Text large v rámiku}" at (2.5, 1.5)
+
+color_reset;
+"\sf \fbox{\Large Text {\color{red} Large} v rámiku}" at (2.5 ,2.5)
+'''
+
+_ = cm_compile('cm_0130g', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0130g.png
+:width: 400px
+:name: cm_0130g
+
+Text v rámiku.
+```
+
+
 
 

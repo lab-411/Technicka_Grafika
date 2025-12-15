@@ -254,7 +254,7 @@ Zvýraznenie pozadia jedného prvku zapojenia.
 ```
 
 
-V prípade väčších obvodov je vhodné si určiť veľkosť zvýrazneje plochy a na jej obvode si zadefinovať body pripojenie. Zapojenie potom nakreslíme do plochu ako zložený objekt s vlastnosťami plošného prvku.
+V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy a na jej obvode si zadefinovať body pripojenia. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.
  
     d  = elen_*5/6;    # veľkosť prvkov
     dx = 2*d;          # šírka plochu
