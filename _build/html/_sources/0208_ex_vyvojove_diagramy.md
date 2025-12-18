@@ -15,79 +15,15 @@ kernelspec:
 
 # <font color='navy'> Blokové diagramy</font> 
 
+Elektronické zariadenia v súčasnej dobe sú komplexné systémy, ktorých dokumentácia si vyžaduje hierarchický prístup, v ktorom na najvyššej úrovni dokumentujeme jednotlivé funkčné celku a vzťahy medzi nimi. Diagramy majú často tvar hybridných zapojení, kde pre väčšiu názornosť kombinujeme bloky s diskrétnymi komponentami reprezentujúcimi funkčnosť vybraných častí zariadenia.
 
-## <font color='teal'> Knižnica *log* </font> 
+Na obrázku je blokové zapojenie zariadenia pre testy mechanických vlastností 3D tlačených materiálov. Zariadenie obsahuje centrálny mikrokontrolér a analógové a digitálne periférie, ktoré sú riadené prostredníctvom rozhraní mikrokontroléra. Prepojenia medzi jednotlivými funkčnými časťami sú realizované pomocou označených zberníc (*SPI*, *I2C*) ako aj vodičmi, ktoré môžu byť jednotlivé alebo v skupine (*pulse*, *switch* ...). Pre lepšiu prehľadnosť je v zapojení označené, z koľkých vodičov zbernica alebo skupina vodičov pozostáva.
 
 
-```{code-cell} ipython3  
-:tags: ["remove-cell"]
-from src.utils import *
 
-data = r'''
-log_init
-
-command "\sf"
-
-define(`SPI_Master', `[
-  BX: box wid 2.5 ht 7*lg_pinsep;
-
-      lg_pin(BX.ne - (0, 1*lg_pinsep),  SCLK, Pin8, e,,0 );
-      lg_pin(BX.ne - (0, 2*lg_pinsep),  MOSI, Pin7, e,,0 );
-      lg_pin(BX.ne - (0, 3*lg_pinsep),  MISO, Pin6, e,,0 );
-      lg_pin(BX.ne - (0, 4*lg_pinsep),  lg_bartxt(CS1), Pin5, e,,0 );
-      lg_pin(BX.ne - (0, 5*lg_pinsep),  lg_bartxt(CS2), Pin4, e,,0 );
-      lg_pin(BX.ne - (0, 6*lg_pinsep),  lg_bartxt(CS3), Pin3, e,,0 );
-
-]')
-
-define(`SPI_Slave', `[
-  BX: box wid 2 ht 5*lg_pinsep;
-
-      lg_pin(BX.nw - (0, 1*lg_pinsep),  SCLK, Pin1, w,,0);
-      lg_pin(BX.nw - (0, 2*lg_pinsep),  MOSI, Pin2, w,, 0);
-      lg_pin(BX.nw - (0, 3*lg_pinsep),  MISO, Pin3, w,, 0);
-      lg_pin(BX.nw - (0, 4*lg_pinsep),  lg_bartxt(CS), Pin4, w,,0 );
-]')
-
-M: SPI_Master(); "SPI" at M.c +(-0.3,0) above; "Master" at M.c +(-0.3,0) below;
-   line from M.Pin8 right 1.5;  DT1: dot; 
-   line from M.Pin7 right 1.25; DT2: dot; 
-   line <-from M.Pin6 right 1.;   DT3: dot;
-
-   line from DT1-> right 1;
-S1: SPI_Slave() with .Pin1 at last line .end; 
-    "SPI" at S1.c +(0.3,0) above; "Slave" at S1.c +(0.3,0) below;
-    line -> from DT2 to S1.Pin2
-    line from DT3 to S1.Pin3
-    line -> from M.Pin5 to S1.Pin4
-
-    line from DT1 down_ 2.5; DT5: dot;line -> to (S1.Pin1, Here)
-    right_
-S2: SPI_Slave() with .Pin1 at last line .end
-    "SPI" at S2.c +(0.3,0) above; "Slave" at S2.c +(0.3,0) below;
-    line from DT2 to (DT2, S2.Pin2); DT6: dot;line -> to S2.Pin2
-    line from DT3 to (DT3, S2.Pin3); DT7: dot;line -> to S2.Pin3
-
-    line from DT5 down_ 2.5; ;line -> to (S1.Pin1, Here)
-    right_
-S3: SPI_Slave() with .Pin1 at last line .end
-    "SPI" at S3.c +(0.3,0) above; "Slave" at S3.c +(0.3,0) below;
-    line from DT6 to (DT6, S3.Pin2); line -> to S3.Pin2
-    line from DT7 to (DT7, S3.Pin3); line -> to S3.Pin3
-
-X:  0.3 between M.Pin4 and S2.Pin4;
-    line -> from M.Pin4 to (X, M.Pin4) then to (X, S2.Pin4) then to S2.Pin4
-
-Y:  0.2 between M.Pin3 and S3.Pin4;
-    line -> from M.Pin3 to (Y, M.Pin3) then to (Y, S3.Pin4) then to S3.Pin4 
-'''
-
-_ = cm_compile('img_0208a', data,  dpi=600)   
-```
-
-```{figure} ./src/img_0208a.png
-:width: 350px
+```{figure} ./src/exam_02_trhacka.png
+:width: 700px
 :name: img_0208a
 
-Blokové [zapojenie](./src/img_0208a.ckt) SPI rozhrania 
+[Blokové](./src/exam_02_trhacka.ckt) zapojenie zariadenia pre testy 3D tlačených materiálov.
 ```
