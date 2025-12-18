@@ -1,0 +1,9 @@
+.PS
+scale = 2.54      
+maxpswid = 30   
+maxpsht = 30 
+cct_init        
+
+resistor();
+
+.PE

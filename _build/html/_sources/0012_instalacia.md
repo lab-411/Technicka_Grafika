@@ -20,10 +20,11 @@ kernelspec:
 Pre systém založený na derivátoch Ubuntu je vhodné použiť inštaláciu jednoduchého prostredia **PyCirkuit**, ktoré obsahuje v distribúcii aj knižnice `CircuitMacros`. Pre spracovanie skriptov je potrebné nainštalovať kompilátor **dpic** a pre renderovanie textov, ktoré obsahujú matematické výrazy aj podporu pre **LaTeX**.
 
     sudo apt-get update
-    sudo apt install python3-pip 
-    sudo apt-get -y install dpic
+    sudo apt-get install python3-pip 
+    sudo apt-get install dpic
     sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
                      texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
+    sudo apt-get install sxiv
     pip install pycirkuit 
     
 Po inštalácii spustíme prostredie **PyCirkuit**  v konzole príkazom

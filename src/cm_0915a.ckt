@@ -1,0 +1,36 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_color.ckt)
+
+command "\sf"
+boxrad=0.05;
+B1: box wid 2.5 ht 0.5 "HOME/Work"; {color_red; "Pracovný adresár" at last box.e ljust; color_reset;}
+line from B1.s down 1; dot;
+{
+    line right_ 1; B2: box wid 2 ht 0.5 "./cm";
+    line from B2.s down_ 0.5
+    box wid 2 ht 0.5 "libgcct.m4" invis fill 0.9; {color_red; "CircuitMacros" at last box.e ljust; color_reset;}
+    box wid 2 ht 0.5 "libgen.m4" invis fill 0.9;  {color_red; "štandardné knižnice" at last box.e ljust; color_reset;}
+    box wid 2 ht 0.5 "..." invis fill 0.9;
+}
+
+line down_ 2.8;
+box wid 2.75 ht 0.5 "cmc.sh" invis fill 0.9; {color_red; "Skript pre kompiláciu" at last box.e ljust; color_reset;}
+box wid 2.75 ht 0.5 "cmr.sh" invis fill 0.9; {color_red; "Skript pre zobrazenie" at last box.e ljust; color_reset;}
+box wid 2.75 ht 0.5 "lib\_color.ckt" invis fill 0.9; {color_red; "Uživateľské knižnice" at last box.e ljust; color_reset;}
+box wid 2.75 ht 0.5 "lib\_user.ckt" invis fill 0.9;
+box wid 2.75 ht 0.5 "..." invis fill 0.9;
+box wid 2.75 ht 0.5 "my\_program.ckt" invis fill 0.9; {color_red; "Pracovný súbor" at last box.e ljust; color_reset;}
+
+.PE

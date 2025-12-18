@@ -69,10 +69,11 @@
 ```{toctree}
 :titlesonly: True
 :caption: Prílohy
-0900_priloha_cli.md
 0905_priloha_farby.md
-0910_priloha_odkazy.md
+0900_priloha_cli.md
+0915_priloha_editor.md
 0010_sphinx_myst.ipynb
+0910_priloha_odkazy.md
 ```
 
 ## <font color='teal'> Anotácia </font>   

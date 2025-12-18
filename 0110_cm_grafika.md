@@ -222,8 +222,8 @@ Definícia plošných objektov, obdĺžnik, kružnica a elipsa, má v `dpic` tva
     wid        - šírka
     ht         - výška
     rad        - polomer
-    parameters - parametre zobrazenia
-    strin      - text v strede objektu
+    parameters - parametre zobrazenia (fill ...)
+    string     - text v strede objektu
     
 Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami *dashed* a *dotted* a výplň parametrom *fill*. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou *boxrad*. 
 

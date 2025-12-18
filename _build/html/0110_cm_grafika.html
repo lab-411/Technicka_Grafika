@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '0110_cm_grafika';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Texty" href="0130_cm_text.html" />
+    <link rel="next" title="Text" href="0130_cm_text.html" />
     <link rel="prev" title="Terminály" href="0140_cm_konektor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,7 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0106_cm_prepojenia.html"><font color="navy"> Prepojenia </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Grafika </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Texty </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Text </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
@@ -196,10 +196,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Export obrázkov </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Export obrázkov </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0915_priloha_editor.html"><font color="navy"> Externý editor </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0010_sphinx_myst.html"><font color="navy">  Elektronická publikácia </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
 </ul>
 
     </div>
@@ -515,8 +516,8 @@ at pos     - poloha stredu objektu
 wid        - šírka
 ht         - výška
 rad        - polomer
-parameters - parametre zobrazenia
-strin      - text v strede objektu
+parameters - parametre zobrazenia (fill ...)
+string     - text v strede objektu
 </pre></div>
 </div>
 <p>Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami <em>dashed</em> a <em>dotted</em> a výplň parametrom <em>fill</em>. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou <em>boxrad</em>.</p>
@@ -677,7 +678,7 @@ arc -&gt; cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed &quot;D&quot;;
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><font color='navy'> Texty </font></p>
+        <p class="prev-next-title"><font color='navy'> Text </font></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

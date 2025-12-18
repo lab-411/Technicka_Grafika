@@ -107,6 +107,16 @@ Použitie pomenovaných farieb pre čiary, krivky, obrysy plošných objektov a 
 
 ## <font color='teal'> Farby výplní </font> 
 
+Pre vyplnenie pločných objektov v odtieňoch šedej farby môžeme využiť priamo atribúty objektu pri jeho definícii, tak ako je to uvedené v kapitole [Grafika](./0110_cm_grafika.md)
+
+    [reference:] object [atribútes] [placement] [parameters] [string]
+    
+        parameters - fill n,  n = 0.0 ... 1.0 (biela ... čierna)
+        
+    Príklad:
+    
+        box wid 1 ht 1 fill 0.9
+
 Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definované makrá
 
     define(`fill_<name>', `r, g, b')
