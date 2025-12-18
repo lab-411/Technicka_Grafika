@@ -143,10 +143,10 @@ include(lib_color.ckt)
 color_reset;
 move to (3.5,0);
 Bx: Here
-rgbfill(fill_black , BA:box wid 1 ht 0.5 at Bx.s + (0, -.35)); "fi\\ll\_black" at last box .w rjust;
-rgbfill(fill_grey , BB:box wid 1 ht 0.5 at BA.s + (0, -.35)); "fi\\ll\_grey" at last box .w rjust;
+rgbfill(fill_black ,  BA:box wid 1 ht 0.5 at Bx.s + (0, -.35)); "fi\\ll\_black"  at last box .w rjust;
+rgbfill(fill_grey ,   BB:box wid 1 ht 0.5 at BA.s + (0, -.35)); "fi\\ll\_grey"   at last box .w rjust;
 rgbfill(fill_yellow , BC:box wid 1 ht 0.5 at BB.s + (0, -.35)); "fi\\ll\_yellow" at last box .w rjust;
-rgbfill(fill_cyan , BD:box wid 1 ht 0.5 at BC.s + (0, -.35)); "fi\\ll\_cyan" at last box .w rjust;
+rgbfill(fill_cyan ,   BD:box wid 1 ht 0.5 at BC.s + (0, -.35)); "fi\\ll\_cyan"   at last box .w rjust;
 rgbfill(fill_orange , BE:box wid 1 ht 0.5 at BD.s + (0, -.35)); "fi\\ll\_orange" at last box .w rjust;
 rgbfill(fill_violet , BF:box wid 1 ht 0.5 at BE.s + (0, -.35)); "fi\\ll\_violet" at last box .w rjust;
 
@@ -154,10 +154,10 @@ move to (5,0);
 Bx: Here
 rgbfill(fill_dark_green , BA:box wid 1 ht 0.5 at Bx.s + (0, -.35)); "fi\\ll\_dark\_green"   at last box .e ljust;
 rgbfill(fill_dark_orange, BB:box wid 1 ht 0.5 at BA.s + (0, -.35)); "fi\\ll\_dark\_orange"  at last box .e ljust;
-rgbfill(fill_red,         BC:box wid 1 ht 0.5 at BB.s + (0, -.35)); "fi\\ll\_red"     at last box .e ljust;
-rgbfill(fill_blue,        BD:box wid 1 ht 0.5 at BC.s + (0, -.35)); "fi\\ll\_blue"     at last box .e ljust;
-rgbfill(fill_green,       BE:box wid 1 ht 0.5 at BD.s + (0, -.35)); "fi\\ll\_gren"     at last box .e ljust;
-rgbfill(fill_dark_violet, BF:box wid 1 ht 0.5 at BE.s + (0, -.35)); "fi\\ll\_dark\_violet"     at last box .e ljust;
+rgbfill(fill_red,         BC:box wid 1 ht 0.5 at BB.s + (0, -.35)); "fi\\ll\_red"           at last box .e ljust;
+rgbfill(fill_blue,        BD:box wid 1 ht 0.5 at BC.s + (0, -.35)); "fi\\ll\_blue"          at last box .e ljust;
+rgbfill(fill_green,       BE:box wid 1 ht 0.5 at BD.s + (0, -.35)); "fi\\ll\_gren"          at last box .e ljust;
+rgbfill(fill_dark_violet, BF:box wid 1 ht 0.5 at BE.s + (0, -.35)); "fi\\ll\_dark\_violet"  at last box .e ljust;
 '''
 
 _ = cm_compile('cm_0905b', data, dpi=600)   

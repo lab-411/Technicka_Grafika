@@ -63,7 +63,7 @@
 0206_ex_logicke_obvody.md
 0207_ex_integrovane_obvody.md
 0208_ex_vyvojove_diagramy.md
-0210_ex_makra.md
+0210_ex_katalog.md
 ```
 
 ```{toctree}
@@ -72,8 +72,8 @@
 0905_priloha_farby.md
 0900_priloha_cli.md
 0915_priloha_editor.md
-0010_sphinx_myst.ipynb
 0910_priloha_odkazy.md
+0950_sphinx_myst.ipynb
 ```
 
 ## <font color='teal'> Anotácia </font>   
