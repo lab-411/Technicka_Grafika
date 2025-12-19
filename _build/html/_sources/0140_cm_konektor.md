@@ -22,20 +22,16 @@ Terminály pre napájania a zem majú význam spoločného spojenia všetkých r
 
     ground( at position, T|stem_length, N|F|S|L|P[A]|E, U|D|L|R|degrees )
     
-        parametre:
-    
+      parametre:
         position        - poloha značky
-    
         T|stem_length   - zrušenie prívodu (T) alebo dĺžka prívodu 
-    
         N|F|S|L|P[A]|E  - typ zeme
-                    N   - bez označenia, uzemnenie
-                    F   - uzemnenie kostry 
-                    S   - digitálna zem
-                    L   
-                    P   - pripojenie ochranneho vodiča
-                    E   - analogová zem, europske značenie
-                    
+                     N    bez označenia, uzemnenie
+                     F    uzemnenie kostry 
+                     S    digitálna zem
+                     L  
+                     P    pripojenie ochranneho vodiča
+                     E    analogová zem, europske značenie
         U|D|L|R|degrees - orientácia alebo uhol otočenia
 
 
@@ -65,12 +61,50 @@ _ = cm_compile('cm_0140a', data, dpi=600)
 Značky zeme.
 ```
 
+Európske značenie umožňuje používanie značiek zeme a napájania orientované v základných smeroch, pre ich zobrazenie sú v knižnici [lib_base.ckt](./src/lib_base.ckt) implementované makrá
+
+    gnd(d, U|D|L|R)
+    power(d, text, U|D|L|R)
+    
+      parametre:
+        d        - dĺžka prívodu
+        text     - označenie zdroja 
+        U|D|L|R - orientácia značky
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+
+command "\sf"
+gnd(0.5,D); move to Here +(0.5,0)
+gnd(0.5, L); move to Here +(0.5,0)
+gnd(0.5, R); move to Here +(0.5,0)
+gnd(0.5, U); move to Here +(0.5,0)
+
+power(0.75, Vcc, U);move to Here +(0.5,0)
+power(0.75, Vcc, D);move to Here +(1,0)
+power(0.75, Vcc, L);move to Here +(0.5,0)
+power(0.75, Vcc, R);move to Here +(0.75,0)
+'''
+
+_ = cm_compile('cm_0140f', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0140f.png
+:width: 450px
+:name: cm_140f
+
+Upravené makrá pre značky pripojenia zeme a napájania.
+```
+
 Terminály *tbox()* v tvare vlajky sa najčastejšie používajú v zapojeniach s digitálnymi obvodmi, kde na rozdiel od analogových obvodov nie je z kontextu zrejmý význam terminálu. Tvar vlajky určuje v tomto prípade smer toku informácií, čo je zvlášť dôležité pri použití zberníc, kde nie sú terminály priamo pripojené k výstupom logických obvodov.
 
     tbox(text, wid, ht, <|>|<>, fill)
     
-    parametre:
-    
+      parametre:
         text        - označenie značky
         wid         - šírka
         ht          - výška
@@ -81,8 +115,7 @@ Terminály *tconn()* reprezentujú ukončenie vodiča zvyčajne označené menom
 
     tconn(linespec, O|<|<<|>>|>|A|M", wid)
     
-    parametre:
-    
+      parametre:
         linespec        - dlžka terminálu
         O|<|<<|>>|>|A|M - typ terminálu
         wid             - velkosť značky O,M
@@ -149,35 +182,31 @@ Značka je parametrická, pri použití makra definujeme tvar konektora a počet
 
      Header(1|2, rows, wid, ht, type)
      
-     parametre:
-    
-        1|2    - jedno alebo dvojradový konektor
-        rows   - počet pinov v jednom rade
-        wid    - šírka konektora
-        ht     - výška konektora
-        type   - výplň príkazom fill_(n), n = 0.0...1.0
+       parametre:
+         1|2    - jedno alebo dvojradový konektor
+         rows   - počet pinov v jednom rade
+         wid    - šírka konektora
+         ht     - výška konektora
+         type   - výplň príkazom fill_(n), n = 0.0...1.0
         
-     atribúty
-     
+     atribúty:
         P1 ... Pn - piny konektora
         
 Makro *tstrip()* zobrazuje jednoradový konektor s obojstranými prívodmi.
      
      tstrip(R|L|U|D|degrees, n, chars),
      
-     parametre:
-     
-        R|L|U|D|degree - orientácia
-        n              - počet pinov
-        chars          - parametre oddelené bokočiarkou
-                         D vyplnene piny
-                         O zrušenie oddelenia pinov
-                         wid=w  šírka konektora
-                         hr=h   výška konektora
-                         výplň príkazom fill_(n), n = 0.0...1.0
+       parametre:
+         R|L|U|D|degree - orientácia
+         n              - počet pinov
+         chars          - parametre oddelené bokočiarkou
+                          D vyplnene piny
+                          O zrušenie oddelenia pinov
+                          wid=w  šírka konektora
+                          hr=h   výška konektora
+                          výplň príkazom fill_(n), n = 0.0...1.0
 
-    atribúty
-     
+      atribúty:
         T1 ... Tn      - piny konektora
         L1 ... Ln      - prívody ku pinom zlava
         R1 ... Rn      - prívody ku pinom zprava

@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -688,20 +688,34 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 </pre></div>
 </div>
 </li>
+<li><p>Pomocou makier pre definovanie smeru ukladania objektov</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Point_(degrees); object;
+ point_(radians); object;
+ rpoint_(rel linespec); object
+</pre></div>
+</div>
+</li>
 </ol>
 <p>Príklady použitia</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>       <span class="c1"># (1)</span>
-<span class="n">resistor</span><span class="p">(</span><span class="n">at</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span>   <span class="c1"># (2)</span>
-<span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>     <span class="c1"># (3)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>       <span class="c1"># (1)</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">at</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span>   <span class="c1"># (2)</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>     <span class="c1"># (3)</span>
 
-<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> 
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> 
 <span class="n">RA</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span><span class="p">);</span> 
-<span class="n">RB</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">);</span>              <span class="c1"># (4)</span>
-<span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">RA.start</span> <span class="n">to</span> <span class="n">RB</span><span class="o">.</span><span class="n">end</span><span class="p">);</span>  <span class="c1"># (5)</span>
+<span class="n">RB</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">);</span>                  <span class="c1"># (4)</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">RA.start</span> <span class="n">to</span> <span class="n">RB</span><span class="o">.</span><span class="n">end</span><span class="p">);</span>  <span class="c1"># (5)</span>
+
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">);</span> 
+    <span class="n">Point_</span><span class="p">(</span><span class="mi">45</span><span class="p">);</span> <span class="n">resistor</span><span class="p">;</span>               <span class="c1"># (6)</span>
+    <span class="n">Point_</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">);</span> <span class="n">resistor</span><span class="p">;</span>
+    
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">rpoint_</span><span class="p">(</span><span class="n">up_</span> <span class="mi">1</span> <span class="n">right_</span> <span class="mi">3</span><span class="p">);</span> <span class="n">resistor</span><span class="p">;</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0100k">
-<a class="reference internal image-reference" href="_images/cm_0100k.png"><img alt="_images/cm_0100k.png" src="_images/cm_0100k.png" style="width: 450px;" />
+<a class="reference internal image-reference" href="_images/cm_0100k.png"><img alt="_images/cm_0100k.png" src="_images/cm_0100k.png" style="width: 550px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Obr. 18 </span><span class="caption-text">Príklady umiestňovania dvojpólov.</span><a class="headerlink" href="#cm-0100k" title="Link to this image">#</a></p>

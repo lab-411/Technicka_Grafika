@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -370,20 +370,16 @@ document.write(`
 <p>Terminály pre napájania a zem majú význam spoločného spojenia všetkých rovnako označených terminálov, čím okrem jasnej deklarácie ich významu aj výrazne zjednodušujú zapojenie, pretože nie je potrebné kresliť vodiče ktoré ich spájajú.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ground( at position, T|stem_length, N|F|S|L|P[A]|E, U|D|L|R|degrees )
 
-    parametre:
-
+  parametre:
     position        - poloha značky
-
     T|stem_length   - zrušenie prívodu (T) alebo dĺžka prívodu 
-
     N|F|S|L|P[A]|E  - typ zeme
-                N   - bez označenia, uzemnenie
-                F   - uzemnenie kostry 
-                S   - digitálna zem
-                L   
-                P   - pripojenie ochranneho vodiča
-                E   - analogová zem, europske značenie
-                
+                 N    bez označenia, uzemnenie
+                 F    uzemnenie kostry 
+                 S    digitálna zem
+                 L  
+                 P    pripojenie ochranneho vodiča
+                 E    analogová zem, europske značenie
     U|D|L|R|degrees - orientácia alebo uhol otočenia
 </pre></div>
 </div>
@@ -394,11 +390,27 @@ document.write(`
 <p><span class="caption-number">Obr. 31 </span><span class="caption-text">Značky zeme.</span><a class="headerlink" href="#cm-140a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Európske značenie umožňuje používanie značiek zeme a napájania orientované v základných smeroch, pre ich zobrazenie sú v knižnici <a class="reference download internal" download="" href="_downloads/616026fd2a08c0086f0a934c6095b0cc/lib_base.ckt"><span class="xref download myst">lib_base.ckt</span></a> implementované makrá</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gnd(d, U|D|L|R)
+power(d, text, U|D|L|R)
+
+  parametre:
+    d        - dĺžka prívodu
+    text     - označenie zdroja 
+    U|D|L|R - orientácia značky
+</pre></div>
+</div>
+<figure class="align-default" id="cm-140f">
+<a class="reference internal image-reference" href="_images/cm_0140f.png"><img alt="_images/cm_0140f.png" src="_images/cm_0140f.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 32 </span><span class="caption-text">Upravené makrá pre značky pripojenia zeme a napájania.</span><a class="headerlink" href="#cm-140f" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Terminály <em>tbox()</em> v tvare vlajky sa najčastejšie používajú v zapojeniach s digitálnymi obvodmi, kde na rozdiel od analogových obvodov nie je z kontextu zrejmý význam terminálu. Tvar vlajky určuje v tomto prípade smer toku informácií, čo je zvlášť dôležité pri použití zberníc, kde nie sú terminály priamo pripojené k výstupom logických obvodov.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tbox(text, wid, ht, &lt;|&gt;|&lt;&gt;, fill)
 
-parametre:
-
+  parametre:
     text        - označenie značky
     wid         - šírka
     ht          - výška
@@ -409,8 +421,7 @@ parametre:
 <p>Terminály <em>tconn()</em> reprezentujú ukončenie vodiča zvyčajne označené menom, ktoré môže zároveň označovať aj meno pinu vo fyzickom konektore. Význam tvaru terminálu závisí od používaných konvencií pri kreslení zapojení.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tconn(linespec, O|&lt;|&lt;&lt;|&gt;&gt;|&gt;|A|M&quot;, wid)
 
-parametre:
-
+  parametre:
     linespec        - dlžka terminálu
     O|&lt;|&lt;&lt;|&gt;&gt;|&gt;|A|M - typ terminálu
     wid             - velkosť značky O,M
@@ -420,7 +431,7 @@ parametre:
 <a class="reference internal image-reference" href="_images/cm_0140b.png"><img alt="_images/cm_0140b.png" src="_images/cm_0140b.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 32 </span><span class="caption-text">Vstupno-výstupné terminály.</span><a class="headerlink" href="#cm-140b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 33 </span><span class="caption-text">Vstupno-výstupné terminály.</span><a class="headerlink" href="#cm-140b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -431,14 +442,14 @@ parametre:
 <a class="reference internal image-reference" href="_images/DIN_connector.png"><img alt="_images/DIN_connector.png" src="_images/DIN_connector.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 33 </span><span class="caption-text">Signálové konektory typu DIN, <a class="reference external" href="https://en.wikipedia.org/wiki/DIN_connector">zdroj</a>.</span><a class="headerlink" href="#din" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 34 </span><span class="caption-text">Signálové konektory typu DIN, <a class="reference external" href="https://en.wikipedia.org/wiki/DIN_connector">zdroj</a>.</span><a class="headerlink" href="#din" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="dsyb">
 <a class="reference internal image-reference" href="_images/dsub_connector.png"><img alt="_images/dsub_connector.png" src="_images/dsub_connector.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 34 </span><span class="caption-text">Signálové konektory typu D-sub, <a class="reference external" href="https://en.wikipedia.org/wiki/D-subminiature">zdroj</a>.</span><a class="headerlink" href="#dsyb" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 35 </span><span class="caption-text">Signálové konektory typu D-sub, <a class="reference external" href="https://en.wikipedia.org/wiki/D-subminiature">zdroj</a>.</span><a class="headerlink" href="#dsyb" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>V knižnici <code class="docutils literal notranslate"><span class="pre">CircuiytMacros</span></code> je pre zobrazenie jedno a dvojradových lineárnych konektorov pre ploché káble ako aj pre kolíkové lišty a spojky definované makro <em>Header()</em>. V praxi sa môžeme stretnúť s veľkým množstvom typov a prevedení kolíkových líšt a konektorov.</p>
@@ -446,41 +457,37 @@ parametre:
 <a class="reference internal image-reference" href="_images/headers.jpg"><img alt="_images/headers.jpg" src="_images/headers.jpg" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 35 </span><span class="caption-text">Kolíkové lišty a konektory.</span><a class="headerlink" href="#header" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 36 </span><span class="caption-text">Kolíkové lišty a konektory.</span><a class="headerlink" href="#header" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Značka je parametrická, pri použití makra definujeme tvar konektora a počet pinov.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Header(1|2, rows, wid, ht, type)
  
- parametre:
-
-    1|2    - jedno alebo dvojradový konektor
-    rows   - počet pinov v jednom rade
-    wid    - šírka konektora
-    ht     - výška konektora
-    type   - výplň príkazom fill_(n), n = 0.0...1.0
+   parametre:
+     1|2    - jedno alebo dvojradový konektor
+     rows   - počet pinov v jednom rade
+     wid    - šírka konektora
+     ht     - výška konektora
+     type   - výplň príkazom fill_(n), n = 0.0...1.0
     
- atribúty
- 
+ atribúty:
     P1 ... Pn - piny konektora
 </pre></div>
 </div>
 <p>Makro <em>tstrip()</em> zobrazuje jednoradový konektor s obojstranými prívodmi.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> tstrip(R|L|U|D|degrees, n, chars),
  
- parametre:
- 
-    R|L|U|D|degree - orientácia
-    n              - počet pinov
-    chars          - parametre oddelené bokočiarkou
-                     D vyplnene piny
-                     O zrušenie oddelenia pinov
-                     wid=w  šírka konektora
-                     hr=h   výška konektora
-                     výplň príkazom fill_(n), n = 0.0...1.0
+   parametre:
+     R|L|U|D|degree - orientácia
+     n              - počet pinov
+     chars          - parametre oddelené bokočiarkou
+                      D vyplnene piny
+                      O zrušenie oddelenia pinov
+                      wid=w  šírka konektora
+                      hr=h   výška konektora
+                      výplň príkazom fill_(n), n = 0.0...1.0
 
-atribúty
- 
+  atribúty:
     T1 ... Tn      - piny konektora
     L1 ... Ln      - prívody ku pinom zlava
     R1 ... Rn      - prívody ku pinom zprava
@@ -490,7 +497,7 @@ atribúty
 <a class="reference internal image-reference" href="_images/cm_0140c.png"><img alt="_images/cm_0140c.png" src="_images/cm_0140c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 36 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/fa401703373743a2647e70b52618e058/cm_0140c.ckt"><span class="xref download myst">Príklady</span></a> modifikácií radových konektorov.</span><a class="headerlink" href="#cm-0140c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 37 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/fa401703373743a2647e70b52618e058/cm_0140c.ckt"><span class="xref download myst">Príklady</span></a> modifikácií radových konektorov.</span><a class="headerlink" href="#cm-0140c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>V niektorých prípadoch je vhodné zobrazenie reálneho usporiadanie pinov konektora a pripojenie pinov. Vzhľadom k obrovskému množstvu typov konektorov a ich typových modifikácii je potrebné si vytvoriť pre zobrazenie daného typu vlastné makro. V knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> je definované makro <em>DE9_M</em> pre 9-pinový D-sub konektor, príklad jeho použitia</p>
@@ -518,7 +525,7 @@ line from DS2.P7 left_ 0.5; line  up_ to (Here, DS2.P8) then to DS2.P8;
 <a class="reference internal image-reference" href="_images/cm_0140d.png"><img alt="_images/cm_0140d.png" src="_images/cm_0140d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 37 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c3a9a04996a246ccf2692f98e2a490d4/cm_0140d.ckt"><span class="xref download myst">Zapojenie</span></a> nulového modemu s konektormi DE-9, <a class="reference external" href="https://en.wikipedia.org/wiki/Null_modem">zdroj</a>.</span><a class="headerlink" href="#cm-0140d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 38 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c3a9a04996a246ccf2692f98e2a490d4/cm_0140d.ckt"><span class="xref download myst">Zapojenie</span></a> nulového modemu s konektormi DE-9, <a class="reference external" href="https://en.wikipedia.org/wiki/Null_modem">zdroj</a>.</span><a class="headerlink" href="#cm-0140d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

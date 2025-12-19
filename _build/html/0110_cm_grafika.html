@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -373,7 +373,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="grafika">
 <h1><font color='navy'> Grafika </font><a class="headerlink" href="#grafika" title="Link to this heading">#</a></h1>
-<p>Súčasťou zapojení vytváraných v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> môžu byť aj lineárne a plošné grafické objekty vykreslované pomocou príkazov jazuka <em>dpic</em>. Čiara sa využíva na prepájanie prvkov zapojenia, ďaľšie grafické tvary môžeme využiť na doplnenie zapojenia alebo zvýraznenie niektorých častí. Rovnako môžeme pomocou nich vytvárať rôzne blokové zapojenia alebo vývojové diagramy.</p>
+<p>Súčasťou zapojení vytváraných v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> môžu byť aj lineárne a plošné grafické objekty vykreslované pomocou príkazov jazyka <em>dpic</em>. Čiara sa využíva na prepájanie prvkov zapojenia, ďaľšie grafické tvary môžeme využiť na doplnenie zapojenia alebo zvýraznenie niektorých častí. Rovnako môžeme pomocou nich vytvárať rôzne blokové zapojenia alebo vývojové diagramy.</p>
 <div class="admonition-poznamka admonition">
 <p class="admonition-title">Poznámka</p>
 <p>Základné grafické objekty (<em>line</em>, <em>spline</em>, <em>arc</em>, <em>box</em>, <em>circle</em>, <em>ellipse</em>, <em>move</em>, <em>arrow</em>) sú príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a majú preto inú formu zápisu ako makrá definované v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov ako aj príkazov <em>dpic</em> pre kreslenie jednoduchých objektov.</p>
@@ -433,7 +433,7 @@ line -&gt; from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1;
 <a class="reference internal image-reference" href="_images/cm_0110a.png"><img alt="_images/cm_0110a.png" src="_images/cm_0110a.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 38 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/495580607706735cc0cab58662aec6ea/cm_0110a.ckt"><span class="xref download myst">Spôsoby</span></a> vykreslenia čiary na pracovnej ploche.</span><a class="headerlink" href="#cm-0110a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 39 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/495580607706735cc0cab58662aec6ea/cm_0110a.ckt"><span class="xref download myst">Spôsoby</span></a> vykreslenia čiary na pracovnej ploche.</span><a class="headerlink" href="#cm-0110a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition-poznamka admonition">
@@ -483,7 +483,7 @@ spline 0.6 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dotted .05;&quot;C&quot
 <a class="reference internal image-reference" href="_images/cm_0110b.png"><img alt="_images/cm_0110b.png" src="_images/cm_0110b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 39 </span><span class="caption-text">Použitie splajnových kriviek.</span><a class="headerlink" href="#cm-0110b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Použitie splajnových kriviek.</span><a class="headerlink" href="#cm-0110b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="atributy-linearnych-prvkov">
@@ -544,7 +544,7 @@ E: ellipse at Y wid 2 ht 1 &quot;E&quot;
 <a class="reference internal image-reference" href="_images/cm_0110f.png"><img alt="_images/cm_0110f.png" src="_images/cm_0110f.png" style="width: 380px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Plošné objekty.</span><a class="headerlink" href="#cm-0110f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 41 </span><span class="caption-text">Plošné objekty.</span><a class="headerlink" href="#cm-0110f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="atributy-plosnych-prvkov">
@@ -564,7 +564,7 @@ E: ellipse at Y wid 2 ht 1 &quot;E&quot;
 <a class="reference internal image-reference" href="_images/cm_0110c.png"><img alt="_images/cm_0110c.png" src="_images/cm_0110c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 41 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -606,7 +606,7 @@ A2: arc -&gt; cw from P1 to P2 with .c at P3
 <a class="reference internal image-reference" href="_images/cm_0110d.png"><img alt="_images/cm_0110d.png" src="_images/cm_0110d.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 42 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 43 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -647,7 +647,7 @@ arc -&gt; cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed &quot;D&quot;;
 <a class="reference internal image-reference" href="_images/cm_0110e.png"><img alt="_images/cm_0110e.png" src="_images/cm_0110e.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

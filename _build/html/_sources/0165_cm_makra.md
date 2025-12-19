@@ -305,17 +305,17 @@ _ = cm_compile('cm_0165c', data, dpi=600)
 
 ```{admonition} Konflikt mien 
 
-Používanie makrier spoločne s interpreterom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makie sa dozvieme až pri interpretácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.   
+Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makier sa dozvieme až pri kompilácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.   
 
 * Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro *setrgb()* používa premenné *r_* , *g_*, *b_*, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. *r_1*. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca *r\\_1*.
 
-* Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad *"toto je resistor R1"*, pretože pri substitúcii dôjde k nahradeniu textu *resistor*  kódom definovanom v makre a následnej chybe pri interpretácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade. 
+* Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad *"toto je resistor R1"*, pretože pri substitúcii dôjde k nahradeniu textu *resistor*  kódom definovanom v makre a následnej chybe pri kompilácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade. 
 
 ```
 
 ## <font color='teal'> Modifikácia makra </font>
 
-V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach napríklad je značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s jeho typom púzdra.
+V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra.
 
     define(`res_025w', `[
         R: resistor($1,$2,$3);
@@ -330,6 +330,8 @@ V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíri
 from src.utils import *
 
 data = r'''
+
+command "\sf"
 include(lib_base.ckt)
 
 define(`res_05w', `[
@@ -385,32 +387,31 @@ define(`res_5w', `[
 ]')
 
 include(lib_base.ckt)
-#Grid(10,5);
-move to (3,1); "\textit{resi\\stor(2,,E)}" rjust;
-resistor(2,,E); llabel(,R_1,); "$P_s$ nedefinovaý" ljust;
+
+move to (3,0); "{resi\\stor(2,,E)}" rjust;
+resistor(2,,E); llabel(,\sf R_1,); "$\sf P_s$ nedefinovaý" ljust;
 
 
-move to (3,2); "\textit{re\\s\_05w(2,,E)}" rjust;
-res_05w(2,,E); llabel(,R_2,); "$P_s = 0.5W$" ljust;
+move to (3,1); "{re\\s\_05w(2,,E)}" rjust;
+res_05w(2,,E); llabel(,\sf R_2,); "$\sf P_s = 0.5W$" ljust;
 
-move to (3,3); "\textit{re\\s\_025w(2,,E)}" rjust;
-res_025w(2,,E); llabel(,R_3,); "$P_s = 0.25W$" ljust;
+move to (3,2); "{re\\s\_025w(2,,E)}" rjust;
+res_025w(2,,E); llabel(,\sf R_3,); "$\sf P_s = 0.25W$" ljust;
 
-move to (3,4); "\textit{re\\s\_0125w(2,,E)}" rjust;
-res_0125w(2,,E); llabel(,R_4,); "$P_s = 0.125W$" ljust;
+move to (3,3); "{re\\s\_0125w(2,,E)}" rjust;
+res_0125w(2,,E); llabel(,\sf R_4,); "$\sf P_s = 0.125W$" ljust;
 
-move to (3,5); "\textit{re\\s\_005w(2,,E)}" rjust;
-res_005w(2,,E); llabel(,R_5,);  "$P_s = 0.05W$" ljust;
+move to (3,4); "{re\\s\_005w(2,,E)}" rjust;
+res_005w(2,,E); llabel(,\sf R_5,);  "$\sf P_s = 0.05W$" ljust;
 
-move to (3,6); "\textit{re\\s\_1w(2,,E)}" rjust;
-res_1w(2,,E); llabel(,R_6,);  "$P_s = 1W$" ljust;
+move to (3,5); "{re\\s\_1w(2,,E)}" rjust;
+res_1w(2,,E); llabel(,\sf R_6,);  "$\sf P_s = 1W$" ljust;
 
-move to (3,7); "\textit{re\\s\_2w(2,,E)}" rjust;
-res_2w(2,,E); llabel(,R_7,);  "$P_s = 2W$" ljust;
+move to (3,6); "{re\\s\_2w(2,,E)}" rjust;
+res_2w(2,,E); llabel(,R_7,);  "$\sf P_s = 2W$" ljust;
 
-move to (3,8); "\textit{re\\s\_5w(2,,E)}" rjust;
-res_5w(2,,E); llabel(,R_8,);  "$P_s = 5W$" ljust;
-
+move to (3,7); "{re\\s\_5w(2,,E)}" rjust;
+res_5w(2,,E); llabel(,\sf R_8,);  "$\sf P_s = 5W$" ljust;
 '''
 
 _ = cm_compile('cm_0165d', data, dpi=600)   
@@ -420,7 +421,7 @@ _ = cm_compile('cm_0165d', data, dpi=600)
 :width: 400px
 :name: cm_0165d
 
-[Príklad](./src/cm_0165d.ckt) použitia modifikovaných makier.
+[Príklad](./src/cm_0165d.ckt) použitia modifikovaných makier pre zobrazenie rezistorov s výkonovou stratou.
 ```
     
 

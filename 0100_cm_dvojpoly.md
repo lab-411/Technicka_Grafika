@@ -511,17 +511,30 @@ Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi:
 
         object(from pos_A to pos_B);
 
+6. Pomocou makier pre definovanie smeru ukladania objektov
+
+        Point_(degrees); object;
+        point_(radians); object;
+        rpoint_(rel linespec); object
+
 Príklady použitia
         
 ```{code-block}
-move to (1,2.5); resistor(2);       # (1)
-resistor(at (2,1.5) right_ 2,,E);   # (2)
-resistor(right_ 2 from (1,0.5))     # (3)
+    move to (1,2.5); resistor(2);       # (1)
+    resistor(at (2,1.5) right_ 2,,E);   # (2)
+    resistor(right_ 2 from (1,0.5))     # (3)
 
-move to (4,2.5); 
+    move to (4,2.5); 
 RA: resistor(right_ 2); 
-RB: resistor(down_ 2);              # (4)
-resistor(from RA.start to RB.end);  # (5)
+RB: resistor(down_ 2);                  # (4)
+    resistor(from RA.start to RB.end);  # (5)
+
+    move to (7, 1.5); 
+    Point_(45); resistor;               # (6)
+    Point_(-45); resistor;
+    
+    move to (7,0);
+    rpoint_(up_ 1 right_ 3); resistor;
 ```
 
 ```{code-cell} ipython3 
@@ -541,7 +554,7 @@ define(`xc', `
    }
 ')
 
-Grid(7,3);
+Grid(10,3);
 
 circle at (0.5,2.5)rad 0.25 "1"
 right_; move to (1,2.5); color_red; xc;
@@ -556,19 +569,30 @@ circle at (0.5, 0.5)rad 0.25 "3";
 move to (1,0.5); color_red; xc;
 resistor(right_ 2 from (1,0.5))
 
-circle at (6.5, 2.5)rad 0.25 "4"; move to (6,2.5); color_red; xc;
-move to (4,2.5); color_blue; xc;
+circle at (6, 2.5)rad 0.25 "4"; 
+move to (5.5,2.5); color_red; xc;
+move to (3.5,2.5); color_blue; xc;
 RA: resistor(right_ 2); llabel(,R_a,); 
 RB: resistor(down_ 2); llabel(,R_b,); color_blue; xc;
 resistor(from RA.start to RB.end)
-circle at (4.65, 1.15)rad 0.25 "5"; 
+circle at (4.15, 1.15)rad 0.25 "5"; 
+
+move to 7, 1.5; color_dark_cyan; xc
+Point_(45); resistor
+Point_(-45); resistor
+Point_(0);
+
+circle at (7, 0.75)rad 0.25 "6";
+move to 7,0; color_dark_cyan; xc
+{color_orange; line up_ 1 right_ 3 dotted; color_black;}
+rpoint_(up_ 1 right_ 3); resistor;
 '''
 
 _ = cm_compile('cm_0100k', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0100k.png
-:width: 450px
+:width: 550px
 :name: cm_0100k
 
 Príklady umiestňovania dvojpólov.

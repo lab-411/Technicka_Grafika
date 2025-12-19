@@ -99,15 +99,23 @@ Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi
 
         object( ...) with .attribute at pos;
 
+3. Rovnako ako v prípade dvojpólov môžeme pomocou makier definovať smer ukladania objektov. V prípade multipólov zmena smeru ukladania nie je univerzálna a závisí od implementácie makra objektu.
 
+        Point_(degrees); object;
+        point_(radians); object;
+        rpoint_(rel linespec); object
+        
 Príklad použitia:
     
 ```{code-block}
-right_; move to (1,1.); 
-transformer(down_ 1.5,L,4,W,4);                      # (1)
+    right_; move to (1,1.); 
+    transformer(down_ 1.5,L,4,W,4);                      # (1)
 
 R1: resistor(right_ 2 from (3,2)); 
-transformer(down_ 1.5,L,4,W,4) with .P1 at R1.end;   # (2)
+    transformer(down_ 1.5,L,4,W,4) with .P1 at R1.end;   # (2)
+
+    move to (2.5,1);
+    Point_(90); opamp;                                   # (3)
 ```
 
 ```{code-cell} ipython3 
@@ -130,12 +138,16 @@ define(`xc', `
 Grid(7,3);
 
 circle at (0.5,1.)rad 0.25 "1"
-right_; move to (1,1.); color_red; xc;
-transformer(down_ 1.5,L,4,W,4);
+right_; move to (1,1.);{ color_red; xc;}
+move to (1,1.);
+transformer(down_ 2,L,4,,4);
 
-circle at (5.35, 2.35)rad 0.25 "2"
-R1: resistor(right_ 2 from (3,2)); llabel(,R_1,); color_red; xc;
+circle at (5.85, 2.35)rad 0.25 "2"
+R1: resistor(right_ 2 from (3.5,2)); llabel(,R_1,); color_red; xc;
 transformer(down_ 1.5,L,4,W,4) with .P1 at R1.end;
+
+move to (2.5,1); {circle at (2.5,1.25)rad 0.25 "3"}
+Point_(90); opamp
 '''
 
 _ = cm_compile('cm_0102c', data, dpi=600)   
@@ -151,7 +163,7 @@ Príklady umiestňovania multipólov.
     
 ## <font color='teal'> Použitie </font> 
 
-Použitie atribútov mnohopólu demonštruje nasledujúci príklad.
+Použitie atribútov mnohopólu demonštruje nasledujúci príklad. Transformátor je centrálnym elementom a všetky prvky zapojenia sú umiestňované relatívne voči jeho terminálom.
 
     TR:  transformer(down_ 2,L,7,W,4);
          "1" at TR.P1 rjust below;     # popis transformatora 

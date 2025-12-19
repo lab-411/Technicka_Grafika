@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -387,7 +387,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_0165a.png"><img alt="_images/cm_0165a.png" src="_images/cm_0165a.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 61 </span><span class="caption-text">Postup generovania obrázkov.</span><a class="headerlink" href="#cm-0165a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 62 </span><span class="caption-text">Postup generovania obrázkov.</span><a class="headerlink" href="#cm-0165a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -420,7 +420,7 @@ document.write(`
 <a class="reference internal image-reference" href="_images/pck_03.png"><img alt="_images/pck_03.png" src="_images/pck_03.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 62 </span><span class="caption-text">Vytvorenie a použitie makra.</span><a class="headerlink" href="#pck-03" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 63 </span><span class="caption-text">Vytvorenie a použitie makra.</span><a class="headerlink" href="#pck-03" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Makro môže mať argumenty, tieto sú označované ako $1, $2 … , špeciálny význam má argument označený ako $0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami</p>
@@ -520,22 +520,22 @@ dot;
 <a class="reference internal image-reference" href="_images/cm_0165c.png"><img alt="_images/cm_0165c.png" src="_images/cm_0165c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 63 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f7c6fb080c73d298efb6d49c8fc0a5b0/cm_0165c.ckt"><span class="xref download myst">Implementácia</span></a> makra pre zobrazenie spínača a jeho použitie</span><a class="headerlink" href="#cm-0165c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f7c6fb080c73d298efb6d49c8fc0a5b0/cm_0165c.ckt"><span class="xref download myst">Implementácia</span></a> makra pre zobrazenie spínača a jeho použitie</span><a class="headerlink" href="#cm-0165c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition-konflikt-mien admonition">
 <p class="admonition-title">Konflikt mien</p>
-<p>Používanie makrier spoločne s interpreterom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makie sa dozvieme až pri interpretácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.</p>
+<p>Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makier sa dozvieme až pri kompilácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.</p>
 <ul class="simple">
 <li><p>Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro <em>setrgb()</em> používa premenné <em>r_</em> , <em>g_</em>, <em>b_</em>, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. <em>r_1</em>. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca <em>r\_1</em>.</p></li>
-<li><p>Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad <em>“toto je resistor R1”</em>, pretože pri substitúcii dôjde k nahradeniu textu <em>resistor</em>  kódom definovanom v makre a následnej chybe pri interpretácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade.</p></li>
+<li><p>Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad <em>“toto je resistor R1”</em>, pretože pri substitúcii dôjde k nahradeniu textu <em>resistor</em>  kódom definovanom v makre a následnej chybe pri kompilácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade.</p></li>
 </ul>
 </div>
 </section>
 </section>
 <section id="modifikacia-makra">
 <h2><font color='teal'> Modifikácia makra </font><a class="headerlink" href="#modifikacia-makra" title="Link to this heading">#</a></h2>
-<p>V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach napríklad je značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s jeho typom púzdra.</p>
+<p>V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`res_025w&#39;, `[
     R: resistor($1,$2,$3);
     dx = 0.065*linewid;
@@ -547,7 +547,7 @@ dot;
 <a class="reference internal image-reference" href="_images/cm_0165d.png"><img alt="_images/cm_0165d.png" src="_images/cm_0165d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d63bbde779cb705b988b16b9cda2653f/cm_0165d.ckt"><span class="xref download myst">Príklad</span></a> použitia modifikovaných makier.</span><a class="headerlink" href="#cm-0165d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 65 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d63bbde779cb705b988b16b9cda2653f/cm_0165d.ckt"><span class="xref download myst">Príklad</span></a> použitia modifikovaných makier pre zobrazenie rezistorov s výkonovou stratou.</span><a class="headerlink" href="#cm-0165d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

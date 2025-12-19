@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,13 +409,23 @@ atribúty:
 </pre></div>
 </div>
 </li>
+<li><p>Rovnako ako v prípade dvojpólov môžeme pomocou makier definovať smer ukladania objektov. V prípade multipólov zmena smeru ukladania nie je univerzálna a závisí od implementácie makra objektu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Point_(degrees); object;
+ point_(radians); object;
+ rpoint_(rel linespec); object
+</pre></div>
+</div>
+</li>
 </ol>
 <p>Príklad použitia:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">right_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span> 
-<span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>                      <span class="c1"># (1)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">right_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span> 
+    <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>                      <span class="c1"># (1)</span>
 
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span> 
-<span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">with</span> <span class="o">.</span><span class="n">P1</span> <span class="n">at</span> <span class="n">R1</span><span class="o">.</span><span class="n">end</span><span class="p">;</span>   <span class="c1"># (2)</span>
+    <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">with</span> <span class="o">.</span><span class="n">P1</span> <span class="n">at</span> <span class="n">R1</span><span class="o">.</span><span class="n">end</span><span class="p">;</span>   <span class="c1"># (2)</span>
+
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">Point_</span><span class="p">(</span><span class="mi">90</span><span class="p">);</span> <span class="n">opamp</span><span class="p">;</span>                                   <span class="c1"># (3)</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0102c">
@@ -428,7 +438,7 @@ atribúty:
 </section>
 <section id="pouzitie">
 <h2><font color='teal'> Použitie </font><a class="headerlink" href="#pouzitie" title="Link to this heading">#</a></h2>
-<p>Použitie atribútov mnohopólu demonštruje nasledujúci príklad.</p>
+<p>Použitie atribútov mnohopólu demonštruje nasledujúci príklad. Transformátor je centrálnym elementom a všetky prvky zapojenia sú umiestňované relatívne voči jeho terminálom.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TR:  transformer(down_ 2,L,7,W,4);
      &quot;1&quot; at TR.P1 rjust below;     # popis transformatora 
      &quot;2&quot; at TR.P2 rjust above;

@@ -16,7 +16,7 @@ kernelspec:
     
 # <font color='navy'> Prepojenia </font>
 
-V `CircuitMacros` sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu *line*. Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. V minulosti sa pri prepojeniach sa kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na nasledujúcom obrázku, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, táto je zobrazená hrubou čiarou.  
+V `CircuitMacros` sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu *line*, parametre a možnosti kreslenia štandardných prepojovacích vodičov sú popísané v kapitole [Grafika](./0110_cm_grafika.md). Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. V minulosti sa pri prepojeniach kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na nasledujúcom obrázku, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, táto je zobrazená hrubou čiarou.  
 
 ```{figure} ./img/radio_r731.jpg
 :width: 600px
