@@ -15,6 +15,7 @@ kernelspec:
 # <font color='navy'> Text </font>
 
 Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier *rlabel(), llabel() ...*, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka `dpic` a renderovanie textu pomocou LaTeX-u. 
+
 Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.
 
 ## <font color='teal'> Umiestnenie textu   </font>
@@ -31,7 +32,15 @@ Pre kreslenie textu do obrázku je určený príkaz v tvare
             above      vertikálne zarovnanie nahor
             belov      vertikálne zarovnanie nadol
 
-Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odoslaný na renderovanie do LateX-u a umiestnený (ako obrázok) do polohy *location*. Poloha textu môže byť zadaná absolútnou pozíciou, referenciou na objekt alebo odkazom na posledný použitý komponent (*last line*, *last box*, *last text* ...). Vlastná veľkosť textu (ohraničenia) **nie je** známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra *position*, jeho použitie ukazuje nasledujúci obrázok
+Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odoslaný na renderovanie do LateX-u a na pracovnej ploche je umiestnený (ako obrázok) do polohy *location*. Poloha textu (jeho stred) môže byť zadaná 
+
+* absolútnou pozíciou
+* referenciou na objekt 
+* odkazom na posledný použitý objekt (**last line**, **last box** ...)
+* odkazom na posledný použitý text (**last ""**) 
+* odkazom posledný použitý kompozitný objekt (alebo makro) (**last [ ]**). 
+
+Vlastná veľkosť textu (ohraničenia) **nie je** známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra *position*, jeho použitie ukazuje nasledujúci obrázok
 
     BX: box wid 4.5 ht 1.5 at (0,0);
     LL: line from (-1,0) to (1,0);

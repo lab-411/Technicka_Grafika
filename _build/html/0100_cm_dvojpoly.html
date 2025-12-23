@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -575,11 +575,11 @@ D5: diode(,U);  D6: diode(,ZK);    D7: diode(,T);   D8: diode(,,R);
 </section>
 <section id="zdroje">
 <h2><font color='teal'> Zdroje </font><a class="headerlink" href="#zdroje" title="Link to this heading">#</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source(linespec, chars, diameter, R, body attributes, body name)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source(linespec, chars, diameter, R, attrib, name)
 
 parametre:
 
-    linespec - dĺžka a umiestnenie diódy
+    linespec - dĺžka a umiestnenie zdroja
     
     chars    - typ zobrazenia
                 AC  AC source;
@@ -608,15 +608,61 @@ parametre:
                 tv  truncated-bar alternate voltage source;
                 other: custom interior label or waveform;
 
-    diameter     - priemer kruhu zdroja
+    diameter - priemer kruhu zdroja
 
-    R       - reversed polarity;
+    R        - reversed polarity;
 
-    body attributes  modifies the circle (body) with e.g., color or fill;
+    attrib   - parametre zobrazenia kružnice (farba, výplň ...)
 
-    body names
+    names    - text v strede kružnice
 </pre></div>
 </div>
+<p>Najčastejšie používané značky zdrojov</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/cm_0100w.png"><img alt="_images/cm_0100w.png" src="_images/cm_0100w.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 17 </span><span class="caption-text">Značky zdrojov.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a označenie doplníme pomocou makra <em>DCsymbol()</em>, podobnú funkciu má aj makro <em>ACsymbol()</em> pre označenie striedavých veličín. Pre jednosmerné zdroje môžeme použiť aj označenie pomocou makra <em>battery()</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>DCsymbol(at position, length, height, U|D|L|R|degrees)
+ACsymbol(at position, length, height, [n:][A]U|D|L|R|degrees) 
+
+  parametre:
+
+    at position     - umiestnenie značky
+    length          - velkosť značky 
+    height
+    U|D|L|R|degrees - orientácia
+    n:              - počet vlnoviek pri AC značke
+
+battery(linespec,m,R)
+
+  parametre:
+
+    linespec - dĺžka a umiestnenie zdroja
+    m        - počet článkov batérie
+    R        - otočenie polarity
+</pre></div>
+</div>
+<p>Použitie makier <em>ACsymbol()</em> a <em>DCsymbol()</em> nie je viazané len na ich použitie so zdrojmi, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou “tvrdej” medzery <code class="docutils literal notranslate"><span class="pre">\,</span></code> pretože obyčajná medzera je pri renderovaní textu ignorovaná.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source; { ACsymbol(at last [],,,2:R) }
+source; { DCsymbol(at last [],,,R) }
+battery(,1,R);
+battery(,3,);  rlabel(,,+)
+
+&quot;5V \,\,&quot; at (Orig+(6,0.75)) rjust;  ACsymbol(at last &quot;&quot; ,,,1:R)  
+&quot;5V \,\,&quot; at (Orig+(6,1.25)) rjust;  DCsymbol(at last &quot;&quot; ,,,R)
+</pre></div>
+</div>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/cm_0100z.png"><img alt="_images/cm_0100z.png" src="_images/cm_0100z.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Značky zdrojov s označením typu.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="popis-dvojpolov">
 <h2><font color='teal'> Popis dvojpólov </font><a class="headerlink" href="#popis-dvojpolov" title="Link to this heading">#</a></h2>
@@ -654,7 +700,7 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 <a class="reference internal image-reference" href="_images/cm_0100f.png"><img alt="_images/cm_0100f.png" src="_images/cm_0100f.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 17 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d851c15eb70d3d1ed6a66d18cb3db06d/cm_0100f.ckt"><span class="xref download myst">Makrá</span></a> pre popis dvojpólov.</span><a class="headerlink" href="#cm-0100f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 19 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d851c15eb70d3d1ed6a66d18cb3db06d/cm_0100f.ckt"><span class="xref download myst">Makrá</span></a> pre popis dvojpólov.</span><a class="headerlink" href="#cm-0100f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -718,7 +764,7 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 <a class="reference internal image-reference" href="_images/cm_0100k.png"><img alt="_images/cm_0100k.png" src="_images/cm_0100k.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Príklady umiestňovania dvojpólov.</span><a class="headerlink" href="#cm-0100k" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 20 </span><span class="caption-text">Príklady umiestňovania dvojpólov.</span><a class="headerlink" href="#cm-0100k" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -771,15 +817,15 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100g.png"><img alt="_images/cm_0100g.png" src="_images/cm_0100g.png" style="width: 220px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 19 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 21 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/radio_325.jpg"><img alt="_images/radio_325.jpg" src="_images/radio_325.jpg" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 20 </span><span class="caption-text">Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 22 </span><span class="caption-text">Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user</span></a> definované makrá <em>vres_v()</em> a <em>vcap_v()</em></p>
@@ -787,7 +833,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100n.png"><img alt="_images/cm_0100n.png" src="_images/cm_0100n.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 21 </span><span class="caption-text">Zobrazenie upravených premenných prvkov z knižnice <em>lib_user</em>.</span><a class="headerlink" href="#cm-0100n" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 23 </span><span class="caption-text">Zobrazenie upravených premenných prvkov z knižnice <em>lib_user</em>.</span><a class="headerlink" href="#cm-0100n" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>, bolo pre ich zobrazenie definované nové makro <em>res()</em></p>
@@ -798,7 +844,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100m.png"><img alt="_images/cm_0100m.png" src="_images/cm_0100m.png" style="width: 220px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 22 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/83092ee57293228f4c4e0d1b8967e8a5/cm_0100m.ckt"><span class="xref download myst">Použitie</span></a> premenných prvkov v časti zapojenia rádia.</span><a class="headerlink" href="#cm-0100m" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 24 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/83092ee57293228f4c4e0d1b8967e8a5/cm_0100m.ckt"><span class="xref download myst">Použitie</span></a> premenných prvkov v časti zapojenia rádia.</span><a class="headerlink" href="#cm-0100m" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -866,7 +912,7 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
 <a class="reference internal image-reference" href="_images/cm_0100h.png"><img alt="_images/cm_0100h.png" src="_images/cm_0100h.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 23 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 25 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -898,7 +944,7 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <a class="reference internal image-reference" href="_images/cm_0100i.png"><img alt="_images/cm_0100i.png" src="_images/cm_0100i.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 24 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 26 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

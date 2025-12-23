@@ -11,13 +11,15 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-include(lib_base.ckt)
+command "\sf"
+up_
+Orig: Here
+move to (Orig+(1,0)); source; { ACsymbol(at last [],,,2:R) }
+move to (Orig+(2,0)); source; { DCsymbol(at last [],,,R) }
+move to (Orig+(3,0)); battery(,1,R);
+move to (Orig+(4,0)); battery(,3,);  rlabel(,,+)
 
-Origin: Here 
-
-inductor;          llabel(,L_1,); 
-inductor(,W);      llabel(,L_2,); rlabel(,W,);   
-inductor(,L);      llabel(,L_3,); rlabel(,L,);  
-L4: inductor(,L,6);     llabel(,L_4,); "L,6" at L4.center + (0,-.05) below;  
+"5V \,\, " at (Orig+(6,0.75)) rjust;  ACsymbol(at last "" ,,,1:R)  
+"5V \,\, " at (Orig+(6,1.25)) rjust;  DCsymbol(at last "" ,,,R) 
 
 .PE

@@ -12,6 +12,7 @@ arrowht = 0.254         # dlzka
 
 
 include(lib_base.ckt)
+command"\sf"
 
 Origin: Here;             R1: resistor(2,,E);  llabel(,R_1,); "re\\sistor(2,,E)" at R1.start rjust;
 move to Origin + (0,1);   C1: capacitor(2);    llabel(,C_1,); "ca\\pacitor(2)" at C1.start rjust;

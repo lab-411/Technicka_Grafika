@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -370,8 +370,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="text">
 <h1><font color='navy'> Text </font><a class="headerlink" href="#text" title="Link to this heading">#</a></h1>
-<p>Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier <em>rlabel(), llabel() …</em>, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovanie textu pomocou LaTeX-u.
-Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.</p>
+<p>Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier <em>rlabel(), llabel() …</em>, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a renderovanie textu pomocou LaTeX-u.</p>
+<p>Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.</p>
 <section id="umiestnenie-textu">
 <h2><font color='teal'> Umiestnenie textu   </font><a class="headerlink" href="#umiestnenie-textu" title="Link to this heading">#</a></h2>
 <p>Pre kreslenie textu do obrázku je určený príkaz v tvare</p>
@@ -386,7 +386,15 @@ Text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické v�
         belov      vertikálne zarovnanie nadol
 </pre></div>
 </div>
-<p>Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odoslaný na renderovanie do LateX-u a umiestnený (ako obrázok) do polohy <em>location</em>. Poloha textu môže byť zadaná absolútnou pozíciou, referenciou na objekt alebo odkazom na posledný použitý komponent (<em>last line</em>, <em>last box</em>, <em>last text</em> …). Vlastná veľkosť textu (ohraničenia) <strong>nie je</strong> známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra <em>position</em>, jeho použitie ukazuje nasledujúci obrázok</p>
+<p>Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odoslaný na renderovanie do LateX-u a na pracovnej ploche je umiestnený (ako obrázok) do polohy <em>location</em>. Poloha textu (jeho stred) môže byť zadaná</p>
+<ul class="simple">
+<li><p>absolútnou pozíciou</p></li>
+<li><p>referenciou na objekt</p></li>
+<li><p>odkazom na posledný použitý objekt (<strong>last line</strong>, <strong>last box</strong> …)</p></li>
+<li><p>odkazom na posledný použitý text (<strong>last “”</strong>)</p></li>
+<li><p>odkazom posledný použitý kompozitný objekt (alebo makro) (<strong>last [ ]</strong>).</p></li>
+</ul>
+<p>Vlastná veľkosť textu (ohraničenia) <strong>nie je</strong> známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra <em>position</em>, jeho použitie ukazuje nasledujúci obrázok</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BX: box wid 4.5 ht 1.5 at (0,0);
 LL: line from (-1,0) to (1,0);
     &quot;rjust&quot; at LL.start  rjust;
@@ -409,7 +417,7 @@ LL: line from (-1,0) to (1,0);
 <a class="reference internal image-reference" href="_images/cm_0130a.png"><img alt="_images/cm_0130a.png" src="_images/cm_0130a.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 45 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/b878abc98a1e7e888f1c1c18b76ba64a/cm_0130a.ckt"><span class="xref download myst">Relatívne</span></a> umiestnenie textu voči zadanej polohe.</span><a class="headerlink" href="#cm-0130a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 47 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/b878abc98a1e7e888f1c1c18b76ba64a/cm_0130a.ckt"><span class="xref download myst">Relatívne</span></a> umiestnenie textu voči zadanej polohe.</span><a class="headerlink" href="#cm-0130a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Text modifikuje globálnu premennú <code class="docutils literal notranslate"><span class="pre">Here</span></code>, po vykreslení textu je nová hodnota poloha <code class="docutils literal notranslate"><span class="pre">Here</span></code> v geometrickom strede textu.</p>
@@ -450,7 +458,7 @@ LL: line from (-1,0) to (1,0);
 <a class="reference internal image-reference" href="_images/cm_0130b.png"><img alt="_images/cm_0130b.png" src="_images/cm_0130b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 46 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d23d1c43b74699ed25ac696471db49ab/cm_0130b.ckt"><span class="xref download myst">Pozícia</span></a> a farby textu</span><a class="headerlink" href="#cm-0130b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 48 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/d23d1c43b74699ed25ac696471db49ab/cm_0130b.ckt"><span class="xref download myst">Pozícia</span></a> a farby textu</span><a class="headerlink" href="#cm-0130b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -472,7 +480,7 @@ LL: line from (-1,0) to (1,0);
 <a class="reference internal image-reference" href="_images/cm_0130c.png"><img alt="_images/cm_0130c.png" src="_images/cm_0130c.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 47 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e7a28ca76c3475b6ee8cefa3c76b9e6b/cm_0130c.ckt"><span class="xref download myst">Použitie</span></a> matematických výrazov</span><a class="headerlink" href="#cm-0130c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 49 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e7a28ca76c3475b6ee8cefa3c76b9e6b/cm_0130c.ckt"><span class="xref download myst">Použitie</span></a> matematických výrazov</span><a class="headerlink" href="#cm-0130c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -517,7 +525,7 @@ malé písmená     \scshape    \sc   \textsc{...}
 <a class="reference internal image-reference" href="_images/cm_0130d.png"><img alt="_images/cm_0130d.png" src="_images/cm_0130d.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 48 </span><span class="caption-text">Formátovanie textu pomocou príkazov LaTeX-u</span><a class="headerlink" href="#cm-0130d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 50 </span><span class="caption-text">Formátovanie textu pomocou príkazov LaTeX-u</span><a class="headerlink" href="#cm-0130d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -534,7 +542,7 @@ color_reset; &quot;\sf \fbox{\Large Text {\color{red} Large} v rámiku}&quot; at
 <a class="reference internal image-reference" href="_images/cm_0130g.png"><img alt="_images/cm_0130g.png" src="_images/cm_0130g.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 49 </span><span class="caption-text">Text v rámiku.</span><a class="headerlink" href="#cm-0130g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Text v rámiku.</span><a class="headerlink" href="#cm-0130g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

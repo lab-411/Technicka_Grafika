@@ -33,6 +33,7 @@ from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
+command"\sf"
 
 Origin: Here;             R1: resistor(2,,E);  llabel(,R_1,); "re\\sistor(2,,E)" at R1.start rjust;
 move to Origin + (0,1);   C1: capacitor(2);    llabel(,C_1,); "ca\\pacitor(2)" at C1.start rjust;
@@ -292,9 +293,9 @@ include(lib_base.ckt)
 
 Origin: Here 
  
-inductor;          llabel(,L_1,); dot;
-inductor(,W);      llabel(,L_2,); rlabel(,W,);  dot;  
-inductor(,L);      llabel(,L_3,); rlabel(,L,);  dot;
+inductor;          llabel(,L_1,); 
+inductor(,W);      llabel(,L_2,); rlabel(,W,);   
+inductor(,L);      llabel(,L_3,); rlabel(,L,);  
 L4: inductor(,L,6);     llabel(,L_4,); "L,6" at L4.center + (0,-.05) below;  
 '''
 
@@ -381,11 +382,11 @@ Typy diód.
 
 ## <font color='teal'> Zdroje </font>
 
-    source(linespec, chars, diameter, R, body attributes, body name)
+    source(linespec, chars, diameter, R, attrib, name)
     
     parametre:
     
-        linespec - dĺžka a umiestnenie diódy
+        linespec - dĺžka a umiestnenie zdroja
         
         chars    - typ zobrazenia
                     AC  AC source;
@@ -414,15 +415,103 @@ Typy diód.
                     tv  truncated-bar alternate voltage source;
                     other: custom interior label or waveform;
     
-        diameter     - priemer kruhu zdroja
+        diameter - priemer kruhu zdroja
     
-        R       - reversed polarity;
+        R        - reversed polarity;
     
-        body attributes  modifies the circle (body) with e.g., color or fill;
+        attrib   - parametre zobrazenia kružnice (farba, výplň ...)
     
-        body names
+        names    - text v strede kružnice
     
+Najčastejšie používané značky zdrojov
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command "\sf"
+up_
+Orig: Here
+source ; dlabel(1.3,0,"( )")
+move to (Orig+(1,0)); source(,AC,,,); dlabel(1.3,0,"AC")
+move to (Orig+(2,0)); source(,G,,,); dlabel(1.3,0,"G")
+move to (Orig+(3,0)); source(,H,,,); dlabel(1.3,0,"H")
+move to (Orig+(4,0)); source(,I,,,); dlabel(1.3,0,"I")
+move to (Orig+(5,0)); source(,P,,,); dlabel(1.3,0,"P")
+move to (Orig+(6,0)); source(,R,,,); dlabel(1.3,0,"R")
+move to (Orig+(7,0)); source(,T,,,); dlabel(1.3,0,"T")
+move to (Orig+(8,0)); source(,U,,,); dlabel(1.3,0,"U")
+'''
+
+_ = cm_compile('cm_0100w', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0100w.png
+:width: 500px
+
+Značky zdrojov.
+```
+
+Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a označenie doplníme pomocou makra *DCsymbol()*, podobnú funkciu má aj makro *ACsymbol()* pre označenie striedavých veličín. Pre jednosmerné zdroje môžeme použiť aj označenie pomocou makra *battery()*
+
+    DCsymbol(at position, length, height, U|D|L|R|degrees)
+    ACsymbol(at position, length, height, [n:][A]U|D|L|R|degrees) 
     
+      parametre:
+    
+        at position     - umiestnenie značky
+        length          - velkosť značky 
+        height
+        U|D|L|R|degrees - orientácia
+        n:              - počet vlnoviek pri AC značke
+    
+    battery(linespec,m,R)
+    
+      parametre:
+    
+        linespec - dĺžka a umiestnenie zdroja
+        m        - počet článkov batérie
+        R        - otočenie polarity
+
+Použitie makier *ACsymbol()* a *DCsymbol()* nie je viazané len na ich použitie so zdrojmi, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou "tvrdej" medzery `\,` pretože obyčajná medzera je pri renderovaní textu ignorovaná. 
+
+    source; { ACsymbol(at last [],,,2:R) }
+    source; { DCsymbol(at last [],,,R) }
+    battery(,1,R);
+    battery(,3,);  rlabel(,,+)
+
+    "5V \,\," at (Orig+(6,0.75)) rjust;  ACsymbol(at last "" ,,,1:R)  
+    "5V \,\," at (Orig+(6,1.25)) rjust;  DCsymbol(at last "" ,,,R) 
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command "\sf"
+up_
+Orig: Here
+move to (Orig+(1,0)); source; { ACsymbol(at last [],,,2:R) }
+move to (Orig+(2,0)); source; { DCsymbol(at last [],,,R) }
+move to (Orig+(3,0)); battery(,1,R);
+move to (Orig+(4,0)); battery(,3,);  rlabel(,,+)
+
+"5V \,\, " at (Orig+(6,0.75)) rjust;  ACsymbol(at last "" ,,,1:R)  
+"5V \,\, " at (Orig+(6,1.25)) rjust;  DCsymbol(at last "" ,,,R) 
+'''
+
+_ = cm_compile('cm_0100z', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0100z.png
+:width: 400px
+
+Značky zdrojov s označením typu.
+```
+
     
 ## <font color='teal'> Popis dvojpólov </font>
 
