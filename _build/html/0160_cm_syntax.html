@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -361,13 +361,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poloha-medzi-dvoma-bodmi"><font color="purple"> Poloha medzi dvoma bodmi </font></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textove-retazce"><font color="brown"> Textové reťazce </font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objekty"><font color="teal"> Objekty </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="brown">  Vetvy  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bloky-a-zlozene-objekty"><font color="brown"> Bloky a zložené objekty</font></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="teal">  Vetvy  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riadenie-toku"><font color="teal"> Riadenie toku  </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyklus"><font color="brown">  Cyklus  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvenie"><font color="brown"> Vetvenie  </font></a></li>
@@ -386,7 +388,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="jazyk-dpic">
 <h1><font color='navy'> Jazyk <em>dpic</em>  </font><a class="headerlink" href="#jazyk-dpic" title="Link to this heading">#</a></h1>
-<p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v <code class="docutils literal notranslate"><span class="pre">dpic</span></code> kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je rozšírením <code class="docutils literal notranslate"><span class="pre">dpic</span></code> o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> je v <a class="reference download internal" download="" href="_downloads/ca925103d6c8855dd344b0a4913953a0/dpic-doc.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
+<p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v <em>dpic</em> kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je rozšírením <em>dpic</em> o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka <em>dpic</em> je v <a class="reference download internal" download="" href="_downloads/ca925103d6c8855dd344b0a4913953a0/dpic-doc.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
 <div class="admonition-programovaci-jazyk-dpic admonition">
 <p class="admonition-title">Programovací jazyk <em>dpic</em></p>
 <p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> historicky vychádza z jazyka <a class="reference download internal" download="" href="_downloads/0ddae81da38fcc445ce4a7561d8a7cee/pic.pdf"><span class="xref download myst">pic</span></a> vytvoreného Brian W. Kernighan-om v roku 1991.  Z programátorského hľadiska <code class="docutils literal notranslate"><span class="pre">dpic</span></code> patrí do skupiny tzv. <em>mini-jazykov</em>, (<a class="reference external" href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>) ktoré sú vytvorené pre nejaký konkrétny učel na rozdiel od <em>všeobecne použiteľných jazykov</em> (<a class="reference external" href="https://en.wikipedia.org/wiki/General-purpose_language">GPL</a>). Syntax jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> je veľmi jednoduchá, okrem príkazov na kreslenie grafických objektov má aj základné jazykové konštrukcie na riadenie toku programu ako je podmienkové vetvenie a cyklus. Nie je v ňom možné ale vytvárať funkcie, ktorú sú formálne nahradené makrami. Makrá obsahujú kód pre kreslenie zložitejších objektov a pri ich použití kompilátor nahradí v programe meno makra týmto kódom.</p>
@@ -525,14 +527,24 @@ Q2: P1/k
 </figure>
 </section>
 </section>
-<section id="textove-retazce">
-<h3><font color='brown'> Textové reťazce </font><a class="headerlink" href="#textove-retazce" title="Link to this heading">#</a></h3>
-<p>Text je postupnosť znakov definované v obyčajných úvodzovkách a <strong>nemôže</strong> byť použitý ako hodnota premennej. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str = &quot;Toto je text&quot;          # chyba   
-T1: &quot;Toto je text&quot; at (1,1);  # ok, stred textu je v bode (1,1)
+</section>
+<section id="objekty">
+<h2><font color='teal'> Objekty </font><a class="headerlink" href="#objekty" title="Link to this heading">#</a></h2>
+<p>Programovací jazyk <em>dpic</em> je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Objektami jazyka <em>dpic</em> sú</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line, move, arrow, arc, box, ellipse, circle, spline, [], &quot;&quot; 
 </pre></div>
 </div>
-</section>
+<p>Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecný forma prístupu k atribútom má tvar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>objekt.pozícia 
+</pre></div>
+</div>
+<p>Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty <strong>nemôžu</strong> byť použitý ako hodnoty premennej.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str = &quot;Toto je text&quot;          # chyba   
+line = line from A to B;      # chyba
+T1: &quot;Toto je text&quot; at (1,1);  # ok, stred textu je v bode (1,1)
+L1: line from A to B;         # objekt s atribútmi .start, .end, .center
+</pre></div>
+</div>
 <section id="instrukcie">
 <h3><font color='brown'> Inštrukcie </font><a class="headerlink" href="#instrukcie" title="Link to this heading">#</a></h3>
 <p>Inštrukcia je jeden alebo viacej príkazov jazyka <em>dpic</em> končiacich znakom bodkočiarky <em>;</em> alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku <em>dpic</em> nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>. Formát inštrukcie v má tvar</p>
@@ -570,55 +582,6 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
 </figcaption>
 </figure>
 </section>
-<section id="vetvy">
-<h3><font color='brown'>  Vetvy  </font><a class="headerlink" href="#vetvy" title="Link to this heading">#</a></h3>
-<p>Vetva je tvorená kódom uzatvoreným do zložených zátvoriek <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote <code class="docutils literal notranslate"><span class="pre">Here</span></code>, vo vetve sa vytvorí lokálna kópia <code class="docutils literal notranslate"><span class="pre">Here</span></code>. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.</p>
-<p>Uzatvorenie kódu do vetvy <code class="docutils literal notranslate"><span class="pre">{...}</span></code> neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
-<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">,);</span>        <span class="c1"># d -&gt; 3</span>
-<span class="n">DT</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
-   <span class="p">{</span>      <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>                <span class="c1"># Here -&gt; DT</span>
-      <span class="n">R2</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="n">d</span><span class="p">,);</span>   <span class="c1"># Here -&gt; R2.end</span>
-          <span class="n">ground</span><span class="p">(</span><span class="n">at</span> <span class="n">Here</span><span class="p">,</span> <span class="n">T</span><span class="p">);</span>   
-          <span class="n">d</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
-   <span class="p">}</span>
-
-   <span class="p">{</span>  <span class="n">R3</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">up_</span> <span class="n">d</span><span class="p">,);</span>     <span class="c1"># d -&gt; 1.5   Here -&gt; R3.end</span>
-          <span class="n">tconn</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span>         
-          <span class="n">d</span><span class="o">=</span><span class="mf">2.5</span><span class="p">;</span>
-   <span class="p">}</span>
-                                <span class="c1"># Here -&gt; DT</span>
-<span class="n">R4</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">);</span>         <span class="c1"># d -&gt; 2.5   Here -&gt; R4.end</span>
-</pre></div>
-</div>
-<figure class="align-default" id="cm-160f">
-<a class="reference internal image-reference" href="_images/cm_0160f.png"><img alt="_images/cm_0160f.png" src="_images/cm_0160f.png" style="width: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 60 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-160f" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line -&gt; 1;
-box wid 2 ht 1;     
-{
-    &quot;top of box&quot; at last box.n above; 
-    &quot;bottom of box&quot; at last box.s below;
-    line from last box.nw to last box.se; 
-    line from last box.sw to last box.ne; 
-}
-line -&gt; 1;     
-box wid 2 ht 1;
-</pre></div>
-</div>
-<figure class="align-default" id="cm-0160e">
-<a class="reference internal image-reference" href="_images/cm_0160e.png"><img alt="_images/cm_0160e.png" src="_images/cm_0160e.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 61 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bbbb196dc5458c509df3c097baf05f04/cm_0160e.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0160e" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
 <section id="bloky-a-zlozene-objekty">
 <h3><font color='brown'> Bloky a zložené objekty</font><a class="headerlink" href="#bloky-a-zlozene-objekty" title="Link to this heading">#</a></h3>
 <p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.</p>
@@ -653,10 +616,59 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <a class="reference internal image-reference" href="_images/cm_0160d.png"><img alt="_images/cm_0160d.png" src="_images/cm_0160d.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 62 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0160d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 60 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0160d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
+</section>
+<section id="vetvy">
+<h2><font color='teal'>  Vetvy  </font><a class="headerlink" href="#vetvy" title="Link to this heading">#</a></h2>
+<p>Vetva je tvorená kódom uzatvoreným do zložených zátvoriek <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote <code class="docutils literal notranslate"><span class="pre">Here</span></code>, vo vetve sa vytvorí lokálna kópia <code class="docutils literal notranslate"><span class="pre">Here</span></code>. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.</p>
+<p>Uzatvorenie kódu do vetvy <code class="docutils literal notranslate"><span class="pre">{...}</span></code> neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">,);</span>        <span class="c1"># d -&gt; 3</span>
+<span class="n">DT</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+   <span class="p">{</span>      <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>                <span class="c1"># Here -&gt; DT</span>
+      <span class="n">R2</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="n">d</span><span class="p">,);</span>   <span class="c1"># Here -&gt; R2.end</span>
+          <span class="n">ground</span><span class="p">(</span><span class="n">at</span> <span class="n">Here</span><span class="p">,</span> <span class="n">T</span><span class="p">);</span>   
+          <span class="n">d</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="p">{</span>  <span class="n">R3</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">up_</span> <span class="n">d</span><span class="p">,);</span>     <span class="c1"># d -&gt; 1.5   Here -&gt; R3.end</span>
+          <span class="n">tconn</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span>         
+          <span class="n">d</span><span class="o">=</span><span class="mf">2.5</span><span class="p">;</span>
+   <span class="p">}</span>
+                                <span class="c1"># Here -&gt; DT</span>
+<span class="n">R4</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">);</span>         <span class="c1"># d -&gt; 2.5   Here -&gt; R4.end</span>
+</pre></div>
+</div>
+<figure class="align-default" id="cm-160f">
+<a class="reference internal image-reference" href="_images/cm_0160f.png"><img alt="_images/cm_0160f.png" src="_images/cm_0160f.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 61 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-160f" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line -&gt; 1;
+box wid 2 ht 1;     
+{
+    &quot;top of box&quot; at last box.n above; 
+    &quot;bottom of box&quot; at last box.s below;
+    line from last box.nw to last box.se; 
+    line from last box.sw to last box.ne; 
+}
+line -&gt; 1;     
+box wid 2 ht 1;
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0160e">
+<a class="reference internal image-reference" href="_images/cm_0160e.png"><img alt="_images/cm_0160e.png" src="_images/cm_0160e.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 62 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bbbb196dc5458c509df3c097baf05f04/cm_0160e.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0160e" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="riadenie-toku">
 <h2><font color='teal'> Riadenie toku  </font><a class="headerlink" href="#riadenie-toku" title="Link to this heading">#</a></h2>
@@ -754,13 +766,15 @@ for q=0 to 2*pi by 0.1 do{
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poloha-medzi-dvoma-bodmi"><font color="purple"> Poloha medzi dvoma bodmi </font></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textove-retazce"><font color="brown"> Textové reťazce </font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objekty"><font color="teal"> Objekty </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrukcie"><font color="brown"> Inštrukcie </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencie"><font color="brown"> Referencie </font></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="brown">  Vetvy  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bloky-a-zlozene-objekty"><font color="brown"> Bloky a zložené objekty</font></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvy"><font color="teal">  Vetvy  </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riadenie-toku"><font color="teal"> Riadenie toku  </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyklus"><font color="brown">  Cyklus  </font></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vetvenie"><font color="brown"> Vetvenie  </font></a></li>

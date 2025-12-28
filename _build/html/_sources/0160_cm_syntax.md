@@ -13,7 +13,7 @@ kernelspec:
 ---
 # <font color='navy'> Jazyk *dpic*  </font>
 
-Programovací jazyk `dpic` bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v `dpic` kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. `CircuitMacros` je rozšírením `dpic` o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka `dpic` je v [dokumentácii](./data/dpic-doc.pdf). 
+Programovací jazyk `dpic` bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v *dpic* kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. `CircuitMacros` je rozšírením *dpic* o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka *dpic* je v [dokumentácii](./data/dpic-doc.pdf). 
 
 
 ```{admonition} Programovací jazyk *dpic*
@@ -183,14 +183,23 @@ Použitie konštrukcie *between*.
 ```
 
 
+## <font color='teal'> Objekty </font>
     
-### <font color='brown'> Textové reťazce </font>
-    
-Text je postupnosť znakov definované v obyčajných úvodzovkách a **nemôže** byť použitý ako hodnota premennej. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. 
+Programovací jazyk *dpic* je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Objektami jazyka *dpic* sú
+
+    line, move, arrow, arc, box, ellipse, circle, spline, [], "" 
+
+Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecný forma prístupu k atribútom má tvar
+
+    objekt.pozícia 
+
+Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty **nemôžu** byť použitý ako hodnoty premennej.
 
 
     str = "Toto je text"          # chyba   
+    line = line from A to B;      # chyba
     T1: "Toto je text" at (1,1);  # ok, stred textu je v bode (1,1)
+    L1: line from A to B;         # objekt s atribútmi .start, .end, .center
     
 
 ### <font color='brown'> Inštrukcie </font>
@@ -268,8 +277,80 @@ _ = cm_compile('cm_0160c', data,  dpi=600)
 [Použitie](./src/cm_0160c.ckt) referencií pre výpočtu koncového bodu čiary.
 ```
 
+### <font color='brown'> Bloky a zložené objekty</font>
 
-### <font color='brown'>  Vetvy  </font>
+Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.
+
+       w=2;
+       move to (1,1.5);                  # poloha zloženého objektu
+    A:[                                  # blok s absolutnymi suradnicami  
+         rr=0.25;                        # inicializácia vnútorných premenných 
+         h=w/2; w=w+1/2;                 # použitie vonkajšej premennej  
+     B:  box at (0,0) wid w ht h; 
+     C1: circle at (0, 0.5) rad rr; 
+     C2: circle at (0,-0.5) rad rr;
+     C3: circle at B.w rad  rr;
+     C4: circle at B.e rad rr;
+    ] 
+
+Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty 
+
+    .s   .n   .w   .e   .c
+    .sw  .se  .nw  .ne
+    .wid_     .ht_
+    
+Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.
+
+    r = A.rr;                            # chyba, premenná rr nie je viditeľná
+    r = A.C1.rad                         # použitie vnútorných referncií
+    line <- from A.B.nw left_ 1 up_ 1; 
+    line <- from A.ne right_ 1 up_ 1;    # použitie vonkajších referencií a atribútov
+    right_; box at A.c wid A.wid_ ht A.ht_ dashed;
+
+    
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_color.ckt)
+Grid(5,3);
+
+    w=2;
+    move to (1,1.5);                  # poloha zloženého objektu
+A:[                                # blok s absolutnymi suradnicami  
+        rr=0.25;                      # vnutorne premenne
+        h=w/2; w=w+1/2;
+    B:  box at (0,0) wid w ht h; 
+    C1: circle at (0, 0.5) rad rr; 
+    C2: circle at (0,-0.5) rad rr;
+    C3: circle at B.w rad  rr;
+    C4: circle at B.e rad rr;
+] 
+
+color_red;
+r = A.C1.rad
+line <- from A.B.nw left_ 1 up_ 1; "\sf A.B.nw" above;
+line <- from A.ne right_ 1 up_ 1; "\sf A.ne" above;
+
+right_; box at A.c wid A.wid_   ht A.ht_ dashed;
+'''
+
+_ = cm_compile('cm_0160d', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0160d.png
+:width: 350px
+:name: cm_0160d
+
+Blok reprezentujúci zložený objekt a jeho vonkajší obrys.
+```
+
+
+
+## <font color='teal'>  Vetvy  </font>
 
 Vetva je tvorená kódom uzatvoreným do zložených zátvoriek `{...}`. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote `Here`, vo vetve sa vytvorí lokálna kópia `Here`. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.
 
@@ -375,81 +456,6 @@ _ = cm_compile('cm_0160e', data, dpi=600)
 
 [Lokálne](./src/cm_0160e.ckt) súradnice vo vetve.
 ```
-
-
-
-
-### <font color='brown'> Bloky a zložené objekty</font>
-
-Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.
-
-       w=2;
-       move to (1,1.5);                  # poloha zloženého objektu
-    A:[                                  # blok s absolutnymi suradnicami  
-         rr=0.25;                        # inicializácia vnútorných premenných 
-         h=w/2; w=w+1/2;                 # použitie vonkajšej premennej  
-     B:  box at (0,0) wid w ht h; 
-     C1: circle at (0, 0.5) rad rr; 
-     C2: circle at (0,-0.5) rad rr;
-     C3: circle at B.w rad  rr;
-     C4: circle at B.e rad rr;
-    ] 
-
-Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty 
-
-    .s   .n   .w   .e   .c
-    .sw  .se  .nw  .ne
-    .wid_     .ht_
-    
-Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.
-
-    r = A.rr;                            # chyba, premenná rr nie je viditeľná
-    r = A.C1.rad                         # použitie vnútorných referncií
-    line <- from A.B.nw left_ 1 up_ 1; 
-    line <- from A.ne right_ 1 up_ 1;    # použitie vonkajších referencií a atribútov
-    right_; box at A.c wid A.wid_ ht A.ht_ dashed;
-
-    
-```{code-cell} ipython3 
-:tags: ["remove-cell"]
-
-from src.utils import *
-
-data = r'''
-include(lib_base.ckt)
-include(lib_color.ckt)
-Grid(5,3);
-
-    w=2;
-    move to (1,1.5);                  # poloha zloženého objektu
-A:[                                # blok s absolutnymi suradnicami  
-        rr=0.25;                      # vnutorne premenne
-        h=w/2; w=w+1/2;
-    B:  box at (0,0) wid w ht h; 
-    C1: circle at (0, 0.5) rad rr; 
-    C2: circle at (0,-0.5) rad rr;
-    C3: circle at B.w rad  rr;
-    C4: circle at B.e rad rr;
-] 
-
-color_red;
-r = A.C1.rad
-line <- from A.B.nw left_ 1 up_ 1; "\sf A.B.nw" above;
-line <- from A.ne right_ 1 up_ 1; "\sf A.ne" above;
-
-right_; box at A.c wid A.wid_   ht A.ht_ dashed;
-'''
-
-_ = cm_compile('cm_0160d', data, dpi=600)   
-```
-
-```{figure} ./src/cm_0160d.png
-:width: 350px
-:name: cm_0160d
-
-Blok reprezentujúci zložený objekt a jeho vonkajší obrys.
-```
-
 
        
 ## <font color='teal'> Riadenie toku  </font>
