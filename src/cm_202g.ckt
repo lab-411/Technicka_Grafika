@@ -12,44 +12,46 @@ arrowht = 0.254         # dlzka
 
 
 include(lib_base.ckt)
-Grid(11.5,4);
+
+#Grid(11.5,4);
+command"\sf"
 
 # Usual defs...
 move to (.6,3);
 hlf=0.5;
 
-Q1:e_fet(up_ ,,P,S);   
+Q1:e_fet(up_ ,,P,); {"Q1" at Q1.n above;}
 move right_ hlf
-Q2:e_fet(up_ ,R); 
+Q2:e_fet(up_ ,R,,); {"Q2" at Q2.n above;}
 move right_ hlf
-Q3:e_fet(up_,,P)
+Q3:e_fet(up_,,P);   {"Q3" at Q3.n above;}
 move right_ hlf
-Q4:e_fet(up_,R,P); 
+Q4:e_fet(up_,R,P);  {"Q4" at Q4.n above;}
+move right_ hlf
+Q5:d_fet(up_);      {"Q5" at Q5.n above;}
+move right_ hlf
+Q6:d_fet(up_,R);    {"Q6" at Q6.n above;}
+move right_ hlf
+Q7:d_fet(up_,,P);   {"Q7" at Q7.n above;}
+move right_ hlf
+Q8:d_fet(up_,R,P);  {"Q8" at Q8.n above;}
 
-move right_ hlf
-Q5:d_fet(up_)
-move right_ hlf
-Q6:d_fet(up_,R)
-move right_ hlf
-Q7:d_fet(up_,,P)
-move right_ hlf
-Q8:d_fet(up_,R,P)
 
-move to (0.35,1);
-e_fet(up_,,,S)
+move to (0.35,1);  
+Q9: e_fet(up_,,,S);   {"Q9" at Q9.s below;}
 move right_ hlf
-e_fet(up_,R,,S)
+Q10: e_fet(up_,R,,S); {"Q10" at Q10.s below;}
 move right_ hlf
-e_fet(up_,,P,S)
+Q11: e_fet(up_,,P,S); {"Q11" at Q11.s below;}
 move right_ hlf
-e_fet(up_,R,P,S)
+Q12: e_fet(up_,R,P,S); {"Q12" at Q12.s below;}
 move right_ hlf
-d_fet(up_,,,S)
+Q13: d_fet(up_,,,S);  {"Q13" at Q13.s below;}
 move right_ hlf
-d_fet(up_,R,,S)
+Q14: d_fet(up_,R,,S); {"Q14" at Q14.s below;}
 move right_ hlf
-d_fet(up_,,P,S)
+Q15: d_fet(up_,,P,S);  {"Q15" at Q15.s below;}
 move right_ hlf
-d_fet(up_,R,P,S)
+Q16: d_fet(up_,R,P,S);  {"Q16" at Q16.s below;}
 
 .PE

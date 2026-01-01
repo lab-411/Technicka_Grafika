@@ -561,7 +561,14 @@ _ = cm_compile('cm_202f', data, dpi=600 )
 
 ## <font color='teal'>  FET tranzistor </font> 
 
-Pre zobrazenie štandardných MOSFET tranzistorov sú definované makrá *e_fet()* a *d_fet()*. Popis makier špeciálnych typov FET tranzistorov je uvedý v dokumentácii k programu.
+Pre zobrazenie štandardných diskrétnych MOSFET tranzistorov sú v `CircuitMacros` definované makrá pre základné typy *e_fet()* a *d_fet()*. 
+
+     Q1:e_fet(up_ ,,P,);  Q2:e_fet(up_ ,R,,);   Q3:e_fet(up_,,P);     Q4:e_fet(up_,R,P);
+     Q5:d_fet(up_);       Q6:d_fet(up_,R);      Q7:d_fet(up_,,P);     Q8:d_fet(up_,R,P);
+    
+     Q9:e_fet(up_,,,S);  Q10:e_fet(up_,R,,S);  Q11:e_fet(up_,,P,S);  Q12:e_fet(up_,R,P,S);
+    Q13:d_fet(up_,,,S);  Q14:d_fet(up_,R,,S);  Q15:d_fet(up_,,P,S);  Q16:d_fet(up_,R,P,S);
+
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -570,45 +577,47 @@ from src.utils import *
 
 data = r'''
 include(lib_base.ckt)
-Grid(11.5,4);
+
+#Grid(11.5,4);
+command"\sf"
 
 # Usual defs...
 move to (.6,3);
 hlf=0.5;
 
-Q1:e_fet(up_ ,,P,S);   
+Q1:e_fet(up_ ,,P,); {"Q1" at Q1.n above;}
 move right_ hlf
-Q2:e_fet(up_ ,R); 
+Q2:e_fet(up_ ,R,,); {"Q2" at Q2.n above;}
 move right_ hlf
-Q3:e_fet(up_,,P)
+Q3:e_fet(up_,,P);   {"Q3" at Q3.n above;}
 move right_ hlf
-Q4:e_fet(up_,R,P); 
-
+Q4:e_fet(up_,R,P);  {"Q4" at Q4.n above;}
 move right_ hlf
-Q5:d_fet(up_)
+Q5:d_fet(up_);      {"Q5" at Q5.n above;}
 move right_ hlf
-Q6:d_fet(up_,R)
+Q6:d_fet(up_,R);    {"Q6" at Q6.n above;}
 move right_ hlf
-Q7:d_fet(up_,,P)
+Q7:d_fet(up_,,P);   {"Q7" at Q7.n above;}
 move right_ hlf
-Q8:d_fet(up_,R,P)
+Q8:d_fet(up_,R,P);  {"Q8" at Q8.n above;}
  
-move to (0.35,1);
-e_fet(up_,,,S)
+ 
+move to (0.35,1);  
+Q9: e_fet(up_,,,S);   {"Q9" at Q9.s below;}
 move right_ hlf
-e_fet(up_,R,,S)
+Q10: e_fet(up_,R,,S); {"Q10" at Q10.s below;}
 move right_ hlf
-e_fet(up_,,P,S)
+Q11: e_fet(up_,,P,S); {"Q11" at Q11.s below;}
 move right_ hlf
-e_fet(up_,R,P,S)
+Q12: e_fet(up_,R,P,S); {"Q12" at Q12.s below;}
 move right_ hlf
-d_fet(up_,,,S)
+Q13: d_fet(up_,,,S);  {"Q13" at Q13.s below;}
 move right_ hlf
-d_fet(up_,R,,S)
+Q14: d_fet(up_,R,,S); {"Q14" at Q14.s below;}
 move right_ hlf
-d_fet(up_,,P,S)
+Q15: d_fet(up_,,P,S);  {"Q15" at Q15.s below;}
 move right_ hlf
-d_fet(up_,R,P,S)
+Q16: d_fet(up_,R,P,S);  {"Q16" at Q16.s below;}
 '''
 
 _ = cm_compile('cm_202g', data, dpi=600 )   
@@ -640,3 +649,75 @@ Značky MOSFET tranzistorov *e_fet()* a *d_fet()*
     .S                     - poloha source
     .D                     - poloha drain
 
+Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro *mosfet()*. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v [dokumentácii](./src/Circuit_macros_10_6.pdf).
+
+    Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { "Q3" at Q3.nw ljust;}
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_user.ckt)
+include(lib_color.ckt)
+command"\sf"
+
+#----------------------------------------------------
+# NAND
+Q1: e_fet(down_,R,P); { "Q1" at Q1.nw ljust; }
+Q2: e_fet(down_, ,P) at Q1.c + (1.5,0); { "Q2" at Q2.ne rjust; }
+    line from Q2.S to Q1.S;
+    dot; up_; power(1, $\sf V_{dd}$)
+    line from Q2.D to Q1.D;
+    dot;
+    line down_ 0.5;
+DT1:dot;
+    line down_ 0.25;
+#Q3: e_fet(up_,,S) with .D at last line.end;
+
+    color_red;
+Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end;  { "Q3" at Q3.nw ljust; }
+    color_black;
+    
+Q4: e_fet(up_,,) with .D at Q3.D; { "Q4" at Q4.nw ljust; }
+DT2:dot(at Q4.S);
+    gnd(0.5) 
+    
+    line from Q3.B right_ 0.5;
+    line to (Here, DT2) then to DT2;
+    
+    line from Q3.G left_ 0.5; 
+    dot; {line left_ 1; tbox("A",,, <) }
+    line to (Here, Q1.G) then to Q1.G
+    
+    line from Q4.G left_ 0.5;
+    dot; {line left_ 1; tbox("B",,, <) }
+    line down_ 1.5; 
+    line to (Q2.G+(0.25,0), Here);
+    line to (Here, Q2.G) then to Q2.G;
+
+#-----------------------------------------------------------
+# invertor
+    line from DT1 right 3;
+DT3:dot;
+    line up_ 1.2 then right_ 0.25;
+Q5: e_fet(down_,R,P) with .G at last line.end;   
+    line from DT3 down_ 1.2 then right_ 0.25;
+Q6: e_fet(up_,,) with .G at last line.end;
+    gnd(0.5) at Q6.S;
+    power(1, $\sf V_{dd}$) at Q5.S;
+    line from Q5.D to Q6.D;
+DT4:0.5 between Q5.D and Q6.D; 
+    dot(at DT4); line right_ 1; {tbox("Y");}  
+'''
+
+_ = cm_compile('cm_202h', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_202h.png
+:width: 450px
+
+[Zapojenie](./src/cm_202h.ckt) hradla AND v technológii CMOS.
+```

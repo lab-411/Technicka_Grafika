@@ -73,7 +73,6 @@
 0900_priloha_cli.md
 0915_priloha_editor.md
 0910_priloha_odkazy.md
-0950_sphinx_myst.ipynb
 ```
 
 ## <font color='teal'> Anotácia </font>   

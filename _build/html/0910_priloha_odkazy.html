@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '0910_priloha_odkazy';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Elektronická publikácia" href="0950_sphinx_myst.html" />
     <link rel="prev" title="Externý editor" href="0915_priloha_editor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -200,7 +199,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Export obrázkov </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0915_priloha_editor.html"><font color="navy"> Externý editor </font></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Odkazy  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0950_sphinx_myst.html"><font color="navy">  Elektronická publikácia </font></a></li>
 </ul>
 
     </div>
@@ -326,7 +324,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -342,6 +342,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programy"><font color="teal"> Programy </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklady"><font color="teal"> Príklady </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technicke-normy"><font color="teal"> Technické normy </font></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -353,6 +363,30 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="odkazy">
 <h1><font color='navy'> Odkazy  </font><a class="headerlink" href="#odkazy" title="Link to this heading">#</a></h1>
+<section id="programy">
+<h2><font color='teal'> Programy </font><a class="headerlink" href="#programy" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">Circuit macros</a></p></li>
+<li><p><a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros.pdf">Circuit macros manual</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/PIC_(markup_language)">PIC markup language</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.com/aplevich/dpic">dpic source code</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.com/aplevich/dpic/-/blob/master/dpic-doc.pdf">dpic manual</a></p></li>
+</ul>
+</section>
+<section id="priklady">
+<h2><font color='teal'> Príklady </font><a class="headerlink" href="#priklady" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/html/examples.html">Circuit_macros examples</a></p></li>
+<li><p><a class="reference external" href="https://yingtongdiddleipo.eie.wits.ac.za/cct.html">Using Circuit Macros</a></p></li>
+</ul>
+</section>
+<section id="technicke-normy">
+<h2><font color='teal'> Technické normy </font><a class="headerlink" href="#technicke-normy" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://agenturacas.gov.cz/wp-content/uploads/Graficke-znacky-na-schematech.pdf">Výběr grafických značek z databáze IEC 60617DB</a></p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/document/8996120">315-1975 - IEEE Standard for Graphic Symbols for Electrical and Electronics Diagrams</a></p></li>
+</ul>
+</section>
 </section>
 
 
@@ -375,21 +409,29 @@ document.write(`
         <p class="prev-next-title"><font color='navy'> Externý editor </font></p>
       </div>
     </a>
-    <a class="right-next"
-       href="0950_sphinx_myst.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><font color='navy'>  Elektronická publikácia </font></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programy"><font color="teal"> Programy </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklady"><font color="teal"> Príklady </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technicke-normy"><font color="teal"> Technické normy </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

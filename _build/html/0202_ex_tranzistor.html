@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -202,7 +202,6 @@
 <li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Export obrázkov </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0915_priloha_editor.html"><font color="navy"> Externý editor </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy  </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0950_sphinx_myst.html"><font color="navy">  Elektronická publikácia </font></a></li>
 </ul>
 
     </div>
@@ -524,7 +523,14 @@ R4: resistor(from T1.E down_ 1.2,,E);
 </section>
 <section id="fet-tranzistor">
 <h2><font color='teal'>  FET tranzistor </font><a class="headerlink" href="#fet-tranzistor" title="Link to this heading">#</a></h2>
-<p>Pre zobrazenie štandardných MOSFET tranzistorov sú definované makrá <em>e_fet()</em> a <em>d_fet()</em>. Popis makier špeciálnych typov FET tranzistorov je uvedý v dokumentácii k programu.</p>
+<p>Pre zobrazenie štandardných diskrétnych MOSFET tranzistorov sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> definované makrá pre základné typy <em>e_fet()</em> a <em>d_fet()</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Q1:e_fet(up_ ,,P,);  Q2:e_fet(up_ ,R,,);   Q3:e_fet(up_,,P);     Q4:e_fet(up_,R,P);
+ Q5:d_fet(up_);       Q6:d_fet(up_,R);      Q7:d_fet(up_,,P);     Q8:d_fet(up_,R,P);
+
+ Q9:e_fet(up_,,,S);  Q10:e_fet(up_,R,,S);  Q11:e_fet(up_,,P,S);  Q12:e_fet(up_,R,P,S);
+Q13:d_fet(up_,,,S);  Q14:d_fet(up_,R,,S);  Q15:d_fet(up_,,P,S);  Q16:d_fet(up_,R,P,S);
+</pre></div>
+</div>
 <figure class="align-default" id="cm-202g">
 <a class="reference internal image-reference" href="_images/cm_202g.png"><img alt="_images/cm_202g.png" src="_images/cm_202g.png" style="width: 600px;" />
 </a>
@@ -551,6 +557,17 @@ atribúty:
 .D                     - poloha drain
 </pre></div>
 </div>
+<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference internal" href="#./src/Circuit_macros_10_6.pdf"><span class="xref myst">dokumentácii</span></a>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { &quot;Q3&quot; at Q3.nw ljust;}
+</pre></div>
+</div>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/cm_202h.png"><img alt="_images/cm_202h.png" src="_images/cm_202h.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 84 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e8cba3e56e4064bf1d3de3e294183e8c/cm_202h.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
