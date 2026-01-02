@@ -13,55 +13,40 @@ arrowht = 0.254         # dlzka
 
 include(lib_base.ckt)
 include(lib_user.ckt)
-include(lib_color.ckt)
-command"\sf"
 
-#----------------------------------------------------
-# NAND
-Q1: e_fet(down_,R,P); { "Q1" at Q1.nw ljust; }
-Q2: e_fet(down_, ,P) at Q1.c + (1.5,0); { "Q2" at Q2.ne rjust; }
-    line from Q2.S to Q1.S;
-    dot; up_; power(1, $\sf V_{dd}$)
-    line from Q2.D to Q1.D;
-    dot;
-    line down_ 0.5;
-DT1:dot;
-    line down_ 0.25;
-#Q3: e_fet(up_,,S) with .D at last line.end;
+Grid(6.5,7);
+linethick = 1;
+move to (3.5,1.5);
+up_;
+T2:  bjt_NPN(1,1.5, R);  {"$Q_2$" at T2.e; }
+     move to Here+(0, 2)
+T1:  bjt_PNP(1, 1.5, R); {"$Q_1$" at T1.e; }
 
-    color_red;
-Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end;  { "Q3" at Q3.nw ljust; }
-    color_black;
+R1:  resistor(from T2.E down_ 1.5,,E); llabel(,R_e,);
 
-Q4: e_fet(up_,,) with .D at Q3.D; { "Q4" at Q4.nw ljust; }
-DT2:dot(at Q4.S);
-    gnd(0.5) 
+     line from T1.C down_ 0.25; line down_ 0.75; b_current(i_1,above_, );
+DT1: dot;
+     line down_ 0.25; line to T2.C; b_current(i_2,above_,);
+     line from DT1 right_ 1; tconn(0.5,O); "$V_{out}$" ljust;
 
-    line from Q3.B right_ 0.5;
-    line to (Here, DT2) then to DT2;
+R2: resistor(from T1.E up_ 1.5,,E); rlabel(,R_e,);
 
-    line from Q3.G left_ 0.5; 
-    dot; {line left_ 1; tbox("A",,, <) }
-    line to (Here, Q1.G) then to Q1.G
+     move to T2.B; 
+DT2: dot;  # stred, vstup
 
-    line from Q4.G left_ 0.5;
-    dot; {line left_ 1; tbox("B",,, <) }
-    line down_ 1.5; 
-    line to (Q2.G+(0.25,0), Here);
-    line to (Here, Q2.G) then to Q2.G;
+     resistor(from DT2 up_ 1.5,,E); llabel(,3R,);
+DT4: dot;
+     resistor(from DT4 to T1.B,,E); llabel(,3R,);
+DT5: dot;  # baza T1
+R3:  resistor(from DT2 down_ 2,,E); rlabel(,R,);
 
-#-----------------------------------------------------------
-# invertor
-    line from DT1 right 3;
-DT3:dot;
-    line up_ 1.2 then right_ 0.25;
-Q5: e_fet(down_,R,P) with .G at last line.end;   
-    line from DT3 down_ 1.2 then right_ 0.25;
-Q6: e_fet(up_,,) with .G at last line.end;
-    gnd(0.5) at Q6.S;
-    power(1, $\sf V_{dd}$) at Q5.S;
-    line from Q5.D to Q6.D;
-DT4:0.5 between Q5.D and Q6.D; 
-    dot(at DT4); line right_ 1; {tbox("Y");}  
+     line from R3.end to R1.end;  
+     dot; right_; line -> 1; "$V-$" ljust;
+
+R4: resistor(from DT5 up_ 2,,E); llabel(,R,);
+    line from R4.end to R2.end;
+    dot;  right_; line -> 1; "$V+$" ljust;
+
+    line from DT4 left_ 1; tconn(0.5,O); "$V_{in}$" rjust;
 
 .PE

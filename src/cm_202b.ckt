@@ -13,7 +13,7 @@ arrowht = 0.254         # dlzka
 
     include(lib_base.ckt)
     include(lib_color.ckt)
-    Grid(7,7);
+    #Grid(7,7);
     move to (4,2)
     up_;
 T1: bi_tr(2, L, N,E); 

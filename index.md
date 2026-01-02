@@ -12,7 +12,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB-411 Production </b> </font>      </h3>
-<h3> <font color='brown'>  <b> Verzia 0.30 / Dec. 2025 </b> </font>                   </h3>
+<h3> <font color='brown'>  <b> Verzia 0.35 / Jan. 2026 </b> </font>                   </h3>
 </center> 
 
 ----------------
@@ -80,7 +80,7 @@
 
 ## <font color='teal'> Vydavateľstvo </font> 
 
-Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2025.
+Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2026.
 
 **ISBN: xxx-xx-xxxxxx-x**
 
@@ -100,7 +100,7 @@ Titulný obrázok je vygenerovaný na základe podkladov uvedených ako príklad
 
 Publikácia **Programová tvorba technickej grafiky** je vydaná pod licenciou MIT
 
-    Copyright © 2025 LAB-411 Team
+    Copyright © 2026 LAB-411 Team
 
     Permission is hereby granted, free of charge, to any person obtaining a copy 
     of this software and associated documentation files (the “Software”), to deal 

@@ -19,6 +19,10 @@ kernelspec:
 
 Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice `CircuitMacros` zobrazuje makro *bi_tr()*
 
+    Q1:bi_tr(up_ );     Q2:bi_tr(up_ ,R);    Q3:bi_tr(up_,,,E);    Q4:bi_tr(up_,R,,E); 
+    Q5:bi_tr(up_,,P);   Q6:bi_tr(up_,R,P);   Q7:bi_tr(up_,,P,E);   Q8:bi_tr(up_,R,P,E); 
+
+
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
 
@@ -28,40 +32,38 @@ data = r'''
 include(lib_base.ckt)
 include(lib_user.ckt)
 
-Grid(12,2);
+#Grid(12,2);
+command"\sf"
 move to (.5,1);
 hlf=0.5;
 
-Q1:bi_tr(up_ );   
+Q1:bi_tr(up_ ); {"Q1" at Q1.n above; }
 move right_ hlf
-Q2:bi_tr(up_ ,R); 
+Q2:bi_tr(up_ ,R); {"Q2" at Q2.n above; }
 move right_ hlf
-Q3:bi_tr(up_,,,E)
+Q3:bi_tr(up_,,,E); {"Q3" at Q3.n above; }
 move right_ hlf
-Q4:bi_tr(up_,R,,E); 
+Q4:bi_tr(up_,R,,E); {"Q4" at Q4.n above; }
 
 move right_ hlf
-Q5:bi_tr(up_,,P)
+Q5:bi_tr(up_,,P); {"Q5" at Q5.n above; }
 move right_ hlf
-Q6:bi_tr(up_,R,P)
+Q6:bi_tr(up_,R,P); {"Q6" at Q6.n above; }
 move right_ hlf
-Q7:bi_tr(up_,,P,E)
+Q7:bi_tr(up_,,P,E); {"Q7" at Q7.n above; }
 move right_ hlf
-Q8:bi_tr(up_,R,P,E)
+Q8:bi_tr(up_,R,P,E); {"Q8" at Q8.n above; }
 '''
 
 _ = cm_compile('cm_202a', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_202a.png
-:width: 620px
+:width: 550px
 :name: cm_202a
 
-[Značka](./src/cm_202a.ckt) bipolárneho tranzistora *bi_tr()*.
+Značka bipolárneho tranzistora *bi_tr()*.
 ```
-
-
-
 
 
     bi_tr(linespec,L|R,P,E);
@@ -80,6 +82,8 @@ _ = cm_compile('cm_202a', data, dpi=600 )
     .B                     - poloha bázy
     .E                     - poloha emitora
     .C                     - poloha kolektora
+
+    
 
 Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora $R_{b1}$ je určená polohou značky zeme pri rezistore $R_e$. Pre popis spojovacieho bodu $V_b$ bolo použité makro *dlabel()*.
 
@@ -105,7 +109,7 @@ from src.utils import *
 data = r'''
     include(lib_base.ckt)
     include(lib_color.ckt)
-    Grid(7,7);
+    #Grid(7,7);
     move to (4,2)
     up_;
 T1: bi_tr(2, L, N,E); 
@@ -156,6 +160,8 @@ _ = cm_compile('cm_202b', data, dpi=600 )
 
 Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici [lib_user.ckt](./src/lib_user.ckt) sú definované ekvivalenty bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia.
 
+    Q1:bjt_NPN(1,1,L);    Q2:bjt_NPN(1,1,L,N);   Q3:bjt_PNP(1,1,L);  Q4:bjt_PNP(1,1,L,N);
+    Q5:bjt_NPN(1,1,R);    Q6:bjt_NPN(1,1,R,N);   Q7:bjt_PNP(1,1,R);  Q8:bjt_PNP(1,1,R,N);
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -165,28 +171,29 @@ from src.utils import *
 data = r'''
 include(lib_base.ckt)
 include(lib_user.ckt)
-Grid(10, 2.5);
+command"\sf"
+#Grid(10, 2.5);
 
 move to (0.5, 2);
-bjt_NPN(1,1,L);
-bjt_NPN(1,1,L,N);
+Q1:bjt_NPN(1,1,L);   {"Q1" at Q1.n above; }
+Q2:bjt_NPN(1,1,L,N); {"Q2" at Q2.n above; }
 
-bjt_PNP(1,1,L);
-bjt_PNP(1,1,L,N);
+Q3:bjt_PNP(1,1,L);   {"Q3" at Q3.n above; }
+Q4:bjt_PNP(1,1,L,N); {"Q4" at Q4.n above; }
 
 move to (0.5, 0.5);
-bjt_NPN(1,1,R);
-bjt_NPN(1,1,R,N);
+Q5:bjt_NPN(1,1,R);   {"Q5" at Q5.s below; }
+Q6:bjt_NPN(1,1,R,N); {"Q6" at Q6.s below; }
 
-bjt_PNP(1,1,R);
-bjt_PNP(1,1,R,N);
+Q7:bjt_PNP(1,1,R);   {"Q7" at Q7.s below; }
+Q8:bjt_PNP(1,1,R,N); {"Q8" at Q8.s below; }
 
-move to (7.5, 1.25);
-Q1: bjt_NPN(1.5, 1, R);
-"\textit{Q1}" at Q1.e;
-"\textit{Q1.B}" at Q1.B rjust;
-"\textit{Q1.E}" at Q1.E below; 
-"\textit{Q1.C}" at Q1.C above; 
+move to (9, 1.25);
+Q10: bjt_NPN(1.5, 1, R);
+"\textit{Q10}" at Q10.e;
+"\textit{Q10.B}" at Q10.B rjust;
+"\textit{Q10.E}" at Q10.E below; 
+"\textit{Q10.C}" at Q10.C above; 
 '''
 
 _ = cm_compile('cm_202c', data, dpi=600 )   
@@ -196,7 +203,7 @@ _ = cm_compile('cm_202c', data, dpi=600 )
 :width: 550px
 :name: cm_202c
 
-Značky bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*
+Upravené značky bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*
 ```
 
     bjt_NPN(length_ce, length_b, L|R|U|D, C|N)
@@ -649,7 +656,7 @@ Značky MOSFET tranzistorov *e_fet()* a *d_fet()*
     .S                     - poloha source
     .D                     - poloha drain
 
-Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro *mosfet()*. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v [dokumentácii](./src/Circuit_macros_10_6.pdf).
+Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro *mosfet()*. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v [dokumentácii](./data/Circuit_macros_10_6.pdf).
 
     Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { "Q3" at Q3.nw ljust;}
 
@@ -713,11 +720,98 @@ DT4:0.5 between Q5.D and Q6.D;
     dot(at DT4); line right_ 1; {tbox("Y");}  
 '''
 
-_ = cm_compile('cm_202h', data, dpi=600 )   
+_ = cm_compile('cm_202u', data, dpi=600 )   
 ```
 
-```{figure} ./src/cm_202h.png
-:width: 450px
+```{figure} ./src/cm_202u.png
+:width: 400px
 
-[Zapojenie](./src/cm_202h.ckt) hradla AND v technológii CMOS.
+[Zapojenie](./src/cm_202u.ckt) hradla AND v technológii CMOS.
 ```
+
+Niektorí výrobcovia mikrokontrolérov používajú pre zjednodušený popis funkcie častí logického obvodu kombinovanú značku FET tranzistora, ktorá namiesto jeho štruktúry zobrazuje jeho vzťah k ostatným častiam zapojenia. Tranzitor s vodivosťou typu P je zobrazený s krúžkom na hradle, čo znamená, že bude otvorený pri privedení signálu s úrovňou **L** na jeho hradlo.
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+include(lib_user.ckt)
+include(lib_color.ckt)
+command"\sf"
+up_
+move to (3.5,5)
+
+    gnd();
+Q1: fet_N(1.5,L);
+    dot; {line right_ 1; tbox("Port Pin",1.5); }
+Q2: fet_P(1.5,L);
+    power(0.5, $\sf V_{cc}$)
+
+    line from Q2.G left_ 0.5;
+    line to (Here, Q1.G);
+    dot; {line left_ 0.5; tbox("Digital Out",2,,<); }
+    line to Q1.G
+    circle at Q2.c - (2.5,0) rad 0.25 "A"
+
+
+move to (11.5,5)
+    up_;
+    gnd();
+Q3: fet_N(1.5,L);
+    dot; {line right_ 1; tbox("Port Pin",1.5); }
+Q4: fet_P(1.5,L);
+    power(0.5, $\sf V_{cc}$)
+R1: resistor(left_ 1 from Q3.G,E)
+R2: resistor(left_ 1 from Q4.G,E)
+    line 0.5 from R2.end;
+    line to (Here, R1.end);
+    dot; {line left_ 0.5; tbox("Digital Out",2,,<); }
+    line to R1.end;
+    circle at Q4.c - (3,0) rad 0.25 "B"
+
+
+move to (3.5, 0)
+
+    up_;
+    gnd;
+    resistor(1.5, E); rlabel(,\sf R_{PD},)
+    dot; 
+    {
+        {line left_ 1.5; tbox("Digital In",2,, >);}
+        line right_ 1;
+        tbox("Port Pin",1.5); 
+    }
+Q5: fet_P(1.5,L);
+    power(0.5, $\sf V_{cc}$);
+    {line from Q5.G left_ 1; tbox("Digital Out",2,,<); }
+    circle at Q5.c - (2.5,-1) rad 0.25 "C";
+
+
+move to (11.5, 0)
+    up_;
+    gnd;
+Q6: fet_N(1.5,L);
+    dot; 
+    {
+        {line left_ 1.5; tbox("Digital In",2,, >);}
+        line right_ 1;
+        tbox("Port Pin",1.5); 
+    }
+    resistor(up_ 1.5, E); rlabel(,\sf R_{PU},)
+    power(0.5, $\sf V_{cc}$);
+    {line from Q6.G left_ 1; tbox("Digital Out",2,,<); }
+    circle at Q6.c - (2.5,-2) rad 0.25 "D";
+'''
+
+_ = cm_compile('cm_202v', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_202v.png
+:width: 600px
+
+[Konfigurácie](./src/cm_202v.ckt) koncového stupňa pinu portu mikrokontroléra.
+```
+

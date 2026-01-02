@@ -14,25 +14,26 @@ arrowht = 0.254         # dlzka
 include(lib_base.ckt)
 include(lib_user.ckt)
 
-Grid(12,2);
+#Grid(12,2);
+command"\sf"
 move to (.5,1);
 hlf=0.5;
 
-Q1:bi_tr(up_ );   
+Q1:bi_tr(up_ ); {"Q1" at Q1.n above; }
 move right_ hlf
-Q2:bi_tr(up_ ,R); 
+Q2:bi_tr(up_ ,R); {"Q2" at Q2.n above; }
 move right_ hlf
-Q3:bi_tr(up_,,,E)
+Q3:bi_tr(up_,,,E); {"Q3" at Q3.n above; }
 move right_ hlf
-Q4:bi_tr(up_,R,,E); 
+Q4:bi_tr(up_,R,,E); {"Q4" at Q4.n above; }
 
 move right_ hlf
-Q5:bi_tr(up_,,P)
+Q5:bi_tr(up_,,P); {"Q5" at Q5.n above; }
 move right_ hlf
-Q6:bi_tr(up_,R,P)
+Q6:bi_tr(up_,R,P); {"Q6" at Q6.n above; }
 move right_ hlf
-Q7:bi_tr(up_,,P,E)
+Q7:bi_tr(up_,,P,E); {"Q7" at Q7.n above; }
 move right_ hlf
-Q8:bi_tr(up_,R,P,E)
+Q8:bi_tr(up_,R,P,E); {"Q8" at Q8.n above; }
 
 .PE

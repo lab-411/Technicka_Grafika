@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -371,11 +371,15 @@ document.write(`
 <section id="bipolarny-tranzistor">
 <h2><font color='teal'>  Bipolárny tranzistor </font><a class="headerlink" href="#bipolarny-tranzistor" title="Link to this heading">#</a></h2>
 <p>Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> zobrazuje makro <em>bi_tr()</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q1:bi_tr(up_ );     Q2:bi_tr(up_ ,R);    Q3:bi_tr(up_,,,E);    Q4:bi_tr(up_,R,,E); 
+Q5:bi_tr(up_,,P);   Q6:bi_tr(up_,R,P);   Q7:bi_tr(up_,,P,E);   Q8:bi_tr(up_,R,P,E);
+</pre></div>
+</div>
 <figure class="align-default" id="cm-202a">
-<a class="reference internal image-reference" href="_images/cm_202a.png"><img alt="_images/cm_202a.png" src="_images/cm_202a.png" style="width: 620px;" />
+<a class="reference internal image-reference" href="_images/cm_202a.png"><img alt="_images/cm_202a.png" src="_images/cm_202a.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 75 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bdf9e8a1844e3981554178ac529ee502/cm_202a.ckt"><span class="xref download myst">Značka</span></a> bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 75 </span><span class="caption-text">Značka bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bi_tr(linespec,L|R,P,E);
@@ -419,11 +423,15 @@ atribúty:
 <section id="modifikacie-znaciek">
 <h3><font color='brown'> Modifikácie značiek </font><a class="headerlink" href="#modifikacie-znaciek" title="Link to this heading">#</a></h3>
 <p>Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> sú definované ekvivalenty bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em>. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q1:bjt_NPN(1,1,L);    Q2:bjt_NPN(1,1,L,N);   Q3:bjt_PNP(1,1,L);  Q4:bjt_PNP(1,1,L,N);
+Q5:bjt_NPN(1,1,R);    Q6:bjt_NPN(1,1,R,N);   Q7:bjt_PNP(1,1,R);  Q8:bjt_PNP(1,1,R,N);
+</pre></div>
+</div>
 <figure class="align-default" id="cm-202c">
 <a class="reference internal image-reference" href="_images/cm_202c.png"><img alt="_images/cm_202c.png" src="_images/cm_202c.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 77 </span><span class="caption-text">Značky bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em></span><a class="headerlink" href="#cm-202c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 77 </span><span class="caption-text">Upravené značky bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em></span><a class="headerlink" href="#cm-202c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bjt_NPN(length_ce, length_b, L|R|U|D, C|N)
@@ -557,15 +565,23 @@ atribúty:
 .D                     - poloha drain
 </pre></div>
 </div>
-<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference internal" href="#./src/Circuit_macros_10_6.pdf"><span class="xref myst">dokumentácii</span></a>.</p>
+<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { &quot;Q3&quot; at Q3.nw ljust;}
 </pre></div>
 </div>
 <figure class="align-default" id="id3">
-<a class="reference internal image-reference" href="_images/cm_202h.png"><img alt="_images/cm_202h.png" src="_images/cm_202h.png" style="width: 450px;" />
+<a class="reference internal image-reference" href="_images/cm_202u.png"><img alt="_images/cm_202u.png" src="_images/cm_202u.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 84 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e8cba3e56e4064bf1d3de3e294183e8c/cm_202h.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 84 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/315f2c19ebf0c292daa858e0eb4e67cb/cm_202u.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Niektorí výrobcovia mikrokontrolérov používajú pre zjednodušený popis funkcie častí logického obvodu kombinovanú značku FET tranzistora, ktorá namiesto jeho štruktúry zobrazuje jeho vzťah k ostatným častiam zapojenia. Tranzitor s vodivosťou typu P je zobrazený s krúžkom na hradle, čo znamená, že bude otvorený pri privedení signálu s úrovňou <strong>L</strong> na jeho hradlo.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/cm_202v.png"><img alt="_images/cm_202v.png" src="_images/cm_202v.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 85 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/57745c716813179605b4816e8fa4df81/cm_202v.ckt"><span class="xref download myst">Konfigurácie</span></a> koncového stupňa pinu portu mikrokontroléra.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
