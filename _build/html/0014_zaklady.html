@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -380,7 +380,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <code class="docutils literal notranslate"><span class="pre">PyCirkuit</span></code>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<strong>.PS</strong>, <strong>.PE</strong> …).</p>
+<p>Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu <code class="docutils literal notranslate"><span class="pre">PyCirkuit</span></code>, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov, <a class="reference internal" href="#pck01"><span class="std std-numref">Obr. 5</span></a>. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (<strong>.PS</strong>, <strong>.PE</strong> …).</p>
 <figure class="align-default" id="pck01">
 <a class="reference internal image-reference" href="_images/pck_01.png"><img alt="_images/pck_01.png" src="_images/pck_01.png" style="width: 500px;" />
 </a>
@@ -388,7 +388,7 @@ document.write(`
 <p><span class="caption-number">Obr. 5 </span><span class="caption-text">Editácia a preklad zapojenia v programe <em>PyCirkuit</em></span><a class="headerlink" href="#pck01" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo znakom ukončenia riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom <em>Export</em> vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.</p>
+<p>Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo znakom ukončenia riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom <em>Export</em> vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu, <a class="reference internal" href="#pck02"><span class="std std-numref">Obr. 6</span></a>.</p>
 <figure class="align-default" id="pck02">
 <a class="reference internal image-reference" href="_images/pck_02.png"><img alt="_images/pck_02.png" src="_images/pck_02.png" style="width: 600px;" />
 </a>
@@ -409,11 +409,11 @@ document.write(`
 <span class="n">diode</span><span class="p">;</span>
 </pre></div>
 </div>
-<figure class="align-default" id="cm-0014a">
+<figure class="align-default" id="cm0014a">
 <a class="reference internal image-reference" href="_images/cm_0014a.png"><img alt="_images/cm_0014a.png" src="_images/cm_0014a.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 7 </span><span class="caption-text">Ukladanie prvkov zapojenia na základe ich poradia v programe.</span><a class="headerlink" href="#cm-0014a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 7 </span><span class="caption-text">Ukladanie prvkov zapojenia na základe ich poradia v programe.</span><a class="headerlink" href="#cm0014a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Po vykreslení prvku zapojenia sa hodnota kurzora <code class="docutils literal notranslate"><span class="pre">Here</span></code> posúva v smere ukladania tak, aby prvky zapojenia na seba nadväzovali. Polohu kurzoru môžeme presunúť na novú pozíciu (x,y) pomocou príkazu</p>
@@ -441,7 +441,7 @@ r1: resistor;       # chyba
 .center   .c         - geometrický stred prvku
 </pre></div>
 </div>
-<p>Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia</p>
+<p>Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad, <a class="reference internal" href="#cm-0014b"><span class="std std-numref">Obr. 8</span></a>, zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">;</span>                 <span class="c1"># referencia, R1.start = (1,1)</span>
     <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -479,7 +479,7 @@ parametre:
     elabel       - označenie v bode konca prvku
 </pre></div>
 </div>
-<p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = <span class="math notranslate nohighlight">\(R_1\)</span> (vyžaduje inštaláciu LaTeX-u)</p>
+<p>Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad, <a class="reference internal" href="#cm-0014c"><span class="std std-numref">Obr. 9</span></a>, ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (<em>R2</em>). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = <span class="math notranslate nohighlight">\(R_1\)</span> (vyžaduje inštaláciu LaTeX-u)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">);</span>  
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">R_1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">10</span><span class="n">k</span><span class="p">,);</span>
 <span class="n">D1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
@@ -497,7 +497,7 @@ parametre:
 </section>
 <section id="kreslenie-diagramov">
 <h2><font color='teal'> Kreslenie diagramov </font><a class="headerlink" href="#kreslenie-diagramov" title="Link to this heading">#</a></h2>
-<p>V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> môžeme využívať  príkazy jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> pre kreslenie diagramov pomocou 2D objektov ako je <em>box</em>, <em>circle</em>, <em>ellippse</em>, <em>arc</em>, ako aj lineárnych objektov <em>line</em>, <em>arrow</em>, <em>spline</em> a príkaz pre presun kurzora <em>move</em>. Pre kreslenie komplikovanejších diagramov (signálové grafy, vývojové diagramy) sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> dostupné knižnice špecializovaných makier pre zvolený typ diagramu.</p>
+<p>V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> môžeme využívať  príkazy jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> pre kreslenie diagramov pomocou 2D objektov ako je <em>box</em>, <em>circle</em>, <em>ellippse</em>, <em>arc</em>, ako aj lineárnych objektov <em>line</em>, <em>arrow</em>, <em>spline</em> a príkaz pre presun kurzora <em>move</em>, <a class="reference internal" href="#cm-0014d"><span class="std std-numref">Obr. 10</span></a>. Pre kreslenie komplikovanejších diagramov (signálové grafy, vývojové diagramy) sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> dostupné knižnice špecializovaných makier pre zvolený typ diagramu.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>box wid 2 ht 1 &quot;Box&quot;;
 line -&gt; right_ 1;
 circle rad 0.5 &quot;r=0.5&quot;;

@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -411,7 +411,7 @@ from (1,1) to (2,2) - placement, umiestnenie objektu na ploche
 &quot;line L1&quot;           - text v geometrickom strede objektu
 </pre></div>
 </div>
-<p>Nasledujúce príklady ukazuje niekoľko možností použitia čiary.</p>
+<p>Nasledujúce príklady ukazuje niekoľko možností použitia čiary, <a class="reference internal" href="#cm-0110a"><span class="std std-numref">Obr. 41</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Origin: Here 
 line from (1,1) to (3,2); # A. absolutne polohy bodov, nastavuje 
                           #    poziciu Here na konc. bod 
@@ -461,7 +461,7 @@ linespec   -  from position | to position | direction [ expr ]
               | linespec then linespec
 </pre></div>
 </div>
-<p>Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek</p>
+<p>Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek je na obrázku <a class="reference internal" href="#cm-0110b"><span class="std std-numref">Obr. 42</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Grid(8.5,2.5);
 color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
 spline from (0,1.5) right_ 1 up_ 1 then right_ 0.5 down_ 1 then \
@@ -519,7 +519,7 @@ parameters - parametre zobrazenia (fill ...)
 string     - text v strede objektu
 </pre></div>
 </div>
-<p>Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami <em>dashed</em> a <em>dotted</em> a výplň parametrom <em>fill</em>. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou <em>boxrad</em>.</p>
+<p>Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami <em>dashed</em> a <em>dotted</em> a výplň parametrom <em>fill</em>. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou <em>boxrad</em>, <a class="reference internal" href="#cm-0110f"><span class="std std-numref">Obr. 43</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   color_red;      
 A: box wid 1 ht 1 at (1,0.5) &quot;A&quot;; line -&gt; right_ 1;
 
@@ -548,7 +548,7 @@ E: ellipse at Y wid 2 ht 1 &quot;E&quot;
 </figure>
 <section id="atributy-plosnych-prvkov">
 <h3><font color='brown'> Atribúty plošných prvkov  </font><a class="headerlink" href="#atributy-plosnych-prvkov" title="Link to this heading">#</a></h3>
-<p>Pri obryse plošných objektov sú atribúty definované podľa svetových strán.</p>
+<p>Pri obryse plošných objektov sú atribúty definované podľa svetových strán, <a class="reference internal" href="#cm-0110c"><span class="std std-numref">Obr. 44</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.ne       .se     .nw       .sw
 .t        .top              .north   .n
 .b        .bot    .bottom   .south   .s
@@ -579,7 +579,7 @@ position  - súradnice počiatočného a koncového bodu oblúka
 centre    - súradnice stredu kružnice oblúka
 </pre></div>
 </div>
-<p>Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.</p>
+<p>Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka, <a class="reference internal" href="#cm-0110d"><span class="std std-numref">Obr. 45</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1: (1, 1);
 P2: (4, 4);
 P3: (3.5, 1.5)
@@ -626,7 +626,7 @@ parameters - tvar a veľkosť šípky
              wid    - šírka šípky  (0.05)
 </pre></div>
 </div>
-<p>Príklady použitia</p>
+<p>Príklady použitia sú na obrázku <a class="reference internal" href="#cm-0110e"><span class="std std-numref">Obr. 46</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt);
 include(lib_base.ckt);
 

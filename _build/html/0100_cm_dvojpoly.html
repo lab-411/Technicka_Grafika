@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -374,7 +374,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dvojpoly">
 <h1><font color='navy'> Dvojpóly</font><a class="headerlink" href="#dvojpoly" title="Link to this heading">#</a></h1>
-<p>Základné elektronické komponenty (R,L,C, dióda, zdroje …) sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> reprezentované ako dvojpóly. Na ich pripojenie do elektrického obvodu sú použité dva uzly. Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar</p>
+<p>Základné elektronické komponenty (R,L,C, dióda, zdroje …) sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> reprezentované ako dvojpóly. Na ich pripojenie do elektrického obvodu sú použité dva uzly. Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami, <a class="reference internal" href="#cm-0100a"><span class="std std-numref">Obr. 11</span></a>. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] object([linespec], [parameters ...]);
 
 reference  - označenie objektu pre prístup k jeho parametrom
@@ -391,7 +391,7 @@ parameters - parametre určujúce tvar objektu
 <p><span class="caption-number">Obr. 11 </span><span class="caption-text">Príklady dvojpólov.</span><a class="headerlink" href="#cm-0100a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Základné rozmery a tvar dvojpólov v knižniciach <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú zobrazené na nasledujúcom obrázku. Rozmery objektu závisia od aktuálneho nastavenia parametrov prostredia, ktoré sú popísané v kapitole <strong>Prostredie</strong>.</p>
+<p>Základné rozmery a tvar dvojpólov v knižniciach <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú zobrazené na obrázku <a class="reference internal" href="#cm-0100j"><span class="std std-numref">Obr. 12</span></a>. Rozmery objektu závisia od aktuálneho nastavenia parametrov prostredia, ktoré sú popísané v kapitole <strong>Prostredie</strong>.</p>
 <figure class="align-default" id="cm-0100j">
 <a class="reference internal image-reference" href="_images/cm_0100j.png"><img alt="_images/cm_0100j.png" src="_images/cm_0100j.png" style="width: 450px;" />
 </a>
@@ -434,7 +434,7 @@ parametre:
     cwidth   - rozmer cyklov rezistora v anglos. zobrazení 
 </pre></div>
 </div>
-<p>Makro bez parametrov vykreslí rezistor s prednastavenými hodnotami ako značku rezistora v anglosaskej notácii.</p>
+<p>Makro bez parametrov vykreslí rezistor s prednastavenými hodnotami ako značku rezistora v anglosaskej notácii, <a class="reference internal" href="#cm-0100b"><span class="std std-numref">Obr. 13</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor;       R2: resistor(3,6,);   R3: resistor(,,Q);   R4: resistor(,,H);      
 R5: resistor(,,E);  R6: resistor(,,ES);   R7: resistor(,,V);   R8: resistor(3,,E,1.5);
 </pre></div>
@@ -485,7 +485,7 @@ parametre:
     wid     - defaults F: height*0.3, C,P: height*0.4, CP:height*0.8, E,K: height 
 </pre></div>
 </div>
-<p>Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi.</p>
+<p>Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi, <a class="reference internal" href="#cm-0100c"><span class="std std-numref">Obr. 14</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C1: capacitor;      C2: capacitor(,C,);  C3: capacitor(,E);    C4: capacitor(,K);     
 C5: capacitor(,M,,0.75, 0.25);  
                     C6: capacitor(,P);   C7: capacitor(, CP);  C8: capacitor(,+LC);
@@ -559,7 +559,7 @@ C5: capacitor(,M,,0.75, 0.25);
     Rev|E   -   Rev - reversed polarity, E - zobrazenie púzdra 
 </pre></div>
 </div>
-<p>Makro bez paramerov vykreslí diódu s prednastavenými rozmermi.</p>
+<p>Makro bez paramerov vykreslí diódu s prednastavenými rozmermi, <a class="reference internal" href="#cm-0100e"><span class="std std-numref">Obr. 16</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D1: diode;      D2: diode(,S,);    D3: diode(,V);   D4: diode(,v);    
 D5: diode(,U);  D6: diode(,ZK);    D7: diode(,T);   D8: diode(,,R);
 </pre></div>
@@ -616,12 +616,12 @@ parametre:
     names    - text v strede kružnice
 </pre></div>
 </div>
-<p>Najčastejšie používané značky zdrojov</p>
-<figure class="align-default" id="id1">
+<p>Najčastejšie používané značky zdrojov sú na obrázku <a class="reference internal" href="#cm-0100w"><span class="std std-numref">Obr. 17</span></a>.</p>
+<figure class="align-default" id="cm-0100w">
 <a class="reference internal image-reference" href="_images/cm_0100w.png"><img alt="_images/cm_0100w.png" src="_images/cm_0100w.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 17 </span><span class="caption-text">Značky zdrojov.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 17 </span><span class="caption-text">Značky zdrojov.</span><a class="headerlink" href="#cm-0100w" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a označenie doplníme pomocou makra <em>DCsymbol()</em>, podobnú funkciu má aj makro <em>ACsymbol()</em> pre označenie striedavých veličín. Pre jednosmerné zdroje môžeme použiť aj označenie pomocou makra <em>battery()</em></p>
@@ -645,7 +645,7 @@ battery(linespec,m,R)
     R        - otočenie polarity
 </pre></div>
 </div>
-<p>Použitie makier <em>ACsymbol()</em> a <em>DCsymbol()</em> nie je viazané len na ich použitie so zdrojmi, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou “tvrdej” medzery <code class="docutils literal notranslate"><span class="pre">\,</span></code> pretože obyčajná medzera je pri renderovaní textu ignorovaná.</p>
+<p>Použitie makier <em>ACsymbol()</em> a <em>DCsymbol()</em> nie je viazané len na ich použitie so zdrojmi, <a class="reference internal" href="#cm-0100z"><span class="std std-numref">Obr. 18</span></a>, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou “tvrdej” medzery <code class="docutils literal notranslate"><span class="pre">\,</span></code> pretože obyčajná medzera je pri renderovaní textu ignorovaná.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source; { ACsymbol(at last [],,,2:R) }
 source; { DCsymbol(at last [],,,R) }
 battery(,1,R);
@@ -655,11 +655,11 @@ battery(,3,);  rlabel(,,+)
 &quot;5V \,\,&quot; at (Orig+(6,1.25)) rjust;  DCsymbol(at last &quot;&quot; ,,,R)
 </pre></div>
 </div>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="cm-0100z">
 <a class="reference internal image-reference" href="_images/cm_0100z.png"><img alt="_images/cm_0100z.png" src="_images/cm_0100z.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Značky zdrojov s označením typu.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Značky zdrojov s označením typu.</span><a class="headerlink" href="#cm-0100z" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -685,7 +685,7 @@ L            - ljust, zarovnanie textu doľava
 R            - rjust, zarovnanie textu doprava
 </pre></div>
 </div>
-<p>Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. <em>rlabel()</em> ukladá text po pravej strane v smere ukladania. V prípade potreby môžeme modifikovať aj font a veľkosť textu</p>
+<p>Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. <em>rlabel()</em> ukladá text po pravej strane v smere ukladania, <a class="reference internal" href="#cm-0100f"><span class="std std-numref">Obr. 19</span></a>. V prípade potreby môžeme modifikovať aj font a veľkosť textu</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor(,,);   llabel(a,R_1,b); 
 C2: capacitor,,C);  llabel( ,C_2, );   rlabel(, 10 \mu F, ); 
 R3: resistor(,,E);  llabel( ,R_3, ); clabel(, $\scriptsize{123}$, ); 
@@ -741,7 +741,7 @@ D6: diode(2);       llabel( ,\sf D_6,); rlabel(,$\sf \footnotesize{ 1N4007 }$,);
 </div>
 </li>
 </ol>
-<p>Príklady použitia</p>
+<p>Príklady použitia sú na obrázku <a class="reference internal" href="#cm-0100k"><span class="std std-numref">Obr. 20</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">);</span> <span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>       <span class="c1"># (1)</span>
     <span class="n">resistor</span><span class="p">(</span><span class="n">at</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span>   <span class="c1"># (2)</span>
     <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">2</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>     <span class="c1"># (3)</span>
@@ -794,7 +794,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
     length      - dĺžka označenia 
 </pre></div>
 </div>
-<p>Makro môžeme použiť dvoma spôsobmi:</p>
+<p>Makro môžeme použiť dvoma spôsobmi, <a class="reference internal" href="#cm-0100g"><span class="std std-numref">Obr. 21</span></a>:</p>
 <ul>
 <li><p>s prvým argumentom, v ktorom zadáme makro s parametrami prvku, ktorý chceme označiť ako premenný,</p></li>
 <li><p>makro použijeme podobne ako makrá na popis prvkov <em>llabel ..</em>, v tomto prípade ponecháme prvý argument prázdny.</p>
@@ -819,15 +819,15 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <p><span class="caption-number">Obr. 21 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh.</p>
-<figure class="align-default" id="id3">
+<p>V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh, <a class="reference internal" href="#r-325"><span class="std std-numref">Obr. 22</span></a>.</p>
+<figure class="align-default" id="r-325">
 <a class="reference internal image-reference" href="_images/radio_325.jpg"><img alt="_images/radio_325.jpg" src="_images/radio_325.jpg" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 22 </span><span class="caption-text">Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 22 </span><span class="caption-text">Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.</span><a class="headerlink" href="#r-325" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user</span></a> definované makrá <em>vres_v()</em> a <em>vcap_v()</em></p>
+<p>Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user</span></a> definované makrá <em>vres_v()</em> a <em>vcap_v()</em>, <a class="reference internal" href="#cm-0100n"><span class="std std-numref">Obr. 23</span></a>.</p>
 <figure class="align-default" id="cm-0100n">
 <a class="reference internal image-reference" href="_images/cm_0100n.png"><img alt="_images/cm_0100n.png" src="_images/cm_0100n.png" style="width: 450px;" />
 </a>
@@ -835,7 +835,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <p><span class="caption-number">Obr. 23 </span><span class="caption-text">Zobrazenie upravených premenných prvkov z knižnice <em>lib_user</em>.</span><a class="headerlink" href="#cm-0100n" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>, bolo pre ich zobrazenie definované nové makro <em>res()</em></p>
+<p>Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku <a class="reference internal" href="#cm-0100n"><span class="std std-numref">Obr. 23</span></a>. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>, bolo pre ich zobrazenie definované nové makro <em>res()</em>, <a class="reference internal" href="#cm-0100m"><span class="std std-numref">Obr. 24</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`res&#39;, `ebox($1, 0.8);&#39;)
 </pre></div>
 </div>
@@ -868,7 +868,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
         frac  - posun šípky voči zadanej súradnici (Start | End)
 </pre></div>
 </div>
-<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro <em>l_current()</em>, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi</p>
+<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro <em>l_current()</em>, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi, <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l_current(label, above_|below_, frac);
 
     parametre:
@@ -928,7 +928,7 @@ rarrow(label, direction);
         direction - smer šipky zadaný ako &lt;- alebo -&gt;
 </pre></div>
 </div>
-<p>Použitie makier ukazuje nasledujúci príklad</p>
+<p>Použitie makier ukazuje nasledujúci príklad, <a class="reference internal" href="#cm-0100i"><span class="std std-numref">Obr. 26</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>S1: source(up_ 2.5, AC); larrow(V_{0}, &lt;-); b_current(i_0, ,Out, End, 0.45 );
 
 R1: resistor(right_ 2.5,, E); larrow(V_{1}, -&gt;); rlabel(,R_1,);

@@ -27,7 +27,7 @@ resistor;         # príkaz pre vykreslenie rezistoru
 .PE               # koniec postupnosti príkazov
 ```
 
-Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu `PyCirkuit`, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (**.PS**, **.PE** ...). 
+Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého programu `PyCirkuit`, ktorý obsahuje editor diagramov, prehliadač generovaných obrázkov a umožnuje ich export do rôznych formátov, {numref}`pck01`. V ďaľších príkladoch budeme uvádzať len príkazy na kreslenie zapojenia bez spoločných príkazov pre formátovanie a nastavenie generovania obrázkov (**.PS**, **.PE** ...). 
 
 ```{figure} ./img/pck_01.png
 :width: 500px
@@ -36,7 +36,7 @@ Najjednoduchším spôsobom kreslenia zapojení je použitie jednoduchého progr
 Editácia a preklad zapojenia v programe *PyCirkuit*
 ```
 
-Príkaz na riadku je ukončený bodkočiarkou `;` alebo znakom ukončenia riadku (neviditeľný znak `\n`). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom *Export* vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu.
+Príkaz na riadku je ukončený bodkočiarkou `;` alebo znakom ukončenia riadku (neviditeľný znak `\n`). Bodkočiarku využijeme aj vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. Po nakreslení zapojenia vygenerujeme obrázok tlačítkom *Export* vo vhodnom formáte, ktorý si zvolíme v konfigurácii programu, {numref}`pck02`.
 
 ```{figure} ./img/pck_02.png
 :width: 600px
@@ -47,7 +47,7 @@ Konfigurácia formátu exportovaných obrázkov v programe *PyCirkuit*
 
 ## <font color='teal'> Ukladanie prvkov </font> 
 
-Každý prvok diagramu alebo schémy je vykreslený v diagrame na 2D pozícii, ktorá je uchovávaná vo virtuálnom kurzore označenom ako `Here`. Prvky v zapojení (*resistor*, *capacitor*) ukladáme za sebou v zadaných smeroch príkazmi **up_**, **down_**, **right_** a **left_** . Pri zmene smeru sa automaticky mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro **dot**. 
+Každý prvok diagramu alebo schémy je vykreslený v diagrame na 2D pozícii, ktorá je uchovávaná vo virtuálnom kurzore označenom ako `Here`. Prvky v zapojení (*resistor*, *capacitor*) ukladáme za sebou v zadaných smeroch príkazmi **up_**, **down_**, **right_** a **left_** . Pri zmene smeru sa automaticky mení aj orientácia prvku. Pre zobrazenie bodu spojenia niekoľkých prvkov použijeme makro **dot**.
 
 ```{code-block}
 right_;
@@ -86,7 +86,7 @@ _ = cm_compile('cm_0014a', data, dpi=600)
 
 ```{figure} ./src/cm_0014a.png
 :width: 300px
-:name: cm_0014a
+:name: cm0014a
 
 Ukladanie prvkov zapojenia na základe ich poradia v programe.
 ```
@@ -116,7 +116,7 @@ K prvkom zapojenia a polohe ich častí môžeme pristupovať pomocou referencie
     .end      .e         - bod v ktorom skončilo kreslenie prvku
     .center   .c         - geometrický stred prvku
     
-Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia
+Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad, {numref}`cm_0014b`, zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia
 
 ```{code-block}
 :emphasize-lines: 5
@@ -177,7 +177,7 @@ Súčasťou zapojenia elektronického obvodu je textový popis prvkov, ktorý zv
         xlabel       - označenie v strede prvku
         elabel       - označenie v bode konca prvku
     
-Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (*R2*). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = $R_1$ (vyžaduje inštaláciu LaTeX-u)
+Použitie makier na označovanie prvkov garantuje presné a definované umiestnenie popisu voči prvku a rovnaké umiestnenie popisov pre všetky prvky v zapojení. Relatívna poloha popisu prvku sa nemení ani pri presunutí prvku do iného bodu zapojenia. Tieto vlastnosti značne uľahčujú kreslenie zapojení, pretože v zapojeniach elektronických obvodov je zvyčajne veľké množstvo textu a popisov prvkov. Nasledujúci príklad, {numref}`cm_0014c`, ukazuje zapojenie s označením prvkov a využitie referencie pre zadanie počiatočného bodu kreslenia prvku (*R2*). V označení prvkov zapojenia môžeme použiť syntax pre zápis matematických výrazov v LaTeX-e, napríklad R_1 = $R_1$ (vyžaduje inštaláciu LaTeX-u)
 
 ```{code-block}
     move to (0.5, 2.5);  
@@ -218,7 +218,7 @@ Označenie prvkov zapojenia.
 
 ## <font color='teal'> Kreslenie diagramov </font> 
 
-V `CircuitMacros` môžeme využívať  príkazy jazyka `dpic` pre kreslenie diagramov pomocou 2D objektov ako je *box*, *circle*, *ellippse*, *arc*, ako aj lineárnych objektov *line*, *arrow*, *spline* a príkaz pre presun kurzora *move*. Pre kreslenie komplikovanejších diagramov (signálové grafy, vývojové diagramy) sú v `CircuitMacros` dostupné knižnice špecializovaných makier pre zvolený typ diagramu.
+V `CircuitMacros` môžeme využívať  príkazy jazyka `dpic` pre kreslenie diagramov pomocou 2D objektov ako je *box*, *circle*, *ellippse*, *arc*, ako aj lineárnych objektov *line*, *arrow*, *spline* a príkaz pre presun kurzora *move*, {numref}`cm_0014d`. Pre kreslenie komplikovanejších diagramov (signálové grafy, vývojové diagramy) sú v `CircuitMacros` dostupné knižnice špecializovaných makier pre zvolený typ diagramu.
 
     box wid 2 ht 1 "Box";
     line -> right_ 1;

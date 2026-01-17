@@ -58,7 +58,7 @@ Príklad použitia
     "line L1"           - text v geometrickom strede objektu
                   
                   
-Nasledujúce príklady ukazuje niekoľko možností použitia čiary.
+Nasledujúce príklady ukazuje niekoľko možností použitia čiary, {numref}`cm_0110a`.
 
     Origin: Here 
     line from (1,1) to (3,2); # A. absolutne polohy bodov, nastavuje 
@@ -137,7 +137,7 @@ Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline m
                   | linespec then linespec
                   
     
-Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek
+Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek je na obrázku {numref}`cm_0110b`.
 
     Grid(8.5,2.5);
     color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
@@ -225,7 +225,7 @@ Definícia plošných objektov, obdĺžnik, kružnica a elipsa, má v `dpic` tva
     parameters - parametre zobrazenia (fill ...)
     string     - text v strede objektu
     
-Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami *dashed* a *dotted* a výplň parametrom *fill*. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou *boxrad*. 
+Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami *dashed* a *dotted* a výplň parametrom *fill*. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou *boxrad*, {numref}`cm_0110f`. 
 
        color_red;      
     A: box wid 1 ht 1 at (1,0.5) "A"; line -> right_ 1;
@@ -279,7 +279,7 @@ Plošné objekty.
        
 ### <font color='brown'> Atribúty plošných prvkov  </font>    
 
-Pri obryse plošných objektov sú atribúty definované podľa svetových strán.
+Pri obryse plošných objektov sú atribúty definované podľa svetových strán, {numref}`cm_0110c`.
 
     .ne       .se     .nw       .sw
     .t        .top              .north   .n
@@ -336,7 +336,7 @@ Kruhový oblúk je objekt, ktorý zdiela atribútu lineárnych ako aj plošných
     position  - súradnice počiatočného a koncového bodu oblúka
     centre    - súradnice stredu kružnice oblúka
     
-Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka.
+Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka, {numref}`cm_0110d`.
 
 
     P1: (1, 1);
@@ -420,7 +420,7 @@ Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípa
                  ht     - výška šípky  (0.1)
                  wid    - šírka šípky  (0.05)
  
-Príklady použitia 
+Príklady použitia sú na obrázku {numref}`cm_0110e`.
 
     include(lib_color.ckt);
     include(lib_base.ckt);

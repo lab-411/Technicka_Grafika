@@ -20,7 +20,7 @@ Súčasťou `CircuitMacros` sú makrá a premenné, pomocou ktorých môžeme up
 
 ## <font color='teal'> Farba  </font>
 
-Pre zmenu farby kreslenie je definované makro *setrgb(r, g, b)*, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby *color_<meno farby>* zo súboru [lib_color.ckt](./src/lib_color.ckt). Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra *color_reset*.  
+Pre zmenu farby kreslenie je definované makro *setrgb(r, g, b)*, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby *color_<meno farby>* zo súboru [lib_color.ckt](./src/lib_color.ckt). Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra *color_reset*, {numref}`cm_0104a`.  
 
     include(lib_color.ckt)
 
@@ -72,7 +72,7 @@ Použitie pomenovaných farieb
 
 ## <font color='teal'> Zvýraznenie </font>
 
-Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  *linethick_(n)*, volanie makra bez argumentu nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov.
+Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  *linethick_(n)*, volanie makra bez argumentu nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, {numref}`cm_0104b`.
 
        right_; 
        resistor(2,,E); llabel(,R_1,); 
@@ -113,7 +113,7 @@ Zvýraznenie komponentu zmenou hrúbky čiary.
 
 ## <font color='teal'> Zmena veľkosti  </font>
 
-Veľkosť prvkov zapojenia je úmerná hodnote premennej *linewid*, ktorá je definovaná v nastavení parametrov prostredia a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu.
+Veľkosť prvkov zapojenia je úmerná hodnote premennej *linewid*, ktorá je definovaná v nastavení parametrov prostredia a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu, {numref}`cm_0104c`.
 
        right_; 
        resistor(2,,E); llabel(,R_1,);    # štandardná veľkosť
@@ -153,7 +153,7 @@ Zmena veľkosti komponentov pomocou premennej *linewid*.
 
 ## <font color='teal'> Tienenie </font>
 
-Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej *elen_*, ktorá definuje veľkosť prvku.
+Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej *elen_*, ktorá definuje veľkosť prvku, {numref}`cm_0104d`.
 
     right_; 
     resistor(2,,E); llabel(,R_1,); 
@@ -204,7 +204,7 @@ Tienenie prvku zapojenia.
 
 ## <font color='teal'> Pozadie </font>
 
-Ak potrebujeme zvýrazniť plochu na ktorej je nakreslená časť zariadenia (napríklad na vizuálne oddelnie samostatných funkčných celkov ako je predzosilovač, filter, ochranné obvody a pod.), musíme podklad nakresliť vopred. V prípade jedného prvku odvodíme rozmery plochy priamo z predefinovaných parametrov prostredia.
+Ak potrebujeme zvýrazniť plochu na ktorej je nakreslená časť zariadenia (napríklad na vizuálne oddelenie samostatných funkčných celkov ako je predzosilovač, filter, ochranné obvody a pod.), musíme podklad nakresliť vopred. V prípade jedného prvku odvodíme rozmery plochy priamo z predefinovaných parametrov prostredia, {numref}`cm_0104e`.
 
     include(lib_color.ckt);
     right_; 
@@ -254,7 +254,7 @@ Zvýraznenie pozadia jedného prvku zapojenia.
 ```
 
 
-V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy a na jej obvode si zadefinovať body pripojenia. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.
+V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy a na jej obvode si zadefinovať body pripojenia, {numref}`cm_0104f`. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.
  
     d  = elen_*5/6;    # veľkosť prvkov
     dx = 2*d;          # šírka plochu

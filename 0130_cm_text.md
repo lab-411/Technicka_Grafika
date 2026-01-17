@@ -40,7 +40,7 @@ Textový reťazec ohraničený obyčajnými uvodzovkami je pri spracovaní odosl
 * odkazom na posledný použitý text (**last ""**) 
 * odkazom posledný použitý kompozitný objekt (alebo makro) (**last [ ]**). 
 
-Vlastná veľkosť textu (ohraničenia) **nie je** známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra *position*, jeho použitie ukazuje nasledujúci obrázok
+Vlastná veľkosť textu (ohraničenia) **nie je** známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra *position*, jeho použitie ukazuje obrázok {numref}`cm_0130a`.
 
     BX: box wid 4.5 ht 1.5 at (0,0);
     LL: line from (-1,0) to (1,0);
@@ -110,7 +110,7 @@ Pre nastavenie farby je možné použiť
 
         "\color{red} červený text" at (1, 1); 
         
-Vyššiu prioritu má nastavenie lokálnej farbu textu.
+Vyššiu prioritu má nastavenie lokálnej farbu textu, {numref}`cm_0130b`.
         
         BOX: box wid 3 ht 2 at (5,4);
             "stred boxu" at BOX.c;                     dot;
@@ -162,7 +162,7 @@ _ = cm_compile('cm_0130b', data, dpi=600 )
 
 ## <font color='teal'>  Matematické výrazy  </font>
 
-Pre zobrazenie matematických výrazov sa používa štandardné formátovanie LaTeX-u. Matematický vzťah alebo matematický text sa korektne zobrazí len pri renderovaní pomocou nainštalovaného LaTeX-u.
+Pre zobrazenie matematických výrazov sa používa štandardné formátovanie LaTeX-u. Matematický vzťah alebo matematický text sa korektne zobrazí len pri renderovaní pomocou nainštalovaného LaTeX-u, {numref}`cm_0130c`.
 
 Funkcia `sprintf` pre konverziu čísla na formátovaný reťazec akceptuje formatovacie znaky *%e, %f, %g*.
 
@@ -210,7 +210,7 @@ _ = cm_compile('cm_0130c', data, dpi=600)
 
 ## <font color='teal'>  Formátovanie textu pomocou LaTeX-u  </font>
 
-Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho [dokumentácii](https://www.latex-project.org/help/documentation/fntguide.pdf).
+Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, {numref}`cm_0130d`, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho [dokumentácii](https://www.latex-project.org/help/documentation/fntguide.pdf).
 
 ### <font color='brown'>  Fonty </font>
 
@@ -293,7 +293,7 @@ Formátovanie textu pomocou príkazov LaTeX-u
 
 ### <font color='brown'> Text v rámiku </font>
 
-Pre umiestnenenie textu do rámiku môžeme použiť príkaz *box*, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz [*fbox*](https://texdoc.org/serve/fbox/0) LaTeX-u, takto vytvorený text ale nie je objektom v *dpic*, t.j. nemôžeme sa odkazovať na jeho atribúty *.s, .n ...*. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, poloha textu je jeho geometrický stred.
+Pre umiestnenenie textu do rámiku môžeme použiť príkaz *box*, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz [*fbox*](https://texdoc.org/serve/fbox/0) LaTeX-u,takto vytvorený text ale nie je objektom v *dpic*, t.j. nemôžeme sa odkazovať na jeho atribúty *.s, .n ...*. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, {numref}`cm_0130g`, poloha textu je jeho geometrický stred.
 
     include(lib_color.ckt)
     "\fbox{\color{red} Text v rámiku}" at (0,0);
@@ -327,7 +327,7 @@ _ = cm_compile('cm_0130g', data, dpi=600)
 :width: 400px
 :name: cm_0130g
 
-Text v rámiku.
+Text v rámiku vytvorený príkazmi LaTeX-u.
 ```
 
 

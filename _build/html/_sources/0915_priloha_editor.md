@@ -15,11 +15,11 @@ kernelspec:
 
 # <font color='navy'> Externý editor </font>
 
-Jednoduché integrované jednoduché prostredie `PyCirkuit` vyhovuje pri tvorbe a editácii menších obrázkov. Ak potrebujeme súčasne pracovať s niekoľkými zdrojovými súbormi a vytvárať rozsiahlejšie zaojenia, je vhodné použiť editor s bohatšími možnosťami pre editovanie textov a previazať ho s vhodným prehliadačom obrázkov. Vhodným editorom je [Geany](https://www.geany.org/), ktorý je možné rozšíriť o farebné zvýrazňovanie syntaxe. Pre prehliadanie obrázkov existuje množstvo programov, na platforme Linuxu je možné použiť jednoduchý prehliadač [sxiv](https://grfreire.github.io/sxiv/sxiv.1.html). 
+Jednoduché integrované jednoduché prostredie `PyCirkuit` vyhovuje pri tvorbe a editácii menších obrázkov. Ak potrebujeme súčasne pracovať s niekoľkými zdrojovými súbormi a vytvárať rozsiahlejšie zaojenia, je vhodné použiť editor s bohatšími možnosťami pre editovanie textov a previazať ho s vhodným prehliadačom obrázkov. Vhodným editorom je [Geany](https://www.geany.org/), ktorý je možné rozšíriť o farebné zvýrazňovanie syntaxe. Pre prehliadanie obrázkov existuje množstvo programov, na platforme Linuxu je možné použiť jednoduchý prehliadač obrázkov [sxiv](https://grfreire.github.io/sxiv/sxiv.1.html), ktorý automaticky obnovuje zobrazenie obrázku po každej jeho zmene,  {numref}`cm0915a`. 
 
 ```{figure} ./img/geany.png
 :width: 800px
-:name: cm_0915a
+:name: cm0915a
 
 Editor *Geany* a prehliadač obrázkov *sxiv*.
 ```
@@ -39,11 +39,11 @@ Editor rozšírime o zvýrazňovanie syntaxe pomocou konfiguračných súborov o
 * [filetypes.CircuitMacros.conf](./data/filetypes.CircuitMacros.conf) - nahráme do adresára *HOME/.config/geany/filedefs/*
 * [main.ckt](./data/main.ckt) - nahráme do adresára *HOME/.config/geany/templates/files/* 
 
-Po spustení editora bude farebne zvýrazňovať syntax jazyka `dpic` a názvy makier z `CircuitMacros`. Pretože rozšírenie pre analýzu zdrojového kodu je založené na analyzátore určenom pre jazyk `C`, nemusia sa správne rozpoznať niektoré jazykové konštrukcie špecifické pre jazyk `dpic` a makroprocesor `m4`. 
+Po spustení editor bude farebne zvýrazňovať syntax jazyka *dpic* a názvy makier z *CircuitMacros*. Pretože rozšírenie pre analýzu zdrojového kodu je založené na analyzátore určenom pre jazyk **C**, nemusia sa správne rozpoznať niektoré jazykové konštrukcie špecifické pre jazyk *dpic* a makroprocesor *m4*. 
 
 ### <font color='brown'> Pracovný adresár </font>
 
-Po inštalácii programov je vhodné usporiadať pracovný adresár v konfigurácii podľa nasledujúceho obrázku. Do adresára uložíme shell skript [cmc.sh](./src/cmr.sh) a [cmc.sh](./src/cmr.sh), ktoré sú popísané v kapitole [Export obrázkov](./0900_priloha_cli.md), uživateľské knižnice a knižnice z inštalácie `CircuitMacros` alebo v shell skriptoch upravíme cestu k nim. 
+Po inštalácii programov je vhodné usporiadať pracovný adresár v konfigurácii podľa obrázku {numref}`cm0915b`. Do adresára uložíme shell skripty [cmc.sh](./src/cmr.sh) a [cmc.sh](./src/cmr.sh), ktoré sú popísané v kapitole [Export obrázkov](./0900_priloha_cli.md), uživateľské knižnice a knižnice z inštalácie *CircuitMacros* alebo v shell skriptoch upravíme cestu k nim.
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -77,8 +77,8 @@ _ = cm_compile('cm_0915b', data,  dpi=600)
 ```
 
 ```{figure} ./src/cm_0915b.png
+:name: cm0915b
 :width: 350px
-:name: cm_0915b
 
 Konfigurácia pracovného adresáru.
 ```

@@ -14,7 +14,7 @@ kernelspec:
 
 # <span style="color:navy"> Multipóly </span>
 
-Zložitejšie elektronické prvky majú zvyčajne viacej ako dva uzly, takýmto  prvkom v teórii systémov je štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov. 
+Zložitejšie elektronické prvky, {numref}`cm_0102a`, majú zvyčajne viacej ako pripojovovacie dva uzly. V teórii systémov je často používaný štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov. 
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -88,7 +88,7 @@ Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar
  
 ## <font color='teal'> Umiestňovanie multipólov </font>
 
-Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi
+Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi, {numref}`cm_0102c`.
 
 1. Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e
 
@@ -163,7 +163,7 @@ Príklady umiestňovania multipólov.
     
 ## <font color='teal'> Použitie </font> 
 
-Použitie atribútov mnohopólu demonštruje nasledujúci príklad. Transformátor je centrálnym elementom a všetky prvky zapojenia sú umiestňované relatívne voči jeho terminálom.
+Použitie atribútov mnohopólu demonštruje nasledujúci príklad, {numref}`cm_0102b`. Transformátor je centrálnym elementom a všetky prvky zapojenia sú umiestňované relatívne voči jeho terminálom.
 
     TR:  transformer(down_ 2,L,7,W,4);
          "1" at TR.P1 rjust below;     # popis transformatora 

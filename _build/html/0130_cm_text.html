@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -393,7 +393,7 @@ document.write(`
 <li><p>odkazom na posledný použitý text (<strong>last “”</strong>)</p></li>
 <li><p>odkazom posledný použitý kompozitný objekt (alebo makro) (<strong>last [ ]</strong>).</p></li>
 </ul>
-<p>Vlastná veľkosť textu (ohraničenia) <strong>nie je</strong> známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra <em>position</em>, jeho použitie ukazuje nasledujúci obrázok</p>
+<p>Vlastná veľkosť textu (ohraničenia) <strong>nie je</strong> známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči tejto polohe je možné upraviť pomocou parametra <em>position</em>, jeho použitie ukazuje obrázok <a class="reference internal" href="#cm-0130a"><span class="std std-numref">Obr. 47</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BX: box wid 4.5 ht 1.5 at (0,0);
 LL: line from (-1,0) to (1,0);
     &quot;rjust&quot; at LL.start  rjust;
@@ -439,7 +439,7 @@ LL: line from (-1,0) to (1,0);
 </div>
 </li>
 </ul>
-<p>Vyššiu prioritu má nastavenie lokálnej farbu textu.</p>
+<p>Vyššiu prioritu má nastavenie lokálnej farbu textu, <a class="reference internal" href="#cm-0130b"><span class="std std-numref">Obr. 48</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    BOX: box wid 3 ht 2 at (5,4);
         &quot;stred boxu&quot; at BOX.c;                     dot;
         &quot;\color{red} červený text&quot; at BOX.n above; dot;
@@ -463,7 +463,7 @@ LL: line from (-1,0) to (1,0);
 </section>
 <section id="matematicke-vyrazy">
 <h2><font color='teal'>  Matematické výrazy  </font><a class="headerlink" href="#matematicke-vyrazy" title="Link to this heading">#</a></h2>
-<p>Pre zobrazenie matematických výrazov sa používa štandardné formátovanie LaTeX-u. Matematický vzťah alebo matematický text sa korektne zobrazí len pri renderovaní pomocou nainštalovaného LaTeX-u.</p>
+<p>Pre zobrazenie matematických výrazov sa používa štandardné formátovanie LaTeX-u. Matematický vzťah alebo matematický text sa korektne zobrazí len pri renderovaní pomocou nainštalovaného LaTeX-u, <a class="reference internal" href="#cm-0130c"><span class="std std-numref">Obr. 49</span></a>.</p>
 <p>Funkcia <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> pre konverziu čísla na formátovaný reťazec akceptuje formatovacie znaky <em>%e, %f, %g</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>T: &quot;$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$&quot; at (5, 0.5);    
 
@@ -485,7 +485,7 @@ LL: line from (-1,0) to (1,0);
 </section>
 <section id="formatovanie-textu-pomocou-latex-u">
 <h2><font color='teal'>  Formátovanie textu pomocou LaTeX-u  </font><a class="headerlink" href="#formatovanie-textu-pomocou-latex-u" title="Link to this heading">#</a></h2>
-<p>Jaxyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho <a class="reference external" href="https://www.latex-project.org/help/documentation/fntguide.pdf">dokumentácii</a>.</p>
+<p>Jaxyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý LaTeX, <a class="reference internal" href="#cm-0130d"><span class="std std-numref">Obr. 50</span></a>, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú v LaTeXe rozsiahle, podrobnosti sú popísané v jeho <a class="reference external" href="https://www.latex-project.org/help/documentation/fntguide.pdf">dokumentácii</a>.</p>
 <section id="fonty">
 <h3><font color='brown'>  Fonty </font><a class="headerlink" href="#fonty" title="Link to this heading">#</a></h3>
 <p>Pre prepínanie typu fontu sú v LaTeX-e definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách <code class="docutils literal notranslate"><span class="pre">{...}</span></code> alebo na na celý text. Výber z LaTeX príkazov pre formátovanie textu</p>
@@ -530,7 +530,7 @@ malé písmená     \scshape    \sc   \textsc{...}
 </section>
 <section id="text-v-ramiku">
 <h3><font color='brown'> Text v rámiku </font><a class="headerlink" href="#text-v-ramiku" title="Link to this heading">#</a></h3>
-<p>Pre umiestnenenie textu do rámiku môžeme použiť príkaz <em>box</em>, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz <a class="reference external" href="https://texdoc.org/serve/fbox/0"><em>fbox</em></a> LaTeX-u, takto vytvorený text ale nie je objektom v <em>dpic</em>, t.j. nemôžeme sa odkazovať na jeho atribúty <em>.s, .n …</em>. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, poloha textu je jeho geometrický stred.</p>
+<p>Pre umiestnenenie textu do rámiku môžeme použiť príkaz <em>box</em>, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz <a class="reference external" href="https://texdoc.org/serve/fbox/0"><em>fbox</em></a> LaTeX-u,takto vytvorený text ale nie je objektom v <em>dpic</em>, t.j. nemôžeme sa odkazovať na jeho atribúty <em>.s, .n …</em>. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, <a class="reference internal" href="#cm-0130g"><span class="std std-numref">Obr. 51</span></a>, poloha textu je jeho geometrický stred.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt)
 &quot;\fbox{\color{red} Text v rámiku}&quot; at (0,0);
 color_blue; &quot;\fbox{\large Text large v rámiku}&quot; at (0,1);
@@ -541,7 +541,7 @@ color_reset; &quot;\sf \fbox{\Large Text {\color{red} Large} v rámiku}&quot; at
 <a class="reference internal image-reference" href="_images/cm_0130g.png"><img alt="_images/cm_0130g.png" src="_images/cm_0130g.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Text v rámiku.</span><a class="headerlink" href="#cm-0130g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Text v rámiku vytvorený príkazmi LaTeX-u.</span><a class="headerlink" href="#cm-0130g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

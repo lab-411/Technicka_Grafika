@@ -14,7 +14,7 @@ kernelspec:
 
 # <font color='navy'> Dvojpóly</font>
 
-Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú v `CircuitMacros` reprezentované ako dvojpóly. Na ich pripojenie do elektrického obvodu sú použité dva uzly. Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar
+Základné elektronické komponenty (R,L,C, dióda, zdroje ...) sú v `CircuitMacros` reprezentované ako dvojpóly. Na ich pripojenie do elektrického obvodu sú použité dva uzly. Typ dvojpólu je určený menom a jeho vzhľad je možno meniť parametrami, {numref}`cm_0100a`. Pre každý dvojpól je možné v zapojení zadať jeho meno, hodnotu alebo typ a v prípade potreby aj označenie vývodov. Všeobecný formát makra pre zobrazenie dvojpólov má tvar
 
     [reference:] object([linespec], [parameters ...]);
     
@@ -56,7 +56,7 @@ _ = cm_compile('cm_0100a', data,  dpi=600)
 Príklady dvojpólov. 
 ```
 
-Základné rozmery a tvar dvojpólov v knižniciach `CircuitMacros` sú zobrazené na nasledujúcom obrázku. Rozmery objektu závisia od aktuálneho nastavenia parametrov prostredia, ktoré sú popísané v kapitole **Prostredie**.
+Základné rozmery a tvar dvojpólov v knižniciach `CircuitMacros` sú zobrazené na obrázku {numref}`cm_0100j`. Rozmery objektu závisia od aktuálneho nastavenia parametrov prostredia, ktoré sú popísané v kapitole **Prostredie**.
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -141,7 +141,7 @@ Makro pre zobrazenie rezistora v `CircuitMacros` je možné parametrami upraviť
         cwidth   - rozmer cyklov rezistora v anglos. zobrazení 
         
 
-Makro bez parametrov vykreslí rezistor s prednastavenými hodnotami ako značku rezistora v anglosaskej notácii.
+Makro bez parametrov vykreslí rezistor s prednastavenými hodnotami ako značku rezistora v anglosaskej notácii, {numref}`cm_0100b`.
 
     R1: resistor;       R2: resistor(3,6,);   R3: resistor(,,Q);   R4: resistor(,,H);      
     R5: resistor(,,E);  R6: resistor(,,ES);   R7: resistor(,,V);   R8: resistor(3,,E,1.5);    
@@ -220,7 +220,7 @@ Kondenzátor je orientovaný dvojpól, preto okrem jeho typu môžeme parametrom
         
         wid     - defaults F: height*0.3, C,P: height*0.4, CP:height*0.8, E,K: height 
 
-Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi.
+Makro bez paramerov vykreslí kondenzátor s prednastavenými rozmermi, {numref}`cm_0100c`.
 
     C1: capacitor;      C2: capacitor(,C,);  C3: capacitor(,E);    C4: capacitor(,K);     
     C5: capacitor(,M,,0.75, 0.25);  
@@ -340,7 +340,7 @@ Dióda je orientovaný dvojpól. Parametrom **Rev** môžeme otočiť smer diód
                     
         Rev|E   -   Rev - reversed polarity, E - zobrazenie púzdra 
 
-Makro bez paramerov vykreslí diódu s prednastavenými rozmermi.
+Makro bez paramerov vykreslí diódu s prednastavenými rozmermi, {numref}`cm_0100e`.
 
     D1: diode;      D2: diode(,S,);    D3: diode(,V);   D4: diode(,v);    
     D5: diode(,U);  D6: diode(,ZK);    D7: diode(,T);   D8: diode(,,R);  
@@ -423,7 +423,7 @@ Typy diód.
     
         names    - text v strede kružnice
     
-Najčastejšie používané značky zdrojov
+Najčastejšie používané značky zdrojov sú na obrázku {numref}`cm_0100w`.
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -450,6 +450,7 @@ _ = cm_compile('cm_0100w', data, dpi=600)
 
 ```{figure} ./src/cm_0100w.png
 :width: 500px
+:name: cm_0100w
 
 Značky zdrojov.
 ```
@@ -475,7 +476,7 @@ Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a ozn
         m        - počet článkov batérie
         R        - otočenie polarity
 
-Použitie makier *ACsymbol()* a *DCsymbol()* nie je viazané len na ich použitie so zdrojmi, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou "tvrdej" medzery `\,` pretože obyčajná medzera je pri renderovaní textu ignorovaná. 
+Použitie makier *ACsymbol()* a *DCsymbol()* nie je viazané len na ich použitie so zdrojmi, {numref}`cm_0100z`, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou "tvrdej" medzery `\,` pretože obyčajná medzera je pri renderovaní textu ignorovaná. 
 
     source; { ACsymbol(at last [],,,2:R) }
     source; { DCsymbol(at last [],,,R) }
@@ -508,6 +509,7 @@ _ = cm_compile('cm_0100z', data, dpi=600)
 
 ```{figure} ./src/cm_0100z.png
 :width: 400px
+:name: cm_0100z
 
 Značky zdrojov s označením typu.
 ```
@@ -535,7 +537,7 @@ Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *r
     L            - ljust, zarovnanie textu doľava
     R            - rjust, zarovnanie textu doprava
     
-Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. *rlabel()* ukladá text po pravej strane v smere ukladania. V prípade potreby môžeme modifikovať aj font a veľkosť textu
+Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. *rlabel()* ukladá text po pravej strane v smere ukladania, {numref}`cm_0100f`. V prípade potreby môžeme modifikovať aj font a veľkosť textu
 
     R1: resistor(,,);   llabel(a,R_1,b); 
     C2: capacitor,,C);  llabel( ,C_2, );   rlabel(, 10 \mu F, ); 
@@ -606,7 +608,7 @@ Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi:
         point_(radians); object;
         rpoint_(rel linespec); object
 
-Príklady použitia
+Príklady použitia sú na obrázku {numref}`cm_0100k`.
         
 ```{code-block}
     move to (1,2.5); resistor(2);       # (1)
@@ -714,7 +716,7 @@ Pre zobrazenie premenných prvkov môžeme využiť makro *variable()*
         
         length      - dĺžka označenia 
 
-Makro môžeme použiť dvoma spôsobmi:
+Makro môžeme použiť dvoma spôsobmi, {numref}`cm_0100g`:
 
 * s prvým argumentom, v ktorom zadáme makro s parametrami prvku, ktorý chceme označiť ako premenný, 
 * makro použijeme podobne ako makrá na popis prvkov *llabel ..*, v tomto prípade ponecháme prvý argument prázdny.
@@ -762,15 +764,16 @@ _ = cm_compile('cm_0100g', data, dpi=600)
 
 [Zobrazenie](./src/cm_0100g.ckt) premenných prvkov.
 ```
-V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh.
+V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh, {numref}`r_325`.
     
 ```{figure} ./img/radio_325.jpg
 :width: 600px
+:name: r_325
 
 Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.
 ```
 
-Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici [lib_user](./src/lib_user.ckt) definované makrá *vres_v()* a *vcap_v()* 
+Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici [lib_user](./src/lib_user.ckt) definované makrá *vres_v()* a *vcap_v()*, {numref}`cm_0100n`. 
 
 
 ```{code-cell} ipython3 
@@ -817,7 +820,7 @@ _ = cm_compile('cm_0100n', data, dpi=600)
 Zobrazenie upravených premenných prvkov z knižnice *lib_user*.
 ```
 
-Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v `CircuitMacros`, bolo pre ich zobrazenie definované nové makro *res()*
+Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku {numref}`cm_0100n`. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v `CircuitMacros`, bolo pre ich zobrazenie definované nové makro *res()*, {numref}`cm_0100m`.
 
     define(`res', `ebox($1, 0.8);')
 
@@ -899,7 +902,7 @@ Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použ
             
             frac  - posun šípky voči zadanej súradnici (Start | End)
             
-Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro *l_current()*, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi
+Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro *l_current()*, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi, {numref}`cm_0100h`.
 
     l_current(label, above_|below_, frac);
     
@@ -990,7 +993,7 @@ _ = cm_compile('cm_0100h', data, dpi=600)
             
             direction - smer šipky zadaný ako <- alebo ->
             
-Použitie makier ukazuje nasledujúci príklad
+Použitie makier ukazuje nasledujúci príklad, {numref}`cm_0100i`.
 
     S1: source(up_ 2.5, AC); larrow(V_{0}, <-); b_current(i_0, ,Out, End, 0.45 );
     
