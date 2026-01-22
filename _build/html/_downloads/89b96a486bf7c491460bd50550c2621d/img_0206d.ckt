@@ -1,0 +1,40 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+cct_init                # inicializacia lokalnych premennych
+log_init
+
+include(lib_bus.ckt)
+include(lib_spi.ckt)
+
+command"\sf"
+
+M: SPI_Master(0); "SPI" at M.c +(-0.3,0) above; "Master" at M.c +(-0.3,0) below;
+B1: bus_dr(6) with .REF at M.Pin1
+
+B2: bus_ul(4) with .END at B1.END
+S1: SPI_Slave(0) with .Pin4 at bus_ref(B2,1); "SPI" at S1.c +(0.3,0) above; "Slave" at S1.c +(0.3,0) below;
+    bus_txl(B2,lg_bartxt(CS1),1)
+
+B3: bus_ul(4) with .END at B2.END+(0,-2.25)
+S2: SPI_Slave(0) with .Pin4 at bus_ref(B3,1); "SPI" at S2.c +(0.3,0) above; "Slave" at S2.c +(0.3,0) below;
+    bus_txl(B3,lg_bartxt(CS2),1)
+
+B4: bus_ul(4) with .END at B3.END+(0,-2.25)
+S3: SPI_Slave(0) with .Pin4 at bus_ref(B4,1); "SPI" at S3.c +(0.3,0) above; "Slave" at S3.c +(0.3,0) below;
+    bus_txl(B4,lg_bartxt(CS3),1)
+
+bus_conn(B2,B3)
+bus_conn(B3,B4)
+
+.PE

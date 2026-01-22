@@ -53,14 +53,14 @@ S1: SPI_Slave() with .Pin1 at last line .end;
 S2: SPI_Slave() with .Pin1 at last line .end
     "SPI" at S2.c +(0.3,0) above; "Slave" at S2.c +(0.3,0) below;
     line from DT2 to (DT2, S2.Pin2); DT6: dot;line -> to S2.Pin2
-    line from DT3 to (DT3, S2.Pin3); DT7: dot;line -> to S2.Pin3
+    line from DT3 to (DT3, S2.Pin3); DT7: dot;line  to S2.Pin3
 
     line from DT5 down_ 2.5; ;line -> to (S1.Pin1, Here)
     right_
 S3: SPI_Slave() with .Pin1 at last line .end
     "SPI" at S3.c +(0.3,0) above; "Slave" at S3.c +(0.3,0) below;
     line from DT6 to (DT6, S3.Pin2); line -> to S3.Pin2
-    line from DT7 to (DT7, S3.Pin3); line -> to S3.Pin3
+    line from DT7 to (DT7, S3.Pin3); line  to S3.Pin3
 
 X:  0.3 between M.Pin4 and S2.Pin4;
     line -> from M.Pin4 to (X, M.Pin4) then to (X, S2.Pin4) then to S2.Pin4

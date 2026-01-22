@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,8 +49,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '0206_ex_logicke_obvody';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Integrované obvody" href="0207_ex_integrovane_obvody.html" />
-    <link rel="prev" title="Operačné zosilovače" href="0204_ex_opamp.html" />
+    <link rel="next" title="Blokové diagramy" href="0208_ex_vyvojove_diagramy.html" />
+    <link rel="prev" title="Integrované obvody" href="0207_ex_integrovane_obvody.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,8 +189,8 @@
 <li class="toctree-l1"><a class="reference internal" href="0200_ex_jednoduche.html"><font color="navy"> RLC obvody  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0202_ex_tranzistor.html"><font color="navy"> Tranzistory </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Logické obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0208_ex_vyvojove_diagramy.html"><font color="navy"> Blokové diagramy</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_katalog.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
@@ -366,7 +366,7 @@ document.write(`
 <h1><font color='navy'> Logické obvody </font><a class="headerlink" href="#logicke-obvody" title="Link to this heading">#</a></h1>
 <section id="kombinacne-obvody">
 <h2><font color='teal'> Kombinačné obvody </font><a class="headerlink" href="#kombinacne-obvody" title="Link to this heading">#</a></h2>
-<p>Pred kreslením logických obvodov musíme inicializovať knižnicu makier <em>log_init</em>. Pretože hradlá kombinačných logických obvodov môžu mať niekoľko vstupov, makrá obsahujú parameter <em>n</em>, ktorým definujeme počet ich vstupov.</p>
+<p>Pred kreslením logických obvodov musíme inicializovať knižnicu makier <em>log_init</em>. Hradlá kombinačných logických obvodov môžu mať niekoľko vstupov, ich počet definujeme pomocou parametra <em>n</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AND_gate (n, [N][B], [wid, [ht]])
 OR_gate  (n, [N][B], [wid, [ht]])
 NOR_gate (n, [N|B],, [wid, [ht]])
@@ -429,7 +429,7 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
 <a class="reference internal image-reference" href="_images/cm_0206a.png"><img alt="_images/cm_0206a.png" src="_images/cm_0206a.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 89 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/51a7824167b825f45fe33d45e7622c32/cm_0206a.ckt"><span class="xref download myst">Zapojenie</span></a> multiplexera</span><a class="headerlink" href="#cm-0206a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 93 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/51a7824167b825f45fe33d45e7622c32/cm_0206a.ckt"><span class="xref download myst">Zapojenie</span></a> multiplexera</span><a class="headerlink" href="#cm-0206a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -438,11 +438,76 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
 </section>
 <section id="zbernice">
 <h2><font color='teal'> Zbernice </font><a class="headerlink" href="#zbernice" title="Link to this heading">#</a></h2>
+<p>Digitálne systémy vo svojeje architektúre často využívajú hierarchické usporiadanie obvodov do skupín zdielajúcich spoločný komunikačný systém, zbernicu. Rozkreslenie zbernice na jednotlivé vodiče môže byť niekedy neprehľadné, tak ako to ukazuje obrázok.</p>
 <figure class="align-default" id="img-0206c">
 <a class="reference internal image-reference" href="_images/img_0206c.png"><img alt="_images/img_0206c.png" src="_images/img_0206c.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 90 </span><span class="caption-text">Blokové <a class="reference download internal" download="" href="_downloads/76c51e01041d774d148425088d875f57/img_0206c.ckt"><span class="xref download myst">zapojenie</span></a> SPI rozhrania</span><a class="headerlink" href="#img-0206c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 94 </span><span class="caption-text">Blokové <a class="reference download internal" download="" href="_downloads/76c51e01041d774d148425088d875f57/img_0206c.ckt"><span class="xref download myst">zapojenie</span></a> SPI zbernice v režime MDP (Multidrop).</span><a class="headerlink" href="#img-0206c" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Použitím zberníc môžeme celé zapojenie zjednodušiť a sprehladniť.</p>
+<figure class="align-default" id="img-0206d">
+<a class="reference internal image-reference" href="_images/img_0206d.png"><img alt="_images/img_0206d.png" src="_images/img_0206d.png" style="width: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 95 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/89b96a486bf7c491460bd50550c2621d/img_0206d.ckt"><span class="xref download myst">Zapojenie</span></a> SPI rozhrania pomocou vykreslenia zbernice.</span><a class="headerlink" href="#img-0206d" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Zbernice môžeme pripájať k obvodom pomocou konektorov definovaných makrami v súbore <a class="reference download internal" download="" href="_downloads/3fad5e6435af9e287993b5b401dfcaef/lib_bus.ckt"><span class="xref download myst">lib_bus.ckt</span></a>. Parametrom makier je počet vodičov zbernice, pomocou ďaľších makier môžeme popisovať jednotlivé vetvy zbernice ako aj ziskať referenciu na koniec každej vetvy.</p>
+<figure class="align-default" id="img-0206e">
+<a class="reference internal image-reference" href="_images/img_0206e.png"><img alt="_images/img_0206e.png" src="_images/img_0206e.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 96 </span><span class="caption-text">Makrá pre kreslenie pripojenia zbernice k obvodu.</span><a class="headerlink" href="#img-0206e" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Každý konektor zbernice má vetvy číslované od začiatku zbernice. Číslovanie vetiev je nezávislé od číslovania pinov pripojeného obvodu.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bus_dl(n,d)  - makra pre pripajanie zbernice k obvodom 
+bus_dr(n,d)
+bus_ul(n,d)
+bus_ur(n,d)
+
+parametre:
+    n        - počet vetiev
+    d        - dĺžka vetvy
+
+atribúty:
+    REF     - poloha referenčného pinu č.1
+    START   - začiatok zbernice
+    END     - koniec zbernice
+    DOC     - pozicia pre popisovanie zbernice
+</pre></div>
+</div>
+<p>Pomocné makrá pre popis zbernice, polohu koncového bodu vetvy</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bus_txl(bus, text, pin) - makra pre popis vetvy zbernice, zarovnanie dolava
+bus_txr(bus, text, pin) - zarovnanie doprava
+bus_ref(bus, pin)       - poloha koncovej vetvy zbernice 
+bus_conn(bus1, bus2)    - spojenie zbernic usečkou
+
+parametre:
+    bus     - referencia na zbernicu
+    text    - popis, bez uvodzoviek
+    pin     - cislo pinu zbernice
+</pre></div>
+</div>
+<p>Pri pripájaní zberníc k obvodu využijeme konštrukciu <em>with … at …</em>. Koniec prvej vetvy konektoru je prístupný pod atribútom <em>REF</em>, ktorý pripojíme k zvolenému pinu obvodu</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IC: IC74138(); &quot;74138&quot; at IC.s below; 
+B1: bus_dl(3) with .REF at IC.Pin3;
+B2: bus_ur(3) with.END at B1.END+(0,-1)
+    bus_conn(B1,B2)
+
+    line left_ 1 from bus_ref(B2,1); tbox(A,,lg_pinsep,&lt;&gt;)
+    line left_ 1 from bus_ref(B2,2); tbox(B,,lg_pinsep,&lt;&gt;)
+    line left_ 1 from bus_ref(B2,3); tbox(C,,lg_pinsep,&lt;&gt;)
+</pre></div>
+</div>
+<figure class="align-default" id="img-0206f">
+<a class="reference internal image-reference" href="_images/img_0206f.png"><img alt="_images/img_0206f.png" src="_images/img_0206f.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 97 </span><span class="caption-text">Pripojenie zbernice k obvodu.
+``</span><a class="headerlink" href="#img-0206f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -460,20 +525,20 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0204_ex_opamp.html"
+       href="0207_ex_integrovane_obvody.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><font color='navy'> Operačné zosilovače  </font></p>
+        <p class="prev-next-title"><font color='navy'> Integrované obvody </font></p>
       </div>
     </a>
     <a class="right-next"
-       href="0207_ex_integrovane_obvody.html"
+       href="0208_ex_vyvojove_diagramy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><font color='navy'> Integrované obvody </font></p>
+        <p class="prev-next-title"><font color='navy'> Blokové diagramy</font></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

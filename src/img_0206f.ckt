@@ -1,0 +1,51 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+cct_init                # inicializacia lokalnych premennych
+log_init
+
+include(lib_bus.ckt)
+
+command"\sf"
+
+define(`IC74138',`[ 
+    right_;
+   Chip: box wid_ lg_chipwd ht_ 9*lg_pinsep
+   lg_pin(Chip.sw_+(0,lg_pinsep),GND,Pin8,w,8)
+   lg_pin(Chip.sw_+(0,2*lg_pinsep),lg_bartxt(G2a),Pin4,wN,4)
+   lg_pin(Chip.sw_+(0,3*lg_pinsep),lg_bartxt(G2b),Pin5,wN,5)
+   lg_pin(Chip.sw_+(0,4*lg_pinsep) ,G1,Pin6,w,6)
+   lg_pin(Chip.sw_+(0,6*lg_pinsep),A,Pin1,w,1)
+   lg_pin(Chip.sw_+(0,7*lg_pinsep),B,Pin2,w,2)
+   lg_pin(Chip.sw_+(0,8*lg_pinsep),C,Pin3,w,3)
+
+   lg_pin(Chip.se_+(0,lg_pinsep)   ,Y0,Pin15,eN,15)
+   lg_pin(Chip.se_+(0,2*lg_pinsep) ,Y1,Pin15,eN,14)
+   lg_pin(Chip.se_+(0,3*lg_pinsep) ,Y2,Pin15,eN,13)
+   lg_pin(Chip.se_+(0,4*lg_pinsep) ,Y3,Pin15,eN,12)
+   lg_pin(Chip.se_+(0,5*lg_pinsep) ,Y4,Pin15,eN,11)
+   lg_pin(Chip.se_+(0,6*lg_pinsep) ,Y5,Pin15,eN,10)
+   lg_pin(Chip.se_+(0,7*lg_pinsep) ,Y6,Pin15,eN,9)
+   lg_pin(Chip.se_+(0,8*lg_pinsep) ,Y7,Pin15,eN,7)
+]')
+
+
+IC: IC74138(); "74138" at IC.s below; 
+B1: bus_dl(3) with .REF at IC.Pin3;
+B2: bus_ur(3) with.END at B1.END+(0,-1)
+    bus_conn(B1,B2)
+line left_ 1 from bus_ref(B2,1); tbox(\sf A,,lg_pinsep,<>)
+line left_ 1 from bus_ref(B2,2); tbox(\sf B,,lg_pinsep,<>)
+line left_ 1 from bus_ref(B2,3); tbox(\sf C,,lg_pinsep,<>)
+
+.PE

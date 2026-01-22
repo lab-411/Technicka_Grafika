@@ -1,0 +1,27 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+cct_init                # inicializacia lokalnych premennych
+log_init
+
+include(lib_bus.ckt)
+include(lib_spi.ckt)
+
+command"\sf"
+
+B1: bus_dr(6) with .REF at (1,3)  ; "bus\_dr(6)" at B1.nw ljust above;
+B2: bus_dl(5) with .REF at (4.5,3); "bus\_dl(5)" at B2.ne rjust above;
+B3: bus_ul(4) with .REF at (6.5,1); "bus\_ul(4)" at B3.se rjust below;
+B4: bus_ur(3) with .REF at (7,1)  ; "bus\_ul(3)" at B4.sw ljust below;
+
+.PE

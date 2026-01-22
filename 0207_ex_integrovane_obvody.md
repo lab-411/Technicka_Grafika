@@ -63,12 +63,7 @@ Pri vytváraní značiek integrovaných obvodov môžeme použiť makro *lg_pin(
         pinno    - číslo pinu
         optlen   - dĺžka pinu
 
-Pomocou makra *lg_bartxt()* môžeme zobraziť čiaru nad pomenovaním negovaného pinu a pre nastavenie rozostupov medzi pinmi môžeme použiť makro *lg_pinsep* 
-
-    lg_bartxt(meno)
-    lg_pinsep
-
-Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu
+Pomocou makra *lg_bartxt()* môžeme zobraziť čiaru nad pomenovaním negovaného pinu a pre nastavenie rozostupov medzi pinmi definuje hodnota premennej *lg_pinsep*. Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu
 
     define(`IC485', `[
       BX: box wid 2 ht 5*lg_pinsep;

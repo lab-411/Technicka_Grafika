@@ -1,0 +1,22 @@
+define(`SPI_Master', `[
+      right_
+  BX: box wid 2.5 ht 7*lg_pinsep;
+      ifelse(defn(`d'),  $1, d=0.5,  d=$1)
+      lg_pin(BX.ne - (0, 1*lg_pinsep),  SCLK, Pin1, e,,d);
+      lg_pin(BX.ne - (0, 2*lg_pinsep),  MOSI, Pin2, e,,d );
+      lg_pin(BX.ne - (0, 3*lg_pinsep),  MISO, Pin3, e,,d );
+      lg_pin(BX.ne - (0, 4*lg_pinsep),  lg_bartxt(CS1), Pin4, e,,d );
+      lg_pin(BX.ne - (0, 5*lg_pinsep),  lg_bartxt(CS2), Pin5, e,,d );
+      lg_pin(BX.ne - (0, 6*lg_pinsep),  lg_bartxt(CS3), Pin6, e,,d );
+
+]')
+
+define(`SPI_Slave', `[
+      right_
+  BX: box wid 2 ht 5*lg_pinsep;
+      ifelse(defn(`d'),  $1, d=0.5,  d=$1)
+      lg_pin(BX.nw - (0, 1*lg_pinsep),  SCLK, Pin1, w,, d);
+      lg_pin(BX.nw - (0, 2*lg_pinsep),  MOSI, Pin2, w,, d);
+      lg_pin(BX.nw - (0, 3*lg_pinsep),  MISO, Pin3, w,, d);
+      lg_pin(BX.nw - (0, 4*lg_pinsep),  lg_bartxt(CS), Pin4, w,,d );
+]')

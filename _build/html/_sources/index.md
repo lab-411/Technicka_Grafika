@@ -12,7 +12,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB-411 Production </b> </font>      </h3>
-<h3> <font color='brown'>  <b> Verzia 0.35 / Jan. 2026 </b> </font>                   </h3>
+<h3> <font color='brown'>  <b> Verzia 0.40 / Jan. 2026 </b> </font>                   </h3>
 </center> 
 
 ----------------
@@ -60,8 +60,8 @@
 0200_ex_jednoduche.md
 0202_ex_tranzistor.md
 0204_ex_opamp.md
-0206_ex_logicke_obvody.md
 0207_ex_integrovane_obvody.md
+0206_ex_logicke_obvody.md
 0208_ex_vyvojove_diagramy.md
 0210_ex_katalog.md
 ```

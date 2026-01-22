@@ -1,0 +1,164 @@
+#-----------------------------------------------------------------------
+# n-bitova zbernica
+# bus_dl(), bus_dr()
+# bus_ul(), bus_ur()
+# bus_txl()
+# bus_txr()
+# bus_ref()
+# bus_conn()
+#
+# History
+# 250811 - ver.01 
+# 260122 - ver.02 - doplnenie bus_ref
+#-----------------------------------------------------------------------
+# Vykreslenie pripojenia zbernice k IO
+# bus_dl(n, d)           - down, left
+#    n - pocet pinov
+#    d - dlzka vetvy zbernice
+#    t - hrubka zbernice
+#-----------------------------------------------------------------------
+
+command"\sf"
+
+define( `bus_dl', `[ 
+    ifelse(defn(`d'),  $2, d=1,  d=$2)    # dlzka vetvy zbernice
+    ifelse(defn(`t'),  $3, t=2,  t=$3)    # hrubka zbernice
+    bdd = lg_pinsep;
+    Q: box wid (d+bdd)*2 ht (`$1+1)'*bdd dotted invis;
+       move to Q.ne;
+       for i=1 to `$1' do { 
+          {
+            line left_ d then down_ bdd left_ bdd;
+            linethick_(t);
+            LL: line down_ bdd;      
+            linethick_();
+           }
+          move down_ bdd;
+       }
+    REF: (Q.ne.x, Q.ne.y);              # poloha pinu no. 1 zbernice
+    START: (Q.ne.x-d-bdd, Q.ne.y-bdd);  # poloha zaciatku zbernice
+    END: LL.end;                        # poloha konca zbernice
+    DOC: Q.ne-(d,0);                    # poloha textu na vetve zbernice
+]')
+
+
+#-----------------------------------------------------------------------
+# Vykreslenie pripojenia zbernice k IO
+# bus_dr(n, d)           - down, right
+#    n - pocet pinov
+#    d - dlzka vetvy zbernice
+#    t - hrubka zbernice
+#-----------------------------------------------------------------------
+define( `bus_dr', `[ 
+    ifelse(defn(`d'),  $2, d=1,  d=$2)    # dlzka vetvy zbernice
+    ifelse(defn(`t'),  $3, t=2,  t=$3)    # hrubka zbernice
+    bdd = lg_pinsep;
+    Q: box wid (d+bdd)*2 ht (`$1+1)'*bdd dotted invis;
+       move to Q.nw;
+       for i=1 to `$1' do { 
+          {
+            line right_ d then down_ bdd right_ bdd;
+            linethick_(t);
+            LL: line down_ bdd;      
+            linethick_();
+           }
+          move down_ bdd;
+       }
+    REF: (Q.nw.x, Q.nw.y);              # poloha pinu no. 1 zbernice
+    START: (Q.nw.x+d+bdd, Q.nw.y-bdd);  # poloha zaciatku zbernice
+    END: LL.end;                        # poloha konca zbernice
+    DOC: Q.nw+(d,0);                    # poloha textu na vetve zbernice
+]')
+
+
+#-----------------------------------------------------------------------
+# Vykreslenie pripojenia zbernice k IO
+# bus_ul(n, d)           - up, left
+#    n - pocet pinov
+#    d - dlzka vetvy zbernice
+#    t - hrubka zbernice
+#-----------------------------------------------------------------------
+define( `bus_ul', `[ 
+    ifelse(defn(`d'),  $2, d=1,  d=$2)    # dlzka vetvy zbernice
+    ifelse(defn(`t'),  $3, t=2,  t=$3)    # hrubka zbernice
+    bdd = lg_pinsep;
+    Q: box wid (d+bdd)*2 ht (`$1+1)'*bdd dotted invis;
+       move to Q.se;
+       for i=1 to `$1' do { 
+          {
+            line left_ d then up_ bdd left_ bdd;
+            linethick_(t);
+            LL: line up_ bdd;      
+            linethick_();
+           }
+          move up_ bdd;
+       }
+    REF: (Q.se.x, Q.se.y);              # poloha pinu no. 1 zbernice
+    START: (Q.se.x-d-bdd, Q.se.y+bdd);  # poloha zaciatku zbernice
+    END: LL.end;                        # poloha konca zbernice
+    DOC: Q.se-(d,0);                    # poloha textu na vetve zbernice
+]')
+
+
+#-----------------------------------------------------------------------
+# Vykreslenie pripojenia zbernice k IO
+# bus_ur(n, d)           - up, right
+#    n - pocet pinov
+#    d - dlzka vetvy zbernice
+#    t - hrubka zbernice
+#-----------------------------------------------------------------------
+define( `bus_ur', `[ 
+    ifelse(defn(`d'),  $2, d=1,  d=$2)    # dlzka vetvy zbernice
+    ifelse(defn(`t'),  $3, t=2,  t=$3)    # hrubka zbernice
+    bdd = lg_pinsep;
+    Q: box wid (d+bdd)*2 ht (`$1+1)'*bdd dotted invis;
+       move to Q.sw;
+       for i=1 to `$1' do { 
+          {
+            line right_ d then up_ bdd right_ bdd;
+            linethick_(t);
+            LL: line up_ bdd;      
+            linethick_();
+           }
+          move up_ bdd;
+       }
+    REF: (Q.sw.x, Q.sw.y);              # poloha pinu no. 1 zbernice
+    START: (Q.sw.x+d+bdd, Q.sw.y+bdd);  # poloha zaciatku zbernice
+    END: LL.end;                        # poloha konca zbernice
+    DOC: Q.sw+(d,0);                    # poloha textu na vetve zbernice
+]')
+
+
+#-----------------------------------------------------------------------
+# Vykreslenie popisneho textu na vetve zbernice
+# bus_txx(bus_ref, text, n)
+# bus_ref - referencia na existujucu zbernicu
+#    text - text bez uvodzoviek
+#       n - poradove cislo pinu
+#-----------------------------------------------------------------------
+define(`bus_txl', `"\scriptsize{$2}" at $1.DOC+(0, -($3-1)*lg_pinsep-0.05) above ljust; ')
+define(`bus_txr', `"\scriptsize{$2}" at $1.DOC+(0, -($3-1)*lg_pinsep-0.05) above rjust; ')
+
+#-----------------------------------------------------------------------
+# Poloha koncoveho bodu vetvy zbernice
+# bus_ref(bus_ref, n)
+# bus_ref - referencia na existujucu zbernicu
+#       n - poradove cislo pinu
+#-----------------------------------------------------------------------
+define(`bus_ref', `($1.REF) + (0,lg_pinsep)*(`$2'-1); ')
+
+
+#-----------------------------------------------------------------------
+# Spojenie zbernic
+# bus_conn(bus1, bus2, t)
+# bus1 - referencia zbernicu pociatocnu
+# bus2 - referencia na konecnu zbernicu
+#    t - hrubka zbernice
+#-----------------------------------------------------------------------
+define(`bus_conn', `
+    ifelse(defn(`t'),  $3, t=2,  t=$3)    # hrubka zbernice
+    linethick_(t);
+    line from $1.END to $2.START;
+    linethick_(); 
+')
+

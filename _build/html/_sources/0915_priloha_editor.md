@@ -43,7 +43,7 @@ Po spustení editor bude farebne zvýrazňovať syntax jazyka *dpic* a názvy ma
 
 ### <font color='brown'> Pracovný adresár </font>
 
-Po inštalácii programov je vhodné usporiadať pracovný adresár v konfigurácii podľa obrázku {numref}`cm0915b`. Do adresára uložíme shell skripty [cmc.sh](./src/cmr.sh) a [cmc.sh](./src/cmr.sh), ktoré sú popísané v kapitole [Export obrázkov](./0900_priloha_cli.md), uživateľské knižnice a knižnice z inštalácie *CircuitMacros* alebo v shell skriptoch upravíme cestu k nim.
+Po inštalácii programov je vhodné usporiadať pracovný adresár v konfigurácii podľa obrázku {numref}`cm0915b`. Do adresára uložíme shell skripty [cmc.sh](./src/cmr.sh) a [cmr.sh](./src/cmr.sh), ktoré sú popísané v kapitole [Export obrázkov](./0900_priloha_cli.md), uživateľské knižnice a knižnice z inštalácie *CircuitMacros* alebo v shell skriptoch upravíme cestu k nim.
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
