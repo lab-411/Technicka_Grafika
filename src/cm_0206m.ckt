@@ -1,0 +1,24 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+cct_init
+log_init
+
+right_;
+H1: FlipFlop(D,Q1); move to H1+(1.5,0)
+H2: FlipFlop(T,Q2);  move to H2+(1.5,0)
+H3: FlipFlop(RS,Q3);  move to H3+(1.5,0)
+H4: FlipFlop(JK)
+
+.PE

@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -366,7 +366,16 @@ document.write(`
 <h1><font color='navy'> Logické obvody </font><a class="headerlink" href="#logicke-obvody" title="Link to this heading">#</a></h1>
 <section id="kombinacne-obvody">
 <h2><font color='teal'> Kombinačné obvody </font><a class="headerlink" href="#kombinacne-obvody" title="Link to this heading">#</a></h2>
-<p>Pred kreslením logických obvodov musíme inicializovať knižnicu makier <em>log_init</em>. Hradlá kombinačných logických obvodov môžu mať niekoľko vstupov, ich počet definujeme pomocou parametra <em>n</em>.</p>
+<p>Pred kreslením logických obvodov musíme inicializovať knižnicu makier <em>log_init</em>. Knižnica obsahuje makrá pre kreslenie základných kombinačných a sekvenčných obvodov. Hradlá kombinačných logických obvodov môžu mať niekoľko vstupov, ich počet definujeme pomocou parametra <em>n</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>     AND_gate(3)    NAND_gate(3)    OR_gate(2)    NOR_gate(3)    NXOR_gate(2)
+                            NOT_gate()                     BUFFER_gate()
+</pre></div>
+</div>
+<p>Definície makier pre kombinačné makrá s <em>n</em> vstupmi (and, nand, or, nor, xor)</p>
+<figure class="align-default" id="cm-0206k">
+<a class="reference internal image-reference" href="_images/cm_0206k.png"><img alt="_images/cm_0206k.png" src="_images/cm_0206k.png" style="width: 500px;" />
+</a>
+</figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AND_gate (n, [N][B], [wid, [ht]])
 OR_gate  (n, [N][B], [wid, [ht]])
 NOR_gate (n, [N|B],, [wid, [ht]])
@@ -388,7 +397,7 @@ atribúty:
     N_Out        - poloha stredu negovaneho vystupu (kružnice)
 </pre></div>
 </div>
-<p>Hradlá s jedným vstupom</p>
+<p>Definície makier pre hradlá s jedným vstupom (invertor, buffer)</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>NOT_gate(linespec,[B][N|n],wid,height, attributes)
 BUFFER_gate(linespec, [N|B], wid, ht, [N|P]*, [N|P]*, [N|P]*, attributes)
 
@@ -400,17 +409,26 @@ parametre:
     n        - (písmeno) výmena negácie z výstupu na vstupe (pri NOT)
     wid      - šírka 
     ht       - výška
+    
+atribúty:
+
+    ak je definovaný parameter linespec, hradlá maju atribúty 
+    ako dvojpóly (.start, .centre, .end), inak
+    
+    In1      - poloha vstupu
+    Out      - poloha výstupu
+    C        - stred hradla
+    NE       - prívod napájania (VCC) 
+    SE       - prívod napájania (GND)
 </pre></div>
 </div>
-<p>Pri kreslení logických obvodov je vhodné najskôr porozkladať hradlá po ploche a potom ich postupne prepájať. Na zjednodušenie prepojenia vývodov hradiel môžeme použiť jednoduché makro <em>conn()</em> s dvoma parametrami - súradnicami koncových bodov prepojenia.</p>
+<p>Pri kreslení logických obvodov je vhodné najskôr porozkladať hradlá po ploche a potom ich postupne prepájať. Na zjednodušenie prepojenia vývodov hradiel môžeme použiť jednoduché makro <em>conn()</em> s dvoma parametrami - súradnicami koncových bodov prepojenia. Zapojenie jednoduchého multiplexera je na obrázku</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`conn&#39;, `
-    line from $1 left_ (($1 - $2)/2).x;
-    line up_ to (Here.x, $2.y) then to $2;
-&#39;)
-</pre></div>
-</div>
-<p>Zapojenie jednoduchého multiplexera</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>G1: AND_gate(2) at (5, 2); &quot;\sf G1&quot; at G1.n above;
+        line from $1 left_ (($1 - $2)/2).x;
+        line up_ to (Here.x, $2.y) then to $2;
+    &#39;)
+    
+G1: AND_gate(2) at (5, 2); &quot;\sf G1&quot; at G1.n above;
 G2: AND_gate(2) at (5, 0.5); &quot;\sf G2&quot; at G2.n above;
 G3: OR_gate(2) at (7, (G1.c.y + G2.c.y)/2 ); &quot;\sf G3&quot; at G3.n above;
 G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
@@ -435,6 +453,47 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
 </section>
 <section id="sekvencne-obvody">
 <h2><font color='teal'> Sekvenčné obvody </font><a class="headerlink" href="#sekvencne-obvody" title="Link to this heading">#</a></h2>
+<p>Základné typy sekvenčných obvodov (D, T, RS, JK) sú definované pomocou makra <em>FlipFlop()</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    FlipFlop(D,Q1)    FlipFlop(T,Q2)    FlipFlop(RS,Q3)    FlipFlop(JK)
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0206m">
+<a class="reference internal image-reference" href="_images/cm_0206m.png"><img alt="_images/cm_0206m.png" src="_images/cm_0206m.png" style="width: 550px;" />
+</a>
+</figure>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>FlipFlop(type, label, boxspec, pinlength)
+
+parametre:
+
+    type      - typ obvodu D|T|RS|JK 
+    label     - označenie obvodu
+    boxspec   - parametre značky ako pre box 
+    pinlength - dĺžka pinu
+
+atribúty:
+
+    podľa mena pinu .D .CK .Q .NQ .R .S .J .K .PR .CLR
+</pre></div>
+</div>
+<p>Pre vytváranie vlastných značiek obvodov môžeme použiť makrá popísané v kapitole <em>Integrované obvody</em> alebo makro <em>FlipFlopX()</em>, podrobný popis je v dokumentácii.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># JK obvod v strukture citaca 7493
+define(`JK93&#39;, `[
+BX:box wid 1.5 ht 6*lg_pinsep;
+    lg_pin(BX.nw - (0, 1*lg_pinsep), J,  PinJ,   w,  ,0);
+    lg_pin(BX.nw - (0, 3*lg_pinsep), CK, PinCK, wEN,,0);
+    lg_pin(BX.nw - (0, 5*lg_pinsep), K,  PinK,   w,  ,0);
+    lg_pin(BX.ne - (0, 3*lg_pinsep), Q,  PinQ,   e,  ,0);
+    lg_pin(BX.s ,                    R,  PinR,  sN,  ,0 )
+]&#39;)
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0206n">
+<a class="reference internal image-reference" href="_images/cm_0206n.png"><img alt="_images/cm_0206n.png" src="_images/cm_0206n.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 94 </span><span class="caption-text">Vnútorné zapojenie čitača 7493 podla TI.</span><a class="headerlink" href="#cm-0206n" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="zbernice">
 <h2><font color='teal'> Zbernice </font><a class="headerlink" href="#zbernice" title="Link to this heading">#</a></h2>
@@ -443,7 +502,7 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
 <a class="reference internal image-reference" href="_images/img_0206c.png"><img alt="_images/img_0206c.png" src="_images/img_0206c.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 94 </span><span class="caption-text">Blokové <a class="reference download internal" download="" href="_downloads/76c51e01041d774d148425088d875f57/img_0206c.ckt"><span class="xref download myst">zapojenie</span></a> SPI zbernice v režime MDP (Multidrop).</span><a class="headerlink" href="#img-0206c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 95 </span><span class="caption-text">Blokové <a class="reference download internal" download="" href="_downloads/76c51e01041d774d148425088d875f57/img_0206c.ckt"><span class="xref download myst">zapojenie</span></a> SPI zbernice v režime MDP (Multidrop).</span><a class="headerlink" href="#img-0206c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Použitím zberníc môžeme celé zapojenie zjednodušiť a sprehladniť.</p>
@@ -451,7 +510,7 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
 <a class="reference internal image-reference" href="_images/img_0206d.png"><img alt="_images/img_0206d.png" src="_images/img_0206d.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 95 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/89b96a486bf7c491460bd50550c2621d/img_0206d.ckt"><span class="xref download myst">Zapojenie</span></a> SPI rozhrania pomocou vykreslenia zbernice.</span><a class="headerlink" href="#img-0206d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 96 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/89b96a486bf7c491460bd50550c2621d/img_0206d.ckt"><span class="xref download myst">Zapojenie</span></a> SPI rozhrania pomocou vykreslenia zbernice.</span><a class="headerlink" href="#img-0206d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Zbernice môžeme pripájať k obvodom pomocou konektorov definovaných makrami v súbore <a class="reference download internal" download="" href="_downloads/3fad5e6435af9e287993b5b401dfcaef/lib_bus.ckt"><span class="xref download myst">lib_bus.ckt</span></a>. Parametrom makier je počet vodičov zbernice, pomocou ďaľších makier môžeme popisovať jednotlivé vetvy zbernice ako aj ziskať referenciu na koniec každej vetvy.</p>
@@ -459,7 +518,7 @@ G4: NOT_gate() at (3.5, 2.5); &quot;\sf G4&quot; at G4.n above;
 <a class="reference internal image-reference" href="_images/img_0206e.png"><img alt="_images/img_0206e.png" src="_images/img_0206e.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 96 </span><span class="caption-text">Makrá pre kreslenie pripojenia zbernice k obvodu.</span><a class="headerlink" href="#img-0206e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 97 </span><span class="caption-text">Makrá pre kreslenie pripojenia zbernice k obvodu.</span><a class="headerlink" href="#img-0206e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Každý konektor zbernice má vetvy číslované od začiatku zbernice. Číslovanie vetiev je nezávislé od číslovania pinov pripojeného obvodu.</p>
@@ -506,7 +565,7 @@ B2: bus_ur(3) with.END at B1.END+(0,-1)
 <a class="reference internal image-reference" href="_images/img_0206f.png"><img alt="_images/img_0206f.png" src="_images/img_0206f.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 97 </span><span class="caption-text">Pripojenie zbernice k obvodu.
+<p><span class="caption-number">Obr. 98 </span><span class="caption-text">Pripojenie zbernice k obvodu.
 ``</span><a class="headerlink" href="#img-0206f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>

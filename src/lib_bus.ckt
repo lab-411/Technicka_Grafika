@@ -135,6 +135,7 @@ define( `bus_ur', `[
 # bus_ref - referencia na existujucu zbernicu
 #    text - text bez uvodzoviek
 #       n - poradove cislo pinu
+#           TODO - upravit pre konektor UP/DOWN
 #-----------------------------------------------------------------------
 define(`bus_txl', `"\scriptsize{$2}" at $1.DOC+(0, -($3-1)*lg_pinsep-0.05) above ljust; ')
 define(`bus_txr', `"\scriptsize{$2}" at $1.DOC+(0, -($3-1)*lg_pinsep-0.05) above rjust; ')
@@ -144,6 +145,7 @@ define(`bus_txr', `"\scriptsize{$2}" at $1.DOC+(0, -($3-1)*lg_pinsep-0.05) above
 # bus_ref(bus_ref, n)
 # bus_ref - referencia na existujucu zbernicu
 #       n - poradove cislo pinu
+#           TODO - upravit pre konektor UP/DOWN
 #-----------------------------------------------------------------------
 define(`bus_ref', `($1.REF) + (0,lg_pinsep)*(`$2'-1); ')
 

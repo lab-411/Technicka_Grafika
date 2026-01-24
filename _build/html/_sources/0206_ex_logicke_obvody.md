@@ -17,7 +17,58 @@ kernelspec:
 
 ## <font color='teal'> Kombinačné obvody </font> 
 
-Pred kreslením logických obvodov musíme inicializovať knižnicu makier *log_init*. Hradlá kombinačných logických obvodov môžu mať niekoľko vstupov, ich počet definujeme pomocou parametra *n*.
+Pred kreslením logických obvodov musíme inicializovať knižnicu makier *log_init*. Knižnica obsahuje makrá pre kreslenie základných kombinačných a sekvenčných obvodov. Hradlá kombinačných logických obvodov môžu mať niekoľko vstupov, ich počet definujeme pomocou parametra *n*.
+
+         AND_gate(3)    NAND_gate(3)    OR_gate(2)    NOR_gate(3)    NXOR_gate(2)
+                                NOT_gate()                     BUFFER_gate()
+
+Definície makier pre kombinačné makrá s *n* vstupmi (and, nand, or, nor, xor)
+                                
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+cct_init
+log_init
+
+define(`IN3', `
+   line left_ 0.25 from $1.In1;
+   line left_ 0.25 from $1.In2;
+   line left_ 0.25 from $1.In3;
+   line right_ 0.25 from $1.Out;
+   move to last line.end + (0.5,0)
+')
+
+define(`IN2', `
+   line left_ 0.25 from $1.In1;
+   line left_ 0.25 from $1.In2;
+   line right_ 0.25 from $1.Out;
+   move to last line.end + (0.5,0)
+')
+
+# Enter your drawing code here
+right_;
+G1: AND_gate(3); IN3(G1);
+G2: NAND_gate(3); IN3(G2);
+G3: OR_gate(2); IN2(G3);
+G4: NOR_gate(3); IN3(G4);
+G5: NXOR_gate(2); IN2(G5);
+move to G2.c  + (-0.5,-1.25)
+G6: NOT_gate(2,,0.8,0.8); 
+move to G4.c  + (-0.5,-1.25)
+G6: BUFFER_gate(2,,0.8,0.8);
+'''
+
+_ = cm_compile('cm_0206k', data ,  dpi=600)   
+```
+
+```{figure} ./src/cm_0206k.png
+:width: 500px
+:name: cm_0206k
+
+```
 
     AND_gate (n, [N][B], [wid, [ht]])
     OR_gate  (n, [N][B], [wid, [ht]])
@@ -40,7 +91,7 @@ Pred kreslením logických obvodov musíme inicializovať knižnicu makier *log_
         N_Out        - poloha stredu negovaneho vystupu (kružnice)
     
     
-Hradlá s jedným vstupom
+Definície makier pre hradlá s jedným vstupom (invertor, buffer)
 
     NOT_gate(linespec,[B][N|n],wid,height, attributes)
     BUFFER_gate(linespec, [N|B], wid, ht, [N|P]*, [N|P]*, [N|P]*, attributes)
@@ -53,16 +104,24 @@ Hradlá s jedným vstupom
         n        - (písmeno) výmena negácie z výstupu na vstupe (pri NOT)
         wid      - šírka 
         ht       - výška
+        
+    atribúty:
 
-Pri kreslení logických obvodov je vhodné najskôr porozkladať hradlá po ploche a potom ich postupne prepájať. Na zjednodušenie prepojenia vývodov hradiel môžeme použiť jednoduché makro *conn()* s dvoma parametrami - súradnicami koncových bodov prepojenia.
+        ak je definovaný parameter linespec, hradlá maju atribúty 
+        ako dvojpóly (.start, .centre, .end), inak
+        
+        In1      - poloha vstupu
+        Out      - poloha výstupu
+        C        - stred hradla
+        NE       - prívod napájania (VCC) 
+        SE       - prívod napájania (GND)
+
+Pri kreslení logických obvodov je vhodné najskôr porozkladať hradlá po ploche a potom ich postupne prepájať. Na zjednodušenie prepojenia vývodov hradiel môžeme použiť jednoduché makro *conn()* s dvoma parametrami - súradnicami koncových bodov prepojenia. Zapojenie jednoduchého multiplexera je na obrázku 
 
     define(`conn', `
-        line from $1 left_ (($1 - $2)/2).x;
-        line up_ to (Here.x, $2.y) then to $2;
-    ')
-
-
-Zapojenie jednoduchého multiplexera
+            line from $1 left_ (($1 - $2)/2).x;
+            line up_ to (Here.x, $2.y) then to $2;
+        ')
         
     G1: AND_gate(2) at (5, 2); "\sf G1" at G1.n above;
     G2: AND_gate(2) at (5, 0.5); "\sf G2" at G2.n above;
@@ -92,7 +151,7 @@ define(`conn', `
 	line up_ to (Here.x, $2.y) then to $2;
 ')
 
-Grid(10,3.5);
+#Grid(10,3.5);
 
 G1: AND_gate(2) at (5, 2); "\sf G1" at G1.n above;
 G2: AND_gate(2) at (5, 0.5); "\sf G2" at G2.n above;
@@ -120,6 +179,118 @@ _ = cm_compile('cm_0206a', data,  dpi=600)
 ```
 ## <font color='teal'> Sekvenčné obvody </font> 
 
+Základné typy sekvenčných obvodov (D, T, RS, JK) sú definované pomocou makra *FlipFlop()*.
+
+        FlipFlop(D,Q1)    FlipFlop(T,Q2)    FlipFlop(RS,Q3)    FlipFlop(JK)
+    
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+cct_init
+log_init
+
+right_;
+H1: FlipFlop(D,Q1); move to H1+(1.5,0)
+H2: FlipFlop(T,Q2);  move to H2+(1.5,0)
+H3: FlipFlop(RS,Q3);  move to H3+(1.5,0)
+H4: FlipFlop(JK)
+'''
+
+_ = cm_compile('cm_0206m', data ,  dpi=600)   
+```
+
+```{figure} ./src/cm_0206m.png
+:width: 550px
+:name: cm_0206m
+```
+
+    FlipFlop(type, label, boxspec, pinlength)
+    
+    parametre:
+    
+        type      - typ obvodu D|T|RS|JK 
+        label     - označenie obvodu
+        boxspec   - parametre značky ako pre box 
+        pinlength - dĺžka pinu
+
+    atribúty:
+
+        podľa mena pinu .D .CK .Q .NQ .R .S .J .K .PR .CLR
+        
+Pre vytváranie vlastných značiek obvodov môžeme použiť makrá popísané v kapitole *Integrované obvody* alebo makro *FlipFlopX()*, podrobný popis je v dokumentácii.
+
+    # JK obvod v strukture citaca 7493
+    define(`JK93', `[
+    BX:box wid 1.5 ht 6*lg_pinsep;
+        lg_pin(BX.nw - (0, 1*lg_pinsep), J,  PinJ,   w,  ,0);
+        lg_pin(BX.nw - (0, 3*lg_pinsep), CK, PinCK, wEN,,0);
+        lg_pin(BX.nw - (0, 5*lg_pinsep), K,  PinK,   w,  ,0);
+        lg_pin(BX.ne - (0, 3*lg_pinsep), Q,  PinQ,   e,  ,0);
+        lg_pin(BX.s ,                    R,  PinR,  sN,  ,0 )
+    ]')
+
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+include(lib_base.ckt)
+cct_init
+log_init
+
+command "\footnotesize \sf"
+define(`JK93', `[
+   BX:box wid 1.5 ht 6*lg_pinsep;
+      lg_pin(BX.nw - (0, 1*lg_pinsep), J,  PinJ,   w,  ,0);
+      lg_pin(BX.nw - (0, 3*lg_pinsep), CK, PinCK, wEN,,0);
+      lg_pin(BX.nw - (0, 5*lg_pinsep), K,  PinK,   w,  ,0);
+      lg_pin(BX.ne - (0, 3*lg_pinsep), Q,  PinQ,   e,  ,0);
+      lg_pin(BX.s ,                    R,  PinR,  sN,  ,0 )
+]')
+
+H1: JK93; move to H1.c+(2,0);
+H2: JK93; move to H2.c+(2,0)
+H3: JK93; move to H3.c+(2,0)
+H4: JK93;
+
+
+line from H1.PinQ right_ 0.5 then down_ 3; T1: tconn(0.5,O); "QA" at T1.s below
+line from H2.PinQ right_ 0.5; {dot; line to H3.PinCK + (-0.15,0);}
+line down_ 3; T2: tconn(0.5,O); "QB" at T2.s below
+line from H3.PinQ right_ 0.5; {dot; line to H4.PinCK + (-0.15,0);} 
+line down_ 3; T3: tconn(0.5,O); "QC" at T3.s below
+line from H4.PinQ right_ 0.5 then down_ 3; T4: tconn(0.5,O); "QD" at T4.s below
+
+line from H1.PinR + (0,-0.15) down_ 1.5; dot; 
+{   line left_  2; 
+    right_; H5: AND_gate(2) with .Out at last line.end;
+    line from H5.In1 left_ 0.5; T5: tconn(0.5, O);  "MR1" at T5.w rjust;
+    line from H5.In2 left_ 0.5; T6: tconn(0.5, O);  "MR2" at T6.w rjust;
+}
+line right_ to (H2.PinR, Here); dot; {line to H2.PinR +(0,-0.15);}
+line right_ to (H3.PinR, Here); dot; {line to H3.PinR +(0,-0.15);}
+line right_ to (H4.PinR, Here); dot; {line to H4.PinR +(0,-0.15);}
+
+
+line from H1.PinCK+(-0.15,0) to (T5.e, H1.PinCK); left_; T7: tconn(0.5, O);  "CKA" at T7.w rjust;
+line from H2.PinCK+(-0.15,0) left_ 0.35 then down 1.75; 
+line to (T5.e, Here);  left_; T8: tconn(0.5, O);  "CKB" at T8.w rjust;
+'''
+
+_ = cm_compile('cm_0206n', data ,  dpi=600)   
+```
+
+```{figure} ./src/cm_0206n.png
+:width: 600px
+:name: cm_0206n
+
+Vnútorné zapojenie čitača 7493 podla TI.
+```
 
 ## <font color='teal'> Zbernice </font> 
 
@@ -351,10 +522,18 @@ define(`IC74138',`[
 IC: IC74138(); "74138" at IC.s below; 
 B1: bus_dl(3) with .REF at IC.Pin3;
 B2: bus_ur(3) with.END at B1.END+(0,-1)
-    bus_conn(B1,B2)
-line left_ 1 from bus_ref(B2,1); tbox(\sf A,,lg_pinsep,<>)
-line left_ 1 from bus_ref(B2,2); tbox(\sf B,,lg_pinsep,<>)
-line left_ 1 from bus_ref(B2,3); tbox(\sf C,,lg_pinsep,<>)
+    bus_conn(B1,B2);
+    line left_ 1 from bus_ref(B2,1); tbox(\sf A,,lg_pinsep,<>)
+    line left_ 1 from bus_ref(B2,2); tbox(\sf B,,lg_pinsep,<>)
+    line left_ 1 from bus_ref(B2,3); tbox(\sf C,,lg_pinsep,<>)
+    bus_txl(B1,DB1,1)
+    bus_txl(B1,DB2,2)
+    bus_txl(B1,DB3,3)
+    
+    bus_txr(B2,DB3, 1)
+    bus_txr(B2,DB2,0)
+    bus_txr(B2,DB1,-1)
+    
 '''
 
 _ = cm_compile('img_0206f', data,  dpi=600)   

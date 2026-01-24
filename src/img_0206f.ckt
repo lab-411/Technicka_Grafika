@@ -43,9 +43,17 @@ define(`IC74138',`[
 IC: IC74138(); "74138" at IC.s below; 
 B1: bus_dl(3) with .REF at IC.Pin3;
 B2: bus_ur(3) with.END at B1.END+(0,-1)
-    bus_conn(B1,B2)
-line left_ 1 from bus_ref(B2,1); tbox(\sf A,,lg_pinsep,<>)
-line left_ 1 from bus_ref(B2,2); tbox(\sf B,,lg_pinsep,<>)
-line left_ 1 from bus_ref(B2,3); tbox(\sf C,,lg_pinsep,<>)
+    bus_conn(B1,B2);
+    line left_ 1 from bus_ref(B2,1); tbox(\sf A,,lg_pinsep,<>)
+    line left_ 1 from bus_ref(B2,2); tbox(\sf B,,lg_pinsep,<>)
+    line left_ 1 from bus_ref(B2,3); tbox(\sf C,,lg_pinsep,<>)
+    bus_txl(B1,DB1,1)
+    bus_txl(B1,DB2,2)
+    bus_txl(B1,DB3,3)
+
+    bus_txr(B2,DB3, 1)
+    bus_txr(B2,DB2,0)
+    bus_txr(B2,DB1,-1)
+
 
 .PE

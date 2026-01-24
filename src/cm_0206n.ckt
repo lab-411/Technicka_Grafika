@@ -1,0 +1,56 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+cct_init
+log_init
+
+command "\footnotesize \sf"
+define(`JK93', `[
+   BX:box wid 1.5 ht 6*lg_pinsep;
+      lg_pin(BX.nw - (0, 1*lg_pinsep), J,  PinJ,   w,  ,0);
+      lg_pin(BX.nw - (0, 3*lg_pinsep), CK, PinCK, wEN,,0);
+      lg_pin(BX.nw - (0, 5*lg_pinsep), K,  PinK,   w,  ,0);
+      lg_pin(BX.ne - (0, 3*lg_pinsep), Q,  PinQ,   e,  ,0);
+      lg_pin(BX.s ,                    R,  PinR,  sN,  ,0 )
+]')
+
+H1: JK93; move to H1.c+(2,0);
+H2: JK93; move to H2.c+(2,0)
+H3: JK93; move to H3.c+(2,0)
+H4: JK93;
+
+
+line from H1.PinQ right_ 0.5 then down_ 3; T1: tconn(0.5,O); "QA" at T1.s below
+line from H2.PinQ right_ 0.5; {dot; line to H3.PinCK + (-0.15,0);}
+line down_ 3; T2: tconn(0.5,O); "QB" at T2.s below
+line from H3.PinQ right_ 0.5; {dot; line to H4.PinCK + (-0.15,0);} 
+line down_ 3; T3: tconn(0.5,O); "QC" at T3.s below
+line from H4.PinQ right_ 0.5 then down_ 3; T4: tconn(0.5,O); "QD" at T4.s below
+
+line from H1.PinR + (0,-0.15) down_ 1.5; dot; 
+{   line left_  2; 
+    right_; H5: AND_gate(2) with .Out at last line.end;
+    line from H5.In1 left_ 0.5; T5: tconn(0.5, O);  "MR1" at T5.w rjust;
+    line from H5.In2 left_ 0.5; T6: tconn(0.5, O);  "MR2" at T6.w rjust;
+}
+line right_ to (H2.PinR, Here); dot; {line to H2.PinR +(0,-0.15);}
+line right_ to (H3.PinR, Here); dot; {line to H3.PinR +(0,-0.15);}
+line right_ to (H4.PinR, Here); dot; {line to H4.PinR +(0,-0.15);}
+
+
+line from H1.PinCK+(-0.15,0) to (T5.e, H1.PinCK); left_; T7: tconn(0.5, O);  "CKA" at T7.w rjust;
+line from H2.PinCK+(-0.15,0) left_ 0.35 then down 1.75; 
+line to (T5.e, Here);  left_; T8: tconn(0.5, O);  "CKB" at T8.w rjust;
+
+.PE

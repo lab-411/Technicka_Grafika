@@ -1,0 +1,45 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+cct_init
+log_init
+
+define(`IN3', `
+   line left_ 0.25 from $1.In1;
+   line left_ 0.25 from $1.In2;
+   line left_ 0.25 from $1.In3;
+   line right_ 0.25 from $1.Out;
+   move to last line.end + (0.5,0)
+')
+
+define(`IN2', `
+   line left_ 0.25 from $1.In1;
+   line left_ 0.25 from $1.In2;
+   line right_ 0.25 from $1.Out;
+   move to last line.end + (0.5,0)
+')
+
+# Enter your drawing code here
+right_;
+G1: AND_gate(3); IN3(G1);
+G2: NAND_gate(3); IN3(G2);
+G3: OR_gate(2); IN2(G3);
+G4: NOR_gate(3); IN3(G4);
+G5: NXOR_gate(2); IN2(G5);
+move to G2.c  + (-0.5,-1.25)
+G6: NOT_gate(2,,0.8,0.8); 
+move to G4.c  + (-0.5,-1.25)
+G6: BUFFER_gate(2,,0.8,0.8);
+
+.PE

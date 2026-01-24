@@ -20,7 +20,7 @@ define(`conn', `
 	line up_ to (Here.x, $2.y) then to $2;
 ')
 
-Grid(10,3.5);
+#Grid(10,3.5);
 
 G1: AND_gate(2) at (5, 2); "\sf G1" at G1.n above;
 G2: AND_gate(2) at (5, 0.5); "\sf G2" at G2.n above;
