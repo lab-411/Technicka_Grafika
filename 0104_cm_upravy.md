@@ -16,7 +16,7 @@ kernelspec:
     
 # <font color='navy'> Úpravy </font>
 
-Súčasťou `CircuitMacros` sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Môžeme hrubšími čiarami zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis obvodov, popis prvkov alebo upozorniť na konštrukčné detaily.
+Súčasťou `CircuitMacros` sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Hrubšími čiarami môžeme zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis častí obvodov, popisu prvkov alebo upozorniť na konštrukčné detaily.
 
 ## <font color='teal'> Farba  </font>
 
@@ -153,7 +153,7 @@ Zmena veľkosti komponentov pomocou premennej *linewid*.
 
 ## <font color='teal'> Tienenie </font>
 
-Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej *elen_*, ktorá definuje veľkosť prvku, {numref}`cm_0104d`.
+Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej [*elen_*](0100_cm_dvojpoly.md), ktorá  definuje veľkosť dvojpóu, {numref}`cm_0104d`.
 
     right_; 
     resistor(2,,E); llabel(,R_1,); 

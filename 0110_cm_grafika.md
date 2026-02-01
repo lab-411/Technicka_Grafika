@@ -17,7 +17,7 @@ kernelspec:
 Súčasťou zapojení vytváraných v `CircuitMacros` môžu byť aj lineárne a plošné grafické objekty vykreslované pomocou príkazov jazyka *dpic*. Čiara sa využíva na prepájanie prvkov zapojenia, ďaľšie grafické tvary môžeme využiť na doplnenie zapojenia alebo zvýraznenie niektorých častí. Rovnako môžeme pomocou nich vytvárať rôzne blokové zapojenia alebo vývojové diagramy. 
 
 ```{admonition} Poznámka
-Základné grafické objekty (*line*, *spline*, *arc*, *box*, *circle*, *ellipse*, *move*, *arrow*) sú príkazmi jazyka `dpic` a majú preto inú formu zápisu ako makrá definované v `CircuitMacros`, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov ako aj príkazov *dpic* pre kreslenie jednoduchých objektov.
+Základné grafické objekty (*line*, *spline*, *arc*, *box*, *circle*, *ellipse*, *move*, *arrow*) sú príkazmi jazyka `dpic` a majú preto inú formu zápisu ako makrá definované v `CircuitMacros`, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov (prvkov elektronických zapojení - rezistor, capacitor ...) ako aj príkazov *dpic* pre kreslenie jednoduchých objektov (circle, box, line ...).
 ```
 
 Všeobecný formát pre definíciu grafických objektov v *dpic* má tvar

@@ -17,7 +17,7 @@ kernelspec:
 
 ## <font color='teal'>  Odporový delič </font> 
 
-V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:
+V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie, {numref}`cm_200a`:
 
 * používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. 
 * atribúty pre určenie súradníc, napr. *(Here, R2.end)*
@@ -78,7 +78,7 @@ _ = cm_compile('cm_200a', data,  dpi=600)
 
 ## <font color='teal'> Konfigurácia hviezda - trojuholník </font> 
 
-V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie:
+V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie, {numref}`cm_200b`:
 
 * šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov *resistor(from D1 to D2,,E)*
 * použitie premennej `Here` pre lokalizáciu textu nad spojovacím bodom *dot; {"\textit{$A$}" at Here above}*
@@ -181,7 +181,7 @@ _ = cm_compile('cm_200b', data,  dpi=600)
 
 ## <font color='teal'> Jednoduché rádio </font> 
 
-V príklade je použité makro *gnd()* pre vykreslenie alternatívnej značky zeme. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia *with ... at ..*.
+V príklade zapojenia jednoduchého rádia je použité makro *gnd()* pre vykreslenie alternatívnej značky zeme, {numref}`cm_200d`. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia *with ... at ..*.
 
 ```{code-block}
 :emphasize-lines: 2,3,4,5,6,7,8,27
@@ -271,37 +271,40 @@ _ = cm_compile('cm_200d', data,  dpi=600)
 
 ## <font color='teal'> Štvorpól </font> 
 
-V nasledujúcom príklade zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej `Here`, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi `{ ... }`. Po vykonaní kódu bloku je platná pôvodná hodnota `Here`. 
+V nasledujúcom príklade zapojenia štvorpólu je použitá vetva pre vykreslenie zeme, vyznačená červeno, {numref}`cm_200c`. Vo vetve je je automaticky vytvorená lokálna kópia premennej `Here`, ktorá je platná na polohovanie prvkov obvodu v rámci vetvy uzatvorenej medzi `{ ... }`. Po vykonaní kódu bloku je platná pôvodná hodnota `Here`. 
 
 
-    include(lib_base.ckt)
-    include(lib_color.ckt)                               
-    up_;
-    I1: source(2,I); llabel(,i_1,);  
-        line right_ 1; 
-    DA: dot; llabel(,a,); line 1;
+```{code-block}
+:emphasize-lines: 12,13,14
+include(lib_base.ckt)
+include(lib_color.ckt)                               
+up_;
+I1: source(2,I); llabel(,i_1,);  
+    line right_ 1; 
+DA: dot; llabel(,a,); line 1;
 
-        move to I1.start; line  right_ 1 ; 
-    D0: dot; ; 
-        line right_ 1; 
+    move to I1.start; line  right_ 1 ; 
+D0: dot; ; 
+    line right_ 1; 
 
-        color_red;
-        {move to D0; line down_ 0.5; gnd;}
-        color_black;
+    color_red;
+    {move to D0; line down_ 0.5; gnd;}
+    color_black;
 
-        move to (DA + D0)/2 + (1,0); 
-    BX: box ht 3 wid 2.5;
-        move to (BX.e.x, DA.y); line right_ 1; 
-    DB: dot; llabel(,b,);
+    move to (DA + D0)/2 + (1,0); 
+BX: box ht 3 wid 2.5;
+    move to (BX.e.x, DA.y); line right_ 1; 
+DB: dot; llabel(,b,);
 
-        line -> from DB right_ 1; {"$i_2$" above at last line.c}
-        resistor(down_ 2,,E); llabel(,Z,); 
-        line left_ 1; 
-    DG: dot; line to D0;
+    line -> from DB right_ 1; {"$i_2$" above at last line.c}
+    resistor(down_ 2,,E); llabel(,Z,); 
+    line left_ 1; 
+DG: dot; line to D0;
 
-    # popis - sipky
-        line -> from DA + (0, -0.25) to D0+(0,0.25); "$u_1$" ljust at last line.c;
-        line -> from DB + (0, -0.25) to DG+(0,0.25); "$u_2$" ljust at last line.c;
+# popis - sipky
+    line -> from DA + (0, -0.25) to D0+(0,0.25); "$u_1$" ljust at last line.c;
+    line -> from DB + (0, -0.25) to DG+(0,0.25); "$u_2$" ljust at last line.c;
+```
 
 
 ```{code-cell} ipython3 

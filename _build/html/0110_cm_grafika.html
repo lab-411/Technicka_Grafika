@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -375,7 +375,7 @@ document.write(`
 <p>Súčasťou zapojení vytváraných v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> môžu byť aj lineárne a plošné grafické objekty vykreslované pomocou príkazov jazyka <em>dpic</em>. Čiara sa využíva na prepájanie prvkov zapojenia, ďaľšie grafické tvary môžeme využiť na doplnenie zapojenia alebo zvýraznenie niektorých častí. Rovnako môžeme pomocou nich vytvárať rôzne blokové zapojenia alebo vývojové diagramy.</p>
 <div class="admonition-poznamka admonition">
 <p class="admonition-title">Poznámka</p>
-<p>Základné grafické objekty (<em>line</em>, <em>spline</em>, <em>arc</em>, <em>box</em>, <em>circle</em>, <em>ellipse</em>, <em>move</em>, <em>arrow</em>) sú príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a majú preto inú formu zápisu ako makrá definované v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov ako aj príkazov <em>dpic</em> pre kreslenie jednoduchých objektov.</p>
+<p>Základné grafické objekty (<em>line</em>, <em>spline</em>, <em>arc</em>, <em>box</em>, <em>circle</em>, <em>ellipse</em>, <em>move</em>, <em>arrow</em>) sú príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> a majú preto inú formu zápisu ako makrá definované v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov (prvkov elektronických zapojení - rezistor, capacitor …) ako aj príkazov <em>dpic</em> pre kreslenie jednoduchých objektov (circle, box, line …).</p>
 </div>
 <p>Všeobecný formát pre definíciu grafických objektov v <em>dpic</em> má tvar</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[reference:] object [atribútes] [placement] [parameters] [string]

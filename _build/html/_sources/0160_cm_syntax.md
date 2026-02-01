@@ -25,19 +25,21 @@ Programovací jazyk `dpic` historicky vychádza z jazyka [pic](./data/pic.pdf) v
 
 Program je tvorený textovým súborom, ktorý začína znakmi **.PS** a končí znakmi **.PE**. Príkaz na riadku je ukončený bodkočiarkou `;` alebo ukončenim riadku (neviditeľný znak `\n`). Bodkočiarka na ukončenie príkazu nie je povinná, na rozdiel napr. od jazyka `C`, ale  využijeme  ju vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov. 
 
-    .PS                           # zaciatok postupnosti prikazov
-    
-    scale=2.54                    # príkaz nastavenie parametrov velkosti obrazku
-    cct_init                      # príkaz pre inicializaciu kniznice makier 
-                                  #  s analogovými prvkami (rezistor, ...)
+```{code-block}
+:caption: Štruktúra programu
+.PS                           # zaciatok postupnosti prikazov
 
-    line from (1,1) to (2,2)      # príkaz dpic pre vykreslenie čiary
-    resistor                      # makro pre vykreslenie rezistoru
-    rezistor(,,E);                # makro s parametrami
-    resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
+scale=2.54                    # príkaz nastavenie parametrov velkosti obrazku
+cct_init                      # príkaz pre inicializaciu kniznice makier 
+                                #  s analogovými prvkami (rezistor, ...)
 
-    .PE                           # koniec postupnosti prikazov
- 
+line from (1,1) to (2,2)      # príkaz dpic pre vykreslenie čiary
+resistor                      # makro pre vykreslenie rezistoru
+rezistor(,,E);                # makro s parametrami
+resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
+
+.PE                           # koniec postupnosti prikazov
+```
 
 Text za koncom programu je ignorovaný. Ukončenie programu môžeme prakticky využiť pri hľadaní chýb v skripte, kedy pomocou **.PE** vyradíme zbytok programu zo spracovania.
 
@@ -185,9 +187,9 @@ Použitie konštrukcie *between*.
 
 ## <font color='teal'> Objekty </font>
     
-Programovací jazyk *dpic* je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Objektami jazyka *dpic* sú
+Programovací jazyk *dpic* je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Elementárnymi objektami jazyka *dpic* sú
 
-    line, move, arrow, arc, box, ellipse, circle, spline, [], "" 
+    line, move, arrow, arc, box, ellipse, circle, spline, [], "text" 
 
 Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecný forma prístupu k atribútom má tvar
 
@@ -198,7 +200,8 @@ Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text j
 
     str = "Toto je text"          # chyba   
     line = line from A to B;      # chyba
-    T1: "Toto je text" at (1,1);  # ok, stred textu je v bode (1,1)
+    
+    T1: "Toto je text" at (1,1);  # stred textu je v bode (1,1)
     L1: line from A to B;         # objekt s atribútmi .start, .end, .center
     
 
@@ -553,6 +556,51 @@ _ = cm_compile('cm_0160b', data, dpi=600)
 
 ### <font color='brown'> Vetvenie  </font>
 
-Formát vetvenia 
+Formát príkazu pre vetvenie 
 
     if expression then { if-true } else { if-false }
+    
+V nasledujúcom príklade je premennou *type* parametrizvané vykreslenie sériového alebo paralelného zapojenia rezistorov.
+
+    type=1;
+    if type==1 then{
+        line 1; dot;
+        parallel_(`R1:resistor; llabel(,R1,);',`R2:resistor; llabel(,R2,);')
+        dot; line 1;
+    }else{
+        line 0.5;
+        series_(`R1:resistor; llabel(,R1,);',`R2:resistor; llabel(,R2,);')
+        line 0.5;
+    }
+
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+type=1;
+if type==1 then{
+    line 1; dot;
+    parallel_(`R1:resistor; llabel(,R1,);',`R2:resistor; llabel(,R2,);')
+    dot; line 1;
+}else{
+  line 0.5;
+  series_(`R1:resistor; llabel(,R1,);',`R2:resistor; llabel(,R2,);')
+  line 0.5;
+}
+'''
+
+_ = cm_compile('cm_0160k', data, dpi=600)   
+```
+
+
+```{figure} ./src/cm_0160k.png
+:width: 250px
+:name: cm_0160k
+
+[Príklad](./src/cm_0160k.ckt) použitia vetvenia pre parametrizáciu vykresleného obvodu.
+```
+    
+

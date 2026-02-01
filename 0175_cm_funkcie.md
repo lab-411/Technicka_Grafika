@@ -13,7 +13,12 @@ kernelspec:
 ---
 # <font color='navy'> Funkcie  </font>
 
-Programovací jazyk `dpic` neumožňuje vytváranie nových uživateľskýchfunkcií, sú v ňom ale definované základné matematické funkcie. Argumenty trigonometrických funkcií sú v radiánoch. 
+Programovací jazyk `dpic` neumožňuje vytváranie nových uživateľskýchfunkcií, sú v ňom ale definované základné matematické funkcie. 
+
+
+## <font color='teal'> Trigonometrické funkcie </font>
+
+Argumenty trigonometrických funkcií sú v radiánoch. 
 
     sin(<expr>)
     cos(<expr>)
@@ -21,11 +26,15 @@ Programovací jazyk `dpic` neumožňuje vytváranie nových uživateľskýchfunk
     asin(<expr>)
     atan2(<expr>, <expr>)
     tan(<expr>)
-    
+
+## <font color='teal'> Logaritmické a exponenciálne funcie </font>
+ 
     exp(<expr>)
     log(<expr>)
     expe(<expr>)
     loge(<expr>)
+
+## <font color='teal'> Numerické funkcie </font>
     
     sqrt(<expr>)
     max(<expr>, <expr>...)
@@ -36,6 +45,9 @@ Programovací jazyk `dpic` neumožňuje vytváranie nových uživateľskýchfunk
     floor(<expr>)
     sign(<expr>)
     pmod(<expr>)
+
+    
+## <font color='teal'> Príklady </font>
 
 Nasledujúce príklady ukazujú použitie funkcií pri vykreslovaní jednoduchej grafiky.
 

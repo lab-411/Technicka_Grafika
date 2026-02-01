@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -395,19 +395,22 @@ document.write(`
 <section id="program">
 <h2><font color='teal'> Program </font><a class="headerlink" href="#program" title="Link to this heading">#</a></h2>
 <p>Program je tvorený textovým súborom, ktorý začína znakmi <strong>.PS</strong> a končí znakmi <strong>.PE</strong>. Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo ukončenim riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarka na ukončenie príkazu nie je povinná, na rozdiel napr. od jazyka <code class="docutils literal notranslate"><span class="pre">C</span></code>, ale  využijeme  ju vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.PS                           # zaciatok postupnosti prikazov
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 3 : </span><span class="caption-text">Štruktúra programu</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>                           <span class="c1"># zaciatok postupnosti prikazov</span>
 
-scale=2.54                    # príkaz nastavenie parametrov velkosti obrazku
-cct_init                      # príkaz pre inicializaciu kniznice makier 
-                              #  s analogovými prvkami (rezistor, ...)
+<span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>                    <span class="c1"># príkaz nastavenie parametrov velkosti obrazku</span>
+<span class="n">cct_init</span>                      <span class="c1"># príkaz pre inicializaciu kniznice makier </span>
+                                <span class="c1">#  s analogovými prvkami (rezistor, ...)</span>
 
-line from (1,1) to (2,2)      # príkaz dpic pre vykreslenie čiary
-resistor                      # makro pre vykreslenie rezistoru
-rezistor(,,E);                # makro s parametrami
-resistor(2,,E); rlabel(,R1,); # niekolko príkazov v jednom riadku
+<span class="n">line</span> <span class="kn">from</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># príkaz dpic pre vykreslenie čiary</span>
+<span class="n">resistor</span>                      <span class="c1"># makro pre vykreslenie rezistoru</span>
+<span class="n">rezistor</span><span class="p">(,,</span><span class="n">E</span><span class="p">);</span>                <span class="c1"># makro s parametrami</span>
+<span class="n">resistor</span><span class="p">(</span><span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R1</span><span class="p">,);</span> <span class="c1"># niekolko príkazov v jednom riadku</span>
 
-.PE                           # koniec postupnosti prikazov
+<span class="o">.</span><span class="n">PE</span>                           <span class="c1"># koniec postupnosti prikazov</span>
 </pre></div>
+</div>
 </div>
 <p>Text za koncom programu je ignorovaný. Ukončenie programu môžeme prakticky využiť pri hľadaní chýb v skripte, kedy pomocou <strong>.PE</strong> vyradíme zbytok programu zo spracovania.</p>
 <section id="komentare">
@@ -529,8 +532,8 @@ Q2: P1/k
 </section>
 <section id="objekty">
 <h2><font color='teal'> Objekty </font><a class="headerlink" href="#objekty" title="Link to this heading">#</a></h2>
-<p>Programovací jazyk <em>dpic</em> je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Objektami jazyka <em>dpic</em> sú</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line, move, arrow, arc, box, ellipse, circle, spline, [], &quot;&quot; 
+<p>Programovací jazyk <em>dpic</em> je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Elementárnymi objektami jazyka <em>dpic</em> sú</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line, move, arrow, arc, box, ellipse, circle, spline, [], &quot;text&quot; 
 </pre></div>
 </div>
 <p>Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecný forma prístupu k atribútom má tvar</p>
@@ -540,7 +543,8 @@ Q2: P1/k
 <p>Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty <strong>nemôžu</strong> byť použitý ako hodnoty premennej.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str = &quot;Toto je text&quot;          # chyba   
 line = line from A to B;      # chyba
-T1: &quot;Toto je text&quot; at (1,1);  # ok, stred textu je v bode (1,1)
+
+T1: &quot;Toto je text&quot; at (1,1);  # stred textu je v bode (1,1)
 L1: line from A to B;         # objekt s atribútmi .start, .end, .center
 </pre></div>
 </div>
@@ -702,10 +706,30 @@ for q=0 to 2*pi by 0.1 do{
 </section>
 <section id="vetvenie">
 <h3><font color='brown'> Vetvenie  </font><a class="headerlink" href="#vetvenie" title="Link to this heading">#</a></h3>
-<p>Formát vetvenia</p>
+<p>Formát príkazu pre vetvenie</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if expression then { if-true } else { if-false }
 </pre></div>
 </div>
+<p>V nasledujúcom príklade je premennou <em>type</em> parametrizvané vykreslenie sériového alebo paralelného zapojenia rezistorov.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>type=1;
+if type==1 then{
+    line 1; dot;
+    parallel_(`R1:resistor; llabel(,R1,);&#39;,`R2:resistor; llabel(,R2,);&#39;)
+    dot; line 1;
+}else{
+    line 0.5;
+    series_(`R1:resistor; llabel(,R1,);&#39;,`R2:resistor; llabel(,R2,);&#39;)
+    line 0.5;
+}
+</pre></div>
+</div>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/cm_0160k.png"><img alt="_images/cm_0160k.png" src="_images/cm_0160k.png" style="width: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f8a616367f9630837d0d0a1317887905/cm_0160k.ckt"><span class="xref download myst">Príklad</span></a> použitia vetvenia pre parametrizáciu vykresleného obvodu.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>

@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -366,7 +366,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="upravy">
 <h1><font color='navy'> Úpravy </font><a class="headerlink" href="#upravy" title="Link to this heading">#</a></h1>
-<p>Súčasťou <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Môžeme hrubšími čiarami zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis obvodov, popis prvkov alebo upozorniť na konštrukčné detaily.</p>
+<p>Súčasťou <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Hrubšími čiarami môžeme zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis častí obvodov, popisu prvkov alebo upozorniť na konštrukčné detaily.</p>
 <section id="farba">
 <h2><font color='teal'> Farba  </font><a class="headerlink" href="#farba" title="Link to this heading">#</a></h2>
 <p>Pre zmenu farby kreslenie je definované makro <em>setrgb(r, g, b)</em>, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby <em>color_<meno farby></em> zo súboru <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a>. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra <em>color_reset</em>, <a class="reference internal" href="#cm-0104a"><span class="std std-numref">Obr. 52</span></a>.</p>
@@ -438,7 +438,7 @@ R2:[ linewid = linewid*1.5;      # lokálna zmena velkosti v bloku
 </section>
 <section id="tienenie">
 <h2><font color='teal'> Tienenie </font><a class="headerlink" href="#tienenie" title="Link to this heading">#</a></h2>
-<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <em>elen_</em>, ktorá definuje veľkosť prvku, <a class="reference internal" href="#cm-0104d"><span class="std std-numref">Obr. 55</span></a>.</p>
+<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <a class="reference internal" href="0100_cm_dvojpoly.html"><span class="std std-doc"><em>elen_</em></span></a>, ktorá  definuje veľkosť dvojpóu, <a class="reference internal" href="#cm-0104d"><span class="std std-numref">Obr. 55</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>right_; 
 resistor(2,,E); llabel(,R_1,); 
 

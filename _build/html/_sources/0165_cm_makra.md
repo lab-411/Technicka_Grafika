@@ -133,7 +133,7 @@ Makrá sa definujú podľa syntaxe makroprocesora **m4**. Všeobecný tvar makra
 
     define (name, [expansion])
     
-Reťazec *name* je nahradený reťazcom *expansion*, typ úvodzoviek v makre je dôležitý. Príklad vytvorenia makra a jeho použitia
+Reťazec *name* je nahradený reťazcom *expansion*, typ úvodzoviek v makre je dôležitý. Príklad vytvorenia makra a jeho použitia je na obrázku {numref}`pck_03`
 
     define(`foo', `Hello world.')
 
@@ -233,7 +233,7 @@ Pre ilustráciu je zobrazený vonkajší box, ktorý umožňuje ukladanie kompon
             );
     ]')
 
-Vytvorené makro požívame ako akýkoľvek iný príkaz pre kreslenie prvkov zapojenia. Príklad použitia implmentovaného spínača je v nasledujúcom kóde, pre názornosť je ponechané zobrazenie vonkajšieho obrysu prvku. 
+Vytvorené makro požívame ako akýkoľvek iný príkaz pre kreslenie prvkov zapojenia. Príklad použitia implmentovaného spínača je v nasledujúcom kóde, pre názornosť je ponechané zobrazenie vonkajšieho obrysu prvku, {numref}`cm_0165c`. 
 
     move to (0.5, 2); right_; 
     swh(1, OFF);
@@ -315,7 +315,7 @@ Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb.
 
 ## <font color='teal'> Modifikácia makra </font>
 
-V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra.
+V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra, {numref}`cm_0165d`
 
     define(`res_025w', `[
         R: resistor($1,$2,$3);

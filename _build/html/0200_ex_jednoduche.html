@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -369,7 +369,7 @@ document.write(`
 <h1><font color='navy'> RLC obvody  </font><a class="headerlink" href="#rlc-obvody" title="Link to this heading">#</a></h1>
 <section id="odporovy-delic">
 <h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
-<p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie:</p>
+<p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200a"><span class="std std-numref">Obr. 72</span></a>:</p>
 <ul>
 <li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy.</p></li>
 <li><p>atribúty pre určenie súradníc, napr. <em>(Here, R2.end)</em></p></li>
@@ -399,13 +399,13 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_200a.png"><img alt="_images/cm_200a.png" src="_images/cm_200a.png" style="width: 230px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 71 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/5d46890f221a5f00cdfc4f4d75cc6487/cm_200a.ckt"><span class="xref download myst">Príklad</span></a> zapojenia s popísaním veličín v obvode.</span><a class="headerlink" href="#cm-200a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 72 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/5d46890f221a5f00cdfc4f4d75cc6487/cm_200a.ckt"><span class="xref download myst">Príklad</span></a> zapojenia s popísaním veličín v obvode.</span><a class="headerlink" href="#cm-200a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="konfiguracia-hviezda-trojuholnik">
 <h2><font color='teal'> Konfigurácia hviezda - trojuholník </font><a class="headerlink" href="#konfiguracia-hviezda-trojuholnik" title="Link to this heading">#</a></h2>
-<p>V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie:</p>
+<p>V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200b"><span class="std std-numref">Obr. 73</span></a>:</p>
 <ul>
 <li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em></p></li>
 <li><p>použitie premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em></p>
@@ -452,13 +452,13 @@ line &lt;-&gt; from (3.5, 2) to (5,2)
 <a class="reference internal image-reference" href="_images/cm_200b.png"><img alt="_images/cm_200b.png" src="_images/cm_200b.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 72 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/954042c4179924d6c5f3018aa5e08765/cm_200b.ckt"><span class="xref download myst">Zapojenie</span></a> konfigurácie hviezda-trojuholník.</span><a class="headerlink" href="#cm-200b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 73 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/954042c4179924d6c5f3018aa5e08765/cm_200b.ckt"><span class="xref download myst">Zapojenie</span></a> konfigurácie hviezda-trojuholník.</span><a class="headerlink" href="#cm-200b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="jednoduche-radio">
 <h2><font color='teal'> Jednoduché rádio </font><a class="headerlink" href="#jednoduche-radio" title="Link to this heading">#</a></h2>
-<p>V príklade je použité makro <em>gnd()</em> pre vykreslenie alternatívnej značky zeme. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia <em>with … at ..</em>.</p>
+<p>V príklade zapojenia jednoduchého rádia je použité makro <em>gnd()</em> pre vykreslenie alternatívnej značky zeme, <a class="reference internal" href="#cm-200d"><span class="std std-numref">Obr. 74</span></a>. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia <em>with … at ..</em>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># makro pre vykreslenie &#39;europskej&#39; zeme
 <span class="hll">define(`gnd&#39;,`[
 </span><span class="hll">    ifelse(defn(`d&#39;),  $1, d=1/4,  d=$1)
@@ -496,48 +496,48 @@ LL: line right_ 0.25 then down_ 0.5;
 <a class="reference internal image-reference" href="_images/cm_200d.png"><img alt="_images/cm_200d.png" src="_images/cm_200d.png" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 73 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/8f615dae0ff1098771ad6db38764c92e/cm_200d.ckt"><span class="xref download myst">Zapojenie</span></a> jednoduchého rádia.</span><a class="headerlink" href="#cm-200d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 74 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/8f615dae0ff1098771ad6db38764c92e/cm_200d.ckt"><span class="xref download myst">Zapojenie</span></a> jednoduchého rádia.</span><a class="headerlink" href="#cm-200d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="stvorpol">
 <h2><font color='teal'> Štvorpól </font><a class="headerlink" href="#stvorpol" title="Link to this heading">#</a></h2>
-<p>V nasledujúcom príklade zapojenia štvorpólu je použitý blok pre vykreslenie zeme, vyznačený červeno. V bloku sú je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci bloku uzatvorenom medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_base.ckt)
-include(lib_color.ckt)                               
-up_;
-I1: source(2,I); llabel(,i_1,);  
-    line right_ 1; 
-DA: dot; llabel(,a,); line 1;
+<p>V nasledujúcom príklade zapojenia štvorpólu je použitá vetva pre vykreslenie zeme, vyznačená červeno, <a class="reference internal" href="#cm-200c"><span class="std std-numref">Obr. 75</span></a>. Vo vetve je je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci vetvy uzatvorenej medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_color</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>                               
+<span class="n">up_</span><span class="p">;</span>
+<span class="n">I1</span><span class="p">:</span> <span class="n">source</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">I</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">i_1</span><span class="p">,);</span>  
+    <span class="n">line</span> <span class="n">right_</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="n">DA</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">a</span><span class="p">,);</span> <span class="n">line</span> <span class="mi">1</span><span class="p">;</span>
 
-    move to I1.start; line  right_ 1 ; 
-D0: dot; ; 
-    line right_ 1; 
+    <span class="n">move</span> <span class="n">to</span> <span class="n">I1</span><span class="o">.</span><span class="n">start</span><span class="p">;</span> <span class="n">line</span>  <span class="n">right_</span> <span class="mi">1</span> <span class="p">;</span> 
+<span class="n">D0</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> <span class="p">;</span> 
+    <span class="n">line</span> <span class="n">right_</span> <span class="mi">1</span><span class="p">;</span> 
 
-    color_red;
-    {move to D0; line down_ 0.5; gnd;}
-    color_black;
+<span class="hll">    <span class="n">color_red</span><span class="p">;</span>
+</span><span class="hll">    <span class="p">{</span><span class="n">move</span> <span class="n">to</span> <span class="n">D0</span><span class="p">;</span> <span class="n">line</span> <span class="n">down_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">gnd</span><span class="p">;}</span>
+</span><span class="hll">    <span class="n">color_black</span><span class="p">;</span>
+</span>
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="n">DA</span> <span class="o">+</span> <span class="n">D0</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span> 
+<span class="n">BX</span><span class="p">:</span> <span class="n">box</span> <span class="n">ht</span> <span class="mi">3</span> <span class="n">wid</span> <span class="mf">2.5</span><span class="p">;</span>
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="n">BX</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">DA</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="n">line</span> <span class="n">right_</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="n">DB</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">b</span><span class="p">,);</span>
 
-    move to (DA + D0)/2 + (1,0); 
-BX: box ht 3 wid 2.5;
-    move to (BX.e.x, DA.y); line right_ 1; 
-DB: dot; llabel(,b,);
+    <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="nn">DB</span> <span class="n">right_</span> <span class="mi">1</span><span class="p">;</span> <span class="p">{</span><span class="s2">&quot;$i_2$&quot;</span> <span class="n">above</span> <span class="n">at</span> <span class="n">last</span> <span class="n">line</span><span class="o">.</span><span class="n">c</span><span class="p">}</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">Z</span><span class="p">,);</span> 
+    <span class="n">line</span> <span class="n">left_</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="n">DG</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> <span class="n">line</span> <span class="n">to</span> <span class="n">D0</span><span class="p">;</span>
 
-    line -&gt; from DB right_ 1; {&quot;$i_2$&quot; above at last line.c}
-    resistor(down_ 2,,E); llabel(,Z,); 
-    line left_ 1; 
-DG: dot; line to D0;
-
-# popis - sipky
-    line -&gt; from DA + (0, -0.25) to D0+(0,0.25); &quot;$u_1$&quot; ljust at last line.c;
-    line -&gt; from DB + (0, -0.25) to DG+(0,0.25); &quot;$u_2$&quot; ljust at last line.c;
+<span class="c1"># popis - sipky</span>
+    <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="nn">DA</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">)</span> <span class="n">to</span> <span class="n">D0</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">);</span> <span class="s2">&quot;$u_1$&quot;</span> <span class="n">ljust</span> <span class="n">at</span> <span class="n">last</span> <span class="n">line</span><span class="o">.</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="nn">DB</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">)</span> <span class="n">to</span> <span class="n">DG</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">);</span> <span class="s2">&quot;$u_2$&quot;</span> <span class="n">ljust</span> <span class="n">at</span> <span class="n">last</span> <span class="n">line</span><span class="o">.</span><span class="n">c</span><span class="p">;</span>
 </pre></div>
 </div>
 <figure class="align-default" id="cm-200c">
 <a class="reference internal image-reference" href="_images/cm_200c.png"><img alt="_images/cm_200c.png" src="_images/cm_200c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 74 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c13954f24addc0a8acf127c8d85e0837/cm_200c.ckt"><span class="xref download myst">Zapojenie</span></a> štvorpólu.</span><a class="headerlink" href="#cm-200c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 75 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c13954f24addc0a8acf127c8d85e0837/cm_200c.ckt"><span class="xref download myst">Zapojenie</span></a> štvorpólu.</span><a class="headerlink" href="#cm-200c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -325,7 +325,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -341,6 +343,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometricke-funkcie"><font color="teal"> Trigonometrické funkcie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logaritmicke-a-exponencialne-funcie"><font color="teal"> Logaritmické a exponenciálne funcie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numericke-funkcie"><font color="teal"> Numerické funkcie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklady"><font color="teal"> Príklady </font></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -352,20 +365,31 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="funkcie">
 <h1><font color='navy'> Funkcie  </font><a class="headerlink" href="#funkcie" title="Link to this heading">#</a></h1>
-<p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> neumožňuje vytváranie nových uživateľskýchfunkcií, sú v ňom ale definované základné matematické funkcie. Argumenty trigonometrických funkcií sú v radiánoch.</p>
+<p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> neumožňuje vytváranie nových uživateľskýchfunkcií, sú v ňom ale definované základné matematické funkcie.</p>
+<section id="trigonometricke-funkcie">
+<h2><font color='teal'> Trigonometrické funkcie </font><a class="headerlink" href="#trigonometricke-funkcie" title="Link to this heading">#</a></h2>
+<p>Argumenty trigonometrických funkcií sú v radiánoch.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sin(&lt;expr&gt;)
 cos(&lt;expr&gt;)
 acos(&lt;expr&gt;)
 asin(&lt;expr&gt;)
 atan2(&lt;expr&gt;, &lt;expr&gt;)
 tan(&lt;expr&gt;)
-
-exp(&lt;expr&gt;)
+</pre></div>
+</div>
+</section>
+<section id="logaritmicke-a-exponencialne-funcie">
+<h2><font color='teal'> Logaritmické a exponenciálne funcie </font><a class="headerlink" href="#logaritmicke-a-exponencialne-funcie" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>exp(&lt;expr&gt;)
 log(&lt;expr&gt;)
 expe(&lt;expr&gt;)
 loge(&lt;expr&gt;)
-
-sqrt(&lt;expr&gt;)
+</pre></div>
+</div>
+</section>
+<section id="numericke-funkcie">
+<h2><font color='teal'> Numerické funkcie </font><a class="headerlink" href="#numericke-funkcie" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sqrt(&lt;expr&gt;)
 max(&lt;expr&gt;, &lt;expr&gt;...)
 min(&lt;expr&gt;, &lt;expr&gt;...)
 int(&lt;expr&gt;)
@@ -376,6 +400,9 @@ sign(&lt;expr&gt;)
 pmod(&lt;expr&gt;)
 </pre></div>
 </div>
+</section>
+<section id="priklady">
+<h2><font color='teal'> Príklady </font><a class="headerlink" href="#priklady" title="Link to this heading">#</a></h2>
 <p>Nasledujúce príklady ukazujú použitie funkcií pri vykreslovaní jednoduchej grafiky.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Grid(3,3);
     right_;
@@ -392,7 +419,7 @@ D1: dot;
 <a class="reference internal image-reference" href="_images/cm_0175a.png"><img alt="_images/cm_0175a.png" src="_images/cm_0175a.png" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 68 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/7de5877c1f49d5b9849a2d941ecf0038/cm_0175a.ckt"><span class="xref download myst">Zobrazenie</span></a> sprievodiča a bodu na kružnici.</span><a class="headerlink" href="#cm-0175a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 69 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/7de5877c1f49d5b9849a2d941ecf0038/cm_0175a.ckt"><span class="xref download myst">Zobrazenie</span></a> sprievodiča a bodu na kružnici.</span><a class="headerlink" href="#cm-0175a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PP:(0,0)
@@ -413,9 +440,10 @@ for x=0 to 3.14*2 by (3.14/100) do {
 <a class="reference internal image-reference" href="_images/cm_0175b.png"><img alt="_images/cm_0175b.png" src="_images/cm_0175b.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 69 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/609dfbb5a81604ea0d513f0ede33f34e/cm_0175b.ckt"><span class="xref download myst">Vykreslenie</span></a> jednoduchej grafiky</span><a class="headerlink" href="#cm-0175b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 70 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/609dfbb5a81604ea0d513f0ede33f34e/cm_0175b.ckt"><span class="xref download myst">Vykreslenie</span></a> jednoduchej grafiky</span><a class="headerlink" href="#cm-0175b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 </section>
 
 
@@ -453,6 +481,24 @@ for x=0 to 3.14*2 by (3.14/100) do {
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometricke-funkcie"><font color="teal"> Trigonometrické funkcie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logaritmicke-a-exponencialne-funcie"><font color="teal"> Logaritmické a exponenciálne funcie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numericke-funkcie"><font color="teal"> Numerické funkcie </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklady"><font color="teal"> Príklady </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
