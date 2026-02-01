@@ -12,7 +12,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB-411 Production </b> </font>      </h3>
-<h3> <font color='brown'>  <b> Verzia 0.40 / Jan. 2026 </b> </font>                   </h3>
+<h3> <font color='brown'>  <b> Verzia 0.45 / Jan. 2026 </b> </font>                   </h3>
 </center> 
 
 ----------------
@@ -75,24 +75,49 @@
 0910_priloha_odkazy.md
 ```
 
-## <font color='teal'> Anotácia </font>   
+## <font color='teal'> Anotácia / Annotation </font>   
 
 
-## <font color='teal'> Vydavateľstvo </font> 
+## <font color='teal'> Vydal / Published by </font> 
 
-Vydalo vydavateľstvo *LAB-411 Production, FŠT-TNUNI, Ku kyselke, 91106 Trenčín, Slovensko* v roku 2026.
+    Vydalo roku 2026 
 
-**ISBN: xxx-xx-xxxxxx-x**
+    LAB-411 Production
+    FŠT-TNUNI
+    Ku kyselke
+    91106 Trenčín
+    Slovensko
 
-Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programovacieho jazyka *Python*. Zdrojové kódy sú dostupné na 
+    ISBN: xxx-xx-xxxxxx-x
+    
+
+### <font color='brown'> Citovanie / How to cite</font>
+
+    ZENODO Record
+    
+### <font color='brown'> Preklady / Translations </font>
+
+Preklady do iných jazykov sú možné v zmysle licencie MIT uvedenej nižšie. V zmysle nariadenia Európskeho parlamentu a Rady (EÚ) 2024/1689 z 13. júna 2024 autori tohoto diela **nepovolujú** využitie tohoto diela a ani jeho častí pre použitie v oblasti umelej inteligenice žiadnym aktuálnym ako aj budúcim spôsobom. 
+
+Translations into other languages ​​are possible under the terms of the MIT license listed below. In accordance with Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024, the authors of this work **do not** authorize the use of this work or any part of it for use in the field of artificial intelligence in any current or future manner.
+
+    
+### <font color='brown'> Zdrojové kódy / Source code </font>
+
+Zdrojové kódy sú dostupné na / Source codes are available at
 
     https://github.com/lab-411/Technicka_Grafika
 
+Publikované na platforme *Sphinx* s využitím jazyka *MyST Markdown*, prostredia *CircuitMacros* a programovacieho jazyka *Python* v znení licencií uvedených nižšie.
+
+Published on the *Sphinx* platform using the *MyST Markdown* language, the *CircuitMacros* environment, and the *Python* programming language under the terms of the licenses listed below.
+
+
+### <font color='brown'> Titulný obrázok / Cover Image </font>
 
 Titulný obrázok je vygenerovaný na základe podkladov uvedených ako príklad použitia v distribúcii programu *Circuit Macros*
 
-## <font color='teal'> Citovanie </font>
-
+The cover image is generated based on the materials provided as an example of use in the distribution of the *Circuit Macros* program.
 
 ## <font color='teal'>  Licencie </font>  
 
@@ -164,6 +189,7 @@ Citácia **MyST Markdown**
     Cristian Le, Jim Madge, Thierry Parmentelat, wwx, Sugan Reden, Yuanhao Geng, Ryan Lovett, 
     Mikkel Roald-Arbøl,Nicolas M. Thiéry. 
     (2025). jupyter-book/mystmd: mystmd@1.6.0. Zenodo. 10.5281/ZENODO.14805610
+
 
 
 
