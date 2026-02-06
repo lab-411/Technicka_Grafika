@@ -14,7 +14,7 @@ kernelspec:
 
 # <span style="color:navy"> Multipóly </span>
 
-Zložitejšie elektronické prvky, {numref}`cm_0102a`, majú zvyčajne viacej ako pripojovovacie dva uzly. V teórii systémov je často používaný štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov. 
+Zložitejšie elektronické prvky, {numref}`cm_0102a`, majú zvyčajne viacej ako dva pripojovovacie uzly. V teórii systémov je často používaný pojem štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov. 
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -63,7 +63,7 @@ _ = cm_compile('cm_0102a', data,  dpi=600)
 ```
 
 
-Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar
+Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar:
 
     transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
     
@@ -88,24 +88,24 @@ Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar
  
 ## <font color='teal'> Umiestňovanie multipólov </font>
 
-Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi, {numref}`cm_0102c`.
+Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi:
 
-1. Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e
+1. Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e:
 
         move to pos; 
         object( dir length, ... );
 
-2. Umiestnením zvoleného terminálu multipólu do určenej polohy 
+2. Umiestnením zvoleného terminálu multipólu do určenej polohy:
 
         object( ...) with .attribute at pos;
 
-3. Rovnako ako v prípade dvojpólov môžeme pomocou makier definovať smer ukladania objektov. V prípade multipólov zmena smeru ukladania nie je univerzálna a závisí od implementácie makra objektu.
+3. Rovnako ako v prípade dvojpólov môžeme pomocou makier definovať smer ukladania objektov. V prípade multipólov zmena smeru ukladania nie je univerzálna a závisí od implementácie makra objektu:
 
         Point_(degrees); object;
         point_(radians); object;
         rpoint_(rel linespec); object
         
-Príklad použitia:
+Príklad použitia, {numref}`cm_0102c`:
     
 ```{code-block}
     right_; move to (1,1.); 

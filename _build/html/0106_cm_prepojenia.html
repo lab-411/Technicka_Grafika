@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -352,7 +352,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="prepojenia">
 <h1><font color='navy'> Prepojenia </font><a class="headerlink" href="#prepojenia" title="Link to this heading">#</a></h1>
-<p>V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu <em>line</em>, parametre a možnosti kreslenia štandardných prepojovacích vodičov sú popísané v kapitole <a class="reference internal" href="0110_cm_grafika.html"><span class="std std-doc">Grafika</span></a>. Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. V minulosti sa pri prepojeniach kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na obrázku <a class="reference internal" href="#cm-0106a"><span class="std std-numref">Obr. 30</span></a>, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, táto je zobrazená hrubou čiarou.</p>
+<p>V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu <em>line</em>. Parametre a možnosti kreslenia štandardných prepojovacích vodičov sú popísané v kapitole <a class="reference internal" href="0110_cm_grafika.html"><span class="std std-doc">Grafika</span></a>. Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. V minulosti sa pri prepojeniach kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na obrázku <a class="reference internal" href="#cm-0106a"><span class="std std-numref">Obr. 30</span></a>, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, táto je zobrazená hrubou čiarou.</p>
 <figure class="align-default" id="cm-0106a">
 <a class="reference internal image-reference" href="_images/radio_r731.jpg"><img alt="_images/radio_r731.jpg" src="_images/radio_r731.jpg" style="width: 600px;" />
 </a>
@@ -360,7 +360,7 @@ document.write(`
 <p><span class="caption-number">Obr. 30 </span><span class="caption-text">Zapojenie elektrónkového rádia, <a class="reference external" href="https://archive.org/details/ABC_Radiocostruzioni_R731_R841">zdroj</a>.</span><a class="headerlink" href="#cm-0106a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pre kreslenie takejto formy zapojenia môžeme využť makro <em>crossover()</em></p>
+<p>Pre kreslenie takejto formy zapojenia môžeme využť makro <em>crossover()</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>crossover(linespec, [L|R][:line_attributes], Linename1, Linename2, . . .)
 
 parametre:
@@ -372,7 +372,7 @@ parametre:
     Linename2
 </pre></div>
 </div>
-<p>Pre nakreslenie hrubšieho zemného vodiča a pripojovacích bodov si vytvoríme vlastné makrá <em>gnd_line()</em> a <em>gnd_dot()</em>, použitie makier zobrazuje nasledujúci príklad <a class="reference internal" href="0102_cm_mnohopoly.html#cm-0102b"><span class="std std-numref">Obr. 29</span></a>.</p>
+<p>Pre nakreslenie hrubšieho zemného vodiča a pripojovacích bodov si vytvoríme vlastné makrá <em>gnd_line()</em> a <em>gnd_dot()</em>. Použitie makier zobrazuje nasledujúci príklad <a class="reference internal" href="#cm-0106b"><span class="std std-numref">Obr. 31</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>define(`gnd_line&#39;,`[ move to ($1,0); linethick_(5);
     L: line to Here + ($1,0); linethick_(); ]&#39;)
 
@@ -404,7 +404,7 @@ TR:  transformer(up_ 1.5,R,4,W,4) with .P1 at CR.n; line from TR.S2 to (TR.S1, T
 <p><span class="caption-number">Obr. 31 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/4c3a926ff850e9858a25244bf5aef051/cm_0106b.ckt"><span class="xref download myst">Vykreslenie</span></a> časti zapojenia so starším prevedením križovania vodičov.</span><a class="headerlink" href="#cm-0106b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pre vykreslenie štandarného vodivého spojenie vodičov použijeme makro <em>dot()</em>. Pokiaľ nie je križovanie vodičov nijako označené, predpokladáme že sú nespojené. Parametrami makra môžeme upraviť veľkost spoja, makro bez parametrov vykreslí bod spojenia v preddefinovanom tvare, <a class="reference internal" href="#cm-0106c"><span class="std std-numref">Obr. 32</span></a>.</p>
+<p>Pre vykreslenie štandarného vodivého spojenie vodičov použijeme makro <em>dot()</em>. Pokiaľ nie je križovanie vodičov nijako označené, predpokladáme, že sú nespojené. Parametrami makra <em>dot()</em> môžeme upraviť veľkost spoja, makro bez parametrov vykreslí bod spojenia v preddefinovanom tvare, <a class="reference internal" href="#cm-0106c"><span class="std std-numref">Obr. 32</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dot(at location,radius|keys,fill)
 
 parametre:
@@ -475,7 +475,7 @@ parametre:
   <div class="footer-item">
     
 <p class="component-author">
-By pf
+By Lenka Bartošová, Peter Fabo, Michal Kuba
 </p>
 
   </div>
@@ -485,7 +485,7 @@ By pf
 
   <p class="copyright">
     
-      © Copyright 2025, pf.
+      © Copyright 2026, LAB - 411.
       <br/>
     
   </p>

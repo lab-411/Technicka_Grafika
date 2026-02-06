@@ -24,6 +24,6 @@ T: "$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$" at (5, 0.5);
        \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$" at (5,3);   
 
 color_red;
-sprintf("Formatovany text $x=%2.3f$ \,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
+sprintf("Formátovany text $x=%2.3f$ \,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
 
 .PE

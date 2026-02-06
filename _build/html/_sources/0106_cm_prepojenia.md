@@ -16,7 +16,7 @@ kernelspec:
     
 # <font color='navy'> Prepojenia </font>
 
-V `CircuitMacros` sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu *line*, parametre a možnosti kreslenia štandardných prepojovacích vodičov sú popísané v kapitole [Grafika](./0110_cm_grafika.md). Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. V minulosti sa pri prepojeniach kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na obrázku {numref}`cm_0106a`, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, táto je zobrazená hrubou čiarou.  
+V `CircuitMacros` sú prepojenia medzi prvkami zapojenia zobrazené pomocou príkazu *line*. Parametre a možnosti kreslenia štandardných prepojovacích vodičov sú popísané v kapitole [Grafika](./0110_cm_grafika.md). Tvar a forma zobrazenia prepojení medzi prvkami sa v čase s vývojom techniky menila. V minulosti sa pri prepojeniach kládol dôraz aj na formu zobrazenia ich fyzickej realizácie, ako vidíme na obrázku {numref}`cm_0106a`, kde je znázornené križovanie neprepojených vodičov oblúkom a zvýraznená spoločná zem, ktorá bývala realizovaná masívnym kovovým rámom zariadenia, táto je zobrazená hrubou čiarou.  
 
 ```{figure} ./img/radio_r731.jpg
 :width: 600px
@@ -24,7 +24,7 @@ V `CircuitMacros` sú prepojenia medzi prvkami zapojenia zobrazené pomocou prí
 
 Zapojenie elektrónkového rádia, [zdroj](https://archive.org/details/ABC_Radiocostruzioni_R731_R841).
 ```
-Pre kreslenie takejto formy zapojenia môžeme využť makro *crossover()*
+Pre kreslenie takejto formy zapojenia môžeme využť makro *crossover()*.
 
     crossover(linespec, [L|R][:line_attributes], Linename1, Linename2, . . .)
     
@@ -37,7 +37,7 @@ Pre kreslenie takejto formy zapojenia môžeme využť makro *crossover()*
         Linename2
         
         
-Pre nakreslenie hrubšieho zemného vodiča a pripojovacích bodov si vytvoríme vlastné makrá *gnd_line()* a *gnd_dot()*, použitie makier zobrazuje nasledujúci príklad {numref}`cm_0102b`.
+Pre nakreslenie hrubšieho zemného vodiča a pripojovacích bodov si vytvoríme vlastné makrá *gnd_line()* a *gnd_dot()*. Použitie makier zobrazuje nasledujúci príklad {numref}`cm_0106b`.
 
 ```{code-block}
 define(`gnd_line',`[ move to ($1,0); linethick_(5);
@@ -113,7 +113,7 @@ _ = cm_compile('cm_0106b', data, dpi=600)
 [Vykreslenie](./src/cm_0106b.ckt) časti zapojenia so starším prevedením križovania vodičov.
 ```
 
-Pre vykreslenie štandarného vodivého spojenie vodičov použijeme makro *dot()*. Pokiaľ nie je križovanie vodičov nijako označené, predpokladáme že sú nespojené. Parametrami makra môžeme upraviť veľkost spoja, makro bez parametrov vykreslí bod spojenia v preddefinovanom tvare, {numref}`cm_0106c`.
+Pre vykreslenie štandarného vodivého spojenie vodičov použijeme makro *dot()*. Pokiaľ nie je križovanie vodičov nijako označené, predpokladáme, že sú nespojené. Parametrami makra *dot()* môžeme upraviť veľkost spoja, makro bez parametrov vykreslí bod spojenia v preddefinovanom tvare, {numref}`cm_0106c`.
 
     dot(at location,radius|keys,fill)
     

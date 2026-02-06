@@ -14,13 +14,13 @@ kernelspec:
 
 # <font color='navy'> Grafika </font>
 
-Súčasťou zapojení vytváraných v `CircuitMacros` môžu byť aj lineárne a plošné grafické objekty vykreslované pomocou príkazov jazyka *dpic*. Čiara sa využíva na prepájanie prvkov zapojenia, ďaľšie grafické tvary môžeme využiť na doplnenie zapojenia alebo zvýraznenie niektorých častí. Rovnako môžeme pomocou nich vytvárať rôzne blokové zapojenia alebo vývojové diagramy. 
+Súčasťou zapojení vytváraných v `CircuitMacros` môžu byť aj lineárne a plošné grafické objekty vykreslované pomocou príkazov jazyka *dpic*. Čiara sa využíva na prepájanie prvkov zapojenia, ďaľšie grafické prvky môžeme využiť na doplnenie zapojenia alebo zvýraznenie niektorých častí. Rovnako môžeme pomocou nich vytvárať rôzne blokové zapojenia alebo vývojové diagramy. 
 
 ```{admonition} Poznámka
-Základné grafické objekty (*line*, *spline*, *arc*, *box*, *circle*, *ellipse*, *move*, *arrow*) sú príkazmi jazyka `dpic` a majú preto inú formu zápisu ako makrá definované v `CircuitMacros`, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov (prvkov elektronických zapojení - rezistor, capacitor ...) ako aj príkazov *dpic* pre kreslenie jednoduchých objektov (circle, box, line ...).
+Základné grafické objekty (*line*, *spline*, *arc*, *box*, *circle*, *ellipse*, *move*, *arrow*) sú príkazmi jazyka `dpic` a majú preto inú formu zápisu ako makrá definované v `CircuitMacros`, ktoré sú naprogramované s využitím týchto príkazov. Program na vykreslenie zapojenia preto pozostáva z makier pre vykreslovanie komplikovanejších prvkov (elementov elektronických zapojení - rezistor, capacitor ...) ako aj príkazov *dpic* pre kreslenie jednoduchých objektov (circle, box, line ...).
 ```
 
-Všeobecný formát pre definíciu grafických objektov v *dpic* má tvar
+Všeobecný formát pre definíciu grafických objektov v *dpic* má tvar:
 
     [reference:] object [atribútes] [placement] [parameters] [string]
     
@@ -35,7 +35,7 @@ Všeobecný formát pre definíciu grafických objektov v *dpic* má tvar
 
 ## <font color='teal'> Čiary </font>
 
-Definovanie čiary je  možné niekoľkými spôsobmi. V súradnicovej sústave môžeme zadať polohu absolútne dvojicou `(x,y)`. alebo  smerom kreslenia a dĺžkou relatívne voči poslednej polohe, ktorá je obsahom premennej `Here`. Pri prácu so súradnicami môžeme využívať vektorovú aritmetiku. Vykreslením čiary sa aktualizuje hodnota `Here` na polohu koncového bodu čiary. 
+Definovanie čiary je  možné niekoľkými spôsobmi. V súradnicovej sústave môžeme zadať polohu absolútne dvojicou hodnôt `(x,y)`, alebo  smerom kreslenia a dĺžkou relatívne voči poslednej polohe, ktorá je obsahom premennej `Here`. Pri prácu so súradnicami môžeme využívať vektorovú aritmetiku. Vykreslením čiary sa aktualizuje hodnota `Here` na polohu koncového bodu čiary. 
 
     [reference:] line [atribútes] [linespec] [string]
     
@@ -48,7 +48,7 @@ Definovanie čiary je  možné niekoľkými spôsobmi. V súradnicovej sústave 
     string     - text vykreslený v strede čiary
 
 
-Príklad použitia
+Príklad použitia:
 
     L1: line -> from (1,1) to (2,2) "line L1" 
     
@@ -124,7 +124,7 @@ ale aj ich kombináciu, ktorá vykreslí šikmú čiaru
 
 ## <font color='teal'> Krivky  </font>
 
-Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline môžeme nastaviť parametrom tvar krivky (tension parameter). Čiary aj krivky môžeme modifikovať parametrami *dashed* a *dotted*, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, ich zobrazenie závisí od nastavenie parametrov kreslenia. 
+Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako *spline* môžeme nastaviť parametrom tvar krivky (tension parameter). Zobrazenie čiary aj krivky môžeme modifikovať parametrami *dashed* a *dotted*, za ktorými môže nasledovať numerická hodnota udávajúca hustotu čiarok alebo bodiek, ich zobrazenie závisí od nastavenia parametrov kreslenia. 
 
     [reference:] spline [t] [atribútes] [linespec] 
     
@@ -137,7 +137,7 @@ Krivky môžeme kresliť rôznymi spôsobmi, pre krivky definované ako spline m
                   | linespec then linespec
                   
     
-Pri krivkách nie je možné vykresliť v ich definícii text v ich strede ako pri čiare. Príklad použitia kriviek je na obrázku {numref}`cm_0110b`.
+Pri krivkách nie je možné vykresliťtext v ich strede ako pri čiare. Príklad použitia kriviek je na obrázku {numref}`cm_0110b`.
 
     Grid(8.5,2.5);
     color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
@@ -193,14 +193,14 @@ Použitie splajnových kriviek.
 
 ### <font color='brown'> Atribúty lineárnych prvkov  </font>
 
-Pre čiaru a splajnovú krivku sú definované štandardné atribúty, ku ktorým sa pristupuje referenciou na objekt a operátorom `.`
+Pre čiaru a splajnovú krivku sú definované štandardné atribúty, ku ktorým pristupujeme referenciou na objekt a operátorom `.`
 
 
     .start    .s          - bod v ktorom bol začiatok kreslenia
     .end      .e          - bod v ktorom skončilo kreslenie
     .center   .c          - geometrický stred prvku
     
-Každý atribút reprezentuje súradnicu v tvare dvojice hodnôt (x,y). Príklad použitia atribútov
+Každý atribút reprezentuje súradnicu v tvare dvojice hodnôt (x,y). Príklad použitia atribútov:
 
     L: line to (1,1);
     
@@ -212,7 +212,7 @@ Každý atribút reprezentuje súradnicu v tvare dvojice hodnôt (x,y). Príklad
     
 ## <font color='teal'> Plošné objekty </font>
 
-Definícia plošných objektov, obdĺžnik, kružnica a elipsa, má v `dpic` tvar
+Definícia plošných objektov (obdĺžnik, kružnica, elipsa) má v `dpic` tvar:
 
     [reference:] box [at pos] [wid x] [ht y] [parameters] [string]
     [reference:] circle [at pos] [rad r] [parameters] [string]
@@ -225,7 +225,7 @@ Definícia plošných objektov, obdĺžnik, kružnica a elipsa, má v `dpic` tva
     parameters - parametre zobrazenia (fill ...)
     string     - text v strede objektu
     
-Pri zadaní príkazu vykreslenia objektu tento zadáme len menom bez parametrov, objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami *dashed* a *dotted* a výplň parametrom *fill*. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou *boxrad*, {numref}`cm_0110f`. 
+Pri zadaní príkazu pre vykreslenia objektu len menom bez parametrov sa objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami *dashed* a *dotted* a výplň parametrom *fill*. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou *boxrad*, {numref}`cm_0110f`. 
 
        color_red;      
     A: box wid 1 ht 1 at (1,0.5) "A"; line -> right_ 1;
@@ -279,7 +279,7 @@ Plošné objekty.
        
 ### <font color='brown'> Atribúty plošných prvkov  </font>    
 
-Pri obryse plošných objektov sú atribúty definované podľa svetových strán, {numref}`cm_0110c`.
+Plošné objekty majú atribúty definované podľa svetových strán, {numref}`cm_0110c`.
 
     .ne       .se     .nw       .sw
     .t        .top              .north   .n
@@ -327,7 +327,7 @@ Atribúty pre box, orientácia podľa svetových strán
 
 ## <font color='teal'> Kruhový oblúk </font>
 
-Kruhový oblúk je objekt, ktorý zdiela atribútu lineárnych ako aj plošných objektov. Oblúk je definovaný smerom a pomocou dvoch alebo troch bodov
+Kruhový oblúk je objekt, ktorý zdiela atribúty lineárnych ako aj plošných objektov. Oblúk je definovaný smerom a pomocou dvoch alebo troch bodov:
 
     arc  [atribútes] cw|ccw from position to position [with .c at centre]
     
@@ -405,7 +405,7 @@ _ = cm_compile('cm_0110d', data, dpi=600)
 
 ## <font color='teal'> Šípky </font>
 
-Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  *<-*, *<->*, *->* alebo príkazom *arrow*, ktorý umožňuje nastavenie parametrov šíky 
+Ako je uvedené v defínícii čiar a kriviek, na ich  koncoch môžeme v prípade potreby vykresliť šípku doplnením atribútov  *<-*, *<->*, *->* alebo príkazom *arrow*, ktorý umožňuje nastavenie parametrov šípky: 
 
     [reference:] arrow [atribútes] [linespec] [parameters]
     

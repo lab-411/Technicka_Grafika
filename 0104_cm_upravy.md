@@ -72,7 +72,7 @@ Použitie pomenovaných farieb
 
 ## <font color='teal'> Zvýraznenie </font>
 
-Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  *linethick_(n)*, volanie makra bez argumentu nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, {numref}`cm_0104b`.
+Zvýraznenie prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  *linethick_(n)*. Volanie makra bez argumentu *linethick_()* nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, {numref}`cm_0104b`.
 
        right_; 
        resistor(2,,E); llabel(,R_1,); 
@@ -153,7 +153,7 @@ Zmena veľkosti komponentov pomocou premennej *linewid*.
 
 ## <font color='teal'> Tienenie </font>
 
-Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej [*elen_*](0100_cm_dvojpoly.md), ktorá  definuje veľkosť dvojpóu, {numref}`cm_0104d`.
+Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej [*elen_*](0100_cm_dvojpoly.md), ktorá  definuje veľkosť dvojpólu, {numref}`cm_0104d`.
 
     right_; 
     resistor(2,,E); llabel(,R_1,); 
@@ -254,7 +254,7 @@ Zvýraznenie pozadia jedného prvku zapojenia.
 ```
 
 
-V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy a na jej obvode si zadefinovať body pripojenia, {numref}`cm_0104f`. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.
+V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy vopred a na jej obvode si zadefinovať body pripojenia, {numref}`cm_0104f`. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.
  
     d  = elen_*5/6;    # veľkosť prvkov
     dx = 2*d;          # šírka plochu

@@ -178,7 +178,7 @@ _ = cm_compile('cm_0100b', data, dpi=600)
 :width: 450px
 :name: cm_0100b
 
-Typy rezistorov.
+Vybrané typy rezistorov.
 ```
 
 ```{warning} 
@@ -258,12 +258,12 @@ _ = cm_compile('cm_0100c', data, dpi=600)
 :width: 450px
 :name: cm_0100c
 
-Typy kondenzátorov.
+Vybrané typy kondenzátorov.
 ```
     
 ## <font color='teal'> Cievka </font>
 
-Pri cievke môžeme meniť tvar vinutia, počet závitov, ich veľkosť a môžeme k cievke pridať jadro.
+Pri cievke môžeme meniť tvar vinutia, počet závitov, ich veľkosť a môžeme k cievke pridať jadro, {numref}`cm_0100d`.
 
     inductor(linespec, W|L, cycles, M|P|K, loop wid)
     
@@ -311,7 +311,7 @@ Typy cievok.
     
 ## <font color='teal'> Dióda </font>
 
-Dióda je orientovaný dvojpól. Parametrom **Rev** môžeme otočiť smer diódy. Doplnenie typu diódy písmenom **K** vykreslí nevyplnenú značku diódy.
+Dióda je orientovaný dvojpól. Parametrom **Rev** môžeme otočiť smer diódy. Doplnenie typu diódy písmenom **K** vykreslí nevyplnenú značku diódy, {numref}`cm_0100e`.
 
     diode(linespec, chars, [Rev][E])
     
@@ -376,11 +376,13 @@ _ = cm_compile('cm_0100e', data, dpi=600)
 :width: 450px
 :name: cm_0100e
 
-Typy diód.
+Vybrané typy diód.
 ```
     
 
 ## <font color='teal'> Zdroje </font>
+
+Nápájanie a zdroje napájania sú intergrálnou súčasťou takmer každého elektronicého zapojenia. V `CircuitMacros` sú definované makrá pre značky štandardných zdrojov ako aj pre batériové napájanie, {numref}`cm_0100w` a {numref}`cm_0100z`.
 
     source(linespec, chars, diameter, R, attrib, name)
     
@@ -455,7 +457,7 @@ _ = cm_compile('cm_0100w', data, dpi=600)
 Značky zdrojov.
 ```
 
-Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a označenie doplníme pomocou makra *DCsymbol()*, podobnú funkciu má aj makro *ACsymbol()* pre označenie striedavých veličín. Pre jednosmerné zdroje môžeme použiť aj označenie pomocou makra *battery()*
+Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a označenie doplníme pomocou makra *DCsymbol()*, podobnú funkciu má aj makro *ACsymbol()* pre označenie striedavých veličín. Pre jednosmerné zdroje môžeme použiť aj označenie pomocou makra *battery()*.
 
     DCsymbol(at position, length, height, U|D|L|R|degrees)
     ACsymbol(at position, length, height, [n:][A]U|D|L|R|degrees) 
@@ -478,13 +480,16 @@ Značku jednosmerného zdroja vytvoríme pomocou značky prázdneho zdroja a ozn
 
 Použitie makier *ACsymbol()* a *DCsymbol()* nie je viazané len na ich použitie so zdrojmi, {numref}`cm_0100z`, značku môžeme využiť aj pri označovaní veličín napr. na svorkách alebo konektoroch. Pretože makrá sa vzťahujú k stredu posledného objektu, pri použití v kombinácii s textom je vhodné text posunúť od stredu doľava pomocou "tvrdej" medzery `\,` pretože obyčajná medzera je pri renderovaní textu ignorovaná. 
 
-    source; { ACsymbol(at last [],,,2:R) }
-    source; { DCsymbol(at last [],,,R) }
-    battery(,1,R);
-    battery(,3,);  rlabel(,,+)
+```{code-block}
+:emphasize-lines: 6,7
+source; { ACsymbol(at last [],,,2:R) }
+source; { DCsymbol(at last [],,,R) }
+battery(,1,R);
+battery(,3,);  rlabel(,,+)
 
-    "5V \,\," at (Orig+(6,0.75)) rjust;  ACsymbol(at last "" ,,,1:R)  
-    "5V \,\," at (Orig+(6,1.25)) rjust;  DCsymbol(at last "" ,,,R) 
+"5V \,\," at (Orig+(6,0.75)) rjust;  ACsymbol(at last "" ,,,1:R)  
+"5V \,\," at (Orig+(6,1.25)) rjust;  DCsymbol(at last "" ,,,R) 
+```
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -537,10 +542,10 @@ Pre popis dvojpólov sú definované podporné makrá *llabel()*, *clabel()*, *r
     L            - ljust, zarovnanie textu doľava
     R            - rjust, zarovnanie textu doprava
     
-Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. *rlabel()* ukladá text po pravej strane v smere ukladania, {numref}`cm_0100f`. V prípade potreby môžeme modifikovať aj font a veľkosť textu
+Umiestnenie popisu zavisí od aktuálneho smeru ukladania komponentu. *rlabel()* ukladá text po pravej strane v smere ukladania, {numref}`cm_0100f`. V prípade potreby môžeme modifikovať aj font a veľkosť textu.
 
     R1: resistor(,,);   llabel(a,R_1,b); 
-    C2: capacitor,,C);  llabel( ,C_2, );   rlabel(, 10 \mu F, ); 
+    C2: capacitor,,C);  llabel( ,C_2, ); rlabel(, 10 \mu F, ); 
     R3: resistor(,,E);  llabel( ,R_3, ); clabel(, $\scriptsize{123}$, ); 
 
     R4: resistor(,,E);  dlabel(0.75, 0.35, aa ,R_4, bb ,X); 
@@ -581,28 +586,28 @@ _ = cm_compile('cm_0100f', data, dpi=600)
 
 Na pracovnej ploche môžeme umiestňovať dvojpóly niekoľkými spôsobmi:
 
-1. Zadaním východzieho bodu kreslenia presunom kurzora 
+1. Zadaním východzieho bodu kreslenia presunom kurzora:
 
         move to pos; 
         object([length], ... );
 
-2. Zadaním polohy stredu dvojpólu, smeru a velkosti 
+2. Zadaním polohy stredu dvojpólu, smeru a velkosti:
 
         object( at pos [dir [length]], ... );
 
-3. Zadaním smeru, veľkosti objektu a polohy východzieho bodu 
+3. Zadaním smeru, veľkosti objektu a polohy východzieho bodu: 
 
         object( [dir] [lenght] from pos, ... );
 
-4. Pokračovaním od koncového bodu predchádzajúceho objektu 
+4. Pokračovaním od koncového bodu predchádzajúceho objektu: 
 
         object(dir [length], ... );
 
-5. Zadaním koncových bodov dvojpólu 
+5. Zadaním koncových bodov dvojpólu:
 
         object(from pos_A to pos_B);
 
-6. Pomocou makier pre definovanie smeru ukladania objektov
+6. Pomocou makier pre definovanie smeru ukladania objektov:
 
         Point_(degrees); object;
         point_(radians); object;
@@ -693,7 +698,7 @@ Príklady umiestňovania dvojpólov.
 
 ### <font color='brown'> Premenné prvky  </font>
 
-Pre zobrazenie premenných prvkov môžeme využiť makro *variable()*
+Pre zobrazenie premenných prvkov môžeme využiť makro *variable()*.
 
     variable(‘element’,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
     variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
@@ -718,16 +723,16 @@ Pre zobrazenie premenných prvkov môžeme využiť makro *variable()*
 
 Makro môžeme použiť dvoma spôsobmi, {numref}`cm_0100g`:
 
-* s prvým argumentom, v ktorom zadáme makro s parametrami prvku, ktorý chceme označiť ako premenný, 
-* makro použijeme podobne ako makrá na popis prvkov *llabel ..*, v tomto prípade ponecháme prvý argument prázdny.
+* s prvým argumentom, v ktorom zadáme makro s parametrami prvky, ktorý chceme označiť ako premenný, 
+* makro použijeme podobne ako makrá na popis prvkov *llabel() ..*, v tomto prípade ponecháme prvý argument prázdny.
 
             move to (0,0)
             variable(`R1: resistor(right_ 2,,)',A); llabel(,R_1,); rlabel(a,10,b)
 
-        R2: resistor(right_ 2,,E); variable(,P);   llabel(,R_2,); rlabel(,100,); 
+        R2: resistor(right_ 2,,E); variable(,P);    llabel(,R_2,); rlabel(,100,); 
 
             move to (1,1)
-        V1: source(up_ 2, AC); variable(,A,,1.5);  llabel(,V_1,);
+        V1: source(up_ 2, AC); variable(,A,,1.5);   llabel(,V_1,);
 
             move to (3,1)
         C1: capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);
@@ -764,13 +769,13 @@ _ = cm_compile('cm_0100g', data, dpi=600)
 
 [Zobrazenie](./src/cm_0100g.ckt) premenných prvkov.
 ```
-V analogových zapojeniach bývajú premenné prvku (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojenie vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh, {numref}`r_325`.
+V analogových zapojeniach bývajú premenné prvky (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojen9m vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh, {numref}`r_325`.
     
 ```{figure} ./img/radio_325.jpg
 :width: 600px
 :name: r_325
 
-Použitie premenných prvkov v zapojení rádia s integrovaným obvodom.
+Použitie premenných prvkov v zapojení rádia s integrovaným obvodom, TODO Citovať.
 ```
 
 Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici [lib_user](./src/lib_user.ckt) definované makrá *vres_v()* a *vcap_v()*, {numref}`cm_0100n`. 
@@ -820,7 +825,7 @@ _ = cm_compile('cm_0100n', data, dpi=600)
 Zobrazenie upravených premenných prvkov z knižnice *lib_user*.
 ```
 
-Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku {numref}`cm_0100n`. Pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v `CircuitMacros`, bolo pre ich zobrazenie definované nové makro *res()*, {numref}`cm_0100m`.
+Nasledujúci skript zobrazuje časť zapojenia z predchádzajúceho obrázku {numref}`cm_0100n`, pretože rezistory v zapojení sú mierne dlhšie ako štandardné rezistory v `CircuitMacros`, bolo pre ich zobrazenie definované nové makro *res()*, {numref}`cm_0100m`.
 
     define(`res', `ebox($1, 0.8);')
 
@@ -883,7 +888,7 @@ _ = cm_compile('cm_0100m', data, dpi=600)
 
 ### <font color='brown'> Prúd dvojpólom  </font>
 
-Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro *b_current()* z knižnice `CircuitMacros`
+Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použiť makro *b_current()*.
 
     b_current(label, above_|below_, In|O[ut], Start|E[nd], frac);
     
@@ -917,7 +922,7 @@ Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro *l_cu
             
             frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
 
-Príklady označenia prúdu prvkom a vetvou obvodu. Makro *l_current()* je implementované ako vetva obvodu, neovplyvňuje hodnotu kurzoru `Here`.
+Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makro *l_current()* je implementované ako vetva, neovplyvňuje hodnotu kurzoru `Here`.
 
     define( `l_current', `{
         S: last line .start;
@@ -982,7 +987,7 @@ _ = cm_compile('cm_0100h', data, dpi=600)
             
 ### <font color='brown'> Napätie na dvojpóle </font>
 
-Úbytok napätia na prvku znázorňujeme šipkou umiestnenou paralelne s prvkom. Pre zobrazenie môžeme využiť štandarný príkaz *line -> ...* alebo makrá
+Úbytok napätia na prvku znázorňujeme šipkou umiestnenou paralelne s prvkom. Pre zobrazenie môžeme využiť štandarný príkaz *line -> ...* alebo makrá *larrow()* a *rarrow()*.
 
     larrow(label, direction);
     rarrow(label, direction);

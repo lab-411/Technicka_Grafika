@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -363,7 +363,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="multipoly">
 <h1><span style="color:navy"> Multipóly </span><a class="headerlink" href="#multipoly" title="Link to this heading">#</a></h1>
-<p>Zložitejšie elektronické prvky, <a class="reference internal" href="#cm-0102a"><span class="std std-numref">Obr. 27</span></a>, majú zvyčajne viacej ako pripojovovacie dva uzly. V teórii systémov je často používaný štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov.</p>
+<p>Zložitejšie elektronické prvky, <a class="reference internal" href="#cm-0102a"><span class="std std-numref">Obr. 27</span></a>, majú zvyčajne viacej ako dva pripojovovacie uzly. V teórii systémov je často používaný pojem štvorpól, ktorý má dva vstupné a dva výstupné uzly. Okrem štandardných atribútov má multipól ešte doplňujúce atribúty súvisiace s polohou uzlov a označením uzlov.</p>
 <figure class="align-default" id="cm-0102a">
 <a class="reference internal image-reference" href="_images/cm_0102a.png"><img alt="_images/cm_0102a.png" src="_images/cm_0102a.png" style="width: 500px;" />
 </a>
@@ -371,7 +371,7 @@ document.write(`
 <p><span class="caption-number">Obr. 27 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f3f6bdc9178c1ed4d3ee2373ea55b504/cm_0102a.ckt"><span class="xref download myst">Príklady</span></a> multipólov definovaných v CircuitMacros.</span><a class="headerlink" href="#cm-0102a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar</p>
+<p>Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
 
 parametre:
@@ -395,20 +395,20 @@ atribúty:
 </div>
 <section id="umiestnovanie-multipolov">
 <h2><font color='teal'> Umiestňovanie multipólov </font><a class="headerlink" href="#umiestnovanie-multipolov" title="Link to this heading">#</a></h2>
-<p>Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi, <a class="reference internal" href="#cm-0102c"><span class="std std-numref">Obr. 28</span></a>.</p>
+<p>Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi:</p>
 <ol class="arabic">
-<li><p>Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e</p>
+<li><p>Zadaním východzieho bodu kreslenia presunom kurzora, objekt sa umiestni na ploche v smere ukladania v polohe príslušného atribútu .n, .s, .w .e:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> move to pos; 
  object( dir length, ... );
 </pre></div>
 </div>
 </li>
-<li><p>Umiestnením zvoleného terminálu multipólu do určenej polohy</p>
+<li><p>Umiestnením zvoleného terminálu multipólu do určenej polohy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> object( ...) with .attribute at pos;
 </pre></div>
 </div>
 </li>
-<li><p>Rovnako ako v prípade dvojpólov môžeme pomocou makier definovať smer ukladania objektov. V prípade multipólov zmena smeru ukladania nie je univerzálna a závisí od implementácie makra objektu.</p>
+<li><p>Rovnako ako v prípade dvojpólov môžeme pomocou makier definovať smer ukladania objektov. V prípade multipólov zmena smeru ukladania nie je univerzálna a závisí od implementácie makra objektu:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Point_(degrees); object;
  point_(radians); object;
  rpoint_(rel linespec); object
@@ -416,7 +416,7 @@ atribúty:
 </div>
 </li>
 </ol>
-<p>Príklad použitia:</p>
+<p>Príklad použitia, <a class="reference internal" href="#cm-0102c"><span class="std std-numref">Obr. 28</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">right_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span> 
     <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>                      <span class="c1"># (1)</span>
 
@@ -531,7 +531,7 @@ D1: diode(1); llabel(,D_1,);       # usmerňovač
   <div class="footer-item">
     
 <p class="component-author">
-By pf
+By Lenka Bartošová, Peter Fabo, Michal Kuba
 </p>
 
   </div>
@@ -541,7 +541,7 @@ By pf
 
   <p class="copyright">
     
-      © Copyright 2025, pf.
+      © Copyright 2026, LAB - 411.
       <br/>
     
   </p>

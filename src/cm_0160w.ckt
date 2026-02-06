@@ -1,0 +1,25 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+type=1;
+if type==1 then{
+    line 1; dot;
+    parallel_(`R1:resistor; llabel(,R1,);',`R2:resistor; llabel(,R2,);')
+    dot; line 1;
+}else{
+  line 0.5;
+  series_(`R1:resistor; llabel(,R1,);',`R2:resistor; llabel(,R2,);')
+  line 0.5;
+}
+
+.PE

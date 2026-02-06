@@ -1,0 +1,30 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+Grid(7,3.5)
+P1: (1, 0.5)
+P2: (5,2)
+D1: dot(at P1) "\small \sf P1" above;
+D2: dot(at P2) "\small \sf P2" above;
+line from P1 to P2
+color_red;
+X1: 0.5 between P1 and P2; dot(at X1) "\small \sf 0.5 between P1 and P2" ljust below
+color_blue;
+X2: 0.75 between P1 and P2; dot(at X2) "\small \sf 0.75 between P1 and P2" rjust above
+color_dark_cyan;
+X3: 1.35 between P1 and P2; dot(at X3) "\small \sf 1.35 between P1 and P2" rjust above
+
+.PE

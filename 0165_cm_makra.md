@@ -17,19 +17,19 @@ Prostredie `CircuitMacros` je rozšírením programovacieho jazyka `dpic` určen
 
 ```{admonition} Makroprocesor m4
 
-Makroprocesor je univerzálny program pre spracovanie makier široko využívaný v programátorskej praxi najmä pri jazykoch nižšej úrovne a assembleroch. Makrá nachádzajú uplatnenie v rôznych implementáciách aj v textových a tabulkových procesoroch. Makroprocesor kopíruje vstupný text zo vstupu na výstup a popritom prí nájdení mena vopred definovaného makra
+Makroprocesor je univerzálny program pre spracovanie makier široko využívaný v programátorskej praxi najmä pri jazykoch nižšej úrovne a assembleroch. Makrá nachádzajú uplatnenie v rôznych implementáciách aj v textových a tabulkových procesoroch. Makroprocesor kopíruje vstupný text zo vstupu na výstup a popritom prí nájdení mena vopred definovaného makra:
 
-* nahrádza meno makra textom z definície makra
-* nahrádza parametre makra ich hodnotami
-* vkladá súbory
-* prevádza manipulácie s textovými reťazcami
-* vyhodnocuje podmienky
-* vyhodnocuje aritmetické výrazy
+* nahrádza meno makra textom z definície makra,
+* nahrádza parametre makra ich hodnotami,
+* vkladá súbory,
+* prevádza manipulácie s textovými reťazcami,
+* vyhodnocuje podmienky,
+* vyhodnocuje aritmetické výrazy.
 
 Referenčnou implementáciou makroprocesora **m4** je [GNU M4](https://www.gnu.org/software/m4/manual/m4.html). 
 ```
 
-Makrá definované v knižniciach `CircuitMacros` expandujú značky elektronických prvkov do množiny príkazov jazyka `dpic`, z vytvoreného programu je pomocou interpreteru príkazov vygenerovaný výsledný obrázok vo zvolenom rastrovom alebo vektorovom formáte. 
+Makrá definované v knižniciach `CircuitMacros` expandujú značky elektronických prvkov do množiny príkazov jazyka `dpic`. Z vytvoreného programu je pomocou interpreteru príkazov vygenerovaný výsledný obrázok vo zvolenom rastrovom alebo vektorovom formáte, {numref}`cm_0165a`.
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -112,16 +112,16 @@ Postup generovania obrázkov.
 
 ```{warning}
 
-Kódy makier sú v podstate pomenované textové reťazce, ktorými nahrádza makrorocesor pred samotným spracovaním zdrojového kódu  **všetky** časti zdrojového kódu zhodné s menom makra. Táto substitúcia je čisto mechanická, bez ohľadu na kontext v ktorom sa text zhodný s menom makra vyskytuje. Toto môže spôsobiť pri interpretácii kódu chybu, ktorá je spôsobená substitúciou makra na nevhodnom mieste a to aj napriek tomu, že kód programu je formálne syntakticky správny.
+Kódy makier sú v podstate pomenované textové reťazce, ktorými nahrádza makrorocesor pred samotným spracovaním zdrojového kódu  **všetky** časti zdrojového kódu zhodné s menom makra. Táto substitúcia je čisto mechanická, bez ohľadu na kontext, v ktorom sa text zhodný s menom makra vyskytuje. Toto môže spôsobiť pri interpretácii kódu chybu, ktorá je spôsobená substitúciou makra na nevhodnom mieste a to aj napriek tomu, že kód programu je formálne syntakticky správny.
 
     R1: resistor;
-    "terminal resistor" at R1.c above;   # chyba, substitucia v texte
+    "terminal resistor" at R1.c above;   # chyba, substitúcia v texte
 
-Pre odstránenie tejto chyby je potrebné vhodným spôsobom pozmeniť text tak, aby makroprocesor text nenahrádzal, napríklad
+Pre odstránenie tejto chyby je potrebné vhodným spôsobom pozmeniť text tak, aby makroprocesor text nenahrádzal, napríklad:
 
     "terminal res\\istor" at R1.c above; # dve lomítka \\ sú pri zobrazení ignorované 
     
-Inou možnosťou je vložiť konfliktný text do úvodzoviek makra m4, ktoré makroprocesor ignoruje 
+Inou možnosťou je vložiť konfliktný text do úvodzoviek makra m4, ktoré makroprocesor potom ignoruje: 
 
     "terminal `resistor' " at R1.c above; # `text' je ignorovaný
     
@@ -129,7 +129,7 @@ Inou možnosťou je vložiť konfliktný text do úvodzoviek makra m4, ktoré ma
 
 ## <font color='teal'> Použitie makier  </font>
 
-Makrá sa definujú podľa syntaxe makroprocesora **m4**. Všeobecný tvar makra je
+Makrá sa definujú podľa syntaxe makroprocesora **m4**, všeobecný tvar makra je:
 
     define (name, [expansion])
     
@@ -145,7 +145,7 @@ Reťazec *name* je nahradený reťazcom *expansion*, typ úvodzoviek v makre je 
 Vytvorenie a použitie makra.
 ```
 
-Makro môže mať argumenty, tieto sú označované ako \$1, \$2 ... , špeciálny význam má argument označený ako \$0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami
+Makro môže mať argumenty, tieto sú označované ako \$1, \$2 ... , špeciálny význam má argument označený ako \$0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami:
 
     define(`exr', `$2, $1')               # zamena poradia argumentov 
     exr(abc, 123)                         # -->  123, abc
@@ -190,7 +190,7 @@ Pri tvorbe  makier pre kreslenie vlastných prvkov zapojenia môžeme využiť n
         if par2 == 3 then  { line -> down_  par1; } 
     ]')
 
-Makro *defn()* v predlohe vytvorí premennú *par1* a skontroluje existenciu  argumentu \$1, ak tento neexistuje, *ifelse* priradí *par1=1*, ak existuje, tak potom jej priradí hodnotu *par1=\$1*. Premenná *par2* je inicializovaná hodnotou indexu z poľa dovolených parametrov. Makro pri použití pokrýva nasledujúce prípady
+Makro *defn()* v predlohe vytvorí premennú *par1* a skontroluje existenciu  argumentu \$1. Ak tento neexistuje, *ifelse* priradí *par1=1*, ak existuje, tak potom premennej priradí hodnotu *par1=\$1*. Premenná *par2* je inicializovaná hodnotou indexu z poľa dovolených parametrov. Makro pri použití pokrýva nasledujúce prípady:
     
     vzor;        -> vzor(1,L)
     vzor();      -> vzor(1,L)
@@ -200,15 +200,11 @@ Makro *defn()* v predlohe vytvorí premennú *par1* a skontroluje existenciu  ar
     vzor(,);     -> vzor(1,L)     
 
 
-Nižšie je uvedené makro pre zobrazenie spínača s parametrami dĺžka spínača a 'stav (ON, OFF) spínača. Aby bol komponent presne umiestnený v mriežke bez ohľadu na jeho aktuálne grafické zobrazenie, je vhodné ho umiestniť do neviditeľného boxu s fixnými rozmermi. Pre vonkajší box potom platia štandardné atribúty *w,e,s,n,nw ...*.  
-
-
-
 ### <font color='brown'> Implementácie makra </font>
 
-Nasledujúci príklad implementuje zobrazenie spínača s dvoma parametrami - dĺžka spínača a stavu zopnutia (ON, OFF) spínača. Aby bol komponent presne umiestnený v mriežke bez ohľadu na jeho aktuálne grafické zobrazenie, je vhodné ho umiestniť do neviditeľného boxu s fixnými rozmermi. Pre vonkajší box potom platia štandardné atribúty *w,e,s,n,nw ...*.  
+V nasledujúcom príklade je ukázamá implementácia makra pre zobrazenie spínača s parametrami dĺžka spínača a jeho stavu (ON, OFF). Aby bol komponent presne umiestnený v mriežke bez ohľadu na jeho aktuálne grafické zobrazenie, je vhodné ho umiestniť do neviditeľného boxu s fixnými rozmermi. Pre vonkajší box potom platia štandardné atribúty *w,e,s,n,nw ...*.  
 
-Pre ilustráciu je zobrazený vonkajší box, ktorý umožňuje ukladanie komponentu v rastri, parameter *invis* spôsobi skrytie obrysu.
+Pre ilustráciu je zobrazený vonkajší box, ktorý umožňuje ukladanie komponentu v mriežke, parameter *invis* spôsobí skrytie obrysu:
 
     # horizontal switch
     # usage:
@@ -305,17 +301,17 @@ _ = cm_compile('cm_0165c', data, dpi=600)
 
 ```{admonition} Konflikt mien 
 
-Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makier sa dozvieme až pri kompilácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.   
+Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makier sa dozvieme až pri kompilácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo:   
 
-* Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro *setrgb()* používa premenné *r_* , *g_*, *b_*, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. *r_1*. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca *r\\_1*.
+* niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro *setrgb()* používa premenné *r_* , *g_*, *b_*, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v systéme LaTex, napr. *r_1*. V takomto prípade je potrebné v reťazci pre systém LaTeX použiť formálne prerušenie reťazca *r\\_1*,
 
-* Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad *"toto je resistor R1"*, pretože pri substitúcii dôjde k nahradeniu textu *resistor*  kódom definovanom v makre a následnej chybe pri kompilácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade. 
+* nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad *"toto je resistor R1"*, pretože pri substitúcii dôjde k nahradeniu textu *resistor*  kódom definovanom v makre a následnej chybe pri kompilácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade. 
 
 ```
 
 ## <font color='teal'> Modifikácia makra </font>
 
-V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra, {numref}`cm_0165d`
+V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa napríklad používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra, {numref}`cm_0165d`
 
     define(`res_025w', `[
         R: resistor($1,$2,$3);

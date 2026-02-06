@@ -13,11 +13,11 @@ kernelspec:
 ---
 # <font color='navy'> Terminály </font>
 
-Každé elektronické zapojenie má pripojovacie body - terminály, ktoré môžu byť formálne (napájanie, zem, vstup, výstup ...) zvyčajne pripojené jedným uzlom alebo reálne (konektor, svorkovnica ...), ktoré sú pripojené do niekoľkých uzlov obvodu.
+Každé elektronické zapojenie má pripojovacie body - terminály, ktoré môžu byť formálne (napájanie, zem, vstup, výstup ...). Tieto sú zvyčajne pripojené jedným uzlom alebo reálne (konektor, svorkovnica ...), ktoré sú pripojené do niekoľkých uzlov obvodu.
 
 ## <font color='teal'> Napájanie, zem, vstupy a výstupy </font>
 
-Terminály pre napájania a zem majú význam spoločného spojenia všetkých rovnako označených terminálov, čím okrem jasnej deklarácie ich významu aj výrazne zjednodušujú zapojenie, pretože nie je potrebné kresliť vodiče ktoré ich spájajú.
+Terminály pre napájanie a zem, {numref}`cm_140a`,  majú význam spoločného spojenia všetkých rovnako označených terminálov, čím okrem jasnej deklarácie ich významu aj výrazne zjednodušujú zapojenie, pretože nie je potrebné kresliť vodiče, ktoré ich spájajú.
 
 
     ground( at position, T|stem_length, N|F|S|L|P[A]|E, U|D|L|R|degrees )
@@ -61,7 +61,7 @@ _ = cm_compile('cm_0140a', data, dpi=600)
 Značky zeme.
 ```
 
-Európske značenie umožňuje používanie značiek zeme a napájania orientované v základných smeroch, pre ich zobrazenie sú v knižnici [lib_base.ckt](./src/lib_base.ckt) implementované makrá
+Európske značenie umožňuje používanie značiek zeme a napájania orientované v základných smeroch, {numref}`cm_140f`, pre ich zobrazenie sú v knižnici [lib_base.ckt](./src/lib_base.ckt) implementované makrá:
 
     gnd(d, U|D|L|R)
     power(d, text, U|D|L|R)
@@ -100,7 +100,7 @@ _ = cm_compile('cm_0140f', data, dpi=600)
 Upravené makrá pre značky pripojenia zeme a napájania.
 ```
 
-Terminály *tbox()* v tvare vlajky sa najčastejšie používajú v zapojeniach s digitálnymi obvodmi, kde na rozdiel od analogových obvodov nie je z kontextu zrejmý význam terminálu. Tvar vlajky určuje v tomto prípade smer toku informácií, čo je zvlášť dôležité pri použití zberníc, kde nie sú terminály priamo pripojené k výstupom logických obvodov.
+Terminály *tbox()* v tvare vlajky, {numref}`cm_140b`, sa najčastejšie používajú v zapojeniach s digitálnymi obvodmi, kde na rozdiel od analogových obvodov nie je z kontextu zrejmý význam terminálu. Tvar vlajky určuje v tomto prípade smer toku informácií, čo je zvlášť dôležité pri použití zberníc, kde nie sú terminály priamo pripojené k výstupom logických obvodov.
 
     tbox(text, wid, ht, <|>|<>, fill)
     
@@ -111,7 +111,7 @@ Terminály *tbox()* v tvare vlajky sa najčastejšie používajú v zapojeniach 
         <|>|<>      - orientácia značky
         fill        - výplň príkazom fill_(n), n = 0.0...1.0
 
-Terminály *tconn()* reprezentujú ukončenie vodiča zvyčajne označené menom, ktoré môže zároveň označovať aj meno pinu vo fyzickom konektore. Význam tvaru terminálu závisí od používaných konvencií pri kreslení zapojení. 
+Terminály *tconn()* reprezentujú ukončenie vodiča zvyčajne označené menom, {numref}`cm_140b`, ktoré môže zároveň označovať aj meno pinu vo fyzickom konektore. Význam tvaru terminálu závisí od používaných konvencií pri kreslení zapojení. 
 
     tconn(linespec, O|<|<<|>>|>|A|M", wid)
     
@@ -152,7 +152,7 @@ Vstupno-výstupné terminály.
 
 ## <font color='teal'> Konektory </font>
 
-Fyzické pripojenie elektronických obvodov je zvyčajne realizované konektormi alebo svorkovnicami. Značka konektora môže byť formálna, kde je znázornená poloha pinu konektora (jednoradový, dvojradový ...) alebo môže znázorňovať aj fyzické usporiadanie pinov konektora (DIN, D-SUB ...). 
+Fyzické pripojenie elektronických obvodov je zvyčajne realizované konektormi alebo svorkovnicami. Značka konektora môže byť formálna, kde je znázornená poloha pinu konektora (jednoradový, dvojradový ...) alebo môže znázorňovať aj fyzické usporiadanie pinov konektora (DIN, D-SUB ...), {numref}`din` a {numref}`dsyb`. 
 
 ```{figure} ./img/DIN_connector.png
 :width: 600px
@@ -168,7 +168,7 @@ Signálové konektory typu DIN, [zdroj](https://en.wikipedia.org/wiki/DIN_connec
 Signálové konektory typu D-sub, [zdroj](https://en.wikipedia.org/wiki/D-subminiature).
 ```
 
-V knižnici `CircuiytMacros` je pre zobrazenie jedno a dvojradových lineárnych konektorov pre ploché káble ako aj pre kolíkové lišty a spojky definované makro *Header()*. V praxi sa môžeme stretnúť s veľkým množstvom typov a prevedení kolíkových líšt a konektorov.
+V knižnici `CircuiytMacros` je pre zobrazenie jedno a dvojradových lineárnych konektorov pre ploché káble ako aj pre kolíkové lišty a spojky definované makro *Header()*. V praxi sa môžeme stretnúť s veľkým množstvom typov a prevedení kolíkových líšt a konektorov, {numref}`header`.
 
 ```{figure} ./img/headers.jpg
 :width: 500px
@@ -178,7 +178,7 @@ Kolíkové lišty a konektory.
 ```
 
 
-Značka je parametrická, pri použití makra definujeme tvar konektora a počet pinov.
+Značka dvoradového konektora je parametrická, pri použití makra definujeme tvar konektora a počet pinov, {numref}`cm_0140c`.
 
      Header(1|2, rows, wid, ht, type)
      
@@ -192,7 +192,7 @@ Značka je parametrická, pri použití makra definujeme tvar konektora a počet
      atribúty:
         P1 ... Pn - piny konektora
         
-Makro *tstrip()* zobrazuje jednoradový konektor s obojstranými prívodmi.
+Makro *tstrip()* zobrazuje jednoradový konektor s obojstranými prívodmi {numref}`cm_0140c`.
      
      tstrip(R|L|U|D|degrees, n, chars),
      
@@ -265,7 +265,7 @@ _ = cm_compile('cm_0140c', data, dpi=600)
 [Príklady](./src/cm_0140c.ckt) modifikácií radových konektorov.
 ```
 
-V niektorých prípadoch je vhodné zobrazenie reálneho usporiadanie pinov konektora a pripojenie pinov. Vzhľadom k obrovskému množstvu typov konektorov a ich typových modifikácii je potrebné si vytvoriť pre zobrazenie daného typu vlastné makro. V knižnici [lib_user.ckt](./src/lib_user.ckt) je definované makro *DE9_M* pre 9-pinový D-sub konektor, príklad jeho použitia 
+V niektorých prípadoch je vhodné zobrazenie reálneho usporiadanie pinov konektora a pripojenie pinov. Vzhľadom k obrovskému množstvu typov konektorov a ich typových modifikácii je potrebné si vytvoriť pre zobrazenie daného typu vlastné makro. V knižnici [lib_user.ckt](./src/lib_user.ckt) je ako príklad definované makro *DE9_M* pre 9-pinový D-sub konektor. Príklad jeho použitia ne na {numref}`cm_0140d`.
 
     include(lib_user.ckt)
     move to (1,2); DS1: DE9_M(L);

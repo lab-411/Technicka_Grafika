@@ -387,7 +387,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="jazyk-dpic">
 <h1><font color='navy'> Jazyk <em>dpic</em>  </font><a class="headerlink" href="#jazyk-dpic" title="Link to this heading">#</a></h1>
-<p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v <em>dpic</em> kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je rozšírením <em>dpic</em> o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka <em>dpic</em> je v <a class="reference download internal" download="" href="_downloads/ca925103d6c8855dd344b0a4913953a0/dpic-doc.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
+<p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafické objekty, ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v <em>dpic</em> kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je rozšírením jazyka <em>dpic</em> o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka <em>dpic</em> je v <a class="reference download internal" download="" href="_downloads/ca925103d6c8855dd344b0a4913953a0/dpic-doc.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
 <div class="admonition-programovaci-jazyk-dpic admonition">
 <p class="admonition-title">Programovací jazyk <em>dpic</em></p>
 <p>Programovací jazyk <code class="docutils literal notranslate"><span class="pre">dpic</span></code> historicky vychádza z jazyka <a class="reference download internal" download="" href="_downloads/0ddae81da38fcc445ce4a7561d8a7cee/pic.pdf"><span class="xref download myst">pic</span></a> vytvoreného Brian W. Kernighan-om v roku 1991.  Z programátorského hľadiska <code class="docutils literal notranslate"><span class="pre">dpic</span></code> patrí do skupiny tzv. <em>mini-jazykov</em>, (<a class="reference external" href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>) ktoré sú vytvorené pre nejaký konkrétny učel na rozdiel od <em>všeobecne použiteľných jazykov</em> (<a class="reference external" href="https://en.wikipedia.org/wiki/General-purpose_language">GPL</a>). Syntax jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> je veľmi jednoduchá, okrem príkazov na kreslenie grafických objektov má aj základné jazykové konštrukcie na riadenie toku programu ako je podmienkové vetvenie a cyklus. Nie je v ňom možné ale vytvárať funkcie, ktorú sú formálne nahradené makrami. Makrá obsahujú kód pre kreslenie zložitejších objektov a pri ich použití kompilátor nahradí v programe meno makra týmto kódom.</p>
@@ -395,8 +395,8 @@ document.write(`
 <section id="program">
 <h2><font color='teal'> Program </font><a class="headerlink" href="#program" title="Link to this heading">#</a></h2>
 <p>Program je tvorený textovým súborom, ktorý začína znakmi <strong>.PS</strong> a končí znakmi <strong>.PE</strong>. Príkaz na riadku je ukončený bodkočiarkou <code class="docutils literal notranslate"><span class="pre">;</span></code> alebo ukončenim riadku (neviditeľný znak <code class="docutils literal notranslate"><span class="pre">\n</span></code>). Bodkočiarka na ukončenie príkazu nie je povinná, na rozdiel napr. od jazyka <code class="docutils literal notranslate"><span class="pre">C</span></code>, ale  využijeme  ju vtedy, ak budeme do jedného riadku zadávať niekoľko príkazov.</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 3 : </span><span class="caption-text">Štruktúra programu</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 3 : </span><span class="caption-text">Štruktúra programu</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>                           <span class="c1"># zaciatok postupnosti prikazov</span>
 
 <span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>                    <span class="c1"># príkaz nastavenie parametrov velkosti obrazku</span>
@@ -415,7 +415,7 @@ document.write(`
 <p>Text za koncom programu je ignorovaný. Ukončenie programu môžeme prakticky využiť pri hľadaní chýb v skripte, kedy pomocou <strong>.PE</strong> vyradíme zbytok programu zo spracovania.</p>
 <section id="komentare">
 <h3><font color='brown'> Komentáre </font><a class="headerlink" href="#komentare" title="Link to this heading">#</a></h3>
-<p>Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie sú definované, je ale možné použiť viacriadkové komentáre s riadkami ukončenými \\.</p>
+<p>Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie sú definované, ale je možné použiť viacriadkové komentáre s riadkami ukončenými \\.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># toto je jednoriadkovy komentar
 # toto je dvojriadkovy komentar        \\
   a jeho pokracovanie na dalsom riadku
@@ -436,7 +436,7 @@ name(x,y,z )
 </section>
 <section id="hodnoty">
 <h3><font color='brown'> Hodnoty </font><a class="headerlink" href="#hodnoty" title="Link to this heading">#</a></h3>
-<p>Jazyk <em>dpic</em> pozná len <strong>numerické</strong> hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte <em>floating-point</em>. Všetky grafické prvky ako aj texty sú pokladané za objekty na ploche a sú reprezentované súradnicami polohy ich geometrického stredu.</p>
+<p>Jazyk <em>dpic</em> pozná len <strong>numerické</strong> hodnoty, ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte <em>floating-point</em>. Všetky grafické prvky ako aj texty sú pokladané za objekty na ploche a sú reprezentované súradnicami polohy ich geometrického stredu.</p>
 </section>
 <section id="premenne">
 <h3><font color='brown'> Premenné </font><a class="headerlink" href="#premenne" title="Link to this heading">#</a></h3>
@@ -460,10 +460,10 @@ relačné operácie
 </section>
 <section id="suradnice">
 <h3><font color='brown'> Súradnice </font><a class="headerlink" href="#suradnice" title="Link to this heading">#</a></h3>
-<p>Súradnice bodov sú reprezentované ako dvojice (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná súadnica <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty <em>.x</em>, <em>.y</em>, ktoré reprezentujú numerické hodnoty zložiek polohy. Pre prácu so súradnicami sú definované vektorové operácie.</p>
+<p>Súradnice bodov sú reprezentované ako dvojice hodnôt v tvare (x,y) a <strong>nemôžu</strong> byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná súadnica <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty <em>.x</em>, <em>.y</em>, ktoré reprezentujú numerické hodnoty zložiek polohy. Pre prácu so súradnicami sú definované vektorové operácie.</p>
 <section id="vytvorenie-suradnice">
 <h4><font color='purple'> Vytvorenie súradnice </font><a class="headerlink" href="#vytvorenie-suradnice" title="Link to this heading">#</a></h4>
-<p>Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou iných súradníc.</p>
+<p>Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou iných súradníc:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1: (3,4);      # vytvorenie súradnice bodu
 p1 = (3,4);     # chyba   
 
@@ -515,16 +515,16 @@ Q2: P1/k
 </section>
 <section id="poloha-medzi-dvoma-bodmi">
 <h4><font color='purple'> Poloha medzi dvoma bodmi </font><a class="headerlink" href="#poloha-medzi-dvoma-bodmi" title="Link to this heading">#</a></h4>
-<p>Pri kreslení zapojení často potrebujeme určiť polohu medzi dvoma bodmi, v <em>dpic</em> môžeme použiť konštrukciu <em>between</em></p>
+<p>Pri kreslení zapojení často potrebujeme určiť polohu medzi dvoma bodmi, v <em>dpic</em> môžeme použiť konštrukciu <em>between</em>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PB: k between P1 and P2  
 </pre></div>
 </div>
-<p>Hodnota <em>k</em> určuje relatívnu vzdialenosť ku koncovým bodom, <em>k=0.5</em> je stredom, <em>k=0</em> a <em>k=1</em> sú polohy koncových bodov. Pri hodnote <em>k</em> mimo intervalu <em>0…1</em> leží za krajnými bodmi <em>P1</em> a <em>P2</em>.</p>
-<figure class="align-default" id="cm-0160k">
-<a class="reference internal image-reference" href="_images/cm_0160k.png"><img alt="_images/cm_0160k.png" src="_images/cm_0160k.png" style="width: 450px;" />
+<p>Hodnota <em>k</em> určuje relatívnu vzdialenosť ku koncovým bodom, <em>k=0.5</em> je stredom, <em>k=0</em> a <em>k=1</em> sú polohy koncových bodov. Pri hodnote <em>k</em> mimo intervalu <em>0…1</em> leží za krajnými bodmi <em>P1</em> a <em>P2</em>, <a class="reference internal" href="#cm-0160z"><span class="std std-numref">Obr. 58</span></a>:</p>
+<figure class="align-default" id="cm-0160z">
+<a class="reference internal image-reference" href="_images/cm_0160z.png"><img alt="_images/cm_0160z.png" src="_images/cm_0160z.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 58 </span><span class="caption-text">Použitie konštrukcie <em>between</em>.</span><a class="headerlink" href="#cm-0160k" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 58 </span><span class="caption-text">Použitie konštrukcie <em>between</em>.</span><a class="headerlink" href="#cm-0160z" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -532,15 +532,15 @@ Q2: P1/k
 </section>
 <section id="objekty">
 <h2><font color='teal'> Objekty </font><a class="headerlink" href="#objekty" title="Link to this heading">#</a></h2>
-<p>Programovací jazyk <em>dpic</em> je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Elementárnymi objektami jazyka <em>dpic</em> sú</p>
+<p>Programovací jazyk <em>dpic</em> je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch, s ktorými v programe pracujeme. Elementárnymi objektami jazyka <em>dpic</em> sú:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line, move, arrow, arc, box, ellipse, circle, spline, [], &quot;text&quot; 
 </pre></div>
 </div>
-<p>Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecný forma prístupu k atribútom má tvar</p>
+<p>Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecná forma prístupu k atribútom má tvar:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>objekt.pozícia 
 </pre></div>
 </div>
-<p>Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty <strong>nemôžu</strong> byť použitý ako hodnoty premennej.</p>
+<p>Kód uzatvorený v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty <strong>nemôžu</strong> byť použité ako hodnoty premennej.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str = &quot;Toto je text&quot;          # chyba   
 line = line from A to B;      # chyba
 
@@ -550,7 +550,7 @@ L1: line from A to B;         # objekt s atribútmi .start, .end, .center
 </div>
 <section id="instrukcie">
 <h3><font color='brown'> Inštrukcie </font><a class="headerlink" href="#instrukcie" title="Link to this heading">#</a></h3>
-<p>Inštrukcia je jeden alebo viacej príkazov jazyka <em>dpic</em> končiacich znakom bodkočiarky <em>;</em> alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku <em>dpic</em> nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>. Formát inštrukcie v má tvar</p>
+<p>Inštrukcia je jeden alebo viacej príkazov jazyka <em>dpic</em> končiacich znakom bodkočiarky <em>;</em> alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku <em>dpic</em> nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je program tvorený inštrukciami, ktoré sú makrami ako aj samotnými príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>. Formát inštrukcie v má tvar:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[referencia:] objekt [ atributy] [ umiestnenie ] [ text ]
 </pre></div>
 </div>
@@ -565,7 +565,7 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
 </section>
 <section id="referencie">
 <h3><font color='brown'> Referencie </font><a class="headerlink" href="#referencie" title="Link to this heading">#</a></h3>
-<p>Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezentuje polohu jeho geometrického stredu. Pomocou referncie je možné odkazovať sa aj na atribúty objektu. Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov.</p>
+<p>Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezentuje polohu jeho geometrického stredu. Pomocou referencie je možné odkazovať sa aj na atribúty objektu. Referencia musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    L1: line from Here to Here + (2,2);
     R1: resistor();
      S: (5,6);
@@ -576,7 +576,7 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
     px = R1.end.x    # numericka hodnota
 </pre></div>
 </div>
-<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorvých operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej uprave polohy objektov.</p>
+<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorových operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej úprave polohy objektov, <a class="reference internal" href="#cm-0160c"><span class="std std-numref">Obr. 59</span></a>.</p>
 <figure class="align-default" id="cm-0160c">
 <a class="reference internal image-reference" href="_images/cm_0160c.png"><img alt="_images/cm_0160c.png" src="_images/cm_0160c.png" style="width: 500px;" />
 </a>
@@ -587,7 +587,7 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
 </section>
 <section id="bloky-a-zlozene-objekty">
 <h3><font color='brown'> Bloky a zložené objekty</font><a class="headerlink" href="#bloky-a-zlozene-objekty" title="Link to this heading">#</a></h3>
-<p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.</p>
+<p>Časť kódu uzatvorená v hranatých zátvorkách <code class="docutils literal notranslate"><span class="pre">[...]</span></code> predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   w=2;
    move to (1,1.5);                  # poloha zloženého objektu
 A:[                                  # blok s absolutnymi suradnicami  
@@ -601,13 +601,13 @@ A:[                                  # blok s absolutnymi suradnicami
 ] 
 </pre></div>
 </div>
-<p>Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty</p>
+<p>Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.s   .n   .w   .e   .c
 .sw  .se  .nw  .ne
 .wid_     .ht_
 </pre></div>
 </div>
-<p>Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.</p>
+<p>Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt, <a class="reference internal" href="#cm-0160d"><span class="std std-numref">Obr. 60</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>r = A.rr;                            # chyba, premenná rr nie je viditeľná
 r = A.C1.rad                         # použitie vnútorných referncií
 line &lt;- from A.B.nw left_ 1 up_ 1; 
@@ -627,7 +627,7 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <section id="vetvy">
 <h2><font color='teal'>  Vetvy  </font><a class="headerlink" href="#vetvy" title="Link to this heading">#</a></h2>
 <p>Vetva je tvorená kódom uzatvoreným do zložených zátvoriek <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote <code class="docutils literal notranslate"><span class="pre">Here</span></code>, vo vetve sa vytvorí lokálna kópia <code class="docutils literal notranslate"><span class="pre">Here</span></code>. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.</p>
-<p>Uzatvorenie kódu do vetvy <code class="docutils literal notranslate"><span class="pre">{...}</span></code> neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať.</p>
+<p>Uzatvorenie kódu do vetvy <code class="docutils literal notranslate"><span class="pre">{...}</span></code> neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať, <code class="xref std std-numref docutils literal notranslate"><span class="pre">cm_0160f</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">,);</span>        <span class="c1"># d -&gt; 3</span>
 <span class="n">DT</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
@@ -652,7 +652,7 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <p><span class="caption-number">Obr. 61 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-160f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia.</p>
+<p>Vetvy s výhodou využijeme pri popise prvkov zapojenia. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia, <a class="reference internal" href="#cm-0160e"><span class="std std-numref">Obr. 62</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line -&gt; 1;
 box wid 2 ht 1;     
 {
@@ -675,18 +675,18 @@ box wid 2 ht 1;
 </section>
 <section id="riadenie-toku">
 <h2><font color='teal'> Riadenie toku  </font><a class="headerlink" href="#riadenie-toku" title="Link to this heading">#</a></h2>
-<p>Jazyk <em>dpic</em> obsahuje základnú konštrukciu pre cuklus a podmienkové vetvenie toku programu.</p>
+<p>Jazyk <em>dpic</em> obsahuje základnú konštrukciu pre cyklus a podmienkové vetvenie toku programu.</p>
 <section id="cyklus">
 <h3><font color='brown'>  Cyklus  </font><a class="headerlink" href="#cyklus" title="Link to this heading">#</a></h3>
-<p>Formát príkazu pre cyklu</p>
+<p>Formát príkazu pre prikaz cyklu:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for variable = expr to expr [by [*] incr ] do { anything }.
 </pre></div>
 </div>
-<p>Jednoduchý cyklus s premennou <span class="math notranslate nohighlight">\(x\)</span> má tvar</p>
+<p>Jednoduchý cyklus s premennou <span class="math notranslate nohighlight">\(x\)</span> má tvar:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
 </pre></div>
 </div>
-<p>kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo zjednodušeného zápisu kódu</p>
+<p>kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo skráteného zápisu kódu, <a class="reference internal" href="#cm-0160b"><span class="std std-numref">Obr. 63</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
 for q=0 to 2*pi by 0.1 do{
     x = r*cos(a*q);
@@ -706,11 +706,11 @@ for q=0 to 2*pi by 0.1 do{
 </section>
 <section id="vetvenie">
 <h3><font color='brown'> Vetvenie  </font><a class="headerlink" href="#vetvenie" title="Link to this heading">#</a></h3>
-<p>Formát príkazu pre vetvenie</p>
+<p>Formát príkazu pre vetvenie programu:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if expression then { if-true } else { if-false }
 </pre></div>
 </div>
-<p>V nasledujúcom príklade je premennou <em>type</em> parametrizvané vykreslenie sériového alebo paralelného zapojenia rezistorov.</p>
+<p>V nasledujúcom príklade je premennou <em>type</em> parametrizované vykreslenie sériového alebo paralelného zapojenia rezistorov, <a class="reference internal" href="#cm-0160w"><span class="std std-numref">Obr. 64</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>type=1;
 if type==1 then{
     line 1; dot;
@@ -723,11 +723,11 @@ if type==1 then{
 }
 </pre></div>
 </div>
-<figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="_images/cm_0160k.png"><img alt="_images/cm_0160k.png" src="_images/cm_0160k.png" style="width: 250px;" />
+<figure class="align-default" id="cm-0160w">
+<a class="reference internal image-reference" href="_images/cm_0160w.png"><img alt="_images/cm_0160w.png" src="_images/cm_0160w.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f8a616367f9630837d0d0a1317887905/cm_0160k.ckt"><span class="xref download myst">Príklad</span></a> použitia vetvenia pre parametrizáciu vykresleného obvodu.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bfafccfc648c2712876dee85db347a6a/cm_0160w.ckt"><span class="xref download myst">Príklad</span></a> použitia vetvenia pre parametrizáciu vykresleného obvodu.</span><a class="headerlink" href="#cm-0160w" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -817,7 +817,7 @@ if type==1 then{
   <div class="footer-item">
     
 <p class="component-author">
-By pf
+By Lenka Bartošová, Peter Fabo, Michal Kuba
 </p>
 
   </div>
@@ -827,7 +827,7 @@ By pf
 
   <p class="copyright">
     
-      © Copyright 2025, pf.
+      © Copyright 2026, LAB - 411.
       <br/>
     
   </p>

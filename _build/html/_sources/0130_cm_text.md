@@ -14,11 +14,11 @@ kernelspec:
 
 # <font color='navy'> Text </font>
 
-Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencia, hodnota), tieto je mozné zapísať pomocou makier *rlabel(), llabel() ...*, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka `dpic` a formátovanie textu pomocou sádzacieho systému LaTeX, takýto text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.
+Elektronické zapojenia obsahujú texty pre označenie prvkov zapojenia (referencie, hodnoty). Tieto je možné zapísať pomocou makier *rlabel(), llabel() ...*, ktoré sa vzťahujú k poslednému nakreslenému prvku. Pre umiestnenie textov v zapojení je možné využiť aj príkazy jazyka `dpic` a formátovanie textu pomocou sádzacieho systému LaTeX. Takýto text môže obsahovať diakritiku, formátovacie príkazy ako aj matematické výrazy.
 
 ## <font color='teal'> Umiestnenie textu   </font>
 
-Pre vykreslenie textu v obrázku je určený príkaz v tvare 
+Pre vykreslenie textu v obrázku je určený príkaz v tvare:
 
     "text"  at location [position];
     
@@ -30,12 +30,12 @@ Pre vykreslenie textu v obrázku je určený príkaz v tvare
             above      vertikálne zarovnanie nahor
             belov      vertikálne zarovnanie nadol
 
-Textový reťazec je ohraničený obyčajnými uvodzovkami, pri spracovaní je odoslaný na renderovanie do LateX-u a na pracovnej ploche je umiestnený (ako obrázok) do polohy *location*. Poloha textu (jeho stred) môže byť zadaná 
+Textový reťazec je ohraničený obyčajnými úvodzovkami. Pri spracovaní je odoslaný na renderovanie do systému LateX a na pracovnej ploche je umiestnený ako obrázok do polohy *location*. Poloha textu (jeho stred) môže byť zadaná: 
 
-* absolútnou pozíciou
-* referenciou na objekt 
-* odkazom na posledný použitý objekt (**last line**, **last box** ...)
-* odkazom na posledný použitý text (**last ""**) 
+* absolútnou pozíciou,
+* referenciou na objekt,
+* odkazom na posledný použitý objekt (**last line**, **last box** ...),
+* odkazom na posledný použitý text (**last ""**), 
 * odkazom posledný použitý kompozitný objekt (alebo makro) (**last [ ]**). 
 
 Vlastná veľkosť textu (ohraničenia) **nie je** známa, pretože samotný text je vytváraný až pri renderovaní a jeho veľkosť závisí od typu a veľkosti fontu. Relatívne umiestnenie voči polohe stredu textu je možné upraviť pomocou parametra *position*, jeho použitie ukazuje obrázok {numref}`cm_0130a`.
@@ -95,16 +95,16 @@ Text modifikuje globálnu premennú `Here`, po vykreslení textu je nová hodnot
 
 ## <font color='teal'>  Farba textu  </font>
 
-Pre nastavenie farby je možné použiť 
+Pre nastavenie farby je možné použiť:
 
-* pre globálne nastavenie farby vrátane textov sú makrá *rgb()* resp. preddefinované pomenované farby zadefinované v súbore [lib_color.ckt](./src/lib_color.ckt) v tvare *color_<meno_farby>*. 
+* pre globálne nastavenie farby vrátane textov môžeme použiť makrá *rgb()* alebo pomenované farby zadefinované v súbore [lib_color.ckt](./src/lib_color.ckt) v tvare *color_<meno_farby>*:
 
         ...
         color_red;
         color_green;
         ...
     
-* pre lokálne nastavenie farby textu je možné použiť v zadaní textu prostredie *color* z LaTexu v tvare *\color{<farba>}*
+* pre lokálne nastavenie farby textu je možné použiť v zadaní textu prostredie *color* zo systému LaTex v tvare *\color{<farba>}*:
 
         "\color{red} červený text" at (1, 1); 
         
@@ -114,8 +114,8 @@ Vyššiu prioritu má nastavenie lokálnej farbu textu, {numref}`cm_0130b`.
             "stred boxu" at BOX.c;                     dot;
             "\color{red} červený text" at BOX.n above; dot;
             
-            color_dark_orange;                               # globalne
-            "\color{blue} text vpravo" at BOX.e ljust; dot;  # lokalne
+            color_dark_orange;                               # globálne
+            "\color{blue} text vpravo" at BOX.e ljust; dot;  # lokálne
             "text vlavo dole" at BOX.sw rjust below;   dot;
 
             color_blue;
@@ -160,9 +160,9 @@ _ = cm_compile('cm_0130b', data, dpi=600 )
 
 ## <font color='teal'>  Matematické výrazy  </font>
 
-Pre zobrazenie matematických výrazov sa používa štandardné formátovanie LaTeX-u. Matematický vzťah alebo matematický text sa zobrazí len pri renderovaní pomocou nainštalovaného sádzacieho systému LaTeX, {numref}`cm_0130c`.
+Pre zobrazenie matematických výrazov sa používa štandardné formátovanie systému LaTeX. Matematický vzťah alebo matematický text sa zobrazí len pri renderovaní pomocou nainštalovaného sádzacieho systému LaTeX, {numref}`cm_0130c`.
 
-Funkcia `sprintf` pre konverziu čísla na formátovaný reťazec akceptuje formatovacie znaky *%e, %f, %g*.
+Funkcia `sprintf` pre konverziu čísla na formátovaný reťazec akceptuje formátovacie znaky *%e, %f, %g*:
 
     T: "$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$" at (5, 0.5);    
 
@@ -193,7 +193,7 @@ T: "$\sqrt{\sin(\alpha^2) + \cos(\beta^2)}$" at (5, 0.5);
        \frac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots$" at (5,3);   
 
 color_red;
-sprintf("Formatovany text $x=%2.3f$ \,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
+sprintf("Formátovany text $x=%2.3f$ \,\,  $y=%2.3f $", T.x, T.y) at (5, 1.5);
 '''
 
 _ = cm_compile('cm_0130c', data, dpi=600)   
@@ -208,11 +208,11 @@ _ = cm_compile('cm_0130c', data, dpi=600)
 
 ## <font color='teal'>  Formátovanie textu </font>
 
-Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý sádzací systém LaTeX, {numref}`cm_0130d`, je možné používať pre úpravu textu príkazy z jeho prostredia, tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú rozsiahle, podrobnosti sú popísané v  [dokumentácii](https://www.latex-project.org/help/documentation/fntguide.pdf).
+Jaxyk `dpic` poskytuje len obmedzené možnosti formátovania textu. Ak je pre renderovanie použitý sádzací systém LaTeX, {numref}`cm_0130d`, je možné používať pre úpravu textu príkazy z jeho prostredia. Tieto sú súčasťou textu v úvodzovkách. Možnosti úpravy textu sú rozsiahle, podrobnosti sú popísané v  [dokumentácii](https://www.latex-project.org/help/documentation/fntguide.pdf).
 
 ### <font color='brown'>  Fonty </font>
 
-Pre prepínanie typu fontu sú v systéme LaTeX definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách `{...}` alebo na na celý text. Výber z LaTeX príkazov pre formátovanie textu 
+Pre prepínanie typu fontu sú v systéme LaTeX definované 3 základné skupiny príkazov pre výber kolekcie textu, fomátovania a tvaru textu v rámci kolekcie. Príkazy sa môžu vzťahovať na vybranú časť textu uzatvorenú v zložených zátvorkách `{...}` alebo na na celý text. Výber z príkazov systému LaTeX pre formátovanie textu: 
 
 **Výber kolekcie fontov**
 
@@ -245,7 +245,7 @@ Poloha otočeného textu je vždy v jeho strede, pridávanie medzier na začiato
 
     \underline{Underline}
     
-Príklad formátovania textu s použitím príkazov LaTex-u:
+Príklad formátovania textu s použitím príkazov systému LaTex:
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -291,7 +291,7 @@ Formátovanie textu pomocou príkazov LaTeX-u
 
 ### <font color='brown'> Text v rámiku </font>
 
-Pre umiestnenenie textu do rámiku môžeme použiť príkaz *box*, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme, texty vytvárané v systéme LaTeX pri finálnom vytváraní obrázku a ich veľkosť závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz [*fbox*](https://texdoc.org/serve/fbox/0) systému LaTeX, takto vytvorený text ale nie je objektom v *dpic*, t.j. nemôžeme sa odkazovať na jeho atribúty *.s, .n ...*. Použitie príkazu spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, {numref}`cm_0130g`, poloha textu je jeho geometrický stred.
+Pre umiestnenenie textu do rámiku môžeme použiť príkaz *box*, šírku a výšku ale musíme pripôsobiť ručne, pretože skutočné rozmery testu nepoznáme. Veľkosť textu vytváraného v systéme LaTeX vo finálnom zobrazení závisí od fontu, typu písma a jeho veľkosti. Pre vytvorenie rámiku okolo textu môžeme využiť priamo príkaz [*fbox*](https://texdoc.org/serve/fbox/0) systému LaTeX. Takto vytvorený text ale nie je objektom v *dpic*, t.j. nemôžeme sa odkazovať na jeho atribúty *.s, .n ...*. Použitie príkazu *fbox* spolu s možnosťami formátovania textu ukazuje nasledujúci príklad, {numref}`cm_0130g`, poloha textu je jeho geometrický stred.
 
     include(lib_color.ckt)
     "\fbox{\color{red} Text v rámiku}" at (0,0);

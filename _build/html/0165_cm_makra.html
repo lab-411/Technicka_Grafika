@@ -370,18 +370,18 @@ document.write(`
 <p>Prostredie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je rozšírením programovacieho jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> určeného pre kreslenie diagramov a grafov (staršia verzia je označovaná ako <code class="docutils literal notranslate"><span class="pre">gpic</span></code>) pomocou súboru <strong>makier</strong> pre makroprocesor <strong>m4</strong>. Makrá môžeme považovať za malé programy alebo skripty, ktorými sú nahradzované ich mená pri ich použití v hlavnom programe. Pomocou rozšírenia jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code> makrami je možné vytvárať elektrické zapojenia a schémy, zároveň je možné v nich používať aj grafické prvky jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>.</p>
 <div class="admonition-makroprocesor-m4 admonition">
 <p class="admonition-title">Makroprocesor m4</p>
-<p>Makroprocesor je univerzálny program pre spracovanie makier široko využívaný v programátorskej praxi najmä pri jazykoch nižšej úrovne a assembleroch. Makrá nachádzajú uplatnenie v rôznych implementáciách aj v textových a tabulkových procesoroch. Makroprocesor kopíruje vstupný text zo vstupu na výstup a popritom prí nájdení mena vopred definovaného makra</p>
+<p>Makroprocesor je univerzálny program pre spracovanie makier široko využívaný v programátorskej praxi najmä pri jazykoch nižšej úrovne a assembleroch. Makrá nachádzajú uplatnenie v rôznych implementáciách aj v textových a tabulkových procesoroch. Makroprocesor kopíruje vstupný text zo vstupu na výstup a popritom prí nájdení mena vopred definovaného makra:</p>
 <ul class="simple">
-<li><p>nahrádza meno makra textom z definície makra</p></li>
-<li><p>nahrádza parametre makra ich hodnotami</p></li>
-<li><p>vkladá súbory</p></li>
-<li><p>prevádza manipulácie s textovými reťazcami</p></li>
-<li><p>vyhodnocuje podmienky</p></li>
-<li><p>vyhodnocuje aritmetické výrazy</p></li>
+<li><p>nahrádza meno makra textom z definície makra,</p></li>
+<li><p>nahrádza parametre makra ich hodnotami,</p></li>
+<li><p>vkladá súbory,</p></li>
+<li><p>prevádza manipulácie s textovými reťazcami,</p></li>
+<li><p>vyhodnocuje podmienky,</p></li>
+<li><p>vyhodnocuje aritmetické výrazy.</p></li>
 </ul>
 <p>Referenčnou implementáciou makroprocesora <strong>m4</strong> je <a class="reference external" href="https://www.gnu.org/software/m4/manual/m4.html">GNU M4</a>.</p>
 </div>
-<p>Makrá definované v knižniciach <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> expandujú značky elektronických prvkov do množiny príkazov jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>, z vytvoreného programu je pomocou interpreteru príkazov vygenerovaný výsledný obrázok vo zvolenom rastrovom alebo vektorovom formáte.</p>
+<p>Makrá definované v knižniciach <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> expandujú značky elektronických prvkov do množiny príkazov jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>. Z vytvoreného programu je pomocou interpreteru príkazov vygenerovaný výsledný obrázok vo zvolenom rastrovom alebo vektorovom formáte, <a class="reference internal" href="#cm-0165a"><span class="std std-numref">Obr. 65</span></a>.</p>
 <figure class="align-default" id="cm-0165a">
 <a class="reference internal image-reference" href="_images/cm_0165a.png"><img alt="_images/cm_0165a.png" src="_images/cm_0165a.png" style="width: 650px;" />
 </a>
@@ -391,23 +391,23 @@ document.write(`
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Kódy makier sú v podstate pomenované textové reťazce, ktorými nahrádza makrorocesor pred samotným spracovaním zdrojového kódu  <strong>všetky</strong> časti zdrojového kódu zhodné s menom makra. Táto substitúcia je čisto mechanická, bez ohľadu na kontext v ktorom sa text zhodný s menom makra vyskytuje. Toto môže spôsobiť pri interpretácii kódu chybu, ktorá je spôsobená substitúciou makra na nevhodnom mieste a to aj napriek tomu, že kód programu je formálne syntakticky správny.</p>
+<p>Kódy makier sú v podstate pomenované textové reťazce, ktorými nahrádza makrorocesor pred samotným spracovaním zdrojového kódu  <strong>všetky</strong> časti zdrojového kódu zhodné s menom makra. Táto substitúcia je čisto mechanická, bez ohľadu na kontext, v ktorom sa text zhodný s menom makra vyskytuje. Toto môže spôsobiť pri interpretácii kódu chybu, ktorá je spôsobená substitúciou makra na nevhodnom mieste a to aj napriek tomu, že kód programu je formálne syntakticky správny.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R1: resistor;
-&quot;terminal resistor&quot; at R1.c above;   # chyba, substitucia v texte
+&quot;terminal resistor&quot; at R1.c above;   # chyba, substitúcia v texte
 </pre></div>
 </div>
-<p>Pre odstránenie tejto chyby je potrebné vhodným spôsobom pozmeniť text tak, aby makroprocesor text nenahrádzal, napríklad</p>
+<p>Pre odstránenie tejto chyby je potrebné vhodným spôsobom pozmeniť text tak, aby makroprocesor text nenahrádzal, napríklad:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;terminal res\\istor&quot; at R1.c above; # dve lomítka \\ sú pri zobrazení ignorované 
 </pre></div>
 </div>
-<p>Inou možnosťou je vložiť konfliktný text do úvodzoviek makra m4, ktoré makroprocesor ignoruje</p>
+<p>Inou možnosťou je vložiť konfliktný text do úvodzoviek makra m4, ktoré makroprocesor potom ignoruje:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;terminal `resistor&#39; &quot; at R1.c above; # `text&#39; je ignorovaný
 </pre></div>
 </div>
 </div>
 <section id="pouzitie-makier">
 <h2><font color='teal'> Použitie makier  </font><a class="headerlink" href="#pouzitie-makier" title="Link to this heading">#</a></h2>
-<p>Makrá sa definujú podľa syntaxe makroprocesora <strong>m4</strong>. Všeobecný tvar makra je</p>
+<p>Makrá sa definujú podľa syntaxe makroprocesora <strong>m4</strong>, všeobecný tvar makra je:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define (name, [expansion])
 </pre></div>
 </div>
@@ -422,7 +422,7 @@ document.write(`
 <p><span class="caption-number">Obr. 66 </span><span class="caption-text">Vytvorenie a použitie makra.</span><a class="headerlink" href="#pck-03" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Makro môže mať argumenty, tieto sú označované ako $1, $2 … , špeciálny význam má argument označený ako $0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami</p>
+<p>Makro môže mať argumenty, tieto sú označované ako $1, $2 … , špeciálny význam má argument označený ako $0, ktorý obsahuje meno makra. Príklady použitia jednoduchých makier s argumentami:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`exr&#39;, `$2, $1&#39;)               # zamena poradia argumentov 
 exr(abc, 123)                         # --&gt;  123, abc
 
@@ -465,7 +465,7 @@ define(`vzor&#39;,`[
 ]&#39;)
 </pre></div>
 </div>
-<p>Makro <em>defn()</em> v predlohe vytvorí premennú <em>par1</em> a skontroluje existenciu  argumentu $1, ak tento neexistuje, <em>ifelse</em> priradí <em>par1=1</em>, ak existuje, tak potom jej priradí hodnotu <em>par1=$1</em>. Premenná <em>par2</em> je inicializovaná hodnotou indexu z poľa dovolených parametrov. Makro pri použití pokrýva nasledujúce prípady</p>
+<p>Makro <em>defn()</em> v predlohe vytvorí premennú <em>par1</em> a skontroluje existenciu  argumentu $1. Ak tento neexistuje, <em>ifelse</em> priradí <em>par1=1</em>, ak existuje, tak potom premennej priradí hodnotu <em>par1=$1</em>. Premenná <em>par2</em> je inicializovaná hodnotou indexu z poľa dovolených parametrov. Makro pri použití pokrýva nasledujúce prípady:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vzor;        -&gt; vzor(1,L)
 vzor();      -&gt; vzor(1,L)
 vzor(2);     -&gt; vzor(2,L)
@@ -474,11 +474,10 @@ vzor(,X);    -&gt; vzor(1,L)
 vzor(,);     -&gt; vzor(1,L)     
 </pre></div>
 </div>
-<p>Nižšie je uvedené makro pre zobrazenie spínača s parametrami dĺžka spínača a ‘stav (ON, OFF) spínača. Aby bol komponent presne umiestnený v mriežke bez ohľadu na jeho aktuálne grafické zobrazenie, je vhodné ho umiestniť do neviditeľného boxu s fixnými rozmermi. Pre vonkajší box potom platia štandardné atribúty <em>w,e,s,n,nw …</em>.</p>
 <section id="implementacie-makra">
 <h3><font color='brown'> Implementácie makra </font><a class="headerlink" href="#implementacie-makra" title="Link to this heading">#</a></h3>
-<p>Nasledujúci príklad implementuje zobrazenie spínača s dvoma parametrami - dĺžka spínača a stavu zopnutia (ON, OFF) spínača. Aby bol komponent presne umiestnený v mriežke bez ohľadu na jeho aktuálne grafické zobrazenie, je vhodné ho umiestniť do neviditeľného boxu s fixnými rozmermi. Pre vonkajší box potom platia štandardné atribúty <em>w,e,s,n,nw …</em>.</p>
-<p>Pre ilustráciu je zobrazený vonkajší box, ktorý umožňuje ukladanie komponentu v rastri, parameter <em>invis</em> spôsobi skrytie obrysu.</p>
+<p>V nasledujúcom príklade je ukázamá implementácia makra pre zobrazenie spínača s parametrami dĺžka spínača a jeho stavu (ON, OFF). Aby bol komponent presne umiestnený v mriežke bez ohľadu na jeho aktuálne grafické zobrazenie, je vhodné ho umiestniť do neviditeľného boxu s fixnými rozmermi. Pre vonkajší box potom platia štandardné atribúty <em>w,e,s,n,nw …</em>.</p>
+<p>Pre ilustráciu je zobrazený vonkajší box, ktorý umožňuje ukladanie komponentu v mriežke, parameter <em>invis</em> spôsobí skrytie obrysu:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># horizontal switch
 # usage:
 #     swh(length, ON | OFF );
@@ -524,17 +523,17 @@ dot;
 </figure>
 <div class="admonition-konflikt-mien admonition">
 <p class="admonition-title">Konflikt mien</p>
-<p>Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makier sa dozvieme až pri kompilácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo.</p>
+<p>Používanie makier spoločne s kompilátorom môže byť niekedy zdrojom chýb. Problémom môže byť hlavne to, že o chybe spôsobenej nesprávnym použitím makier sa dozvieme až pri kompilácii kódu s expandovanými makrami, pričom sa zvyčajne nedozvieme, z ktorého makra a na ktorom riadku zdrojového kódu k chybe došlo:</p>
 <ul class="simple">
-<li><p>Niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro <em>setrgb()</em> používa premenné <em>r_</em> , <em>g_</em>, <em>b_</em>, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v LaTex-u napr. <em>r_1</em>. V takomto prípade je potrebné v reťazci pre LaTeX použiť formálne prerušenie reťazca <em>r\_1</em>.</p></li>
-<li><p>Nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad <em>“toto je resistor R1”</em>, pretože pri substitúcii dôjde k nahradeniu textu <em>resistor</em>  kódom definovanom v makre a následnej chybe pri kompilácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade.</p></li>
+<li><p>niektoré makrá definujú premenné a konštanty, ktoré môžu byť príčinou konfliktov. Napríklad makro <em>setrgb()</em> používa premenné <em>r_</em> , <em>g_</em>, <em>b_</em>, kde prvá premenná vytvorí konflikt s menom, ak potrebujeme napríklad označiť rezistor pomocou syntaxe v systéme LaTex, napr. <em>r_1</em>. V takomto prípade je potrebné v reťazci pre systém LaTeX použiť formálne prerušenie reťazca <em>r\_1</em>,</p></li>
+<li><p>nie je možné priamo v zobrazovanom texte použiť mená makrier, napríklad <em>“toto je resistor R1”</em>, pretože pri substitúcii dôjde k nahradeniu textu <em>resistor</em>  kódom definovanom v makre a následnej chybe pri kompilácii zdrojového kódu. Text musíme upraviť podobne ako v predchádzajúcom prípade.</p></li>
 </ul>
 </div>
 </section>
 </section>
 <section id="modifikacia-makra">
 <h2><font color='teal'> Modifikácia makra </font><a class="headerlink" href="#modifikacia-makra" title="Link to this heading">#</a></h2>
-<p>V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra, <a class="reference internal" href="#cm-0165d"><span class="std std-numref">Obr. 68</span></a></p>
+<p>V niektorých prípadoch nepotrebujeme vytvárať nové makro, ale len rozšíriť existujúce makro o ďalši popis alebo grafiku. V niektoých zapojeniach sa napríklad používa značka rezistora doplnená o označenie jeho výkonovej straty, ktorá môže súvisieť s typom jeho púzdra, <a class="reference internal" href="#cm-0165d"><span class="std std-numref">Obr. 68</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`res_025w&#39;, `[
     R: resistor($1,$2,$3);
     dx = 0.065*linewid;
@@ -617,7 +616,7 @@ dot;
   <div class="footer-item">
     
 <p class="component-author">
-By pf
+By Lenka Bartošová, Peter Fabo, Michal Kuba
 </p>
 
   </div>
@@ -627,7 +626,7 @@ By pf
 
   <p class="copyright">
     
-      © Copyright 2025, pf.
+      © Copyright 2026, LAB - 411.
       <br/>
     
   </p>

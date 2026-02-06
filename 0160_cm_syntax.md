@@ -13,7 +13,7 @@ kernelspec:
 ---
 # <font color='navy'> Jazyk *dpic*  </font>
 
-Programovací jazyk `dpic` bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafických objekty ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v *dpic* kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. `CircuitMacros` je rozšírením *dpic* o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka *dpic* je v [dokumentácii](./data/dpic-doc.pdf). 
+Programovací jazyk `dpic` bol špeciálne vytvorený na kreslenie grafov a diagramov s možnosťou ich exportu ako obrázkov alebo vkladania do textových dokumentov. Obsahuje príkazy pre kreslenie lineárnych objektov ako čiara, šipka, krivka, ako aj plošné objekty ako pravouholník, kružnica, elipsa, oblúk a umožňuje vytváranie zložených objektov. Zložitejšie grafické objekty, ktoré sa v obrázkoch vyskytujú častejšie, ako sú značky elektronických súčiastok, je možné v *dpic* kresliť pomocou makier, ktoré obsahujú kód pre nakreslenie objektu. `CircuitMacros` je rozšírením jazyka *dpic* o knižnice makier pre kreslenie elektronických obvodov a zapojení. Podrobný popis syntaxe jazyka *dpic* je v [dokumentácii](./data/dpic-doc.pdf). 
 
 
 ```{admonition} Programovací jazyk *dpic*
@@ -46,7 +46,7 @@ Text za koncom programu je ignorovaný. Ukončenie programu môžeme prakticky v
 
 ### <font color='brown'> Komentáre </font>
 
-Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie sú definované, je ale možné použiť viacriadkové komentáre s riadkami ukončenými \\\\\\\\.
+Komentáre začínajú znakom # a končia koncom riadku. Blokové komentáre nie sú definované, ale je možné použiť viacriadkové komentáre s riadkami ukončenými \\\\\\\\.
 
 
     # toto je jednoriadkovy komentar
@@ -66,7 +66,7 @@ White-space (tabulátory, medzery, znak nového riadku) sú vo v argumentoch mak
         
 ### <font color='brown'> Hodnoty </font>
 
-Jazyk *dpic* pozná len **numerické** hodnoty ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte *floating-point*. Všetky grafické prvky ako aj texty sú pokladané za objekty na ploche a sú reprezentované súradnicami polohy ich geometrického stredu. 
+Jazyk *dpic* pozná len **numerické** hodnoty, ktoré môžu byť zapísané v desatinnom tvare alebo môžu byť vo vedeckom formáte. Všetky numerické hodnoty sú interne uchovávané vo formáte *floating-point*. Všetky grafické prvky ako aj texty sú pokladané za objekty na ploche a sú reprezentované súradnicami polohy ich geometrického stredu. 
 
 ### <font color='brown'> Premenné </font>
 
@@ -91,11 +91,11 @@ Pre premenné sú definované numerické a logické operácie
     
 ### <font color='brown'> Súradnice </font>
     
-Súradnice bodov sú reprezentované ako dvojice (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná súadnica `Here`, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty *.x*, *.y*, ktoré reprezentujú numerické hodnoty zložiek polohy. Pre prácu so súradnicami sú definované vektorové operácie.
+Súradnice bodov sú reprezentované ako dvojice hodnôt v tvare (x,y) a **nemôžu** byť použité ako hodnoty premennej, môžu ale byť reprezentované referenciou. Špeciálny význam má pomenovaná súadnica `Here`, ktorá obsahuje súradnice posledného vykresleného bodu. Súradnice majú preddefinované atribúty *.x*, *.y*, ktoré reprezentujú numerické hodnoty zložiek polohy. Pre prácu so súradnicami sú definované vektorové operácie.
 
 #### <font color='purple'> Vytvorenie súradnice </font>
 
-Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou iných súradníc.
+Novú súradnicu je možné vytvárať z numerických hodnôt ako aj pomocou iných súradníc:
 
     P1: (3,4);      # vytvorenie súradnice bodu
     p1 = (3,4);     # chyba   
@@ -146,11 +146,11 @@ Výsledkom vektorovej operácie nad súradnicami je zase súradnica. Pre násobe
 
 #### <font color='purple'> Poloha medzi dvoma bodmi </font>
 
-Pri kreslení zapojení často potrebujeme určiť polohu medzi dvoma bodmi, v *dpic* môžeme použiť konštrukciu *between*
+Pri kreslení zapojení často potrebujeme určiť polohu medzi dvoma bodmi, v *dpic* môžeme použiť konštrukciu *between*:
 
     PB: k between P1 and P2  
     
-Hodnota *k* určuje relatívnu vzdialenosť ku koncovým bodom, *k=0.5* je stredom, *k=0* a *k=1* sú polohy koncových bodov. Pri hodnote *k* mimo intervalu *0...1* leží za krajnými bodmi *P1* a *P2*.
+Hodnota *k* určuje relatívnu vzdialenosť ku koncovým bodom, *k=0.5* je stredom, *k=0* a *k=1* sú polohy koncových bodov. Pri hodnote *k* mimo intervalu *0...1* leží za krajnými bodmi *P1* a *P2*, {numref}`cm_0160z`:
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -174,12 +174,12 @@ color_dark_cyan;
 X3: 1.35 between P1 and P2; dot(at X3) "\small \sf 1.35 between P1 and P2" rjust above
 '''
 
-_ = cm_compile('cm_0160k', data,  dpi=600)   
+_ = cm_compile('cm_0160z', data,  dpi=600)   
 ```
 
-```{figure} ./src/cm_0160k.png
+```{figure} ./src/cm_0160z.png
 :width: 450px
-:name: cm_0160k
+:name: cm_0160z
 
 Použitie konštrukcie *between*.
 ```
@@ -187,15 +187,15 @@ Použitie konštrukcie *between*.
 
 ## <font color='teal'> Objekty </font>
     
-Programovací jazyk *dpic* je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch s ktorými v programe pracujeme. Elementárnymi objektami jazyka *dpic* sú
+Programovací jazyk *dpic* je určený pre generovanie grafiky, ktorá je založená na elementárnych objektoch, s ktorými v programe pracujeme. Elementárnymi objektami jazyka *dpic* sú:
 
     line, move, arrow, arc, box, ellipse, circle, spline, [], "text" 
 
-Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecný forma prístupu k atribútom má tvar
+Každý objekt má priradenú sadu atribútov, ktoré definujú polohu v rámci objektu. Všeobecná forma prístupu k atribútom má tvar:
 
     objekt.pozícia 
 
-Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty **nemôžu** byť použitý ako hodnoty premennej.
+Kód uzatvorený v hranatých zátvorkách `[...]` reprezentuje zložený objekt. Text je postupnosť znakov definované v obyčajných úvodzovkách. Vykreslený text na ploche má vlastnosti plošného objektu, je možné k nemu pristupovať pomocou refrerencie. Pretože rozmery textu nie sú počas vykreslovania známe, všetky atribúty objektu majú hodnotu súradnice jeho stredu. Objekty **nemôžu** byť použité ako hodnoty premennej.
 
 
     str = "Toto je text"          # chyba   
@@ -207,7 +207,7 @@ Kód uzatvorený v hranatých zátvorkách reprezentuje zložený objekt. Text j
 
 ### <font color='brown'> Inštrukcie </font>
 
-Inštrukcia je jeden alebo viacej príkazov jazyka *dpic* končiacich znakom bodkočiarky *;* alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku *dpic* nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V `CircuitMacros` je program tvorený inštrukciami ktoré sú makrami ako aj samotnými príkazmi jazyka `dpic`. Formát inštrukcie v má tvar
+Inštrukcia je jeden alebo viacej príkazov jazyka *dpic* končiacich znakom bodkočiarky *;* alebo znakom konca riadku. Je vhodné implicitne používať znak konca riadku vždy, pri prípadnom dopĺňaní príkazu sa týmto obmedzí vznik chýb. Pretože v jazyku *dpic* nie je možné vytvárať funkcie a podprogramy, sú skupiny príkazov zoskupené do makier pomocou ktorých sa vykreslujú zložitejšie objekty. V `CircuitMacros` je program tvorený inštrukciami, ktoré sú makrami ako aj samotnými príkazmi jazyka `dpic`. Formát inštrukcie v má tvar:
 
     [referencia:] objekt [ atributy] [ umiestnenie ] [ text ]
 
@@ -222,7 +222,7 @@ Príklady
 
 ### <font color='brown'> Referencie </font>
 
-Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezentuje polohu jeho geometrického stredu. Pomocou referncie je možné odkazovať sa aj na atribúty objektu. Referencie musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. 
+Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezentuje polohu jeho geometrického stredu. Pomocou referencie je možné odkazovať sa aj na atribúty objektu. Referencia musí začínať veľkým písmenom nasledovaným ľubovolným počtom alfanumerických znakov. 
 
 
         L1: line from Here to Here + (2,2);
@@ -235,7 +235,7 @@ Každý zobrazený objekt v môže byť označený referenciou, ktorá reprezent
         px = R1.end.x    # numericka hodnota
 
 
-Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorvých operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej uprave polohy objektov.
+Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorových operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej úprave polohy objektov, {numref}`cm_0160c`.
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -282,7 +282,7 @@ _ = cm_compile('cm_0160c', data,  dpi=600)
 
 ### <font color='brown'> Bloky a zložené objekty</font>
 
-Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok.
+Časť kódu uzatvorená v hranatých zátvorkách `[...]` predstavuje blok alebo zložený objekt. Program v bloku má vlastnú absolútnu súradnicovú sústavu a po vytvorení má vlastnosti plošného objektu. Premenné v bloku sú rovnako ako vo vetve lokálne, vnútorné referencie vytvorené v bloku sú prístupné pomocou referencie na celý blok:
 
        w=2;
        move to (1,1.5);                  # poloha zloženého objektu
@@ -296,13 +296,13 @@ _ = cm_compile('cm_0160c', data,  dpi=600)
      C4: circle at B.e rad rr;
     ] 
 
-Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty 
+Pre zložený objeky sú automaticky vypočítané vonkajšie rozmery a sú mu priradené štandardné atribúty: 
 
     .s   .n   .w   .e   .c
     .sw  .se  .nw  .ne
     .wid_     .ht_
     
-Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt.
+Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt, {numref}`cm_0160d`.
 
     r = A.rr;                            # chyba, premenná rr nie je viditeľná
     r = A.C1.rad                         # použitie vnútorných referncií
@@ -357,7 +357,7 @@ Blok reprezentujúci zložený objekt a jeho vonkajší obrys.
 
 Vetva je tvorená kódom uzatvoreným do zložených zátvoriek `{...}`. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote `Here`, vo vetve sa vytvorí lokálna kópia `Here`. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.
 
-Uzatvorenie kódu do vetvy `{...}` neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať.  
+Uzatvorenie kódu do vetvy `{...}` neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať, {numref}`cm_0160f`.
 
 ```{code-block}
 d=3;
@@ -417,7 +417,7 @@ _ = cm_compile('cm_0160f', data, dpi=600)
 Použitie vetiev na kreslenie častí obvodu.
 ```
 
-Vetvy s výhodou využijeme pri popise prvkov zapojenie. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu `Here`, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (*llabel ...*) hodnotu `Here` nemenia.
+Vetvy s výhodou využijeme pri popise prvkov zapojenia. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu `Here`, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (*llabel ...*) hodnotu `Here` nemenia, {numref}`cm_0160e`.
 
     line -> 1;
     box wid 2 ht 1;     
@@ -463,19 +463,19 @@ _ = cm_compile('cm_0160e', data, dpi=600)
        
 ## <font color='teal'> Riadenie toku  </font>
 
-Jazyk *dpic* obsahuje základnú konštrukciu pre cuklus a podmienkové vetvenie toku programu. 
+Jazyk *dpic* obsahuje základnú konštrukciu pre cyklus a podmienkové vetvenie toku programu. 
 
 ### <font color='brown'>  Cyklus  </font>
 
-Formát príkazu pre cyklu
+Formát príkazu pre prikaz cyklu:
 
     for variable = expr to expr [by [*] incr ] do { anything }.
 
-Jednoduchý cyklus s premennou $x$ má tvar
+Jednoduchý cyklus s premennou $x$ má tvar:
 
     for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
 
-kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo zjednodušeného zápisu kódu 
+kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru `Here` zachováva, čo je zrejmé zo skráteného zápisu kódu, {numref}`cm_0160b`.
 
     ...
     for q=0 to 2*pi by 0.1 do{
@@ -556,11 +556,11 @@ _ = cm_compile('cm_0160b', data, dpi=600)
 
 ### <font color='brown'> Vetvenie  </font>
 
-Formát príkazu pre vetvenie 
+Formát príkazu pre vetvenie programu:
 
     if expression then { if-true } else { if-false }
     
-V nasledujúcom príklade je premennou *type* parametrizvané vykreslenie sériového alebo paralelného zapojenia rezistorov.
+V nasledujúcom príklade je premennou *type* parametrizované vykreslenie sériového alebo paralelného zapojenia rezistorov, {numref}`cm_0160w`.
 
     type=1;
     if type==1 then{
@@ -592,15 +592,15 @@ if type==1 then{
 }
 '''
 
-_ = cm_compile('cm_0160k', data, dpi=600)   
+_ = cm_compile('cm_0160w', data, dpi=600)   
 ```
 
 
-```{figure} ./src/cm_0160k.png
+```{figure} ./src/cm_0160w.png
 :width: 250px
-:name: cm_0160k
+:name: cm_0160w
 
-[Príklad](./src/cm_0160k.ckt) použitia vetvenia pre parametrizáciu vykresleného obvodu.
+[Príklad](./src/cm_0160w.ckt) použitia vetvenia pre parametrizáciu vykresleného obvodu.
 ```
     
 

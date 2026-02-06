@@ -397,7 +397,7 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 </section>
 <section id="zvyraznenie">
 <h2><font color='teal'> Zvýraznenie </font><a class="headerlink" href="#zvyraznenie" title="Link to this heading">#</a></h2>
-<p>Zvýraznene prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  <em>linethick_(n)</em>, volanie makra bez argumentu nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, <a class="reference internal" href="#cm-0104b"><span class="std std-numref">Obr. 53</span></a>.</p>
+<p>Zvýraznenie prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  <em>linethick_(n)</em>. Volanie makra bez argumentu <em>linethick_()</em> nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, <a class="reference internal" href="#cm-0104b"><span class="std std-numref">Obr. 53</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
    resistor(2,,E); llabel(,R_1,); 
 R2:[ linethick_(1.2);         # lokálna zmena hrubky čiary
@@ -438,7 +438,7 @@ R2:[ linewid = linewid*1.5;      # lokálna zmena velkosti v bloku
 </section>
 <section id="tienenie">
 <h2><font color='teal'> Tienenie </font><a class="headerlink" href="#tienenie" title="Link to this heading">#</a></h2>
-<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <a class="reference internal" href="0100_cm_dvojpoly.html"><span class="std std-doc"><em>elen_</em></span></a>, ktorá  definuje veľkosť dvojpóu, <a class="reference internal" href="#cm-0104d"><span class="std std-numref">Obr. 55</span></a>.</p>
+<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <a class="reference internal" href="0100_cm_dvojpoly.html"><span class="std std-doc"><em>elen_</em></span></a>, ktorá  definuje veľkosť dvojpólu, <a class="reference internal" href="#cm-0104d"><span class="std std-numref">Obr. 55</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>right_; 
 resistor(2,,E); llabel(,R_1,); 
 
@@ -487,7 +487,7 @@ resistor(2,,E); llabel(,R_3,);
 <p><span class="caption-number">Obr. 56 </span><span class="caption-text">Zvýraznenie pozadia jedného prvku zapojenia.</span><a class="headerlink" href="#cm-0104e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy a na jej obvode si zadefinovať body pripojenia, <a class="reference internal" href="#cm-0104f"><span class="std std-numref">Obr. 57</span></a>. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.</p>
+<p>V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy vopred a na jej obvode si zadefinovať body pripojenia, <a class="reference internal" href="#cm-0104f"><span class="std std-numref">Obr. 57</span></a>. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d  = elen_*5/6;    # veľkosť prvkov
 dx = 2*d;          # šírka plochu
 dy = 2*d*4/5;      # výška plochy
@@ -593,7 +593,7 @@ line to FL.OU2;
   <div class="footer-item">
     
 <p class="component-author">
-By pf
+By Lenka Bartošová, Peter Fabo, Michal Kuba
 </p>
 
   </div>
@@ -603,7 +603,7 @@ By pf
 
   <p class="copyright">
     
-      © Copyright 2025, pf.
+      © Copyright 2026, LAB - 411.
       <br/>
     
   </p>

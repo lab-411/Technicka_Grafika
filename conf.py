@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'cm'
-copyright = '2025, pf'
-author = 'pf'
+copyright = '2026, LAB - 411'
+author = 'Lenka Bartošová, Peter Fabo, Michal Kuba'
 release = '1.00'
 
 # -- General configuration ---------------------------------------------------

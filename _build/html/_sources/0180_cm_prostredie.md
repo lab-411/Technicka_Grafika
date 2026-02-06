@@ -16,7 +16,7 @@ kernelspec:
 
 ## <font color='teal'> Nastavenie parametrov pracovnej plochy  </font>
 
-Vlastnosti pracovnej plochy pre kreslenie zapojení ako aj zobrazenie objektov na ploche je možné nastavovať pomocou premenných praovného prostredia. Základné nastavenie pomocou premennej `scale` definuje veľkosť dĺžkovej jednotky (škálu) a premenné `maxpswid` a  `maxpsht` maximálne rozmery pracovnej plochy
+Vlastnosti pracovnej plochy pre kreslenie zapojení ako aj zobrazenie objektov na ploche je možné nastavovať pomocou premenných pracovného prostredia. Základné nastavenie pomocou premennej `scale` definuje veľkosť dĺžkovej jednotky (škálu) a premenné `maxpswid` a  `maxpsht` určujú maximálne rozmery pracovnej plochy:
 
     scale = 1               # základná jednotka je 1 inch (2.54cm) - default 
     scale = 2.54            # základná jednotka je 1 cm
@@ -24,7 +24,7 @@ Vlastnosti pracovnej plochy pre kreslenie zapojení ako aj zobrazenie objektov n
     maxpswid = 20           # maximálna šírka obrazku v základných jednotkách - default 11.5
     maxpsht = 10            # maximálna výška obrazku v základných jednotkách - default 8.5
 
-V tejto knihe používame nastavenie základnej jednotky 1cm, zobrazenie súradnicovej mriežky je v tejto mierke a dáva predstavu o reálnej veľkosti obrázku pri jeho použití v publikácii. Základná konfigurácia prostredia použitá v tejto publikácii má potom formát
+V tejto knihe používame pre kreslenie nastavenie základnej jednotky 1cm. Zobrazenie súradnicovej mriežky je v tejto mierke a dáva predstavu o reálnej veľkosti obrázku pri jeho použití v publikácii. Základná konfigurácia prostredia má potom formát,  {numref}`cm_0180a`:
 
 ```
 .PS
@@ -64,7 +64,7 @@ Hodnota aktuálnej (poslednej) pozície je hodnotou premennej `Here` v základn�
 
 ### <font color='brown'> Preddefinované premenné </font>
 
-Vlastnosti základných objektov sú určené množinou preddefinovaných premenných. Aby pri zmene škálovanie obrázku nedošlo k zmene zobrazenia, sú tieto premenná modifikované (vynásobené) hodnotou premennej `scale`. 
+Vlastnosti základných objektov sú určené množinou preddefinovaných premenných. Aby pri zmene škálovanie obrázku nedošlo k zmene zobrazenia, sú tieto premenná modifikované (vynásobené) hodnotou premennej `scale`:
    
 | Premenná   | Hodnota | Význam 
 |:---        | :----   | :--    
@@ -86,7 +86,7 @@ Vlastnosti základných objektov sú určené množinou preddefinovaných premen
 | textoffset | 2.5/72  | text justification gap
 | textwid    | 0       | assumed width of text
  
-Premenné prostredia, ktoré hodnota `scale` nemení.
+Premenné prostredia, ktoré hodnota `scale` nemení:
 
 | Premenná   | Hodnota | Význam 
 |:---        | :----   | :--    
