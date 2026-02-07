@@ -1,17 +1,10 @@
 .PS
-scale=2.54
-cct_init
+scale = 2.54            # zakladna jednotka v obrazku 1cm
+maxpswid = 21           # maximálna šírka 30cm
+maxpsht = 30            # maximálna výška 30cm
+cct_init                # inicializácia knižnice makier CircuitMacros
 
-l=elen_
-type=1;
-if type==1 then{
-    line 1; dot;
-    series_(`R1:resistor; llabel(,R1,);' , `R2:resistor; llabel(,R2,); '  );
-    dot; line 1;
-}else{
-  dot;
-}
-
-
-
+include(lib_base.ckt)       # import uživatelskej knižnice makier
+Grid(5,3);              # zobrazenie mriežky - makro z uživatelskej knižnice
+d = 1;                  # premenna 1cm
 .PE

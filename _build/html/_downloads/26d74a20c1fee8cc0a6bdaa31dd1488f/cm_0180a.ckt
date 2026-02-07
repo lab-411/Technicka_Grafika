@@ -15,4 +15,19 @@ include(lib_base.ckt)
 d = 1;
 Grid(5,3);
 
+arrowht=.3
+arrowwid = .2
+
+arrowhead=0; line -> from (0.5,0.5) right_ d
+arrowhead=1; line -> from (0.5,1) right_ d
+arrowhead=3;  line -> from (0.5,1.5) right_ d
+
+circlerad=0.5;
+circle at (3,0.5);
+
+boxwid=2;
+boxht=1;
+boxrad=0.25;
+box at (3,2) dashed;
+
 .PE

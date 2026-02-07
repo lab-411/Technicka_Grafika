@@ -14,7 +14,7 @@ kernelspec:
 
 # <font color='navy'>  Prostredie   </font>
 
-## <font color='teal'> Nastavenie parametrov pracovnej plochy  </font>
+## <font color='teal'> Nastavenie parametrov plochy  </font>
 
 Vlastnosti pracovnej plochy pre kreslenie zapojení ako aj zobrazenie objektov na ploche je možné nastavovať pomocou premenných pracovného prostredia. Základné nastavenie pomocou premennej `scale` definuje veľkosť dĺžkovej jednotky (škálu) a premenné `maxpswid` a  `maxpsht` určujú maximálne rozmery pracovnej plochy:
 
@@ -24,18 +24,73 @@ Vlastnosti pracovnej plochy pre kreslenie zapojení ako aj zobrazenie objektov n
     maxpswid = 20           # maximálna šírka obrazku v základných jednotkách - default 11.5
     maxpsht = 10            # maximálna výška obrazku v základných jednotkách - default 8.5
 
-V tejto knihe používame pre kreslenie nastavenie základnej jednotky 1cm. Zobrazenie súradnicovej mriežky je v tejto mierke a dáva predstavu o reálnej veľkosti obrázku pri jeho použití v publikácii. Základná konfigurácia prostredia má potom formát,  {numref}`cm_0180a`:
 
-```
+### <font color='brown'> Preddefinované premenné </font>
+
+Vlastnosti základných objektov sú určené množinou preddefinovaných premenných. Aby pri zmene škálovanie obrázku nedošlo k zmene zobrazenia, sú tieto premenné modifikované (vynásobené) hodnotou premennej `scale`:
+   
+| Premenná   | Hodnota | Význam 
+|:---        | :----   | :--    
+| arcrad     | 0.25    | polomer oblúka
+| arrowht    | 0.1     | dĺžka šípku
+| arrowwid   | 0.05    | šírka šípky
+| boxht      | 0.5     | výška obdĺžnika
+| boxrad     | 0       | polomer zaoblených rohov obdĺžnika
+| boxwid     | 0.75    | šírka obdĺžnika
+| circlerad  | 0.25    | polomer kružnice
+| dashwid    | 0.05    | dĺžka čiarky v čiarkovanej čiare alebo krivke
+| ellipseht  | 0.5     | výška elipsy
+| ellipsewid | 0.75    | šírka elipsy
+| lineht     | 0.5     | výška zvislých čiar
+| linewid    | 0.5     | dĺžka vodorovných čiar
+| moveht     | 0.5     | dĺžka vertikálnych pohybov
+| movewid    | 0.5     | dĺžka horizontálnych pohybov
+| textht     | 0       | predpokladaná výška textu (11pt pre postscript, PDF, and SVG)
+| textoffset | 2.5/72  | medzera v zarovnaní textu
+| textwid    | 0       | predpokladaná šírka textu
+ 
+Premenné prostredia, ktoré hodnota `scale` nemení:
+
+| Premenná   | Hodnota | Význam 
+|:---        | :----   | :--    
+| arrowhead  | 1       | tvar hrotu šípky
+| fillval    | 0.5     | hustota výplne
+| linethick  | 0.8     | hrúbka čiary v bodoch
+| maxpsht    | 11.5    | maximálna povolená výška diagramu
+| maxpswid   | 8.5     | maximálna povolená šírka diagramu
+        
+
+## <font color='teal'> Príklad konfigurácie prostredia  </font>
+        
+V tejto knihe používame pre kreslenie nastavenie základnej jednotky 1cm. Použitie súradnicovej mriežky je v tejto mierke a dáva predstavu o reálnej veľkosti obrázku pri jeho použití v publikácii. Základná konfigurácia prostredia pre obrázok o maximálnom rozmere strany A4 má potom formát podľa nasledujúceho programu, {numref}`cm_0180a`:
+
+```{code-block}
+:caption: Príklad konfigurácie prostredia a vykreslenia objektov s preddefinovanými parametrami.
 .PS
 scale = 2.54            # zakladna jednotka v obrazku 1cm
-maxpswid = 30           # maximálna šírka 30cm
+maxpswid = 21           # maximálna šírka 30cm
 maxpsht = 30            # maximálna výška 30cm
 cct_init                # inicializácia knižnice makier CircuitMacros
 
 include(base.ckt)       # import uživatelskej knižnice makier
 Grid(5,3);              # zobrazenie mriežky - makro z uživatelskej knižnice
 d = 1;                  # premenna 1cm
+
+arrowht = 0.3;          # ukazka pouzitia parametrov sipok
+arrowwid = 0.2;
+
+arrowhead=0; line -> from (0.5,0.5) right_ d;
+arrowhead=1; line -> from (0.5,1,0) right_ d;
+arrowhead=3; line -> from (0.5,1.5) right_ d;
+
+circlerad = 0.5;
+circle at (3,0.5);      # kruznca s preddefinovanym polomerom
+
+boxwid = 2;
+boxht = 1;
+boxrad = 0.25;
+box at (3,2) dashed;    # obdlznik s preddefinovanymi parametrami
+
 .PE
 ```
 
@@ -48,6 +103,21 @@ data = r'''
 include(lib_base.ckt)
 d = 1;
 Grid(5,3);
+
+arrowht=.3
+arrowwid = .2
+
+arrowhead=0; line -> from (0.5,0.5) right_ d
+arrowhead=1; line -> from (0.5,1) right_ d
+arrowhead=3;  line -> from (0.5,1.5) right_ d
+
+circlerad=0.5;
+circle at (3,0.5);
+
+boxwid=2;
+boxht=1;
+boxrad=0.25;
+box at (3,2) dashed;
 '''
 
 _ = cm_compile('cm_0180a', data,  dpi=600)   
@@ -60,41 +130,4 @@ _ = cm_compile('cm_0180a', data,  dpi=600)
 [Vykreslenie](./src/cm_0180a.ckt) súradnicovej mriežky s rozmermi 5x3 cm
 ```
 
-Hodnota aktuálnej (poslednej) pozície je hodnotou premennej `Here` v základných jednotkách.  
-
-### <font color='brown'> Preddefinované premenné </font>
-
-Vlastnosti základných objektov sú určené množinou preddefinovaných premenných. Aby pri zmene škálovanie obrázku nedošlo k zmene zobrazenia, sú tieto premenná modifikované (vynásobené) hodnotou premennej `scale`:
-   
-| Premenná   | Hodnota | Význam 
-|:---        | :----   | :--    
-| arcrad     | 0.25    | arc radius
-| arrowht    | 0.1     | length of arrowhead
-| arrowwid   | 0.05    | width of arrowhead
-| boxht      | 0.5     | box height
-| boxrad     | 0       | radius of rounded box corners
-| boxwid     | 0.75    | box width
-| circlerad  | 0.25    | circle radius
-| dashwid    | 0.05    | dash length for dashed lines
-| ellipseht  | 0.5     | ellipse height
-| ellipsewid | 0.75    | ellipse width
-| lineht     | 0.5     | height of vertical lines
-| linewid    | 0.5     | length of horizontal lines
-| moveht     | 0.5     | length of vertical moves
-| movewid    | 0.5     | length of horizontal moves
-| textht     | 0       | assumed height of text (11pt for postscript, PDF, and SVG)
-| textoffset | 2.5/72  | text justification gap
-| textwid    | 0       | assumed width of text
- 
-Premenné prostredia, ktoré hodnota `scale` nemení:
-
-| Premenná   | Hodnota | Význam 
-|:---        | :----   | :--    
-| arrowhead  | 1       | arrowhead shape
-| fillval    | 0.5     | fill density
-| linethick  | 0.8     | line thickness in points
-| maxpsht    | 11.5    | maximum allowed diagram height
-| maxpswid   | 8.5     | maximum allowed diagram width
-        
-
-TODO - Príkady použitia parametrov prostredia
+Hodnoty súradníc, ako aj aktuálnej (poslednej) pozície, ktorá je hodnotou premennej `Here`, sú potom v základných jednotkách. Poloha počiatku mriežky je v ľavom dolnom roku stránky. Po renderovaní stránky sú voľné okraje obrázku orezané. 

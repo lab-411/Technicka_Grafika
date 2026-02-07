@@ -408,7 +408,7 @@ sudo apt-get install ghostscript
 </ul>
 <p>Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte <a class="reference download internal" download="" href="_downloads/043fc0c8e4396601a41477bd2b6f1db7/cmc.sh"><span class="xref download myst">cmc.sh</span></a> pre príkazový interpreter <em>bash</em>. Konfiguračný súbor pre LateX <em>template.tex</em> generuje skript, v prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v LaTex-e doplniť ďaľšie prostredie a pod.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 6 : </span><span class="caption-text">Skript <em>cmc.sh</em></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 7 : </span><span class="caption-text">Skript <em>cmc.sh</em></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;% LaTeX template file</span>
@@ -465,7 +465,7 @@ rm<span class="w"> </span>template.log
 <h2><font color='teal'> Python skript </font><a class="headerlink" href="#python-skript" title="Link to this heading">#</a></h2>
 <p>Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a>. Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 7 : </span><span class="caption-text">Skript <em>cmc.py</em></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 8 : </span><span class="caption-text">Skript <em>cmc.py</em></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">CIRCUIT_MACROS_PATH</span> <span class="o">=</span> <span class="s1">&#39;./cm&#39;</span>
@@ -516,7 +516,7 @@ rm<span class="w"> </span>template.log
 <h3><font color='brown'> Použitie </font><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Vytvoríme program pre Python, v ktorom v textovom (raw) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie <em>cm_compile()</em>.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 8 : </span><span class="caption-text">Generovanie obrázkov v prostredí Pythonu</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 9 : </span><span class="caption-text">Generovanie obrázkov v prostredí Pythonu</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="n">a</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">.PS</span>
 <span class="s1">scale = 2.54     </span>

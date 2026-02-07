@@ -348,10 +348,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastavenie-parametrov-pracovnej-plochy"><font color="teal"> Nastavenie parametrov pracovnej plochy  </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastavenie-parametrov-plochy"><font color="teal"> Nastavenie parametrov plochy  </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preddefinovane-premenne"><font color="brown"> Preddefinované premenné </font></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklad-konfiguracie-prostredia"><font color="teal"> Príklad konfigurácie prostredia  </font></a></li>
 </ul>
             </nav>
         </div>
@@ -365,8 +366,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="prostredie">
 <h1><font color='navy'>  Prostredie   </font><a class="headerlink" href="#prostredie" title="Link to this heading">#</a></h1>
-<section id="nastavenie-parametrov-pracovnej-plochy">
-<h2><font color='teal'> Nastavenie parametrov pracovnej plochy  </font><a class="headerlink" href="#nastavenie-parametrov-pracovnej-plochy" title="Link to this heading">#</a></h2>
+<section id="nastavenie-parametrov-plochy">
+<h2><font color='teal'> Nastavenie parametrov plochy  </font><a class="headerlink" href="#nastavenie-parametrov-plochy" title="Link to this heading">#</a></h2>
 <p>Vlastnosti pracovnej plochy pre kreslenie zapojení ako aj zobrazenie objektov na ploche je možné nastavovať pomocou premenných pracovného prostredia. Základné nastavenie pomocou premennej <code class="docutils literal notranslate"><span class="pre">scale</span></code> definuje veľkosť dĺžkovej jednotky (škálu) a premenné <code class="docutils literal notranslate"><span class="pre">maxpswid</span></code> a  <code class="docutils literal notranslate"><span class="pre">maxpsht</span></code> určujú maximálne rozmery pracovnej plochy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>scale = 1               # základná jednotka je 1 inch (2.54cm) - default 
 scale = 2.54            # základná jednotka je 1 cm
@@ -375,30 +376,9 @@ maxpswid = 20           # maximálna šírka obrazku v základných jednotkách 
 maxpsht = 10            # maximálna výška obrazku v základných jednotkách - default 8.5
 </pre></div>
 </div>
-<p>V tejto knihe používame pre kreslenie nastavenie základnej jednotky 1cm. Zobrazenie súradnicovej mriežky je v tejto mierke a dáva predstavu o reálnej veľkosti obrázku pri jeho použití v publikácii. Základná konfigurácia prostredia má potom formát,  <a class="reference internal" href="#cm-0180a"><span class="std std-numref">Obr. 71</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># zakladna jednotka v obrazku 1cm</span>
-<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># maximálna šírka 30cm</span>
-<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># maximálna výška 30cm</span>
-<span class="n">cct_init</span>                <span class="c1"># inicializácia knižnice makier CircuitMacros</span>
-
-<span class="n">include</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>       <span class="c1"># import uživatelskej knižnice makier</span>
-<span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>              <span class="c1"># zobrazenie mriežky - makro z uživatelskej knižnice</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                  <span class="c1"># premenna 1cm</span>
-<span class="o">.</span><span class="n">PE</span>
-</pre></div>
-</div>
-<figure class="align-default" id="cm-0180a">
-<a class="reference internal image-reference" href="_images/cm_0180a.png"><img alt="_images/cm_0180a.png" src="_images/cm_0180a.png" style="width: 350px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Obr. 71 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/26d74a20c1fee8cc0a6bdaa31dd1488f/cm_0180a.ckt"><span class="xref download myst">Vykreslenie</span></a> súradnicovej mriežky s rozmermi 5x3 cm</span><a class="headerlink" href="#cm-0180a" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Hodnota aktuálnej (poslednej) pozície je hodnotou premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code> v základných jednotkách.</p>
 <section id="preddefinovane-premenne">
 <h3><font color='brown'> Preddefinované premenné </font><a class="headerlink" href="#preddefinovane-premenne" title="Link to this heading">#</a></h3>
-<p>Vlastnosti základných objektov sú určené množinou preddefinovaných premenných. Aby pri zmene škálovanie obrázku nedošlo k zmene zobrazenia, sú tieto premenná modifikované (vynásobené) hodnotou premennej <code class="docutils literal notranslate"><span class="pre">scale</span></code>:</p>
+<p>Vlastnosti základných objektov sú určené množinou preddefinovaných premenných. Aby pri zmene škálovanie obrázku nedošlo k zmene zobrazenia, sú tieto premenné modifikované (vynásobené) hodnotou premennej <code class="docutils literal notranslate"><span class="pre">scale</span></code>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Premenná</p></th>
@@ -409,71 +389,71 @@ maxpsht = 10            # maximálna výška obrazku v základných jednotkách 
 <tbody>
 <tr class="row-even"><td class="text-left"><p>arcrad</p></td>
 <td class="text-left"><p>0.25</p></td>
-<td class="text-left"><p>arc radius</p></td>
+<td class="text-left"><p>polomer oblúka</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>arrowht</p></td>
 <td class="text-left"><p>0.1</p></td>
-<td class="text-left"><p>length of arrowhead</p></td>
+<td class="text-left"><p>dĺžka šípku</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>arrowwid</p></td>
 <td class="text-left"><p>0.05</p></td>
-<td class="text-left"><p>width of arrowhead</p></td>
+<td class="text-left"><p>šírka šípky</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>boxht</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>box height</p></td>
+<td class="text-left"><p>výška obdĺžnika</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>boxrad</p></td>
 <td class="text-left"><p>0</p></td>
-<td class="text-left"><p>radius of rounded box corners</p></td>
+<td class="text-left"><p>polomer zaoblených rohov obdĺžnika</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>boxwid</p></td>
 <td class="text-left"><p>0.75</p></td>
-<td class="text-left"><p>box width</p></td>
+<td class="text-left"><p>šírka obdĺžnika</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>circlerad</p></td>
 <td class="text-left"><p>0.25</p></td>
-<td class="text-left"><p>circle radius</p></td>
+<td class="text-left"><p>polomer kružnice</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>dashwid</p></td>
 <td class="text-left"><p>0.05</p></td>
-<td class="text-left"><p>dash length for dashed lines</p></td>
+<td class="text-left"><p>dĺžka čiarky v čiarkovanej čiare alebo krivke</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>ellipseht</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>ellipse height</p></td>
+<td class="text-left"><p>výška elipsy</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>ellipsewid</p></td>
 <td class="text-left"><p>0.75</p></td>
-<td class="text-left"><p>ellipse width</p></td>
+<td class="text-left"><p>šírka elipsy</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>lineht</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>height of vertical lines</p></td>
+<td class="text-left"><p>výška zvislých čiar</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>linewid</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>length of horizontal lines</p></td>
+<td class="text-left"><p>dĺžka vodorovných čiar</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>moveht</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>length of vertical moves</p></td>
+<td class="text-left"><p>dĺžka vertikálnych pohybov</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>movewid</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>length of horizontal moves</p></td>
+<td class="text-left"><p>dĺžka horizontálnych pohybov</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>textht</p></td>
 <td class="text-left"><p>0</p></td>
-<td class="text-left"><p>assumed height of text (11pt for postscript, PDF, and SVG)</p></td>
+<td class="text-left"><p>predpokladaná výška textu (11pt pre postscript, PDF, and SVG)</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>textoffset</p></td>
 <td class="text-left"><p>2.5/72</p></td>
-<td class="text-left"><p>text justification gap</p></td>
+<td class="text-left"><p>medzera v zarovnaní textu</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>textwid</p></td>
 <td class="text-left"><p>0</p></td>
-<td class="text-left"><p>assumed width of text</p></td>
+<td class="text-left"><p>predpokladaná šírka textu</p></td>
 </tr>
 </tbody>
 </table>
@@ -489,29 +469,71 @@ maxpsht = 10            # maximálna výška obrazku v základných jednotkách 
 <tbody>
 <tr class="row-even"><td class="text-left"><p>arrowhead</p></td>
 <td class="text-left"><p>1</p></td>
-<td class="text-left"><p>arrowhead shape</p></td>
+<td class="text-left"><p>tvar hrotu šípky</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>fillval</p></td>
 <td class="text-left"><p>0.5</p></td>
-<td class="text-left"><p>fill density</p></td>
+<td class="text-left"><p>hustota výplne</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>linethick</p></td>
 <td class="text-left"><p>0.8</p></td>
-<td class="text-left"><p>line thickness in points</p></td>
+<td class="text-left"><p>hrúbka čiary v bodoch</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>maxpsht</p></td>
 <td class="text-left"><p>11.5</p></td>
-<td class="text-left"><p>maximum allowed diagram height</p></td>
+<td class="text-left"><p>maximálna povolená výška diagramu</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>maxpswid</p></td>
 <td class="text-left"><p>8.5</p></td>
-<td class="text-left"><p>maximum allowed diagram width</p></td>
+<td class="text-left"><p>maximálna povolená šírka diagramu</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>TODO - Príkady použitia parametrov prostredia</p>
 </section>
+</section>
+<section id="priklad-konfiguracie-prostredia">
+<h2><font color='teal'> Príklad konfigurácie prostredia  </font><a class="headerlink" href="#priklad-konfiguracie-prostredia" title="Link to this heading">#</a></h2>
+<p>V tejto knihe používame pre kreslenie nastavenie základnej jednotky 1cm. Použitie súradnicovej mriežky je v tejto mierke a dáva predstavu o reálnej veľkosti obrázku pri jeho použití v publikácii. Základná konfigurácia prostredia pre obrázok o maximálnom rozmere strany A4 má potom formát podľa nasledujúceho programu, <a class="reference internal" href="#cm-0180a"><span class="std std-numref">Obr. 71</span></a>:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 4 : </span><span class="caption-text">Príklad konfigurácie prostredia a vykreslenia objektov s preddefinovanými parametrami.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># zakladna jednotka v obrazku 1cm</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">21</span>           <span class="c1"># maximálna šírka 30cm</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># maximálna výška 30cm</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializácia knižnice makier CircuitMacros</span>
+
+<span class="n">include</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>       <span class="c1"># import uživatelskej knižnice makier</span>
+<span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>              <span class="c1"># zobrazenie mriežky - makro z uživatelskej knižnice</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                  <span class="c1"># premenna 1cm</span>
+
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>          <span class="c1"># ukazka pouzitia parametrov sipok</span>
+<span class="n">arrowwid</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+
+<span class="n">arrowhead</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">right_</span> <span class="n">d</span><span class="p">;</span>
+<span class="n">arrowhead</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="n">right_</span> <span class="n">d</span><span class="p">;</span>
+<span class="n">arrowhead</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span> <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="n">d</span><span class="p">;</span>
+
+<span class="n">circlerad</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">circle</span> <span class="n">at</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>      <span class="c1"># kruznca s preddefinovanym polomerom</span>
+
+<span class="n">boxwid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">boxht</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">boxrad</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">;</span>
+<span class="n">box</span> <span class="n">at</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="n">dashed</span><span class="p">;</span>    <span class="c1"># obdlznik s preddefinovanymi parametrami</span>
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-default" id="cm-0180a">
+<a class="reference internal image-reference" href="_images/cm_0180a.png"><img alt="_images/cm_0180a.png" src="_images/cm_0180a.png" style="width: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 71 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/26d74a20c1fee8cc0a6bdaa31dd1488f/cm_0180a.ckt"><span class="xref download myst">Vykreslenie</span></a> súradnicovej mriežky s rozmermi 5x3 cm</span><a class="headerlink" href="#cm-0180a" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Hodnoty súradníc, ako aj aktuálnej (poslednej) pozície, ktorá je hodnotou premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, sú potom v základných jednotkách. Poloha počiatku mriežky je v ľavom dolnom roku stránky. Po renderovaní stránky sú voľné okraje obrázku orezané.</p>
 </section>
 </section>
 
@@ -560,10 +582,11 @@ maxpsht = 10            # maximálna výška obrazku v základných jednotkách 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastavenie-parametrov-pracovnej-plochy"><font color="teal"> Nastavenie parametrov pracovnej plochy  </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastavenie-parametrov-plochy"><font color="teal"> Nastavenie parametrov plochy  </font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preddefinovane-premenne"><font color="brown"> Preddefinované premenné </font></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklad-konfiguracie-prostredia"><font color="teal"> Príklad konfigurácie prostredia  </font></a></li>
 </ul>
   </nav></div>
 
