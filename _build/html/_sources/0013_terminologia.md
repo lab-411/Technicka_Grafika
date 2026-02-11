@@ -15,7 +15,7 @@ kernelspec:
 
 # <font color='navy'>  Terminológia  </font> 
 
-Terminológia a použité symboly
+Terminológia a v texte použité symboly
 
 | Symbol     | Význam 
 |:---        | :--    
@@ -28,12 +28,12 @@ Terminológia a použité symboly
 | [...]      | blok
 | "txt"      | textový reťazec
 | `txt'      | textový reťazec v makroprcesore m4
-| \$ txt \$   | LaTeX matematický výraz v texte
+| \$ txt \$  | LaTeX matematický výraz v texte
 | meno ...   | inštrukcia
 | A:         | referencia na objekt
 | *.a*       | atribút objektu
 | **P**      | parameter objektu
-| meno()     | makro
+| *meno()*   | makro
 | $1         | argument makra
 
 

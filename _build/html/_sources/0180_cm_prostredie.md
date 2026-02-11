@@ -67,16 +67,16 @@ V tejto knihe používame pre kreslenie nastavenie základnej jednotky 1cm. Pou�
 ```{code-block}
 :caption: Príklad konfigurácie prostredia a vykreslenia objektov s preddefinovanými parametrami.
 .PS
-scale = 2.54            # zakladna jednotka v obrazku 1cm
-maxpswid = 21           # maximálna šírka 30cm
+scale = 2.54            # základna jednotka v obrázku 1cm
+maxpswid = 21           # maximálna šírka 21cm pre A4 format 21x30cm
 maxpsht = 30            # maximálna výška 30cm
 cct_init                # inicializácia knižnice makier CircuitMacros
 
-include(base.ckt)       # import uživatelskej knižnice makier
-Grid(5,3);              # zobrazenie mriežky - makro z uživatelskej knižnice
-d = 1;                  # premenna 1cm
+include(base.ckt)       # import uživateľskej knižnice makier
+Grid(5,3);              # zobrazenie mriežky - makro z uživateľskej knižnice
+d = 1;                  # premenná 1cm
 
-arrowht = 0.3;          # ukazka pouzitia parametrov sipok
+arrowht = 0.3;          # ukážka pouzitia parametrov šípok
 arrowwid = 0.2;
 
 arrowhead=0; line -> from (0.5,0.5) right_ d;
@@ -84,12 +84,12 @@ arrowhead=1; line -> from (0.5,1,0) right_ d;
 arrowhead=3; line -> from (0.5,1.5) right_ d;
 
 circlerad = 0.5;
-circle at (3,0.5);      # kruznca s preddefinovanym polomerom
+circle at (3,0.5);      # kružnica s preddefinovaným polomerom
 
 boxwid = 2;
 boxht = 1;
 boxrad = 0.25;
-box at (3,2) dashed;    # obdlznik s preddefinovanymi parametrami
+box at (3,2) dashed;    # obdľžnik s preddefinovanými parametrami
 
 .PE
 ```

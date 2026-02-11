@@ -498,16 +498,16 @@ maxpsht = 10            # maximálna výška obrazku v základných jednotkách 
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 4 : </span><span class="caption-text">Príklad konfigurácie prostredia a vykreslenia objektov s preddefinovanými parametrami.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># zakladna jednotka v obrazku 1cm</span>
-<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">21</span>           <span class="c1"># maximálna šírka 30cm</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># základna jednotka v obrázku 1cm</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">21</span>           <span class="c1"># maximálna šírka 21cm pre A4 format 21x30cm</span>
 <span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># maximálna výška 30cm</span>
 <span class="n">cct_init</span>                <span class="c1"># inicializácia knižnice makier CircuitMacros</span>
 
-<span class="n">include</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>       <span class="c1"># import uživatelskej knižnice makier</span>
-<span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>              <span class="c1"># zobrazenie mriežky - makro z uživatelskej knižnice</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                  <span class="c1"># premenna 1cm</span>
+<span class="n">include</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>       <span class="c1"># import uživateľskej knižnice makier</span>
+<span class="n">Grid</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>              <span class="c1"># zobrazenie mriežky - makro z uživateľskej knižnice</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                  <span class="c1"># premenná 1cm</span>
 
-<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>          <span class="c1"># ukazka pouzitia parametrov sipok</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>          <span class="c1"># ukážka pouzitia parametrov šípok</span>
 <span class="n">arrowwid</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
 
 <span class="n">arrowhead</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">right_</span> <span class="n">d</span><span class="p">;</span>
@@ -515,12 +515,12 @@ maxpsht = 10            # maximálna výška obrazku v základných jednotkách 
 <span class="n">arrowhead</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span> <span class="n">line</span> <span class="o">-&gt;</span> <span class="kn">from</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span> <span class="n">right_</span> <span class="n">d</span><span class="p">;</span>
 
 <span class="n">circlerad</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
-<span class="n">circle</span> <span class="n">at</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>      <span class="c1"># kruznca s preddefinovanym polomerom</span>
+<span class="n">circle</span> <span class="n">at</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>      <span class="c1"># kružnica s preddefinovaným polomerom</span>
 
 <span class="n">boxwid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="n">boxht</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">boxrad</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">;</span>
-<span class="n">box</span> <span class="n">at</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="n">dashed</span><span class="p">;</span>    <span class="c1"># obdlznik s preddefinovanymi parametrami</span>
+<span class="n">box</span> <span class="n">at</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="n">dashed</span><span class="p">;</span>    <span class="c1"># obdľžnik s preddefinovanými parametrami</span>
 
 <span class="o">.</span><span class="n">PE</span>
 </pre></div>

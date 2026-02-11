@@ -1,0 +1,15 @@
+.PS
+scale=2.54
+cct_init
+command"\sf"
+l=elen_
+# Enter your drawing code here
+include(lib_color.ckt)
+
+OP: opamp(,,,,P);
+line <- from OP.W left_ 1; ".W" rjust;
+line <- from OP.In1 left_ 1 up_ .5; ".In1" rjust;
+line <- from OP.In2 left_ 1 down_ .5; ".In2" rjust;
+
+
+.PE

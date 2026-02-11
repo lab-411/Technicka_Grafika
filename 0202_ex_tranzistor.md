@@ -17,7 +17,7 @@ kernelspec:
 
 ## <font color='teal'>  Bipolárny tranzistor </font> 
 
-Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov báza, kolektora a emitora. Bipolárny tranzistor z knižnice `CircuitMacros` zobrazuje makro *bi_tr()*
+Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov bázy, kolektora a emitora. Bipolárny tranzistor z knižnice `CircuitMacros` zobrazuje makro *bi_tr()*, {numref}`cm_202a`:
 
     Q1:bi_tr(up_ );     Q2:bi_tr(up_ ,R);    Q3:bi_tr(up_,,,E);    Q4:bi_tr(up_,R,,E); 
     Q5:bi_tr(up_,,P);   Q6:bi_tr(up_,R,P);   Q7:bi_tr(up_,,P,E);   Q8:bi_tr(up_,R,P,E); 
@@ -71,7 +71,7 @@ Značka bipolárneho tranzistora *bi_tr()*.
     parametre:
     
       linespec             - orientácia a dĺžka prívodov
-      L | R                - poloha bázy vlavo (L) alebo vpravo (R)
+      L | R                - poloha bázy vľavo (L) alebo vpravo (R)
       N | P                - NPN / PNP
       E                    - púzdro tranzistora
       
@@ -85,7 +85,7 @@ Značka bipolárneho tranzistora *bi_tr()*.
 
     
 
-Pretože vývody tranzistora nie sú v mriežke, musíme  obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora $R_{b1}$ je určená polohou značky zeme pri rezistore $R_e$. Pre popis spojovacieho bodu $V_b$ bolo použité makro *dlabel()*.
+Pretože vývody tranzistora nie sú v usporiadané mriežke, musíme obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy, a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade, {numref}`cm_202b`, je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora $R_{b1}$ je určená polohou značky zeme pri rezistore $R_e$. Pre popis spojovacieho bodu $V_b$ bolo použité makro *dlabel()*.
 
 ```{code-block}
 :emphasize-lines: 7,8,9
@@ -158,7 +158,7 @@ _ = cm_compile('cm_202b', data, dpi=600 )
 
 ### <font color='brown'> Modifikácie značiek </font> 
 
-Ak vyžadujeme aby vývody prvkov boli v presných a známich súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici [lib_user.ckt](./src/lib_user.ckt) sú definované ekvivalenty bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia.
+Ak vyžadujeme, aby vývody prvkov boli v presných a známych súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici [lib_user.ckt](./src/lib_user.ckt) sú definované ekvivalenty bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia, {numref}`cm_202c`:
 
     Q1:bjt_NPN(1,1,L);    Q2:bjt_NPN(1,1,L,N);   Q3:bjt_PNP(1,1,L);  Q4:bjt_PNP(1,1,L,N);
     Q5:bjt_NPN(1,1,R);    Q6:bjt_NPN(1,1,R,N);   Q7:bjt_PNP(1,1,R);  Q8:bjt_PNP(1,1,R,N);
@@ -210,7 +210,7 @@ Upravené značky bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*
     
     parametre:
     
-      length_ce            - dĺžka prívodov medzi kolektoroma emitorom
+      length_ce            - dĺžka prívodov medzi kolektorom a emitorom
       length_b             - dĺžka prívodu bázy
       L | R | U | P        - smer otočenia 
       C | N                - zobrazenie s púzdrom (C) a bez púzdra (N)
@@ -225,7 +225,7 @@ Upravené značky bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*
 
 
 
-Nasledujúci príklad ukazuje použitie modifikovaných značiek bipolárnych tranzistorov.  
+Nasledujúci príklad, {numref}`cm_202h`,  ukazuje použitie modifikovaných značiek bipolárnych tranzistorov:
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -281,7 +281,7 @@ _ = cm_compile('cm_202h', data, dpi=600 )
 
 Jednoduchý [obvod](./src/cm_202d.ckt)  s bipolárnymi tranzistormi v súradnicovej mriežke.
 ```
-Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky pre tvorbu vlastného štýlu článkov, knižných publikácií alebo ak potrebujeme prekresliť nejaké staršie zapojenie a chceme dodržať pôvodný grafický štýl.   
+Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky pre tvorbu vlastného štýlu článkov, knižných publikácií alebo ak potrebujeme prekresliť nejaké staršie zapojenie a chceme dodržať pôvodný grafický štýl, {numref}`cm_090`:
 
 ```{figure} ./img/ar_1989_02.png
 :width: 400px
@@ -290,7 +290,7 @@ Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky 
 Zapojenie z časopisu Amatérske rádio, ručne kreslené zapojenie pomocou šablón.
 ```
 
-Pri prekreslovaní zapojenia v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu *sans-serif*. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro *itsf()*.
+Pri prekreslovaní zapojenia,{numref}`cm_202d`, v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu *sans-serif*. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro *itsf()*.
 
 ```{code-block}
 :caption: Makro pre formátovanie textu
@@ -392,7 +392,7 @@ Prekreslený [obvod](./src/cm_202d.ckt) z predchádzajúceho obrázku.
 ```
 
  
-Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené zapojenia častí zapojení sa používajú značky tranzistorov bez púzdier a so skrátenými vývodmi. Pre presné umiestňovanie takýchto prvkov je potom potrebné použiť konštrukciu *with ... at* s deklarovaním vývodu, ku ktorému sa umiestnenie značky vzťahuje.
+Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené zapojenia častí zapojení sa používajú značky tranzistorov bez púzdier a so skrátenými vývodmi. Pre presné umiestňovanie takýchto prvkov je potom potrebné použiť konštrukciu *with ... at* s deklarovaním vývodu, ku ktorému sa umiestnenie značky vzťahuje, {numref}`cm_202e`:
 
 
 ```{code-block}
@@ -479,7 +479,7 @@ _ = cm_compile('cm_202e', data, dpi=600 )
 ```
 
 
-Vnútorné zapojenia integrovaných obvodov sú často súčasťou katalógových listov a zobrazujú ekvivalentné zapojenie obvodu s diskrétnymi komponentami. Zapojenia často bývajú zjednodušené bez zobrazenia pomocných a parazitných prvkov pre lepšie pochopenie činnosti obvodu alebo jeho simuláciu, skutočná vnútorná štruktúra obvodu býva zvyčajne značne komplikovanejšia.
+Vnútorné zapojenia integrovaných obvodov sú často súčasťou katalógových listov a zobrazujú ekvivalentné zapojenie obvodu s diskrétnymi komponentami. Zapojenia často bývajú zjednodušené bez zobrazenia pomocných a parazitných prvkov pre lepšie pochopenie činnosti obvodu alebo jeho simuláciu, {numref}`cm_202f`. Skutočná vnútorná štruktúra obvodu býva zvyčajne značne komplikovanejšia.
 
 
 ```{code-cell} ipython3  
@@ -568,7 +568,7 @@ _ = cm_compile('cm_202f', data, dpi=600 )
 
 ## <font color='teal'>  FET tranzistor </font> 
 
-Pre zobrazenie štandardných diskrétnych MOSFET tranzistorov sú v `CircuitMacros` definované makrá pre základné typy *e_fet()* a *d_fet()*. 
+Pre zobrazenie štandardných diskrétnych MOSFET tranzistorov sú v `CircuitMacros` definované makrá pre základné typy *e_fet()* a *d_fet()*, {numref}`cm_202g`:
 
      Q1:e_fet(up_ ,,P,);  Q2:e_fet(up_ ,R,,);   Q3:e_fet(up_,,P);     Q4:e_fet(up_,R,P);
      Q5:d_fet(up_);       Q6:d_fet(up_,R);      Q7:d_fet(up_,,P);     Q8:d_fet(up_,R,P);
@@ -644,7 +644,7 @@ Značky MOSFET tranzistorov *e_fet()* a *d_fet()*
     parametre:
     
       linespec             - orientácia a dĺžka prívodov
-      R                    - poloha gate vpravo (R), bez parametra vlavo
+      R                    - poloha gate vpravo (R), bez parametra vľavo
       P                    - vodivosť typu P-Kanál, bez parametra N-Kanál
       E|S                  - púzdro tranzistora (E), zjednodušená značka (S)
       
@@ -656,7 +656,7 @@ Značky MOSFET tranzistorov *e_fet()* a *d_fet()*
     .S                     - poloha source
     .D                     - poloha drain
 
-Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu, príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, pri ktorom bolo použité makro *mosfet()*. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v [dokumentácii](./data/Circuit_macros_10_6.pdf).
+Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu. Príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, {numref}`cm_202u`, pri ktorom bolo použité makro *mosfet()*. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v [dokumentácii](./data/Circuit_macros_10_6.pdf).
 
     Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { "Q3" at Q3.nw ljust;}
 
@@ -729,7 +729,8 @@ _ = cm_compile('cm_202u', data, dpi=600 )
 [Zapojenie](./src/cm_202u.ckt) hradla AND v technológii CMOS.
 ```
 
-Niektorí výrobcovia mikrokontrolérov používajú pre zjednodušený popis funkcie častí logického obvodu kombinovanú značku FET tranzistora, ktorá namiesto jeho štruktúry zobrazuje jeho vzťah k ostatným častiam zapojenia. Tranzitor s vodivosťou typu P je zobrazený s krúžkom na hradle, čo znamená, že bude otvorený pri privedení signálu s úrovňou **L** na jeho hradlo.
+Niektorí výrobcovia mikrokontrolérov používajú pre zjednodušený popis funkcie častí logického obvodu kombinovanú značku FET tranzistora, ktorá namiesto jeho štruktúry zobrazuje jeho vzťah k ostatným častiam zapojenia. Tranzitor s vodivosťou typu P je zobrazený s krúžkom na hradle, čo znamená, že bude otvorený pri privedení signálu s úrovňou **L** na jeho hradlo, 
+{numref}`cm_202v`:
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]

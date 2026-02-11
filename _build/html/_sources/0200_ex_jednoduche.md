@@ -19,11 +19,11 @@ kernelspec:
 
 V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie, {numref}`cm_200a`:
 
-* používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy. 
-* atribúty pre určenie súradníc, napr. *(Here, R2.end)*
-* príkaz *rarrow* pre zobrazenie napätí na rezistoroch
-* príkaz *b_current* pre zobrazenie prúdu obvodom
-* použitie vetiev
+* používanie spoločnej premennej `d` pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy, 
+* atribúty pre určenie súradníc, napr. *(Here, R2.end)*,
+* príkaz *rarrow()* pre zobrazenie napätí na rezistoroch,
+* príkaz *b_current()* pre zobrazenie prúdu obvodom,
+* použitie vetiev.
 
 
         d = 1.5;
@@ -78,15 +78,16 @@ _ = cm_compile('cm_200a', data,  dpi=600)
 
 ## <font color='teal'> Konfigurácia hviezda - trojuholník </font> 
 
-V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie, {numref}`cm_200b`:
+V príklade zapojenie rezistorov pre konverziu konfigurácie hviezdy na trojuholník sú použité nasledujúce konštrukcie, {numref}`cm_200b`:
 
-* šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov *resistor(from D1 to D2,,E)*
-* použitie premennej `Here` pre lokalizáciu textu nad spojovacím bodom *dot; {"\textit{$A$}" at Here above}*
+* šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov *resistor(from D1 to D2,,E)*,
+* použitie premennej `Here` pre lokalizáciu textu nad spojovacím bodom *dot; {"\textit{$A$}" at Here above}*.
+
 
       include(lib_base.ckt)
       Grid(9,4.5)
       d = 2;
-      move to (1.0, 1.5);                             #---------- Trojuholnik
+      move to (1.0, 1.5);                             #---------- Trojuholník
       D1: dot; {"\textit{$B$}" at Here below}
 
       move to D1 + (d*cos(pi/3), d*sin(pi/3));

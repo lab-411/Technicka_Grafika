@@ -15,7 +15,7 @@ kernelspec:
 
 # <font color='navy'> Operačné zosilovače  </font> 
 
-Operačné zosilovače patria v `CicuitMacros` medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (*.s, ...*) sú súčasťou prvku doplnkové atribúty (*.NE ..,*) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (*.V1, .V2*) sú dostupné len pri použití parametra  **P**.
+Operačné zosilovače patria v `CicuitMacros` medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (*.s, ...*) sú súčasťou prvku doplnkové atribúty (*.NE ..,*) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (*.V1, .V2*) sú dostupné len pri použití parametra  **P**, {numref}`cm_0204d`:
 
     opamp(linespec, label+, label-, size, TPR);
     
@@ -40,7 +40,65 @@ Operačné zosilovače patria v `CicuitMacros` medzi multipóly a podobne pri ak
     .Out                   - poloha výstupu
     .V1 .V2                - poloha napájacích prívodov, parameter P
     
-Príklady použitia značky operačného zosilovača
+
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command"\sf"
+include(lib_color.ckt)
+
+move to (0,0); 
+OP: opamp(,,,,P);
+color_red();
+line <- from OP.W left_ 1; ".W" rjust;
+line <- from OP.In1 left_ 1 up_ .5; ".In1" rjust;
+line <- from OP.In2 left_ 1 down_ .5; ".In2" rjust;
+line <- from OP.N up_ 1 ; ".N" above;
+line <- from OP.S down_ 1 ; ".S" below;
+line <- from OP.E1 up_ 1 right_ 1; ".E1" above;
+line <- from OP.V1 up_ 1 ; ".V1" above;
+line <- from OP.V2 down_ 1 ; ".V2" below;
+line <- from OP.E2 down_ 1 right_ 1; ".E2" below;
+line <- from OP.Out right_ 1; ".Out" ljust;
+line <- from OP.E right_ 1 down_ 1; ".E" ljust;
+
+move to (6,0); 
+right_;
+color_black();
+OP: opamp(,,,,);
+# color_grey();
+box wid (OP.ne-OP.nw).x ht (OP.nw-OP.sw).y at OP.c dashed;
+color_blue();
+line <- from OP.w left_ 1; ".w" rjust;
+line <- from OP.nw left_ 1 up_ 0.5; ".nw" rjust;
+line <- from OP.ne right_ 1 up_ 0.5; ".ne" ljust above;
+line <- from OP.ne right_ 1 up_ 0.5; ".ne" ljust above;
+line <- from OP.se right_ 1 down_ 0.5; ".se" ljust above;
+line <- from OP.e right_ 1; ".e" ljust;
+line <- from OP.sw left_ 1 down_ 0.5; ".sw" rjust;
+line <- from OP.n up_ 1; ".n" above;
+line <- from OP.s down_ 1; ".s" below;
+line <- from OP.NE left_ 0.5 up_ 1; ".NE" above;
+line <- from OP.SE left_ 0.5 down_ 1; ".SE" below;
+line <- from OP.c right_ 0.75 down_ 1.5; ".c" below;
+'''
+
+_ = cm_compile('cm_0204x', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_0204x.png
+:width: 550px
+:name: cm_0204x
+
+Atribúty značky operačného zosilovača.
+```
+    
+    
+Príklady použitia značky operačného zosilovača:
 
     A1: opamp(); 
     A2: opamp(,,,,R); 
@@ -73,13 +131,15 @@ _ = cm_compile('cm_0204d', data, dpi=700 )
 ```{figure} ./src/cm_0204d.png
 :width: 550px
 :name: cm_0204d
+
+Vybrané značky operačných zosilovačov.
  
 ```    
     
 
     
     
-Nasledujúci príklad ukazuje ukladanie prvkov obvodu voči zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia, pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou LaTeX-u. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice. 
+Nasledujúci príklad, {numref}`cm_0204a`,  ukazuje ukladanie prvkov obvodu voči polohe operačnému zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia. Pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou systému LaTeX. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice. 
 
 ```{code-block}
 # Invertujuci zosilovač
@@ -102,7 +162,7 @@ DO: dot;
     circle rad 0.1; "\textit{Out}" at last circle.n above;
     line from OP.In2 left_ 0.5 then down_ 0.5; gnd; 
 
-    # ---- popis a matematicky vztah
+    # ---- popis a matematický vzťah
     "\textit{Invertujúci zosilovač}" at OP.c + (0, -1.5);
     "$K = -\dfrac{R_2}{R_1}$" at OP.c + (0, -2.25);
 ```
@@ -162,15 +222,15 @@ _ = cm_compile('cm_0204a', data, dpi=700 )
 ```
 
 ```{figure} ./src/cm_0204a.png
-:width: 650px
+:width: 670px
 :name: cm_0204a
 
 [Zapojenie](./src/cm_0204a.ckt) invertujúceho a neinvertujúceho zosilovača. 
 ```
 
-Použitie parametra **P** pre zobrazenie napájacích vývodov zosilovača a použitie makra *reversed()* pre zobrazenie kondenzátora $C_2$ s obrátenou polaritou ukazuje nasledujúci príklad.
+Použitie parametra **P** pre zobrazenie napájacích vývodov operačného zosilovača a použitie makra *reversed()* pre zobrazenie kondenzátora $C_2$ s obrátenou polaritou ukazuje nasledujúci príklad, {numref}`cm_0204b`:
 
-    OA: opamp(,,,,P);                # zobrazenie napajacich privodov
+    OA: opamp(,,,,P);                # zobrazenie napájacich prívodov
         line from OA.V1 up_ .75;
         dot;
         { 
@@ -229,7 +289,7 @@ _ = cm_compile('cm_0204b', data, dpi=600 )
 [Obvod](./src/cm_0204b.ckt) napájania operačného zosilovača. 
 ```
 
-V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra (vo výpise sú vynechané nepodstatné časti) sú použité vnorené bloky pri kreslení vetiev obvodu a použitá konštrukcia *with* pri ukladaní zosilovača *OA2* na aktuálnu polohu vývodom *In2*.
+V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra, {numref}`cm_0204c`, sú použité vnorené bloky pri kreslení vetiev obvodu a použitá konštrukcia *with* pri ukladaní zosilovača *OA2* na aktuálnu polohu vývodu *In2*:
 
     OA1: opamp(,,,,); "$A_1$" at OA1.SE below ljust;
         line from OA1.In1 left_ 0.5;

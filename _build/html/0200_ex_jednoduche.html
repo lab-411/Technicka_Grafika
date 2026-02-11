@@ -371,11 +371,11 @@ document.write(`
 <h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
 <p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200a"><span class="std std-numref">Obr. 72</span></a>:</p>
 <ul>
-<li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy.</p></li>
-<li><p>atribúty pre určenie súradníc, napr. <em>(Here, R2.end)</em></p></li>
-<li><p>príkaz <em>rarrow</em> pre zobrazenie napätí na rezistoroch</p></li>
-<li><p>príkaz <em>b_current</em> pre zobrazenie prúdu obvodom</p></li>
-<li><p>použitie vetiev</p>
+<li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy,</p></li>
+<li><p>atribúty pre určenie súradníc, napr. <em>(Here, R2.end)</em>,</p></li>
+<li><p>príkaz <em>rarrow()</em> pre zobrazenie napätí na rezistoroch,</p></li>
+<li><p>príkaz <em>b_current()</em> pre zobrazenie prúdu obvodom,</p></li>
+<li><p>použitie vetiev.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  d = 1.5;
   R1: resistor(down_ d,,E); llabel(,R_1,); rarrow(u_{1}, -&gt;, 0.2);
   D1: dot; {right_ tconn(,O); &quot;A&quot; ljust;}
@@ -405,14 +405,14 @@ document.write(`
 </section>
 <section id="konfiguracia-hviezda-trojuholnik">
 <h2><font color='teal'> Konfigurácia hviezda - trojuholník </font><a class="headerlink" href="#konfiguracia-hviezda-trojuholnik" title="Link to this heading">#</a></h2>
-<p>V príklade zapojenie rezistorov pre konverziu hviezdy na trojuholník sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200b"><span class="std std-numref">Obr. 73</span></a>:</p>
+<p>V príklade zapojenie rezistorov pre konverziu konfigurácie hviezdy na trojuholník sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200b"><span class="std std-numref">Obr. 73</span></a>:</p>
 <ul>
-<li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em></p></li>
-<li><p>použitie premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em></p>
+<li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em>,</p></li>
+<li><p>použitie premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_base.ckt)
 Grid(9,4.5)
 d = 2;
-move to (1.0, 1.5);                             #---------- Trojuholnik
+move to (1.0, 1.5);                             #---------- Trojuholník
 D1: dot; {&quot;\textit{$B$}&quot; at Here below}
 
 move to D1 + (d*cos(pi/3), d*sin(pi/3));
