@@ -1,41 +1,34 @@
 .PS
 scale=2.54
 cct_init
-command"\sf"
+command"\small \sf"
 include(lib_color.ckt)
 
-move to (0,0); 
-OP: opamp(,,,,P);
-color_red();
-line <- from OP.W left_ 1; ".W" rjust;
-line <- from OP.In1 left_ 1 up_ .5; ".In1" rjust;
-line <- from OP.In2 left_ 1 down_ .5; ".In2" rjust;
-line <- from OP.N up_ 1 ; ".N" above;
-line <- from OP.S down_ 1 ; ".S" below;
-line <- from OP.E1 up_ 1 right_ 1; ".E1" above;
-line <- from OP.V1 up_ 1 ; ".V1" above;
-line <- from OP.V2 down_ 1 ; ".V2" below;
-line <- from OP.E2 down_ 1 right_ 1; ".E2" below;
-line <- from OP.Out right_ 1; ".Out" ljust;
-line <- from OP.E right_ 1 down_ 1; ".E" ljust;
 
-move to (6,0); 
+move to (0,0); 
 right_;
 color_black();
-OP: opamp(,,,,);
+OP: opamp(,,,,R);
 # color_grey();
-box wid (OP.ne-OP.nw).x ht (OP.nw-OP.sw).y at OP.c dashed;
-color_blue();
-line <- from OP.w left_ 1; ".w" rjust;
-line <- from OP.nw left_ 1 up_ 0.5; ".nw" rjust;
-line <- from OP.ne right_ 1 up_ 0.5; ".ne" ljust above;
-line <- from OP.ne right_ 1 up_ 0.5; ".ne" ljust above;
-line <- from OP.se right_ 1 down_ 0.5; ".se" ljust above;
-line <- from OP.e right_ 1; ".e" ljust;
-line <- from OP.sw left_ 1 down_ 0.5; ".sw" rjust;
-line <- from OP.n up_ 1; ".n" above;
-line <- from OP.s down_ 1; ".s" below;
-line <- from OP.NE left_ 0.5 up_ 1; ".NE" above;
-line <- from OP.SE left_ 0.5 down_ 1; ".SE" below;
-line <- from OP.c right_ 0.75 down_ 1.5; ".c" below;
+#box wid (OP.ne-OP.nw).x ht (OP.nw-OP.sw).y at OP.c dashed;
+#color_blue();
+
+line from OP.In1 left_ 0.5;# "2" above;
+line from OP.In2 left_ 0.5; #"3" above;
+P1: 0.25 between OP.N and OP.E;
+P8:  0.5 between OP.N and OP.E;
+
+P5: 0.75 between OP.S and OP.E;
+#P4: 1/3 between OP.S and OP.E;
+#P6: 2/3 between OP.S and OP.E;
+
+line from P1 up_ 0.25;
+line from P8 up_ 0.25;
+
+C1: circle rad 0.095 with .n at P5+(0,-0.035) 
+#line from P5 up_ 0.25;
+
+#line from P4 down_ 0.25;
+#line from P6 down_ 0.25;
+
 .PE

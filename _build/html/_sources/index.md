@@ -78,6 +78,15 @@
 ## <font color='teal'> Anotácia / Annotation </font>   
 
 
+## <font color='teal'> Autori/ Authors </font>  
+
+### <font color='brown'> Ing. Lenka Bartošová, PhD. </font>
+
+### <font color='brown'> RNDr. Peter Fabo, PhD. </font>
+
+### <font color='brown'> Ing. Michal Kuba, PhD. </font>
+
+
 ## <font color='teal'> Vydal / Published by </font> 
 
     Vydalo roku 2026 
@@ -198,3 +207,7 @@ Citácia **MyST Markdown**
 
     https://github.com/lab-411/Technicka_Grafika/discussions
 
+
+## <font color='teal'> Poďakovanie/ Acknowledgements </font>  
+
+Projekt VEGA.

@@ -385,8 +385,8 @@ document.write(`
 <section id="circuitmacros">
 <h2><font color='teal'>  CircuitMacros </font><a class="headerlink" href="#circuitmacros" title="Link to this heading">#</a></h2>
 <p>Prostredie <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je súbor open-source programov pre kreslenie elektrických zapojení. Je určený výhradne pre tvorbu zapojení, diagramov a obrázkov pre publikácie a prezentácie, <strong>nie je</strong> učený pre vytváranie schém a ich ďaľšie použitie v aplikáciách pre návrhy, výpočty, simulácie zapojení a kreslenie plošných spojov (EDA). Zapojenia, diagramy a schémy sa vytvárajú pomocou programovania v skriptovacom jazyku <em>dpic</em>, pre jednoduchšie kreslenie zložitejších značiek elektronických prvkov sú použité makrá. Tento spôsob vytvárania diagramov a schém pomocou skriptov je základom veľkej skupiny programov, medzi ktoré patrí <em>Graphviz</em>, <em>DOT</em>, <em>MetaPost</em>, <em>Pikchr</em> a ďaľšie.</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 1 : </span><span class="caption-text">Program v CircuitMacros</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 1 : </span><span class="caption-text">Program v CircuitMacros</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">.</span><span class="n">PS</span>
     <span class="n">scale</span><span class="o">=</span><span class="mf">2.54</span>
     <span class="n">cct_init</span>
@@ -413,22 +413,31 @@ document.write(`
 <h3><font color='brown'> Vlastnosti</font><a class="headerlink" href="#vlastnosti" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Zapojenia je možné vytvárať programovaním skriptov v jednoduchom prostredí <a class="reference external" href="https://github.com/orestesmas/pycirkuit">pycirkuit</a>, ktoré obsahuje editor a prehliadač vytvorených obrázkov.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> obsahuje rozsiahlu knižnicu makier pre kreslenie prvkov zapojení naprogramovaných pomocou jednoduchého jazyka <code class="docutils literal notranslate"><span class="pre">gpic</span></code> podobného jazyku <code class="docutils literal notranslate"><span class="pre">C</span></code>. Zobrazenie prvkov je možné upravovať v širokých medziach pomocou parametrov makier.</p></li>
+<li><p><em>CircuitMacros</em> obsahuje rozsiahlu knižnicu makier pre kreslenie prvkov zapojení naprogramovaných pomocou jednoduchého jazyka <code class="docutils literal notranslate"><span class="pre">gpic</span></code> podobného jazyku <code class="docutils literal notranslate"><span class="pre">C</span></code>. Zobrazenie prvkov je možné upravovať v širokých medziach pomocou parametrov makier.</p></li>
 <li><p>V skriptoch je možné používať makrá spolu s príkazmi jazyka <code class="docutils literal notranslate"><span class="pre">dpic</span></code>, je možné jednoducho vytvárať vlastné makrá a knižnice.</p></li>
-<li><p>Obrázky sú generované vo vysokej profesionálnej kvalite v rastrovej grafike (<em>.png</em>, <em>jpeg</em>), vektorovej grafike (<em>.ps</em>, <em>.svg</em> …) alebo v tvare makier <em>tikz</em> pre priame vloženie do dokumentov LaTeX-u.</p></li>
-<li><p>Makrá z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> ako aj programy pre ich spracovanie, generovanie obrázkov a publikovanie sú open source a voľne dostupné.</p></li>
+<li><p>Obrázky sú generované vo vysokej profesionálnej kvalite v rastrovej grafike (<em>.png</em>, <em>jpeg</em>), vektorovej grafike (<em>.ps</em>, <em>.svg</em> …) alebo v tvare makier <em>tikz</em> pre priame vloženie do dokumentov systému LaTeX.</p></li>
+<li><p>Makrá z knižnice <em>CircuitMacros</em> ako aj programy pre ich spracovanie, generovanie obrázkov a publikovanie sú open source a voľne dostupné.</p></li>
 </ul>
 <figure class="align-default" id="res-010">
 <a class="reference internal image-reference" href="_images/cm_116.png"><img alt="_images/cm_116.png" src="_images/cm_116.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 4 </span><span class="caption-text">Vnútorná štruktúra dvojkanálového generátora priamej digitálnej syntézy (DDS) použitého v kapacitnom extenzometri v projekte sledovania slapových síl v zemskej kôre, projekt VEGA 2/0013/25.</span><a class="headerlink" href="#res-010" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 4 </span><span class="caption-text">Príklad použitia <em>CircuitMacros</em> pre zobrazenie vnútornej štruktúry dvojkanálového generátora priamej digitálnej syntézy (DDS) použitého v kapacitnom extenzometri v projekte sledovania slapových síl v zemskej kôre <a class="footnote-reference brackets" href="#projekt" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#res-010" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>TODO - programove generovanie grafiky, GMSH, ELMER, zapojenie elektrod</p>
 <div class="admonition-poznamka admonition">
 <p class="admonition-title">Poznámka</p>
 <p>Táto publikácia nepokrýva všetky možnosti, ktoré poskytuje platforma <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code>. Podrobnejšie informácie sú dostupné v dokumentácii priebežne aktualizovanej na stránkach <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/">projektu</a>.</p>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="projekt" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Projekt VEGA 2/0013/25</p>
+<p>Interpretácia periodických a neperiodických deformácií zemskej kôry v oblasti Západných Karpát na základe paralelných meraní horizontálnych posunutí.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>

@@ -15,11 +15,11 @@ kernelspec:
 
 # <font color='navy'> Farby </font> 
 
-Pre farebné zobrazenie objektov je možné využiť makro *setrgb()* a *rgbfill()* v ktorých sa farba definuje pomocou zložiek *r, g, b*. Pretože používanie takto definovaných farieb je nepohodlné, v súbore [lib_color.ckt](./src/lib_color.ckt) sú definované makrá vybraných pomenovaných farieb podľa [zoznamu](https://en.wikipedia.org/wiki/Web_colors).
+Pre farebné zobrazenie objektov je možné využiť makro *setrgb()* a *rgbfill()*, v ktorých sa farba definuje pomocou zložiek *r, g, b*. Používanie takto definovaných farieb je nepohodlné, v súbore [lib_color.ckt](./src/lib_color.ckt) sú preto definované makrá vybraných pomenovaných farieb podľa [zoznamu](https://en.wikipedia.org/wiki/Web_colors).
 
 ## <font color='teal'> Farby čiar </font> 
 
-Makro pre definíciu farby pre čiary, krivky, texty a obrys plošných objektov má tvar 
+Makro pre definíciu farby pre čiary, krivky, texty a obrys plošných objektov má tvar, {numref}`cm_0905a`: 
 
     define(`meno_farby', `setrgb(r, g, b) ')
     define(`meno_farby', `setrgb(R/255, G/255, B/255) ')
@@ -98,7 +98,7 @@ _ = cm_compile('cm_0905a', data, dpi=600)
 Mená vybraných farieb 
 ```
 
-Použitie pomenovaných farieb pre čiary, krivky, obrysy plošných objektov a texty.
+Použitie pomenovaných farieb pre čiary, krivky, obrysy plošných objektov a texty:
 
     color_orange;       # farba čiary
     box wid 1 ht 0.5;   # pre obrys objektu bude použitá nastavená farba
@@ -107,7 +107,7 @@ Použitie pomenovaných farieb pre čiary, krivky, obrysy plošných objektov a 
 
 ## <font color='teal'> Farby výplní </font> 
 
-Pre vyplnenie pločných objektov v odtieňoch šedej farby môžeme využiť priamo atribúty objektu pri jeho definícii, tak ako je to uvedené v kapitole [Grafika](./0110_cm_grafika.md)
+Pre vyplnenie plošných objektov v odtieňoch šedej farby môžeme využiť priamo atribúty objektu pri jeho definícii, tak ako je to uvedené v kapitole [Grafika](./0110_cm_grafika.md):
 
     [reference:] object [atribútes] [placement] [parameters] [string]
     
@@ -117,19 +117,18 @@ Pre vyplnenie pločných objektov v odtieňoch šedej farby môžeme využiť pr
     
         box wid 1 ht 1 fill 0.9
 
-Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definované makrá
+Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definované makrá *fill_<meno_farby>*, {numref}`cm_0905b`:
 
     define(`fill_<name>', `r, g, b')
     define(`fill_<name>', `R/255, G/255, B/255')
 
-    rgbfill( fill_<name>, {uzavreta oblast, box, circle ...})
-    rgbfill( r, g, b, {uzavreta oblast, box, circle ...})
-    rgbfill( R/255, G/255, B/255, {uzavreta oblast, box, circle ...})
+    rgbfill( fill_<name>, {uzavretá oblasť, box, circle ...})
+    rgbfill( r, g, b, {uzavretá oblasť, box, circle ...})
+    rgbfill( R/255, G/255, B/255, {uzavretá oblasť, box, circle ...})
     
     <name>     - meno farby
     r, g, b    - zložky farby v rozsahu <0.0, 1.0>
     R, G, B    - zložky farby v rozasahu <0, 255>
-
 
 
 ```{code-cell} ipython3 
@@ -170,6 +169,8 @@ _ = cm_compile('cm_0905b', data, dpi=600)
 Mená farieb pre výplň plošných objektov.
 ```
 
+Príklad použitia farebnej výplne plošného objektu pomocou makra *rgbfill()*. Uzatvorený objekt je v makre *triangle()* použitý v bloku, preto vykreslenie objektu **nemení** hodnotu `Here`, {numref}`cm_0905c`:
+
     include(base.ckt)
     Grid(4,4)
 
@@ -184,7 +185,7 @@ Mená farieb pre výplň plošných objektov.
     rgbfill(fill_yellow, {triangle} );
 
 
-Príklad použitia farebnej výplne plošného objektu pomocou makra *rgbfill()*. Uzatvorený objekt je v makre použitý v bloku, preto vykreslenie objektu **nemení** hodnotu `Here`.
+
 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]

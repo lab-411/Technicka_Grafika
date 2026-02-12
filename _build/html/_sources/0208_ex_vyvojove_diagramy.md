@@ -15,9 +15,9 @@ kernelspec:
 
 # <font color='navy'> Blokové diagramy</font> 
 
-Elektronické zariadenia v súčasnej dobe sú komplexné systémy, ktorých dokumentácia si vyžaduje hierarchický prístup, v ktorom na najvyššej úrovni dokumentujeme jednotlivé funkčné celku a vzťahy medzi nimi. Diagramy majú často tvar hybridných zapojení, kde pre väčšiu názornosť kombinujeme bloky s diskrétnymi komponentami reprezentujúcimi funkčnosť vybraných častí zariadenia.
+Elektronické zariadenia v súčasnej dobe sú komplexné systémy, ktorých dokumentácia si vyžaduje hierarchický prístup, v ktorom na najvyššej úrovni dokumentujeme jednotlivé funkčné celky a vzťahy medzi nimi. Diagramy majú často tvar hybridných zapojení, kde pre väčšiu názornosť kombinujeme bloky s diskrétnymi komponentami reprezentujúcimi funkčnosť vybraných častí zariadenia.
 
-Na obrázku je blokové zapojenie zariadenia pre testy mechanických vlastností 3D tlačených materiálov. Zariadenie obsahuje centrálny mikrokontrolér a analógové a digitálne periférie, ktoré sú riadené prostredníctvom rozhraní mikrokontroléra. Prepojenia medzi jednotlivými funkčnými časťami sú realizované pomocou označených zberníc (*SPI*, *I2C*) ako aj vodičmi, ktoré môžu byť jednotlivé alebo v skupine (*pulse*, *switch* ...). Pre lepšiu prehľadnosť je v zapojení označené, z koľkých vodičov zbernica alebo skupina vodičov pozostáva.
+Na obrázku {numref}`img_0208a` je blokové zapojenie zariadenia pre testy mechanických vlastností 3D tlačených materiálov. Zariadenie obsahuje centrálny mikrokontrolér, analógové a digitálne periférie, ktoré sú riadené prostredníctvom rozhraní mikrokontroléra. Prepojenia medzi jednotlivými funkčnými časťami sú realizované pomocou označených zberníc (*SPI*, *I2C*) ako aj vodičmi, ktoré môžu byť jednotlivé alebo v skupine (*pulse*, *switch* ...). Pre lepšiu prehľadnosť je v zapojení označené z koľkých vodičov zbernica alebo skupina vodičov pozostáva.
 
 
 

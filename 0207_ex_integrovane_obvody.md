@@ -15,7 +15,7 @@ kernelspec:
 
 # <font color='navy'> Integrované obvody </font> 
 
-Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závidí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich pinov, čo je dôležité pri návrhu plošných spojov. Pri kreslení zapojení je obvyklé používať blokovú značku obvodu a orientovať terminály obvodu podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo. V niektorých prípadoch môže byť bloková značka v dokumentácii doplnená o vnútorné zapojenie integrovaného obvodu. Nasledujúci príklad ukazuje zobrazenia integrovaného obvodu 555, makkrá pre značky sú implementované v knižnici [lib_ic555,ckt](./src/lib_ic555.ckt).  
+Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závisí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich pinov, čo je dôležité pri návrhu plošných spojov. Pri kreslení zapojení je obvyklé používať blokovú značku obvodu a orientovať terminály obvodu podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo. V niektorých prípadoch môže byť bloková značka v dokumentácii doplnená o vnútorné zapojenie integrovaného obvodu. Nasledujúci príklad,{numref}`cm_0207a`, ukazuje zobrazenia integrovaného obvodu typu 555, makrá pre značky sú implementované v knižnici [lib_ic555,ckt](./src/lib_ic555.ckt).  
 
 
 ```{code-cell} ipython3  
@@ -49,7 +49,7 @@ _ = cm_compile('cm_0207a', data, dpi=600 )
 Rôzne spôsoby zobrazenia integrovaného obvodu. 
 ```
 
-Pri vytváraní značiek integrovaných obvodov môžeme použiť makro *lg_pin()*
+Pri vytváraní značiek integrovaných obvodov môžeme použiť makro *lg_pin()*:
 
     lg_pin(location, label, pinref, n|e|s|w[L|M|I|O][N][E], pinno, optlen)
     
@@ -63,7 +63,7 @@ Pri vytváraní značiek integrovaných obvodov môžeme použiť makro *lg_pin(
         pinno    - číslo pinu
         optlen   - dĺžka pinu
 
-Pomocou makra *lg_bartxt()* môžeme zobraziť čiaru nad pomenovaním negovaného pinu a pre nastavenie rozostupov medzi pinmi definuje hodnota premennej *lg_pinsep*. Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu
+Pomocou makra *lg_bartxt()* môžeme zobraziť čiaru nad pomenovaním negovaného pinu a nastavenie rozostupov medzi pinmi definuje hodnota premennej *lg_pinsep*. Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu, {numref}`cm_0207c`:
 
     define(`IC485', `[
       BX: box wid 2 ht 5*lg_pinsep;
@@ -114,7 +114,7 @@ _ = cm_compile('cm_0207c', data, dpi=600 )
 Značka obvodu z príkladu.
 ```
 
-V niektorých prípadoch nemôžeme využiť preddefinované rozostupy pinov, napríklad ak potrebujeme nakresliť značku obvodu so znázornením jeho vnútorneho zapojenia na ktorú zároveň potrebujeme naviazať piny obvodu. Môžeme si pomôcť pomocnými súradnicami, ktoré budú tvoriť virtuálne body medzi zapojením obvodu a jeho pinmi, táto konštrukcia je použitá v knižnici [lib_ic485](./src/lib_ic485.ckt).
+V niektorých prípadoch nemôžeme využiť preddefinované rozostupy pinov, napríklad ak potrebujeme nakresliť značku obvodu so znázornením jeho vnútorneho zapojenia na ktorú zároveň potrebujeme naviazať piny obvodu. Môžeme si pomôcť pomocnými súradnicami, ktoré budú tvoriť virtuálne body medzi zapojením obvodu a jeho pinmi. Táto konštrukcia je použitá v knižnici [lib_ic485](./src/lib_ic485.ckt), {numref}`cm_0207d`:
 
     define(`IC485_RIGHT', `[
       P1: ( 1.5,  -1.00);        # pomocná súradnica 
@@ -159,7 +159,7 @@ Použitie značiek integrovaných obvodov s vnútorným zapojením.
 ```
 
     
-Pri kreslení zapojení s integrovanými obvodmi kombinovanými s diskrétnymi analogovými prvkami je  treba inicializovať knižnice *cct_init*, *log_init* a v prípade potreby uživateľské knižnice. Je vhodné v celom zapojení používať jeden spoločný font. 
+Pri kreslení zapojení s integrovanými obvodmi kombinovanými s diskrétnymi analogovými prvkami je  treba inicializovať knižnice *cct_init*, *log_init*. Je vhodné v celom zapojení používať jeden spoločný font pre zobrazenie textov, {numref}`cm_0207b`. 
     
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]

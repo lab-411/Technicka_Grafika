@@ -22,7 +22,7 @@ Pred kreslením logických obvodov musíme inicializovať knižnicu makier *log_
          AND_gate(3)    NAND_gate(3)    OR_gate(2)    NOR_gate(3)    NXOR_gate(2)
                                 NOT_gate()                     BUFFER_gate()
 
-Definície makier pre kombinačné makrá s *n* vstupmi (and, nand, or, nor, xor)
+Zobrazenie hradiel kombinačné logických obvodov s variabilným počtom vstupov (and, nand, or, nor, xor), {numref}`cm_0206k`: 
                                 
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
@@ -68,7 +68,12 @@ _ = cm_compile('cm_0206k', data ,  dpi=600)
 :width: 500px
 :name: cm_0206k
 
+Hradlá kombinačných logických obvodov.
+
 ```
+
+Definície makier pre hradlá s *n* vstupmi:
+
 
     AND_gate (n, [N][B], [wid, [ht]])
     OR_gate  (n, [N][B], [wid, [ht]])
@@ -91,7 +96,7 @@ _ = cm_compile('cm_0206k', data ,  dpi=600)
         N_Out        - poloha stredu negovaneho vystupu (kružnice)
     
     
-Definície makier pre hradlá s jedným vstupom (invertor, buffer)
+Definície makier pre hradlá s jedným vstupom (invertor, buffer):
 
     NOT_gate(linespec,[B][N|n],wid,height, attributes)
     BUFFER_gate(linespec, [N|B], wid, ht, [N|P]*, [N|P]*, [N|P]*, attributes)
@@ -107,7 +112,7 @@ Definície makier pre hradlá s jedným vstupom (invertor, buffer)
         
     atribúty:
 
-        ak je definovaný parameter linespec, hradlá maju atribúty 
+        ak je definovaný parameter linespec, hradlá majú atribúty 
         ako dvojpóly (.start, .centre, .end), inak
         
         In1      - poloha vstupu
@@ -116,7 +121,7 @@ Definície makier pre hradlá s jedným vstupom (invertor, buffer)
         NE       - prívod napájania (VCC) 
         SE       - prívod napájania (GND)
 
-Pri kreslení logických obvodov je vhodné najskôr porozkladať hradlá po ploche a potom ich postupne prepájať. Na zjednodušenie prepojenia vývodov hradiel môžeme použiť jednoduché makro *conn()* s dvoma parametrami - súradnicami koncových bodov prepojenia. Zapojenie jednoduchého multiplexera je na obrázku 
+Pri kreslení logických obvodov je vhodné najskôr porozkladať hradlá po ploche a potom ich postupne prepájať. Na zjednodušenie prepojenia vývodov hradiel môžeme použiť jednoduché makro *conn()* s dvoma parametrami, ktoré sú súradnicami koncových bodov prepojenia. Zapojenie jednoduchého multiplexera je na obrázku {numref}`cm_0206a`: 
 
     define(`conn', `
             line from $1 left_ (($1 - $2)/2).x;
@@ -179,7 +184,7 @@ _ = cm_compile('cm_0206a', data,  dpi=600)
 ```
 ## <font color='teal'> Sekvenčné obvody </font> 
 
-Základné typy sekvenčných obvodov (D, T, RS, JK) sú definované pomocou makra *FlipFlop()*.
+Základné typy sekvenčných obvodov (D, T, RS, JK) sú definované pomocou makra *FlipFlop()*, {numref}`cm_0206m`: 
 
         FlipFlop(D,Q1)    FlipFlop(T,Q2)    FlipFlop(RS,Q3)    FlipFlop(JK)
     
@@ -205,7 +210,10 @@ _ = cm_compile('cm_0206m', data ,  dpi=600)
 ```{figure} ./src/cm_0206m.png
 :width: 550px
 :name: cm_0206m
+
+Zobrazenie typických sekvenčných obvodov.
 ```
+Definícia makra *FlipFlop()* má tvar: 
 
     FlipFlop(type, label, boxspec, pinlength)
     
@@ -220,7 +228,7 @@ _ = cm_compile('cm_0206m', data ,  dpi=600)
 
         podľa mena pinu .D .CK .Q .NQ .R .S .J .K .PR .CLR
         
-Pre vytváranie vlastných značiek obvodov môžeme použiť makrá popísané v kapitole *Integrované obvody* alebo makro *FlipFlopX()*, podrobný popis je v dokumentácii.
+Pre vytváranie vlastných značiek obvodov môžeme použiť makrá popísané v kapitole [Integrované obvody](0207_ex_integrovane_obvody.md) alebo makro *FlipFlopX()*, podrobný popis je v dokumentácii. Na obrázku {numref}`cm_0206n` je zobrazené použitie nového makra *JK93()* v zapojení zobrazujúcom vnútornú štruktúru časovača 7493:
 
     # JK obvod v strukture citaca 7493
     define(`JK93', `[
@@ -289,12 +297,12 @@ _ = cm_compile('cm_0206n', data ,  dpi=600)
 :width: 600px
 :name: cm_0206n
 
-Vnútorné zapojenie čitača 7493 podla TI.
+Vnútorné zapojenie čitača 7493 podľa TI (TODO-ODKAZ).
 ```
 
 ## <font color='teal'> Zbernice </font> 
 
-Digitálne systémy vo svojeje architektúre často využívajú hierarchické usporiadanie obvodov do skupín zdielajúcich spoločný komunikačný systém, zbernicu. Rozkreslenie zbernice na jednotlivé vodiče môže byť niekedy neprehľadné, tak ako to ukazuje obrázok.   
+Digitálne systémy vo svojej architektúre často využívajú hierarchické usporiadanie obvodov do skupín zdielajúcich spoločný komunikačný systém, zbernicu. Rozkreslenie zbernice na jednotlivé vodiče môže byť niekedy neprehľadné, tak ako to ukazuje obrázok  {numref}`img_0206c`. 
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -369,7 +377,7 @@ _ = cm_compile('img_0206c', data,  dpi=600)
 Blokové [zapojenie](./src/img_0206c.ckt) SPI zbernice v režime MDP (Multidrop). 
 ```
 
-Použitím zberníc môžeme celé zapojenie zjednodušiť a sprehladniť.
+Použitím zberníc môžeme celé zapojenie zjednodušiť a sprehladniť, {numref}`img_0206d`. 
 
 
 ```{code-cell} ipython3  
@@ -414,7 +422,7 @@ _ = cm_compile('img_0206d', data,  dpi=600)
 [Zapojenie](./src/img_0206d.ckt) SPI rozhrania pomocou vykreslenia zbernice.
 ```
 
-Zbernice môžeme pripájať k obvodom pomocou konektorov definovaných makrami v súbore [lib_bus.ckt](./src/lib_bus.ckt). Parametrom makier je počet vodičov zbernice, pomocou ďaľších makier môžeme popisovať jednotlivé vetvy zbernice ako aj ziskať referenciu na koniec každej vetvy.
+Zbernice môžeme pripájať k obvodom pomocou konektorov definovaných makrami v súbore [lib_bus.ckt](./src/lib_bus.ckt). Parametrom makier je počet vodičov zbernice, pomocou ďaľších makier môžeme popisovať jednotlivé vetvy zbernice ako aj ziskať referenciu na koniec každej vetvy, {numref}`img_0206e`. 
 
 ```{code-cell} ipython3  
 :tags: ["remove-cell"]
@@ -444,7 +452,7 @@ _ = cm_compile('img_0206e', data,  dpi=600)
 
 Makrá pre kreslenie pripojenia zbernice k obvodu.
 ```
-Každý konektor zbernice má vetvy číslované od začiatku zbernice. Číslovanie vetiev je nezávislé od číslovania pinov pripojeného obvodu. 
+Každý konektor zbernice má vetvy číslované od začiatku zbernice. Číslovanie vetiev je nezávislé od číslovania pinov pripojeného obvodu. Definícia makier pre pripojenie zbernice k obvodu má tvar: 
 
     bus_dl(n,d)  - makra pre pripajanie zbernice k obvodom 
     bus_dr(n,d)
@@ -459,22 +467,22 @@ Každý konektor zbernice má vetvy číslované od začiatku zbernice. Číslov
         REF     - poloha referenčného pinu č.1
         START   - začiatok zbernice
         END     - koniec zbernice
-        DOC     - pozicia pre popisovanie zbernice
+        DOC     - pozícia pre popisovanie zbernice
     
-Pomocné makrá pre popis zbernice, polohu koncového bodu vetvy
+Pomocné makrá pre popis zbernice, polohu koncového bodu vetvy majú tvar:
 
-    bus_txl(bus, text, pin) - makra pre popis vetvy zbernice, zarovnanie dolava
+    bus_txl(bus, text, pin) - makrá pre popis vetvy zbernice, zarovnanie doľava
     bus_txr(bus, text, pin) - zarovnanie doprava
     bus_ref(bus, pin)       - poloha koncovej vetvy zbernice 
-    bus_conn(bus1, bus2)    - spojenie zbernic usečkou
+    bus_conn(bus1, bus2)    - spojenie zberníc úsečkou
     
     parametre:
         bus     - referencia na zbernicu
-        text    - popis, bez uvodzoviek
-        pin     - cislo pinu zbernice
+        text    - popis, bez úvodzoviek
+        pin     - čislo pinu zbernice
     
     
-Pri pripájaní zberníc k obvodu využijeme konštrukciu *with ... at ...*. Koniec prvej vetvy konektoru je prístupný pod atribútom *REF*, ktorý pripojíme k zvolenému pinu obvodu
+Pri pripájaní zberníc k obvodu využijeme konštrukciu *with ... at ...*. Koniec prvej vetvy konektoru je prístupný pod atribútom *REF*, ktorý pripojíme k zvolenému pinu obvodu, {numref}`img_0206f`:
 
     IC: IC74138(); "74138" at IC.s below; 
     B1: bus_dl(3) with .REF at IC.Pin3;

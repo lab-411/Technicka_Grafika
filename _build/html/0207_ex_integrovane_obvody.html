@@ -352,7 +352,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="integrovane-obvody">
 <h1><font color='navy'> Integrované obvody </font><a class="headerlink" href="#integrovane-obvody" title="Link to this heading">#</a></h1>
-<p>Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závidí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich pinov, čo je dôležité pri návrhu plošných spojov. Pri kreslení zapojení je obvyklé používať blokovú značku obvodu a orientovať terminály obvodu podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo. V niektorých prípadoch môže byť bloková značka v dokumentácii doplnená o vnútorné zapojenie integrovaného obvodu. Nasledujúci príklad ukazuje zobrazenia integrovaného obvodu 555, makkrá pre značky sú implementované v knižnici <a class="reference download internal" download="" href="_downloads/4a08c13e1f91c18db9404e507747b4c4/lib_ic555.ckt"><span class="xref download myst">lib_ic555,ckt</span></a>.</p>
+<p>Integrované obvody sú prvky elektronických obvodov, ktorých zobrazenie v technickej dokumentácii závisí od kontextu ich použitia. V katalogových listoch sa vyskytuje ich zobrazenie z pohľadu zapojenia ich pinov, čo je dôležité pri návrhu plošných spojov. Pri kreslení zapojení je obvyklé používať blokovú značku obvodu a orientovať terminály obvodu podľa ich významu, zvyčajne vstupy vľavo a výstupy vpravo. V niektorých prípadoch môže byť bloková značka v dokumentácii doplnená o vnútorné zapojenie integrovaného obvodu. Nasledujúci príklad,<a class="reference internal" href="#cm-0207a"><span class="std std-numref">Obr. 92</span></a>, ukazuje zobrazenia integrovaného obvodu typu 555, makrá pre značky sú implementované v knižnici <a class="reference download internal" download="" href="_downloads/4a08c13e1f91c18db9404e507747b4c4/lib_ic555.ckt"><span class="xref download myst">lib_ic555,ckt</span></a>.</p>
 <figure class="align-default" id="cm-0207a">
 <a class="reference internal image-reference" href="_images/cm_0207a.png"><img alt="_images/cm_0207a.png" src="_images/cm_0207a.png" style="width: 400px;" />
 </a>
@@ -360,7 +360,7 @@ document.write(`
 <p><span class="caption-number">Obr. 92 </span><span class="caption-text">Rôzne spôsoby zobrazenia integrovaného obvodu.</span><a class="headerlink" href="#cm-0207a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pri vytváraní značiek integrovaných obvodov môžeme použiť makro <em>lg_pin()</em></p>
+<p>Pri vytváraní značiek integrovaných obvodov môžeme použiť makro <em>lg_pin()</em>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lg_pin(location, label, pinref, n|e|s|w[L|M|I|O][N][E], pinno, optlen)
 
 parametre:
@@ -374,7 +374,7 @@ parametre:
     optlen   - dĺžka pinu
 </pre></div>
 </div>
-<p>Pomocou makra <em>lg_bartxt()</em> môžeme zobraziť čiaru nad pomenovaním negovaného pinu a pre nastavenie rozostupov medzi pinmi definuje hodnota premennej <em>lg_pinsep</em>. Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu</p>
+<p>Pomocou makra <em>lg_bartxt()</em> môžeme zobraziť čiaru nad pomenovaním negovaného pinu a nastavenie rozostupov medzi pinmi definuje hodnota premennej <em>lg_pinsep</em>. Príklad vytvorenie makra pre kreslenie značky integrovaného obvodu, <a class="reference internal" href="#cm-0207c"><span class="std std-numref">Obr. 93</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`IC485&#39;, `[
   BX: box wid 2 ht 5*lg_pinsep;
 
@@ -402,7 +402,7 @@ IC485; &quot;MAX485&quot; at last[] .s below;
 <p><span class="caption-number">Obr. 93 </span><span class="caption-text">Značka obvodu z príkladu.</span><a class="headerlink" href="#cm-0207c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>V niektorých prípadoch nemôžeme využiť preddefinované rozostupy pinov, napríklad ak potrebujeme nakresliť značku obvodu so znázornením jeho vnútorneho zapojenia na ktorú zároveň potrebujeme naviazať piny obvodu. Môžeme si pomôcť pomocnými súradnicami, ktoré budú tvoriť virtuálne body medzi zapojením obvodu a jeho pinmi, táto konštrukcia je použitá v knižnici <a class="reference download internal" download="" href="_downloads/fcb001a55ddb5bdacc9a1d28a59a68bd/lib_ic485.ckt"><span class="xref download myst">lib_ic485</span></a>.</p>
+<p>V niektorých prípadoch nemôžeme využiť preddefinované rozostupy pinov, napríklad ak potrebujeme nakresliť značku obvodu so znázornením jeho vnútorneho zapojenia na ktorú zároveň potrebujeme naviazať piny obvodu. Môžeme si pomôcť pomocnými súradnicami, ktoré budú tvoriť virtuálne body medzi zapojením obvodu a jeho pinmi. Táto konštrukcia je použitá v knižnici <a class="reference download internal" download="" href="_downloads/fcb001a55ddb5bdacc9a1d28a59a68bd/lib_ic485.ckt"><span class="xref download myst">lib_ic485</span></a>, <a class="reference internal" href="#cm-0207d"><span class="std std-numref">Obr. 94</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`IC485_RIGHT&#39;, `[
   P1: ( 1.5,  -1.00);        # pomocná súradnica 
   ...
@@ -420,7 +420,7 @@ IC485; &quot;MAX485&quot; at last[] .s below;
 <p><span class="caption-number">Obr. 94 </span><span class="caption-text">Použitie značiek integrovaných obvodov s vnútorným zapojením.</span><a class="headerlink" href="#cm-0207d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pri kreslení zapojení s integrovanými obvodmi kombinovanými s diskrétnymi analogovými prvkami je  treba inicializovať knižnice <em>cct_init</em>, <em>log_init</em> a v prípade potreby uživateľské knižnice. Je vhodné v celom zapojení používať jeden spoločný font.</p>
+<p>Pri kreslení zapojení s integrovanými obvodmi kombinovanými s diskrétnymi analogovými prvkami je  treba inicializovať knižnice <em>cct_init</em>, <em>log_init</em>. Je vhodné v celom zapojení používať jeden spoločný font pre zobrazenie textov, <a class="reference internal" href="#cm-0207b"><span class="std std-numref">Obr. 95</span></a>.</p>
 <figure class="align-default" id="cm-0207b">
 <a class="reference internal image-reference" href="_images/cm_0207b.png"><img alt="_images/cm_0207b.png" src="_images/cm_0207b.png" style="width: 300px;" />
 </a>
