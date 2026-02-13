@@ -11,8 +11,8 @@
 ```
 
 <center> 
-<h3> <font color='brown'>  <b> LAB-411 Production </b> </font>      </h3>
-<h3> <font color='brown'>  <b> Verzia 0.45 / Feb. 2026 </b> </font>                   </h3>
+<h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>       </h3>
+<h3> <font color='brown'>  <b> Verzia 0.55 / Feb. 2026 </b> </font>  </h3>
 </center> 
 
 ----------------
@@ -91,10 +91,10 @@
 
     Vydalo roku 2026 
 
-    LAB-411 Production
+    LAB - 411 Production
     FŠT-TNUNI
-    Ku kyselke
-    91106 Trenčín
+    Ku kyselke 469
+    911 06 Trenčín
     Slovensko
 
     ISBN: xxx-xx-xxxxxx-x
@@ -210,4 +210,6 @@ Citácia **MyST Markdown**
 
 ## <font color='teal'> Poďakovanie/ Acknowledgements </font>  
 
-Projekt VEGA.
+Táto publikácia bola vytvorená s podporou grantovej agentúry VEGA, projekt pod názvom "Interpretácia periodických a neperiodických deformácií zemskej kôry v oblasti Západných Karpát na základe paralelných meraní horizontálnych posunutí."  (projekt číslo 2/0013/25).
+
+This publication was supported by the VEGA grant agency, project under the name "Interpretation of periodic and non-periodic deformations of the Earth's crust in the Western Carpathians based on parallel measurements of horizontal displacements." (project number 2/0013/25).
