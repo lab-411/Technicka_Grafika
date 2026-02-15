@@ -366,7 +366,7 @@ document.write(`
 <p>Pre farebné zobrazenie objektov je možné využiť makro <em>setrgb()</em> a <em>rgbfill()</em>, v ktorých sa farba definuje pomocou zložiek <em>r, g, b</em>. Používanie takto definovaných farieb je nepohodlné, v súbore <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a> sú preto definované makrá vybraných pomenovaných farieb podľa <a class="reference external" href="https://en.wikipedia.org/wiki/Web_colors">zoznamu</a>.</p>
 <section id="farby-ciar">
 <h2><font color='teal'> Farby čiar </font><a class="headerlink" href="#farby-ciar" title="Link to this heading">#</a></h2>
-<p>Makro pre definíciu farby pre čiary, krivky, texty a obrys plošných objektov má tvar, <a class="reference internal" href="#cm-0905a"><span class="std std-numref">Obr. 105</span></a>:</p>
+<p>Makro pre definíciu farby pre čiary, krivky, texty a obrys plošných objektov má tvar, <a class="reference internal" href="#cm-0905a"><span class="std std-numref">Obr. 107</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`meno_farby&#39;, `setrgb(r, g, b) &#39;)
 define(`meno_farby&#39;, `setrgb(R/255, G/255, B/255) &#39;)
 
@@ -378,7 +378,7 @@ R, G, B    - zložky farby v rozasahu &lt;0, 255&gt;
 <a class="reference internal image-reference" href="_images/cm_0905a.png"><img alt="_images/cm_0905a.png" src="_images/cm_0905a.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 105 </span><span class="caption-text">Mená vybraných farieb</span><a class="headerlink" href="#cm-0905a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 107 </span><span class="caption-text">Mená vybraných farieb</span><a class="headerlink" href="#cm-0905a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Použitie pomenovaných farieb pre čiary, krivky, obrysy plošných objektov a texty:</p>
@@ -400,7 +400,7 @@ Príklad:
     box wid 1 ht 1 fill 0.9
 </pre></div>
 </div>
-<p>Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definované makrá <em>fill_&lt;meno_farby&gt;</em>, <a class="reference internal" href="#cm-0905b"><span class="std std-numref">Obr. 106</span></a>:</p>
+<p>Pre farebnú výplň plošných objektov a uzatvorených oblastí sú definované makrá <em>fill_&lt;meno_farby&gt;</em>, <a class="reference internal" href="#cm-0905b"><span class="std std-numref">Obr. 108</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`fill_&lt;name&gt;&#39;, `r, g, b&#39;)
 define(`fill_&lt;name&gt;&#39;, `R/255, G/255, B/255&#39;)
 
@@ -417,10 +417,10 @@ R, G, B    - zložky farby v rozasahu &lt;0, 255&gt;
 <a class="reference internal image-reference" href="_images/cm_0905b.png"><img alt="_images/cm_0905b.png" src="_images/cm_0905b.png" style="width: 320px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 106 </span><span class="caption-text">Mená farieb pre výplň plošných objektov.</span><a class="headerlink" href="#cm-0905b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 108 </span><span class="caption-text">Mená farieb pre výplň plošných objektov.</span><a class="headerlink" href="#cm-0905b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Príklad použitia farebnej výplne plošného objektu pomocou makra <em>rgbfill()</em>. Uzatvorený objekt je v makre <em>triangle()</em> použitý v bloku, preto vykreslenie objektu <strong>nemení</strong> hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, <a class="reference internal" href="#cm-0905c"><span class="std std-numref">Obr. 107</span></a>:</p>
+<p>Príklad použitia farebnej výplne plošného objektu pomocou makra <em>rgbfill()</em>. Uzatvorený objekt je v makre <em>triangle()</em> použitý v bloku, preto vykreslenie objektu <strong>nemení</strong> hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, <a class="reference internal" href="#cm-0905c"><span class="std std-numref">Obr. 109</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(base.ckt)
 Grid(4,4)
 
@@ -439,7 +439,7 @@ rgbfill(fill_yellow, {triangle} );
 <a class="reference internal image-reference" href="_images/cm_0905c.png"><img alt="_images/cm_0905c.png" src="_images/cm_0905c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 107 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/3473340e70e43145596a8cfef5561ad9/cm_0905c.ckt"><span class="xref download myst">Príklad</span></a> objektu s farebnou výplňou.</span><a class="headerlink" href="#cm-0905c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 109 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/3473340e70e43145596a8cfef5561ad9/cm_0905c.ckt"><span class="xref download myst">Príklad</span></a> objektu s farebnou výplňou.</span><a class="headerlink" href="#cm-0905c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

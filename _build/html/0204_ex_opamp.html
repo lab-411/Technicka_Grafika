@@ -327,7 +327,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -343,6 +345,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upravy"><font color="teal"> Úpravy  </font></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -504,6 +514,60 @@ R1: resistor(right_ 2.15,,E); rlabel(,R_1,); dot;
 <p><span class="caption-number">Obr. 91 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/0303d462cc2f6a0bfd5517981b7ab1ea/cm_0204c.ckt"><span class="xref download myst">Zapojenie</span></a> aktívneho filtra.</span><a class="headerlink" href="#cm-0204c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<section id="upravy">
+<h2><font color='teal'> Úpravy  </font><a class="headerlink" href="#upravy" title="Link to this heading">#</a></h2>
+<p>Niektoré typy operačných zosilovačov ako aj odvodených typov, ako sú napríklad komparátory, majú ďaľšie vývody pre nastavenie ich parametrov. Pre doplnenie týchto vývodov môžeme modifikovať značku z knižnice, pričom polohu vývodov určíme z atribútov značky pomocou konštrukcie <em>between</em>, <a class="reference internal" href="#cm-0204f"><span class="std std-numref">Obr. 92</span></a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`LF355&#39;,`[
+    OP: opamp(,,,,);
+
+        line from OP.In1 left_ 0.5;   &quot;2&quot; above ljust;
+    INN:last line .end
+        line from OP.In2 left_ 0.5;   &quot;3&quot; above ljust;
+    INP:last line .end
+
+    P7: 0.25 between OP.N and OP.E;
+    P1: 0.50 between OP.N and OP.E;
+    P5: 0.75 between OP.N and OP.E;
+    P4: 0.50 between OP.S and OP.E;
+
+        line from P7 up_ 0.45; &quot;7&quot; rjust;
+    VSP:last line .end;
+
+        line from P4 down_ 0.45; &quot;4&quot; rjust;
+    VSN:last line .end;
+
+        line from P1 up_ 0.45; &quot;1&quot; rjust;
+    BAL1:last line .end;
+        line from P5 up_ 0.45; &quot;5&quot; rjust;
+    BAL2:last line .end;
+    OUT: OP.Out; &quot;6&quot; at OUT above rjust;
+]&#39;)
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0204f">
+<a class="reference internal image-reference" href="_images/cm_0204f.png"><img alt="_images/cm_0204f.png" src="_images/cm_0204f.png" style="width: 160px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 92 </span><span class="caption-text">Doplnená <a class="reference download internal" download="" href="_downloads/7a110fa2949a83e61171cfe866f4efe3/cm_0204f.ckt"><span class="xref download myst">značka</span></a> operačného zosilovača s doplnenýmí vývodmi pre kompenzáciu offsetu, <a class="reference external" href="https://www.ti.com/lit/ds/symlink/lf356.pdf">zdroj</a>.</span><a class="headerlink" href="#cm-0204f" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Reálne zapojenia elektronických obvodov na rozdiel od ideálnych obsahujú aj technologické detaily komponentov, ako sú čísla vývodov alebo zlúčenie niekoľkých komponentov v jednom púzdre. Na zapojení <span class="math notranslate nohighlight">\(\Delta-\Sigma\)</span> modulátora sú operačné zosilovače <em>IC1a</em> a <em>IC1b</em> integrované v jednom púzdre so spoločným napájaním, <a class="reference internal" href="#cm-0204e"><span class="std std-numref">Obr. 93</span></a>.</p>
+<figure class="align-default" id="cm-0204e">
+<a class="reference internal image-reference" href="_images/cm_0204e.png"><img alt="_images/cm_0204e.png" src="_images/cm_0204e.png" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 93 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c9871507deb935525b87254aa9613156/cm_0204e.ckt"><span class="xref download myst">Zapojenie</span></a> <span class="math notranslate nohighlight">\(\Delta-\Sigma\)</span> modulátora použitého v detektore kondenzovanej vlhkosti v projekte kapacitného extenzometra <a class="footnote-reference brackets" href="#projekt" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#cm-0204e" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="projekt" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Projekt VEGA 2/0013/25</p>
+<p>Interpretácia periodických a neperiodických deformácií zemskej kôry v oblasti Západných Karpát na základe paralelných meraní horizontálnych posunutí.</p>
+</aside>
+</aside>
+</section>
 </section>
 
 
@@ -541,6 +605,21 @@ R1: resistor(right_ 2.15,,E); rlabel(,R_1,); dot;
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upravy"><font color="teal"> Úpravy  </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

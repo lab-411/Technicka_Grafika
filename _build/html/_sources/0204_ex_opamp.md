@@ -137,8 +137,6 @@ Vybrané značky operačných zosilovačov.
 ```    
     
 
-    
-    
 Nasledujúci príklad, {numref}`cm_0204a`,  ukazuje ukladanie prvkov obvodu voči polohe operačnému zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia. Pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou systému LaTeX. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice. 
 
 ```{code-block}
@@ -402,6 +400,238 @@ _ = cm_compile('cm_0204c', data, dpi=600 )
 [Zapojenie](./src/cm_0204c.ckt) aktívneho filtra. 
 ```
 
+## <font color='teal'> Úpravy  </font> 
+
+Niektoré typy operačných zosilovačov ako aj odvodených typov, ako sú napríklad komparátory, majú ďaľšie vývody pre nastavenie ich parametrov. Pre doplnenie týchto vývodov môžeme modifikovať značku z knižnice, pričom polohu vývodov určíme z atribútov značky pomocou konštrukcie *between*, {numref}`cm_0204f`:
+
+    define(`LF355',`[
+        OP: opamp(,,,,);
+
+            line from OP.In1 left_ 0.5;   "2" above ljust;
+        INN:last line .end
+            line from OP.In2 left_ 0.5;   "3" above ljust;
+        INP:last line .end
+
+        P7: 0.25 between OP.N and OP.E;
+        P1: 0.50 between OP.N and OP.E;
+        P5: 0.75 between OP.N and OP.E;
+        P4: 0.50 between OP.S and OP.E;
+
+            line from P7 up_ 0.45; "7" rjust;
+        VSP:last line .end;
+
+            line from P4 down_ 0.45; "4" rjust;
+        VSN:last line .end;
+
+            line from P1 up_ 0.45; "1" rjust;
+        BAL1:last line .end;
+            line from P5 up_ 0.45; "5" rjust;
+        BAL2:last line .end;
+        OUT: OP.Out; "6" at OUT above rjust;
+    ]') 
 
 
 
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command"\small \sf"
+define(`LF355',`[
+    OP: opamp(,,,,);
+
+        line from OP.In1 left_ 0.5;   "2" above ljust;
+    INN:last line .end
+        line from OP.In2 left_ 0.5;   "3" above ljust;
+    INP:last line .end
+
+    P7: 0.25 between OP.N and OP.E;
+    P1: 0.5 between OP.N and OP.E;
+    P5: 0.75 between OP.N and OP.E;
+
+    P4: 0.5 between OP.S and OP.E;
+
+        line from P7 up_ 0.45; "7" rjust;
+    VSP:last line .end;
+
+        line from P4 down_ 0.45; "4" rjust;
+    VSN:last line .end;
+
+        line from P1 up_ 0.45; "1" rjust;
+    BAL1:last line .end;
+        line from P5 up_ 0.45; "5" rjust;
+    BAL2:last line .end;
+    OUT: OP.Out; "6" at OUT above rjust;
+]') 
+
+OP: LF355(); "\sf LF\\355" at OP.OP.se above;
+'''
+
+_ = cm_compile('cm_0204f', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_0204f.png
+:width: 160px
+:name: cm_0204f
+
+Doplnená [značka](./src/cm_0204f.ckt) operačného zosilovača s doplnenýmí vývodmi pre kompenzáciu offsetu, [zdroj](https://www.ti.com/lit/ds/symlink/lf356.pdf). 
+```
+
+Reálne zapojenia elektronických obvodov na rozdiel od ideálnych obsahujú aj technologické detaily komponentov, ako sú čísla vývodov alebo zlúčenie niekoľkých komponentov v jednom púzdre. Na zapojení $\Delta-\Sigma$ modulátora sú operačné zosilovače *IC1a* a *IC1b* integrované v jednom púzdre so spoločným napájaním, {numref}`cm_0204e`.
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+cct_init
+log_init
+command"\small \sf"
+include(lib_color.ckt)
+include(lib_base.ckt)
+
+#=======================================================================
+# AD790
+# komparator, latch
+#-----------------------------------------------------------------------
+define(`AD790',`[
+    OP: opamp(,,,,R);
+
+        line from OP.In1 left_ 0.5;   "2" above ljust;
+    INP:last line .end
+        line from OP.In2 left_ 0.5;   "3" above ljust;
+    INN:last line .end
+
+    P1: 1/3 between OP.N and OP.E;
+    P8: 2/3 between OP.N and OP.E;
+    P5: 0.75 between OP.S and OP.E;
+    P4: 0.5 between OP.S and OP.E;
+    P6: 0.25 between OP.S and OP.E;
+
+        line from P1 up_ 0.45; "1" rjust;
+    VSP:last line .end
+        line from P8 up_ 0.45; "8" rjust;
+    VLG:last line .end
+
+    C1: circle rad 0.095 with .n at P5+(0,-0.035) 
+        line from C1.s down_ 0.3; "5" ljust;
+    LATCH: last line .end
+
+        line from P4 down_ 0.5; "4" rjust;
+    VSN:last line .end
+
+        line from P6 down_ 0.5; "6" rjust;
+    GND:last line .end;
+    OUT:OP.Out; 
+        "7" at OP.Out above rjust;
+
+    line from OP.In2+(0.2,0.1) right_ 0.2 then up_ to OP.In1+(0.2+0.2,-0.1) then right_ 0.2;
+]') 
+
+#=======================================================================
+# MCP6272A
+# 1/2 MCP6272
+#-----------------------------------------------------------------------
+define(`MCP6272A',`[
+    right_;
+    OP: opamp(,,,,);
+        line from OP.In1 left_ 0.5;   "2" above ljust;
+    INN:last line .end
+        line from OP.In2 left_ 0.5;   "3" above ljust;
+    INP:last line .end
+    OUT:OP.Out; 
+        "1" at OP.Out above rjust;
+
+        
+]') 
+
+#=======================================================================
+# MCP6272B
+# 2/2 MCP6272
+#-----------------------------------------------------------------------
+define(`MCP6272B',`[
+    right_
+    OP: opamp(,,,,P);
+        line from OP.In2 left_ 0.5;   "6" above ljust;
+    INP:last line .end
+        line from OP.In1 left_ 0.5;   "5" above ljust;
+    INN:last line .end
+    OUT:OP.Out; 
+        "7" at OP.Out above rjust;
+
+        line from OP.V1 up_ 0.35; "8" rjust below;
+    VDD:last line .end
+        line from OP.V2 down_ 0.35; "4" rjust above;
+    VSS:last line .end;
+]') 
+
+
+#=======================================================================
+
+move to (0,0); 
+right_;
+AD: AD790(); "`AD790'" at AD.OP.ne; "IC2" at AD.OP.se above ljust;
+L1:line from AD.LATCH down_ 0.5 then right_ 2; tconn(,O); "CLK" ljust;
+   line from AD.GND down_ .25; dot;{line right_ to (AD.VSN, Here) to AD.VSN;} 
+   gnd(.5);
+
+   line from AD.VSP up_ 0.25; dot; {line right_ to (AD.VLG, Here) to AD.VLG;}
+   power(0.75, +5V);
+
+   line left_ 0.5 from AD.INP; D1: dot; line left_ 1;  
+Q1:MCP6272B(); "`MCP6272'" at Q1.OP.ne; "IC1b" at Q1.OP.se above;
+   line from Q1.VSS down_ 0.15; gnd();
+   line from Q1.VDD up_ 0.15; power(0.35, +5V);
+   line from Q1.INN left_ .25; D2: dot;
+   resistor(1.75,E); rlabel(,"$\sf R_1$",);
+D3:dot; 
+   line left_ 0.25;
+Q2:MCP6272A(); "`MCP6272'" at Q2.OP.ne rjust above; "IC1a" at Q2.OP.se above rjust;
+   {line from D3 up_ 1.25; line to (Q2.INN, Here)+(-0.25,0); 
+    line to (Here, Q2.INN) to Q2.INN;} 
+   line from Q2.INP left_ 0.25; tconn(,O);
+
+#-----------------------------------------------------------------------
+# vetva C1
+   line from D1 up_ 2.15; left_;
+   capacitor( (D1-D2).x ); rlabel(,"$\sf C_1$",);
+D4: dot;
+   line to D2;
+
+#-----------------------------------------------------------------------
+# vetva R2   
+   line from AD.OUT right_ 0.75; D4: dot; line up_ 3.25;
+   left_; resistor( (D4-D2).x,E); rlabel(,"$\sf R_2$",);
+   line to D2;
+   line from D4 to (L1.end, D4); right_; tconn(,O); "DATA" ljust;
+
+#-----------------------------------------------------------------------
+# vetve spoj 3-3
+   line from Q1.INP to (D2, Q1.INP) then down_ 1.35;
+   D5: dot;
+   line to (D1, Here);
+   line to (Here, AD.INN) to AD.INN;
+   resistor(from D5 left_ 1.75,E); rlabel(,"$\sf R_3$",);
+   tconn(0.25,O); "+5V" rjust;
+   resistor(from D5 down_ 1.5,E); rlabel(,"$\sf R_4$",); 
+   gnd();
+#-----------------------------------------------------------------------
+'''
+
+_ = cm_compile('cm_0204e', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_0204e.png
+:width: 650px
+:name: cm_0204e
+
+[Zapojenie](./src/cm_0204e.ckt) $\Delta-\Sigma$ modulátora použitého v detektore kondenzovanej vlhkosti v projekte kapacitného extenzometra [^projekt]. 
+```
+
+
+[^projekt]: Projekt VEGA 2/0013/25
+
+    Interpretácia periodických a neperiodických deformácií zemskej kôry v oblasti Západných Karpát na základe paralelných meraní horizontálnych posunutí.

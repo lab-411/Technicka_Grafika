@@ -725,6 +725,7 @@ _ = cm_compile('cm_202u', data, dpi=600 )
 
 ```{figure} ./src/cm_202u.png
 :width: 400px
+:name: cm_202u
 
 [Zapojenie](./src/cm_202u.ckt) hradla AND v technológii CMOS.
 ```
@@ -812,6 +813,7 @@ _ = cm_compile('cm_202v', data, dpi=600 )
 
 ```{figure} ./src/cm_202v.png
 :width: 600px
+:name: cm_202v
 
 [Konfigurácie](./src/cm_202v.ckt) koncového stupňa pinu portu mikrokontroléra.
 ```

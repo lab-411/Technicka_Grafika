@@ -1,0 +1,44 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+command"\small \sf"
+define(`LF355',`[
+    OP: opamp(,,,,);
+
+        line from OP.In1 left_ 0.5;   "2" above ljust;
+    INN:last line .end
+        line from OP.In2 left_ 0.5;   "3" above ljust;
+    INP:last line .end
+
+    P7: 0.25 between OP.N and OP.E;
+    P1: 0.5 between OP.N and OP.E;
+    P5: 0.75 between OP.N and OP.E;
+
+    P4: 0.5 between OP.S and OP.E;
+
+        line from P7 up_ 0.45; "7" rjust;
+    VSP:last line .end;
+
+        line from P4 down_ 0.45; "4" rjust;
+    VSN:last line .end;
+
+        line from P1 up_ 0.45; "1" rjust;
+    BAL1:last line .end;
+        line from P5 up_ 0.45; "5" rjust;
+    BAL2:last line .end;
+    OUT: OP.Out; "6" at OUT above rjust;
+]') 
+
+OP: LF355(); "\sf LF\\355" at OP.OP.se above;
+
+.PE

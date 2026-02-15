@@ -565,24 +565,24 @@ atribúty:
 .D                     - poloha drain
 </pre></div>
 </div>
-<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu. Príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, <code class="xref std std-numref docutils literal notranslate"><span class="pre">cm_202u</span></code>, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
+<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu. Príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, <a class="reference internal" href="#cm-202u"><span class="std std-numref">Obr. 85</span></a>, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { &quot;Q3&quot; at Q3.nw ljust;}
 </pre></div>
 </div>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="cm-202u">
 <a class="reference internal image-reference" href="_images/cm_202u.png"><img alt="_images/cm_202u.png" src="_images/cm_202u.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 85 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/315f2c19ebf0c292daa858e0eb4e67cb/cm_202u.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 85 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/315f2c19ebf0c292daa858e0eb4e67cb/cm_202u.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#cm-202u" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Niektorí výrobcovia mikrokontrolérov používajú pre zjednodušený popis funkcie častí logického obvodu kombinovanú značku FET tranzistora, ktorá namiesto jeho štruktúry zobrazuje jeho vzťah k ostatným častiam zapojenia. Tranzitor s vodivosťou typu P je zobrazený s krúžkom na hradle, čo znamená, že bude otvorený pri privedení signálu s úrovňou <strong>L</strong> na jeho hradlo,
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">cm_202v</span></code>:</p>
-<figure class="align-default" id="id4">
+<a class="reference internal" href="#cm-202v"><span class="std std-numref">Obr. 86</span></a>:</p>
+<figure class="align-default" id="cm-202v">
 <a class="reference internal image-reference" href="_images/cm_202v.png"><img alt="_images/cm_202v.png" src="_images/cm_202v.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 86 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/57745c716813179605b4816e8fa4df81/cm_202v.ckt"><span class="xref download myst">Konfigurácie</span></a> koncového stupňa pinu portu mikrokontroléra.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 86 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/57745c716813179605b4816e8fa4df81/cm_202v.ckt"><span class="xref download myst">Konfigurácie</span></a> koncového stupňa pinu portu mikrokontroléra.</span><a class="headerlink" href="#cm-202v" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
