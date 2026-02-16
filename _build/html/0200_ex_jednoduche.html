@@ -369,7 +369,7 @@ document.write(`
 <h1><font color='navy'> RLC obvody  </font><a class="headerlink" href="#rlc-obvody" title="Link to this heading">#</a></h1>
 <section id="odporovy-delic">
 <h2><font color='teal'>  Odporový delič </font><a class="headerlink" href="#odporovy-delic" title="Link to this heading">#</a></h2>
-<p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200a"><span class="std std-numref">Obr. 72</span></a>:</p>
+<p>V príklade sériového zapojenie rezistorov sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200a"><span class="std std-numref">Obr. 73</span></a>:</p>
 <ul>
 <li><p>používanie spoločnej premennej <code class="docutils literal notranslate"><span class="pre">d</span></code> pre škálovanie rozmerov prvkov zapojenia ako aj ich polohy,</p></li>
 <li><p>atribúty pre určenie súradníc, napr. <em>(Here, R2.end)</em>,</p></li>
@@ -399,13 +399,13 @@ document.write(`
 <a class="reference internal image-reference" href="_images/cm_200a.png"><img alt="_images/cm_200a.png" src="_images/cm_200a.png" style="width: 230px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 72 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/5d46890f221a5f00cdfc4f4d75cc6487/cm_200a.ckt"><span class="xref download myst">Príklad</span></a> zapojenia s popísaním veličín v obvode.</span><a class="headerlink" href="#cm-200a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 73 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/5d46890f221a5f00cdfc4f4d75cc6487/cm_200a.ckt"><span class="xref download myst">Príklad</span></a> zapojenia s popísaním veličín v obvode.</span><a class="headerlink" href="#cm-200a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="konfiguracia-hviezda-trojuholnik">
 <h2><font color='teal'> Konfigurácia hviezda - trojuholník </font><a class="headerlink" href="#konfiguracia-hviezda-trojuholnik" title="Link to this heading">#</a></h2>
-<p>V príklade zapojenie rezistorov pre konverziu konfigurácie hviezdy na trojuholník sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200b"><span class="std std-numref">Obr. 73</span></a>:</p>
+<p>V príklade zapojenie rezistorov pre konverziu konfigurácie hviezdy na trojuholník sú použité nasledujúce konštrukcie, <a class="reference internal" href="#cm-200b"><span class="std std-numref">Obr. 74</span></a>:</p>
 <ul>
 <li><p>šíkmé ukladanie dvojpólov (rezistorov) zadaním koncových bodov <em>resistor(from D1 to D2,,E)</em>,</p></li>
 <li><p>použitie premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code> pre lokalizáciu textu nad spojovacím bodom <em>dot; {“\textit{<span class="math notranslate nohighlight">\(A\)</span>}” at Here above}</em>.</p>
@@ -452,13 +452,13 @@ line &lt;-&gt; from (3.5, 2) to (5,2)
 <a class="reference internal image-reference" href="_images/cm_200b.png"><img alt="_images/cm_200b.png" src="_images/cm_200b.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 73 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/954042c4179924d6c5f3018aa5e08765/cm_200b.ckt"><span class="xref download myst">Zapojenie</span></a> konfigurácie hviezda-trojuholník.</span><a class="headerlink" href="#cm-200b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 74 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/954042c4179924d6c5f3018aa5e08765/cm_200b.ckt"><span class="xref download myst">Zapojenie</span></a> konfigurácie hviezda-trojuholník.</span><a class="headerlink" href="#cm-200b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="jednoduche-radio">
 <h2><font color='teal'> Jednoduché rádio </font><a class="headerlink" href="#jednoduche-radio" title="Link to this heading">#</a></h2>
-<p>V príklade zapojenia jednoduchého rádia je použité makro <em>gnd()</em> pre vykreslenie alternatívnej značky zeme, <a class="reference internal" href="#cm-200d"><span class="std std-numref">Obr. 74</span></a>. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia <em>with … at ..</em>.</p>
+<p>V príklade zapojenia jednoduchého rádia je použité makro <em>gnd()</em> pre vykreslenie alternatívnej značky zeme, <a class="reference internal" href="#cm-200d"><span class="std std-numref">Obr. 75</span></a>. Centrálnym elementom schémy je transformátor. Pre umiestnenie sluchátka je použitá konštrukcia <em>with … at ..</em>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># makro pre vykreslenie &#39;europskej&#39; zeme
 <span class="hll">define(`gnd&#39;,`[
 </span><span class="hll">    ifelse(defn(`d&#39;),  $1, d=1/4,  d=$1)
@@ -496,13 +496,13 @@ LL: line right_ 0.25 then down_ 0.5;
 <a class="reference internal image-reference" href="_images/cm_200d.png"><img alt="_images/cm_200d.png" src="_images/cm_200d.png" style="width: 200px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 74 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/8f615dae0ff1098771ad6db38764c92e/cm_200d.ckt"><span class="xref download myst">Zapojenie</span></a> jednoduchého rádia.</span><a class="headerlink" href="#cm-200d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 75 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/8f615dae0ff1098771ad6db38764c92e/cm_200d.ckt"><span class="xref download myst">Zapojenie</span></a> jednoduchého rádia.</span><a class="headerlink" href="#cm-200d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="stvorpol">
 <h2><font color='teal'> Štvorpól </font><a class="headerlink" href="#stvorpol" title="Link to this heading">#</a></h2>
-<p>V nasledujúcom príklade zapojenia štvorpólu je použitá vetva pre vykreslenie zeme, vyznačená červeno, <a class="reference internal" href="#cm-200c"><span class="std std-numref">Obr. 75</span></a>. Vo vetve je je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci vetvy uzatvorenej medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
+<p>V nasledujúcom príklade zapojenia štvorpólu je použitá vetva pre vykreslenie zeme, vyznačená červeno, <a class="reference internal" href="#cm-200c"><span class="std std-numref">Obr. 76</span></a>. Vo vetve je je automaticky vytvorená lokálna kópia premennej <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ktorá je platná na polohovanie prvkov obvodu v rámci vetvy uzatvorenej medzi <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. Po vykonaní kódu bloku je platná pôvodná hodnota <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 <span class="n">include</span><span class="p">(</span><span class="n">lib_color</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>                               
 <span class="n">up_</span><span class="p">;</span>
@@ -537,7 +537,7 @@ LL: line right_ 0.25 then down_ 0.5;
 <a class="reference internal image-reference" href="_images/cm_200c.png"><img alt="_images/cm_200c.png" src="_images/cm_200c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 75 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c13954f24addc0a8acf127c8d85e0837/cm_200c.ckt"><span class="xref download myst">Zapojenie</span></a> štvorpólu.</span><a class="headerlink" href="#cm-200c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 76 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c13954f24addc0a8acf127c8d85e0837/cm_200c.ckt"><span class="xref download myst">Zapojenie</span></a> štvorpólu.</span><a class="headerlink" href="#cm-200c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

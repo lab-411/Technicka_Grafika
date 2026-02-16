@@ -438,6 +438,9 @@ Niektoré typy operačných zosilovačov ako aj odvodených typov, ako sú napr�
 from src.utils import *
 
 data = r'''
+include(lib_color.ckt)
+include(lib_user.ckt)
+include(lib_base.ckt)
 command"\small \sf"
 define(`LF355',`[
     OP: opamp(,,,,);
@@ -466,14 +469,41 @@ define(`LF355',`[
     OUT: OP.Out; "6" at OUT above rjust;
 ]') 
 
+move to (0,0); 
 OP: LF355(); "\sf LF\\355" at OP.OP.se above;
+color_red();
+#line <- from OP.W left_ 1; ".W" rjust;
+line <- from OP.INN left_ 1 up_ .5; ".INN" rjust;
+line <- from OP.INP left_ 1 down_ .5; ".INP" rjust;
+line <- from OP.VSP up_ 1.25 ; ".VSP" above;
+line <- from OP.BAL1 up_ 1 right_ 0.45; ".BAL1" above;
+line <- from OP.BAL2 up_ 1 right_ 1.25; ".BAL2" above;
+line <- from OP.VSN down_ 0.75 ; ".VSN" below;
+line <- from OP.OUT right_ 1; ".OUT" ljust;
+
+move to (6,0); 
+right_;
+color_black();
+OP: LF355();;
+box wid (OP.ne-OP.nw).x ht (OP.nw-OP.sw).y at OP.c dashed;
+color_blue();
+line <- from OP.w left_ 1; ".w" rjust;
+line <- from OP.nw left_ 1 up_ 0.5; ".nw" rjust;
+line <- from OP.ne right_ 1 up_ 0.5; ".ne" ljust above;
+line <- from OP.ne right_ 1 up_ 0.5; ".ne" ljust above;
+line <- from OP.se right_ 1 down_ 0.5; ".se" ljust above;
+line <- from OP.e right_ 1; ".e" ljust;
+line <- from OP.sw left_ 1 down_ 0.5; ".sw" rjust;
+line <- from OP.n up_ 1; ".n" above;
+line <- from OP.s down_ 1; ".s" below;
+line <- from OP.c right_ 0.75 down_ 1.5; ".c" below;
 '''
 
 _ = cm_compile('cm_0204f', data, dpi=600 )   
 ```
 
 ```{figure} ./src/cm_0204f.png
-:width: 160px
+:width: 520px
 :name: cm_0204f
 
 Doplnená [značka](./src/cm_0204f.ckt) operačného zosilovača s doplnenýmí vývodmi pre kompenzáciu offsetu, [zdroj](https://www.ti.com/lit/ds/symlink/lf356.pdf). 

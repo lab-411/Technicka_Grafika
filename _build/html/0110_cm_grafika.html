@@ -411,7 +411,7 @@ from (1,1) to (2,2) - placement, umiestnenie objektu na ploche
 &quot;line L1&quot;           - text v geometrickom strede objektu
 </pre></div>
 </div>
-<p>Nasledujúce príklady ukazuje niekoľko možností použitia čiary, <a class="reference internal" href="#cm-0110a"><span class="std std-numref">Obr. 41</span></a>.</p>
+<p>Nasledujúce príklady ukazuje niekoľko možností použitia čiary, <a class="reference internal" href="#cm-0110a"><span class="std std-numref">Obr. 42</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Origin: Here 
 line from (1,1) to (3,2); # A. absolutne polohy bodov, nastavuje 
                           #    poziciu Here na konc. bod 
@@ -432,7 +432,7 @@ line -&gt; from (6,5) right_ 1 then right_ 1 down_ 2 then right_ 1 up_ 1;
 <a class="reference internal image-reference" href="_images/cm_0110a.png"><img alt="_images/cm_0110a.png" src="_images/cm_0110a.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 41 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/495580607706735cc0cab58662aec6ea/cm_0110a.ckt"><span class="xref download myst">Spôsoby</span></a> vykreslenia čiary na pracovnej ploche.</span><a class="headerlink" href="#cm-0110a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/495580607706735cc0cab58662aec6ea/cm_0110a.ckt"><span class="xref download myst">Spôsoby</span></a> vykreslenia čiary na pracovnej ploche.</span><a class="headerlink" href="#cm-0110a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition-poznamka admonition">
@@ -461,7 +461,7 @@ linespec   -  from position | to position | direction [ expr ]
               | linespec then linespec
 </pre></div>
 </div>
-<p>Pri krivkách nie je možné vykresliťtext v ich strede ako pri čiare. Príklad použitia kriviek je na obrázku <a class="reference internal" href="#cm-0110b"><span class="std std-numref">Obr. 42</span></a>.</p>
+<p>Pri krivkách nie je možné vykresliťtext v ich strede ako pri čiare. Príklad použitia kriviek je na obrázku <a class="reference internal" href="#cm-0110b"><span class="std std-numref">Obr. 43</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Grid(8.5,2.5);
 color_red;        # A. spline krivka, súradnic rovnake ako pri čiare
 spline from (0,1.5) right_ 1 up_ 1 then right_ 0.5 down_ 1 then \
@@ -482,7 +482,7 @@ spline 0.6 from (3, 0.) up_ 2 then right_ 2 then down_ 2 dotted .05;&quot;C&quot
 <a class="reference internal image-reference" href="_images/cm_0110b.png"><img alt="_images/cm_0110b.png" src="_images/cm_0110b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 42 </span><span class="caption-text">Použitie splajnových kriviek.</span><a class="headerlink" href="#cm-0110b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Použitie splajnových kriviek.</span><a class="headerlink" href="#cm-0110b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="atributy-linearnych-prvkov">
@@ -519,7 +519,7 @@ parameters - parametre zobrazenia (fill ...)
 string     - text v strede objektu
 </pre></div>
 </div>
-<p>Pri zadaní príkazu pre vykreslenia objektu len menom bez parametrov sa objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami <em>dashed</em> a <em>dotted</em> a výplň parametrom <em>fill</em>. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou <em>boxrad</em>, <a class="reference internal" href="#cm-0110f"><span class="std std-numref">Obr. 43</span></a>.</p>
+<p>Pri zadaní príkazu pre vykreslenia objektu len menom bez parametrov sa objekt sa vykreslí s prednastavenými (default) hodnotami. Podobne ako pri čiarach je možné upraviť zobrazenie okraja objektov parametrami <em>dashed</em> a <em>dotted</em> a výplň parametrom <em>fill</em>. Zaoblenie rohov pri obdĺžniku je možné upraviť premennou <em>boxrad</em>, <a class="reference internal" href="#cm-0110f"><span class="std std-numref">Obr. 44</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   color_red;      
 A: box wid 1 ht 1 at (1,0.5) &quot;A&quot;; line -&gt; right_ 1;
 
@@ -543,12 +543,12 @@ E: ellipse at Y wid 2 ht 1 &quot;E&quot;
 <a class="reference internal image-reference" href="_images/cm_0110f.png"><img alt="_images/cm_0110f.png" src="_images/cm_0110f.png" style="width: 380px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Plošné objekty.</span><a class="headerlink" href="#cm-0110f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Plošné objekty.</span><a class="headerlink" href="#cm-0110f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="atributy-plosnych-prvkov">
 <h3><font color='brown'> Atribúty plošných prvkov  </font><a class="headerlink" href="#atributy-plosnych-prvkov" title="Link to this heading">#</a></h3>
-<p>Plošné objekty majú atribúty definované podľa svetových strán, <a class="reference internal" href="#cm-0110c"><span class="std std-numref">Obr. 44</span></a>.</p>
+<p>Plošné objekty majú atribúty definované podľa svetových strán, <a class="reference internal" href="#cm-0110c"><span class="std std-numref">Obr. 45</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.ne       .se     .nw       .sw
 .t        .top              .north   .n
 .b        .bot    .bottom   .south   .s
@@ -563,7 +563,7 @@ E: ellipse at Y wid 2 ht 1 &quot;E&quot;
 <a class="reference internal image-reference" href="_images/cm_0110c.png"><img alt="_images/cm_0110c.png" src="_images/cm_0110c.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 45 </span><span class="caption-text">Atribúty pre box, orientácia podľa svetových strán</span><a class="headerlink" href="#cm-0110c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -579,7 +579,7 @@ position  - súradnice počiatočného a koncového bodu oblúka
 centre    - súradnice stredu kružnice oblúka
 </pre></div>
 </div>
-<p>Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka, <a class="reference internal" href="#cm-0110d"><span class="std std-numref">Obr. 45</span></a>.</p>
+<p>Bez zadaného stredu je oblúk vykreslený ako polkružnica so stredom medzi koncovými bodmi oblúka, <a class="reference internal" href="#cm-0110d"><span class="std std-numref">Obr. 46</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P1: (1, 1);
 P2: (4, 4);
 P3: (3.5, 1.5)
@@ -605,7 +605,7 @@ A2: arc -&gt; cw from P1 to P2 with .c at P3
 <a class="reference internal image-reference" href="_images/cm_0110d.png"><img alt="_images/cm_0110d.png" src="_images/cm_0110d.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 45 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bee14ca23e280ca6443239453bc13f61/cm_0110d.ckt"><span class="xref download myst">Vykreslenie</span></a> kruhového oblúku</span><a class="headerlink" href="#cm-0110d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -626,7 +626,7 @@ parameters - tvar a veľkosť šípky
              wid    - šírka šípky  (0.05)
 </pre></div>
 </div>
-<p>Príklady použitia sú na obrázku <a class="reference internal" href="#cm-0110e"><span class="std std-numref">Obr. 46</span></a>.</p>
+<p>Príklady použitia sú na obrázku <a class="reference internal" href="#cm-0110e"><span class="std std-numref">Obr. 47</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt);
 include(lib_base.ckt);
 
@@ -646,7 +646,7 @@ arc -&gt; cw from (5,0.5) to (8,0.5) thick 1.5 wid 0.25 dashed &quot;D&quot;;
 <a class="reference internal image-reference" href="_images/cm_0110e.png"><img alt="_images/cm_0110e.png" src="_images/cm_0110e.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 46 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 47 </span><span class="caption-text">Vykreslenie šípiek.</span><a class="headerlink" href="#cm-0110e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

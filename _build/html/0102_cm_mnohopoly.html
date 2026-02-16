@@ -371,7 +371,7 @@ document.write(`
 <p><span class="caption-number">Obr. 27 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f3f6bdc9178c1ed4d3ee2373ea55b504/cm_0102a.ckt"><span class="xref download myst">Príklady</span></a> multipólov definovaných v CircuitMacros.</span><a class="headerlink" href="#cm-0102a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar:</p>
+<p>Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar, <a class="reference internal" href="#cm-0102d"><span class="std std-numref">Obr. 28</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
 
 parametre:
@@ -379,7 +379,7 @@ parametre:
   linespec             - orientácia a dĺžka prícodov
   np                   - počet závitov primárneho vinutia
   ns                   - počet závitov sekundárneho vinutia
-  L | R                - poloha primárho vinutia vlavo (L) alebo vpravo (R)
+  L | R                - poloha primárneho vinutia vlavo (L) alebo vpravo (R)
   W | L                - tvar zobrazenia vinutia široké (W) alebo jednoduché (L)
   A | P                - zobrazenie bez jadra (A) alebo s jadrom (P)
   D1 | D2 | D12 | D21  - označenie začiatku vinutia 
@@ -393,6 +393,13 @@ atribúty:
 .TP  .TS               - poloha stredov vinutia
 </pre></div>
 </div>
+<figure class="align-default" id="cm-0102d">
+<a class="reference internal image-reference" href="_images/cm_0102d.png"><img alt="_images/cm_0102d.png" src="_images/cm_0102d.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 28 </span><span class="caption-text">Atribúty multipólu <em>transformer()</em>.</span><a class="headerlink" href="#cm-0102d" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="umiestnovanie-multipolov">
 <h2><font color='teal'> Umiestňovanie multipólov </font><a class="headerlink" href="#umiestnovanie-multipolov" title="Link to this heading">#</a></h2>
 <p>Na pracovnej ploche môžeme umiestňovať multipóly niekoľkými spôsobmi:</p>
@@ -416,7 +423,7 @@ atribúty:
 </div>
 </li>
 </ol>
-<p>Príklad použitia, <a class="reference internal" href="#cm-0102c"><span class="std std-numref">Obr. 28</span></a>:</p>
+<p>Príklad použitia, <a class="reference internal" href="#cm-0102c"><span class="std std-numref">Obr. 29</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">right_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span> 
     <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>                      <span class="c1"># (1)</span>
 
@@ -431,13 +438,13 @@ atribúty:
 <a class="reference internal image-reference" href="_images/cm_0102c.png"><img alt="_images/cm_0102c.png" src="_images/cm_0102c.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 28 </span><span class="caption-text">Príklady umiestňovania multipólov.</span><a class="headerlink" href="#cm-0102c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 29 </span><span class="caption-text">Príklady umiestňovania multipólov.</span><a class="headerlink" href="#cm-0102c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="pouzitie">
 <h2><font color='teal'> Použitie </font><a class="headerlink" href="#pouzitie" title="Link to this heading">#</a></h2>
-<p>Použitie atribútov mnohopólu demonštruje nasledujúci príklad, <a class="reference internal" href="#cm-0102b"><span class="std std-numref">Obr. 29</span></a>. Transformátor je centrálnym elementom a všetky prvky zapojenia sú umiestňované relatívne voči jeho terminálom.</p>
+<p>Použitie atribútov mnohopólu demonštruje nasledujúci príklad, <a class="reference internal" href="#cm-0102b"><span class="std std-numref">Obr. 30</span></a>. Transformátor je centrálnym elementom a všetky prvky zapojenia sú umiestňované relatívne voči jeho terminálom.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>TR:  transformer(down_ 2,L,7,W,4);
      &quot;1&quot; at TR.P1 rjust below;     # popis transformatora 
      &quot;2&quot; at TR.P2 rjust above;
@@ -464,7 +471,7 @@ D1: diode(1); llabel(,D_1,);       # usmerňovač
 <a class="reference internal image-reference" href="_images/cm_0102b.png"><img alt="_images/cm_0102b.png" src="_images/cm_0102b.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 29 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/dd3fdce729937efada0623d90a492568/cm_0102b.ckt"><span class="xref download myst">Použitie</span></a> atribútov mnohopólu.</span><a class="headerlink" href="#cm-0102b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 30 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/dd3fdce729937efada0623d90a492568/cm_0102b.ckt"><span class="xref download myst">Použitie</span></a> atribútov mnohopólu.</span><a class="headerlink" href="#cm-0102b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

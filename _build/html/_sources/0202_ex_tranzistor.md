@@ -83,7 +83,53 @@ Značka bipolárneho tranzistora *bi_tr()*.
     .E                     - poloha emitora
     .C                     - poloha kolektora
 
+
     
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command"\sf"
+include(lib_color.ckt)
+
+up_;
+move to (0,2);
+T: bi_tr(up_,,,E);
+
+color_red;
+line <- from T.B left_ 0.75;    ".B" rjust;
+line <- from T.C up_ 0.5 ;  ".C" above ;
+line <- from T.E down_ 0.5;   ".E" below ;
+
+up_;
+color_black;
+move to (4,2);
+
+T: bi_tr(up_,,,E);
+color_blue;
+B: box wid (T.w-T.e).x ht (T.n-T.s).y at T.c dotted;
+line <- from T.sw down_ 0.5 left_ 0.5;   ".sw" below rjust;
+line <- from T.nw up_ 0.5 left_ 0.5;     ".nw" above rjust;
+line <- from T.ne up_ 0.5 right_ 0.5;    ".ne" above ljust;
+line <- from T.se down_ 0.5 right_ 0.5;  ".se" below ljust;
+line <- from T.e  right_ 0.75;  ".e" ljust;
+line <- from T.w  left_ 0.75;  ".w" rjust;
+line <- from T.n  up_ 0.75;  ".n" above;
+line <- from T.s  down_ 0.75;  ".s" below;
+line <- from T.c  down_ 0.75 right_ 1.25;  ".c" ljust ;
+'''
+
+_ = cm_compile('cm_202z', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_202z.png
+:width: 420px
+:name: cm_202z
+
+Atribúty bipolárneho tranzistora *bi_tr()*.
+```
 
 Pretože vývody tranzistora nie sú v usporiadané mriežke, musíme obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy, a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade, {numref}`cm_202b`, je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora $R_{b1}$ je určená polohou značky zeme pri rezistore $R_e$. Pre popis spojovacieho bodu $V_b$ bolo použité makro *dlabel()*.
 
@@ -219,11 +265,62 @@ Upravené značky bipolárnych tranzistorov *bjt_NPN()* a *bjt_PNP()*
     
     .s   .w   .n.  .e      - stredy strán obrysu
     .sw  .se  .nw  .ne     - rohy obrysu
+    .c                     - stred značky
     .B                     - poloha bázy
     .E                     - poloha emitora
     .C                     - poloha kolektora
 
 
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command"\sf"
+include(lib_color.ckt)
+include(lib_user.ckt)
+include(lib_base.ckt)
+Grid(7,3)
+
+
+right_;
+move to (1,1.5);
+T: bjt_NPN(1,1,R);
+
+color_red;
+line <- from T.B left_ 0.75;    ".B" rjust;
+line <- from T.C up_ 0.5 ;  ".C" above ;
+line <- from T.E down_ 0.5;   ".E" below ;
+
+right_;
+color_black;
+move to (4,1.5);
+
+
+T: bjt_NPN(1,1,R);
+color_blue;
+B: box wid (T.w-T.e).x ht (T.n-T.s).y at T.c dotted;
+line <- from T.sw down_ 0.5 left_ 0.5;   ".sw" below rjust;
+line <- from T.nw up_ 0.5 left_ 0.5;     ".nw" above rjust;
+line <- from T.ne up_ 0.5 right_ 0.5;    ".ne" above ljust;
+line <- from T.se down_ 0.5 right_ 0.5;  ".se" below ljust;
+line <- from T.e  right_ 0.75;  ".e" ljust;
+line <- from T.w  left_ 0.75;  ".w" rjust;
+line <- from T.n  up_ 0.75;  ".n" above;
+line <- from T.s  down_ 0.75;  ".s" below;
+line <- from T.c  down_ 0.55 right_ 1.25;  ".c" ljust ;
+'''
+
+_ = cm_compile('cm_202q', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_202q.png
+:width: 450px
+:name: cm_202q
+
+Atribúty bipolárneho tranzistora *bjt_NPN()*.
+```
 
 Nasledujúci príklad, {numref}`cm_202h`,  ukazuje použitie modifikovaných značiek bipolárnych tranzistorov:
 
@@ -655,6 +752,57 @@ Značky MOSFET tranzistorov *e_fet()* a *d_fet()*
     .G                     - poloha bázy
     .S                     - poloha source
     .D                     - poloha drain
+
+    
+
+```{code-cell} ipython3  
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command"\sf"
+include(lib_color.ckt)
+include(lib_user.ckt)
+include(lib_base.ckt)
+
+right_;
+move to (1,1.5);
+T: d_fet(up_,,N);
+
+color_red;
+line <- from T.G left_ 0.75;    ".G" rjust;
+line <- from T.D up_ 0.5 ;  ".D" above ;
+line <- from T.S down_ 0.5;   ".S" below ;
+
+right_;
+color_black;
+move to (4,1.5);
+
+
+T: d_fet(up_,,P);
+color_blue;
+B: box wid (T.w-T.e).x ht (T.n-T.s).y at T.c dotted;
+line <- from T.sw down_ 0.5 left_ 0.5;   ".sw" below rjust;
+line <- from T.nw up_ 0.5 left_ 0.5;     ".nw" above rjust;
+line <- from T.ne up_ 0.5 right_ 0.5;    ".ne" above ljust;
+line <- from T.se down_ 0.5 right_ 0.5;  ".se" below ljust;
+line <- from T.e  right_ 0.75;  ".e" ljust;
+line <- from T.w  left_ 0.75;  ".w" rjust;
+line <- from T.n  up_ 0.75;  ".n" above;
+line <- from T.s  down_ 0.75;  ".s" below;
+line <- from T.c  down_ 0.55 right_ 1.25;  ".c" ljust ;
+'''
+
+_ = cm_compile('cm_202w', data, dpi=600 )   
+```
+
+```{figure} ./src/cm_202w.png
+:width: 420px
+:name: cm_202w
+
+Atribúty MOSFET tranzistora *d_fet()*.
+```
 
 Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu. Príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, {numref}`cm_202u`, pri ktorom bolo použité makro *mosfet()*. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v [dokumentácii](./data/Circuit_macros_10_6.pdf).
 

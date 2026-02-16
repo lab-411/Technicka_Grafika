@@ -412,7 +412,7 @@ _ = cm_compile('cm_0160f', data, dpi=600)
 
 ```{figure} ./src/cm_0160f.png
 :width: 300px
-:name: cm_160f
+:name: cm_0160f
 
 Použitie vetiev na kreslenie častí obvodu.
 ```

@@ -519,12 +519,12 @@ Q2: P1/k
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PB: k between P1 and P2  
 </pre></div>
 </div>
-<p>Hodnota <em>k</em> určuje relatívnu vzdialenosť ku koncovým bodom, <em>k=0.5</em> je stredom, <em>k=0</em> a <em>k=1</em> sú polohy koncových bodov. Pri hodnote <em>k</em> mimo intervalu <em>0…1</em> leží za krajnými bodmi <em>P1</em> a <em>P2</em>, <a class="reference internal" href="#cm-0160z"><span class="std std-numref">Obr. 58</span></a>:</p>
+<p>Hodnota <em>k</em> určuje relatívnu vzdialenosť ku koncovým bodom, <em>k=0.5</em> je stredom, <em>k=0</em> a <em>k=1</em> sú polohy koncových bodov. Pri hodnote <em>k</em> mimo intervalu <em>0…1</em> leží za krajnými bodmi <em>P1</em> a <em>P2</em>, <a class="reference internal" href="#cm-0160z"><span class="std std-numref">Obr. 59</span></a>:</p>
 <figure class="align-default" id="cm-0160z">
 <a class="reference internal image-reference" href="_images/cm_0160z.png"><img alt="_images/cm_0160z.png" src="_images/cm_0160z.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 58 </span><span class="caption-text">Použitie konštrukcie <em>between</em>.</span><a class="headerlink" href="#cm-0160z" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 59 </span><span class="caption-text">Použitie konštrukcie <em>between</em>.</span><a class="headerlink" href="#cm-0160z" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -576,12 +576,12 @@ line to Here + (2,0); resistor()   # dpic a makro inšrukcia
     px = R1.end.x    # numericka hodnota
 </pre></div>
 </div>
-<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorových operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej úprave polohy objektov, <a class="reference internal" href="#cm-0160c"><span class="std std-numref">Obr. 59</span></a>.</p>
+<p>Referencie sú globálne, referencia definovaná v bloku alebo vetve je viditeľná v celom programe. Nové priradenie mena referencie inému objektu pôvodnú referenciu prepíše. Pri kreslení zapojení sa stáva, že musíme presne spojiť dva body zapojenia, ktorých absolútnu polohu nepoznáme. Využitím vektorových operácií s referenciami na objekty získame spojenie, ktoré sa nepreruší ani pri dodatočnej úprave polohy objektov, <a class="reference internal" href="#cm-0160c"><span class="std std-numref">Obr. 60</span></a>.</p>
 <figure class="align-default" id="cm-0160c">
 <a class="reference internal image-reference" href="_images/cm_0160c.png"><img alt="_images/cm_0160c.png" src="_images/cm_0160c.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 59 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/65e7b3d689abb312ea6ab84dccbe31b9/cm_0160c.ckt"><span class="xref download myst">Použitie</span></a> referencií pre výpočtu koncového bodu čiary.</span><a class="headerlink" href="#cm-0160c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 60 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/65e7b3d689abb312ea6ab84dccbe31b9/cm_0160c.ckt"><span class="xref download myst">Použitie</span></a> referencií pre výpočtu koncového bodu čiary.</span><a class="headerlink" href="#cm-0160c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -607,7 +607,7 @@ A:[                                  # blok s absolutnymi suradnicami
 .wid_     .ht_
 </pre></div>
 </div>
-<p>Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt, <a class="reference internal" href="#cm-0160d"><span class="std std-numref">Obr. 60</span></a>.</p>
+<p>Pre ukladanie a použitie zloženého objektu na ploche platia rovnaké pravidlá ako pre každý iný plošný objekt, <a class="reference internal" href="#cm-0160d"><span class="std std-numref">Obr. 61</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>r = A.rr;                            # chyba, premenná rr nie je viditeľná
 r = A.C1.rad                         # použitie vnútorných referncií
 line &lt;- from A.B.nw left_ 1 up_ 1; 
@@ -619,7 +619,7 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <a class="reference internal image-reference" href="_images/cm_0160d.png"><img alt="_images/cm_0160d.png" src="_images/cm_0160d.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 60 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0160d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 61 </span><span class="caption-text">Blok reprezentujúci zložený objekt a jeho vonkajší obrys.</span><a class="headerlink" href="#cm-0160d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -627,7 +627,7 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <section id="vetvy">
 <h2><font color='teal'>  Vetvy  </font><a class="headerlink" href="#vetvy" title="Link to this heading">#</a></h2>
 <p>Vetva je tvorená kódom uzatvoreným do zložených zátvoriek <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. Vetva umožňuje vytváranie časti obvodu alebo umiestnenie iných komponentov relatívne k poslednej hodnote <code class="docutils literal notranslate"><span class="pre">Here</span></code>, vo vetve sa vytvorí lokálna kópia <code class="docutils literal notranslate"><span class="pre">Here</span></code>. S výhodou ich použijeme v prípade, keď potrebujeme nakresliť samostatnú časť obvodu (vetvu) a potom pokračovať v kreslení zapojenia od pôvodnej pozície.</p>
-<p>Uzatvorenie kódu do vetvy <code class="docutils literal notranslate"><span class="pre">{...}</span></code> neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať, <code class="xref std std-numref docutils literal notranslate"><span class="pre">cm_0160f</span></code>.</p>
+<p>Uzatvorenie kódu do vetvy <code class="docutils literal notranslate"><span class="pre">{...}</span></code> neovplyvňuje viditeľnosť premenných. Vetvy je možné do seba vnárať, <a class="reference internal" href="#cm-0160f"><span class="std std-numref">Obr. 62</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">,);</span>        <span class="c1"># d -&gt; 3</span>
 <span class="n">DT</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
@@ -645,14 +645,14 @@ right_; box at A.c wid A.wid_ ht A.ht_ dashed;
 <span class="n">R4</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="n">d</span><span class="p">);</span>         <span class="c1"># d -&gt; 2.5   Here -&gt; R4.end</span>
 </pre></div>
 </div>
-<figure class="align-default" id="cm-160f">
+<figure class="align-default" id="cm-0160f">
 <a class="reference internal image-reference" href="_images/cm_0160f.png"><img alt="_images/cm_0160f.png" src="_images/cm_0160f.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 61 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-160f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 62 </span><span class="caption-text">Použitie vetiev na kreslenie častí obvodu.</span><a class="headerlink" href="#cm-0160f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Vetvy s výhodou využijeme pri popise prvkov zapojenia. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia, <a class="reference internal" href="#cm-0160e"><span class="std std-numref">Obr. 62</span></a>.</p>
+<p>Vetvy s výhodou využijeme pri popise prvkov zapojenia. Zobrazenie textu mení rovnako ako každý nový element zapojenia hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code>, ak chceme v kreslení pokračovať s pôvodnou súradnicou, uzatvoríme text do vetvy. Príkazy pre popis dvojpólov (<em>llabel …</em>) hodnotu <code class="docutils literal notranslate"><span class="pre">Here</span></code> nemenia, <a class="reference internal" href="#cm-0160e"><span class="std std-numref">Obr. 63</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>line -&gt; 1;
 box wid 2 ht 1;     
 {
@@ -669,7 +669,7 @@ box wid 2 ht 1;
 <a class="reference internal image-reference" href="_images/cm_0160e.png"><img alt="_images/cm_0160e.png" src="_images/cm_0160e.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 62 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bbbb196dc5458c509df3c097baf05f04/cm_0160e.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0160e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 63 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bbbb196dc5458c509df3c097baf05f04/cm_0160e.ckt"><span class="xref download myst">Lokálne</span></a> súradnice vo vetve.</span><a class="headerlink" href="#cm-0160e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -686,7 +686,7 @@ box wid 2 ht 1;
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for x = 0 to 200  do { line from (rand(), rand())*5 to (rand(),rand())*5; }
 </pre></div>
 </div>
-<p>kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo skráteného zápisu kódu, <a class="reference internal" href="#cm-0160b"><span class="std std-numref">Obr. 63</span></a>.</p>
+<p>kde v zložených zátvorkách je telo cyklu, toto má vlastnosti bloku s relatívnymi súradnicami vztiahnutými k začiatku cyklu. Cykly sa môžu vnárať, počet vnorených cyklov nie je obmedzený. Pri opakovanom prechode telom cyklu sa hodnota kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code> zachováva, čo je zrejmé zo skráteného zápisu kódu, <a class="reference internal" href="#cm-0160b"><span class="std std-numref">Obr. 64</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
 for q=0 to 2*pi by 0.1 do{
     x = r*cos(a*q);
@@ -700,7 +700,7 @@ for q=0 to 2*pi by 0.1 do{
 <a class="reference internal image-reference" href="_images/cm_0160b.png"><img alt="_images/cm_0160b.png" src="_images/cm_0160b.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 63 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/37cce5567f43b1771384ebc5aabf27be/cm_0160b.ckt"><span class="xref download myst">Príklad</span></a> použitia cyklu.</span><a class="headerlink" href="#cm-0160b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -710,7 +710,7 @@ for q=0 to 2*pi by 0.1 do{
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if expression then { if-true } else { if-false }
 </pre></div>
 </div>
-<p>V nasledujúcom príklade je premennou <em>type</em> parametrizované vykreslenie sériového alebo paralelného zapojenia rezistorov, <a class="reference internal" href="#cm-0160w"><span class="std std-numref">Obr. 64</span></a>.</p>
+<p>V nasledujúcom príklade je premennou <em>type</em> parametrizované vykreslenie sériového alebo paralelného zapojenia rezistorov, <a class="reference internal" href="#cm-0160w"><span class="std std-numref">Obr. 65</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>type=1;
 if type==1 then{
     line 1; dot;
@@ -727,7 +727,7 @@ if type==1 then{
 <a class="reference internal image-reference" href="_images/cm_0160w.png"><img alt="_images/cm_0160w.png" src="_images/cm_0160w.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 64 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bfafccfc648c2712876dee85db347a6a/cm_0160w.ckt"><span class="xref download myst">Príklad</span></a> použitia vetvenia pre parametrizáciu vykresleného obvodu.</span><a class="headerlink" href="#cm-0160w" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 65 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/bfafccfc648c2712876dee85db347a6a/cm_0160w.ckt"><span class="xref download myst">Príklad</span></a> použitia vetvenia pre parametrizáciu vykresleného obvodu.</span><a class="headerlink" href="#cm-0160w" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -370,7 +370,7 @@ document.write(`
 <h1><font color='navy'> Tranzistory </font><a class="headerlink" href="#tranzistory" title="Link to this heading">#</a></h1>
 <section id="bipolarny-tranzistor">
 <h2><font color='teal'>  Bipolárny tranzistor </font><a class="headerlink" href="#bipolarny-tranzistor" title="Link to this heading">#</a></h2>
-<p>Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov bázy, kolektora a emitora. Bipolárny tranzistor z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> zobrazuje makro <em>bi_tr()</em>, <a class="reference internal" href="#cm-202a"><span class="std std-numref">Obr. 76</span></a>:</p>
+<p>Bipolárny tranzistor patrí medzi multipóly a okrem štandardných atribútov definaných pre plošné objekty má naviac atribúty pre určenie polohy vývodov bázy, kolektora a emitora. Bipolárny tranzistor z knižnice <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> zobrazuje makro <em>bi_tr()</em>, <a class="reference internal" href="#cm-202a"><span class="std std-numref">Obr. 77</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q1:bi_tr(up_ );     Q2:bi_tr(up_ ,R);    Q3:bi_tr(up_,,,E);    Q4:bi_tr(up_,R,,E); 
 Q5:bi_tr(up_,,P);   Q6:bi_tr(up_,R,P);   Q7:bi_tr(up_,,P,E);   Q8:bi_tr(up_,R,P,E);
 </pre></div>
@@ -379,7 +379,7 @@ Q5:bi_tr(up_,,P);   Q6:bi_tr(up_,R,P);   Q7:bi_tr(up_,,P,E);   Q8:bi_tr(up_,R,P,
 <a class="reference internal image-reference" href="_images/cm_202a.png"><img alt="_images/cm_202a.png" src="_images/cm_202a.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 76 </span><span class="caption-text">Značka bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 77 </span><span class="caption-text">Značka bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bi_tr(linespec,L|R,P,E);
@@ -400,7 +400,14 @@ atribúty:
 .C                     - poloha kolektora
 </pre></div>
 </div>
-<p>Pretože vývody tranzistora nie sú v usporiadané mriežke, musíme obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy, a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade, <a class="reference internal" href="#cm-202b"><span class="std std-numref">Obr. 77</span></a>, je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora <span class="math notranslate nohighlight">\(R_{b1}\)</span> je určená polohou značky zeme pri rezistore <span class="math notranslate nohighlight">\(R_e\)</span>. Pre popis spojovacieho bodu <span class="math notranslate nohighlight">\(V_b\)</span> bolo použité makro <em>dlabel()</em>.</p>
+<figure class="align-default" id="cm-202z">
+<a class="reference internal image-reference" href="_images/cm_202z.png"><img alt="_images/cm_202z.png" src="_images/cm_202z.png" style="width: 420px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 78 </span><span class="caption-text">Atribúty bipolárneho tranzistora <em>bi_tr()</em>.</span><a class="headerlink" href="#cm-202z" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Pretože vývody tranzistora nie sú v usporiadané mriežke, musíme obvody s tranzistormi kresliť tak, že centrálnym prvkom zapojenie je tranzistor a ostatné komponenty ukladáme tak, že ich polohy, a ak je to vhodné aj ich veľkosť určujeme voči polohám jeho vývodov. V nasledujúcom príklade, <a class="reference internal" href="#cm-202b"><span class="std std-numref">Obr. 79</span></a>, je poloha rezistora odvodená od polohy vývodu bázy, dĺžka rezistora <span class="math notranslate nohighlight">\(R_{b1}\)</span> je určená polohou značky zeme pri rezistore <span class="math notranslate nohighlight">\(R_e\)</span>. Pre popis spojovacieho bodu <span class="math notranslate nohighlight">\(V_b\)</span> bolo použité makro <em>dlabel()</em>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">...</span>
 <span class="n">T1</span><span class="p">:</span> <span class="n">bi_tr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span><span class="n">E</span><span class="p">);</span> 
     <span class="n">resistor</span><span class="p">(</span><span class="kn">from</span> <span class="nn">T1.E</span> <span class="n">down_</span> <span class="mf">1.5</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_e</span><span class="p">,);</span>
@@ -417,12 +424,12 @@ atribúty:
 <a class="reference internal image-reference" href="_images/cm_202b.png"><img alt="_images/cm_202b.png" src="_images/cm_202b.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 77 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1ad30fb81a905d76df87baed9cec5527/cm_202b.ckt"><span class="xref download myst">Obvod</span></a> vykreslený s použitím relatívnych súradníc.</span><a class="headerlink" href="#cm-202b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 79 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1ad30fb81a905d76df87baed9cec5527/cm_202b.ckt"><span class="xref download myst">Obvod</span></a> vykreslený s použitím relatívnych súradníc.</span><a class="headerlink" href="#cm-202b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="modifikacie-znaciek">
 <h3><font color='brown'> Modifikácie značiek </font><a class="headerlink" href="#modifikacie-znaciek" title="Link to this heading">#</a></h3>
-<p>Ak vyžadujeme, aby vývody prvkov boli v presných a známych súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> sú definované ekvivalenty bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em>. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia, <a class="reference internal" href="#cm-202c"><span class="std std-numref">Obr. 78</span></a>:</p>
+<p>Ak vyžadujeme, aby vývody prvkov boli v presných a známych súradniciach (v mriežke) alebo máme špecifické požiadavky na tvar značky, najjednoduchším spôsobom je vytvorenie si makra značky vlastného prvku. V knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> sú definované ekvivalenty bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em>. Ako predloha pre zobrazenia bipolárnych tranzistorov boli použité značky z ručne kreslených zapojení pomocou šablón z československých odborných časopisov zo 70/80 rokov minulého storočia, <a class="reference internal" href="#cm-202c"><span class="std std-numref">Obr. 80</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q1:bjt_NPN(1,1,L);    Q2:bjt_NPN(1,1,L,N);   Q3:bjt_PNP(1,1,L);  Q4:bjt_PNP(1,1,L,N);
 Q5:bjt_NPN(1,1,R);    Q6:bjt_NPN(1,1,R,N);   Q7:bjt_PNP(1,1,R);  Q8:bjt_PNP(1,1,R,N);
 </pre></div>
@@ -431,7 +438,7 @@ Q5:bjt_NPN(1,1,R);    Q6:bjt_NPN(1,1,R,N);   Q7:bjt_PNP(1,1,R);  Q8:bjt_PNP(1,1,
 <a class="reference internal image-reference" href="_images/cm_202c.png"><img alt="_images/cm_202c.png" src="_images/cm_202c.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 78 </span><span class="caption-text">Upravené značky bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em></span><a class="headerlink" href="#cm-202c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 80 </span><span class="caption-text">Upravené značky bipolárnych tranzistorov <em>bjt_NPN()</em> a <em>bjt_PNP()</em></span><a class="headerlink" href="#cm-202c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bjt_NPN(length_ce, length_b, L|R|U|D, C|N)
@@ -447,28 +454,36 @@ atribúty:
 
 .s   .w   .n.  .e      - stredy strán obrysu
 .sw  .se  .nw  .ne     - rohy obrysu
+.c                     - stred značky
 .B                     - poloha bázy
 .E                     - poloha emitora
 .C                     - poloha kolektora
 </pre></div>
 </div>
-<p>Nasledujúci príklad, <a class="reference internal" href="#cm-202h"><span class="std std-numref">Obr. 79</span></a>,  ukazuje použitie modifikovaných značiek bipolárnych tranzistorov:</p>
+<figure class="align-default" id="cm-202q">
+<a class="reference internal image-reference" href="_images/cm_202q.png"><img alt="_images/cm_202q.png" src="_images/cm_202q.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 81 </span><span class="caption-text">Atribúty bipolárneho tranzistora <em>bjt_NPN()</em>.</span><a class="headerlink" href="#cm-202q" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Nasledujúci príklad, <a class="reference internal" href="#cm-202h"><span class="std std-numref">Obr. 82</span></a>,  ukazuje použitie modifikovaných značiek bipolárnych tranzistorov:</p>
 <figure class="align-default" id="cm-202h">
 <a class="reference internal image-reference" href="_images/cm_202h.png"><img alt="_images/cm_202h.png" src="_images/cm_202h.png" style="width: 350px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 79 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a>  s bipolárnymi tranzistormi v súradnicovej mriežke.</span><a class="headerlink" href="#cm-202h" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 82 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a>  s bipolárnymi tranzistormi v súradnicovej mriežke.</span><a class="headerlink" href="#cm-202h" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky pre tvorbu vlastného štýlu článkov, knižných publikácií alebo ak potrebujeme prekresliť nejaké staršie zapojenie a chceme dodržať pôvodný grafický štýl, <a class="reference internal" href="#cm-090"><span class="std std-numref">Obr. 80</span></a>:</p>
+<p>Pomocou vlastných makier si môžeme vytvoriť nové alebo modifikované prvky pre tvorbu vlastného štýlu článkov, knižných publikácií alebo ak potrebujeme prekresliť nejaké staršie zapojenie a chceme dodržať pôvodný grafický štýl, <a class="reference internal" href="#cm-090"><span class="std std-numref">Obr. 83</span></a>:</p>
 <figure class="align-default" id="cm-090">
 <a class="reference internal image-reference" href="_images/ar_1989_02.png"><img alt="_images/ar_1989_02.png" src="_images/ar_1989_02.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 80 </span><span class="caption-text">Zapojenie z časopisu Amatérske rádio, ručne kreslené zapojenie pomocou šablón.</span><a class="headerlink" href="#cm-090" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 83 </span><span class="caption-text">Zapojenie z časopisu Amatérske rádio, ručne kreslené zapojenie pomocou šablón.</span><a class="headerlink" href="#cm-090" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pri prekreslovaní zapojenia,<a class="reference internal" href="#cm-202d"><span class="std std-numref">Obr. 81</span></a>, v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu <em>sans-serif</em>. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro <em>itsf()</em>.</p>
+<p>Pri prekreslovaní zapojenia,<a class="reference internal" href="#cm-202d"><span class="std std-numref">Obr. 84</span></a>, v tomto príklade chceme dodržať podobný typ písma použitého na obrázku, ktorému sa najviac blíži šíkmé bezpätkové písmo typu <em>sans-serif</em>. Pre vykreslenie takto formátovaných textov si vytvoríme pomocné makro <em>itsf()</em>.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 5 : </span><span class="caption-text">Makro pre formátovanie textu</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll">define(`itsf&#39;, `&quot;\textit{\textsf{$1}}&quot;&#39;)   
@@ -488,10 +503,10 @@ R4: resistor(from T1.E down_ 1.2,,E);
 <a class="reference internal image-reference" href="_images/cm_202d.png"><img alt="_images/cm_202d.png" src="_images/cm_202d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 81 </span><span class="caption-text">Prekreslený <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a> z predchádzajúceho obrázku.</span><a class="headerlink" href="#cm-202d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 84 </span><span class="caption-text">Prekreslený <a class="reference download internal" download="" href="_downloads/2eba87c04ba3d86cb42d0543c968d5f7/cm_202d.ckt"><span class="xref download myst">obvod</span></a> z predchádzajúceho obrázku.</span><a class="headerlink" href="#cm-202d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené zapojenia častí zapojení sa používajú značky tranzistorov bez púzdier a so skrátenými vývodmi. Pre presné umiestňovanie takýchto prvkov je potom potrebné použiť konštrukciu <em>with … at</em> s deklarovaním vývodu, ku ktorému sa umiestnenie značky vzťahuje, <a class="reference internal" href="#cm-202e"><span class="std std-numref">Obr. 82</span></a>:</p>
+<p>Pre kreslenie vnútorného zapojenia integrovaných obvodov alebo zjednodušené zapojenia častí zapojení sa používajú značky tranzistorov bez púzdier a so skrátenými vývodmi. Pre presné umiestňovanie takýchto prvkov je potom potrebné použiť konštrukciu <em>with … at</em> s deklarovaním vývodu, ku ktorému sa umiestnenie značky vzťahuje, <a class="reference internal" href="#cm-202e"><span class="std std-numref">Obr. 85</span></a>:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 6 : </span><span class="caption-text">Použitie konštrukcie <em>with … at</em></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">...</span>
@@ -516,22 +531,22 @@ R4: resistor(from T1.E down_ 1.2,,E);
 <a class="reference internal image-reference" href="_images/cm_202e.png"><img alt="_images/cm_202e.png" src="_images/cm_202e.png" style="width: 380px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 82 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2582541046804bf7eb2f94355d4fd9d1/cm_202e.ckt"><span class="xref download myst">Použitie</span></a> zjednodušených značiek tranzistorov.</span><a class="headerlink" href="#cm-202e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 85 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/2582541046804bf7eb2f94355d4fd9d1/cm_202e.ckt"><span class="xref download myst">Použitie</span></a> zjednodušených značiek tranzistorov.</span><a class="headerlink" href="#cm-202e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Vnútorné zapojenia integrovaných obvodov sú často súčasťou katalógových listov a zobrazujú ekvivalentné zapojenie obvodu s diskrétnymi komponentami. Zapojenia často bývajú zjednodušené bez zobrazenia pomocných a parazitných prvkov pre lepšie pochopenie činnosti obvodu alebo jeho simuláciu, <a class="reference internal" href="#cm-202f"><span class="std std-numref">Obr. 83</span></a>. Skutočná vnútorná štruktúra obvodu býva zvyčajne značne komplikovanejšia.</p>
+<p>Vnútorné zapojenia integrovaných obvodov sú často súčasťou katalógových listov a zobrazujú ekvivalentné zapojenie obvodu s diskrétnymi komponentami. Zapojenia často bývajú zjednodušené bez zobrazenia pomocných a parazitných prvkov pre lepšie pochopenie činnosti obvodu alebo jeho simuláciu, <a class="reference internal" href="#cm-202f"><span class="std std-numref">Obr. 86</span></a>. Skutočná vnútorná štruktúra obvodu býva zvyčajne značne komplikovanejšia.</p>
 <figure class="align-default" id="cm-202f">
 <a class="reference internal image-reference" href="_images/cm_202f.png"><img alt="_images/cm_202f.png" src="_images/cm_202f.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 83 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/9f18330c95b86466056fd0e4c00d1a1c/cm_202f.ckt"><span class="xref download myst">Príklad</span></a> zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.</span><a class="headerlink" href="#cm-202f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 86 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/9f18330c95b86466056fd0e4c00d1a1c/cm_202f.ckt"><span class="xref download myst">Príklad</span></a> zobrazenia jednodušenej vnútornej štruktúru operačného zosilovača 741.</span><a class="headerlink" href="#cm-202f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="fet-tranzistor">
 <h2><font color='teal'>  FET tranzistor </font><a class="headerlink" href="#fet-tranzistor" title="Link to this heading">#</a></h2>
-<p>Pre zobrazenie štandardných diskrétnych MOSFET tranzistorov sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> definované makrá pre základné typy <em>e_fet()</em> a <em>d_fet()</em>, <a class="reference internal" href="#cm-202g"><span class="std std-numref">Obr. 84</span></a>:</p>
+<p>Pre zobrazenie štandardných diskrétnych MOSFET tranzistorov sú v <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> definované makrá pre základné typy <em>e_fet()</em> a <em>d_fet()</em>, <a class="reference internal" href="#cm-202g"><span class="std std-numref">Obr. 87</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> Q1:e_fet(up_ ,,P,);  Q2:e_fet(up_ ,R,,);   Q3:e_fet(up_,,P);     Q4:e_fet(up_,R,P);
  Q5:d_fet(up_);       Q6:d_fet(up_,R);      Q7:d_fet(up_,,P);     Q8:d_fet(up_,R,P);
 
@@ -543,7 +558,7 @@ Q13:d_fet(up_,,,S);  Q14:d_fet(up_,R,,S);  Q15:d_fet(up_,,P,S);  Q16:d_fet(up_,R
 <a class="reference internal image-reference" href="_images/cm_202g.png"><img alt="_images/cm_202g.png" src="_images/cm_202g.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 84 </span><span class="caption-text">Značky MOSFET tranzistorov <em>e_fet()</em> a <em>d_fet()</em></span><a class="headerlink" href="#cm-202g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 87 </span><span class="caption-text">Značky MOSFET tranzistorov <em>e_fet()</em> a <em>d_fet()</em></span><a class="headerlink" href="#cm-202g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>e_fet(linespec,R,P,E|S)  - enhancement MOSFET
@@ -565,7 +580,14 @@ atribúty:
 .D                     - poloha drain
 </pre></div>
 </div>
-<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu. Príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, <a class="reference internal" href="#cm-202u"><span class="std std-numref">Obr. 85</span></a>, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
+<figure class="align-default" id="cm-202w">
+<a class="reference internal image-reference" href="_images/cm_202w.png"><img alt="_images/cm_202w.png" src="_images/cm_202w.png" style="width: 420px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 88 </span><span class="caption-text">Atribúty MOSFET tranzistora <em>d_fet()</em>.</span><a class="headerlink" href="#cm-202w" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Pri kreslení vnútornej štruktúry CMOS integrovaných obvodov sa v zapojeniach vyskytujú prepojenia, ktoré nemajú analógiu v diskrétnych komponentoch a vyplývajú z topológie obvodu. Príkladom môže byť formálne pripojenie substrátu tranzistora Q3 v nasledujúcom zapojení, <a class="reference internal" href="#cm-202u"><span class="std std-numref">Obr. 89</span></a>, pri ktorom bolo použité makro <em>mosfet()</em>. Makro umožnuje kreslenie špeciálnych modifikácií FET tranzistorov, detailný popis makra uvedený v <a class="reference download internal" download="" href="_downloads/2e20e39280e0c6ef0e061a9fdf7e370d/Circuit_macros_10_6.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Q3: mosfet(down_,R,uMEDSuB) with .S at last line.end; { &quot;Q3&quot; at Q3.nw ljust;}
 </pre></div>
 </div>
@@ -573,16 +595,16 @@ atribúty:
 <a class="reference internal image-reference" href="_images/cm_202u.png"><img alt="_images/cm_202u.png" src="_images/cm_202u.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 85 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/315f2c19ebf0c292daa858e0eb4e67cb/cm_202u.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#cm-202u" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 89 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/315f2c19ebf0c292daa858e0eb4e67cb/cm_202u.ckt"><span class="xref download myst">Zapojenie</span></a> hradla AND v technológii CMOS.</span><a class="headerlink" href="#cm-202u" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Niektorí výrobcovia mikrokontrolérov používajú pre zjednodušený popis funkcie častí logického obvodu kombinovanú značku FET tranzistora, ktorá namiesto jeho štruktúry zobrazuje jeho vzťah k ostatným častiam zapojenia. Tranzitor s vodivosťou typu P je zobrazený s krúžkom na hradle, čo znamená, že bude otvorený pri privedení signálu s úrovňou <strong>L</strong> na jeho hradlo,
-<a class="reference internal" href="#cm-202v"><span class="std std-numref">Obr. 86</span></a>:</p>
+<a class="reference internal" href="#cm-202v"><span class="std std-numref">Obr. 90</span></a>:</p>
 <figure class="align-default" id="cm-202v">
 <a class="reference internal image-reference" href="_images/cm_202v.png"><img alt="_images/cm_202v.png" src="_images/cm_202v.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 86 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/57745c716813179605b4816e8fa4df81/cm_202v.ckt"><span class="xref download myst">Konfigurácie</span></a> koncového stupňa pinu portu mikrokontroléra.</span><a class="headerlink" href="#cm-202v" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 90 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/57745c716813179605b4816e8fa4df81/cm_202v.ckt"><span class="xref download myst">Konfigurácie</span></a> koncového stupňa pinu portu mikrokontroléra.</span><a class="headerlink" href="#cm-202v" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -369,7 +369,7 @@ document.write(`
 <p>Súčasťou <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> sú makrá a premenné, pomocou ktorých môžeme upravovať zobrazenie prvkov v zapojení. Hrubšími čiarami môžeme zvýrazniť kritickú časť obvodu, farebne oddeliť a zvýrazniť popis častí obvodov, popisu prvkov alebo upozorniť na konštrukčné detaily.</p>
 <section id="farba">
 <h2><font color='teal'> Farba  </font><a class="headerlink" href="#farba" title="Link to this heading">#</a></h2>
-<p>Pre zmenu farby kreslenie je definované makro <em>setrgb(r, g, b)</em>, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby <em>color_<meno farby></em> zo súboru <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a>. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra <em>color_reset</em>, <a class="reference internal" href="#cm-0104a"><span class="std std-numref">Obr. 52</span></a>.</p>
+<p>Pre zmenu farby kreslenie je definované makro <em>setrgb(r, g, b)</em>, ktorého argumentami sú RGB zložky farby. Pre jednoduchšiu zmenu farby kreslenia je možné použiť makrá pre pomenované farby <em>color_<meno farby></em> zo súboru <a class="reference download internal" download="" href="_downloads/2731a716b0626bae75ded8fd71ad2038/lib_color.ckt"><span class="xref download myst">lib_color.ckt</span></a>. Zmena farby sa vzťahuje na všetky nasledujúce kreslené objekty vrátane farby textu, návrat k pôvodnej farbe (čiernej) je pomocou makra <em>color_reset</em>, <a class="reference internal" href="#cm-0104a"><span class="std std-numref">Obr. 53</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt)
 
 resistor(2,,E); 
@@ -391,13 +391,13 @@ llabel(,R_4,); rlabel(,10 \Omega,);
 <a class="reference internal image-reference" href="_images/cm_0104a.png"><img alt="_images/cm_0104a.png" src="_images/cm_0104a.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 52 </span><span class="caption-text">Použitie pomenovaných farieb</span><a class="headerlink" href="#cm-0104a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Použitie pomenovaných farieb</span><a class="headerlink" href="#cm-0104a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="zvyraznenie">
 <h2><font color='teal'> Zvýraznenie </font><a class="headerlink" href="#zvyraznenie" title="Link to this heading">#</a></h2>
-<p>Zvýraznenie prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  <em>linethick_(n)</em>. Volanie makra bez argumentu <em>linethick_()</em> nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, <a class="reference internal" href="#cm-0104b"><span class="std std-numref">Obr. 53</span></a>.</p>
+<p>Zvýraznenie prvku v zapojení dosiahneme zmenou šírky čiary, táto je určená makrom  <em>linethick_(n)</em>. Volanie makra bez argumentu <em>linethick_()</em> nastaví pôvodnú hrúbku. Zmena hrúbky čiary neovplyvňuje zobrazenie textov, <a class="reference internal" href="#cm-0104b"><span class="std std-numref">Obr. 54</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
    resistor(2,,E); llabel(,R_1,); 
 R2:[ linethick_(1.2);         # lokálna zmena hrubky čiary
@@ -412,13 +412,13 @@ R2:[ linethick_(1.2);         # lokálna zmena hrubky čiary
 <a class="reference internal image-reference" href="_images/cm_0104b.png"><img alt="_images/cm_0104b.png" src="_images/cm_0104b.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Zvýraznenie komponentu zmenou hrúbky čiary.</span><a class="headerlink" href="#cm-0104b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 54 </span><span class="caption-text">Zvýraznenie komponentu zmenou hrúbky čiary.</span><a class="headerlink" href="#cm-0104b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="zmena-velkosti">
 <h2><font color='teal'> Zmena veľkosti  </font><a class="headerlink" href="#zmena-velkosti" title="Link to this heading">#</a></h2>
-<p>Veľkosť prvkov zapojenia je úmerná hodnote premennej <em>linewid</em>, ktorá je definovaná v nastavení parametrov prostredia a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu, <a class="reference internal" href="#cm-0104c"><span class="std std-numref">Obr. 54</span></a>.</p>
+<p>Veľkosť prvkov zapojenia je úmerná hodnote premennej <em>linewid</em>, ktorá je definovaná v nastavení parametrov prostredia a je možné ju v programe meniť. Zmena veľkosti prvkov neovplyvňuje veľkosť textu, <a class="reference internal" href="#cm-0104c"><span class="std std-numref">Obr. 55</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   right_; 
    resistor(2,,E); llabel(,R_1,);    # štandardná veľkosť
 R2:[ linewid = linewid*1.5;      # lokálna zmena velkosti v bloku  
@@ -432,13 +432,13 @@ R2:[ linewid = linewid*1.5;      # lokálna zmena velkosti v bloku
 <a class="reference internal image-reference" href="_images/cm_0104c.png"><img alt="_images/cm_0104c.png" src="_images/cm_0104c.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 54 </span><span class="caption-text">Zmena veľkosti komponentov pomocou premennej <em>linewid</em>.</span><a class="headerlink" href="#cm-0104c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 55 </span><span class="caption-text">Zmena veľkosti komponentov pomocou premennej <em>linewid</em>.</span><a class="headerlink" href="#cm-0104c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="tienenie">
 <h2><font color='teal'> Tienenie </font><a class="headerlink" href="#tienenie" title="Link to this heading">#</a></h2>
-<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <a class="reference internal" href="0100_cm_dvojpoly.html"><span class="std std-doc"><em>elen_</em></span></a>, ktorá  definuje veľkosť dvojpólu, <a class="reference internal" href="#cm-0104d"><span class="std std-numref">Obr. 55</span></a>.</p>
+<p>Pre doplnenie tienenia k prvku zapojenie použijeme obdĺžnik, ktorý umiestnime do stredu prvku a jeho rozmery odvodíme od premennej <a class="reference internal" href="0100_cm_dvojpoly.html"><span class="std std-doc"><em>elen_</em></span></a>, ktorá  definuje veľkosť dvojpólu, <a class="reference internal" href="#cm-0104d"><span class="std std-numref">Obr. 56</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>right_; 
 resistor(2,,E); llabel(,R_1,); 
 
@@ -458,13 +458,13 @@ SH:[                                               # blok
 <a class="reference internal image-reference" href="_images/cm_0104d.png"><img alt="_images/cm_0104d.png" src="_images/cm_0104d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 55 </span><span class="caption-text">Tienenie prvku zapojenia.</span><a class="headerlink" href="#cm-0104d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Tienenie prvku zapojenia.</span><a class="headerlink" href="#cm-0104d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="pozadie">
 <h2><font color='teal'> Pozadie </font><a class="headerlink" href="#pozadie" title="Link to this heading">#</a></h2>
-<p>Ak potrebujeme zvýrazniť plochu na ktorej je nakreslená časť zariadenia (napríklad na vizuálne oddelenie samostatných funkčných celkov ako je predzosilovač, filter, ochranné obvody a pod.), musíme podklad nakresliť vopred. V prípade jedného prvku odvodíme rozmery plochy priamo z predefinovaných parametrov prostredia, <a class="reference internal" href="#cm-0104e"><span class="std std-numref">Obr. 56</span></a>.</p>
+<p>Ak potrebujeme zvýrazniť plochu na ktorej je nakreslená časť zariadenia (napríklad na vizuálne oddelenie samostatných funkčných celkov ako je predzosilovač, filter, ochranné obvody a pod.), musíme podklad nakresliť vopred. V prípade jedného prvku odvodíme rozmery plochy priamo z predefinovaných parametrov prostredia, <a class="reference internal" href="#cm-0104e"><span class="std std-numref">Obr. 57</span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>include(lib_color.ckt);
 right_; 
 resistor(2,,E); llabel(,R_1,); 
@@ -484,10 +484,10 @@ resistor(2,,E); llabel(,R_3,);
 <a class="reference internal image-reference" href="_images/cm_0104e.png"><img alt="_images/cm_0104e.png" src="_images/cm_0104e.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Zvýraznenie pozadia jedného prvku zapojenia.</span><a class="headerlink" href="#cm-0104e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 57 </span><span class="caption-text">Zvýraznenie pozadia jedného prvku zapojenia.</span><a class="headerlink" href="#cm-0104e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy vopred a na jej obvode si zadefinovať body pripojenia, <a class="reference internal" href="#cm-0104f"><span class="std std-numref">Obr. 57</span></a>. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.</p>
+<p>V prípade väčších obvodov je vhodné si určiť veľkosť zvýraznenej plochy vopred a na jej obvode si zadefinovať body pripojenia, <a class="reference internal" href="#cm-0104f"><span class="std std-numref">Obr. 58</span></a>. Zapojenie potom nakreslíme na zvýraznenú plochu ako zložený objekt s vlastnosťami plošného prvku.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d  = elen_*5/6;    # veľkosť prvkov
 dx = 2*d;          # šírka plochu
 dy = 2*d*4/5;      # výška plochy
@@ -523,7 +523,7 @@ line to FL.OU2;
 <a class="reference internal image-reference" href="_images/cm_0104f.png"><img alt="_images/cm_0104f.png" src="_images/cm_0104f.png" style="width: 450px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 57 </span><span class="caption-text">Zvýraznená časť zapojenia obvodu.</span><a class="headerlink" href="#cm-0104f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 58 </span><span class="caption-text">Zvýraznená časť zapojenia obvodu.</span><a class="headerlink" href="#cm-0104f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

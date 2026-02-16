@@ -1,0 +1,43 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+command"\sf"
+include(lib_color.ckt)
+
+up_;
+move to (0,2);
+T: bi_tr(up_,,,E);
+
+color_red;
+line <- from T.B left_ 0.75;    ".B" rjust;
+line <- from T.C up_ 0.5 ;  ".C" above ;
+line <- from T.E down_ 0.5;   ".E" below ;
+
+up_;
+color_black;
+move to (4,2);
+
+T: bi_tr(up_,,,E);
+color_blue;
+B: box wid (T.w-T.e).x ht (T.n-T.s).y at T.c dotted;
+line <- from T.sw down_ 0.5 left_ 0.5;   ".sw" below rjust;
+line <- from T.nw up_ 0.5 left_ 0.5;     ".nw" above rjust;
+line <- from T.ne up_ 0.5 right_ 0.5;    ".ne" above ljust;
+line <- from T.se down_ 0.5 right_ 0.5;  ".se" below ljust;
+line <- from T.e  right_ 0.75;  ".e" ljust;
+line <- from T.w  left_ 0.75;  ".w" rjust;
+line <- from T.n  up_ 0.75;  ".n" above;
+line <- from T.s  down_ 0.75;  ".s" below;
+line <- from T.c  down_ 0.75 right_ 1.25;  ".c" ljust ;
+
+.PE

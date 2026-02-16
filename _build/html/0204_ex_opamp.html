@@ -364,7 +364,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="operacne-zosilovace">
 <h1><font color='navy'> Operačné zosilovače  </font><a class="headerlink" href="#operacne-zosilovace" title="Link to this heading">#</a></h1>
-<p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE ..,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra  <strong>P</strong>, <a class="reference internal" href="#cm-0204d"><span class="std std-numref">Obr. 88</span></a>:</p>
+<p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE ..,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra  <strong>P</strong>, <a class="reference internal" href="#cm-0204d"><span class="std std-numref">Obr. 92</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>opamp(linespec, label+, label-, size, TPR);
 
 parametre:
@@ -393,7 +393,7 @@ atribúty:
 <a class="reference internal image-reference" href="_images/cm_0204x.png"><img alt="_images/cm_0204x.png" src="_images/cm_0204x.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 87 </span><span class="caption-text">Atribúty značky operačného zosilovača.</span><a class="headerlink" href="#cm-0204x" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 91 </span><span class="caption-text">Atribúty značky operačného zosilovača.</span><a class="headerlink" href="#cm-0204x" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Príklady použitia značky operačného zosilovača:</p>
@@ -408,10 +408,10 @@ A5: opamp(up_ 1,,,0.85,);
 <a class="reference internal image-reference" href="_images/cm_0204d.png"><img alt="_images/cm_0204d.png" src="_images/cm_0204d.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 88 </span><span class="caption-text">Vybrané značky operačných zosilovačov.</span><a class="headerlink" href="#cm-0204d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 92 </span><span class="caption-text">Vybrané značky operačných zosilovačov.</span><a class="headerlink" href="#cm-0204d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Nasledujúci príklad, <a class="reference internal" href="#cm-0204a"><span class="std std-numref">Obr. 89</span></a>,  ukazuje ukladanie prvkov obvodu voči polohe operačnému zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia. Pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou systému LaTeX. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice.</p>
+<p>Nasledujúci príklad, <a class="reference internal" href="#cm-0204a"><span class="std std-numref">Obr. 93</span></a>,  ukazuje ukladanie prvkov obvodu voči polohe operačnému zosilovaču, ktorý je na plochu uložený absolútne ako prvý komponent zapojenia. Pripojené komponenty ukladáme relatívne voči jeho vývodom. V zapojení sú použité popisy a matematické vzťahy zadané syntaxou systému LaTeX. Pre zobrazenie vstupných a výstupných uzlov obvodov sú použité kružnice.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Invertujuci zosilovač</span>
 
 <span class="n">OP</span><span class="p">:</span> <span class="n">opamp</span><span class="p">()</span>
@@ -441,10 +441,10 @@ A5: opamp(up_ 1,,,0.85,);
 <a class="reference internal image-reference" href="_images/cm_0204a.png"><img alt="_images/cm_0204a.png" src="_images/cm_0204a.png" style="width: 670px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 89 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/08b8611095359c465485621d9e416124/cm_0204a.ckt"><span class="xref download myst">Zapojenie</span></a> invertujúceho a neinvertujúceho zosilovača.</span><a class="headerlink" href="#cm-0204a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 93 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/08b8611095359c465485621d9e416124/cm_0204a.ckt"><span class="xref download myst">Zapojenie</span></a> invertujúceho a neinvertujúceho zosilovača.</span><a class="headerlink" href="#cm-0204a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Použitie parametra <strong>P</strong> pre zobrazenie napájacích vývodov operačného zosilovača a použitie makra <em>reversed()</em> pre zobrazenie kondenzátora <span class="math notranslate nohighlight">\(C_2\)</span> s obrátenou polaritou ukazuje nasledujúci príklad, <a class="reference internal" href="#cm-0204b"><span class="std std-numref">Obr. 90</span></a>:</p>
+<p>Použitie parametra <strong>P</strong> pre zobrazenie napájacích vývodov operačného zosilovača a použitie makra <em>reversed()</em> pre zobrazenie kondenzátora <span class="math notranslate nohighlight">\(C_2\)</span> s obrátenou polaritou ukazuje nasledujúci príklad, <a class="reference internal" href="#cm-0204b"><span class="std std-numref">Obr. 94</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OA: opamp(,,,,P);                # zobrazenie napájacich prívodov
     line from OA.V1 up_ .75;
     dot;
@@ -472,10 +472,10 @@ A5: opamp(up_ 1,,,0.85,);
 <a class="reference internal image-reference" href="_images/cm_0204b.png"><img alt="_images/cm_0204b.png" src="_images/cm_0204b.png" style="width: 170px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 90 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/208534a62bdedadc7eb5ff5d46532f7b/cm_0204b.ckt"><span class="xref download myst">Obvod</span></a> napájania operačného zosilovača.</span><a class="headerlink" href="#cm-0204b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 94 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/208534a62bdedadc7eb5ff5d46532f7b/cm_0204b.ckt"><span class="xref download myst">Obvod</span></a> napájania operačného zosilovača.</span><a class="headerlink" href="#cm-0204b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra, <a class="reference internal" href="#cm-0204c"><span class="std std-numref">Obr. 91</span></a>, sú použité vnorené bloky pri kreslení vetiev obvodu a použitá konštrukcia <em>with</em> pri ukladaní zosilovača <em>OA2</em> na aktuálnu polohu vývodu <em>In2</em>:</p>
+<p>V komplikovanejšom zapojení Wien-Robisonovho aktívneho filtra, <a class="reference internal" href="#cm-0204c"><span class="std std-numref">Obr. 95</span></a>, sú použité vnorené bloky pri kreslení vetiev obvodu a použitá konštrukcia <em>with</em> pri ukladaní zosilovača <em>OA2</em> na aktuálnu polohu vývodu <em>In2</em>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OA1: opamp(,,,,); &quot;$A_1$&quot; at OA1.SE below ljust;
     line from OA1.In1 left_ 0.5;
     
@@ -511,12 +511,12 @@ R1: resistor(right_ 2.15,,E); rlabel(,R_1,); dot;
 <a class="reference internal image-reference" href="_images/cm_0204c.png"><img alt="_images/cm_0204c.png" src="_images/cm_0204c.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 91 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/0303d462cc2f6a0bfd5517981b7ab1ea/cm_0204c.ckt"><span class="xref download myst">Zapojenie</span></a> aktívneho filtra.</span><a class="headerlink" href="#cm-0204c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 95 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/0303d462cc2f6a0bfd5517981b7ab1ea/cm_0204c.ckt"><span class="xref download myst">Zapojenie</span></a> aktívneho filtra.</span><a class="headerlink" href="#cm-0204c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="upravy">
 <h2><font color='teal'> Úpravy  </font><a class="headerlink" href="#upravy" title="Link to this heading">#</a></h2>
-<p>Niektoré typy operačných zosilovačov ako aj odvodených typov, ako sú napríklad komparátory, majú ďaľšie vývody pre nastavenie ich parametrov. Pre doplnenie týchto vývodov môžeme modifikovať značku z knižnice, pričom polohu vývodov určíme z atribútov značky pomocou konštrukcie <em>between</em>, <a class="reference internal" href="#cm-0204f"><span class="std std-numref">Obr. 92</span></a>:</p>
+<p>Niektoré typy operačných zosilovačov ako aj odvodených typov, ako sú napríklad komparátory, majú ďaľšie vývody pre nastavenie ich parametrov. Pre doplnenie týchto vývodov môžeme modifikovať značku z knižnice, pričom polohu vývodov určíme z atribútov značky pomocou konštrukcie <em>between</em>, <a class="reference internal" href="#cm-0204f"><span class="std std-numref">Obr. 96</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define(`LF355&#39;,`[
     OP: opamp(,,,,);
 
@@ -545,18 +545,18 @@ R1: resistor(right_ 2.15,,E); rlabel(,R_1,); dot;
 </pre></div>
 </div>
 <figure class="align-default" id="cm-0204f">
-<a class="reference internal image-reference" href="_images/cm_0204f.png"><img alt="_images/cm_0204f.png" src="_images/cm_0204f.png" style="width: 160px;" />
+<a class="reference internal image-reference" href="_images/cm_0204f.png"><img alt="_images/cm_0204f.png" src="_images/cm_0204f.png" style="width: 520px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 92 </span><span class="caption-text">Doplnená <a class="reference download internal" download="" href="_downloads/7a110fa2949a83e61171cfe866f4efe3/cm_0204f.ckt"><span class="xref download myst">značka</span></a> operačného zosilovača s doplnenýmí vývodmi pre kompenzáciu offsetu, <a class="reference external" href="https://www.ti.com/lit/ds/symlink/lf356.pdf">zdroj</a>.</span><a class="headerlink" href="#cm-0204f" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 96 </span><span class="caption-text">Doplnená <a class="reference download internal" download="" href="_downloads/7a110fa2949a83e61171cfe866f4efe3/cm_0204f.ckt"><span class="xref download myst">značka</span></a> operačného zosilovača s doplnenýmí vývodmi pre kompenzáciu offsetu, <a class="reference external" href="https://www.ti.com/lit/ds/symlink/lf356.pdf">zdroj</a>.</span><a class="headerlink" href="#cm-0204f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Reálne zapojenia elektronických obvodov na rozdiel od ideálnych obsahujú aj technologické detaily komponentov, ako sú čísla vývodov alebo zlúčenie niekoľkých komponentov v jednom púzdre. Na zapojení <span class="math notranslate nohighlight">\(\Delta-\Sigma\)</span> modulátora sú operačné zosilovače <em>IC1a</em> a <em>IC1b</em> integrované v jednom púzdre so spoločným napájaním, <a class="reference internal" href="#cm-0204e"><span class="std std-numref">Obr. 93</span></a>.</p>
+<p>Reálne zapojenia elektronických obvodov na rozdiel od ideálnych obsahujú aj technologické detaily komponentov, ako sú čísla vývodov alebo zlúčenie niekoľkých komponentov v jednom púzdre. Na zapojení <span class="math notranslate nohighlight">\(\Delta-\Sigma\)</span> modulátora sú operačné zosilovače <em>IC1a</em> a <em>IC1b</em> integrované v jednom púzdre so spoločným napájaním, <a class="reference internal" href="#cm-0204e"><span class="std std-numref">Obr. 97</span></a>.</p>
 <figure class="align-default" id="cm-0204e">
 <a class="reference internal image-reference" href="_images/cm_0204e.png"><img alt="_images/cm_0204e.png" src="_images/cm_0204e.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 93 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c9871507deb935525b87254aa9613156/cm_0204e.ckt"><span class="xref download myst">Zapojenie</span></a> <span class="math notranslate nohighlight">\(\Delta-\Sigma\)</span> modulátora použitého v detektore kondenzovanej vlhkosti v projekte kapacitného extenzometra <a class="footnote-reference brackets" href="#projekt" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#cm-0204e" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 97 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c9871507deb935525b87254aa9613156/cm_0204e.ckt"><span class="xref download myst">Zapojenie</span></a> <span class="math notranslate nohighlight">\(\Delta-\Sigma\)</span> modulátora použitého v detektore kondenzovanej vlhkosti v projekte kapacitného extenzometra <a class="footnote-reference brackets" href="#projekt" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#cm-0204e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="footnotes docutils" />

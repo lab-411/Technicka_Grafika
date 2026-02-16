@@ -63,7 +63,7 @@ _ = cm_compile('cm_0102a', data,  dpi=600)
 ```
 
 
-Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar:
+Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar, {numref}`cm_0102d`:
 
     transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
     
@@ -72,7 +72,7 @@ Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar:
       linespec             - orientácia a dĺžka prícodov
       np                   - počet závitov primárneho vinutia
       ns                   - počet závitov sekundárneho vinutia
-      L | R                - poloha primárho vinutia vlavo (L) alebo vpravo (R)
+      L | R                - poloha primárneho vinutia vlavo (L) alebo vpravo (R)
       W | L                - tvar zobrazenia vinutia široké (W) alebo jednoduché (L)
       A | P                - zobrazenie bez jadra (A) alebo s jadrom (P)
       D1 | D2 | D12 | D21  - označenie začiatku vinutia 
@@ -84,6 +84,56 @@ Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar:
     .P1  .P2               - poloha koncov primárneho vinutia
     .S1  .S2               - poloha koncov sekundárneho vinutia
     .TP  .TS               - poloha stredov vinutia
+    
+    
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+
+from src.utils import *
+
+data = r'''
+command"\sf"
+include(lib_color.ckt)
+
+up_;
+move to (0,2);
+T: transformer(down_ 2,L,7,W,4);
+
+color_red;
+line <- from T.P1 up_ 0.5 left_ 0.5;    ".P1" above rjust;
+line <- from T.P2 down_ 0.5 left_ 0.5;  ".P2" below rjust;
+line <- from T.S1 up_ 0.5 right_ 0.5;   ".S1" above ljust;
+line <- from T.S2 down_ 0.5 right_ 0.5; ".S2" below ljust;
+line <- from T.TP left_ 0.75; ".TP"  rjust;
+line <- from T.TS right_ 0.75; ".TS"  ljust;
+
+up_;
+color_black;
+move to (4,2);
+
+T: transformer(down_ 2,L,7,W,4);
+color_blue;
+B: box wid (T.w-T.e).x ht (T.n-T.s).y at T.c dotted;
+line <- from T.sw down_ 0.5 left_ 0.5;   ".sw" below rjust;
+line <- from T.nw up_ 0.5 left_ 0.5;     ".nw" above rjust;
+line <- from T.ne up_ 0.5 right_ 0.5;    ".ne" above ljust;
+line <- from T.se down_ 0.5 right_ 0.5;  ".se" below ljust;
+line <- from T.e  right_ 0.75;  ".e" ljust;
+line <- from T.w  left_ 0.75;  ".w" rjust;
+line <- from T.n  up_ 0.75;  ".n" above;
+line <- from T.s  down_ 0.75;  ".s" below;
+line <- from T.c  down_ 0.75 right_ 1.25;  ".c" ljust;
+'''
+
+_ = cm_compile('cm_0102d', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0102d.png
+:width: 400px
+:name: cm_0102d
+
+Atribúty multipólu *transformer()*.
+```
  
  
 ## <font color='teal'> Umiestňovanie multipólov </font>
