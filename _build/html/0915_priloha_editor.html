@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -366,7 +366,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="externy-editor">
 <h1><font color='navy'> Externý editor </font><a class="headerlink" href="#externy-editor" title="Link to this heading">#</a></h1>
-<p>Jednoduché integrované jednoduché prostredie <code class="docutils literal notranslate"><span class="pre">PyCirkuit</span></code> vyhovuje pri tvorbe a editácii menších obrázkov. Ak potrebujeme súčasne pracovať s niekoľkými zdrojovými súbormi a vytvárať rozsiahlejšie zaojenia, je vhodné použiť editor s bohatšími možnosťami pre editovanie textov a previazať ho s vhodným prehliadačom obrázkov. Vhodným editorom je <a class="reference external" href="https://www.geany.org/">Geany</a>, ktorý je možné rozšíriť o farebné zvýrazňovanie syntaxe. Pre prehliadanie obrázkov existuje množstvo programov, na platforme Linuxu je možné použiť jednoduchý prehliadač obrázkov <a class="reference external" href="https://grfreire.github.io/sxiv/sxiv.1.html">sxiv</a>, ktorý automaticky obnovuje zobrazenie obrázku po každej jeho zmene,  <a class="reference internal" href="#cm0915a"><span class="std std-numref">Obr. 115</span></a>.</p>
+<p>Jednoduché integrované jednoduché prostredie <code class="docutils literal notranslate"><span class="pre">PyCirkuit</span></code> vyhovuje pri tvorbe a editácii menších obrázkov. Ak potrebujeme súčasne pracovať s niekoľkými zdrojovými súbormi a vytvárať rozsiahlejšie zapojenia, je vhodné použiť editor s bohatšími možnosťami pre editovanie textov a previazať ho s vhodným prehliadačom obrázkov. Vhodným editorom je napríklad <a class="reference external" href="https://www.geany.org/">Geany</a>, ktorý je možné rozšíriť o farebné zvýrazňovanie syntaxe. Pre prehliadanie obrázkov existuje množstvo programov. Na platforme Linuxu je možné použiť jednoduchý prehliadač obrázkov <a class="reference external" href="https://grfreire.github.io/sxiv/sxiv.1.html">sxiv</a>, ktorý automaticky obnovuje zobrazenie obrázku po každej jeho zmene,  <a class="reference internal" href="#cm0915a"><span class="std std-numref">Obr. 115</span></a>.</p>
 <figure class="align-default" id="cm0915a">
 <a class="reference internal image-reference" href="_images/geany.png"><img alt="_images/geany.png" src="_images/geany.png" style="width: 800px;" />
 </a>
@@ -376,24 +376,24 @@ document.write(`
 </figure>
 <section id="linux">
 <h2><font color='teal'> Linux </font><a class="headerlink" href="#linux" title="Link to this heading">#</a></h2>
-<p>Editor <em>Geany</em> ako aj prehliadač obrázkov <em>sxiv</em> sú súčasťou distribúcií Linuxu a je možné ich nainštalovať priamo z repozitárov</p>
+<p>Editor <em>Geany</em> ako aj prehliadač obrázkov <em>sxiv</em> sú súčasťou distribúcií Linuxu a je možné ich nainštalovať priamo z repozitárov:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install geany
 sudo apt-get install sxiv
 </pre></div>
 </div>
 <section id="konfiguracia-editora">
 <h3><font color='brown'> Konfigurácia editora </font><a class="headerlink" href="#konfiguracia-editora" title="Link to this heading">#</a></h3>
-<p>Editor rozšírime o zvýrazňovanie syntaxe pomocou konfiguračných súborov obsahujúcich kĺučové slová a mená makier, ktoré uložíme do adresárov</p>
+<p>Editor <em>Geany</em> rozšírime o zvýrazňovanie syntaxe pomocou konfiguračných súborov obsahujúcich kĺúčové slová a mená makier, ktoré uložíme do adresárov:</p>
 <ul class="simple">
 <li><p><a class="reference download internal" download="" href="_downloads/0163b98deb88f21a2cc21f6094dbc3c7/filetype_extensions.conf"><span class="xref download myst">filetype_extensions.conf</span></a> - nahráme do adresára <em>HOME/.config/geany/filedefs/</em></p></li>
 <li><p><a class="reference download internal" download="" href="_downloads/45cea321ea797c067885eabb39c4a261/filetypes.CircuitMacros.conf"><span class="xref download myst">filetypes.CircuitMacros.conf</span></a> - nahráme do adresára <em>HOME/.config/geany/filedefs/</em></p></li>
 <li><p><a class="reference download internal" download="" href="_downloads/993bc337b8954741b153eb7d78f16fc4/main.ckt"><span class="xref download myst">main.ckt</span></a> - nahráme do adresára <em>HOME/.config/geany/templates/files/</em></p></li>
 </ul>
-<p>Po spustení editor bude farebne zvýrazňovať syntax jazyka <em>dpic</em> a názvy makier z <em>CircuitMacros</em>. Pretože rozšírenie pre analýzu zdrojového kodu je založené na analyzátore určenom pre jazyk <strong>C</strong>, nemusia sa správne rozpoznať niektoré jazykové konštrukcie špecifické pre jazyk <em>dpic</em> a makroprocesor <em>m4</em>.</p>
+<p>Po spustení editor bude farebne zvýrazňovať syntax jazyka <em>dpic</em> a názvy makier z <em>CircuitMacros</em>. Pretože rozšírenie pre analýzu zdrojového kódu je založené na analyzátore určenom pre jazyk <strong>C</strong>, nemusia sa správne rozpoznať niektoré jazykové konštrukcie špecifické pre jazyk <em>dpic</em> a makroprocesor <em>m4</em>.</p>
 </section>
 <section id="pracovny-adresar">
 <h3><font color='brown'> Pracovný adresár </font><a class="headerlink" href="#pracovny-adresar" title="Link to this heading">#</a></h3>
-<p>Po inštalácii programov je vhodné usporiadať pracovný adresár v konfigurácii podľa obrázku <a class="reference internal" href="#cm0915b"><span class="std std-numref">Obr. 116</span></a>. Do adresára uložíme shell skripty <a class="reference download internal" download="" href="_downloads/2cbe991e07de10e69f7a1c1edd4db52c/cmr.sh"><span class="xref download myst">cmc.sh</span></a> a <a class="reference download internal" download="" href="_downloads/2cbe991e07de10e69f7a1c1edd4db52c/cmr.sh"><span class="xref download myst">cmr.sh</span></a>, ktoré sú popísané v kapitole <a class="reference internal" href="0900_priloha_cli.html"><span class="std std-doc">Export obrázkov</span></a>, uživateľské knižnice a knižnice z inštalácie <em>CircuitMacros</em> alebo v shell skriptoch upravíme cestu k nim.</p>
+<p>Po inštalácii programov je vhodné usporiadať pracovný adresár v konfigurácii podľa obrázku <a class="reference internal" href="#cm0915b"><span class="std std-numref">Obr. 116</span></a>. Do adresára uložíme shell skripty <a class="reference download internal" download="" href="_downloads/2cbe991e07de10e69f7a1c1edd4db52c/cmr.sh"><span class="xref download myst">cmc.sh</span></a> a <a class="reference download internal" download="" href="_downloads/2cbe991e07de10e69f7a1c1edd4db52c/cmr.sh"><span class="xref download myst">cmr.sh</span></a>, ktoré sú popísané v kapitole <a class="reference internal" href="0900_priloha_cli.html"><span class="std std-doc">Export obrázkov</span></a>.</p>
 <figure class="align-default" id="cm0915b">
 <a class="reference internal image-reference" href="_images/cm_0915b.png"><img alt="_images/cm_0915b.png" src="_images/cm_0915b.png" style="width: 350px;" />
 </a>
@@ -401,7 +401,7 @@ sudo apt-get install sxiv
 <p><span class="caption-number">Obr. 116 </span><span class="caption-text">Konfigurácia pracovného adresáru.</span><a class="headerlink" href="#cm0915b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Nový súbor vyvoríme z hlavného menu voľbou <em>New (with Template) -&gt; main.ckt</em>. Pred kompiláciou je potrebné súbor uložiť do pracovného adresára. Kompilácia a prehliadanie obrázkov je nakonfigurované v <em>Geany</em>.</p>
+<p>Nový súbor vytvoríme v editore <em>Geany</em> z hlavného menu voľbou <em>New (with Template) -&gt; main.ckt</em>. Pred kompiláciou je potrebné súbor uložiť do pracovného adresára. Kompilácia a prehliadanie obrázkov je nakonfigurované v <em>Geany</em> pre klávesy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>F5 - kompilácia a zobrazenie obrázku
 F8 - kompilácia
 F9 - zobrazenie

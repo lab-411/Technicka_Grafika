@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -368,21 +368,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="export-obrazkov">
 <h1><font color='navy'> Export obrázkov </font><a class="headerlink" href="#export-obrazkov" title="Link to this heading">#</a></h1>
-<p>Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov priamo v programe <strong>PyCirkuit</strong>. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.</p>
+<p>Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov priamo v programe <strong>PyCirkuit</strong>. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov, napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.</p>
 <section id="pycirkuit">
 <h2><font color='teal'> PyCirkuit </font><a class="headerlink" href="#pycirkuit" title="Link to this heading">#</a></h2>
-<p>Program <strong>PyCirkuit</strong> umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom</p>
+<p>Program <strong>PyCirkuit</strong> umožňuje generovanie obrázkov v móde CLI (<em>Command Line Input</em>), výpis parametrov programu získame príkazom:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit --help
 </pre></div>
 </div>
-<p>Nastavenie parametrov pre generovanie obrázkov vo formáte PNG v rozlíšení 600 dpi</p>
+<p>Nastavenie parametrov pre generovanie obrázkov vo formáte PNG v rozlíšení 600 dpi získame príkazom:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pycirkuit --links --overwrite --dpi 600 -p &lt;file_name&gt;.ckt
 </pre></div>
 </div>
 </section>
 <section id="shell-skript">
 <h2><font color='teal'> Shell skript </font><a class="headerlink" href="#shell-skript" title="Link to this heading">#</a></h2>
-<p>Zdrojové súbory obrázkov môžeme konvertovať do publikácií v rôznych formátoch. Nižšie poppísaná skript pre OS Linux využíva programy</p>
+<p>Zdrojové súbory obrázkov môžeme konvertovať do publikácií v rôznych formátoch. Nižšie popísaný skript pre OS Linux využíva programy:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m4     - štandardná súčasť operačného systému
 dpic   - kompilátor   
 latex  - systém na sadzbu textu 
@@ -390,23 +390,23 @@ dvips  - konvertor DVI-&gt;PS, sučasť distribúcie LaTeX
 gs     - konvertor PS-&gt;PNG, súčasť distribúcie ghostscript
 </pre></div>
 </div>
-<p>Tieto nainštalujeme do systému (Debian, Ubuntu) pomocou príkazov</p>
+<p>Tieto nainštalujeme do systému (Debian, Ubuntu) pomocou príkazov:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install dpic
 sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
              texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
 sudo apt-get install ghostscript
 </pre></div>
 </div>
-<p>Postup generovania obrázkov z <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je nasledovný</p>
+<p>Postup generovania obrázkov z <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code> je potom nasledovný:</p>
 <ul class="simple">
-<li><p>V textovom editore vytvoríme zdrojový text obrázku</p></li>
-<li><p>Pomocou makroprocesora <strong>m4</strong> a knižníc makier expandujeme makrá do jazyka <em>dpic</em></p></li>
-<li><p>Kompilátorom <strong>dpic</strong> preložíme makrá do skriptov <em>tikz</em> pre sadzací systém <em>LaTex</em></p></li>
-<li><p>Vložíme skript <em>tikz</em> do pomocného konfiguračného súboru a pomocou  <em>Latex</em> ho preložíme do súboru <em>.dvi</em>. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií.</p></li>
-<li><p>Pomocou programu <strong>dvips</strong> konvertujeme obrázok do vektorového formátu <em>.eps</em></p></li>
-<li><p>Pomocou konvertoru <strong>gs</strong> prevedieme vektorový obrázok do rastrového formátu <em>.png</em>. V konfigurácii konvertoru môžeme nastaviť rozlíšenie obrázku.</p></li>
+<li><p>v textovom editore vytvoríme zdrojový text obrázku,</p></li>
+<li><p>pomocou makroprocesora <strong>m4</strong> a knižníc makier expandujeme makrá do jazyka <em>dpic</em>,</p></li>
+<li><p>kompilátorom <strong>dpic</strong> preložíme makrá do skriptov <em>tikz</em> pre sadzací systém <em>LaTex</em>,</p></li>
+<li><p>vložíme skript <em>tikz</em> do pomocného konfiguračného súboru a pomocou  systému <em>LaTeX</em> ho preložíme do súboru <em>.dvi</em>. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií,</p></li>
+<li><p>pomocou programu <strong>dvips</strong> konvertujeme obrázok do vektorového formátu <em>.eps</em>,</p></li>
+<li><p>pomocou konvertoru <strong>gs</strong> prevedieme vektorový obrázok do rastrového formátu <em>.png</em>. V konfigurácii konvertoru môžeme nastaviť rozlíšenie obrázku a orezanie prázdnych okrajov.</p></li>
 </ul>
-<p>Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte <a class="reference download internal" download="" href="_downloads/043fc0c8e4396601a41477bd2b6f1db7/cmc.sh"><span class="xref download myst">cmc.sh</span></a> pre príkazový interpreter <em>bash</em>. Konfiguračný súbor pre LateX <em>template.tex</em> generuje skript, v prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v LaTex-e doplniť ďaľšie prostredie a pod.</p>
+<p>Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte <a class="reference download internal" download="" href="_downloads/043fc0c8e4396601a41477bd2b6f1db7/cmc.sh"><span class="xref download myst">cmc.sh</span></a> pre príkazový interpreter <em>bash</em>. Konfiguračný súbor pre systém LaTeX <em>template.tex</em> generuje skript. V prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v systéme LaTeX doplniť ďaľšie prostredie a pod.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 7 : </span><span class="caption-text">Skript <em>cmc.sh</em></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -452,18 +452,18 @@ rm<span class="w"> </span>template.log
 </section>
 <section id="pouzitie">
 <h2><font color='brown'> Použitie  </font><a class="headerlink" href="#pouzitie" title="Link to this heading">#</a></h2>
-<p>Skript uložte do adresáru so zdrojovými kódmi obrázkov. V skripte upravte premennú <em>CIRCUIT_MACROS</em> aktuálnej konfigurácie adresárov s knižnicami <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>. Nasledujjúcim príkazom v konzole nastavte skript ako spustiteľný program</p>
+<p>Skript uložte do adresáru so zdrojovými kódmi obrázkov. V skripte upravte premennú <em>CIRCUIT_MACROS</em> podľa aktuálnej konfigurácie adresárov s knižnicami <code class="docutils literal notranslate"><span class="pre">CircuitMacros</span></code>. Nasledujúcim príkazom v konzole nastavte skript ako spustiteľný program:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chmod +x cmc.sh
 </pre></div>
 </div>
-<p>Konverziu zdrojového kódu <em>&lt;meno_suboru&gt;.ckt</em> na obrázok <em>.png</em> spustíme z konzoly príkazom</p>
+<p>Konverziu zdrojového kódu <em>&lt;meno_suboru&gt;.ckt</em> na obrázok <em>.png</em> spustíme z konzoly príkazom:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./cmc.sh &lt;meno_suboru&gt;.ckt
 </pre></div>
 </div>
 </section>
 <section id="python-skript">
 <h2><font color='teal'> Python skript </font><a class="headerlink" href="#python-skript" title="Link to this heading">#</a></h2>
-<p>Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a>. Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti.</p>
+<p>Pre generovanie obrázkov v prostredí Python, ako je napríklad <em>Jupyter Lab</em>, je možné využiť funkciu <em>cm_compile()</em> implementovanú v súbore <a class="reference download internal" download="" href="_downloads/7b9c85a89cee2a5aa202a19a6aee0693/cmc.py"><span class="xref download myst">cmc.py</span></a>. Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number">Listing 8 : </span><span class="caption-text">Skript <em>cmc.py</em></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -514,7 +514,7 @@ rm<span class="w"> </span>template.log
 </div>
 <section id="id1">
 <h3><font color='brown'> Použitie </font><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Vytvoríme program pre Python, v ktorom v textovom (raw) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie <em>cm_compile()</em>.</p>
+<p>Vytvoríme program v Pythone, v ktorom v textovom (<em>raw</em>) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie <em>cm_compile()</em> :</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 9 : </span><span class="caption-text">Generovanie obrázkov v prostredí Pythonu</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="n">a</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
@@ -536,12 +536,12 @@ rm<span class="w"> </span>template.log
 </pre></div>
 </div>
 </div>
-<p>Skript môžeme používať aj na generovanie obrázkov priamo v prostredí <em>Jupyter Lab</em>.</p>
+<p>Skript môžeme používať aj na generovanie obrázkov priamo v prostredí <em>Jupyter Lab</em>, <a class="reference internal" href="#cm-0900a"><span class="std std-numref">Obr. 114</span></a>.</p>
 <figure class="align-default" id="cm-0900a">
 <a class="reference internal image-reference" href="_images/jupyter.png"><img alt="_images/jupyter.png" src="_images/jupyter.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 114 </span><span class="caption-text">CircuitMacros v prostredí <em>Jupyter Lab</em>.</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 114 </span><span class="caption-text">Použitie skriptov z <em>CircuitMacros</em> v prostredí <em>Jupyter Lab</em>.</span><a class="headerlink" href="#cm-0900a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

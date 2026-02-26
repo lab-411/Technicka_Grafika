@@ -1,0 +1,104 @@
+.PS
+scale=2.54
+cct_init
+
+l=elen_
+include(lib_base.ckt)
+
+
+d = 2;
+
+boxrad=.1
+
+#move to (2-d/2, 3-d/16); 		# lava elektroda
+#E1: box wid d ht d/8 fill 0.8;
+
+#{
+#   move to E1.w;
+#   dot;
+#   line from E1.w left d/4 then down d/4;
+#   gnd;
+#}
+x=1.2;
+right_;
+
+move to (0,0);
+LG: line from Here-(5,0) to Here+(5,0)
+
+move to (0, 3);		# centralna elektroda
+EC: box wid d/10 ht 4 fill 0.8;  
+
+move to (-x, 3);		# lava elektroda
+EL: box wid d/10 ht 4 fill 0.8; "EL\,\," at EL.nw rjust below;
+
+move to ( x, 3);		# prava elektroda
+EP: box wid d/10 ht 4 fill 0.8;
+
+SR: 0.5 between EC.n and EP.n
+C1: capacitor(0.5 at SR+(0,0.5)); # at CL
+spline right_ d/8 then to EP.n; dot;
+spline from C1.start left_ d/8 then to  EC.n; dot;
+
+#SL: 0.5 between EC.e and EL.e
+#C2: capacitor(0.5 at SL+(0,0.5)); 
+
+dot(at EL.e);
+C2: capacitor(from EL.e to EC.w);variable(,A,,1);rlabel(,C_1,)
+dot;
+
+#move to (5-d/2, 3-d/16);			# lave tienenie
+#ES1: box wid d/2 ht d/8 fill 0.8; #{up_;  "ES1" at ES1.n };
+
+#move to (7-d/2, 3-d/16);			# stredna
+#EC: box wid d ht d/8 fill 0.8;
+
+#move to (10-d/2, 3-d/16);			# prave tienenie
+#ES2: box wid d/2 ht d/8 fill 0.8; #{up_;  "ES2" at ES2.n };
+
+#move to (12-d/2, 3-d/16);		# prava zem
+#ER: box wid 3*d/4 ht d/8 fill 0.8;
+
+#move to (7-11*d/4, 1-d/16);               # substrat
+#SUB: box wid 11*d/2 ht d/8 fill 0.8;
+
+
+#{
+#   move to EL.w;
+#   dot;
+#   line left_ d/4 then down_ d/4;
+#  gnd;
+#   move to ER.e;
+#   dot;
+#   line right_ d/4 then down_ d/4;
+#   gnd;
+#}
+
+#right_;
+#capacitor(from EL.e to ES1.w); llabel(,C_{xa});
+#capacitor(from ES1.e to EC.w); rlabel(,C_{s});
+#capacitor(from EC.e to ES2.w); rlabel(,C_{s});
+#capacitor(from ES2.e to ER.w); llabel(,C_{xa});
+
+
+
+#down_;
+#move to EL.s; #dot;
+#capacitor(from EL.s to (EL.s, SUB.n) ); rlabel(,C_{xb});
+#dot;
+
+#move to ER.s; #dot;
+#capacitor(from ER.s to (ER.s, SUB.n) ); rlabel(,C_{xb});
+#dot;
+
+#move to EC.s; #dot;
+#capacitor(from EC.s to (EC.s, SUB.n) ); rlabel(,C_{s});
+#dot;
+
+#move to EC.nw + (d/4, 0);
+#dot;
+#spline up_ d/3 then left_ d/4;
+#variable(capacitor(3*d/2), A); rlabel(, C_v,)
+#spline left_ d/4 then down_ d/3;
+#dot;
+
+.PE

@@ -15,22 +15,22 @@ kernelspec:
 
 # <font color='navy'> Export obrázkov </font>
 
-Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov priamo v programe **PyCirkuit**. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.
+Pre vytváranie jednotlivých obrázkov v bežnej praxi vyhovuje exportovanie obrázkov priamo v programe **PyCirkuit**. Pokiaľ budeme používať vlastný editor pre písanie skriptov alebo potrebujeme generovať súbor obrázkov, napríklad pre publikácie alebo knihy, je vhodnejšie použiť programové prostriedky.
 
 ## <font color='teal'> PyCirkuit </font>
 
-Program **PyCirkuit** umožňuje generovanie obrázkov v móde CLI (Command Mode Input), výpis parametrov programu získame príkazom
+Program **PyCirkuit** umožňuje generovanie obrázkov v móde CLI (*Command Line Input*), výpis parametrov programu získame príkazom:
 
     pycirkuit --help
 
-Nastavenie parametrov pre generovanie obrázkov vo formáte PNG v rozlíšení 600 dpi 
+Nastavenie parametrov pre generovanie obrázkov vo formáte PNG v rozlíšení 600 dpi získame príkazom:
     
     pycirkuit --links --overwrite --dpi 600 -p <file_name>.ckt
 
 
 ## <font color='teal'> Shell skript </font>
 
-Zdrojové súbory obrázkov môžeme konvertovať do publikácií v rôznych formátoch. Nižšie poppísaná skript pre OS Linux využíva programy
+Zdrojové súbory obrázkov môžeme konvertovať do publikácií v rôznych formátoch. Nižšie popísaný skript pre OS Linux využíva programy:
 
     m4     - štandardná súčasť operačného systému
     dpic   - kompilátor   
@@ -39,23 +39,23 @@ Zdrojové súbory obrázkov môžeme konvertovať do publikácií v rôznych for
     gs     - konvertor PS->PNG, súčasť distribúcie ghostscript
     
     
-Tieto nainštalujeme do systému (Debian, Ubuntu) pomocou príkazov
+Tieto nainštalujeme do systému (Debian, Ubuntu) pomocou príkazov:
 
     sudo apt-get install dpic
     sudo apt-get install texlive texstudio texlive-plain-generic texlive-latex-extra \
                  texlive-lang-czechslovak texlive-lang-greek texlive-font-utils
     sudo apt-get install ghostscript
 
-Postup generovania obrázkov z `CircuitMacros` je nasledovný
+Postup generovania obrázkov z `CircuitMacros` je potom nasledovný:
 
-* V textovom editore vytvoríme zdrojový text obrázku 
-* Pomocou makroprocesora **m4** a knižníc makier expandujeme makrá do jazyka *dpic*
-* Kompilátorom **dpic** preložíme makrá do skriptov *tikz* pre sadzací systém *LaTex*
-* Vložíme skript *tikz* do pomocného konfiguračného súboru a pomocou  *Latex* ho preložíme do súboru *.dvi*. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií.
-* Pomocou programu **dvips** konvertujeme obrázok do vektorového formátu *.eps* 
-* Pomocou konvertoru **gs** prevedieme vektorový obrázok do rastrového formátu *.png*. V konfigurácii konvertoru môžeme nastaviť rozlíšenie obrázku. 
+* v textovom editore vytvoríme zdrojový text obrázku, 
+* pomocou makroprocesora **m4** a knižníc makier expandujeme makrá do jazyka *dpic*,
+* kompilátorom **dpic** preložíme makrá do skriptov *tikz* pre sadzací systém *LaTex*,
+* vložíme skript *tikz* do pomocného konfiguračného súboru a pomocou  systému *LaTeX* ho preložíme do súboru *.dvi*. V prípade potreby môžeme vygenerovaný skript priamo používať v zdrojových kódoch publikácií bez potreby ďalších konverzií,
+* pomocou programu **dvips** konvertujeme obrázok do vektorového formátu *.eps*, 
+* pomocou konvertoru **gs** prevedieme vektorový obrázok do rastrového formátu *.png*. V konfigurácii konvertoru môžeme nastaviť rozlíšenie obrázku a orezanie prázdnych okrajov.
      
-Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte [cmc.sh](./src/cmc.sh) pre príkazový interpreter *bash*. Konfiguračný súbor pre LateX *template.tex* generuje skript, v prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v LaTex-e doplniť ďaľšie prostredie a pod.
+Na prvý pohľad postup vyzerá komplikovaný, ale poskytuje kontrolu nad každým krokom konverzie. Celý postup je implementovaný v nasledujúcom skripte [cmc.sh](./src/cmc.sh) pre príkazový interpreter *bash*. Konfiguračný súbor pre systém LaTeX *template.tex* generuje skript. V prípade potreby môžete pomocný konfiguračný súbor upraviť, napríklad ak potrebujete v systéme LaTeX doplniť ďaľšie prostredie a pod.
  
 ```{code-block} bash
 :caption: Skript *cmc.sh* 
@@ -100,18 +100,18 @@ rm template.log
 
 ## <font color='brown'> Použitie  </font>
     
-Skript uložte do adresáru so zdrojovými kódmi obrázkov. V skripte upravte premennú *CIRCUIT_MACROS* aktuálnej konfigurácie adresárov s knižnicami `CircuitMacros`. Nasledujjúcim príkazom v konzole nastavte skript ako spustiteľný program
+Skript uložte do adresáru so zdrojovými kódmi obrázkov. V skripte upravte premennú *CIRCUIT_MACROS* podľa aktuálnej konfigurácie adresárov s knižnicami `CircuitMacros`. Nasledujúcim príkazom v konzole nastavte skript ako spustiteľný program:
 
     chmod +x cmc.sh
 
-Konverziu zdrojového kódu *<meno_suboru>.ckt* na obrázok *.png* spustíme z konzoly príkazom 
+Konverziu zdrojového kódu *<meno_suboru>.ckt* na obrázok *.png* spustíme z konzoly príkazom: 
 
     ./cmc.sh <meno_suboru>.ckt
     
     
 ## <font color='teal'> Python skript </font>
 
-Pre generovanie obrázkov v prostredí Pythonu, ako je napríklad *Jupyter Lab*, je možné využiť funkciu *cm_compile()* implementovanú v súbore [cmc.py](./src/cmc.py). Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti.
+Pre generovanie obrázkov v prostredí Python, ako je napríklad *Jupyter Lab*, je možné využiť funkciu *cm_compile()* implementovanú v súbore [cmc.py](./src/cmc.py). Funkcia volá rovnaké programy ako shell-skript uvedený v predchádzajúcej časti:
 
 ```{code-block} python
 :caption: Skript *cmc.py* 
@@ -162,7 +162,7 @@ def cm_compile(file_name, cm_data='', dpi=300):
 
 ### <font color='brown'> Použitie </font>
 
-Vytvoríme program pre Python, v ktorom v textovom (raw) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie *cm_compile()*.
+Vytvoríme program v Pythone, v ktorom v textovom (*raw*) reťazci definujeme skript pre generovanie obrázku. Obrázok vygenerujeme vyvolaním funkcie *cm_compile()* :
 
 
 ```{code-block} python
@@ -186,13 +186,13 @@ R1: resistor(2,,E); llabel(,R_1,);
 cm_compile('obr_010', data)
 ```
 
-Skript môžeme používať aj na generovanie obrázkov priamo v prostredí *Jupyter Lab*. 
+Skript môžeme používať aj na generovanie obrázkov priamo v prostredí *Jupyter Lab*, {numref}`cm_0900a`.
 
 ```{figure} ./img/jupyter.png
 :width: 700px
 :name: cm_0900a
 
-CircuitMacros v prostredí *Jupyter Lab*.
+Použitie skriptov z *CircuitMacros* v prostredí *Jupyter Lab*.
 ```
 
 

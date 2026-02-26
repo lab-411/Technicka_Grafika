@@ -1,7 +1,8 @@
 # <center> <font color='navy'>  <b> Programová tvorba technickej grafiky </b> </font> </center> 
 
 <center> 
-<h3> <font color='brown'>  <b> Lenka Bartošová, Peter Fabo, Michal Kuba </b> </font> </h3>
+<h3> <font color='brown'>  <b> Lenka Bartošová, Peter Fabo </b> </font> </h3>
+<h3> <font color='brown'>  <b> Peter Jančich, Michal Kuba </b> </font> </h3>
 </center> 
 
 
@@ -11,8 +12,8 @@
 ```
 
 <center> 
-<h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>       </h3>
-<h3> <font color='brown'>  <b> Verzia 0.55 / Feb. 2026 </b> </font>  </h3>
+<h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>     </h3>
+<h3> <font color='brown'>  <b> Verzia 0.65 / Feb. 2026 </b> </font>  </h3>
 </center> 
 
 ----------------
@@ -83,6 +84,8 @@
 ### <font color='brown'> Ing. Lenka Bartošová, PhD. </font>
 
 ### <font color='brown'> RNDr. Peter Fabo, PhD. </font>
+
+### <font color='brown'> Ing. Peter Jančich </font>
 
 ### <font color='brown'> Ing. Michal Kuba, PhD. </font>
 
