@@ -63,7 +63,7 @@
 0204_ex_opamp.md
 0207_ex_integrovane_obvody.md
 0206_ex_logicke_obvody.md
-0208_ex_vyvojove_diagramy.md
+0208_ex_hybridne_zapojenia.md
 0210_ex_katalog.md
 ```
 

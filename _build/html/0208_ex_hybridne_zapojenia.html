@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Blokové diagramy &#8212; cm 1.00 documentation</title>
+    <title>Hybridné zapojenia &#8212; cm 1.00 documentation</title>
   
   
   
@@ -46,7 +46,9 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '0208_ex_vyvojove_diagramy';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0208_ex_hybridne_zapojenia';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Katalóg" href="0210_ex_katalog.html" />
@@ -191,7 +193,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0204_ex_opamp.html"><font color="navy"> Operačné zosilovače  </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0207_ex_integrovane_obvody.html"><font color="navy"> Integrované obvody </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0206_ex_logicke_obvody.html"><font color="navy"> Logické obvody </font></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> Blokové diagramy</font></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy">Hybridné zapojenia</font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0210_ex_katalog.html"><font color="navy"> Katalóg </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prílohy</span></p>
@@ -254,7 +256,7 @@
       
       
       
-      <li><a href="_sources/0208_ex_vyvojove_diagramy.md" target="_blank"
+      <li><a href="_sources/0208_ex_hybridne_zapojenia.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +327,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -336,11 +340,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><font color='navy'> Blokové diagramy</font></h1>
+    <h1><font color='navy'>Hybridné zapojenia</font></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blokove-zapojenia"><font color="teal"> Blokové zapojenia </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombinovane-zapojenia"><font color="teal"> Kombinované zapojenia </font></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -350,17 +363,44 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="blokove-diagramy">
-<h1><font color='navy'> Blokové diagramy</font><a class="headerlink" href="#blokove-diagramy" title="Link to this heading">#</a></h1>
-<p>Elektronické zariadenia v súčasnej dobe sú komplexné systémy, ktorých dokumentácia si vyžaduje hierarchický prístup, v ktorom na najvyššej úrovni dokumentujeme jednotlivé funkčné celky a vzťahy medzi nimi. Diagramy majú často tvar hybridných zapojení, kde pre väčšiu názornosť kombinujeme bloky s diskrétnymi komponentami reprezentujúcimi funkčnosť vybraných častí zariadenia.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hybridne-zapojenia">
+<h1><font color='navy'>Hybridné zapojenia</font><a class="headerlink" href="#hybridne-zapojenia" title="Link to this heading">#</a></h1>
+<p>Elektronické zariadenia v súčasnej dobe sú komplexné systémy, ktorých dokumentácia si vyžaduje hierarchický prístup, v ktorom na najvyššej úrovni dokumentujeme jednotlivé funkčné celky a vzťahy medzi nimi. Diagramy majú často tvar hybridných zapojení, kde pre väčšiu názornosť kombinujeme funkčné bloky s diskrétnymi komponentami reprezentujúcimi vybrané častí zariadenia.</p>
+<section id="blokove-zapojenia">
+<h2><font color='teal'> Blokové zapojenia </font><a class="headerlink" href="#blokove-zapojenia" title="Link to this heading">#</a></h2>
 <p>Na obrázku <a class="reference internal" href="#img-0208a"><span class="std std-numref">Obr. 110</span></a> je blokové zapojenie zariadenia pre testy mechanických vlastností 3D tlačených materiálov. Zariadenie obsahuje centrálny mikrokontrolér, analógové a digitálne periférie, ktoré sú riadené prostredníctvom rozhraní mikrokontroléra. Prepojenia medzi jednotlivými funkčnými časťami sú realizované pomocou označených zberníc (<em>SPI</em>, <em>I2C</em>) ako aj vodičmi, ktoré môžu byť jednotlivé alebo v skupine (<em>pulse</em>, <em>switch</em> …). Pre lepšiu prehľadnosť je v zapojení označené z koľkých vodičov zbernica alebo skupina vodičov pozostáva.</p>
 <figure class="align-default" id="img-0208a">
 <a class="reference internal image-reference" href="_images/exam_02_trhacka.png"><img alt="_images/exam_02_trhacka.png" src="_images/exam_02_trhacka.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 110 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1412ab3a5352ff055b4919a2667fc4cc/exam_02_trhacka.ckt"><span class="xref download myst">Blokové</span></a> zapojenie zariadenia pre testy 3D tlačených materiálov.</span><a class="headerlink" href="#img-0208a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 110 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1412ab3a5352ff055b4919a2667fc4cc/exam_02_trhacka.ckt"><span class="xref download myst">Blokové</span></a> zapojenie zariadenia pre mechanické testy 3D tlačených materiálov <a class="footnote-reference brackets" href="#odkaz1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#img-0208a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="kombinovane-zapojenia">
+<h2><font color='teal'> Kombinované zapojenia </font><a class="headerlink" href="#kombinovane-zapojenia" title="Link to this heading">#</a></h2>
+<p>V niektorých prípadoch je vhodné pre väčšíu prehľadnosť zahrnúť do zapojenia aj znázornenie fyzickej realizácie zariadenia, ktorá by v čisto elektronickej podobe nemusela byť na prvý pohľad zrejmá. Na obrázku <a class="reference internal" href="#img-0208b"><span class="std std-numref">Obr. 111</span></a> je zapojenie analogovej časti kapacitného extenzometra, v ktorom sú <span class="math notranslate nohighlight">\(EL\)</span>, <span class="math notranslate nohighlight">\(EC\)</span> a <span class="math notranslate nohighlight">\(ER\)</span> elektródy extenzomera, pričom elektróde <span class="math notranslate nohighlight">\(EC\)</span> je pohyblivá. Kondenzátory <span class="math notranslate nohighlight">\(C_{P1} ... C_{P3}\)</span> reprezentujú parazitné montážne kapacity zariadenia.</p>
+<figure class="align-default" id="img-0208b">
+<a class="reference internal image-reference" href="_images/cm_208b.png"><img alt="_images/cm_208b.png" src="_images/cm_208b.png" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 111 </span><span class="caption-text">Zapojenie analogovej časti kapacitného extenzometra <a class="footnote-reference brackets" href="#odkaz2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>..</span><a class="headerlink" href="#img-0208b" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="odkaz1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Blokové zapojenie prevzaté z práce:</p>
+<p>PhD práca ….</p>
+</aside>
+<aside class="footnote brackets" id="odkaz2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Projekt VEGA 2/0013/25</p>
+<p>Interpretácia periodických a neperiodických deformácií zemskej kôry v oblasti Západných Karpát na základe paralelných meraní horizontálnych posunutí.</p>
+</aside>
+</aside>
+</section>
 </section>
 
 
@@ -399,6 +439,22 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blokove-zapojenia"><font color="teal"> Blokové zapojenia </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombinovane-zapojenia"><font color="teal"> Kombinované zapojenia </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -408,7 +464,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Lenka Bartošová, Peter Fabo, Michal Kuba
+By Lenka Bartošová, Peter Fabo, Peter Jančich, Michal Kuba
 </p>
 
   </div>

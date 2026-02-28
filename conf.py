@@ -8,7 +8,7 @@
 
 project = 'cm'
 copyright = '2026, LAB - 411'
-author = 'Lenka Bartošová, Peter Fabo, Michal Kuba'
+author = 'Lenka Bartošová, Peter Fabo, Peter Jančich, Michal Kuba'
 release = '1.00'
 
 # -- General configuration ---------------------------------------------------
