@@ -10,5 +10,5 @@ cct_init                # inicializacia lokalnych premennych
 arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
-include(lib_color.ckt); color_red;sinusoid(1.0, pi_*4/10,-pi_/2, 0, 10);
+"$\sqrt{x^2+y^2}$"  "$\sf \sqrt{x^2+y^2}$"
 .PE

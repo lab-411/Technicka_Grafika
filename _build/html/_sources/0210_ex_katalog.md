@@ -186,6 +186,28 @@
 	line right_ 1 down_ 1;l_current(i_3,above ljust);
 :::
 ::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/comp_9.png
+:width: 120px
+```
+:::
+
+:::{grid-item}
+:columns: 7
+
+    line right_ 0.5; 
+	spline 1 right_ 0.5 then down_ 0.5;      
+	spline 1 down_ 0.5 then right_ 0.5; 
+	line -> right_ 0.5;
+:::
+::::
 ## <font color='teal'> Aktívne prvky </font> 
 
 ::::{grid} 2
@@ -218,6 +240,26 @@
 :columns: 5
 
 ```{figure} ./src/graph_0.png
+:width: 120px
+```
+:::
+
+:::{grid-item}
+:columns: 7
+
+    "$\sqrt{x^2+y^2}$" 
+	 "$\sf \sqrt{x^2+y^2}$"
+:::
+::::
+
+::::{grid} 2
+:gutter: 0
+:margin: 0
+
+:::{grid-item}
+:columns: 5
+
+```{figure} ./src/graph_1.png
 :width: 380px
 ```
 :::
@@ -236,7 +278,7 @@
 :::{grid-item}
 :columns: 5
 
-```{figure} ./src/graph_1.png
+```{figure} ./src/graph_2.png
 :width: 150px
 ```
 :::
@@ -255,7 +297,7 @@
 :::{grid-item}
 :columns: 5
 
-```{figure} ./src/graph_2.png
+```{figure} ./src/graph_3.png
 :width: 150px
 ```
 :::
@@ -274,7 +316,7 @@
 :::{grid-item}
 :columns: 5
 
-```{figure} ./src/graph_3.png
+```{figure} ./src/graph_4.png
 :width: 380px
 ```
 :::
