@@ -10,5 +10,5 @@ cct_init                # inicializacia lokalnych premennych
 arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
-hatchbox(wid 3 ht 1.5,,dashed,angle=125 );
+line right_ 0.5; spline 1 right_ 0.5 then down_ 0.5;      spline 1 down_ 0.5 then right_ 0.5; line -> right_ 0.5;
 .PE

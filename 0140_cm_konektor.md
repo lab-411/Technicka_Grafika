@@ -126,16 +126,15 @@ Terminály *tconn()* reprezentujú ukončenie vodiča zvyčajne označené menom
 from src.utils import *
 data = r'''
 include(lib_base.ckt)
-"tb\\ox()" at (1.5, 3);
-"tc\\onn()" at (4, 3);
+command"\small \sf"
 
-move to (0.5,1.0); line 1; tbox(V_1, 1, , <); 
-move to (0.5,1.5); tbox(V_2, 1, , >); line 1
-move to (0.5,2.0); line 1; tbox(V_3, 1, , <>, fill_(0.9))
+move to (0.5,1.0);  line 1; tbox(\sf V_1, 1, , <); 
+move to (0.5,1.5);  Q: tbox(\sf V_2, 1, , >); line 1; "\sf t\\box()" at Q.w+(-0.35,0) rjust;
+move to (0.5,2.0);  line 1; tbox(\sf V_3, 1, , <>, fill_(0.9))
 
 move to (3.5,0.5); T1: tconn(,O); "$0$" at T1.e ljust
 move to (3.5,1.0); T2: tconn(,>); "$>$" at T2.e ljust
-move to (3.5,1.5); T3: tconn(,<); "$<$" at T3.e ljust
+move to (3.5,1.5); T3: tconn(,<); "$<$" at T3.e ljust; "\sf t\\conn()" at Here+(0.75,0) ljust;
 move to (3.5,2.0); T4: tconn(,A); "$A$" at T4.e ljust
 move to (3.5,2.5); T5: tconn(,M); "$M$" at T5.e ljust
 '''
@@ -144,7 +143,7 @@ _ = cm_compile('cm_0140b', data, dpi=600)
 ```
 
 ```{figure} ./src/cm_0140b.png
-:width: 300px
+:width: 400px
 :name: cm_140b
 
 Vstupno-výstupné terminály.
