@@ -13,7 +13,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>     </h3>
-<h3> <font color='brown'>  <b> Verzia 0.65 / Feb. 2026 </b> </font>  </h3>
+<h3> <font color='brown'>  <b> Verzia 0.70 / Mar. 2026 </b> </font>  </h3>
 </center> 
 
 ----------------
@@ -105,7 +105,7 @@
 
 ### <font color='brown'> Citovanie / How to cite</font>
 
-    ZENODO Record
+    https://doi.org/10.5281/zenodo.17630273
 
     
 ### <font color='brown'> Preklady / Translations </font>

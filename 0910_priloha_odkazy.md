@@ -14,23 +14,41 @@ kernelspec:
 
 
 
-# <font color='navy'> Odkazy  </font> 
+# <font color='navy'> Odkazy a litertúra </font> 
 
+## <font color='teal'> Programové vybavenie </font> 
 
-
-## <font color='teal'> Programy </font> 
-
-* [Circuit macros](https://ece.uwaterloo.ca/~aplevich/Circuit_macros/)
-* [Circuit macros manual](https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros.pdf)
+### <font color='brown'> Programovací jazyk *dpic* </font> 
 
 * [PIC markup language](https://en.wikipedia.org/wiki/PIC_(markup_language))
 * [dpic source code](https://gitlab.com/aplevich/dpic)
 * [dpic manual](https://gitlab.com/aplevich/dpic/-/blob/master/dpic-doc.pdf)
 
-## <font color='teal'> Príklady </font> 
 
+### <font color='brown'> Knižnica CircuitMacros </font> 
+
+* [Circuit macros](https://ece.uwaterloo.ca/~aplevich/Circuit_macros/)
+* [Circuit macros manual](https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros.pdf)
 * [Circuit_macros examples](https://ece.uwaterloo.ca/~aplevich/Circuit_macros/html/examples.html)
 * [Using Circuit Macros](https://yingtongdiddleipo.eie.wits.ac.za/cct.html)
+
+### <font color='brown'> Editory a pomocné programy</font> 
+
+* [pycirkuit](https://github.com/orestesmas/pycirkuit)
+* [Geany](https://www.geany.org/)
+* [Latex](https://www.latex-project.org/)
+* [Sphinx](https://www.sphinx-doc.org)
+* [MyST](https://myst-parser.readthedocs.io/en/latest/)
+* [Jupyter](https://jupyter.org/)
+
+### <font color='brown'> Programy pre kreslenie zapojení a diagramov </font> 
+
+* [ElectroTech](https://qelectrotech.org/)
+* [XCircuit](http://opencircuitdesign.com/xcircuit/)
+* [plantuml](https://github.com/plantuml/plantuml)
+* [KiCad](https://www.kicad.org/)
+* [LibrePCB](https://librepcb.org/)
+* [LeptonEDA](https://github.com/lepton-eda/lepton-eda)
 
 ## <font color='teal'> Technické normy </font> 
 
