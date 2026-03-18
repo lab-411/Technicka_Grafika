@@ -14,7 +14,7 @@ kernelspec:
 
 
 
-# <font color='navy'> Odkazy a litertúra </font> 
+# <font color='navy'> Odkazy a literatúra </font> 
 
 ## <font color='teal'> Programové vybavenie </font> 
 
