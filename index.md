@@ -92,15 +92,16 @@
 
 ## <font color='teal'> Vydal / Published by </font> 
 
-    Vydalo roku 2026 
+    Vydalo v roku 2026 
 
     LAB - 411 Production
-    FŠT-TNUNI
+    Fakulta špeciálnej techniky
+    Trenčianska univerzita A.D.
     Ku kyselke 469
     911 06 Trenčín
     Slovensko
 
-    ISBN: xxx-xx-xxxxxx-x
+    ISBN: 978-80-8295-073-4
     
 
 ### <font color='brown'> Citovanie / How to cite</font>
