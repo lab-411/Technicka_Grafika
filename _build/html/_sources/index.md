@@ -13,7 +13,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>     </h3>
-<h3> <font color='brown'>  <b> Verzia 0.70 / Mar. 2026 </b> </font>  </h3>
+<h3> <font color='brown'>  <b> Verzia 0.75 / Apr. 2026 </b> </font>  </h3>
 </center> 
 
 ----------------
@@ -83,24 +83,33 @@
 
 ### <font color='brown'> Ing. Lenka Bartošová, PhD. </font>
 
+Pôsobí v oblasti strojárskych technológií a materiálov so zameraním na kompozitné materiály a technické plasty. 
+
 ### <font color='brown'> RNDr. Peter Fabo, PhD. </font>
+
+Pôsobí v oblasti aplikovanej fyziky so zameraním na výskum a vývoj senzorov, technológií pre nedeštruktívne testovanie, programovanie a implementáciu mikrokontrolérov v systémoch zberu a spracovania dát. 
 
 ### <font color='brown'> Ing. Peter Jančich </font>
 
+Špecialista pre aditívne technológie, testovanie a hodnotenie technických plastov so zameraním na oblasť 3D tlače. 
+
 ### <font color='brown'> Ing. Michal Kuba, PhD. </font>
+
+Pôsobí v oblasti analýzy a spracovania signálov, štatistických metód pre klasifikáciu a identifikáciu signálových vzorov, implementácie Kálmanových filtrov a vývoja rádiofrekvenčných metód pre sledovanie refraktivity atmosféry. 
 
 
 ## <font color='teal'> Vydal / Published by </font> 
 
-    Vydalo roku 2026 
+    Vydalo v roku 2026 
 
     LAB - 411 Production
-    FŠT-TNUNI
+    Fakulta špeciálnej techniky
+    Trenčianska univerzita A.D.
     Ku kyselke 469
     911 06 Trenčín
     Slovensko
 
-    ISBN: xxx-xx-xxxxxx-x
+    ISBN: 978-80-8295-073-4
     
 
 ### <font color='brown'> Citovanie / How to cite</font>

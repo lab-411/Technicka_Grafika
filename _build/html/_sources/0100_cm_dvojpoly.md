@@ -907,9 +907,10 @@ Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použ
             
             frac  - posun šípky voči zadanej súradnici (Start | End)
             
-Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro *l_current()*, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi, {numref}`cm_0100h`.
+Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá *l_current()* a *r_current()*, ktoré vykreslia šípku v čiare medzi jej koncovými bodmi, {numref}`cm_0100h`.
 
-    l_current(label, above_|below_, frac);
+    l_current(label, above_|below_, frac)
+    r_current(label, above_|below_, frac)
     
         parametre:
         
@@ -927,9 +928,10 @@ Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makro *l
     define( `l_current', `{
         S: last line .start;
         E: last line .end;
-        C: $3 between S and E;
-        line -> from S to C; line from C to E;
-        "$ $1 $" at last line.start $2;
+           ifelse(defn(`p'),  $3, p=0.5,  p=$3)
+        C: p between S and E; 
+           line -> from C+(-arrowht/2,0)  left_  0.01; 
+          "$ $1 $" at C $2;
     }')
             
     R1: resistor(right_ 3,,E); 

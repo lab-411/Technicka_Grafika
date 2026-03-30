@@ -199,7 +199,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0905_priloha_farby.html"><font color="navy"> Farby </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0900_priloha_cli.html"><font color="navy"> Export obrázkov </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0915_priloha_editor.html"><font color="navy"> Externý editor </font></a></li>
-<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy a litertúra </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0910_priloha_odkazy.html"><font color="navy"> Odkazy a literatúra </font></a></li>
 </ul>
 
     </div>
@@ -869,8 +869,9 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
         frac  - posun šípky voči zadanej súradnici (Start | End)
 </pre></div>
 </div>
-<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makro <em>l_current()</em>, ktoré vykreslí šípku v čiare medzi jej koncovými bodmi, <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l_current(label, above_|below_, frac);
+<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá <em>l_current()</em> a <em>r_current()</em>, ktoré vykreslia šípku v čiare medzi jej koncovými bodmi, <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l_current(label, above_|below_, frac)
+r_current(label, above_|below_, frac)
 
     parametre:
     
@@ -888,9 +889,10 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define( `l_current&#39;, `{
     S: last line .start;
     E: last line .end;
-    C: $3 between S and E;
-    line -&gt; from S to C; line from C to E;
-    &quot;$ $1 $&quot; at last line.start $2;
+       ifelse(defn(`p&#39;),  $3, p=0.5,  p=$3)
+    C: p between S and E; 
+       line -&gt; from C+(-arrowht/2,0)  left_  0.01; 
+      &quot;$ $1 $&quot; at C $2;
 }&#39;)
         
 R1: resistor(right_ 3,,E); 
