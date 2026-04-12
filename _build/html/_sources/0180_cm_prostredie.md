@@ -32,7 +32,7 @@ Vlastnosti základných objektov sú určené množinou preddefinovaných premen
 | Premenná   | Hodnota | Význam 
 |:---        | :----   | :--    
 | arcrad     | 0.25    | polomer oblúka
-| arrowht    | 0.1     | dĺžka šípku
+| arrowht    | 0.1     | dĺžka šípky
 | arrowwid   | 0.05    | šírka šípky
 | boxht      | 0.5     | výška obdĺžnika
 | boxrad     | 0       | polomer zaoblených rohov obdĺžnika

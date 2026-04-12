@@ -150,7 +150,7 @@ Zapojenie analogovej časti kapacitného extenzometra [^odkaz2]..
 
 [^odkaz1]: Blokové zapojenie prevzaté z práce:
 
-    PhD práca ....
+    Peter Jančich: Konštrukcia zariadenia pre testovanie mechanických vlastností materiálov pre 3D tlač.  
     
 [^odkaz2]: Projekt VEGA 2/0013/25
 

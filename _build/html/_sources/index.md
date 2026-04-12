@@ -13,7 +13,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>     </h3>
-<h3> <font color='brown'>  <b> Verzia 0.75 / Apr. 2026 </b> </font>  </h3>
+<h3> <font color='brown'>  <b> Verzia 1.00 / Apr. 2026 </b> </font>  </h3>
 </center> 
 
 ----------------
@@ -28,6 +28,7 @@
 ```{toctree}
 :titlesonly: True
 :caption: Úvod
+0012_predslov.md
 0010_uvod.md
 0012_instalacia.md
 0013_terminologia.md
@@ -75,10 +76,7 @@
 0915_priloha_editor.md
 0910_priloha_odkazy.md
 ```
-
-## <font color='teal'> Anotácia / Annotation </font>   
-
-
+  
 ## <font color='teal'> Autori/ Authors </font>  
 
 ### <font color='brown'> Ing. Lenka Bartošová, PhD. </font>
