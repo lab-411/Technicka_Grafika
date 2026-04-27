@@ -123,7 +123,7 @@ Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, ci
 
 Makro pre zobrazenie rezistora v `CircuitMacros` je možné parametrami upraviť pre zobrazenie rôznych typov príbuzných prvkov. Definícia makra pre vykreslenie rezistora
 
-    rezistor(linespec, n, param, cwidth);
+    resistor(linespec, n, param, cwidth);
     
     parametre:
     
