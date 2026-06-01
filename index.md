@@ -13,7 +13,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>     </h3>
-<h3> <font color='brown'>  <b> Verzia 1.00 / Apr. 2026 </b> </font>  </h3>
+<h3> <font color='brown'>  <b> Verzia 1.01 / Apr. 2026 </b> </font>  </h3>
 </center> 
 
 ----------------
@@ -101,13 +101,8 @@ Pôsobí v oblasti analýzy a spracovania signálov, štatistických metód pre 
     Vydalo v roku 2026 
 
     LAB - 411 Production
-    Fakulta špeciálnej techniky
-    Trenčianska univerzita A.D.
-    Ku kyselke 469
-    911 06 Trenčín
+    Trenčín
     Slovensko
-
-    ISBN: 978-80-8295-073-4
     
 
 ### <font color='brown'> Citovanie / How to cite</font>

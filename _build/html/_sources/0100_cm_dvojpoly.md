@@ -123,7 +123,7 @@ Definície najčastejšie používaných dvojpólov - rezistor, kondenzátor, ci
 
 Makro pre zobrazenie rezistora v `CircuitMacros` je možné parametrami upraviť pre zobrazenie rôznych typov príbuzných prvkov. Definícia makra pre vykreslenie rezistora
 
-    rezistor(linespec, n, param, cwidth);
+    resistor(linespec, n, param, cwidth);
     
     parametre:
     
@@ -775,7 +775,7 @@ V analogových zapojeniach bývajú premenné prvky (potenciometre, trimre, kond
 :width: 600px
 :name: r_325
 
-Použitie premenných prvkov v zapojení rádia s integrovaným obvodom, TODO Citovať.
+Použitie premenných prvkov v zapojení rádia s integrovaným obvodom, zdroj Amatérske rádio 1970/9.
 ```
 
 Pre zobrazenie upravených premenných prvkov tak ako sú použité v predchádzajúcom zapojení sú v knižnici [lib_user](./src/lib_user.ckt) definované makrá *vres_v()* a *vcap_v()*, {numref}`cm_0100n`. 
