@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -47,8 +48,13 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0014_zaklady';</script>
@@ -431,9 +437,9 @@ r1: resistor;       # chyba
 </div>
 <p>Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúci príklad, <a class="reference internal" href="#cm-0014b"><span class="std std-numref">Obr. 8</span></a>, zobrazuje použitie referencií a atribútov v zapojení. Pomocná mriežka je vykreslená pre zobrazenie skutočných pozícií prvkov zapojenia</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">;</span>                 <span class="c1"># referencia, R1.start = (1,1)</span>
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">;</span>                     <span class="c1"># prvok, referencia, R1.start = (1,1)</span>
     <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">C1</span><span class="p">:</span> <span class="n">capacitor</span><span class="p">;</span>                <span class="c1"># referencia C1.start = (1,2)</span>
+<span class="n">C1</span><span class="p">:</span> <span class="n">capacitor</span><span class="p">;</span>                    <span class="c1"># prvok, referencia C1.start = (1,2)</span>
 <span class="hll">    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">R1.start</span> <span class="n">to</span> <span class="n">C1</span><span class="o">.</span><span class="n">end</span><span class="p">;</span> <span class="c1"># spoj medzi bodmi zadanými referenciami a atribútmi</span>
 </span></pre></div>
 </div>
@@ -497,7 +503,7 @@ ellipse wid 2 ht 1 &quot;Ellipse&quot;;
 <a class="reference internal image-reference" href="_images/cm_0014d.png"><img alt="_images/cm_0014d.png" src="_images/cm_0014d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 10 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/5fddb05a8dcd442d04a3455a3f341527/cm_0014d.ckt"><span class="xref download myst">diagram</span></a> vykreslený pomocou príkazov <em>dpic</em></span><a class="headerlink" href="#cm-0014d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 10 </span><span class="caption-text">Jednoduchý <a class="reference download internal" download="" href="_downloads/5fddb05a8dcd442d04a3455a3f341527/cm_0014d.ckt"><span class="xref download myst">diagram</span></a> vykreslený pomocou príkazov <em>dpic</em>.</span><a class="headerlink" href="#cm-0014d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

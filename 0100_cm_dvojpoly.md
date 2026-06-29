@@ -883,8 +883,69 @@ _ = cm_compile('cm_0100m', data, dpi=600)
 :width: 220px
 :name: cm_0100m
 
-[Použitie](./src/cm_0100m.ckt) premenných prvkov v časti zapojenia rádia.
+Použitie premenných prvkov v časti zapojenia rádia.
 ```
+
+::::{admonition} Zdrojový kód k obrázku {numref}`cm_0100m`
+:class: dropdown, tip 
+
+```{code-block} Python
+  
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_user.ckt)
+
+VR1: vres_v(1.5,V,R); "\sf 50k" at VR1.w below; {line from VR1.n left_ 1;}
+     gnd(0.1) at VR1.R.end 
+     line from VR1.S right_ 0.5; DT1: dot; 
+     line 0.25; Q0:circle rad 0.08
+
+T1:  bjt_NPN(1.5,0.8,,N) with .B at last circle.e;
+     Q1: circle with .n at T1.E rad 0.08;
+     DT2: dot(at T1.C)
+
+T2:  bjt_NPN(0.6,,,N); line from T2.E to (T2.E, Q1.n)
+     Q2: circle with .n at last line.end rad 0.08;
+     line from T2.C right_ 0.5;
+     Q3: circle rad 0.08;
+     down_; move to Q2.s; gnd(0.5);
+
+     res(from DT1 up_ 3, E); llabel(,\sf M1,)
+VR2: vres_v(1.75,P,L); "\sf 1M" at VR2.w;
+     res(from DT2 up_ 1.75, E); rlabel(,\sf 3k5,)
+     DT3: dot; {line left_ 3; }; line 0.5;
+     Q4: circle rad 0.08;
+     line up_ 0.5; DT4: dot;
+     {res(right_ 1.5); llabel(,\sf 350,); gnd(0.25, R); }
+     res(up_ 1.5); llabel(,\sf 1k,); DT5: dot;
+
+     line from VR2.n to (VR2, DT5); DT6: dot;
+     right_;res(from DT5 to DT6,E); llabel(,\sf 330,)
+     capacitor(from DT6 left_ 1.2,+K,, 0.4, 0.25); llabel(,\sf 50M,); gnd(.15,L);
+     line from DT5 right_ 2;
+
+# IC MAA325 box 
+    line from Q1.w to (Q0,Q1) then to Q0.s dashed;
+    line from Q0.n to (Q0,Q4) then to Q4.w dashed;
+    line from Q4.e to (Q3,Q4) then to Q3.n dashed;
+    line from Q3.s to (Q3,Q2) then to Q2.e dashed;
+    line from Q2.w to Q1.e dashed; 
+
+.PE
+```
+::::
+
 
 ### <font color='brown'> Prúd dvojpólom  </font>
 
@@ -923,7 +984,7 @@ Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá *l_c
             
             frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
 
-Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makro *l_current()* je implementované ako vetva, neovplyvňuje hodnotu kurzoru `Here`.
+Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makrá *l_current()* a *r_current()* sú implementované v knižnici [lib_user.ckt](./src/lib_user.ckt) ako vetvy, neovplyvňujú hodnotu kurzoru `Here`.
 
     define( `l_current', `{
         S: last line .start;
@@ -984,8 +1045,53 @@ _ = cm_compile('cm_0100h', data, dpi=600)
 :width: 550px
 :name: cm_0100h
 
-[Zobrazenie](./src/cm_0100h.ckt) prúdu rezistorom a vetvou obvodu.
+Zobrazenie prúdu rezistorom a vetvou obvodu.
 ```
+
+::::{admonition} Zdrojový kód k obrázku {numref}`cm_0100h`
+:class: dropdown, tip 
+
+```{code-block} Python
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_user.ckt)
+
+Origin: Here 
+
+Grid(9, 2.5)
+move to (1,0.5)
+        
+R1: resistor(right_ 3,,E); 
+    llabel(,R_2,); rlabel(,100,); 
+    b_current(i_{12} ); 
+
+R1: resistor(right_ 3 at (2.5, 2),,E) ; 
+    llabel(,R_2,); rlabel(,100,); 
+    b_current(i_{34}, below_, Out, End, 0.45 ); 
+
+L1: line from (5,0.5) to (8,0.5) "L1" above;
+    r_current(i_{56}, above_, 0.25 ); 
+
+L2: line from (5,2) to (8,2) "L2" above;
+    r_current(i_{78}, below_, 0.75 ); 
+
+.PE
+
+```
+::::
+
             
 ### <font color='brown'> Napätie na dvojpóle </font>
 
@@ -1038,8 +1144,40 @@ _ = cm_compile('cm_0100i', data, dpi=600)
 :width: 300px
 :name: cm_0100i
 
-[Zobrazenie](./src/cm_0100i.ckt) úbytku napätia na rezistoroch.
+Zobrazenie úbytku napätia na rezistoroch.
 ```
+
+::::{admonition} Zdrojový kód k obrázku {numref}`cm_0100i`
+:class: dropdown, tip 
+
+```{code-block} Python
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+Origin: Here 
+move to (1,0.5)
+up_
+S1: source(2.5, AC); larrow(V_{0}, <-); b_current(i_0, ,Out, End, 0.45 );
+    resistor(right_ 2.5,, E); larrow(V_{1}, ->); rlabel(,R_1,);
+    dot; {tconn(1.5,O); "1" ljust;}
+    resistor(down_ 2.5,, E); larrow(V_{2}, ->); rlabel(,R_2,)
+    dot; {tconn(right_ 1.5,O); "2" ljust;}
+    line to S1.start; 
+
+.PE
+```
+::::
 
     
 

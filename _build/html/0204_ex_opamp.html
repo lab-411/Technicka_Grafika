@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -47,8 +48,13 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0204_ex_opamp';</script>
@@ -352,7 +358,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="operacne-zosilovace">
 <h1><font color='navy'> Operačné zosilovače  </font><a class="headerlink" href="#operacne-zosilovace" title="Link to this heading">#</a></h1>
-<p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE ..,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra  <strong>P</strong>, <a class="reference internal" href="#cm-0204d"><span class="std std-numref">Obr. 92</span></a>:</p>
+<p>Operačné zosilovače patria v <code class="docutils literal notranslate"><span class="pre">CicuitMacros</span></code> medzi multipóly a podobne pri ako iných multipóloch ich vývody nie sú uložené v celočíselnej mriežke. Okrem štandardných atribútov pre plošné objekty (<em>.s, …</em>) sú súčasťou prvku doplnkové atribúty (<em>.NE …,</em>) pre pozície bodov na značke a atribúty pre prístup k vývodom zosilovača. Atribúty pre pripojenie napájacích vývodov (<em>.V1, .V2</em>) sú dostupné len pri použití parametra  <strong>P</strong>, <a class="reference internal" href="#cm-0204d"><span class="std std-numref">Obr. 92</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>opamp(linespec, label+, label-, size, TPR);
 
 parametre:

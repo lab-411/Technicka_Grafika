@@ -1,0 +1,5 @@
+kapitola ciary - doplnit parametre hrubka ciary, farba
+
+plosne objekty - farba, vypln, neviditelny okraj
+atributy plosnych prvkov - osipkovat ako elementy ...
+

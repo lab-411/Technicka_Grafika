@@ -121,9 +121,9 @@ Atribút je ekvivalentom hodnotu súradnice označenej časti prvku. Nasledujúc
 ```{code-block}
 :emphasize-lines: 5
     move to (1,1);
-R1: resistor;                 # referencia, R1.start = (1,1)
+R1: resistor;                     # prvok, referencia, R1.start = (1,1)
     move to (1,2)
-C1: capacitor;                # referencia C1.start = (1,2)
+C1: capacitor;                    # prvok, referencia C1.start = (1,2)
     line from R1.start to C1.end; # spoj medzi bodmi zadanými referenciami a atribútmi
 ```
     
@@ -235,7 +235,6 @@ from src.utils import *
 data = r'''
 include(lib_base.ckt)
 
-#Grid(5,3.5);
 Origin: Here 
 
 box wid 2 ht 1 "Box";
@@ -253,7 +252,7 @@ _ = cm_compile('cm_0014d', data, dpi=600)
 :width: 400px
 :name: cm_0014d
 
-Jednoduchý [diagram](./src/cm_0014d.ckt) vykreslený pomocou príkazov *dpic*
+Jednoduchý [diagram](./src/cm_0014d.ckt) vykreslený pomocou príkazov *dpic*.
 ```
 
 

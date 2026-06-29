@@ -14,14 +14,30 @@ release = '1.00'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["myst_nb", "sphinx_copybutton", "sphinx_design" ]
+extensions = [
+      "myst_nb",
+      "sphinx_design",
+      "sphinx_copybutton",
+      "sphinx_togglebutton",
+      "sphinx_subfigure",
+      "sphinxcontrib.tikz"
+       ]
 
 myst_enable_extensions = [
     "amsmath",
+    "attrs_inline",
     "colon_fence",
     "deflist",
     "dollarmath",
+    "fieldlist",
+    "html_admonition",
     "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
 ]
 
 myst_url_schemes = ("http", "https", "mailto")

@@ -32,8 +32,9 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
@@ -47,8 +48,13 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '0100_cm_dvojpoly';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -786,7 +792,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <p>Makro môžeme použiť dvoma spôsobmi, <a class="reference internal" href="#cm-0100g"><span class="std std-numref">Obr. 21</span></a>:</p>
 <ul>
 <li><p>s prvým argumentom, v ktorom zadáme makro s parametrami prvky, ktorý chceme označiť ako premenný,</p></li>
-<li><p>makro použijeme podobne ako makrá na popis prvkov <em>llabel() ..</em>, v tomto prípade ponecháme prvý argument prázdny.</p>
+<li><p>makro použijeme podobne ako makrá na popis prvkov <em>llabel() …</em>, v tomto prípade ponecháme prvý argument prázdny.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>      move to (0,0)
       variable(`R1: resistor(right_ 2,,)&#39;,A); llabel(,R_1,); rlabel(a,10,b)
 
@@ -832,9 +838,66 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100m.png"><img alt="_images/cm_0100m.png" src="_images/cm_0100m.png" style="width: 220px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 24 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/83092ee57293228f4c4e0d1b8967e8a5/cm_0100m.ckt"><span class="xref download myst">Použitie</span></a> premenných prvkov v časti zapojenia rádia.</span><a class="headerlink" href="#cm-0100m" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 24 </span><span class="caption-text">Použitie premenných prvkov v časti zapojenia rádia.</span><a class="headerlink" href="#cm-0100m" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100m"><span class="std std-numref">Obr. 24</span></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_user</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">VR1</span><span class="p">:</span> <span class="n">vres_v</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">R</span><span class="p">);</span> <span class="s2">&quot;\sf 50k&quot;</span> <span class="n">at</span> <span class="n">VR1</span><span class="o">.</span><span class="n">w</span> <span class="n">below</span><span class="p">;</span> <span class="p">{</span><span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">VR1.n</span> <span class="n">left_</span> <span class="mi">1</span><span class="p">;}</span>
+     <span class="n">gnd</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="n">at</span> <span class="n">VR1</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">end</span> 
+     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">VR1.S</span> <span class="n">right_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">DT1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> 
+     <span class="n">line</span> <span class="mf">0.25</span><span class="p">;</span> <span class="n">Q0</span><span class="p">:</span><span class="n">circle</span> <span class="n">rad</span> <span class="mf">0.08</span>
+
+<span class="n">T1</span><span class="p">:</span>  <span class="n">bjt_NPN</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,,</span><span class="n">N</span><span class="p">)</span> <span class="k">with</span> <span class="o">.</span><span class="n">B</span> <span class="n">at</span> <span class="n">last</span> <span class="n">circle</span><span class="o">.</span><span class="n">e</span><span class="p">;</span>
+     <span class="n">Q1</span><span class="p">:</span> <span class="n">circle</span> <span class="k">with</span> <span class="o">.</span><span class="n">n</span> <span class="n">at</span> <span class="n">T1</span><span class="o">.</span><span class="n">E</span> <span class="n">rad</span> <span class="mf">0.08</span><span class="p">;</span>
+     <span class="n">DT2</span><span class="p">:</span> <span class="n">dot</span><span class="p">(</span><span class="n">at</span> <span class="n">T1</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">T2</span><span class="p">:</span>  <span class="n">bjt_NPN</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,,,</span><span class="n">N</span><span class="p">);</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">T2.E</span> <span class="n">to</span> <span class="p">(</span><span class="n">T2</span><span class="o">.</span><span class="n">E</span><span class="p">,</span> <span class="n">Q1</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+     <span class="n">Q2</span><span class="p">:</span> <span class="n">circle</span> <span class="k">with</span> <span class="o">.</span><span class="n">n</span> <span class="n">at</span> <span class="n">last</span> <span class="n">line</span><span class="o">.</span><span class="n">end</span> <span class="n">rad</span> <span class="mf">0.08</span><span class="p">;</span>
+     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">T2.C</span> <span class="n">right_</span> <span class="mf">0.5</span><span class="p">;</span>
+     <span class="n">Q3</span><span class="p">:</span> <span class="n">circle</span> <span class="n">rad</span> <span class="mf">0.08</span><span class="p">;</span>
+     <span class="n">down_</span><span class="p">;</span> <span class="n">move</span> <span class="n">to</span> <span class="n">Q2</span><span class="o">.</span><span class="n">s</span><span class="p">;</span> <span class="n">gnd</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+     <span class="n">res</span><span class="p">(</span><span class="kn">from</span><span class="w"> </span><span class="nn">DT1</span> <span class="n">up_</span> <span class="mi">3</span><span class="p">,</span> <span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="n">M1</span><span class="p">,)</span>
+<span class="n">VR2</span><span class="p">:</span> <span class="n">vres_v</span><span class="p">(</span><span class="mf">1.75</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">L</span><span class="p">);</span> <span class="s2">&quot;\sf 1M&quot;</span> <span class="n">at</span> <span class="n">VR2</span><span class="o">.</span><span class="n">w</span><span class="p">;</span>
+     <span class="n">res</span><span class="p">(</span><span class="kn">from</span><span class="w"> </span><span class="nn">DT2</span> <span class="n">up_</span> <span class="mf">1.75</span><span class="p">,</span> <span class="n">E</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="mi">3</span><span class="n">k5</span><span class="p">,)</span>
+     <span class="n">DT3</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">line</span> <span class="n">left_</span> <span class="mi">3</span><span class="p">;</span> <span class="p">};</span> <span class="n">line</span> <span class="mf">0.5</span><span class="p">;</span>
+     <span class="n">Q4</span><span class="p">:</span> <span class="n">circle</span> <span class="n">rad</span> <span class="mf">0.08</span><span class="p">;</span>
+     <span class="n">line</span> <span class="n">up_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">DT4</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+     <span class="p">{</span><span class="n">res</span><span class="p">(</span><span class="n">right_</span> <span class="mf">1.5</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="mi">350</span><span class="p">,);</span> <span class="n">gnd</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">R</span><span class="p">);</span> <span class="p">}</span>
+     <span class="n">res</span><span class="p">(</span><span class="n">up_</span> <span class="mf">1.5</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="mi">1</span><span class="n">k</span><span class="p">,);</span> <span class="n">DT5</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+
+     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">VR2.n</span> <span class="n">to</span> <span class="p">(</span><span class="n">VR2</span><span class="p">,</span> <span class="n">DT5</span><span class="p">);</span> <span class="n">DT6</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+     <span class="n">right_</span><span class="p">;</span><span class="n">res</span><span class="p">(</span><span class="kn">from</span><span class="w"> </span><span class="nn">DT5</span> <span class="n">to</span> <span class="n">DT6</span><span class="p">,</span><span class="n">E</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="mi">330</span><span class="p">,)</span>
+     <span class="n">capacitor</span><span class="p">(</span><span class="kn">from</span><span class="w"> </span><span class="nn">DT6</span> <span class="n">left_</span> <span class="mf">1.2</span><span class="p">,</span><span class="o">+</span><span class="n">K</span><span class="p">,,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="mi">50</span><span class="n">M</span><span class="p">,);</span> <span class="n">gnd</span><span class="p">(</span><span class="mf">.15</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
+     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DT5</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="c1"># IC MAA325 box </span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q1.w</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q0</span><span class="p">,</span><span class="n">Q1</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q0</span><span class="o">.</span><span class="n">s</span> <span class="n">dashed</span><span class="p">;</span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q0.n</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q0</span><span class="p">,</span><span class="n">Q4</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q4</span><span class="o">.</span><span class="n">w</span> <span class="n">dashed</span><span class="p">;</span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q4.e</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q3</span><span class="p">,</span><span class="n">Q4</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q3</span><span class="o">.</span><span class="n">n</span> <span class="n">dashed</span><span class="p">;</span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q3.s</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q3</span><span class="p">,</span><span class="n">Q2</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q2</span><span class="o">.</span><span class="n">e</span> <span class="n">dashed</span><span class="p">;</span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q2.w</span> <span class="n">to</span> <span class="n">Q1</span><span class="o">.</span><span class="n">e</span> <span class="n">dashed</span><span class="p">;</span> 
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="prud-dvojpolom">
 <h3><font color='brown'> Prúd dvojpólom  </font><a class="headerlink" href="#prud-dvojpolom" title="Link to this heading">#</a></h3>
@@ -873,7 +936,7 @@ r_current(label, above_|below_, frac)
         frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
 </pre></div>
 </div>
-<p>Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makro <em>l_current()</em> je implementované ako vetva, neovplyvňuje hodnotu kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
+<p>Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makrá <em>l_current()</em> a <em>r_current()</em> sú implementované v knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> ako vetvy, neovplyvňujú hodnotu kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define( `l_current&#39;, `{
     S: last line .start;
     E: last line .end;
@@ -902,9 +965,49 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
 <a class="reference internal image-reference" href="_images/cm_0100h.png"><img alt="_images/cm_0100h.png" src="_images/cm_0100h.png" style="width: 550px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 25 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/eb786509dd73fdd8baa5250a64eecc7e/cm_0100h.ckt"><span class="xref download myst">Zobrazenie</span></a> prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 25 </span><span class="caption-text">Zobrazenie prúdu rezistorom a vetvou obvodu.</span><a class="headerlink" href="#cm-0100h" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_user</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">Origin</span><span class="p">:</span> <span class="n">Here</span> 
+
+<span class="n">Grid</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+        
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">3</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> 
+    <span class="n">llabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">100</span><span class="p">,);</span> 
+    <span class="n">b_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="p">);</span> 
+
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">3</span> <span class="n">at</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),,</span><span class="n">E</span><span class="p">)</span> <span class="p">;</span> 
+    <span class="n">llabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">100</span><span class="p">,);</span> 
+    <span class="n">b_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">34</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span> 
+
+<span class="n">L1</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="s2">&quot;L1&quot;</span> <span class="n">above</span><span class="p">;</span>
+    <span class="n">r_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">56</span><span class="p">},</span> <span class="n">above_</span><span class="p">,</span> <span class="mf">0.25</span> <span class="p">);</span> 
+
+<span class="n">L2</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="s2">&quot;L2&quot;</span> <span class="n">above</span><span class="p">;</span>
+    <span class="n">r_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">78</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="mf">0.75</span> <span class="p">);</span> 
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="napatie-na-dvojpole">
 <h3><font color='brown'> Napätie na dvojpóle </font><a class="headerlink" href="#napatie-na-dvojpole" title="Link to this heading">#</a></h3>
@@ -934,9 +1037,39 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <a class="reference internal image-reference" href="_images/cm_0100i.png"><img alt="_images/cm_0100i.png" src="_images/cm_0100i.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 26 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/933577ac868054605b04fe4880982c9d/cm_0100i.ckt"><span class="xref download myst">Zobrazenie</span></a> úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 26 </span><span class="caption-text">Zobrazenie úbytku napätia na rezistoroch.</span><a class="headerlink" href="#cm-0100i" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100i"><span class="std std-numref">Obr. 26</span></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">Origin</span><span class="p">:</span> <span class="n">Here</span> 
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">up_</span>
+<span class="n">S1</span><span class="p">:</span> <span class="n">source</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">AC</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">&lt;-</span><span class="p">);</span> <span class="n">b_current</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="p">,</span><span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span>
+    <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span> <span class="s2">&quot;1&quot;</span> <span class="n">ljust</span><span class="p">;}</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,)</span>
+    <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="n">right_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span> <span class="s2">&quot;2&quot;</span> <span class="n">ljust</span><span class="p">;}</span>
+    <span class="n">line</span> <span class="n">to</span> <span class="n">S1</span><span class="o">.</span><span class="n">start</span><span class="p">;</span> 
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 </section>
