@@ -767,8 +767,47 @@ _ = cm_compile('cm_0100g', data, dpi=600)
 :width: 220px
 :name: cm_0100g
 
-[Zobrazenie](./src/cm_0100g.ckt) premenných prvkov.
+Zobrazenie premenných prvkov.
 ```
+
+::::{admonition} Zdrojový kód 
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0100g`
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+Origin: Here 
+
+move to (0,0)
+variable(`R1: resistor(right_ 2,,)',A); llabel(,R_1,); rlabel(a,10,b)
+
+resistor(right_ 2,,E); variable(,P);   llabel(,R_2,); rlabel(,100,); 
+
+move to (1,1)
+source(up_ 2, AC); variable(,A,,1.5);  llabel(,V_1,);
+
+move to (3,1)
+capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);  
+
+.PE
+```
+::::
+
+
 V analogových zapojeniach bývajú premenné prvky (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojen9m vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh, {numref}`r_325`.
     
 ```{figure} ./img/radio_325.jpg
@@ -886,10 +925,11 @@ _ = cm_compile('cm_0100m', data, dpi=600)
 Použitie premenných prvkov v časti zapojenia rádia.
 ```
 
-::::{admonition} Zdrojový kód k obrázku {numref}`cm_0100m`
+::::{admonition} Zdrojový kód
 :class: dropdown, tip 
 
 ```{code-block} Python
+:caption: Zdrojový kód k obrázku {numref}`cm_0100m`
   
 .PS
 pi=3.14159265359
@@ -1048,10 +1088,11 @@ _ = cm_compile('cm_0100h', data, dpi=600)
 Zobrazenie prúdu rezistorom a vetvou obvodu.
 ```
 
-::::{admonition} Zdrojový kód k obrázku {numref}`cm_0100h`
+::::{admonition} Zdrojový kód
 :class: dropdown, tip 
 
 ```{code-block} Python
+:caption: Zdrojový kód k obrázku {numref}`cm_0100h`
 
 .PS
 pi=3.14159265359
@@ -1147,10 +1188,12 @@ _ = cm_compile('cm_0100i', data, dpi=600)
 Zobrazenie úbytku napätia na rezistoroch.
 ```
 
-::::{admonition} Zdrojový kód k obrázku {numref}`cm_0100i`
+::::{admonition} Zdrojový kód 
 :class: dropdown, tip 
 
 ```{code-block} Python
+:caption: Zdrojový kód k obrázku {numref}`cm_0100i`
+
 .PS
 pi=3.14159265359
                         # parametre z PIC (resp. GNU PIC)
@@ -1169,12 +1212,11 @@ Origin: Here
 move to (1,0.5)
 up_
 S1: source(2.5, AC); larrow(V_{0}, <-); b_current(i_0, ,Out, End, 0.45 );
-    resistor(right_ 2.5,, E); larrow(V_{1}, ->); rlabel(,R_1,);
+R1: resistor(right_ 2.5,, E); larrow(V_{1}, ->); rlabel(,R_1,);
     dot; {tconn(1.5,O); "1" ljust;}
-    resistor(down_ 2.5,, E); larrow(V_{2}, ->); rlabel(,R_2,)
+R2: resistor(down_ 2.5,, E); larrow(V_{2}, ->); rlabel(,R_2,)
     dot; {tconn(right_ 1.5,O); "2" ljust;}
     line to S1.start; 
-
 .PE
 ```
 ::::

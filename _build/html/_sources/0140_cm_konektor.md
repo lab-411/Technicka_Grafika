@@ -324,5 +324,49 @@ _ = cm_compile('cm_0140d', data, dpi=600)
 :width: 400px
 :name: cm_0140d
 
-[Zapojenie](./src/cm_0140d.ckt) nulového modemu s konektormi DE-9, [zdroj](https://en.wikipedia.org/wiki/Null_modem).
+Zapojenie nulového modemu s konektormi DE-9, [zdroj](https://en.wikipedia.org/wiki/Null_modem).
 ```
+
+::::{admonition} Zdrojový kód 
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0140d`
+
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+include(lib_user.ckt)
+
+right_;
+move to (1,2); DS1: DE9_M(L);
+move to (6,2); DS2: DE9_M(L);
+dy = (DS1.P3.y-DS1.P2.y); dx = (DS1.P2+DS2.P3).x;
+
+color_blue;
+line from DS1.P5 to DS2.P5;
+color_red;
+line from DS1.P3 to (dx/2-dy, DS1.P3.y) then to (dx/2+dy, DS2.P2.y) then to DS2.P2;
+color_dark_green;
+line from DS1.P2 to (dx/2-dy, DS1.P2.y) then to (dx/2+dy, DS2.P3.y) then to DS2.P3;
+color_black;
+line from DS1.P1 right_ 0.5; line up_ to (Here, DS1.P6); dot; {line to DS1.P6} ; line to (Here, DS1.P4) then to DS1.P4;
+line from DS2.P1 right_ 0.5; line up_ to (Here, DS2.P6); dot; {line to DS2.P6} ; line to (Here, DS2.P4) then to DS2.P4;
+line from DS1.P7 left_ 0.5; line  up_ to (Here, DS1.P8) then to DS1.P8;
+line from DS2.P7 left_ 0.5; line  up_ to (Here, DS2.P8) then to DS2.P8;
+
+.PE
+```
+::::

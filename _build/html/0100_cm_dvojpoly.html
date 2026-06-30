@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -811,9 +811,45 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 <a class="reference internal image-reference" href="_images/cm_0100g.png"><img alt="_images/cm_0100g.png" src="_images/cm_0100g.png" style="width: 220px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 21 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/e1092e7ef3e1c87cd64d704f6043c21d/cm_0100g.ckt"><span class="xref download myst">Zobrazenie</span></a> premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 21 </span><span class="caption-text">Zobrazenie premenných prvkov.</span><a class="headerlink" href="#cm-0100g" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 3 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100g"><span class="std std-numref">Obr. 21</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+Origin: Here 
+
+move to (0,0)
+variable(`R1: resistor(right_ 2,,)&#39;,A); llabel(,R_1,); rlabel(a,10,b)
+
+resistor(right_ 2,,E); variable(,P);   llabel(,R_2,); rlabel(,100,); 
+
+move to (1,1)
+source(up_ 2, AC); variable(,A,,1.5);  llabel(,V_1,);
+
+move to (3,1)
+capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);  
+
+.PE
+</pre></div>
+</div>
+</div>
+</div>
 <p>V analogových zapojeniach bývajú premenné prvky (potenciometre, trimre, kondenzátory) zobrazené s fyzickým zapojen9m vývodov súčiastok tak, ako je to zobrazené na nasledjúcom obrázku. Pri ladiacich kondenzátoroch je zobrazený aj ich vzájomný mechanický súbeh, <a class="reference internal" href="#r-325"><span class="std std-numref">Obr. 22</span></a>.</p>
 <figure class="align-default" id="r-325">
 <a class="reference internal image-reference" href="_images/radio_325.jpg"><img alt="_images/radio_325.jpg" src="_images/radio_325.jpg" style="width: 600px;" />
@@ -842,7 +878,9 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 </figcaption>
 </figure>
 <div class="dropdown tip admonition">
-<p class="admonition-title">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100m"><span class="std std-numref">Obr. 24</span></a></p>
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 4 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100m"><span class="std std-numref">Obr. 24</span></a></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
 <span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
                         <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
@@ -896,6 +934,7 @@ variable(,[A|P|L|[u]N]|[u]NN]][C|S],[+|-]angle,length)
 
 <span class="o">.</span><span class="n">PE</span>
 </pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -969,7 +1008,9 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
 </figcaption>
 </figure>
 <div class="dropdown tip admonition">
-<p class="admonition-title">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a></p>
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 5 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
 <span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
                         <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
@@ -1008,6 +1049,7 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
 </pre></div>
 </div>
 </div>
+</div>
 </section>
 <section id="napatie-na-dvojpole">
 <h3><font color='brown'> Napätie na dvojpóle </font><a class="headerlink" href="#napatie-na-dvojpole" title="Link to this heading">#</a></h3>
@@ -1041,7 +1083,9 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 </figcaption>
 </figure>
 <div class="dropdown tip admonition">
-<p class="admonition-title">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100i"><span class="std std-numref">Obr. 26</span></a></p>
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 6 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100i"><span class="std std-numref">Obr. 26</span></a></span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
 <span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
                         <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
@@ -1060,14 +1104,14 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">up_</span>
 <span class="n">S1</span><span class="p">:</span> <span class="n">source</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">AC</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">&lt;-</span><span class="p">);</span> <span class="n">b_current</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="p">,</span><span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span>
-    <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span>
+<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span>
     <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span> <span class="s2">&quot;1&quot;</span> <span class="n">ljust</span><span class="p">;}</span>
-    <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,)</span>
+<span class="n">R2</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,)</span>
     <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="n">right_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span> <span class="s2">&quot;2&quot;</span> <span class="n">ljust</span><span class="p">;}</span>
     <span class="n">line</span> <span class="n">to</span> <span class="n">S1</span><span class="o">.</span><span class="n">start</span><span class="p">;</span> 
-
 <span class="o">.</span><span class="n">PE</span>
 </pre></div>
+</div>
 </div>
 </div>
 </section>

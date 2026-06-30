@@ -13,7 +13,7 @@
 
 <center> 
 <h3> <font color='brown'>  <b> LAB - 411 Production </b> </font>     </h3>
-<h3> <font color='brown'>  <b> Verzia 1.01 / Apr. 2026 </b> </font>  </h3>
+<h3> <font color='brown'>  <b> Verzia 1.02 / Jún 2026 </b> </font>  </h3>
 </center> 
 
 ----------------

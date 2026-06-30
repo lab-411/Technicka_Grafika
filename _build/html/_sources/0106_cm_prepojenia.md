@@ -113,6 +113,57 @@ _ = cm_compile('cm_0106b', data, dpi=600)
 [Vykreslenie](./src/cm_0106b.ckt) časti zapojenia so starším prevedením križovania vodičov.
 ```
 
+::::{admonition} Zdrojový kód 
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0106b`
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+include(lib_base.ckt)
+Grid(8,4);
+
+define(`gnd_line',`[
+    move to ($1,0);
+    linethick_(5);
+    L: line to Here + ($1,0);
+    linethick_();
+]')
+
+define(`gnd_dot',`[ C:circle at Here rad 0.09 fill 1; ]')
+
+P1:(1,0.5);    P2:(1,1);   P3:(1,1.5);   DX:(0.5,0)
+P4:(0.5, 2.5); P5:(1,2.5); P6:(1.5,2.5); DY:(0,0.5)
+
+LA: line from P1 to P3; "\sf LA" ljust;
+    crossover(from P2-DX to P2+DX,,LA)
+
+LC: line from P4 to P6; "\sf LC" ljust;
+    crossover(from P5-DY to P5+DY,R,LC)
+
+
+GL:  gnd_line(4) at (3, 0.5);  "\sf GL" ljust
+Q1: line from (3, 1.0) right_ 4; "\sf Q1" ljust
+Q2: line from (3, 1.5) right_ 4; "\sf Q2" ljust
+
+CR: crossover(from (4,.5) to (4, 2),L,Q1, Q2); { gnd_dot() at CR.s }
+TR:  transformer(up_ 1.5,R,4,W,4) with .P1 at CR.n; line from TR.S2 to (TR.S1, TR.P2)
+     crossover(from TR.S1 to (TR.S1, (Q2.start+Q1.start)/2),R,Q2);
+     line to (TR.S1, Q1.start); dot;
+
+.PE
+```
+::::
+
 Pre vykreslenie štandarného vodivého spojenie vodičov použijeme makro *dot()*. Pokiaľ nie je križovanie vodičov nijako označené, predpokladáme, že sú nespojené. Parametrami makra *dot()* môžeme upraviť veľkost spoja, makro bez parametrov vykreslí bod spojenia v preddefinovanom tvare, {numref}`cm_0106c`.
 
     dot(at location,radius|keys,fill)
@@ -123,14 +174,14 @@ Pre vykreslenie štandarného vodivého spojenie vodičov použijeme makro *dot(
         radius|keys  - parametre spoja, priemer vonkajšej kružnice
         fill         - hodnota 0...1 výplne, 0-čierna, 1-biela
 
-Polohu prepojenia môžeme využiť aj na vyznačenie eletrických veličín v uzle zapojenia.
+Polohu prepojenia môžeme využiť aj na vyznačenie elektrických veličín v uzle zapojenia.
 
 ```{code-block}
 :emphasize-lines: 2
 resistor(2,,E); llabel(,\sf R_1,)
 dot "\sf 3.3V" above; 
 {resistor(down_ 2 ,,E);  llabel(,\sf R_3,)}
-resistor(right_ 2,,E);  llabel(,\sf R_2,)
+resistor(right_ 2,,E);   llabel(,\sf R_2,)
 ```
 
 ```{code-cell} ipython3  

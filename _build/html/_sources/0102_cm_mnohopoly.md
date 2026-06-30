@@ -25,31 +25,32 @@ data = r'''
 include(lib_base.ckt)
 
 log_init;
+
 Origin: Here
 up_;
 move to Here;
-TR: transformer(down_ 2,L,7,W,4); {"tra\\nsformer" at (Here.x-2.5,  TR.c.y); }
+TR: transformer(down_ 2,L,7,W,4);      {"`transformer'" at (Here.x-2.5,  TR.c.y); }
 
 move to Here+(0,0.5);
-GG: gyrator;                          {"gy\\rator" at (Here.x-2.5, GG.c.y);  }
+GG: gyrator;                           {"`gyrator'" at (Here.x-2.5, GG.c.y);  }
 
 move to Here+(0,0.5);
-TT: bi_tr(up_,,,E) ;                   {"bi\_t\\r" at (Here.x-2.5, TT.c.y);  }
+TT: bi_tr(up_,,,E) ;                   {"`bi_tr'" at (Here.x-2.5, TT.c.y);  }
 
 move to Here+(0,0.5);
-HH: Header(2, 6,,,fill_(0.9));         {"Heade\\r" at (Here.x-2.5,  HH.c.y); }
+HH: Header(2, 6,,,fill_(0.9));         {"`Header'" at (Here.x-2.5,  HH.c.y); }
 
 move to Origin + (4,0);
-NN: nport;                             {"npo\\rt"  at (Here.x +2.5, NN.c.y); }
+NN: nport;                             {"`nport'"  at (Here.x +2.5, NN.c.y); }
 
 move to Here+(0,1.2);
-OP: opamp(right_);                     {"opa\\mp"  at (Here.x +2.5, OP.c.y); }
+OP: opamp(right_);                     {"`opamp'"  at (Here.x +2.5, OP.c.y); }
 
 move to Here+(0,0.8);
-CC: contact;                           {"cont\\act"  at (Here.x +2.5, CC.c.y); }
+CC: contact;                           {"`contact'"  at (Here.x +2.5, CC.c.y); }
 
 move to Here+(0,0.8);
-G1: NAND_gate(4);                      {"NAND\\\_gate"  at (Here.x +2.5, G1.c.y); }
+G1: NAND_gate(4);                      {"`NAND_gate'"  at (Here.x +2.5, G1.c.y); }
 '''
 
 _ = cm_compile('cm_0102a', data,  dpi=600)   
@@ -59,8 +60,62 @@ _ = cm_compile('cm_0102a', data,  dpi=600)
 :width: 500px
 :name: cm_0102a
 
-[Príklady](./src/cm_0102a.ckt) multipólov definovaných v CircuitMacros.
+Príklady multipólov definovaných v CircuitMacros.
 ```
+
+
+::::{admonition} Zdrojový kód 
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0102a`
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_base.ckt)
+
+log_init;
+Origin: Here
+up_;
+move to Here;
+TR: transformer(down_ 2,L,7,W,4); {"`transformer'" at (Here.x-2.5,  TR.c.y); }
+
+move to Here+(0,0.5);
+GG: gyrator;                      {"`gyrator'" at (Here.x-2.5, GG.c.y);  }
+
+move to Here+(0,0.5);
+TT: bi_tr(up_,,,E) ;              {"'bi_tr'" at (Here.x-2.5, TT.c.y);  }
+
+move to Here+(0,0.5);
+HH: Header(2, 6,,,fill_(0.9));    {"`Header'" at (Here.x-2.5,  HH.c.y); }
+
+move to Origin + (4,0);
+NN: nport;                        {"`nport'"  at (Here.x +2.5, NN.c.y); }
+
+move to Here+(0,1.2);
+OP: opamp(right_);                {"`opamp'"  at (Here.x +2.5, OP.c.y); }
+
+move to Here+(0,0.8);
+CC: contact;                      {"`contact'"  at (Here.x +2.5, CC.c.y); }
+
+move to Here+(0,0.8);
+G1: NAND_gate(4);                 {"`NAND_gate'"  at (Here.x +2.5, G1.c.y); }
+
+.PE
+```
+::::
+
+
 
 
 Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar, {numref}`cm_0102d`:
@@ -274,5 +329,49 @@ _ = cm_compile('cm_0102b', data,  dpi=600)
 :width: 250px
 :name: cm_0102b
 
-[Použitie](./src/cm_0102b.ckt) atribútov mnohopólu.
+Použitie atribútov mnohopólu.
 ```
+
+::::{admonition} Zdrojový kód 
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0102b`
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+include(lib_base.ckt)
+
+TR: transformer(down_ 2,L,7,W,4);
+"1" at TR.P1 rjust below;
+"2" at TR.P2 rjust above;
+"3" at TR.S1 ljust above;
+"4" at TR.S2 ljust below;
+"$TR_1$" at TR.n above;
+
+    line from TR.P1 left_ 1; 
+TC1:tconn(0.5,O);
+    line from TR.P2 left_ 1; 
+TC2:tconn(0.5,O);
+
+    line from TR.S1 up_ to (TR.S1.x, TC1.y) then right_ 0.5;
+D1: diode(1); llabel(,D_1,) 
+DT1: dot;
+    {tconn(1, O); }
+    {C1: capacitor(down_ 2); llabel(,C_1,) }
+    line from TR.S2 down_ to (TR.S2.x, TC2.y) then to C1.end;
+DT2:dot;
+   {tconn(right_ 1, O); }
+
+.PE
+```
+::::

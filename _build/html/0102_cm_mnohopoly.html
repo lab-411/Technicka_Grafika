@@ -362,9 +362,59 @@
 <a class="reference internal image-reference" href="_images/cm_0102a.png"><img alt="_images/cm_0102a.png" src="_images/cm_0102a.png" style="width: 500px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 27 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/f3f6bdc9178c1ed4d3ee2373ea55b504/cm_0102a.ckt"><span class="xref download myst">Príklady</span></a> multipólov definovaných v CircuitMacros.</span><a class="headerlink" href="#cm-0102a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 27 </span><span class="caption-text">Príklady multipólov definovaných v CircuitMacros.</span><a class="headerlink" href="#cm-0102a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 7 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0102a"><span class="std std-numref">Obr. 27</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">log_init</span><span class="p">;</span>
+<span class="n">Origin</span><span class="p">:</span> <span class="n">Here</span>
+<span class="n">up_</span><span class="p">;</span>
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="p">;</span>
+<span class="n">TR</span><span class="p">:</span> <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span> <span class="p">{</span><span class="s2">&quot;`transformer&#39;&quot;</span> <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span>  <span class="n">TR</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">GG</span><span class="p">:</span> <span class="n">gyrator</span><span class="p">;</span>                      <span class="p">{</span><span class="s2">&quot;`gyrator&#39;&quot;</span> <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">GG</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>  <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">TT</span><span class="p">:</span> <span class="n">bi_tr</span><span class="p">(</span><span class="n">up_</span><span class="p">,,,</span><span class="n">E</span><span class="p">)</span> <span class="p">;</span>              <span class="p">{</span><span class="s2">&quot;&#39;bi_tr&#39;&quot;</span> <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">TT</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>  <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">HH</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,,,</span><span class="n">fill_</span><span class="p">(</span><span class="mf">0.9</span><span class="p">));</span>    <span class="p">{</span><span class="s2">&quot;`Header&#39;&quot;</span> <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span>  <span class="n">HH</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Origin</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">NN</span><span class="p">:</span> <span class="n">nport</span><span class="p">;</span>                        <span class="p">{</span><span class="s2">&quot;`nport&#39;&quot;</span>  <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">NN</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">);</span>
+<span class="n">OP</span><span class="p">:</span> <span class="n">opamp</span><span class="p">(</span><span class="n">right_</span><span class="p">);</span>                <span class="p">{</span><span class="s2">&quot;`opamp&#39;&quot;</span>  <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">OP</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">);</span>
+<span class="n">CC</span><span class="p">:</span> <span class="n">contact</span><span class="p">;</span>                      <span class="p">{</span><span class="s2">&quot;`contact&#39;&quot;</span>  <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">CC</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="n">Here</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">);</span>
+<span class="n">G1</span><span class="p">:</span> <span class="n">NAND_gate</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>                 <span class="p">{</span><span class="s2">&quot;`NAND_gate&#39;&quot;</span>  <span class="n">at</span> <span class="p">(</span><span class="n">Here</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">G1</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Typickým multipólom je transformátor, makro pre jeho zobrazenie má tvar, <a class="reference internal" href="#cm-0102d"><span class="std std-numref">Obr. 28</span></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>transformer(linespec,L|R,np,[A|P][W|L][D1|D2|D12|D21],ns)
 
@@ -465,9 +515,52 @@ D1: diode(1); llabel(,D_1,);       # usmerňovač
 <a class="reference internal image-reference" href="_images/cm_0102b.png"><img alt="_images/cm_0102b.png" src="_images/cm_0102b.png" style="width: 250px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 30 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/dd3fdce729937efada0623d90a492568/cm_0102b.ckt"><span class="xref download myst">Použitie</span></a> atribútov mnohopólu.</span><a class="headerlink" href="#cm-0102b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 30 </span><span class="caption-text">Použitie atribútov mnohopólu.</span><a class="headerlink" href="#cm-0102b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 8 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0102b"><span class="std std-numref">Obr. 30</span></a></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">TR</span><span class="p">:</span> <span class="n">transformer</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="s2">&quot;1&quot;</span> <span class="n">at</span> <span class="n">TR</span><span class="o">.</span><span class="n">P1</span> <span class="n">rjust</span> <span class="n">below</span><span class="p">;</span>
+<span class="s2">&quot;2&quot;</span> <span class="n">at</span> <span class="n">TR</span><span class="o">.</span><span class="n">P2</span> <span class="n">rjust</span> <span class="n">above</span><span class="p">;</span>
+<span class="s2">&quot;3&quot;</span> <span class="n">at</span> <span class="n">TR</span><span class="o">.</span><span class="n">S1</span> <span class="n">ljust</span> <span class="n">above</span><span class="p">;</span>
+<span class="s2">&quot;4&quot;</span> <span class="n">at</span> <span class="n">TR</span><span class="o">.</span><span class="n">S2</span> <span class="n">ljust</span> <span class="n">below</span><span class="p">;</span>
+<span class="s2">&quot;$TR_1$&quot;</span> <span class="n">at</span> <span class="n">TR</span><span class="o">.</span><span class="n">n</span> <span class="n">above</span><span class="p">;</span>
+
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">TR.P1</span> <span class="n">left_</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="n">TC1</span><span class="p">:</span><span class="n">tconn</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">TR.P2</span> <span class="n">left_</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="n">TC2</span><span class="p">:</span><span class="n">tconn</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span>
+
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">TR.S1</span> <span class="n">up_</span> <span class="n">to</span> <span class="p">(</span><span class="n">TR</span><span class="o">.</span><span class="n">S1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">TC1</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="n">then</span> <span class="n">right_</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">D1</span><span class="p">:</span> <span class="n">diode</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">D_1</span><span class="p">,)</span> 
+<span class="n">DT1</span><span class="p">:</span> <span class="n">dot</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">O</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">{</span><span class="n">C1</span><span class="p">:</span> <span class="n">capacitor</span><span class="p">(</span><span class="n">down_</span> <span class="mi">2</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span><span class="n">C_1</span><span class="p">,)</span> <span class="p">}</span>
+    <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">TR.S2</span> <span class="n">down_</span> <span class="n">to</span> <span class="p">(</span><span class="n">TR</span><span class="o">.</span><span class="n">S2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">TC2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">C1</span><span class="o">.</span><span class="n">end</span><span class="p">;</span>
+<span class="n">DT2</span><span class="p">:</span><span class="n">dot</span><span class="p">;</span>
+   <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="n">right_</span> <span class="mi">1</span><span class="p">,</span> <span class="n">O</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

@@ -518,9 +518,52 @@ line from DS2.P7 left_ 0.5; line  up_ to (Here, DS2.P8) then to DS2.P8;
 <a class="reference internal image-reference" href="_images/cm_0140d.png"><img alt="_images/cm_0140d.png" src="_images/cm_0140d.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 41 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/c3a9a04996a246ccf2692f98e2a490d4/cm_0140d.ckt"><span class="xref download myst">Zapojenie</span></a> nulového modemu s konektormi DE-9, <a class="reference external" href="https://en.wikipedia.org/wiki/Null_modem">zdroj</a>.</span><a class="headerlink" href="#cm-0140d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 41 </span><span class="caption-text">Zapojenie nulového modemu s konektormi DE-9, <a class="reference external" href="https://en.wikipedia.org/wiki/Null_modem">zdroj</a>.</span><a class="headerlink" href="#cm-0140d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 10 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0140d"><span class="std std-numref">Obr. 41</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_color</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_user</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">right_</span><span class="p">;</span>
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">DS1</span><span class="p">:</span> <span class="n">DE9_M</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">DS2</span><span class="p">:</span> <span class="n">DE9_M</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">DS1</span><span class="o">.</span><span class="n">P3</span><span class="o">.</span><span class="n">y</span><span class="o">-</span><span class="n">DS1</span><span class="o">.</span><span class="n">P2</span><span class="o">.</span><span class="n">y</span><span class="p">);</span> <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">DS1</span><span class="o">.</span><span class="n">P2</span><span class="o">+</span><span class="n">DS2</span><span class="o">.</span><span class="n">P3</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
+
+<span class="n">color_blue</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS1.P5</span> <span class="n">to</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P5</span><span class="p">;</span>
+<span class="n">color_red</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS1.P3</span> <span class="n">to</span> <span class="p">(</span><span class="n">dx</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">dy</span><span class="p">,</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P3</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="p">(</span><span class="n">dx</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P2</span><span class="p">;</span>
+<span class="n">color_dark_green</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS1.P2</span> <span class="n">to</span> <span class="p">(</span><span class="n">dx</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">dy</span><span class="p">,</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="p">(</span><span class="n">dx</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">dy</span><span class="p">,</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P3</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P3</span><span class="p">;</span>
+<span class="n">color_black</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS1.P1</span> <span class="n">right_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">line</span> <span class="n">up_</span> <span class="n">to</span> <span class="p">(</span><span class="n">Here</span><span class="p">,</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P6</span><span class="p">);</span> <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">line</span> <span class="n">to</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P6</span><span class="p">}</span> <span class="p">;</span> <span class="n">line</span> <span class="n">to</span> <span class="p">(</span><span class="n">Here</span><span class="p">,</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P4</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P4</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS2.P1</span> <span class="n">right_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">line</span> <span class="n">up_</span> <span class="n">to</span> <span class="p">(</span><span class="n">Here</span><span class="p">,</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P6</span><span class="p">);</span> <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">line</span> <span class="n">to</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P6</span><span class="p">}</span> <span class="p">;</span> <span class="n">line</span> <span class="n">to</span> <span class="p">(</span><span class="n">Here</span><span class="p">,</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P4</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P4</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS1.P7</span> <span class="n">left_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">line</span>  <span class="n">up_</span> <span class="n">to</span> <span class="p">(</span><span class="n">Here</span><span class="p">,</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P8</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">DS1</span><span class="o">.</span><span class="n">P8</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DS2.P7</span> <span class="n">left_</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">line</span>  <span class="n">up_</span> <span class="n">to</span> <span class="p">(</span><span class="n">Here</span><span class="p">,</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P8</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">DS2</span><span class="o">.</span><span class="n">P8</span><span class="p">;</span>
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

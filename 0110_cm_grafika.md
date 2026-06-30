@@ -108,7 +108,7 @@ _ = cm_compile('cm_0110a', data,  dpi=600)
 :width: 500px
 :name: cm_0110a
 
-[Spôsoby](./src/cm_0110a.ckt) vykreslenia čiary na pracovnej ploche.
+Spôsoby vykreslenia čiary na pracovnej ploche.
 ```
 
 ```{admonition} Poznámka
