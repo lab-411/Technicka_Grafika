@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -345,7 +345,10 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#staticke-urovne-a-prechody-medzi-urovnami"><font color="teal"> Statické úrovne a prechody medzi úrovňami</font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><font color="teal"> Dáta </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hodinove-impulzy"><font color="teal"> Hodinové impulzy </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hodinove-impulzy"><font color="teal"> Hodinové impulzy </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jednoduchy-diagram"><font color="brown"> Jednoduchý diagram </font></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -385,11 +388,12 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 </section>
 <section id="data">
 <h2><font color='teal'> Dáta </font><a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<p>V časových diagramoch dáta reprezentujú binárny vektor, hodnota alebo symbolické označenie vektora je zvyčajne súčasťou zobrazenia dát.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data(d, text, L|R|X)    - vykreslenie dát
 
   parametre:
     d                  - dĺžka stavu
-    text               - popis dát, text v úvodzovkách 
+    text               - hodnota alebo označenie dát, text v úvodzovkách 
     L|R|X              - typ dát, otvorené zľava, zprava, neučité / opakované dáta
 </pre></div>
 </div>
@@ -403,6 +407,7 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 </section>
 <section id="hodinove-impulzy">
 <h2><font color='teal'> Hodinové impulzy </font><a class="headerlink" href="#hodinove-impulzy" title="Link to this heading">#</a></h2>
+<p>Hodinové impulzy sú zvyčajne sekvenciou opakujúcich sa impulzov so striedou 1:1. Pre zobrazenie sekvencie hodinovým impulzov môžeme použiť príkaz cyklu.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>clock(d, HL|LH)        - vykreslenie hodinového impulzu
 
   parametre:
@@ -417,6 +422,71 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <p><span class="caption-number">Obr. 55 </span><span class="caption-text">Hodinove impulzy.</span><a class="headerlink" href="#cm-140c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<section id="jednoduchy-diagram">
+<h3><font color='brown'> Jednoduchý diagram </font><a class="headerlink" href="#jednoduchy-diagram" title="Link to this heading">#</a></h3>
+<p>Na diagrame je znázornený priebeh generovania PWM signálu časovačom procesora STM32L476 v móde 1.</p>
+<figure class="align-default" id="cm-0150d">
+<a class="reference internal image-reference" href="_images/cm_0150d.png"><img alt="_images/cm_0150d.png" src="_images/cm_0150d.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Generovanie PWM signálu.</span><a class="headerlink" href="#cm-0150d" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 11 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150d"><span class="std std-numref">Obr. 56</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
+                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
+<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
+<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
+<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
+
+<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
+<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
+
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>                  
+<span class="n">include</span><span class="p">(</span><span class="n">lib_time</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_color</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">command</span> <span class="s2">&quot;\sf&quot;</span>
+<span class="n">Origin</span><span class="p">:</span> <span class="n">Here</span> 
+<span class="n">Grid</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>              <span class="c1"># vykreslenie pomocnej mriezky, origin je (0,0)</span>
+
+<span class="n">d</span><span class="o">=</span><span class="mf">1.5</span>
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="s2">&quot;\small{CK\_CNT}&quot;</span> <span class="n">at</span> <span class="n">Here</span> <span class="n">rjust</span><span class="p">;</span>
+<span class="n">level</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="n">to</span> <span class="mi">5</span> <span class="n">do</span><span class="p">{</span>
+  <span class="n">clock</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">HL</span><span class="p">)</span>
+  <span class="n">level</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="s2">&quot;\small</span><span class="si">{Counter}</span><span class="s2">&quot;</span> <span class="n">at</span> <span class="n">Here</span> <span class="n">rjust</span><span class="p">;</span>
+<span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span> <span class="p">,</span><span class="n">L</span><span class="p">);</span> <span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="s2">&quot;7&quot;</span><span class="p">);</span> <span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="s2">&quot;8&quot;</span><span class="p">);</span> <span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="s2">&quot;9&quot;</span><span class="p">);</span> <span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="s2">&quot;0&quot;</span><span class="p">);</span> <span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">);</span> <span class="n">data</span><span class="p">(</span><span class="n">d</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="s2">&quot;\small{PWM 1}&quot;</span> <span class="n">at</span> <span class="n">Here</span> <span class="n">rjust</span><span class="p">;</span>
+<span class="n">level</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="n">H</span><span class="p">);</span> <span class="n">pulse</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">HL</span><span class="p">);</span> <span class="n">pulse</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">LH</span><span class="p">)</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="s2">&quot;\small{UPDATE Flag}&quot;</span> <span class="n">at</span> <span class="n">Here</span> <span class="n">rjust</span><span class="p">;</span>
+<span class="n">level</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="n">L</span><span class="p">);</span> <span class="n">pulse</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">LH</span><span class="p">);</span> <span class="n">level</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span><span class="n">H</span><span class="p">);</span>
+
+<span class="n">color_red</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="n">dashed</span> <span class="mf">.08</span><span class="p">;</span>
+<span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="n">dashed</span> <span class="mf">.08</span><span class="p">;</span>   
+
+<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -469,7 +539,10 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#staticke-urovne-a-prechody-medzi-urovnami"><font color="teal"> Statické úrovne a prechody medzi úrovňami</font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><font color="teal"> Dáta </font></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hodinove-impulzy"><font color="teal"> Hodinové impulzy </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hodinove-impulzy"><font color="teal"> Hodinové impulzy </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jednoduchy-diagram"><font color="brown"> Jednoduchý diagram </font></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
