@@ -174,6 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="0140_cm_konektor.html"><font color="navy"> Terminály </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0110_cm_grafika.html"><font color="navy"> Grafika </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0130_cm_text.html"><font color="navy"> Text </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0150_cm_casovanie.html"><font color="navy"> Časové priebehy </font></a></li>
 <li class="toctree-l1"><a class="reference internal" href="0104_cm_upravy.html"><font color="navy"> Úpravy </font></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programovanie</span></p>
@@ -362,23 +363,23 @@
 <p>Elektronické zariadenia v súčasnej dobe sú komplexné systémy, ktorých dokumentácia si vyžaduje hierarchický prístup, v ktorom na najvyššej úrovni dokumentujeme jednotlivé funkčné celky a vzťahy medzi nimi. Diagramy majú často tvar hybridných zapojení, kde pre väčšiu názornosť kombinujeme funkčné bloky s diskrétnymi komponentami reprezentujúcimi vybrané častí zariadenia.</p>
 <section id="blokove-zapojenia">
 <h2><font color='teal'> Blokové zapojenia </font><a class="headerlink" href="#blokove-zapojenia" title="Link to this heading">#</a></h2>
-<p>Na obrázku <a class="reference internal" href="#img-0208a"><span class="std std-numref">Obr. 110</span></a> je blokové zapojenie zariadenia pre testy mechanických vlastností 3D tlačených materiálov. Zariadenie obsahuje centrálny mikrokontrolér, analógové a digitálne periférie, ktoré sú riadené prostredníctvom rozhraní mikrokontroléra. Prepojenia medzi jednotlivými funkčnými časťami sú realizované pomocou označených zberníc (<em>SPI</em>, <em>I2C</em>) ako aj vodičmi, ktoré môžu byť jednotlivé alebo v skupine (<em>pulse</em>, <em>switch</em> …). Pre lepšiu prehľadnosť je v zapojení označené z koľkých vodičov zbernica alebo skupina vodičov pozostáva.</p>
+<p>Na obrázku <a class="reference internal" href="#img-0208a"><span class="std std-numref">Obr. 113</span></a> je blokové zapojenie zariadenia pre testy mechanických vlastností 3D tlačených materiálov. Zariadenie obsahuje centrálny mikrokontrolér, analógové a digitálne periférie, ktoré sú riadené prostredníctvom rozhraní mikrokontroléra. Prepojenia medzi jednotlivými funkčnými časťami sú realizované pomocou označených zberníc (<em>SPI</em>, <em>I2C</em>) ako aj vodičmi, ktoré môžu byť jednotlivé alebo v skupine (<em>pulse</em>, <em>switch</em> …). Pre lepšiu prehľadnosť je v zapojení označené z koľkých vodičov zbernica alebo skupina vodičov pozostáva.</p>
 <figure class="align-default" id="img-0208a">
 <a class="reference internal image-reference" href="_images/exam_02_trhacka.png"><img alt="_images/exam_02_trhacka.png" src="_images/exam_02_trhacka.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 110 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1412ab3a5352ff055b4919a2667fc4cc/exam_02_trhacka.ckt"><span class="xref download myst">Blokové</span></a> zapojenie zariadenia pre mechanické testy 3D tlačených materiálov <a class="footnote-reference brackets" href="#odkaz1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#img-0208a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 113 </span><span class="caption-text"><a class="reference download internal" download="" href="_downloads/1412ab3a5352ff055b4919a2667fc4cc/exam_02_trhacka.ckt"><span class="xref download myst">Blokové</span></a> zapojenie zariadenia pre mechanické testy 3D tlačených materiálov <a class="footnote-reference brackets" href="#odkaz1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#img-0208a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="kombinovane-zapojenia">
 <h2><font color='teal'> Kombinované zapojenia </font><a class="headerlink" href="#kombinovane-zapojenia" title="Link to this heading">#</a></h2>
-<p>V niektorých prípadoch je vhodné pre väčšíu prehľadnosť zahrnúť do zapojenia aj znázornenie fyzickej realizácie zariadenia, ktorá by v čisto elektronickej podobe nemusela byť na prvý pohľad zrejmá. Na obrázku <a class="reference internal" href="#img-0208b"><span class="std std-numref">Obr. 111</span></a> je zapojenie analogovej časti kapacitného extenzometra, v ktorom sú <span class="math notranslate nohighlight">\(EL\)</span>, <span class="math notranslate nohighlight">\(EC\)</span> a <span class="math notranslate nohighlight">\(ER\)</span> elektródy extenzomera, pričom elektróde <span class="math notranslate nohighlight">\(EC\)</span> je pohyblivá. Kondenzátory <span class="math notranslate nohighlight">\(C_{P1} ... C_{P3}\)</span> reprezentujú parazitné montážne kapacity zariadenia.</p>
+<p>V niektorých prípadoch je vhodné pre väčšíu prehľadnosť zahrnúť do zapojenia aj znázornenie fyzickej realizácie zariadenia, ktorá by v čisto elektronickej podobe nemusela byť na prvý pohľad zrejmá. Na obrázku <a class="reference internal" href="#img-0208b"><span class="std std-numref">Obr. 114</span></a> je zapojenie analogovej časti kapacitného extenzometra, v ktorom sú <span class="math notranslate nohighlight">\(EL\)</span>, <span class="math notranslate nohighlight">\(EC\)</span> a <span class="math notranslate nohighlight">\(ER\)</span> elektródy extenzomera, pričom elektróde <span class="math notranslate nohighlight">\(EC\)</span> je pohyblivá. Kondenzátory <span class="math notranslate nohighlight">\(C_{P1} ... C_{P3}\)</span> reprezentujú parazitné montážne kapacity zariadenia.</p>
 <figure class="align-default" id="img-0208b">
 <a class="reference internal image-reference" href="_images/cm_208b.png"><img alt="_images/cm_208b.png" src="_images/cm_208b.png" style="width: 650px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 111 </span><span class="caption-text">Zapojenie analogovej časti kapacitného extenzometra <a class="footnote-reference brackets" href="#odkaz2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>…</span><a class="headerlink" href="#img-0208b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 114 </span><span class="caption-text">Zapojenie analogovej časti kapacitného extenzometra <a class="footnote-reference brackets" href="#odkaz2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>…</span><a class="headerlink" href="#img-0208b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

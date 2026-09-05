@@ -1,0 +1,27 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_time.ckt)
+include(lib_base.ckt)
+
+command "\sf"
+Grid(10,1)
+pulse_level = 0.75
+move to (0,0.5); QL: level(1.5,L); "L" at QL.B.c; 
+move to (2,0.5); QH: level(1.5,H); "H" at QH.B.c; 
+move to (4,0.5); QX: level(1.5,X, D); "X" at QX.B.n; 
+move to (6,0.5); PH: pulse(1.5, 0.25, LH); "L-H" at PH.B.c; 
+move to (8,0.5); PL: pulse(1.5, 0.25, HL); "H-L" at PL.B.c; 
+
+
+.PE
