@@ -367,7 +367,6 @@ Pri kreslení diagramov je vhodné použiť mriežku <em>Grid(x,y)</em>, ktorá 
 <section id="staticke-urovne-a-prechody-medzi-urovnami">
 <h2><font color='teal'> Statické úrovne a prechody medzi úrovňami</font><a class="headerlink" href="#staticke-urovne-a-prechody-medzi-urovnami" title="Link to this heading">#</a></h2>
 <p>Hodnota amplitúdy logických úrovní pre príkazy kreslenia elementov časového priebehu je prednastavená na hodnotu 0.7, pre kreslenie priebehu je začiatkom zadaný stred logickej stopy. Amplitúdu logických úrovní je možné zmeniť hodnotou premennej <em>pulse_level</em>.</p>
-<p>Každý element časového priebehu je “orámovaný” neviditeľným boxom označeným ako <em>B</em>, tento je možné využiť v prípade potreby ako referenciu pre polohovanie popisu priebehu.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>level(d, L|H|X, D)     - vykreslenie logických úrovní
 pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 
@@ -382,7 +381,15 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <a class="reference internal image-reference" href="_images/cm_0150a.png"><img alt="_images/cm_0150a.png" src="_images/cm_0150a.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Statické úrovne a prechody medzi úrovňami.</span><a class="headerlink" href="#cm-140a" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Statické úrovne signálov a prechody medzi úrovňami.</span><a class="headerlink" href="#cm-140a" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Každý element časového priebehu je “orámovaný” neviditeľným boxom označeným ako <em>B</em>, tento je možné využiť v prípade potreby ako referenciu pre umiestnenie popisu časového okamžiku priebehu.</p>
+<figure class="align-default" id="cm-140e">
+<a class="reference internal image-reference" href="_images/cm_0150f.png"><img alt="_images/cm_0150f.png" src="_images/cm_0150f.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 54 </span><span class="caption-text">Umiestnenie popisného textu k časovému priebehu.</span><a class="headerlink" href="#cm-140e" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -401,7 +408,7 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <a class="reference internal image-reference" href="_images/cm_0150b.png"><img alt="_images/cm_0150b.png" src="_images/cm_0150b.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 54 </span><span class="caption-text">Vykreslenie dát s popisom.</span><a class="headerlink" href="#cm-140b" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 55 </span><span class="caption-text">Vykreslenie dát s popisom.</span><a class="headerlink" href="#cm-140b" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -419,7 +426,7 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <a class="reference internal image-reference" href="_images/cm_0150c.png"><img alt="_images/cm_0150c.png" src="_images/cm_0150c.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 55 </span><span class="caption-text">Hodinove impulzy.</span><a class="headerlink" href="#cm-140c" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Hodinove impulzy.</span><a class="headerlink" href="#cm-140c" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="jednoduchy-diagram">
@@ -429,13 +436,13 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <a class="reference internal image-reference" href="_images/cm_0150d.png"><img alt="_images/cm_0150d.png" src="_images/cm_0150d.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Generovanie PWM signálu.</span><a class="headerlink" href="#cm-0150d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 57 </span><span class="caption-text">Generovanie PWM signálu.</span><a class="headerlink" href="#cm-0150d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="dropdown tip admonition">
 <p class="admonition-title">Zdrojový kód</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 11 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150d"><span class="std std-numref">Obr. 56</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 11 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150d"><span class="std std-numref">Obr. 57</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
 <span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
                         <span class="c1"># parametre z PIC (resp. GNU PIC)</span>

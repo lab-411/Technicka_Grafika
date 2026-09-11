@@ -20,8 +20,6 @@ Pri kreslení diagramov je vhodné použiť mriežku *Grid(x,y)*, ktorá zjednod
 
 Hodnota amplitúdy logických úrovní pre príkazy kreslenia elementov časového priebehu je prednastavená na hodnotu 0.7, pre kreslenie priebehu je začiatkom zadaný stred logickej stopy. Amplitúdu logických úrovní je možné zmeniť hodnotou premennej *pulse_level*.
 
-Každý element časového priebehu je "orámovaný" neviditeľným boxom označeným ako *B*, tento je možné využiť v prípade potreby ako referenciu pre polohovanie popisu priebehu.
-
 
     level(d, L|H|X, D)     - vykreslenie logických úrovní
     pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
@@ -60,8 +58,57 @@ _ = cm_compile('cm_0150a', data, dpi=600)
 :width: 600px
 :name: cm_140a
 
-Statické úrovne a prechody medzi úrovňami.
+Statické úrovne signálov a prechody medzi úrovňami.
 ```
+
+Každý element časového priebehu je "orámovaný" neviditeľným boxom označeným ako *B*, tento je možné využiť v prípade potreby ako referenciu pre umiestnenie popisu časového okamžiku priebehu.
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+cct_init
+log_init
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+include(lib_time.ckt)
+include(lib_ic485.ckt)
+
+command "\sf"
+color_light_grey; line from (0, 1.5) right_ 4.65 dashed; color_red; "H" ljust ;
+color_light_grey; line from (0, 0.5) right_ 4.65 dashed; color_red; "L" ljust ;
+color_light_grey; line from (0, 1) right_ 4.65   dashed; color_red; "X" ljust ;
+
+color_black;
+move to (1,1); 
+PH: pulse(1.5, 0.25, LH); 
+
+color_red;
+box wid (PH.B.e - PH.B.w).x ht (PH.B.n - PH.B.s).y at PH.B.c dotted; #PH.B.e - PH.B.w ht PH.B.n - PH.B.s;
+color_dark_green;
+line <- from PH.B.nw left_ 0.5 up_ 0.5; ".B.nw" above;
+line <- from PH.B.n up_ 0.75 ; ".B.n" above;
+line <- from PH.B.ne up_ 0.5 right_ 0.5; ".B.ne" above;
+line <- from PH.B.e right_ 0.75; ".B.e" ljust;
+line <- from PH.B.se right_ 0.5 down_ 0.5; ".B.se" below;
+line <- from PH.B.s down_ 0.75 ; ".B.s" below;
+line <- from PH.B.sw left_ 0.5 down_ 0.5; ".B.sw" below;
+line <- from PH.B.w left_ 0.75; ".B.w" rjust;
+line <- from PH.B.c right_ 1.85 down_ 0.55; ".B.c" ljust;
+'''
+
+_ = cm_compile('cm_0150f', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0150f.png
+:width: 400px
+:name: cm_140e
+
+Umiestnenie popisného textu k časovému priebehu.
+```
+
 
 ## <font color='teal'> Dáta </font>
 
