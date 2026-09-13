@@ -264,26 +264,7 @@ _ = cm_compile('cm_0140c', data, dpi=600)
 [Príklady](./src/cm_0140c.ckt) modifikácií radových konektorov.
 ```
 
-V niektorých prípadoch je vhodné zobrazenie reálneho usporiadanie pinov konektora a pripojenie pinov. Vzhľadom k obrovskému množstvu typov konektorov a ich typových modifikácii je potrebné si vytvoriť pre zobrazenie daného typu vlastné makro. V knižnici [lib_user.ckt](./src/lib_user.ckt) je ako príklad definované makro *DE9_M* pre 9-pinový D-sub konektor. Príklad jeho použitia ne na {numref}`cm_0140d`.
-
-    include(lib_user.ckt)
-    move to (1,2); DS1: DE9_M(L);
-    move to (6,2); DS2: DE9_M(L);
-    dy = (DS1.P3.y-DS1.P2.y); dx = (DS1.P2+DS2.P3).x;
-
-    color_blue;
-    line from DS1.P5 to DS2.P5;
-    color_red;
-    line from DS1.P3 to (dx/2-dy, DS1.P3.y) then to (dx/2+dy, DS2.P2.y) then to DS2.P2;
-    color_dark_green;
-    line from DS1.P2 to (dx/2-dy, DS1.P2.y) then to (dx/2+dy, DS2.P3.y) then to DS2.P3;
-    color_black;
-    line from DS1.P1 right_ 0.5; line up_ to (Here, DS1.P6); dot; {line to DS1.P6}; 
-    line to (Here, DS1.P4) then to DS1.P4;
-    line from DS2.P1 right_ 0.5; line up_ to (Here, DS2.P6); dot; {line to DS2.P6}; 
-    line to (Here, DS2.P4) then to DS2.P4;
-    line from DS1.P7 left_ 0.5; line  up_ to (Here, DS1.P8) then to DS1.P8;
-    line from DS2.P7 left_ 0.5; line  up_ to (Here, DS2.P8) then to DS2.P8;
+V niektorých prípadoch je vhodné zobrazenie reálneho usporiadanie pinov konektora a pripojenie pinov. Vzhľadom k obrovskému množstvu typov konektorov a ich typových modifikácii je potrebné si vytvoriť pre zobrazenie daného typu vlastné makro. V knižnici [lib_user.ckt](./src/lib_user.ckt) je ako príklad definované makro *DE9_M* pre 9-pinový D-sub konektor, príklad jeho použitia je na nasledujúcom obrázku.
 
     
 ```{code-cell} ipython3 
@@ -324,7 +305,7 @@ _ = cm_compile('cm_0140d', data, dpi=600)
 :width: 400px
 :name: cm_0140d
 
-Zapojenie nulového modemu s konektormi DE-9, [zdroj](https://en.wikipedia.org/wiki/Null_modem).
+Zapojenie nulového modemu s konektormi DE-9, [zdroj](https://en.wikipedia.org/wiki/Null_modem) zapojenia.
 ```
 
 ::::{admonition} Zdrojový kód 

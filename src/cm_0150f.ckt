@@ -17,28 +17,32 @@ log_init
 include(lib_base.ckt)
 include(lib_color.ckt)
 include(lib_time.ckt)
-include(lib_ic485.ckt)
 
 command "\sf"
-color_light_grey; line from (0, 1.5) right_ 4.65 dashed; color_red; "H" ljust ;
-color_light_grey; line from (0, 0.5) right_ 4.65 dashed; color_red; "L" ljust ;
-color_light_grey; line from (0, 1) right_ 4.65   dashed; color_red; "X" ljust ;
+color_light_grey; line from (0, 1.5) right_ 7 dashed; color_red; "H" ljust ;
+color_light_grey; line from (0, 0.5) right_ 7 dashed; color_red; "L" ljust ;
+color_light_grey; line from (0, 1)   right_ 7   dashed; color_red; "X" ljust ;
 
 color_black;
 move to (1,1); 
-PH: pulse(1.5, 0.25, LH); 
+pulse_level = 0.7
+pulse_slope = 0.1
 
-color_red;
-box wid (PH.B.e - PH.B.w).x ht (PH.B.n - PH.B.s).y at PH.B.c dotted; #PH.B.e - PH.B.w ht PH.B.n - PH.B.s;
-color_dark_green;
-line <- from PH.B.nw left_ 0.5 up_ 0.5; ".B.nw" above;
-line <- from PH.B.n up_ 0.75 ; ".B.n" above;
-line <- from PH.B.ne up_ 0.5 right_ 0.5; ".B.ne" above;
-line <- from PH.B.e right_ 0.75; ".B.e" ljust;
-line <- from PH.B.se right_ 0.5 down_ 0.5; ".B.se" below;
-line <- from PH.B.s down_ 0.75 ; ".B.s" below;
-line <- from PH.B.sw left_ 0.5 down_ 0.5; ".B.sw" below;
-line <- from PH.B.w left_ 0.75; ".B.w" rjust;
-line <- from PH.B.c right_ 1.85 down_ 0.55; ".B.c" ljust;
+P1: pulse(1.5, 0.25, LH);
+color_dark_blue;
+line <- from P1.S right_ 0.5 down_ 0.5; ".S" below;
+line <- from P1.E up_ 0.5 left_ 0.5 ; ".E" above;
+line <- from P1.C left_ 0.75; ".C" rjust;
+
+color_black;
+move to (5.5,1); 
+P2: pwm(2, LH, 0.65);
+color_dark_blue;
+line <- from P2.SU right_ 0.5 down_ 0.5; ".SU" below;
+line <- from P2.EU up_ 0.5 left_ 0.5 ; ".EU" above;
+line <- from P2.CU left_ 0.75; ".CU" rjust;
+line <- from P2.SD right_ 0.5 up_ 0.5; ".SD" above;
+line <- from P2.ED down_ 0.5 right_ 0.5 ; ".ED" below;
+line <- from P2.CD right_ 0.75; ".CD" ljust;
 
 .PE

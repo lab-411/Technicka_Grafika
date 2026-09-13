@@ -19,6 +19,7 @@ command "\sf"
 Origin: Here 
 Grid(13,5);              # vykreslenie pomocnej mriezky, origin je (0,0)
 
+pulse_slope = 0.0
 d=1.5
 move to (2.5,4);
 "\small{CK\_CNT}" at Here rjust;

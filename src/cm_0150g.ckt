@@ -17,12 +17,11 @@ log_init
 include(lib_base.ckt)
 include(lib_color.ckt)
 include(lib_time.ckt)
-include(lib_ic485.ckt)
 
 command "\sf"
-color_light_grey; line from (0, 1.5) right_ 4.5 dashed; color_red; "H" ljust ;
-color_light_grey; line from (0, 0.5) right_ 4.5 dashed; color_red; "L" ljust ;
-color_light_grey; line from (0, 1) right_ 4.5   dashed; color_red; "X" ljust ;
+color_light_grey; line from (0, 1.5) right_ 4.65 dashed; color_red; "H" ljust ;
+color_light_grey; line from (0, 0.5) right_ 4.65 dashed; color_red; "L" ljust ;
+color_light_grey; line from (0, 1) right_ 4.65   dashed; color_red; "X" ljust ;
 
 color_black;
 move to (1,1); 
@@ -39,9 +38,6 @@ line <- from PH.B.se right_ 0.5 down_ 0.5; ".B.se" below;
 line <- from PH.B.s down_ 0.75 ; ".B.s" below;
 line <- from PH.B.sw left_ 0.5 down_ 0.5; ".B.sw" below;
 line <- from PH.B.w left_ 0.75; ".B.w" rjust;
-line <- from PH.B.c right_ 1.95 down_ 0.45; ".B.c" ljust;
-
-
-#"L-H" at PH.B.n above; 
+line <- from PH.B.c right_ 1.85 down_ 0.55; ".B.c" ljust;
 
 .PE

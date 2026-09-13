@@ -14,12 +14,20 @@ kernelspec:
 # <font color='navy'> Časové priebehy </font>
 
 Súčasťou mnohých elektronických zapojení sú priebehy signálov v elektronickom obvode závislé od času. Pre tvorbu časových priebehov môžeme využiť niektoré z dostupných programov ako napríklad [plantuml](https://plantuml.com/timing-diagram), v *CircuitMacros* môžeme využiť jednoduchú knižnicu [lib_time](./src/lib_time.ckt).
-Pri kreslení diagramov je vhodné použiť mriežku *Grid(x,y)*, ktorá zjednodušuje orientáciu pri zadávaní časových priebehov a relácií medzi nimi.
 
-## <font color='teal'> Statické úrovne a prechody medzi úrovňami</font>
+## <font color='teal'> Použitie </font>
 
-Hodnota amplitúdy logických úrovní pre príkazy kreslenia elementov časového priebehu je prednastavená na hodnotu 0.7, pre kreslenie priebehu je začiatkom zadaný stred logickej stopy. Amplitúdu logických úrovní je možné zmeniť hodnotou premennej *pulse_level*.
+Pri kreslení diagramov s časovými priebehmi je vhodné použiť mriežku *Grid(x,y)*, ktorá zjednodušuje orientáciu pri zadávaní časových priebehov a relácií medzi nimi.
 
+Hodnota amplitúdy logických úrovní pre príkazy kreslenia elementov časového priebehu je prednastavená na hodnotu 0.7, pre kreslenie priebehu je začiatkom zadaný stred logickej stopy. Parametre priebehov je možné modifikovať globálnymi premennými:
+
+    pulse_level = 0.7     - amplitúda logických hodnôt
+    pulse_slope = 0.0     - doba nábehu / odbehu signálu 
+    pulse_width = 0.5     - šírka pwm pulzu
+    pulse_edge = .05      - hrana pre signál data 
+
+
+### <font color='brown'> Statické úrovne a prechody medzi úrovňami </font>
 
     level(d, L|H|X, D)     - vykreslenie logických úrovní
     pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
@@ -74,7 +82,6 @@ log_init
 include(lib_base.ckt)
 include(lib_color.ckt)
 include(lib_time.ckt)
-include(lib_ic485.ckt)
 
 command "\sf"
 color_light_grey; line from (0, 1.5) right_ 4.65 dashed; color_red; "H" ljust ;
@@ -99,18 +106,69 @@ line <- from PH.B.w left_ 0.75; ".B.w" rjust;
 line <- from PH.B.c right_ 1.85 down_ 0.55; ".B.c" ljust;
 '''
 
+_ = cm_compile('cm_0150g', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0150g.png
+:width: 400px
+:name: cm_140g
+
+Referencie pre umiestnenie popisného textu k časovému priebehu.
+```
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+data = r'''
+cct_init
+log_init
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+include(lib_time.ckt)
+
+command "\sf"
+color_light_grey; line from (0, 1.5) right_ 7 dashed; color_red; "H" ljust ;
+color_light_grey; line from (0, 0.5) right_ 7 dashed; color_red; "L" ljust ;
+color_light_grey; line from (0, 1)   right_ 7   dashed; color_red; "X" ljust ;
+
+color_black;
+move to (1,1); 
+pulse_level = 0.7
+pulse_slope = 0.1
+
+P1: pulse(1.5, 0.25, LH);
+color_dark_blue;
+line <- from P1.S right_ 0.5 down_ 0.5; ".S" below;
+line <- from P1.E up_ 0.5 left_ 0.5 ; ".E" above;
+line <- from P1.C left_ 0.75; ".C" rjust;
+
+color_black;
+move to (5.5,1); 
+P2: pwm(2, LH, 0.65);
+color_dark_blue;
+line <- from P2.SU right_ 0.5 down_ 0.5; ".SU" below;
+line <- from P2.EU up_ 0.5 left_ 0.5 ; ".EU" above;
+line <- from P2.CU left_ 0.75; ".CU" rjust;
+line <- from P2.SD right_ 0.5 up_ 0.5; ".SD" above;
+line <- from P2.ED down_ 0.5 right_ 0.5 ; ".ED" below;
+line <- from P2.CD right_ 0.75; ".CD" ljust;
+'''
+
 _ = cm_compile('cm_0150f', data, dpi=600)   
 ```
 
 ```{figure} ./src/cm_0150f.png
-:width: 400px
-:name: cm_140e
+:width: 420px
+:name: cm_140f
 
-Umiestnenie popisného textu k časovému priebehu.
+Referencie pre popis časových parametrov časových priebehov.
 ```
 
 
-## <font color='teal'> Dáta </font>
+### <font color='brown'> Dáta </font>
 
 V časových diagramoch dáta reprezentujú binárny vektor, hodnota alebo symbolické označenie vektora je zvyčajne súčasťou zobrazenia dát.    
 
@@ -150,9 +208,9 @@ _ = cm_compile('cm_0150b', data, dpi=600)
 Vykreslenie dát s popisom.
 ```
 
-## <font color='teal'> Hodinové impulzy </font>
+### <font color='brown'> Hodinové impulzy </font>
 
-Hodinové impulzy sú zvyčajne sekvenciou opakujúcich sa impulzov so striedou 1:1. Pre zobrazenie sekvencie hodinovým impulzov môžeme použiť príkaz cyklu. 
+Hodinové impulzy sú zvyčajne sekvenciou opakujúcich sa impulzov so striedou 1:1. 
 
     clock(d, HL|LH)        - vykreslenie hodinového impulzu
     
@@ -173,7 +231,8 @@ include(lib_color.ckt)
 
 command "\sf"
 Grid(10,1)
-pulse_level = 0.75
+pulse_slope = 0.0;
+
 move to (0.5, 0.5); CL: clock(0.75, HL); "HL" at CL.B.n above; 
 move to (1.5, 0.5); CR: clock(0.75, LH); "LH" at CR.B.n above;  
 move to (3.5, 0.5);
@@ -190,9 +249,121 @@ _ = cm_compile('cm_0150c', data, dpi=600)
 :name: cm_140c
 Hodinove impulzy.
 ```
+Pre zobrazenie sekvencie hodinovým impulzov môžeme použiť príkaz cyklu
+
+    for i=0 to 5 do { clock(1, HL); }
 
 
-### <font color='brown'> Jednoduchý diagram </font>
+
+### <font color='brown'> Časové relácie </font>
+
+Pre zobrazenie súvislostí medzi časovými priebehmi (závislosti, oneskoreni) môžeme využiť konštrukcie z *CircuitMacros*. Pre vykreslenie udalostí je v knižnici definované makro *event()*
+
+    event(p1, p2, offset)  - vykreslenie závisloti medzi dvoma časovými okamžikmi
+    
+      parametre:
+        p1,p2              - počiatočný a koncový okamžik udalosti
+        offset             - tvar krivky, kladná alebo záporná hodnota 
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+
+data = r'''
+include(lib_time.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+command "\sf"
+Grid(7,2);
+
+    move to (0.5, 1.5);
+P1: pulse(2, 0.5, LH)
+
+    move to (1., 0.5);
+P2: pulse(2, 0.5, LH);
+
+    color_red;
+    event(P1.C, P2.C,  0.25); 
+    "$t_1$" at last spline.start rjust;
+    "$t_2$" at last spline.end ljust;
+
+    pulse_slope = 0;
+    color_black;
+    move to (3.5, 1.5);
+P3: pulse(2.5, 0.5, LH)
+
+    move to (4.5, 0.5);
+P4: pulse(2, 0.5, LH);
+
+    color_red;
+L1: line from (P3.C, P3.C)+(0,0.75) to (P3.C, P4.C)+(0,-0.75) dashed;
+L2: line from (P4.C, P3.C)+(0,0.75) to (P4.C, P4.C)+(0,-0.75) dashed;
+    "$\Delta t$" at 0.5 between L1.start and L2.start
+'''
+
+_ = cm_compile('cm_0150k', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0150k.png
+:width: 400px
+:name: cm_0150k
+Zobrazenie časových relácií medzi priebehmi.
+```
+
+::::{admonition} Zdrojový kód
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0150k`
+
+.PS
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+cct_init
+
+include(lib_base.ckt)
+include(lib_color.ckt)
+include(lib_time.ckt)
+
+command "\sf"
+Grid(7,2);
+
+    move to (0.5, 1.5);
+P1: pulse(2, 0.5, LH)
+
+    move to (1., 0.5);
+P2: pulse(2, 0.5, LH);
+
+    color_red;
+    event(P1.C, P2.C,  0.25); 
+    "$t_1$" at last spline.start rjust;
+    "$t_2$" at last spline.end ljust;
+
+    pulse_slope = 0;
+    color_black;
+    move to (3.5, 1.5);
+P3: pulse(2.5, 0.5, LH)
+
+    move to (4.5, 0.5);
+P4: pulse(2, 0.5, LH);
+
+    color_red;
+L1: line from (P3.C, P3.C)+(0,0.75) to (P3.C, P4.C)+(0,-0.75) dashed;
+L2: line from (P4.C, P3.C)+(0,0.75) to (P4.C, P4.C)+(0,-0.75) dashed;
+    "$\Delta t$" at 0.5 between L1.start and L2.start
+.PE
+```
+::::
+
+
+## <font color='teal'> Jednoduchý diagram </font>
 
 Na diagrame je znázornený priebeh generovania PWM signálu časovačom procesora STM32L476 v móde 1.
 
@@ -210,6 +381,7 @@ command "\sf"
 Origin: Here 
 Grid(13,5);              # vykreslenie pomocnej mriezky, origin je (0,0)
 
+pulse_slope = 0.0
 d=1.5
 move to (2.5,4);
 "\small{CK\_CNT}" at Here rjust;
@@ -266,12 +438,10 @@ Generovanie PWM signálu.
 :caption: Zdrojový kód k obrázku {numref}`cm_0150d`
 
 .PS
-pi=3.14159265359
-                        # parametre z PIC (resp. GNU PIC)
 scale = 2.54            # cm - jednotka pre obrazok
 maxpswid = 30           # rozmery obrazku
 maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
-cct_init                # inicializacia lokalnych premennych
+cct_init                
 
 arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
@@ -283,6 +453,11 @@ include(lib_color.ckt)
 command "\sf"
 Origin: Here 
 Grid(13,5);              # vykreslenie pomocnej mriezky, origin je (0,0)
+
+pulse_edge = .05      #
+pulse_level = 0.7
+pulse_slope = 0.0
+pulse_width = 0.5
 
 d=1.5
 move to (2.5,4);

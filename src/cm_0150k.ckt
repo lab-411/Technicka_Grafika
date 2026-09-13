@@ -1,0 +1,45 @@
+
+.PS
+pi=3.14159265359
+                        # parametre z PIC (resp. GNU PIC)
+scale = 2.54            # cm - jednotka pre obrazok
+maxpswid = 30           # rozmery obrazku
+maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
+cct_init                # inicializacia lokalnych premennych
+
+arrowwid  = 0.127       # parametre sipok - sirka
+arrowht = 0.254         # dlzka
+
+
+include(lib_time.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+command "\sf"
+Grid(7,2);
+
+    move to (0.5, 1.5);
+P1: pulse(2, 0.5, LH)
+
+    move to (1., 0.5);
+P2: pulse(2, 0.5, LH);
+
+    color_red;
+    event(P1.C, P2.C,  0.25); 
+    "$t_1$" at last spline.start rjust;
+    "$t_2$" at last spline.end ljust;
+
+    pulse_slope = 0;
+    color_black;
+    move to (3.5, 1.5);
+P3: pulse(2.5, 0.5, LH)
+
+    move to (4.5, 0.5);
+P4: pulse(2, 0.5, LH);
+
+    color_red;
+L1: line from (P3.C, P3.C)+(0,0.75) to (P3.C, P4.C)+(0,-0.75) dashed;
+L2: line from (P4.C, P3.C)+(0,0.75) to (P4.C, P4.C)+(0,-0.75) dashed;
+    "$\Delta t$" at 0.5 between L1.start and L2.start
+
+.PE
