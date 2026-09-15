@@ -30,7 +30,7 @@ Hodnota amplitúdy logických úrovní pre príkazy kreslenia elementov časové
 ### <font color='brown'> Statické úrovne a prechody medzi úrovňami </font>
 
     level(d, L|H|X, D)     - vykreslenie logických úrovní
-    pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
+    pulse(d, delay, LH|HL) - vykreslenie prechodov medzi logickými úrovňami
     
       parametre:
         d                  - dĺžka stavu
@@ -257,9 +257,9 @@ Pre zobrazenie sekvencie hodinovým impulzov môžeme použiť príkaz cyklu
 
 ### <font color='brown'> Časové relácie </font>
 
-Pre zobrazenie súvislostí medzi časovými priebehmi (závislosti, oneskoreni) môžeme využiť konštrukcie z *CircuitMacros*. Pre vykreslenie udalostí je v knižnici definované makro *event()*
+Pre zobrazenie súvislostí medzi časovými priebehmi (závislosti, oneskoreni) môžeme využiť konštrukcie z *CircuitMacros*. Pre vykreslenie vzniku a časových súvislostí zaviazaných s udalosťou (event)  je v knižnici definované makro *event()*
 
-    event(p1, p2, offset)  - vykreslenie závisloti medzi dvoma časovými okamžikmi
+    event(p1, p2, offset)  - vykreslenie závislosti medzi dvoma časovými okamžikmi
     
       parametre:
         p1,p2              - počiatočný a koncový okamžik udalosti
@@ -318,16 +318,6 @@ Zobrazenie časových relácií medzi priebehmi.
 ```{code-block} 
 :caption: Zdrojový kód k obrázku {numref}`cm_0150k`
 
-.PS
-scale = 2.54            # cm - jednotka pre obrazok
-maxpswid = 30           # rozmery obrazku
-maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
-cct_init                
-
-arrowwid  = 0.127       # parametre sipok - sirka
-arrowht = 0.254         # dlzka
-cct_init
-
 include(lib_base.ckt)
 include(lib_color.ckt)
 include(lib_time.ckt)
@@ -358,7 +348,73 @@ P4: pulse(2, 0.5, LH);
 L1: line from (P3.C, P3.C)+(0,0.75) to (P3.C, P4.C)+(0,-0.75) dashed;
 L2: line from (P4.C, P3.C)+(0,0.75) to (P4.C, P4.C)+(0,-0.75) dashed;
     "$\Delta t$" at 0.5 between L1.start and L2.start
-.PE
+```
+::::
+
+Pre znázornenie volania prerušenia (interrupt) môžeme využiť makro irq()
+
+    irq(name)              - vykreslenie volania prerušenia
+    
+      parametre:
+        name               - pomenovanie preušenia
+
+
+```{code-cell} ipython3 
+:tags: ["remove-cell"]
+from src.utils import *
+
+
+data = r'''
+include(lib_time.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+command "\sf"
+Grid(8,2);
+
+move to (0, 0.5);
+Q1: pulse(2, 0.5, LH );
+Q2: pulse(2, 0.5, HL );
+
+P1: (0,0)
+P2: (4.5,2)
+event( Q2.C, P2, 0.55)
+
+color_blue;
+irq(TIM6\_DAC\_IRQ);
+'''
+_ = cm_compile('cm_0150j', data, dpi=600)   
+```
+
+```{figure} ./src/cm_0150j.png
+:width: 400px
+:name: cm_0150j
+Zobrazenie volania prerušenia.
+```
+
+::::{admonition} Zdrojový kód
+:class: dropdown, tip 
+
+```{code-block} 
+:caption: Zdrojový kód k obrázku {numref}`cm_0150j`
+
+include(lib_time.ckt)
+include(lib_base.ckt)
+include(lib_color.ckt)
+
+command "\sf"
+Grid(8,2);
+
+move to (0, 0.5);
+Q1: pulse(2, 0.5, LH );
+Q2: pulse(2, 0.5, HL );
+
+P1: (0,0)
+P2: (4.5,2)
+event( Q2.C, P2, 0.55)
+
+color_blue;
+irq(TIM6\_DAC\_IRQ);
 ```
 ::::
 

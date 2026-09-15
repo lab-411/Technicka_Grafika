@@ -11,21 +11,12 @@ arrowwid  = 0.127       # parametre sipok - sirka
 arrowht = 0.254         # dlzka
 
 
-cct_init
-log_init
-
+include(lib_time.ckt)
 include(lib_base.ckt)
 include(lib_color.ckt)
-include(lib_time.ckt)
-include(lib_stm32.ckt)
-#include(lib_ic485.ckt)
-
-
 
 command "\sf"
 Grid(8,2);
-
-
 
 move to (0, 0.5);
 Q1: pulse(2, 0.5, LH );

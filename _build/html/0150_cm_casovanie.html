@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -378,7 +378,7 @@ pulse_edge = .05      - hrana pre signál data
 <section id="staticke-urovne-a-prechody-medzi-urovnami">
 <h3><font color='brown'> Statické úrovne a prechody medzi úrovňami </font><a class="headerlink" href="#staticke-urovne-a-prechody-medzi-urovnami" title="Link to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>level(d, L|H|X, D)     - vykreslenie logických úrovní
-pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
+pulse(d, delay, LH|HL) - vykreslenie prechodov medzi logickými úrovňami
 
   parametre:
     d                  - dĺžka stavu
@@ -453,8 +453,8 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 </section>
 <section id="casove-relacie">
 <h3><font color='brown'> Časové relácie </font><a class="headerlink" href="#casove-relacie" title="Link to this heading">#</a></h3>
-<p>Pre zobrazenie súvislostí medzi časovými priebehmi (závislosti, oneskoreni) môžeme využiť konštrukcie z <em>CircuitMacros</em>. Pre vykreslenie udalostí je v knižnici definované makro <em>event()</em></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>event(p1, p2, offset)  - vykreslenie závisloti medzi dvoma časovými okamžikmi
+<p>Pre zobrazenie súvislostí medzi časovými priebehmi (závislosti, oneskoreni) môžeme využiť konštrukcie z <em>CircuitMacros</em>. Pre vykreslenie vzniku a časových súvislostí zaviazaných s udalosťou (event)  je v knižnici definované makro <em>event()</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>event(p1, p2, offset)  - vykreslenie závislosti medzi dvoma časovými okamžikmi
 
   parametre:
     p1,p2              - počiatočný a koncový okamžik udalosti
@@ -472,17 +472,7 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <p class="admonition-title">Zdrojový kód</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 11 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150k"><span class="std std-numref">Obr. 58</span></a></span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
-<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
-<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
-<span class="n">cct_init</span>                
-
-<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
-<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
-<span class="n">cct_init</span>
-
-<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 <span class="n">include</span><span class="p">(</span><span class="n">lib_color</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 <span class="n">include</span><span class="p">(</span><span class="n">lib_time</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 
@@ -512,7 +502,45 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <span class="n">L1</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="n">P3</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">P3</span><span class="o">.</span><span class="n">C</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.75</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="n">P3</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">P4</span><span class="o">.</span><span class="n">C</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.75</span><span class="p">)</span> <span class="n">dashed</span><span class="p">;</span>
 <span class="n">L2</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="n">P4</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">P3</span><span class="o">.</span><span class="n">C</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.75</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="n">P4</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">P4</span><span class="o">.</span><span class="n">C</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.75</span><span class="p">)</span> <span class="n">dashed</span><span class="p">;</span>
     <span class="s2">&quot;$\Delta t$&quot;</span> <span class="n">at</span> <span class="mf">0.5</span> <span class="n">between</span> <span class="n">L1</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="n">L2</span><span class="o">.</span><span class="n">start</span>
-<span class="o">.</span><span class="n">PE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pre znázornenie volania prerušenia (interrupt) môžeme využiť makro irq()</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>irq(name)              - vykreslenie volania prerušenia
+
+  parametre:
+    name               - pomenovanie preušenia
+</pre></div>
+</div>
+<figure class="align-default" id="cm-0150j">
+<a class="reference internal image-reference" href="_images/cm_0150j.png"><img alt="_images/cm_0150j.png" src="_images/cm_0150j.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 59 </span><span class="caption-text">Zobrazenie volania prerušenia.</span><a class="headerlink" href="#cm-0150j" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Zdrojový kód</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 12 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150j"><span class="std std-numref">Obr. 59</span></a></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_time</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="n">lib_color</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+
+<span class="n">command</span> <span class="s2">&quot;\sf&quot;</span>
+<span class="n">Grid</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="n">Q1</span><span class="p">:</span> <span class="n">pulse</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">LH</span> <span class="p">);</span>
+<span class="n">Q2</span><span class="p">:</span> <span class="n">pulse</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">HL</span> <span class="p">);</span>
+
+<span class="n">P1</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">P2</span><span class="p">:</span> <span class="p">(</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">event</span><span class="p">(</span> <span class="n">Q2</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">P2</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">)</span>
+
+<span class="n">color_blue</span><span class="p">;</span>
+<span class="n">irq</span><span class="p">(</span><span class="n">TIM6</span>\<span class="n">_DAC</span>\<span class="n">_IRQ</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -526,13 +554,13 @@ pulse(d, delay, LH|NL) - vykreslenie prechodov medzi logickými úrovňami
 <a class="reference internal image-reference" href="_images/cm_0150d.png"><img alt="_images/cm_0150d.png" src="_images/cm_0150d.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Obr. 59 </span><span class="caption-text">Generovanie PWM signálu.</span><a class="headerlink" href="#cm-0150d" title="Link to this image">#</a></p>
+<p><span class="caption-number">Obr. 60 </span><span class="caption-text">Generovanie PWM signálu.</span><a class="headerlink" href="#cm-0150d" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="dropdown tip admonition">
 <p class="admonition-title">Zdrojový kód</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 12 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150d"><span class="std std-numref">Obr. 59</span></a></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 13 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0150d"><span class="std std-numref">Obr. 60</span></a></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
 <span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
 <span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
