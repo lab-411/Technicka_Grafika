@@ -315,41 +315,14 @@ Zobrazenie časových relácií medzi priebehmi.
 ::::{admonition} Zdrojový kód
 :class: dropdown, tip 
 
-```{code-block} 
+```{literalinclude} ./src/cm_0150k.ckt
 :caption: Zdrojový kód k obrázku {numref}`cm_0150k`
-
-include(lib_base.ckt)
-include(lib_color.ckt)
-include(lib_time.ckt)
-
-command "\sf"
-Grid(7,2);
-
-    move to (0.5, 1.5);
-P1: pulse(2, 0.5, LH)
-
-    move to (1., 0.5);
-P2: pulse(2, 0.5, LH);
-
-    color_red;
-    event(P1.C, P2.C,  0.25); 
-    "$t_1$" at last spline.start rjust;
-    "$t_2$" at last spline.end ljust;
-
-    pulse_slope = 0;
-    color_black;
-    move to (3.5, 1.5);
-P3: pulse(2.5, 0.5, LH)
-
-    move to (4.5, 0.5);
-P4: pulse(2, 0.5, LH);
-
-    color_red;
-L1: line from (P3.C, P3.C)+(0,0.75) to (P3.C, P4.C)+(0,-0.75) dashed;
-L2: line from (P4.C, P3.C)+(0,0.75) to (P4.C, P4.C)+(0,-0.75) dashed;
-    "$\Delta t$" at 0.5 between L1.start and L2.start
+:start-at: include
+:end-before: PE
 ```
 ::::
+
+
 
 Pre znázornenie volania prerušenia (interrupt) môžeme využiť makro irq()
 
@@ -395,26 +368,10 @@ Zobrazenie volania prerušenia.
 ::::{admonition} Zdrojový kód
 :class: dropdown, tip 
 
-```{code-block} 
+```{literalinclude} ./src/cm_0150j.ckt
 :caption: Zdrojový kód k obrázku {numref}`cm_0150j`
-
-include(lib_time.ckt)
-include(lib_base.ckt)
-include(lib_color.ckt)
-
-command "\sf"
-Grid(8,2);
-
-move to (0, 0.5);
-Q1: pulse(2, 0.5, LH );
-Q2: pulse(2, 0.5, HL );
-
-P1: (0,0)
-P2: (4.5,2)
-event( Q2.C, P2, 0.55)
-
-color_blue;
-irq(TIM6\_DAC\_IRQ);
+:start-at: include
+:end-before: PE
 ```
 ::::
 
@@ -448,24 +405,14 @@ for i=0 to 5 do{
   level(1,L)
 }
 
-
 move to (2.5,3);
 "\small{Counter}" at Here rjust;
-data(d-0.5, "6" ,L)
-data(d,"7")
-data(d,"8")
-data(d,"9")
-data(d,"0")
-data(d,"1")
-data(d-0.5,"2", R)
+data(d-0.5, "6" ,L); data(d,"7"); data(d,"8"); data(d,"9");
+data(d,"0"); data(d,"1"); data(d-0.5,"2", R);
 
 move to (2.5,2);
 "\small{PWM 1}" at Here rjust;
-level(2.5,H);
-pulse(3,0, HL)
-pulse(4.5,0, LH)
-#pulse(
-#level(5,L);
+level(2.5,H); pulse(3,0, HL); pulse(4.5,0, LH);
 
 move to (2.5,1);
 "\small{UPDATE Flag}" at Here rjust;
@@ -490,58 +437,11 @@ Generovanie PWM signálu.
 ::::{admonition} Zdrojový kód
 :class: dropdown, tip 
 
-```{code-block} 
+```{literalinclude} ./src/cm_0150d.ckt
 :caption: Zdrojový kód k obrázku {numref}`cm_0150d`
-
-.PS
-scale = 2.54            # cm - jednotka pre obrazok
-maxpswid = 30           # rozmery obrazku
-maxpsht = 30            # 30 x 30cm, default je 8.5x11 inch
-cct_init                
-
-arrowwid  = 0.127       # parametre sipok - sirka
-arrowht = 0.254         # dlzka
-
-include(lib_base.ckt)                  
-include(lib_time.ckt)
-include(lib_color.ckt)
-
-command "\sf"
-Origin: Here 
-Grid(13,5);              # vykreslenie pomocnej mriezky, origin je (0,0)
-
-pulse_edge = .05      #
-pulse_level = 0.7
-pulse_slope = 0.0
-pulse_width = 0.5
-
-d=1.5
-move to (2.5,4);
-"\small{CK\_CNT}" at Here rjust;
-level(1,L)
-
-for i=0 to 5 do{
-  clock(0.5, HL)
-  level(1,L)
-}
-
-move to (2.5,3);
-"\small{Counter}" at Here rjust;
-data(d-0.5, "6" ,L); data(d,"7"); data(d,"8"); data(d,"9"); data(d,"0"); data(d,"1"); data(d-0.5,"2", R)
-
-move to (2.5,2);
-"\small{PWM 1}" at Here rjust;
-level(2.5,H); pulse(3,0, HL); pulse(4.5,0, LH)
-
-move to (2.5,1);
-"\small{UPDATE Flag}" at Here rjust;
-level(5.5,L); pulse(0.5, 0.0, LH); level(3.5,H);
-
-color_red;
-line from (5, 0) to (5, 5) dashed .08;
-line from (8, 0) to (8, 5) dashed .08;   
-
-.PE
+:start-at: include
+:end-before: PE
 ```
+
 ::::
 
