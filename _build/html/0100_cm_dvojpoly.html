@@ -882,19 +882,7 @@ capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);
 <p class="admonition-title">Zdrojový kód</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 4 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100m"><span class="std std-numref">Obr. 24</span></a></span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
-<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
-                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
-<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
-<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
-<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
-
-<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
-<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
-
-
-<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 <span class="n">include</span><span class="p">(</span><span class="n">lib_user</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 
 <span class="n">VR1</span><span class="p">:</span> <span class="n">vres_v</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">R</span><span class="p">);</span> <span class="s2">&quot;\sf 50k&quot;</span> <span class="n">at</span> <span class="n">VR1</span><span class="o">.</span><span class="n">w</span> <span class="n">below</span><span class="p">;</span> <span class="p">{</span><span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">VR1.n</span> <span class="n">left_</span> <span class="mi">1</span><span class="p">;}</span>
@@ -926,14 +914,13 @@ capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);
      <span class="n">capacitor</span><span class="p">(</span><span class="kn">from</span><span class="w"> </span><span class="nn">DT6</span> <span class="n">left_</span> <span class="mf">1.2</span><span class="p">,</span><span class="o">+</span><span class="n">K</span><span class="p">,,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">);</span> <span class="n">llabel</span><span class="p">(,</span>\<span class="n">sf</span> <span class="mi">50</span><span class="n">M</span><span class="p">,);</span> <span class="n">gnd</span><span class="p">(</span><span class="mf">.15</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
      <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">DT5</span> <span class="n">right_</span> <span class="mi">2</span><span class="p">;</span>
 
-<span class="c1"># IC MAA325 box </span>
+<span class="c1"># MAA325 box </span>
     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q1.w</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q0</span><span class="p">,</span><span class="n">Q1</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q0</span><span class="o">.</span><span class="n">s</span> <span class="n">dashed</span><span class="p">;</span>
     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q0.n</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q0</span><span class="p">,</span><span class="n">Q4</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q4</span><span class="o">.</span><span class="n">w</span> <span class="n">dashed</span><span class="p">;</span>
     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q4.e</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q3</span><span class="p">,</span><span class="n">Q4</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q3</span><span class="o">.</span><span class="n">n</span> <span class="n">dashed</span><span class="p">;</span>
     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q3.s</span> <span class="n">to</span> <span class="p">(</span><span class="n">Q3</span><span class="p">,</span><span class="n">Q2</span><span class="p">)</span> <span class="n">then</span> <span class="n">to</span> <span class="n">Q2</span><span class="o">.</span><span class="n">e</span> <span class="n">dashed</span><span class="p">;</span>
     <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Q2.w</span> <span class="n">to</span> <span class="n">Q1</span><span class="o">.</span><span class="n">e</span> <span class="n">dashed</span><span class="p">;</span> 
 
-<span class="o">.</span><span class="n">PE</span>
 </pre></div>
 </div>
 </div>
@@ -1012,26 +999,14 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
 <p class="admonition-title">Zdrojový kód</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number">Listing 5 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a></span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
-<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
-                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
-<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
-<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
-<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
-
-<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
-<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
-
-
-<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 <span class="n">include</span><span class="p">(</span><span class="n">lib_user</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 
 <span class="n">Origin</span><span class="p">:</span> <span class="n">Here</span> 
 
 <span class="n">Grid</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
 <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
-        
+
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">3</span><span class="p">,,</span><span class="n">E</span><span class="p">);</span> 
     <span class="n">llabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">100</span><span class="p">,);</span> 
     <span class="n">b_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="p">);</span> 
@@ -1041,12 +1016,11 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
     <span class="n">b_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">34</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span> 
 
 <span class="n">L1</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="s2">&quot;L1&quot;</span> <span class="n">above</span><span class="p">;</span>
-    <span class="n">r_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">56</span><span class="p">},</span> <span class="n">above_</span><span class="p">,</span> <span class="mf">0.25</span> <span class="p">);</span> 
+    <span class="n">l_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">56</span><span class="p">},</span> <span class="n">above_</span><span class="p">,</span> <span class="mf">0.25</span> <span class="p">);</span> 
 
 <span class="n">L2</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="s2">&quot;L2&quot;</span> <span class="n">above</span><span class="p">;</span>
-    <span class="n">r_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">78</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="mf">0.75</span> <span class="p">);</span> 
+    <span class="n">l_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">78</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="mf">0.75</span> <span class="p">);</span>  
 
-<span class="o">.</span><span class="n">PE</span>
 </pre></div>
 </div>
 </div>
@@ -1087,30 +1061,19 @@ R2: resistor(down_ 2.5,, E); larrow(V_{2}, -&gt;); rlabel(,R_2,)
 <p class="admonition-title">Zdrojový kód</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 6 : </span><span class="caption-text">Zdrojový kód k obrázku <a class="reference internal" href="#cm-0100i"><span class="std std-numref">Obr. 26</span></a></span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">PS</span>
-<span class="n">pi</span><span class="o">=</span><span class="mf">3.14159265359</span>
-                        <span class="c1"># parametre z PIC (resp. GNU PIC)</span>
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">2.54</span>            <span class="c1"># cm - jednotka pre obrazok</span>
-<span class="n">maxpswid</span> <span class="o">=</span> <span class="mi">30</span>           <span class="c1"># rozmery obrazku</span>
-<span class="n">maxpsht</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># 30 x 30cm, default je 8.5x11 inch</span>
-<span class="n">cct_init</span>                <span class="c1"># inicializacia lokalnych premennych</span>
-
-<span class="n">arrowwid</span>  <span class="o">=</span> <span class="mf">0.127</span>       <span class="c1"># parametre sipok - sirka</span>
-<span class="n">arrowht</span> <span class="o">=</span> <span class="mf">0.254</span>         <span class="c1"># dlzka</span>
-
-
-<span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="n">lib_base</span><span class="o">.</span><span class="n">ckt</span><span class="p">)</span>
 
 <span class="n">Origin</span><span class="p">:</span> <span class="n">Here</span> 
-<span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">up_</span>
-<span class="n">S1</span><span class="p">:</span> <span class="n">source</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">AC</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">&lt;-</span><span class="p">);</span> <span class="n">b_current</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="p">,</span><span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span>
-<span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span>
+    <span class="n">move</span> <span class="n">to</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
+    <span class="n">up_</span><span class="p">;</span>
+<span class="n">S1</span><span class="p">:</span> <span class="n">source</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">AC</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span> <span class="o">&lt;-</span><span class="p">);</span> 
+    <span class="n">b_current</span><span class="p">(</span><span class="n">i_0</span><span class="p">,</span> <span class="p">,</span><span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_1</span><span class="p">,);</span>
     <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span> <span class="s2">&quot;1&quot;</span> <span class="n">ljust</span><span class="p">;}</span>
-<span class="n">R2</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,)</span>
+    <span class="n">resistor</span><span class="p">(</span><span class="n">down_</span> <span class="mf">2.5</span><span class="p">,,</span> <span class="n">E</span><span class="p">);</span> <span class="n">larrow</span><span class="p">(</span><span class="n">V_</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span> <span class="o">-&gt;</span><span class="p">);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,)</span>
     <span class="n">dot</span><span class="p">;</span> <span class="p">{</span><span class="n">tconn</span><span class="p">(</span><span class="n">right_</span> <span class="mf">1.5</span><span class="p">,</span><span class="n">O</span><span class="p">);</span> <span class="s2">&quot;2&quot;</span> <span class="n">ljust</span><span class="p">;}</span>
     <span class="n">line</span> <span class="n">to</span> <span class="n">S1</span><span class="o">.</span><span class="n">start</span><span class="p">;</span> 
-<span class="o">.</span><span class="n">PE</span>
+
 </pre></div>
 </div>
 </div>

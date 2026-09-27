@@ -162,7 +162,7 @@ _ = cm_compile('cm_0150f', data, dpi=600)
 
 ```{figure} ./src/cm_0150f.png
 :width: 420px
-:name: cm_140f
+:name: cm_150f
 
 Referencie pre popis časových parametrov časových priebehov.
 ```
@@ -203,7 +203,7 @@ _ = cm_compile('cm_0150b', data, dpi=600)
 
 ```{figure} ./src/cm_0150b.png
 :width: 600px
-:name: cm_140b
+:name: cm_150b
 
 Vykreslenie dát s popisom.
 ```
@@ -246,7 +246,7 @@ _ = cm_compile('cm_0150c', data, dpi=600)
 
 ```{figure} ./src/cm_0150c.png
 :width: 600px
-:name: cm_140c
+:name: cm_150c
 Hodinove impulzy.
 ```
 Pre zobrazenie sekvencie hodinovým impulzov môžeme použiť príkaz cyklu
