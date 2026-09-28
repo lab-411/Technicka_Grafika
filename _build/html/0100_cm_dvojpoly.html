@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -935,8 +935,8 @@ capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);
     
         label  - označenie veličiny (prúd ...)
         
-        above_ - poloha označenia 
-        below_
+        above  - poloha označenia 
+        below 
 
         In     - smer šípky
         Out
@@ -947,47 +947,23 @@ capacitor(up_ 2); rlabel(,C_1,); variable(,N,,);
         frac  - posun šípky voči zadanej súradnici (Start | End)
 </pre></div>
 </div>
-<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá <em>l_current()</em> a <em>r_current()</em>, ktoré vykreslia šípku v čiare medzi jej koncovými bodmi, <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l_current(label, above_|below_, frac)
-r_current(label, above_|below_, frac)
+<p>Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá <em>l_current()</em> a <em>r_current()</em>, ktoré vykreslia šípku v poslednej zobrazenej čiare medzi jej koncovými bodmi, <a class="reference internal" href="#cm-0100h"><span class="std std-numref">Obr. 25</span></a>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l_current(label, above|below, frac)
+r_current(label, above|below, frac)
 
     parametre:
     
         label  - označenie veličiny (prúd ...)
         
-        above_ - vertikálna poloha označenia 
-        below_
-        rjust_ - horizontálna poloha označenia 
-        ljust_
+        above  - vertikálna poloha označenia 
+        below 
+        rjust  - horizontálna poloha označenia 
+        ljust 
         
         frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
 </pre></div>
 </div>
 <p>Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makrá <em>l_current()</em> a <em>r_current()</em> sú implementované v knižnici <a class="reference download internal" download="" href="_downloads/ff2afcb82393da7c3f178457480a2e11/lib_user.ckt"><span class="xref download myst">lib_user.ckt</span></a> ako vetvy, neovplyvňujú hodnotu kurzoru <code class="docutils literal notranslate"><span class="pre">Here</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>define( `l_current&#39;, `{
-    S: last line .start;
-    E: last line .end;
-       ifelse(defn(`p&#39;),  $3, p=0.5,  p=$3)
-    C: p between S and E; 
-       line -&gt; from C+(-arrowht/2,0)  left_  0.01; 
-      &quot;$ $1 $&quot; at C $2;
-}&#39;)
-        
-R1: resistor(right_ 3,,E); 
-    llabel(,R_2,); rlabel(,100,); 
-    b_current(i_{12} ); 
-
-R1: resistor(right_ 3 at (2.5, 2),,E) ; 
-    llabel(,R_2,); rlabel(,100,); 
-    b_current(i_{34}, below_, Out, End, 0.45 ); 
-
-L1: line from (5,0.5) to (8,0.5) &quot;L1&quot; above;
-    l_current(i_{56}, above_, 0.25 ); 
-
-L2: line from (5,2) to (8,2) &quot;L2&quot; above;
-    l_current(i_{78}, below_, 0.75 );
-</pre></div>
-</div>
 <figure class="align-default" id="cm-0100h">
 <a class="reference internal image-reference" href="_images/cm_0100h.png"><img alt="_images/cm_0100h.png" src="_images/cm_0100h.png" style="width: 550px;" />
 </a>
@@ -1013,13 +989,13 @@ L2: line from (5,2) to (8,2) &quot;L2&quot; above;
 
 <span class="n">R1</span><span class="p">:</span> <span class="n">resistor</span><span class="p">(</span><span class="n">right_</span> <span class="mi">3</span> <span class="n">at</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),,</span><span class="n">E</span><span class="p">)</span> <span class="p">;</span> 
     <span class="n">llabel</span><span class="p">(,</span><span class="n">R_2</span><span class="p">,);</span> <span class="n">rlabel</span><span class="p">(,</span><span class="mi">100</span><span class="p">,);</span> 
-    <span class="n">b_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">34</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span> 
+    <span class="n">b_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">34</span><span class="p">},</span> <span class="n">below</span><span class="p">,</span> <span class="n">Out</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="mf">0.45</span> <span class="p">);</span> 
 
 <span class="n">L1</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="s2">&quot;L1&quot;</span> <span class="n">above</span><span class="p">;</span>
-    <span class="n">l_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">56</span><span class="p">},</span> <span class="n">above_</span><span class="p">,</span> <span class="mf">0.25</span> <span class="p">);</span> 
+    <span class="n">r_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">56</span><span class="p">},</span> <span class="n">above</span><span class="p">,</span> <span class="mf">0.25</span> <span class="p">);</span> 
 
 <span class="n">L2</span><span class="p">:</span> <span class="n">line</span> <span class="kn">from</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="n">to</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="s2">&quot;L2&quot;</span> <span class="n">above</span><span class="p">;</span>
-    <span class="n">l_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">78</span><span class="p">},</span> <span class="n">below_</span><span class="p">,</span> <span class="mf">0.75</span> <span class="p">);</span>  
+    <span class="n">r_current</span><span class="p">(</span><span class="n">i_</span><span class="p">{</span><span class="mi">78</span><span class="p">},</span> <span class="n">below</span><span class="p">,</span> <span class="mf">0.75</span> <span class="p">);</span>  
 
 </pre></div>
 </div>

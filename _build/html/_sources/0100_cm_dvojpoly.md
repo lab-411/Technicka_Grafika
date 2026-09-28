@@ -946,8 +946,8 @@ Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použ
         
             label  - označenie veličiny (prúd ...)
             
-            above_ - poloha označenia 
-            below_
+            above  - poloha označenia 
+            below 
 
             In     - smer šípky
             Out
@@ -957,47 +957,25 @@ Pre zobrazenie šípky ktorá reprezentuje prúd v prívode prvku môžeme použ
             
             frac  - posun šípky voči zadanej súradnici (Start | End)
             
-Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá *l_current()* a *r_current()*, ktoré vykreslia šípku v čiare medzi jej koncovými bodmi, {numref}`cm_0100h`.
+Pre znázornenie prúdu vetvou obvodu môžeme zadefinovať podobné makrá *l_current()* a *r_current()*, ktoré vykreslia šípku v poslednej zobrazenej čiare medzi jej koncovými bodmi, {numref}`cm_0100h`.
 
-    l_current(label, above_|below_, frac)
-    r_current(label, above_|below_, frac)
+    l_current(label, above|below, frac)
+    r_current(label, above|below, frac)
     
         parametre:
         
             label  - označenie veličiny (prúd ...)
             
-            above_ - vertikálna poloha označenia 
-            below_
-            rjust_ - horizontálna poloha označenia 
-            ljust_
+            above  - vertikálna poloha označenia 
+            below 
+            rjust  - horizontálna poloha označenia 
+            ljust 
             
             frac  - poloha šípky medzi koncovými bodmi 0..1, 0.5 - stred
 
 Nasledujúci príklad ukazuje označenie prúdu prvkom a vetvou obvodu. Makrá *l_current()* a *r_current()* sú implementované v knižnici [lib_user.ckt](./src/lib_user.ckt) ako vetvy, neovplyvňujú hodnotu kurzoru `Here`.
 
-    define( `l_current', `{
-        S: last line .start;
-        E: last line .end;
-           ifelse(defn(`p'),  $3, p=0.5,  p=$3)
-        C: p between S and E; 
-           line -> from C+(-arrowht/2,0)  left_  0.01; 
-          "$ $1 $" at C $2;
-    }')
             
-    R1: resistor(right_ 3,,E); 
-        llabel(,R_2,); rlabel(,100,); 
-        b_current(i_{12} ); 
-
-    R1: resistor(right_ 3 at (2.5, 2),,E) ; 
-        llabel(,R_2,); rlabel(,100,); 
-        b_current(i_{34}, below_, Out, End, 0.45 ); 
-
-    L1: line from (5,0.5) to (8,0.5) "L1" above;
-        l_current(i_{56}, above_, 0.25 ); 
-
-    L2: line from (5,2) to (8,2) "L2" above;
-        l_current(i_{78}, below_, 0.75 );  
-
 ```{code-cell} ipython3 
 :tags: ["remove-cell"]
 
@@ -1018,13 +996,13 @@ R1: resistor(right_ 3,,E);
 
 R1: resistor(right_ 3 at (2.5, 2),,E) ; 
     llabel(,R_2,); rlabel(,100,); 
-    b_current(i_{34}, below_, Out, End, 0.45 ); 
+    b_current(i_{34}, below, Out, End, 0.45 ); 
 
 L1: line from (5,0.5) to (8,0.5) "L1" above;
-    l_current(i_{56}, above_, 0.25 ); 
+    r_current(i_{56}, above, 0.25 ); 
 
 L2: line from (5,2) to (8,2) "L2" above;
-    l_current(i_{78}, below_, 0.75 );  
+    r_current(i_{78}, below, 0.75 );  
 '''
 
 _ = cm_compile('cm_0100h', data, dpi=600)   

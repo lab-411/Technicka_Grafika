@@ -384,7 +384,7 @@
 <p><span class="caption-number">Obr. 34 </span><span class="caption-text">Značky zeme.</span><a class="headerlink" href="#cm-140a" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Európske značenie umožňuje používanie značiek zeme a napájania orientované v základných smeroch, <a class="reference internal" href="0150_cm_casovanie.html#cm-140f"><span class="std std-numref">Obr. 55</span></a>, pre ich zobrazenie sú v knižnici <a class="reference download internal" download="" href="_downloads/616026fd2a08c0086f0a934c6095b0cc/lib_base.ckt"><span class="xref download myst">lib_base.ckt</span></a> implementované makrá:</p>
+<p>Európske značenie umožňuje používanie značiek zeme a napájania orientované v základných smeroch, <a class="reference internal" href="#cm-140f"><span class="std std-numref">Obr. 35</span></a>, pre ich zobrazenie sú v knižnici <a class="reference download internal" download="" href="_downloads/616026fd2a08c0086f0a934c6095b0cc/lib_base.ckt"><span class="xref download myst">lib_base.ckt</span></a> implementované makrá:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gnd(d, U|D|L|R)
 power(d, text, U|D|L|R)
 
@@ -401,7 +401,7 @@ power(d, text, U|D|L|R)
 <p><span class="caption-number">Obr. 35 </span><span class="caption-text">Upravené makrá pre značky pripojenia zeme a napájania.</span><a class="headerlink" href="#cm-140f" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Terminály <em>tbox()</em> v tvare vlajky, <a class="reference internal" href="0150_cm_casovanie.html#cm-140b"><span class="std std-numref">Obr. 56</span></a>, sa najčastejšie používajú v zapojeniach s digitálnymi obvodmi, kde na rozdiel od analogových obvodov nie je z kontextu zrejmý význam terminálu. Tvar vlajky určuje v tomto prípade smer toku informácií, čo je zvlášť dôležité pri použití zberníc, kde nie sú terminály priamo pripojené k výstupom logických obvodov.</p>
+<p>Terminály <em>tbox()</em> v tvare vlajky, <a class="reference internal" href="#cm-140b"><span class="std std-numref">Obr. 36</span></a>, sa najčastejšie používajú v zapojeniach s digitálnymi obvodmi, kde na rozdiel od analogových obvodov nie je z kontextu zrejmý význam terminálu. Tvar vlajky určuje v tomto prípade smer toku informácií, čo je zvlášť dôležité pri použití zberníc, kde nie sú terminály priamo pripojené k výstupom logických obvodov.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tbox(text, wid, ht, &lt;|&gt;|&lt;&gt;, fill)
 
   parametre:
@@ -412,7 +412,7 @@ power(d, text, U|D|L|R)
     fill        - výplň príkazom fill_(n), n = 0.0...1.0
 </pre></div>
 </div>
-<p>Terminály <em>tconn()</em> reprezentujú ukončenie vodiča zvyčajne označené menom, <a class="reference internal" href="0150_cm_casovanie.html#cm-140b"><span class="std std-numref">Obr. 56</span></a>, ktoré môže zároveň označovať aj meno pinu vo fyzickom konektore. Význam tvaru terminálu závisí od používaných konvencií pri kreslení zapojení.</p>
+<p>Terminály <em>tconn()</em> reprezentujú ukončenie vodiča zvyčajne označené menom, <a class="reference internal" href="#cm-140b"><span class="std std-numref">Obr. 36</span></a>, ktoré môže zároveň označovať aj meno pinu vo fyzickom konektore. Význam tvaru terminálu závisí od používaných konvencií pri kreslení zapojení.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tconn(linespec, O|&lt;|&lt;&lt;|&gt;&gt;|&gt;|A|M&quot;, wid)
 
   parametre:
