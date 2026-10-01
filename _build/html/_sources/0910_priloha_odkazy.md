@@ -43,12 +43,14 @@ kernelspec:
 
 ### <font color='brown'> Programy pre kreslenie zapojení a diagramov </font> 
 
-* [ElectroTech](https://qelectrotech.org/)
+* [QElectroTech](https://qelectrotech.org/)
 * [XCircuit](http://opencircuitdesign.com/xcircuit/)
 * [plantuml](https://github.com/plantuml/plantuml)
 * [KiCad](https://www.kicad.org/)
 * [LibrePCB](https://librepcb.org/)
 * [LeptonEDA](https://github.com/lepton-eda/lepton-eda)
+* [Oregano](https://github.com/drahnr/oregano)
+* [Qucs-S](https://ra3xdh.github.io/)
 
 ## <font color='teal'> Technické normy </font> 
 
